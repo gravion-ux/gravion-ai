@@ -1,0 +1,14 @@
+{
+  "payload": {
+    "name": "chat",
+    "type": "chat",
+    "version": "0.1.0",
+    "entrypoint": "gravion_ai.modules.chat.module:ChatModule",
+    "files": {
+      "__init__.py": "b38ee9ed2d486ed9193d8bc0455f68c29c0cdbc006ccf502762be58467127e7b",
+      "module.py": "f4767db89a963d2bac7b010fc8612d0c76f827e02721d36ce10a4d69cccf990e"
+    }
+  },
+  "signature": "",
+  "note": "Unsigned in the repo: the issuer private key is (correctly) not distributed. The project owner signs this manifest with `gravion license sign-module` before a production deployment; production mode refuses unsigned or tampered modules."
+}
