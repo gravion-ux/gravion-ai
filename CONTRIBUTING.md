@@ -14,7 +14,7 @@ explains how to get set up and what a mergeable pull request looks like.
 - **Tests** for behaviour that is currently untested, especially around
   the licensing subsystem (identity, signed licenses, audit chain,
   entitlement gate) and the module runtime path.
-- **Documentation and examples** — clearer docs, worked examples, a
+- **Documentation and examples** — clearer docs, worked examples (see [docs/FIRST-MODULE.md](docs/FIRST-MODULE.md) for building a module), a
   second example company policy next to `examples/policy.md`.
 - **Model registry data** — corrections and additions to
   `src/gravion_ai/data/models.json` (Gravion's own models and variants

@@ -146,6 +146,7 @@ src/gravion_ai/
   modules/coder/    coding assistant: generate / review / explain tasks
   licensing/      identity, signed licenses, signed modules, audit log,
                   entitlement protocol + gate — the licensing subsystem
+docs/FIRST-MODULE.md    step-by-step guide to building a Gravion module
 docs/LICENSING.md       licensing design + protocol specification
 LICENSE-COMMERCIAL.md   commercial agreement template (summary terms)
 ARCHITECTURE.md         the full vision and piece-by-piece roadmap
