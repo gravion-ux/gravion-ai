@@ -6,6 +6,9 @@ dist/
 .venv/
 venv/
 .pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
 
 # Gravion runtime state — contains private keys, never commit.
 .gravion-ai/
