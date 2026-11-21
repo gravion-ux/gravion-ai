@@ -29,6 +29,26 @@ def test_init_status_chat_flow(home, capsys):
     assert "hello there" in out
 
 
+def test_support_command_flow(home, capsys):
+    assert main(["init", "--name", "Gravion", "--company", "Acme Robotics"]) == 0
+    capsys.readouterr()
+    assert main(["support", "where", "is", "my", "invoice?"]) == 0
+    out = capsys.readouterr().out
+    assert "where is my invoice?" in out
+    # An explicit request for a human escalates without a model answer.
+    assert main(["support", "can", "I", "talk", "to", "a", "human"]) == 0
+    out = capsys.readouterr().out
+    assert "human on our support team" in out
+
+
+def test_coder_command_flow(home, capsys):
+    assert main(["init", "--model", "gravion-code"]) == 0
+    capsys.readouterr()
+    assert main(["coder", "write", "a", "sort", "function"]) == 0
+    out = capsys.readouterr().out
+    assert "write a sort function" in out
+
+
 def test_modules_list(home, capsys):
     assert main(["modules", "list"]) == 0
     out = capsys.readouterr().out

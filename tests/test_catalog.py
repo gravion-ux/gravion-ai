@@ -41,6 +41,33 @@ def test_models_for_tier_filter():
     assert any(e.id == "gravion-video" for e in basic_video)
 
 
+def test_gravion_chat_and_code_available_as_tier2_bundles():
+    """Piece 2: the first trained bundles of Gravion Chat and Gravion
+    Code ship at Tier 2 (Basic) only; higher-tier bundles are later
+    pieces, so the entries must not claim them yet."""
+    catalog = ModelCatalog.load()
+    chat = catalog.get("gravion-chat")
+    assert chat is not None and chat.status == "available"
+    assert chat.tiers == ("tier-2-basic",)
+    code = catalog.get("gravion-code")
+    assert code is not None and code.status == "available"
+    assert code.tiers == ("tier-2-basic",)
+    assert code.capabilities == ("coder",)
+
+
+def test_tier2_bundles_resolve_by_capability_and_tier():
+    catalog = ModelCatalog.load()
+    basic_coder = {e.id for e in catalog.models_for("coder", tier="tier-2-basic")}
+    assert "gravion-code" in basic_coder
+    complete_coder = {e.id for e in catalog.models_for("coder", tier="tier-1-complete")}
+    assert "gravion-code" not in complete_coder
+    basic_chat = {e.id for e in catalog.models_for("chat", tier="tier-2-basic")}
+    assert "gravion-chat" in basic_chat
+    complete_chat = {e.id for e in catalog.models_for("chat", tier="tier-1-complete")}
+    assert "gravion-chat" not in complete_chat
+    assert "gravion-core" in complete_chat  # Core serves every tier
+
+
 def test_unknown_capability_rejected():
     catalog = ModelCatalog.load()
     with pytest.raises(CatalogError):

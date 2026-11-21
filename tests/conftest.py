@@ -50,8 +50,9 @@ def licensed_home(make_config, issuer):
     """
     from gravion_ai.licensing import MockAuthority
 
-    def _make(modules=("chat",), days=365, tier="tier-3-intermediate"):
-        config = make_config(mode="production", tier=tier)
+    def _make(modules=("chat",), days=365, tier="tier-3-intermediate",
+              model="gravion-core"):
+        config = make_config(mode="production", tier=tier, model=model)
         identity = DeploymentIdentity.create_or_load(config.state_dir)
         document = issue_license(
             issuer,
@@ -73,14 +74,35 @@ def licensed_home(make_config, issuer):
     return _make
 
 
+def _copy_module(tmp_path: Path, package, dirname: str) -> Path:
+    """A writable copy of a bundled module directory."""
+    import shutil
+
+    src = Path(package.__file__).parent
+    dst = tmp_path / dirname
+    shutil.copytree(src, dst, ignore=shutil.ignore_patterns("__pycache__"))
+    return dst
+
+
 @pytest.fixture()
 def chat_module_copy(tmp_path) -> Path:
     """A writable copy of the bundled chat module directory."""
-    import shutil
-
     import gravion_ai.modules.chat as chat_pkg
 
-    src = Path(chat_pkg.__file__).parent
-    dst = tmp_path / "chat-module"
-    shutil.copytree(src, dst, ignore=shutil.ignore_patterns("__pycache__"))
-    return dst
+    return _copy_module(tmp_path, chat_pkg, "chat-module")
+
+
+@pytest.fixture()
+def support_module_copy(tmp_path) -> Path:
+    """A writable copy of the bundled support module directory."""
+    import gravion_ai.modules.support as support_pkg
+
+    return _copy_module(tmp_path, support_pkg, "support-module")
+
+
+@pytest.fixture()
+def coder_module_copy(tmp_path) -> Path:
+    """A writable copy of the bundled coder module directory."""
+    import gravion_ai.modules.coder as coder_pkg
+
+    return _copy_module(tmp_path, coder_pkg, "coder-module")
