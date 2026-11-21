@@ -8,8 +8,8 @@ honest about status — Gravion AI is built **in pieces**, and this
 document marks what Piece 1 implements versus what is designed and
 planned.
 
-Status key: ✅ implemented in Piece 1 · 🧩 designed, lands in a later
-piece · 📐 specification only.
+Status key: ✅ implemented (see §10 for which piece) · 🧩 designed,
+lands in a later piece · 📐 specification only.
 
 ---
 
@@ -50,8 +50,8 @@ Module types (the catalogue in `registry.py`):
 | Type | Module | Purpose |
 |---|---|---|
 | `chat` | Chat bot | General conversation — the reference module ✅ |
-| `support` | Support bot | Answers from company material, escalates to humans |
-| `coder` | Coder | Writes, reviews and explains code |
+| `support` | Support bot | Answers from company material, escalates to humans ✅ (Piece 2) |
+| `coder` | Coder | Writes, reviews and explains code ✅ (Piece 2) |
 | `website-builder` | Website builder | Generates and iterates full websites from a brief |
 | `music` | Music | Tracks, jingles, background scores |
 | `image` | Image | Generation and editing |
@@ -113,9 +113,12 @@ A structured, editable registry of **Gravion's own models**
 
 - **Capabilities** are module types. A module declares the capability
   it needs; `models_for(capability, tier=…)` resolves candidates.
-- **Status** is honest: `gravion-core` is `available` in Piece 1 (it
-  is the built-in engine); the specialist models are `planned` and
-  land with their module pieces.
+- **Status** is honest: `gravion-core` is `available` (it is the
+  built-in engine); `gravion-chat` and `gravion-code` are `available`
+  since Piece 2 as first trained bundles at Tier 2 — their registry
+  entries list Tier 2 only until the tier-packaging pieces (7–8)
+  ship the higher-tier bundles. The remaining specialist models are
+  `planned` and land with their module pieces.
 - **Gravion Omni** is the all-in-one flagship model: every capability,
   Advanced tier.
 - The registry is **data, validated at load** with precise errors
@@ -256,8 +259,8 @@ strict governor, designed here and implemented in a later piece:
 
 | Piece | Contents | Status |
 |---|---|---|
-| **1** | Core scaffold (config, registry, catalog, plumbing), chat module end-to-end, **licensing subsystem complete** | ✅ this piece |
-| 2 | Support + coder modules; Gravion Chat / Gravion Code first trained bundles (Tier 2) | planned |
+| **1** | Core scaffold (config, registry, catalog, plumbing), chat module end-to-end, **licensing subsystem complete** | ✅ done |
+| **2** | Support + coder modules; Gravion Chat / Gravion Code first trained bundles (Tier 2) | ✅ this piece |
 | 3 | Image + music modules (Gravion Vision, Gravion Audio) | planned |
 | 4 | Video module + long-form pipeline (Gravion Video) | planned |
 | 5 | Website-builder module (Gravion Builder) | planned |

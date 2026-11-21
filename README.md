@@ -2,7 +2,8 @@
 
 [![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Tests](https://img.shields.io/badge/tests-77%20passing-brightgreen.svg)](#testing)
+[![Tests](https://img.shields.io/badge/tests-116%20passing-brightgreen.svg)](#testing)
+[![codecov](https://codecov.io/gh/gravion-ux/gravion-ai/branch/main/graph/badge.svg)](https://codecov.io/gh/gravion-ux/gravion-ai)
 
 **Gravion AI — one modular AI platform, every kind of AI a startup needs, ready to rename, re-policy and run as your own.**
 
@@ -17,12 +18,15 @@ You give it a name (the default is **Gravion**), teach it your company
 and your work policy, and run it — on the built-in **Gravion Core**
 engine, or on any inference endpoint you operate, with your own API key.
 
-> **Piece 1 status — read this before expecting magic.** Gravion AI is
-> built in pieces. Piece 1 ships the *foundation*: the core scaffold,
+> **Piece 2 status — read this before expecting magic.** Gravion AI is
+> built in pieces. Piece 1 shipped the *foundation*: the core scaffold,
 > the module registry with one module (chat) wired end-to-end, the
 > Gravion model registry with starter data, and the complete licensing
-> subsystem. The specialist modules and trained models are **planned**
-> and land piece by piece — the roadmap in [ARCHITECTURE.md](ARCHITECTURE.md)
+> subsystem. Piece 2 adds the **support** and **coder** modules, wired
+> end-to-end on the same path, and the first trained bundles of
+> **Gravion Chat** and **Gravion Code** at Tier 2 (Basic). The
+> remaining modules and higher-tier bundles are **planned** and land
+> piece by piece — the roadmap in [ARCHITECTURE.md](ARCHITECTURE.md)
 > says exactly what exists and what does not, and the code refuses to
 > pretend otherwise (planned modules raise instead of faking output).
 
@@ -51,8 +55,8 @@ change logged and reversible.
 | Module | Type | Piece 1 status |
 |---|---|---|
 | chat | Chat bot | ✅ implemented (reference module) |
-| support | Support bot | planned |
-| coder | Coding assistant | planned |
+| support | Support bot | ✅ implemented (Piece 2) |
+| coder | Coding assistant | ✅ implemented (Piece 2) |
 | website-builder | Website builder | planned |
 | music | Music generation | planned |
 | image | Image generation/editing | planned |
@@ -69,9 +73,10 @@ Modules are sold/used individually (variant packages) or together
 
 Gravion's own models, registered as data (`src/gravion_ai/data/models.json`),
 not hardcoded logic: **Gravion Core** (the built-in offline engine —
-*available now*), Gravion Chat, Gravion Code, Gravion Builder, Gravion
-Vision, Gravion Video, Gravion Audio, Gravion Shield, Gravion Agent,
-and **Gravion Omni**, the all-in-one flagship at the Advanced tier.
+*available now*), **Gravion Chat** and **Gravion Code** (*available
+since Piece 2* as Tier 2 first trained bundles), Gravion Builder,
+Gravion Vision, Gravion Video, Gravion Audio, Gravion Shield, Gravion
+Agent, and **Gravion Omni**, the all-in-one flagship at the Advanced tier.
 Deployments can register private variants by dropping their own
 `models.json` into the deployment home — same schema, same validation.
 
@@ -92,6 +97,7 @@ pip install -e .
 gravion init --name Gravion --company "Acme Robotics"
 gravion status
 gravion chat "hello, what are you?"
+gravion support "where is my invoice?"
 gravion export --out my-deployment.zip
 ```
 
@@ -136,6 +142,8 @@ src/gravion_ai/
   providers.py    Gravion Core (built-in) + generic endpoint plumbing
   runtime.py      gate → verify → resolve → run; export
   modules/chat/   the reference module, wired end-to-end
+  modules/support/  support bot: policy-grounded answers, human escalation
+  modules/coder/    coding assistant: generate / review / explain tasks
   licensing/      identity, signed licenses, signed modules, audit log,
                   entitlement protocol + gate — the licensing subsystem
 docs/LICENSING.md       licensing design + protocol specification
@@ -150,11 +158,14 @@ pip install -e ".[dev]"
 python -m pytest -q
 ```
 
-77 tests cover the licensing subsystem end-to-end (identity, signed
+116 tests cover the licensing subsystem end-to-end (identity, signed
 licenses, tamper rejection, audit-chain verification, the entitlement
 protocol and its pinned privacy field set, gate states, suspension,
-export-while-suspended) plus config, providers, registry, catalog and
-the CLI.
+export-while-suspended), the Piece 2 support and coder modules
+(grounding addendum, human escalation that never reaches the model,
+coder task detection, Tier 2 bundle resolution, production runs of
+both modules under signed manifests), plus config, providers,
+registry, catalog and the CLI.
 
 ## Author
 
