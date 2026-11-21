@@ -1,0 +1,14 @@
+{
+  "payload": {
+    "name": "coder",
+    "type": "coder",
+    "version": "0.1.0",
+    "entrypoint": "gravion_ai.modules.coder.module:CoderModule",
+    "files": {
+      "__init__.py": "2e25e3e2745f5c4c090b4e9191abd7ac5f5f6ff4c4b8abee2b8f58b9ff7204b6",
+      "module.py": "e2da79135209d248425ed5439aa6dc7fed5c945ccbac6297997cb242a7f50058"
+    }
+  },
+  "signature": "",
+  "note": "Unsigned in the repo: the issuer private key is (correctly) not distributed. The project owner signs this manifest with `gravion license sign-module` before a production deployment; production mode refuses unsigned or tampered modules."
+}
