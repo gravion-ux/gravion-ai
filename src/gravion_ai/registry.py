@@ -6,10 +6,11 @@ individually (variant packages) or take the whole set (the all-in-one
 package); the four tiers describe how trained each module is when it
 ships, not different code.
 
-Piece 1 implements one module end-to-end (chat). The other module types
-are registered as *planned* so the catalogue, tiers and licensing all
-speak about them honestly from day one; their implementations land in
-later pieces (see ARCHITECTURE.md roadmap).
+Piece 1 implements one module end-to-end (chat); Piece 2 adds support
+and coder. The other module types are registered as *planned* so the
+catalogue, tiers and licensing all speak about them honestly from day
+one; their implementations land in later pieces (see ARCHITECTURE.md
+roadmap).
 """
 
 from __future__ import annotations
@@ -128,8 +129,11 @@ class ModuleRegistry:
 
 
 def default_registry() -> ModuleRegistry:
-    """The Piece 1 catalogue: chat implemented, the rest planned."""
+    """The catalogue: chat (Piece 1) plus support and coder (Piece 2)
+    implemented, the rest planned."""
     from .modules import chat as chat_module_pkg
+    from .modules import coder as coder_module_pkg
+    from .modules import support as support_module_pkg
 
     registry = ModuleRegistry()
     registry.register(
@@ -143,9 +147,29 @@ def default_registry() -> ModuleRegistry:
             path=Path(chat_module_pkg.__file__).parent,
         )
     )
+    registry.register(
+        ModuleManifest(
+            name="support",
+            type=ModuleType.SUPPORT,
+            version="0.1.0",
+            entrypoint="gravion_ai.modules.support.module:SupportModule",
+            description="Customer support bot: answers from company docs and policy, escalates to humans.",
+            status=ModuleStatus.IMPLEMENTED,
+            path=Path(support_module_pkg.__file__).parent,
+        )
+    )
+    registry.register(
+        ModuleManifest(
+            name="coder",
+            type=ModuleType.CODER,
+            version="0.1.0",
+            entrypoint="gravion_ai.modules.coder.module:CoderModule",
+            description="Coding assistant: writes, reviews and explains code in your stack.",
+            status=ModuleStatus.IMPLEMENTED,
+            path=Path(coder_module_pkg.__file__).parent,
+        )
+    )
     planned = [
-        ("support", ModuleType.SUPPORT, "Customer support bot: answers from company docs and policy, escalates to humans."),
-        ("coder", ModuleType.CODER, "Coding assistant: writes, reviews and explains code in your stack."),
         ("website-builder", ModuleType.WEBSITE_BUILDER, "Website builder: generates and iterates full sites from a brief."),
         ("music", ModuleType.MUSIC, "Music generation: tracks, jingles and background scores."),
         ("image", ModuleType.IMAGE, "Image generation and editing."),

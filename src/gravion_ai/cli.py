@@ -5,6 +5,8 @@
     gravion modules list             the module catalogue
     gravion models list              the Gravion model registry
     gravion chat "hello"             run the chat module
+    gravion support "where is..."    run the support module
+    gravion coder "review: ..."      run the coder module
     gravion export --out file.zip    full data export (always allowed)
 
     gravion license identity         create/show the deployment identity
@@ -80,7 +82,7 @@ def cmd_init(args) -> int:
         company=args.company,
         mode=args.mode,
         tier=args.tier,
-        provider=ProviderConfig(type=args.provider),
+        provider=ProviderConfig(type=args.provider, model=args.model),
         home=home,
     )
     config.save()
@@ -149,6 +151,18 @@ def cmd_models_list(args) -> int:
 def cmd_chat(args) -> int:
     runtime = GravionRuntime(_load_config(args))
     print(runtime.chat(" ".join(args.prompt)))
+    return 0
+
+
+def cmd_support(args) -> int:
+    runtime = GravionRuntime(_load_config(args))
+    print(runtime.support(" ".join(args.prompt)))
+    return 0
+
+
+def cmd_coder(args) -> int:
+    runtime = GravionRuntime(_load_config(args))
+    print(runtime.coder(" ".join(args.prompt)))
     return 0
 
 
@@ -292,6 +306,8 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--mode", choices=["development", "production"], default="development")
     p.add_argument("--tier", choices=sorted(TIERS), default="tier-2-basic")
     p.add_argument("--provider", choices=["gravion-core", "endpoint"], default="gravion-core")
+    p.add_argument("--model", default="gravion-core",
+                   help="Gravion model id from the registry (e.g. gravion-code for the coder module)")
     p.set_defaults(func=cmd_init)
 
     p = sub.add_parser("status", help="show deployment and gate state")
@@ -311,6 +327,14 @@ def build_parser() -> argparse.ArgumentParser:
     p = sub.add_parser("chat", help="run the chat module")
     p.add_argument("prompt", nargs="+")
     p.set_defaults(func=cmd_chat)
+
+    p = sub.add_parser("support", help="run the support module")
+    p.add_argument("prompt", nargs="+")
+    p.set_defaults(func=cmd_support)
+
+    p = sub.add_parser("coder", help="run the coder module")
+    p.add_argument("prompt", nargs="+")
+    p.set_defaults(func=cmd_coder)
 
     p = sub.add_parser("export", help="export the full deployment bundle")
     p.add_argument("--out", required=True)

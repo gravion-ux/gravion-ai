@@ -117,6 +117,12 @@ class GravionRuntime:
     def chat(self, prompt: str) -> str:
         return self.run_module("chat", prompt)
 
+    def support(self, prompt: str) -> str:
+        return self.run_module("support", prompt)
+
+    def coder(self, prompt: str) -> str:
+        return self.run_module("coder", prompt)
+
     # -- status ----------------------------------------------------------------
     def status(self) -> dict:
         decision = self.gate.check("chat")

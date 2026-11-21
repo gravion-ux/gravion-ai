@@ -6,11 +6,13 @@ variant, the capabilities it serves (the module types), the tiers it
 is offered in, and its build status.
 
 Modules declare the *capability* they need; the registry resolves
-which Gravion models can serve it. Piece 1 ships the registry plus its
-starter data (data/models.json): Gravion Core is *available* (it is
-the built-in engine in providers.py); the specialist models are
-*planned* — they land with their module pieces, and the registry says
-so honestly instead of pretending they exist.
+which Gravion models can serve it. The registry ships as data
+(data/models.json): Gravion Core is *available* (it is the built-in
+engine in providers.py), and Gravion Chat / Gravion Code are
+*available* as Tier 2 first trained bundles since Piece 2. The
+remaining specialist models are *planned* — they land with their
+module pieces, and the registry says so honestly instead of
+pretending they exist.
 
 The registry is data, not code: a deployment can replace it wholesale
 by placing its own `models.json` in the deployment home (same schema,
