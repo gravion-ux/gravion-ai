@@ -1,0 +1,14 @@
+{
+  "payload": {
+    "name": "support",
+    "type": "support",
+    "version": "0.1.0",
+    "entrypoint": "gravion_ai.modules.support.module:SupportModule",
+    "files": {
+      "__init__.py": "9e4f4a0ce82f4fe31a6f3f70b3a2318effcce276cf6ed26b94e73e17dec22cc5",
+      "module.py": "dd1018f337781e3570debeb754e2b67361f9f757a35f6be336934b7591015f19"
+    }
+  },
+  "signature": "",
+  "note": "Unsigned in the repo: the issuer private key is (correctly) not distributed. The project owner signs this manifest with `gravion license sign-module` before a production deployment; production mode refuses unsigned or tampered modules."
+}
