@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "gravion-ai"
-version = "0.4.0"
+version = "0.11.0"
 description = "Gravion AI: a modular AI platform framework — many AI types, four tiers, one module system, with a cryptographic licensing and entitlement layer for commercial deployments."
 readme = "README.md"
 requires-python = ">=3.10"
@@ -51,6 +51,10 @@ where = ["src"]
 "gravion_ai.modules.image" = ["manifest.json"]
 "gravion_ai.modules.music" = ["manifest.json"]
 "gravion_ai.modules.video" = ["manifest.json"]
+"gravion_ai.modules.website_builder" = ["manifest.json"]
+"gravion_ai.modules.cyber" = ["manifest.json"]
+"gravion_ai.modules.agentic" = ["manifest.json"]
+"gravion_ai.modules.all_in_one" = ["manifest.json"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
