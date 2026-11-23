@@ -55,7 +55,7 @@ Module types (the catalogue in `registry.py`):
 | `website-builder` | Website builder | Generates and iterates full websites from a brief |
 | `music` | Music | Tracks, jingles, background scores ✅ (Piece 3) |
 | `image` | Image | Generation and editing ✅ (Piece 3) |
-| `video` | Video | Generation incl. long-form (see §7) |
+| `video` | Video | Generation and editing ✅ (Piece 4); long-form (see §7) 🧩 |
 | `cyber` | Cyber/security AI | Defensive analysis, triage, reporting assistance |
 | `agentic` | Agentic tool developer | Builds and runs tool-using agents |
 | `all-in-one` | All-in-one | Every module under one deployment |
@@ -116,7 +116,8 @@ A structured, editable registry of **Gravion's own models**
 - **Status** is honest: `gravion-core` is `available` (it is the
   built-in engine); `gravion-chat` and `gravion-code` are `available`
   since Piece 2 as first trained bundles at Tier 2, and
-  `gravion-vision` and `gravion-audio` since Piece 3 on the same
+  `gravion-vision` and `gravion-audio` since Piece 3, and
+  `gravion-video` since Piece 4, on the same
   terms — their registry entries list Tier 2 only until the
   tier-packaging pieces (7–8) ship the higher-tier bundles. The
   remaining specialist models are `planned` and land with their
@@ -263,8 +264,8 @@ strict governor, designed here and implemented in a later piece:
 |---|---|---|
 | **1** | Core scaffold (config, registry, catalog, plumbing), chat module end-to-end, **licensing subsystem complete** | ✅ done |
 | **2** | Support + coder modules; Gravion Chat / Gravion Code first trained bundles (Tier 2) | ✅ done |
-| 3 | Image + music modules (Gravion Vision, Gravion Audio) | ✅ this piece |
-| 4 | Video module + long-form pipeline (Gravion Video) | planned |
+| 3 | Image + music modules (Gravion Vision, Gravion Audio) | ✅ done |
+| 4 | Video module + local render pipeline (Gravion Video); long-form stitching pipeline lands with the higher-tier bundles | ✅ this piece |
 | 5 | Website-builder module (Gravion Builder) | planned |
 | 6 | Cyber module (Gravion Shield) + agentic module (Gravion Agent) | planned |
 | 7 | Tier bundles: Tier 1 Complete packaging, Tier 3 Intermediate training pipeline | planned |
