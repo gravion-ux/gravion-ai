@@ -179,13 +179,19 @@ def _css(job: SiteJob, accent: str) -> str:
     )
 
 
+def _nav_link(other: str, page: str) -> str:
+    aria = ' aria-current="page"' if other == page else ""
+    return (
+        f'<a href="{_page_filename(other)}"{aria}>'
+        f"{html.escape(other.replace('-', ' ').title())}</a>"
+    )
+
+
 def _page_html(job: SiteJob, page: str) -> str:
     title = html.escape(job.title)
     copy = html.escape(_TYPE_COPY[job.site_type].format(title=job.title))
     nav = "\n      ".join(
-        f'<a href="{_page_filename(other)}"'
-        f'{" aria-current=\"page\"" if other == page else ""}>'
-        f"{html.escape(other.replace('-', ' ').title())}</a>"
+        _nav_link(other, page)
         for other in job.pages
     )
     if page == "home":
