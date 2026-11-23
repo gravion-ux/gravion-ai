@@ -7,10 +7,10 @@ package); the four tiers describe how trained each module is when it
 ships, not different code.
 
 Piece 1 implements one module end-to-end (chat); Piece 2 adds support
-and coder; Piece 3 adds image and music. The other module types are
-registered as *planned* so the catalogue, tiers and licensing all
-speak about them honestly from day one; their implementations land
-in later pieces (see ARCHITECTURE.md roadmap).
+and coder; Piece 3 adds image and music; Piece 4 adds video. The other
+module types are registered as *planned* so the catalogue, tiers and
+licensing all speak about them honestly from day one; their
+implementations land in later pieces (see ARCHITECTURE.md roadmap).
 """
 
 from __future__ import annotations
@@ -129,13 +129,15 @@ class ModuleRegistry:
 
 
 def default_registry() -> ModuleRegistry:
-    """The catalogue: chat (Piece 1), support and coder (Piece 2) and
-    image and music (Piece 3) implemented, the rest planned."""
+    """The catalogue: chat (Piece 1), support and coder (Piece 2),
+    image and music (Piece 3) and video (Piece 4) implemented, the
+    rest planned."""
     from .modules import chat as chat_module_pkg
     from .modules import coder as coder_module_pkg
     from .modules import image as image_module_pkg
     from .modules import music as music_module_pkg
     from .modules import support as support_module_pkg
+    from .modules import video as video_module_pkg
 
     registry = ModuleRegistry()
     registry.register(
@@ -193,9 +195,19 @@ def default_registry() -> ModuleRegistry:
             path=Path(music_module_pkg.__file__).parent,
         )
     )
+    registry.register(
+        ModuleManifest(
+            name="video",
+            type=ModuleType.VIDEO,
+            version="0.1.0",
+            entrypoint="gravion_ai.modules.video.module:VideoModule",
+            description="Video generation and editing: turns a request into a structured brief for Gravion Video, with a local short-clip render pipeline.",
+            status=ModuleStatus.IMPLEMENTED,
+            path=Path(video_module_pkg.__file__).parent,
+        )
+    )
     planned = [
         ("website-builder", ModuleType.WEBSITE_BUILDER, "Website builder: generates and iterates full sites from a brief."),
-        ("video", ModuleType.VIDEO, "Video generation, including long-form up to ~1 hour in high quality."),
         ("cyber", ModuleType.CYBER, "Cyber/security AI: defensive analysis, triage and reporting assistance."),
         ("agentic", ModuleType.AGENTIC, "Agentic tool developer: builds and runs tool-using agents for repeatable work."),
         ("all-in-one", ModuleType.ALL_IN_ONE, "The all-in-one package: every module above under one deployment."),

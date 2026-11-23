@@ -88,7 +88,11 @@ class GravionRuntime:
         return wanted
 
     # -- module execution ----------------------------------------------------
-    def run_module(self, name: str, prompt: str) -> str:
+    def _gate_and_verify(self, name: str) -> None:
+        """The licensing gate + production manifest verification that
+        precedes any module use — a model run or a local render alike.
+        Raises before anything executes when the deployment is not
+        entitled or the module fails verification."""
         self.gate.require(name)
         manifest = self.registry.get(name)
         if self.config.mode == MODE_PRODUCTION and manifest.path is not None:
@@ -106,6 +110,9 @@ class GravionRuntime:
                 )
                 raise
             self.audit.append("module.verified", {"module": name})
+
+    def run_module(self, name: str, prompt: str) -> str:
+        self._gate_and_verify(name)
         module = self.registry.instantiate(name)
         ctx = ModuleContext(
             system_context=self.config.system_context(),
@@ -128,6 +135,20 @@ class GravionRuntime:
 
     def music(self, prompt: str) -> str:
         return self.run_module("music", prompt)
+
+    def video(self, prompt: str) -> str:
+        return self.run_module("video", prompt)
+
+    def render_video(self, prompt: str, out_path: Path):
+        """Render a real MP4 for a video request via the video
+        module's local pipeline. Goes through the same gate +
+        manifest verification as `run_module` first. Returns the
+        pipeline's VideoResult — the file, the renderer that
+        produced it (the local development renderer, not the
+        trained Gravion Video model) and the rendered spec."""
+        self._gate_and_verify("video")
+        module = self.registry.instantiate("video")
+        return module.render(prompt, Path(out_path))
 
     # -- status ----------------------------------------------------------------
     def status(self) -> dict:

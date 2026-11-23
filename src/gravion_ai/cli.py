@@ -9,6 +9,9 @@
     gravion coder "review: ..."      run the coder module
     gravion image "a logo for..."    run the image module
     gravion music "a jingle for..."  run the music module
+    gravion video "a teaser for..."  run the video module
+    gravion video "a teaser..." --out clip.mp4
+                                     render a real MP4 locally
     gravion export --out file.zip    full data export (always allowed)
 
     gravion license identity         create/show the deployment identity
@@ -177,6 +180,20 @@ def cmd_image(args) -> int:
 def cmd_music(args) -> int:
     runtime = GravionRuntime(_load_config(args))
     print(runtime.music(" ".join(args.prompt)))
+    return 0
+
+
+def cmd_video(args) -> int:
+    runtime = GravionRuntime(_load_config(args))
+    prompt = " ".join(args.prompt)
+    if args.out:
+        result = runtime.render_video(prompt, Path(args.out))
+        print(f"video written to {result.path}")
+        print(f"  duration:   {result.duration_seconds} seconds")
+        print(f"  resolution: {result.width}x{result.height}")
+        print(f"  provider:   {result.provider}")
+        return 0
+    print(runtime.video(prompt))
     return 0
 
 
@@ -357,6 +374,13 @@ def build_parser() -> argparse.ArgumentParser:
     p = sub.add_parser("music", help="run the music module")
     p.add_argument("prompt", nargs="+")
     p.set_defaults(func=cmd_music)
+
+    p = sub.add_parser("video", help="run the video module")
+    p.add_argument("prompt", nargs="+")
+    p.add_argument("--out", help="render a real MP4 locally to this path "
+                                 "(local development renderer) instead of "
+                                 "returning the model's reply")
+    p.set_defaults(func=cmd_video)
 
     p = sub.add_parser("export", help="export the full deployment bundle")
     p.add_argument("--out", required=True)
