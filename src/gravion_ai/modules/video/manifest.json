@@ -1,0 +1,15 @@
+{
+  "payload": {
+    "name": "video",
+    "type": "video",
+    "version": "0.1.0",
+    "entrypoint": "gravion_ai.modules.video.module:VideoModule",
+    "files": {
+      "__init__.py": "e380c34cc283068705e0591b6861267fdc10d2b0b9147d4e8171f9441a57f088",
+      "module.py": "64540624a0f7470ea74593fb2a78bad37794ce17cab608126e5b3ef080bc4a11",
+      "pipeline.py": "37b55eb7ae0c132dd7c1a172b6fafc3b7e43451df1e2a5c1c3baac8b5213ec33"
+    }
+  },
+  "signature": "",
+  "note": "Unsigned in the repo: the issuer private key is (correctly) not distributed. The project owner signs this manifest with `gravion license sign-module` before a production deployment; production mode refuses unsigned or tampered modules."
+}
