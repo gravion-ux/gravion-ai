@@ -16,7 +16,7 @@ from __future__ import annotations
 
 import json
 import zipfile
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 
 from .catalog import ModelCatalog
 from .config import MODE_PRODUCTION, GravionConfig
@@ -205,7 +205,7 @@ class GravionRuntime:
             if cfg.data_dir.exists():
                 for path in sorted(cfg.data_dir.rglob("*")):
                     if path.is_file():
-                        arcname = str(Path("data") / path.relative_to(cfg.data_dir))
+                        arcname = (PurePosixPath("data") / path.relative_to(cfg.data_dir).as_posix()).as_posix()
                         archive.write(path, arcname)
                         included.append(arcname)
         return sorted(included)
