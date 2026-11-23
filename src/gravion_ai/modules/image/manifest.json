@@ -1,0 +1,14 @@
+{
+  "payload": {
+    "name": "image",
+    "type": "image",
+    "version": "0.1.0",
+    "entrypoint": "gravion_ai.modules.image.module:ImageModule",
+    "files": {
+      "__init__.py": "d76c895e80ad1ac066fc3585cce04f146aba51ac9deca10cdfc59d9514e7c41f",
+      "module.py": "317acb2548fb579cbdc51a7b650b4dec70cc421190e4e78ebb68aa4b70c7ff19"
+    }
+  },
+  "signature": "",
+  "note": "Unsigned in the repo: the issuer private key is (correctly) not distributed. The project owner signs this manifest with `gravion license sign-module` before a production deployment; production mode refuses unsigned or tampered modules."
+}

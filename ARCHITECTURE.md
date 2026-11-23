@@ -53,8 +53,8 @@ Module types (the catalogue in `registry.py`):
 | `support` | Support bot | Answers from company material, escalates to humans ✅ (Piece 2) |
 | `coder` | Coder | Writes, reviews and explains code ✅ (Piece 2) |
 | `website-builder` | Website builder | Generates and iterates full websites from a brief |
-| `music` | Music | Tracks, jingles, background scores |
-| `image` | Image | Generation and editing |
+| `music` | Music | Tracks, jingles, background scores ✅ (Piece 3) |
+| `image` | Image | Generation and editing ✅ (Piece 3) |
 | `video` | Video | Generation incl. long-form (see §7) |
 | `cyber` | Cyber/security AI | Defensive analysis, triage, reporting assistance |
 | `agentic` | Agentic tool developer | Builds and runs tool-using agents |
@@ -115,10 +115,12 @@ A structured, editable registry of **Gravion's own models**
   it needs; `models_for(capability, tier=…)` resolves candidates.
 - **Status** is honest: `gravion-core` is `available` (it is the
   built-in engine); `gravion-chat` and `gravion-code` are `available`
-  since Piece 2 as first trained bundles at Tier 2 — their registry
-  entries list Tier 2 only until the tier-packaging pieces (7–8)
-  ship the higher-tier bundles. The remaining specialist models are
-  `planned` and land with their module pieces.
+  since Piece 2 as first trained bundles at Tier 2, and
+  `gravion-vision` and `gravion-audio` since Piece 3 on the same
+  terms — their registry entries list Tier 2 only until the
+  tier-packaging pieces (7–8) ship the higher-tier bundles. The
+  remaining specialist models are `planned` and land with their
+  module pieces.
 - **Gravion Omni** is the all-in-one flagship model: every capability,
   Advanced tier.
 - The registry is **data, validated at load** with precise errors
@@ -260,8 +262,8 @@ strict governor, designed here and implemented in a later piece:
 | Piece | Contents | Status |
 |---|---|---|
 | **1** | Core scaffold (config, registry, catalog, plumbing), chat module end-to-end, **licensing subsystem complete** | ✅ done |
-| **2** | Support + coder modules; Gravion Chat / Gravion Code first trained bundles (Tier 2) | ✅ this piece |
-| 3 | Image + music modules (Gravion Vision, Gravion Audio) | planned |
+| **2** | Support + coder modules; Gravion Chat / Gravion Code first trained bundles (Tier 2) | ✅ done |
+| 3 | Image + music modules (Gravion Vision, Gravion Audio) | ✅ this piece |
 | 4 | Video module + long-form pipeline (Gravion Video) | planned |
 | 5 | Website-builder module (Gravion Builder) | planned |
 | 6 | Cyber module (Gravion Shield) + agentic module (Gravion Agent) | planned |

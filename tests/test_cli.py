@@ -49,6 +49,22 @@ def test_coder_command_flow(home, capsys):
     assert "write a sort function" in out
 
 
+def test_image_command_flow(home, capsys):
+    assert main(["init", "--model", "gravion-vision"]) == 0
+    capsys.readouterr()
+    assert main(["image", "a", "square", "logo", "for", "our", "app"]) == 0
+    out = capsys.readouterr().out
+    assert "a square logo for our app" in out
+
+
+def test_music_command_flow(home, capsys):
+    assert main(["init", "--model", "gravion-audio"]) == 0
+    capsys.readouterr()
+    assert main(["music", "a", "30", "second", "jingle"]) == 0
+    out = capsys.readouterr().out
+    assert "a 30 second jingle" in out
+
+
 def test_modules_list(home, capsys):
     assert main(["modules", "list"]) == 0
     out = capsys.readouterr().out
