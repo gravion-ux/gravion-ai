@@ -79,6 +79,23 @@ class GravionRuntime:
         wanted = self.config.provider.model
         entry = self.catalog.get(wanted)
         if entry is not None:
+            if capability == "all-in-one":
+                # The all-in-one package runs every module, so its
+                # model must serve every real capability — a
+                # specialist here would silently downgrade most of
+                # the platform. (The catalog's capability list
+                # deliberately excludes "all-in-one" itself; Omni's
+                # entry covers all of them.)
+                from .catalog import CAPABILITIES
+
+                missing = sorted(set(CAPABILITIES) - set(entry.capabilities))
+                if missing:
+                    raise ModuleError(
+                        f"Gravion model {entry.id!r} cannot serve the "
+                        f"all-in-one package: it does not serve "
+                        f"{', '.join(missing)}"
+                    )
+                return entry.id
             if not entry.serves(capability):
                 raise ModuleError(
                     f"Gravion model {entry.id!r} does not serve capability "
@@ -138,6 +155,42 @@ class GravionRuntime:
 
     def video(self, prompt: str) -> str:
         return self.run_module("video", prompt)
+
+    def website_builder(self, prompt: str) -> str:
+        return self.run_module("website-builder", prompt)
+
+    def cyber(self, prompt: str) -> str:
+        return self.run_module("cyber", prompt)
+
+    def agentic(self, prompt: str) -> str:
+        return self.run_module("agentic", prompt)
+
+    def all_in_one(self, prompt: str) -> str:
+        return self.run_module("all-in-one", prompt)
+
+    def plan_agent(self, prompt: str, out_path: Path):
+        """Write a structured agent plan for a request via the
+        agentic module's local planner. Goes through the same gate
+        + manifest verification as `run_module` first. Returns the
+        planner's PlanResult — the file, the planner that produced
+        it (the local development planner, not the trained Gravion
+        Agent model) and the plan itself, whose status records
+        that nothing was executed."""
+        self._gate_and_verify("agentic")
+        module = self.registry.instantiate("agentic")
+        return module.plan(prompt, Path(out_path))
+
+    def build_website(self, prompt: str, out_dir: Path):
+        """Build a real static website for a brief via the
+        website-builder module's local builder. Goes through the
+        same gate + manifest verification as `run_module` first.
+        Returns the builder's SiteResult — the directory, the
+        builder that produced it (the local development builder,
+        not the trained Gravion Builder model) and the files
+        written."""
+        self._gate_and_verify("website-builder")
+        module = self.registry.instantiate("website-builder")
+        return module.build(prompt, Path(out_dir))
 
     def render_video(self, prompt: str, out_path: Path):
         """Render a real MP4 for a video request via the video

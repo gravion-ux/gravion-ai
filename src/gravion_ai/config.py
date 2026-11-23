@@ -71,6 +71,10 @@ class GravionConfig:
     tier: str = DEFAULT_TIER
     provider: ProviderConfig = field(default_factory=ProviderConfig)
     authority_url: str | None = None
+    # §9 governed self-upgrade: a standing permission the operator
+    # grants (and may revoke) once. Default off — no grant, no
+    # self-changes, ever.
+    self_upgrade_permission: bool = False
     home: Path = field(default_factory=default_home)
 
     # -- derived paths -------------------------------------------------
@@ -117,6 +121,9 @@ class GravionConfig:
             tier=data.get("tier", DEFAULT_TIER),
             provider=provider,
             authority_url=data.get("authority_url"),
+            self_upgrade_permission=bool(
+                data.get("self_upgrade_permission", False)
+            ),
             home=home,
         )
         cfg.validate()

@@ -25,6 +25,18 @@ class CatalogError(GravionError):
     """The model catalog is missing, unreadable, or fails validation."""
 
 
+class BundleError(GravionError):
+    """A tier bundle cannot be described or built as requested."""
+
+
+class TrainingError(GravionError):
+    """A training job is invalid, or cannot run in this build."""
+
+
+class UpgradeError(GravionError):
+    """A self-upgrade was refused, failed, or cannot roll back."""
+
+
 class LicensingError(GravionError):
     """Base class for licensing / entitlement failures."""
 
