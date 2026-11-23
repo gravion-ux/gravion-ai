@@ -7,6 +7,8 @@
     gravion chat "hello"             run the chat module
     gravion support "where is..."    run the support module
     gravion coder "review: ..."      run the coder module
+    gravion image "a logo for..."    run the image module
+    gravion music "a jingle for..."  run the music module
     gravion export --out file.zip    full data export (always allowed)
 
     gravion license identity         create/show the deployment identity
@@ -163,6 +165,18 @@ def cmd_support(args) -> int:
 def cmd_coder(args) -> int:
     runtime = GravionRuntime(_load_config(args))
     print(runtime.coder(" ".join(args.prompt)))
+    return 0
+
+
+def cmd_image(args) -> int:
+    runtime = GravionRuntime(_load_config(args))
+    print(runtime.image(" ".join(args.prompt)))
+    return 0
+
+
+def cmd_music(args) -> int:
+    runtime = GravionRuntime(_load_config(args))
+    print(runtime.music(" ".join(args.prompt)))
     return 0
 
 
@@ -336,6 +350,14 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("prompt", nargs="+")
     p.set_defaults(func=cmd_coder)
 
+    p = sub.add_parser("image", help="run the image module")
+    p.add_argument("prompt", nargs="+")
+    p.set_defaults(func=cmd_image)
+
+    p = sub.add_parser("music", help="run the music module")
+    p.add_argument("prompt", nargs="+")
+    p.set_defaults(func=cmd_music)
+
     p = sub.add_parser("export", help="export the full deployment bundle")
     p.add_argument("--out", required=True)
     p.set_defaults(func=cmd_export)
@@ -357,7 +379,7 @@ def build_parser() -> argparse.ArgumentParser:
     p_issue.add_argument("--tier", choices=sorted(TIERS), required=True)
     p_issue.add_argument("--modules", required=True, help="comma-separated module names, or *")
     p_issue.add_argument("--agreement-ref", required=True)
-    p_issue.add_argument("--equity", type=float, required=True, help="partnership equity %% (10-20)")
+    p_issue.add_argument("--equity", type=float, required=True, help="partnership equity % (10-20)")
     p_issue.add_argument("--days", type=int, default=365)
     p_issue.add_argument("--out")
     p_issue.set_defaults(func=cmd_license_issue)
