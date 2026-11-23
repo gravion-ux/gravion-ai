@@ -106,3 +106,19 @@ def coder_module_copy(tmp_path) -> Path:
     import gravion_ai.modules.coder as coder_pkg
 
     return _copy_module(tmp_path, coder_pkg, "coder-module")
+
+
+@pytest.fixture()
+def image_module_copy(tmp_path) -> Path:
+    """A writable copy of the bundled image module directory."""
+    import gravion_ai.modules.image as image_pkg
+
+    return _copy_module(tmp_path, image_pkg, "image-module")
+
+
+@pytest.fixture()
+def music_module_copy(tmp_path) -> Path:
+    """A writable copy of the bundled music module directory."""
+    import gravion_ai.modules.music as music_pkg
+
+    return _copy_module(tmp_path, music_pkg, "music-module")
