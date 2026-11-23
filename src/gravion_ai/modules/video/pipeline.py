@@ -173,12 +173,10 @@ class LocalVideoProvider:
     name = "gravion-local-renderer"
 
     def render(self, job: VideoJob, out_path: Path) -> VideoResult:
-        ffmpeg = shutil.which("ffmpeg")
-        if ffmpeg is None:
-            raise ProviderError(
-                "the local video renderer needs ffmpeg on PATH; "
-                "install ffmpeg or use the trained Gravion Video bundle"
-            )
+        # Job validation runs before the ffmpeg check: a malformed
+        # request (over-cap duration, missing reference frame) must
+        # report its own error even on machines without ffmpeg —
+        # e.g. CI runners — instead of the ffmpeg error masking it.
         if job.duration_seconds < 1:
             raise ProviderError(
                 f"video duration must be at least 1 second, got "
@@ -195,6 +193,12 @@ class LocalVideoProvider:
         for frame in job.reference_frames:
             if not Path(frame).exists():
                 raise ProviderError(f"reference frame not found: {frame}")
+        ffmpeg = shutil.which("ffmpeg")
+        if ffmpeg is None:
+            raise ProviderError(
+                "the local video renderer needs ffmpeg on PATH; "
+                "install ffmpeg or use the trained Gravion Video bundle"
+            )
         out_path = Path(out_path)
         out_path.parent.mkdir(parents=True, exist_ok=True)
         command = [
