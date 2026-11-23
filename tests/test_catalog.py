@@ -70,6 +70,18 @@ def test_gravion_vision_and_audio_available_as_tier2_bundles():
     assert audio.capabilities == ("music",)
 
 
+def test_gravion_video_available_as_tier2_bundle():
+    """Piece 4: the first trained bundle of Gravion Video ships at
+    Tier 2 (Basic) only; the long-form stitching pipeline and the
+    higher-tier bundles are later pieces, so the entry must not
+    claim them yet."""
+    catalog = ModelCatalog.load()
+    video = catalog.get("gravion-video")
+    assert video is not None and video.status == "available"
+    assert video.tiers == ("tier-2-basic",)
+    assert video.capabilities == ("video",)
+
+
 def test_tier2_bundles_resolve_by_capability_and_tier():
     catalog = ModelCatalog.load()
     basic_coder = {e.id for e in catalog.models_for("coder", tier="tier-2-basic")}

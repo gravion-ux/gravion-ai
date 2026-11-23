@@ -122,3 +122,11 @@ def music_module_copy(tmp_path) -> Path:
     import gravion_ai.modules.music as music_pkg
 
     return _copy_module(tmp_path, music_pkg, "music-module")
+
+
+@pytest.fixture()
+def video_module_copy(tmp_path) -> Path:
+    """A writable copy of the bundled video module directory."""
+    import gravion_ai.modules.video as video_pkg
+
+    return _copy_module(tmp_path, video_pkg, "video-module")

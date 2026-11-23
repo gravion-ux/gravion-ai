@@ -65,6 +65,14 @@ def test_music_command_flow(home, capsys):
     assert "a 30 second jingle" in out
 
 
+def test_video_command_flow(home, capsys):
+    assert main(["init", "--model", "gravion-video"]) == 0
+    capsys.readouterr()
+    assert main(["video", "a", "30", "second", "teaser"]) == 0
+    out = capsys.readouterr().out
+    assert "a 30 second teaser" in out
+
+
 def test_modules_list(home, capsys):
     assert main(["modules", "list"]) == 0
     out = capsys.readouterr().out

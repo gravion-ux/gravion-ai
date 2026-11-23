@@ -8,11 +8,11 @@ from gravion_ai.registry import ModuleContext, ModuleType, default_registry
 def test_catalogue_implemented_and_planned_modules():
     registry = default_registry()
     modules = {m.name: m for m in registry.list()}
-    for name in ("chat", "support", "coder", "image", "music"):
+    for name in ("chat", "support", "coder", "image", "music", "video"):
         assert modules[name].status.value == "implemented", name
     for name in (
         "website-builder",
-        "video", "cyber", "agentic", "all-in-one",
+        "cyber", "agentic", "all-in-one",
     ):
         assert modules[name].status.value == "planned", name
     assert modules["video"].type is ModuleType.VIDEO
@@ -32,7 +32,7 @@ def test_instantiate_chat_and_run():
 def test_planned_module_refuses_to_instantiate():
     registry = default_registry()
     with pytest.raises(ModuleError):
-        registry.instantiate("video")
+        registry.instantiate("cyber")
 
 
 def test_unknown_module_raises():
