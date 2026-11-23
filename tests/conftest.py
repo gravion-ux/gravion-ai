@@ -130,3 +130,35 @@ def video_module_copy(tmp_path) -> Path:
     import gravion_ai.modules.video as video_pkg
 
     return _copy_module(tmp_path, video_pkg, "video-module")
+
+
+@pytest.fixture()
+def website_builder_module_copy(tmp_path) -> Path:
+    """A writable copy of the bundled website-builder module directory."""
+    import gravion_ai.modules.website_builder as website_builder_pkg
+
+    return _copy_module(tmp_path, website_builder_pkg, "website-builder-module")
+
+
+@pytest.fixture()
+def cyber_module_copy(tmp_path) -> Path:
+    """A writable copy of the bundled cyber module directory."""
+    import gravion_ai.modules.cyber as cyber_pkg
+
+    return _copy_module(tmp_path, cyber_pkg, "cyber-module")
+
+
+@pytest.fixture()
+def agentic_module_copy(tmp_path) -> Path:
+    """A writable copy of the bundled agentic module directory."""
+    import gravion_ai.modules.agentic as agentic_pkg
+
+    return _copy_module(tmp_path, agentic_pkg, "agentic-module")
+
+
+@pytest.fixture()
+def all_in_one_module_copy(tmp_path) -> Path:
+    """A writable copy of the bundled all-in-one module directory."""
+    import gravion_ai.modules.all_in_one as all_in_one_pkg
+
+    return _copy_module(tmp_path, all_in_one_pkg, "all-in-one-module")
