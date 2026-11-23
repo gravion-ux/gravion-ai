@@ -158,7 +158,7 @@ pip install -e ".[dev]"
 python -m pytest -q
 ```
 
-116 tests cover the licensing subsystem end-to-end (identity, signed
+116 tests (115 passing, 1 skipped) cover the licensing subsystem end-to-end (identity, signed
 licenses, tamper rejection, audit-chain verification, the entitlement
 protocol and its pinned privacy field set, gate states, suspension,
 export-while-suspended), the Piece 2 support and coder modules
@@ -176,3 +176,14 @@ Priyanshu Kumar Thakur — [github.com/gravion-ux](https://github.com/gravion-ux
 Source code: MIT (see [LICENSE](LICENSE)). Production deployments are
 additionally governed by the commercial agreement —
 [LICENSE-COMMERCIAL.md](LICENSE-COMMERCIAL.md).
+
+## Sponsors
+
+Sponsorship pays for the maintenance, triage and release time behind this tool. Sponsors are
+listed here by name, and name placement starts at the $25 a month Sponsor tier or the $50
+one-time Sponsor tier.
+
+- [Sponsor on GitHub](https://github.com/sponsors/gravion-ux)
+
+Sponsorship supports the open-source source code. Commercial deployments remain governed by
+the commercial licence agreement.
