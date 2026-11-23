@@ -55,6 +55,21 @@ def test_gravion_chat_and_code_available_as_tier2_bundles():
     assert code.capabilities == ("coder",)
 
 
+def test_gravion_vision_and_audio_available_as_tier2_bundles():
+    """Piece 3: the first trained bundles of Gravion Vision and
+    Gravion Audio ship at Tier 2 (Basic) only; higher-tier bundles
+    are later pieces, so the entries must not claim them yet."""
+    catalog = ModelCatalog.load()
+    vision = catalog.get("gravion-vision")
+    assert vision is not None and vision.status == "available"
+    assert vision.tiers == ("tier-2-basic",)
+    assert vision.capabilities == ("image",)
+    audio = catalog.get("gravion-audio")
+    assert audio is not None and audio.status == "available"
+    assert audio.tiers == ("tier-2-basic",)
+    assert audio.capabilities == ("music",)
+
+
 def test_tier2_bundles_resolve_by_capability_and_tier():
     catalog = ModelCatalog.load()
     basic_coder = {e.id for e in catalog.models_for("coder", tier="tier-2-basic")}

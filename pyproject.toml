@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "gravion-ai"
-version = "0.2.0"
+version = "0.3.0"
 description = "Gravion AI: a modular AI platform framework — many AI types, four tiers, one module system, with a cryptographic licensing and entitlement layer for commercial deployments."
 readme = "README.md"
 requires-python = ">=3.10"

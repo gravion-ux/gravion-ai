@@ -123,6 +123,12 @@ class GravionRuntime:
     def coder(self, prompt: str) -> str:
         return self.run_module("coder", prompt)
 
+    def image(self, prompt: str) -> str:
+        return self.run_module("image", prompt)
+
+    def music(self, prompt: str) -> str:
+        return self.run_module("music", prompt)
+
     # -- status ----------------------------------------------------------------
     def status(self) -> dict:
         decision = self.gate.check("chat")
@@ -199,7 +205,7 @@ class GravionRuntime:
             if cfg.data_dir.exists():
                 for path in sorted(cfg.data_dir.rglob("*")):
                     if path.is_file():
-                        arcname = (Path("data") / path.relative_to(cfg.data_dir)).as_posix()
+                        arcname = str(Path("data") / path.relative_to(cfg.data_dir))
                         archive.write(path, arcname)
                         included.append(arcname)
         return sorted(included)
