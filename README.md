@@ -18,13 +18,17 @@ You give it a name (the default is **Gravion**), teach it your company
 and your work policy, and run it — on the built-in **Gravion Core**
 engine, or on any inference endpoint you operate, with your own API key.
 
-> **Piece 2 status — read this before expecting magic.** Gravion AI is
+> **Piece 3 status — read this before expecting magic.** Gravion AI is
 > built in pieces. Piece 1 shipped the *foundation*: the core scaffold,
 > the module registry with one module (chat) wired end-to-end, the
 > Gravion model registry with starter data, and the complete licensing
 > subsystem. Piece 2 adds the **support** and **coder** modules, wired
 > end-to-end on the same path, and the first trained bundles of
-> **Gravion Chat** and **Gravion Code** at Tier 2 (Basic). The
+> **Gravion Chat** and **Gravion Code** at Tier 2 (Basic). Piece 3 adds
+> the **image** and **music** modules on the same path — each turns a
+> request into a structured brief (mode/kind, aspect, duration, mood)
+> for its model — and the first trained bundles of **Gravion Vision**
+> and **Gravion Audio** at Tier 2 (Basic). The
 > remaining modules and higher-tier bundles are **planned** and land
 > piece by piece — the roadmap in [ARCHITECTURE.md](ARCHITECTURE.md)
 > says exactly what exists and what does not, and the code refuses to
@@ -52,14 +56,14 @@ change logged and reversible.
 
 ## Modules
 
-| Module | Type | Piece 1 status |
+| Module | Type | Status |
 |---|---|---|
 | chat | Chat bot | ✅ implemented (reference module) |
 | support | Support bot | ✅ implemented (Piece 2) |
 | coder | Coding assistant | ✅ implemented (Piece 2) |
 | website-builder | Website builder | planned |
-| music | Music generation | planned |
-| image | Image generation/editing | planned |
+| music | Music generation | ✅ implemented (Piece 3) |
+| image | Image generation/editing | ✅ implemented (Piece 3) |
 | video | Video generation — incl. long-form up to ~1 hour, high quality | planned |
 | cyber | Cyber/security AI | planned |
 | agentic | Agentic tool developer | planned |
@@ -74,8 +78,10 @@ Modules are sold/used individually (variant packages) or together
 Gravion's own models, registered as data (`src/gravion_ai/data/models.json`),
 not hardcoded logic: **Gravion Core** (the built-in offline engine —
 *available now*), **Gravion Chat** and **Gravion Code** (*available
-since Piece 2* as Tier 2 first trained bundles), Gravion Builder,
-Gravion Vision, Gravion Video, Gravion Audio, Gravion Shield, Gravion
+since Piece 2* as Tier 2 first trained bundles), **Gravion Vision** and
+**Gravion Audio** (*available since Piece 3* as Tier 2 first trained
+bundles), Gravion Builder,
+Gravion Video, Gravion Shield, Gravion
 Agent, and **Gravion Omni**, the all-in-one flagship at the Advanced tier.
 Deployments can register private variants by dropping their own
 `models.json` into the deployment home — same schema, same validation.
@@ -144,6 +150,8 @@ src/gravion_ai/
   modules/chat/   the reference module, wired end-to-end
   modules/support/  support bot: policy-grounded answers, human escalation
   modules/coder/    coding assistant: generate / review / explain tasks
+  modules/image/    image generation/editing: generate / edit briefs
+  modules/music/    music generation: track / jingle / score briefs
   licensing/      identity, signed licenses, signed modules, audit log,
                   entitlement protocol + gate — the licensing subsystem
 docs/LICENSING.md       licensing design + protocol specification
@@ -158,14 +166,16 @@ pip install -e ".[dev]"
 python -m pytest -q
 ```
 
-116 tests cover the licensing subsystem end-to-end (identity, signed
+168 tests cover the licensing subsystem end-to-end (identity, signed
 licenses, tamper rejection, audit-chain verification, the entitlement
 protocol and its pinned privacy field set, gate states, suspension,
 export-while-suspended), the Piece 2 support and coder modules
 (grounding addendum, human escalation that never reaches the model,
 coder task detection, Tier 2 bundle resolution, production runs of
-both modules under signed manifests), plus config, providers,
-registry, catalog and the CLI.
+both modules under signed manifests), the Piece 3 image and music
+modules (mode/kind detection, aspect/duration/mood brief parsing,
+Tier 2 bundle resolution for Gravion Vision and Gravion Audio), plus
+config, providers, registry, catalog and the CLI.
 
 ## Author
 
