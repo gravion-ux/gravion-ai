@@ -6,7 +6,11 @@ import pytest
 
 from gravion_ai.cli import main
 from gravion_ai.errors import TrainingError
-from gravion_ai.training.datasets import prepare_dataset, read_examples
+from gravion_ai.training.datasets import (
+    _write_jsonl,
+    prepare_dataset,
+    read_examples,
+)
 
 
 def _write_jsonl(path: Path, records: list) -> Path:
@@ -124,3 +128,24 @@ def test_train_prepare_cli(capsys, tmp_path):
     out = capsys.readouterr().out
     assert "dataset prepared" in out
     assert (out_dir / "dataset-report.json").exists()
+
+
+def test_write_jsonl_hash_describes_the_file_on_disk(tmp_path):
+    """The recorded hash must match the bytes actually written.
+
+    The dataset report records a SHA-256 for each output file so a dataset's
+    identity can be verified before it is trained on.  That only holds if the
+    bytes on disk are exactly the bytes that were hashed.  Writing the file in
+    text mode translated LF to CRLF on Windows, so the recorded hash did not
+    describe the file.
+    """
+    out = tmp_path / "train.jsonl"
+    recorded = _write_jsonl(out, [("question 0", "answer 0"), ("question 1", "answer 1")])
+
+    on_disk = out.read_bytes()
+    assert recorded == hashlib.sha256(on_disk).hexdigest()
+    assert b"\r\n" not in on_disk
+    assert on_disk == (
+        b'{"completion": "answer 0", "prompt": "question 0"}\n'
+        b'{"completion": "answer 1", "prompt": "question 1"}\n'
+    )

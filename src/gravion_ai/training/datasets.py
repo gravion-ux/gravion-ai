@@ -109,8 +109,14 @@ def _write_jsonl(path: Path, examples: list[tuple[str, str]]) -> str:
         for p, c in examples
     ]
     text = "\n".join(lines) + ("\n" if lines else "")
-    path.write_text(text, encoding="utf-8")
-    return hashlib.sha256(text.encode("utf-8")).hexdigest()
+    # Write bytes, not text: Path.write_text() translates "\n" to "\r\n"
+    # on Windows, so the file on disk would not be the bytes that were
+    # hashed and the reported dataset identity could not be verified
+    # from the file. The bytes written are exactly the bytes hashed, on
+    # every platform.
+    data = text.encode("utf-8")
+    path.write_bytes(data)
+    return hashlib.sha256(data).hexdigest()
 
 
 def prepare_dataset(data, out_dir, *, validation_fraction: float = 0.2) -> dict:
