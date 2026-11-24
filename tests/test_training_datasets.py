@@ -7,10 +7,12 @@ import pytest
 from gravion_ai.cli import main
 from gravion_ai.errors import TrainingError
 from gravion_ai.training.datasets import (
-    _write_jsonl,
     prepare_dataset,
     read_examples,
 )
+# Aliased: this file defines its own _write_jsonl fixture helper below,
+# which would otherwise shadow the library function under test.
+from gravion_ai.training.datasets import _write_jsonl as write_jsonl
 
 
 def _write_jsonl(path: Path, records: list) -> Path:
@@ -140,7 +142,7 @@ def test_write_jsonl_hash_describes_the_file_on_disk(tmp_path):
     describe the file.
     """
     out = tmp_path / "train.jsonl"
-    recorded = _write_jsonl(out, [("question 0", "answer 0"), ("question 1", "answer 1")])
+    recorded = write_jsonl(out, [("question 0", "answer 0"), ("question 1", "answer 1")])
 
     on_disk = out.read_bytes()
     assert recorded == hashlib.sha256(on_disk).hexdigest()
