@@ -743,7 +743,7 @@ def build_parser() -> argparse.ArgumentParser:
     p_issue.add_argument("--tier", choices=sorted(TIERS), required=True)
     p_issue.add_argument("--modules", required=True, help="comma-separated module names, or *")
     p_issue.add_argument("--agreement-ref", required=True)
-    p_issue.add_argument("--equity", type=float, required=True, help="partnership equity % (10-20)")
+    p_issue.add_argument("--equity", type=float, required=True, help="partnership equity %% (10-20)")
     p_issue.add_argument("--days", type=int, default=365)
     p_issue.add_argument("--out")
     p_issue.set_defaults(func=cmd_license_issue)
