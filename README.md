@@ -2,7 +2,7 @@
 
 [![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Tests](https://img.shields.io/badge/tests-116%20passing-brightgreen.svg)](#testing)
+[![Tests](https://img.shields.io/badge/tests-385%20passing-brightgreen.svg)](#testing)
 [![codecov](https://codecov.io/gh/gravion-ux/gravion-ai/branch/main/graph/badge.svg)](https://codecov.io/gh/gravion-ux/gravion-ai)
 
 **Gravion AI — one modular AI platform, every kind of AI a startup needs, ready to rename, re-policy and run as your own.**
