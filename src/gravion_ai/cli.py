@@ -9,6 +9,34 @@
     gravion coder "review: ..."      run the coder module
     gravion image "a logo for..."    run the image module
     gravion music "a jingle for..."  run the music module
+    gravion video "a teaser for..."  run the video module
+    gravion video "a teaser..." --out clip.mp4
+                                     render a real MP4 locally
+    gravion website "a site for..."  run the website-builder module
+    gravion website "a site..." --out site-dir
+                                     build a real static site locally
+    gravion cyber "analyse..."       run the cyber module
+    gravion agent "plan an agent..." run the agentic module
+    gravion agent "plan..." --plan-out plan.json
+                                     write a local agent plan file
+    gravion bundles list             show tier bundle completeness
+    gravion bundles build --tier tier-1-complete --out b.json
+                                     write a tier bundle descriptor
+    gravion train validate --job job.json
+                                     validate a training job
+    gravion train prepare --data examples.jsonl --out dataset/
+                                     prepare a fine-tuning dataset
+    gravion train run --job job.json run a training job (needs the
+                                     hosted training pipeline)
+    gravion omni "coder: fix..."     run the all-in-one module
+                                     (routes by directive, else chat)
+    gravion authority serve --issuer-key issuer.key --licenses DIR
+                                     run the hosted licensing
+                                     authority service (Piece 9)
+    gravion upgrade grant|revoke|status|apply|rollback
+                                     governed self-upgrade (§9):
+                                     permission, signed update
+                                     packages, rollback
     gravion export --out file.zip    full data export (always allowed)
 
     gravion license identity         create/show the deployment identity
@@ -177,6 +205,162 @@ def cmd_image(args) -> int:
 def cmd_music(args) -> int:
     runtime = GravionRuntime(_load_config(args))
     print(runtime.music(" ".join(args.prompt)))
+    return 0
+
+
+def cmd_video(args) -> int:
+    runtime = GravionRuntime(_load_config(args))
+    prompt = " ".join(args.prompt)
+    if args.out:
+        result = runtime.render_video(prompt, Path(args.out))
+        print(f"video written to {result.path}")
+        print(f"  duration:   {result.duration_seconds} seconds")
+        print(f"  resolution: {result.width}x{result.height}")
+        print(f"  provider:   {result.provider}")
+        return 0
+    print(runtime.video(prompt))
+    return 0
+
+
+def cmd_website(args) -> int:
+    runtime = GravionRuntime(_load_config(args))
+    prompt = " ".join(args.prompt)
+    if args.out:
+        result = runtime.build_website(prompt, Path(args.out))
+        print(f"website written to {result.path}")
+        print(f"  title:    {result.title}")
+        print(f"  pages:    {', '.join(result.pages)}")
+        print(f"  files:    {', '.join(result.files)}")
+        print(f"  provider: {result.provider}")
+        return 0
+    print(runtime.website_builder(prompt))
+    return 0
+
+
+def cmd_cyber(args) -> int:
+    runtime = GravionRuntime(_load_config(args))
+    print(runtime.cyber(" ".join(args.prompt)))
+    return 0
+
+
+def cmd_agent(args) -> int:
+    runtime = GravionRuntime(_load_config(args))
+    prompt = " ".join(args.prompt)
+    if args.plan_out:
+        result = runtime.plan_agent(prompt, Path(args.plan_out))
+        print(f"agent plan written to {result.path}")
+        print(f"  task:     {result.plan.task}")
+        print(f"  tools:    {', '.join(result.plan.tools) or 'none stated'}")
+        print(f"  steps:    {len(result.plan.steps)} ({result.plan.steps_source})")
+        print(f"  status:   {result.plan.status}")
+        print(f"  provider: {result.provider}")
+        return 0
+    print(runtime.agentic(prompt))
+    return 0
+
+
+def cmd_omni(args) -> int:
+    runtime = GravionRuntime(_load_config(args))
+    print(runtime.all_in_one(" ".join(args.prompt)))
+    return 0
+
+
+def cmd_authority_serve(args) -> int:
+    from .licensing.authority_server import make_server
+    from .licensing.keys import KeyPair
+
+    issuer = KeyPair.from_private_pem(Path(args.issuer_key).read_bytes())
+    server = make_server(issuer, args.licenses, host=args.host, port=args.port)
+    host, port = server.server_address[:2]
+    print(f"gravion licensing authority serving on http://{host}:{port}")
+    print(f"  authority key: {issuer.key_id}")
+    print(f"  licenses dir:  {args.licenses}")
+    print("  POST /v1/entitlement — GET /health — Ctrl-C to stop")
+    try:
+        server.serve_forever()
+    except KeyboardInterrupt:
+        print("\nauthority stopped")
+    finally:
+        server.server_close()
+    return 0
+
+
+def cmd_upgrade(args) -> int:
+    from .upgrades import UpgradeService
+
+    config = _load_config(args)
+    service = UpgradeService(config)
+    if args.action == "grant":
+        service.grant()
+        print("self-upgrade permission GRANTED (recorded in config + audit log)")
+        return 0
+    if args.action == "revoke":
+        service.revoke()
+        print("self-upgrade permission REVOKED (recorded in config + audit log)")
+        return 0
+    if args.action == "status":
+        status = service.status()
+        print(f"self-upgrade permission: "
+              f"{'granted' if status['permission'] else 'not granted'}")
+        if status["backups"]:
+            for module, versions in status["backups"].items():
+                print(f"  retained {module}: {', '.join(versions)}")
+        else:
+            print("  no retained module versions")
+        return 0
+    if args.action == "apply":
+        result = service.apply(Path(args.package))
+        print(f"updated {result['module']}: "
+              f"{result['from_version']} → {result['to_version']} "
+              f"({result['kind']})")
+        print(f"  changelog: {result['changelog_path']}")
+        print(f"  backup:    {result['backup_path']}")
+        return 0
+    result = service.rollback(args.module)
+    print(f"rolled back {result['module']} to {result['restored_version']}")
+    return 0
+
+
+def cmd_bundles(args) -> int:
+    from .bundles import all_bundle_specs, build_bundle
+
+    if args.action == "list":
+        for spec in all_bundle_specs():
+            state = "complete" if spec["complete"] else "INCOMPLETE"
+            line = f"{spec['tier_label']}: {state}"
+            if spec["gaps"]:
+                line += f" — gaps: {', '.join(spec['gaps'])}"
+            print(line)
+        return 0
+    document = build_bundle(args.tier, Path(args.out))
+    print(f"bundle written to {args.out}")
+    print(f"  tier: {document['bundle']['tier_label']}")
+    print(f"  hash: {document['bundle_hash']}")
+    return 0
+
+
+def cmd_train(args) -> int:
+    from .training.jobs import load_job, run_training_job, validate_job
+
+    if args.action == "prepare":
+        from .training.datasets import prepare_dataset
+
+        report = prepare_dataset(
+            args.data, Path(args.out),
+            validation_fraction=args.validation_fraction,
+        )
+        print(f"dataset prepared in {args.out}")
+        print(f"  examples:   {report['unique_examples']} unique "
+              f"({report['duplicates_removed']} duplicates removed)")
+        print(f"  train:      {report['train_count']}")
+        print(f"  validation: {report['validation_count']}")
+        return 0
+    job = validate_job(load_job(args.job))
+    if args.action == "validate":
+        print(f"training job valid: model {job.model}, data {job.data}, "
+              f"base tier {job.base_tier}")
+        return 0
+    run_training_job(job)  # raises honestly: no backend in this build
     return 0
 
 
@@ -357,6 +541,85 @@ def build_parser() -> argparse.ArgumentParser:
     p = sub.add_parser("music", help="run the music module")
     p.add_argument("prompt", nargs="+")
     p.set_defaults(func=cmd_music)
+
+    p = sub.add_parser("video", help="run the video module")
+    p.add_argument("prompt", nargs="+")
+    p.add_argument("--out", help="render a real MP4 locally to this path "
+                                 "(local development renderer) instead of "
+                                 "returning the model's reply")
+    p.set_defaults(func=cmd_video)
+
+    p = sub.add_parser("website", help="run the website-builder module")
+    p.add_argument("prompt", nargs="+")
+    p.add_argument("--out", help="build a real static website locally "
+                                 "into this directory (local "
+                                 "development builder) instead of "
+                                 "returning the model's reply")
+    p.set_defaults(func=cmd_website)
+
+    p = sub.add_parser("cyber", help="run the cyber module")
+    p.add_argument("prompt", nargs="+")
+    p.set_defaults(func=cmd_cyber)
+
+    p = sub.add_parser("agent", help="run the agentic module")
+    p.add_argument("prompt", nargs="+")
+    p.add_argument("--plan-out", help="write a structured agent plan "
+                                      "locally to this JSON path "
+                                      "(local development planner; "
+                                      "nothing is executed) instead of "
+                                      "returning the model's reply")
+    p.set_defaults(func=cmd_agent)
+
+    p = sub.add_parser("omni", help="run the all-in-one module "
+                                    "(routes by '<module>:' directive, "
+                                    "default chat)")
+    p.add_argument("prompt", nargs="+")
+    p.set_defaults(func=cmd_omni)
+
+    p = sub.add_parser("authority", help="run the licensing authority service")
+    authority_sub = p.add_subparsers(dest="action", required=True)
+    ap = authority_sub.add_parser("serve", help="serve entitlement requests")
+    ap.add_argument("--issuer-key", required=True,
+                    help="path to the issuer private key (server-side only)")
+    ap.add_argument("--licenses", required=True,
+                    help="directory of issued license documents (*.json)")
+    ap.add_argument("--host", default="127.0.0.1")
+    ap.add_argument("--port", type=int, default=8790)
+    p.set_defaults(func=cmd_authority_serve)
+
+    p = sub.add_parser("upgrade", help="governed self-upgrade (§9)")
+    upgrade_sub = p.add_subparsers(dest="action", required=True)
+    upgrade_sub.add_parser("grant", help="grant the standing permission")
+    upgrade_sub.add_parser("revoke", help="revoke the standing permission")
+    upgrade_sub.add_parser("status", help="show permission + retained versions")
+    up = upgrade_sub.add_parser("apply", help="apply a signed update package")
+    up.add_argument("--package", required=True)
+    up = upgrade_sub.add_parser("rollback", help="restore the latest retained version")
+    up.add_argument("--module", required=True)
+    p.set_defaults(func=cmd_upgrade)
+
+    p = sub.add_parser("bundles", help="inspect and build tier bundles")
+    bundle_sub = p.add_subparsers(dest="action", required=True)
+    bundle_sub.add_parser("list", help="show each tier's completeness")
+    bp = bundle_sub.add_parser("build", help="write a tier bundle descriptor")
+    bp.add_argument("--tier", required=True)
+    bp.add_argument("--out", required=True)
+    p.set_defaults(func=cmd_bundles)
+
+    p = sub.add_parser("train", help="validate or run a training job")
+    train_sub = p.add_subparsers(dest="action", required=True)
+    for action in ("validate", "run"):
+        tp = train_sub.add_parser(action)
+        tp.add_argument("--job", required=True, help="path to the job JSON")
+    tp = train_sub.add_parser(
+        "prepare", help="prepare a fine-tuning dataset (validate, "
+                        "dedupe, split, report)"
+    )
+    tp.add_argument("--data", required=True,
+                    help="a .jsonl file or a directory of .jsonl files")
+    tp.add_argument("--out", required=True, help="output directory")
+    tp.add_argument("--validation-fraction", type=float, default=0.2)
+    p.set_defaults(func=cmd_train)
 
     p = sub.add_parser("export", help="export the full deployment bundle")
     p.add_argument("--out", required=True)

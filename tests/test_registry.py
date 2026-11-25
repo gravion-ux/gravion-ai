@@ -2,20 +2,27 @@ import pytest
 
 from gravion_ai.errors import ModuleError
 from gravion_ai.providers import GravionCoreProvider
-from gravion_ai.registry import ModuleContext, ModuleType, default_registry
+from gravion_ai.registry import (
+    ModuleContext,
+    ModuleManifest,
+    ModuleRegistry,
+    ModuleStatus,
+    ModuleType,
+    default_registry,
+)
 
 
 def test_catalogue_implemented_and_planned_modules():
     registry = default_registry()
     modules = {m.name: m for m in registry.list()}
-    for name in ("chat", "support", "coder", "image", "music"):
+    for name in ("chat", "support", "coder", "image", "music", "video",
+                 "website-builder", "cyber", "agentic", "all-in-one"):
         assert modules[name].status.value == "implemented", name
-    for name in (
-        "website-builder",
-        "video", "cyber", "agentic", "all-in-one",
-    ):
-        assert modules[name].status.value == "planned", name
     assert modules["video"].type is ModuleType.VIDEO
+    assert modules["website-builder"].type is ModuleType.WEBSITE_BUILDER
+    assert modules["all-in-one"].type is ModuleType.ALL_IN_ONE
+    assert modules["cyber"].type is ModuleType.CYBER
+    assert modules["agentic"].type is ModuleType.AGENTIC
     assert modules["support"].type is ModuleType.SUPPORT
     assert modules["coder"].type is ModuleType.CODER
     assert modules["image"].type is ModuleType.IMAGE
@@ -30,9 +37,20 @@ def test_instantiate_chat_and_run():
 
 
 def test_planned_module_refuses_to_instantiate():
-    registry = default_registry()
+    """Every bundled module is implemented since Piece 8, so the
+    refusal is exercised on a hand-registered planned manifest."""
+    registry = ModuleRegistry()
+    registry.register(
+        ModuleManifest(
+            name="future-module",
+            type=ModuleType.CHAT,
+            version="0.0.0",
+            entrypoint="",
+            status=ModuleStatus.PLANNED,
+        )
+    )
     with pytest.raises(ModuleError):
-        registry.instantiate("video")
+        registry.instantiate("future-module")
 
 
 def test_unknown_module_raises():

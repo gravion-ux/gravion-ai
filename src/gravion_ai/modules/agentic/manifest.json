@@ -1,0 +1,15 @@
+{
+  "payload": {
+    "name": "agentic",
+    "type": "agentic",
+    "version": "0.1.0",
+    "entrypoint": "gravion_ai.modules.agentic.module:AgenticModule",
+    "files": {
+      "__init__.py": "1cade898a91d68e15a398d7d07f2d8e3bd7975a10be4611c7c970965a0eb6613",
+      "module.py": "402c5f26a76af986bc7dc735c11fa543335b7808726513709d21b8f6abf587a3",
+      "plan.py": "4a5ed0e9a611fbd330fb62e7fcd72509f92fff14926e9e982d7636debd234f06"
+    }
+  },
+  "signature": "",
+  "note": "Unsigned in the repo: the issuer private key is (correctly) not distributed. The project owner signs this manifest with `gravion license sign-module` before a production deployment; production mode refuses unsigned or tampered modules."
+}

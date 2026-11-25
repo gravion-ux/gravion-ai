@@ -1,0 +1,14 @@
+{
+  "payload": {
+    "name": "all-in-one",
+    "type": "all-in-one",
+    "version": "0.1.0",
+    "entrypoint": "gravion_ai.modules.all_in_one.module:AllInOneModule",
+    "files": {
+      "__init__.py": "82a38b0f2c18f1064114edc7a0827697656a6c248876e647fffde73f5639df0c",
+      "module.py": "c2a42d6bf198d60e1316cb9fa9f013493130ac661a193985696b6ff32315e579"
+    }
+  },
+  "signature": "",
+  "note": "Unsigned in the repo: the issuer private key is (correctly) not distributed. The project owner signs this manifest with `gravion license sign-module` before a production deployment; production mode refuses unsigned or tampered modules."
+}

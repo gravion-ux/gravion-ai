@@ -52,13 +52,13 @@ Module types (the catalogue in `registry.py`):
 | `chat` | Chat bot | General conversation — the reference module ✅ |
 | `support` | Support bot | Answers from company material, escalates to humans ✅ (Piece 2) |
 | `coder` | Coder | Writes, reviews and explains code ✅ (Piece 2) |
-| `website-builder` | Website builder | Generates and iterates full websites from a brief |
+| `website-builder` | Website builder | Generates and iterates full websites from a brief ✅ (Piece 5) |
 | `music` | Music | Tracks, jingles, background scores ✅ (Piece 3) |
 | `image` | Image | Generation and editing ✅ (Piece 3) |
-| `video` | Video | Generation incl. long-form (see §7) |
-| `cyber` | Cyber/security AI | Defensive analysis, triage, reporting assistance |
-| `agentic` | Agentic tool developer | Builds and runs tool-using agents |
-| `all-in-one` | All-in-one | Every module under one deployment |
+| `video` | Video | Generation and editing ✅ (Piece 4); long-form (see §7) 🧩 |
+| `cyber` | Cyber/security AI | Defensive analysis, triage, reporting assistance ✅ (Piece 6) |
+| `agentic` | Agentic tool developer | Builds and runs tool-using agents ✅ (Piece 6) |
+| `all-in-one` | All-in-one | Every module under one deployment ✅ (Piece 8) |
 
 Modules are distributed individually (variant packages) or as the
 all-in-one package. In production, a module's files are verified
@@ -116,11 +116,15 @@ A structured, editable registry of **Gravion's own models**
 - **Status** is honest: `gravion-core` is `available` (it is the
   built-in engine); `gravion-chat` and `gravion-code` are `available`
   since Piece 2 as first trained bundles at Tier 2, and
-  `gravion-vision` and `gravion-audio` since Piece 3 on the same
-  terms — their registry entries list Tier 2 only until the
-  tier-packaging pieces (7–8) ship the higher-tier bundles. The
-  remaining specialist models are `planned` and land with their
-  module pieces.
+  `gravion-vision` and `gravion-audio` since Piece 3, and
+  `gravion-video` since Piece 4, and `gravion-builder` since
+  Piece 5, and `gravion-shield` and `gravion-agent` since
+  Piece 6, on the same
+  terms — their registry entries list all four tiers since
+  Piece 8 shipped the Tier 4 (Advanced) bundles with Gravion
+  Omni, which is itself `available` since Piece 8 as the Tier 4
+  flagship serving every capability. Every model in the registry
+  is now available.
 - **Gravion Omni** is the all-in-one flagship model: every capability,
   Advanced tier.
 - The registry is **data, validated at load** with precise errors
@@ -215,9 +219,12 @@ deployment ──► verifies the token signature, caches it, runs
   fresh nor a cached token can authorise the module.
 - Piece 1 ships the protocol spec, a reference client, and an
   in-process **mock authority** (the server's logic minus the network)
-  used by tests and offline development. The hosted authority service
-  is a later piece (§10) — deliberately: its *protocol* is the stable
-  contract, its hosting is an operations decision.
+  used by tests and offline development. Piece 9 adds the operated
+  form: `licensing/authority_server.py`, a standard-library HTTP
+  service wrapping the same authority logic (`gravion authority
+  serve --issuer-key … --licenses DIR`) — its *protocol* is the
+  stable contract; where it is publicly hosted remains an
+  operations decision.
 
 ### 8.5 Tamper-evident audit ✅
 
@@ -237,10 +244,11 @@ works in every state and produces the full bundle: config, policy,
 registry, module list, public identity, license, audit log and the
 entire data directory. The private identity key is never exported.
 
-## 9. Governed self-upgrade 🧩 (design)
+## 9. Governed self-upgrade ✅ (implemented, Piece 10)
 
 Gravion may improve itself — bug fixes and enhancements — under a
-strict governor, designed here and implemented in a later piece:
+strict governor, implemented in `upgrades.py` (`gravion upgrade
+grant|revoke|status|apply|rollback`):
 
 1. **One-time permission.** The operator grants (or refuses) a standing
    permission once, recorded in config and in the audit log. No grant,
@@ -263,15 +271,15 @@ strict governor, designed here and implemented in a later piece:
 |---|---|---|
 | **1** | Core scaffold (config, registry, catalog, plumbing), chat module end-to-end, **licensing subsystem complete** | ✅ done |
 | **2** | Support + coder modules; Gravion Chat / Gravion Code first trained bundles (Tier 2) | ✅ done |
-| 3 | Image + music modules (Gravion Vision, Gravion Audio) | ✅ this piece |
-| 4 | Video module + long-form pipeline (Gravion Video) | planned |
-| 5 | Website-builder module (Gravion Builder) | planned |
-| 6 | Cyber module (Gravion Shield) + agentic module (Gravion Agent) | planned |
-| 7 | Tier bundles: Tier 1 Complete packaging, Tier 3 Intermediate training pipeline | planned |
-| 8 | Gravion Omni + Tier 4 Advanced platform | planned |
-| 9 | Hosted licensing authority service (the §8.4 protocol, operated) | planned |
-| 10 | Governed self-upgrade service (§9) | planned |
-| 11 | Training pipelines for customer fine-tuning on deployment data | planned |
+| 3 | Image + music modules (Gravion Vision, Gravion Audio) | ✅ done |
+| 4 | Video module + local render pipeline (Gravion Video); long-form stitching pipeline lands with the higher-tier bundles | ✅ done |
+| 5 | Website-builder module (Gravion Builder) | ✅ done |
+| 6 | Cyber module (Gravion Shield) + agentic module (Gravion Agent) | ✅ done |
+| 7 | Tier bundles: Tier 1 Complete packaging, Tier 3 Intermediate training pipeline | ✅ done (bundles + training job spec/validation; training execution stays with the hosted pipeline) |
+| 8 | Gravion Omni + Tier 4 Advanced platform | ✅ done |
+| 9 | Hosted licensing authority service (the §8.4 protocol, operated) | ✅ done (service implementation; public hosting is an operations decision) |
+| 10 | Governed self-upgrade service (§9) | ✅ done |
+| 11 | Training pipelines for customer fine-tuning on deployment data | ✅ done (dataset preparation local; training execution stays with the hosted pipeline) |
 
 ## 11. Non-goals for Piece 1
 

@@ -65,10 +65,62 @@ def test_music_command_flow(home, capsys):
     assert "a 30 second jingle" in out
 
 
+def test_video_command_flow(home, capsys):
+    assert main(["init", "--model", "gravion-video"]) == 0
+    capsys.readouterr()
+    assert main(["video", "a", "30", "second", "teaser"]) == 0
+    out = capsys.readouterr().out
+    assert "a 30 second teaser" in out
+
+
+def test_website_command_flow(home, capsys):
+    assert main(["init", "--model", "gravion-builder"]) == 0
+    capsys.readouterr()
+    assert main(["website", "a", "website", "for", "our", "bakery"]) == 0
+    out = capsys.readouterr().out
+    assert "a website for our bakery" in out
+
+
+def test_cyber_command_flow(home, capsys):
+    assert main(["init", "--model", "gravion-shield"]) == 0
+    capsys.readouterr()
+    assert main(["cyber", "triage:", "alert", "from", "10.0.0.8"]) == 0
+    out = capsys.readouterr().out
+    assert "triage: alert from 10.0.0.8" in out
+
+
+def test_agent_command_flow(home, capsys):
+    assert main(["init", "--model", "gravion-agent"]) == 0
+    capsys.readouterr()
+    assert main(["agent", "plan", "an", "agent", "for", "reports"]) == 0
+    out = capsys.readouterr().out
+    assert "plan an agent for reports" in out
+
+
+def test_agent_plan_out_writes_a_plan_file(home, capsys, tmp_path):
+    assert main(["init", "--model", "gravion-agent"]) == 0
+    capsys.readouterr()
+    plan_path = tmp_path / "plan.json"
+    assert main(["agent", "plan", "an", "agent", "for", "reports",
+                 "--plan-out", str(plan_path)]) == 0
+    out = capsys.readouterr().out
+    assert "agent plan written to" in out
+    assert "planned — not executed" in out
+    assert plan_path.exists()
+
+
+def test_omni_command_flow(home, capsys):
+    assert main(["init", "--model", "gravion-omni"]) == 0
+    capsys.readouterr()
+    assert main(["omni", "coder:", "write", "a", "haiku", "function"]) == 0
+    out = capsys.readouterr().out
+    assert "write a haiku function" in out
+
+
 def test_modules_list(home, capsys):
     assert main(["modules", "list"]) == 0
     out = capsys.readouterr().out
-    assert "chat" in out and "video" in out and "planned" in out
+    assert "chat" in out and "video" in out and "implemented" in out
 
 
 def test_license_identity_and_audit(home, capsys):

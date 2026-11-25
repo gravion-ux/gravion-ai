@@ -1,0 +1,14 @@
+{
+  "payload": {
+    "name": "cyber",
+    "type": "cyber",
+    "version": "0.1.0",
+    "entrypoint": "gravion_ai.modules.cyber.module:CyberModule",
+    "files": {
+      "__init__.py": "7988735541ab3f125145df776514198d8330e06ad6e956e72c36323af303cf2c",
+      "module.py": "ecdc29d9e2edf62f825953313a2fcc6d43bf2e5ef480805265eb704384219f0b"
+    }
+  },
+  "signature": "",
+  "note": "Unsigned in the repo: the issuer private key is (correctly) not distributed. The project owner signs this manifest with `gravion license sign-module` before a production deployment; production mode refuses unsigned or tampered modules."
+}

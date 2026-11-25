@@ -1,0 +1,15 @@
+{
+  "payload": {
+    "name": "website-builder",
+    "type": "website-builder",
+    "version": "0.1.0",
+    "entrypoint": "gravion_ai.modules.website_builder.module:WebsiteBuilderModule",
+    "files": {
+      "__init__.py": "ecea3e214979219a975ce0b5ba5a2f1e1a9323656c6371289a09db38c29ccf3c",
+      "builder.py": "ed0a5cbb21a939967318384bc53cc57d9aa711bee5e0421e97180a48ca0f85fa",
+      "module.py": "de60a31190988435d581be026ca98c6220e18463190817138c7f0dc03e7c8132"
+    }
+  },
+  "signature": "",
+  "note": "Unsigned in the repo: the issuer private key is (correctly) not distributed. The project owner signs this manifest with `gravion license sign-module` before a production deployment; production mode refuses unsigned or tampered modules."
+}

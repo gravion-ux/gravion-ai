@@ -1,0 +1,187 @@
+"""AgenticModule — planning and building tool-using agents
+(Piece 6).
+
+The agentic module turns a plain-language request into a
+structured **agent brief** for Gravion Agent, following the same
+shape as the other modules (manifest in, `run(ctx, prompt)` out)
+and adding deterministic logic of its own:
+
+1. **Task detection.** A request is one of three tasks: *plan*
+   (design an agent for a goal), *build* (create the agent), or
+   *run* (execute an agent on a task). Build and run are detected
+   from explicit phrasing — a "build:" / "run:" style prefix, or a
+   request to build / run *an agent* — mirroring the coder module's
+   task detection. Anything else is planning.
+
+2. **Brief parsing.** Two pieces of intent are extracted: the
+   **tools** the request names (web search, browser, email,
+   calendar, files, code, shell, database, API — matched from a
+   fixed vocabulary, in vocabulary order); and the **steps**, when
+   the request states them explicitly ("steps: check inbox, draft
+   replies, send summary"). Unstated steps are recorded as "model
+   to plan" rather than invented here.
+
+The brief is appended to the deployment's system context together
+with the task guidance. The module is served by **Gravion
+Agent**, whose first trained bundle ships at Tier 2 in this piece
+(see data/models.json); the runtime's registry check refuses a
+model that does not serve the agentic capability instead of
+silently answering with the wrong model.
+
+`run` is the model path. `plan` is the development path: it hands
+the request to the local planner (see plan.py), which writes a
+structured plan file offline — honestly labelled as a plan from
+the local planner. The plan is a plan: nothing in it is executed,
+because executing tool-using agents is the trained bundle's job.
+"""
+
+from __future__ import annotations
+
+import re
+from pathlib import Path
+
+from ...registry import ModuleContext, ModuleManifest
+
+TASK_PLAN = "plan"
+TASK_BUILD = "build"
+TASK_RUN = "run"
+
+TASK_GUIDANCE = {
+    TASK_PLAN: """
+
+# Agent task: plan
+Design a tool-using agent for the goal in the brief below. Lay
+out the steps in order, the tool each step needs (from the tools
+named in the brief where given), the checks between steps, and
+where a human must approve before the agent proceeds. Follow the
+deployment's policy context above — it bounds what any agent in
+this deployment may do.""",
+    TASK_BUILD: """
+
+# Agent task: build
+Build the tool-using agent described in the brief below: its
+goal, its tools (from the brief), its step sequence, its guard
+checks, and its stop conditions. Follow the deployment's policy
+context above — it bounds what any agent in this deployment may
+do. Prefer the smallest agent that does the job reliably.""",
+    TASK_RUN: """
+
+# Agent task: run
+Run the agent on the task in the brief below, following the steps
+and tools recorded there. Check each step's result before moving
+to the next, stop and report instead of improvising when a step
+fails, and follow the deployment's policy context above — it
+bounds what any agent in this deployment may do.""",
+}
+
+_BUILD_PREFIXES = (
+    "build:",
+    "build an agent",
+    "build a agent",
+    "create:",
+    "create an agent",
+    "make an agent",
+)
+
+_RUN_PREFIXES = (
+    "run:",
+    "run the agent",
+    "run an agent",
+    "execute:",
+)
+
+# The tool vocabulary the brief recognises, in the order tools are
+# recorded. Matching is on word boundaries so "apishield" does not
+# claim the "api" tool.
+_TOOLS = (
+    "web search",
+    "browser",
+    "email",
+    "calendar",
+    "files",
+    "code",
+    "shell",
+    "database",
+    "api",
+)
+
+_STEPS_RE = re.compile(r"steps?\s*:\s*(.+)", re.IGNORECASE)
+
+
+def detect_task(prompt: str) -> str:
+    """Classify an agentic prompt as plan / build / run."""
+    text = prompt.strip().lower()
+    if text.startswith(_BUILD_PREFIXES):
+        return TASK_BUILD
+    if text.startswith(_RUN_PREFIXES):
+        return TASK_RUN
+    return TASK_PLAN
+
+
+def parse_tools(prompt: str) -> list[str]:
+    """Collect the tools the request names, in vocabulary order."""
+    text = prompt.lower()
+    return [
+        tool
+        for tool in _TOOLS
+        if re.search(rf"\b{re.escape(tool)}\b", text)
+    ]
+
+
+def parse_steps(prompt: str) -> list[str]:
+    """Collect explicitly stated steps ("steps: a, b, c").
+
+    Only an explicit steps list is recorded; anything else returns
+    an empty list, meaning the brief leaves the steps to the model
+    rather than inventing them here.
+    """
+    match = _STEPS_RE.search(prompt)
+    if not match:
+        return []
+    steps = [part.strip() for part in match.group(1).split(",")]
+    return [step for step in steps if step]
+
+
+def build_brief(prompt: str) -> str:
+    """Render the structured agent brief for a request."""
+    tools = parse_tools(prompt)
+    steps = parse_steps(prompt)
+    return (
+        "\n\n# Agent brief\n"
+        f"Task: {detect_task(prompt)}\n"
+        f"Tools: {', '.join(tools) if tools else 'none stated'}\n"
+        f"Steps: {'; '.join(steps) if steps else 'model to plan'}\n"
+        f"Request: {prompt.strip()}"
+    )
+
+
+class AgenticModule:
+    def __init__(self, manifest: ModuleManifest):
+        self.manifest = manifest
+
+    def run(self, ctx: ModuleContext, prompt: str) -> str:
+        guidance = TASK_GUIDANCE[detect_task(prompt)]
+        messages = [
+            {
+                "role": "system",
+                "content": ctx.system_context + guidance + build_brief(prompt),
+            },
+            {"role": "user", "content": prompt},
+        ]
+        return ctx.provider.complete(messages, model=ctx.model)
+
+    def plan(self, prompt: str, out_path, planner=None):
+        """Write a structured plan for the request via the local
+        planner.
+
+        This is the development path (see plan.py): the output is
+        a plan file from the local planner, honestly labelled —
+        and a plan is all it is. Nothing in the plan is executed;
+        running tool-using agents is the trained Gravion Agent
+        bundle's job, served through `run`.
+        """
+        from .plan import LocalPlanner, plan_from_prompt
+
+        plan = plan_from_prompt(prompt)
+        planner = planner or LocalPlanner()
+        return planner.write(plan, Path(out_path))

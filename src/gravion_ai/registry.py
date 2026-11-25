@@ -7,10 +7,12 @@ package); the four tiers describe how trained each module is when it
 ships, not different code.
 
 Piece 1 implements one module end-to-end (chat); Piece 2 adds support
-and coder; Piece 3 adds image and music. The other module types are
-registered as *planned* so the catalogue, tiers and licensing all
-speak about them honestly from day one; their implementations land
-in later pieces (see ARCHITECTURE.md roadmap).
+and coder; Piece 3 adds image and music; Piece 4 adds video; Piece 5
+adds website-builder; Piece 6 adds cyber and agentic; Piece 8
+adds all-in-one. The other
+module types are registered as *planned* so the catalogue, tiers and
+licensing all speak about them honestly from day one; their
+implementations land in later pieces (see ARCHITECTURE.md roadmap).
 """
 
 from __future__ import annotations
@@ -129,13 +131,20 @@ class ModuleRegistry:
 
 
 def default_registry() -> ModuleRegistry:
-    """The catalogue: chat (Piece 1), support and coder (Piece 2) and
-    image and music (Piece 3) implemented, the rest planned."""
+    """The catalogue: chat (Piece 1), support and coder (Piece 2),
+    image and music (Piece 3), video (Piece 4), website-builder
+    (Piece 5), cyber and agentic (Piece 6) and all-in-one
+    (Piece 8) — every module implemented."""
+    from .modules import agentic as agentic_module_pkg
+    from .modules import all_in_one as all_in_one_module_pkg
     from .modules import chat as chat_module_pkg
     from .modules import coder as coder_module_pkg
+    from .modules import cyber as cyber_module_pkg
     from .modules import image as image_module_pkg
     from .modules import music as music_module_pkg
     from .modules import support as support_module_pkg
+    from .modules import video as video_module_pkg
+    from .modules import website_builder as website_builder_module_pkg
 
     registry = ModuleRegistry()
     registry.register(
@@ -193,13 +202,62 @@ def default_registry() -> ModuleRegistry:
             path=Path(music_module_pkg.__file__).parent,
         )
     )
-    planned = [
-        ("website-builder", ModuleType.WEBSITE_BUILDER, "Website builder: generates and iterates full sites from a brief."),
-        ("video", ModuleType.VIDEO, "Video generation, including long-form up to ~1 hour in high quality."),
-        ("cyber", ModuleType.CYBER, "Cyber/security AI: defensive analysis, triage and reporting assistance."),
-        ("agentic", ModuleType.AGENTIC, "Agentic tool developer: builds and runs tool-using agents for repeatable work."),
-        ("all-in-one", ModuleType.ALL_IN_ONE, "The all-in-one package: every module above under one deployment."),
-    ]
+    registry.register(
+        ModuleManifest(
+            name="video",
+            type=ModuleType.VIDEO,
+            version="0.1.0",
+            entrypoint="gravion_ai.modules.video.module:VideoModule",
+            description="Video generation and editing: turns a request into a structured brief for Gravion Video, with a local short-clip render pipeline.",
+            status=ModuleStatus.IMPLEMENTED,
+            path=Path(video_module_pkg.__file__).parent,
+        )
+    )
+    registry.register(
+        ModuleManifest(
+            name="website-builder",
+            type=ModuleType.WEBSITE_BUILDER,
+            version="0.1.0",
+            entrypoint="gravion_ai.modules.website_builder.module:WebsiteBuilderModule",
+            description="Website builder: generates and iterates full sites from a brief, with a local static-site builder.",
+            status=ModuleStatus.IMPLEMENTED,
+            path=Path(website_builder_module_pkg.__file__).parent,
+        )
+    )
+    registry.register(
+        ModuleManifest(
+            name="cyber",
+            type=ModuleType.CYBER,
+            version="0.1.0",
+            entrypoint="gravion_ai.modules.cyber.module:CyberModule",
+            description="Cyber/security AI: defensive analysis, triage and reporting assistance, with deterministic indicator extraction.",
+            status=ModuleStatus.IMPLEMENTED,
+            path=Path(cyber_module_pkg.__file__).parent,
+        )
+    )
+    registry.register(
+        ModuleManifest(
+            name="agentic",
+            type=ModuleType.AGENTIC,
+            version="0.1.0",
+            entrypoint="gravion_ai.modules.agentic.module:AgenticModule",
+            description="Agentic tool developer: builds and runs tool-using agents for repeatable work, with a local plan writer.",
+            status=ModuleStatus.IMPLEMENTED,
+            path=Path(agentic_module_pkg.__file__).parent,
+        )
+    )
+    registry.register(
+        ModuleManifest(
+            name="all-in-one",
+            type=ModuleType.ALL_IN_ONE,
+            version="0.1.0",
+            entrypoint="gravion_ai.modules.all_in_one.module:AllInOneModule",
+            description="The all-in-one package: every module above under one deployment, routing by directive, served by Gravion Omni.",
+            status=ModuleStatus.IMPLEMENTED,
+            path=Path(all_in_one_module_pkg.__file__).parent,
+        )
+    )
+    planned = []
     for name, mtype, desc in planned:
         registry.register(
             ModuleManifest(
