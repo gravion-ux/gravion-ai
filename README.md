@@ -2,7 +2,7 @@
 
 [![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Tests](https://img.shields.io/badge/tests-385%20passing-brightgreen.svg)](#testing)
+[![Tests](https://img.shields.io/badge/tests-385-brightgreen.svg)](#testing)
 [![codecov](https://codecov.io/gh/gravion-ux/gravion-ai/branch/main/graph/badge.svg)](https://codecov.io/gh/gravion-ux/gravion-ai)
 [![CI](https://github.com/gravion-ux/gravion-ai/actions/workflows/ci.yml/badge.svg)](https://github.com/gravion-ux/gravion-ai/actions/workflows/ci.yml)
 
