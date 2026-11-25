@@ -109,7 +109,10 @@ def _write_jsonl(path: Path, examples: list[tuple[str, str]]) -> str:
         for p, c in examples
     ]
     text = "\n".join(lines) + ("\n" if lines else "")
-    path.write_text(text, encoding="utf-8")
+    # Write the exact bytes that were hashed. Text-mode writes translate "\n" to
+    # "\r\n" on Windows, which would make the report hash disagree with the file
+    # and break the promise that the same source always yields the same files.
+    path.write_bytes(text.encode("utf-8"))
     return hashlib.sha256(text.encode("utf-8")).hexdigest()
 
 
