@@ -164,6 +164,58 @@ def test_retrieval_rare_terms_outweigh_common_words():
     assert ranked[1][0] > ranked[-1][0]
 
 
+def test_document_qa_matches_singular_and_plural_forms():
+    # Regression: the old stemmer turned "class" into "clas" but
+    # "classes" into "class", so a question about a class never
+    # matched a document sentence about classes and the module
+    # wrongly reported that the document held no answer.
+    out = answer_question(
+        "The classes meet on Monday morning. The library opens at nine.",
+        "when does the class meet",
+    )
+    assert "classes meet on Monday" in out
+    out = answer_question(
+        "The cities listed are Delhi and Pune. The office is in Delhi.",
+        "which cities are listed",
+    )
+    assert "cities listed are Delhi and Pune" in out
+
+
+def test_retrieval_matches_singular_and_plural_forms():
+    # A query for "cats" must score the passage about a "cat":
+    # unstemmed, the two forms hash to different buckets and the
+    # relevant passage scores zero.
+    ranked = rank_passages(
+        "cats",
+        ["The dog runs in the park.", "The cat sleeps all day."],
+    )
+    assert ranked[0][1].startswith("The cat")
+    assert ranked[0][0] > 0.0
+
+
+def test_retrieval_keeps_multiline_passages_whole():
+    # Regression: passage parsing captured one line only, so a
+    # passage wrapped over several lines lost everything after
+    # its first line before ranking.
+    out = _run(
+        "retrieval",
+        "gravion-search",
+        "query: what do cats need\n"
+        "passage: Cats need food\n"
+        "and fresh water daily.\n"
+        "passage: Dogs need daily walks.",
+    )
+    assert "Cats need food and fresh water daily." in out
+
+
+def test_translation_matches_longest_phrase_inside_a_sentence():
+    # Regression: greedy phrase matching capped spans at four
+    # words, so the five-word phrasebook entry "how much does
+    # this cost" never matched inside a longer sentence.
+    out = translate_phrase("please tell me how much does this cost today", to_hindi=True)
+    assert "ye kitne ka hai" in out
+
+
 def test_document_qa_quotes_evidence_and_admits_gaps():
     document = "The library opens at nine in the morning. It closes at eight in the evening."
     out = answer_question(document, "when does the library open")

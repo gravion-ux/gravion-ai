@@ -68,6 +68,12 @@ def test_detect_kind(prompt, expected):
         ("a 45-second sting", 45),
         ("a 2 minute track", 120),
         ("a 3-minute background score", 180),
+        # Regression: compound durations kept only their first
+        # part, fractional minutes were misread ("1.5 minutes"
+        # became 300 via the "5"), and hours were not a unit.
+        ("a 2 minutes 30 seconds track", 150),
+        ("a 1.5 minutes track", 90),
+        ("a 1 hour mix", 3600),
         ("a jingle for our ad", None),
         ("a track for the launch", None),
     ],

@@ -24,6 +24,7 @@ import math
 import re
 
 from ...registry import ModuleContext, ModuleManifest
+from ..summarization.module import stem_word
 
 _BUCKETS = 4096
 _TOKEN_RE = re.compile(r"[a-z0-9]+")
@@ -35,7 +36,12 @@ _STOP = frozenset(
 
 
 def _tokens(text: str) -> list[str]:
-    return [t for t in _TOKEN_RE.findall(text.lower()) if t not in _STOP]
+    # Stem so a query for "cats" matches a passage about a "cat":
+    # without it the two forms hash to different buckets and the
+    # relevant passage scores zero.
+    return [
+        stem_word(t) for t in _TOKEN_RE.findall(text.lower()) if t not in _STOP
+    ]
 
 
 def embed(text: str) -> dict[int, float]:
@@ -97,11 +103,30 @@ def rank_passages(query: str, passages: list[str]) -> list[tuple[float, str]]:
 
 
 def parse_retrieval_prompt(prompt: str) -> tuple[str, list[str]] | None:
-    query_match = re.search(r"query\s*:\s*(.+)", prompt, re.IGNORECASE)
-    passages = re.findall(r"passage\s*:\s*(.+)", prompt, re.IGNORECASE)
-    if not query_match or not passages:
+    # A query or passage runs until the next "query:"/"passage:"
+    # marker or the end of the prompt, so a passage wrapped over
+    # several lines is kept whole instead of truncated to its
+    # first line. Wrapped lines are joined with single spaces.
+    parts = re.split(r"(?im)^\s*(query|passage)\s*:\s*", prompt)
+    # re.split with one capture group yields
+    # [before, label, body, label, body, ...].
+    if len(parts) < 5:
         return None
-    return query_match.group(1).strip(), [p.strip() for p in passages]
+    query: str | None = None
+    passages: list[str] = []
+    for index in range(1, len(parts) - 1, 2):
+        label = parts[index].lower()
+        body = " ".join(parts[index + 1].split())
+        if not body:
+            continue
+        if label == "query":
+            if query is None:
+                query = body
+        else:
+            passages.append(body)
+    if query is None or not passages:
+        return None
+    return query, passages
 
 
 class RetrievalModule:

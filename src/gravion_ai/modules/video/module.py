@@ -89,8 +89,10 @@ _SHAPES = (
 _SIZE_RE = re.compile(r"(\d{3,5})\s*[x×]\s*(\d{3,5})")
 
 _DURATION_RE = re.compile(
-    r"(\d+)\s*-?\s*(seconds?|secs?|minutes?|mins?)\b", re.IGNORECASE
+    r"(\d+(?:\.\d+)?)\s*-?\s*(hours?|hrs?|minutes?|mins?|seconds?|secs?)\b",
+    re.IGNORECASE,
 )
+_UNIT_SECONDS = {"hour": 3600, "hr": 3600, "minute": 60, "min": 60, "second": 1, "sec": 1}
 
 _FRAME_RE = re.compile(r"[\w./-]*[\w]\.(?:png|jpe?g|webp)\b", re.IGNORECASE)
 
@@ -104,14 +106,18 @@ def detect_mode(prompt: str) -> str:
 
 
 def parse_duration(prompt: str) -> int | None:
-    """Extract a requested duration in seconds, or None."""
-    match = _DURATION_RE.search(prompt)
-    if not match:
+    """Extract a requested duration in seconds, or None.
+
+    Compound durations add up ("1 minute 30 seconds" is 90) and
+    fractional values count ("1.5 minutes" is 90).
+    """
+    matches = _DURATION_RE.findall(prompt)
+    if not matches:
         return None
-    value = int(match.group(1))
-    if match.group(2).lower().startswith("min"):
-        return value * 60
-    return value
+    total = 0.0
+    for value, unit in matches:
+        total += float(value) * _UNIT_SECONDS[unit.lower().rstrip("s")]
+    return round(total)
 
 
 def parse_aspect(prompt: str) -> str | None:

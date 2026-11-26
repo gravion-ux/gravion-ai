@@ -115,6 +115,24 @@ def test_escalation_phrases_inside_other_words_do_not_escalate(prompt):
     assert not needs_human(prompt)
 
 
+@pytest.mark.parametrize(
+    "prompt",
+    [
+        # Regression: escalation words inside topic phrases and
+        # negated requests escalated customers who never asked
+        # for a person.
+        "my password manager is broken",
+        "the user agent string looks wrong",
+        "what is human readable format?",
+        "do not escalate, just answer my question",
+        "no human needed, what are your hours?",
+        "you can call me Priyanshu",
+    ],
+)
+def test_topic_phrases_and_negations_do_not_escalate(prompt):
+    assert not needs_human(prompt)
+
+
 def test_support_runtime_dev_end_to_end(make_config):
     runtime = GravionRuntime(make_config(mode="development"))
     out = runtime.support("how do I change my plan?")

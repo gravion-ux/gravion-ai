@@ -18,7 +18,7 @@ from __future__ import annotations
 import re
 
 from ...registry import ModuleContext, ModuleManifest
-from ..summarization.module import split_sentences
+from ..summarization.module import split_sentences, stem_word
 
 _STOP = frozenset(
     "a an the and or but of at by for with is are was were be been "
@@ -27,17 +27,9 @@ _STOP = frozenset(
 )
 
 
-def _stem(word: str) -> str:
-    if len(word) > 4 and word.endswith("es"):
-        return word[:-2]
-    if len(word) > 3 and word.endswith("s"):
-        return word[:-1]
-    return word
-
-
 def _terms(text: str) -> set[str]:
     return {
-        _stem(w)
+        stem_word(w)
         for w in re.findall(r"[a-z0-9]+", text.lower())
         if w not in _STOP
     }

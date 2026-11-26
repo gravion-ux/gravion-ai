@@ -337,7 +337,7 @@ class UpgradeService:
 
         problem = self._self_check(module_dir, payload, manifest.entrypoint)
         if problem is not None:
-            self._restore(module_name, backup_dir, module_dir)
+            self._restore(backup_dir, module_dir)
             self._audit.append(
                 "upgrade.rollback",
                 {
@@ -394,7 +394,7 @@ class UpgradeService:
                 return f"entrypoint reload failed: {exc}"
         return None
 
-    def _restore(self, module_name: str, backup_dir: Path, module_dir: Path):
+    def _restore(self, backup_dir: Path, module_dir: Path):
         if module_dir.exists():
             shutil.rmtree(module_dir)
         shutil.copytree(backup_dir, module_dir)
@@ -417,7 +417,7 @@ class UpgradeService:
             raise UpgradeError(
                 f"module {module_name!r} has no filesystem directory"
             )
-        self._restore(module_name, root / latest, Path(manifest.path))
+        self._restore(root / latest, Path(manifest.path))
         result = {"module": module_name, "restored_version": latest}
         self._audit.append(
             "upgrade.rollback", {**result, "automatic": False}

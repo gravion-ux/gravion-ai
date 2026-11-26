@@ -33,6 +33,29 @@ _ABBREVIATIONS = frozenset(
 _CLOSERS = "\"'”’)]"
 
 
+def stem_word(word: str) -> str:
+    """Light plural stemmer shared by the text modules.
+
+    Singular and plural forms must land on the same stem, or a
+    question about a "class" never matches a document sentence
+    about "classes". The rules only strip a plural ending: "ies"
+    becomes "y" ("cities" -> "city"), "es" drops after s/x/z/ch/sh
+    ("classes" -> "class", "boxes" -> "box"), and a final "s"
+    drops unless the word ends in "ss", "us" or "is" ("class",
+    "status" and "analysis" are not plurals). Anything else is
+    returned unchanged; irregular plurals are out of scope.
+    """
+    if len(word) > 4 and word.endswith("ies"):
+        return word[:-3] + "y"
+    if len(word) > 4 and word.endswith("es"):
+        stem = word[:-2]
+        if stem.endswith(("s", "x", "z", "ch", "sh")):
+            return stem
+    if len(word) > 3 and word.endswith("s") and not word.endswith(("ss", "us", "is")):
+        return word[:-1]
+    return word
+
+
 def _is_abbreviation_dot(text: str, index: int) -> bool:
     """True when the dot at ``index`` belongs to an abbreviation/initial."""
     start = index - 1
@@ -106,15 +129,21 @@ def summarize(text: str, max_sentences: int = 3) -> str:
     sentences = list(dict.fromkeys(split_sentences(text)))
     if len(sentences) <= max_sentences:
         return " ".join(sentences)
+    # Stem before counting so singular and plural forms of a word
+    # ("cat"/"cats") share one frequency instead of splitting it.
     words = [
-        w
+        stem_word(w)
         for w in re.findall(r"[a-z0-9]+", " ".join(sentences).lower())
         if w not in _STOP
     ]
     freq = Counter(words)
     scored: list[tuple[float, int]] = []
     for index, sentence in enumerate(sentences):
-        terms = [w for w in re.findall(r"[a-z0-9]+", sentence.lower()) if w not in _STOP]
+        terms = [
+            stem_word(w)
+            for w in re.findall(r"[a-z0-9]+", sentence.lower())
+            if w not in _STOP
+        ]
         if not terms:
             continue
         score = sum(freq[w] for w in terms) / len(terms)

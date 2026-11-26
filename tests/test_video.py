@@ -99,6 +99,10 @@ def test_detect_mode(prompt, expected):
         ("a 45-second sting", 45),
         ("a 2 minute product video", 120),
         ("a 3-minute explainer", 180),
+        # Regression: compound durations kept only their first
+        # part and fractional minutes were misread.
+        ("a 1 minute 30 seconds explainer", 90),
+        ("a 1.5 minutes teaser", 90),
         ("a teaser for our app", None),
         ("a video for the launch", None),
     ],

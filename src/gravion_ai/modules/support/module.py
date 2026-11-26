@@ -71,14 +71,39 @@ _ESCALATION_RE = re.compile(
 
 # "Human resources" is a support topic, not a request for a person:
 # the phrase is removed before matching so an HR-policy question is
-# answered from the grounding material instead of escalated.
-_HUMAN_RESOURCES_RE = re.compile(r"\bhuman resources\b")
+# answered from the grounding material instead of escalated. The
+# same holds for compound phrases where an escalation word is part
+# of a product or topic name ("password manager", "user agent",
+# "human readable") rather than a request for a person.
+_TOPIC_PHRASES_RE = re.compile(
+    r"\b(?:human resources|human readable|human error|password manager|"
+    r"task manager|file manager|download manager|user agent)\b"
+)
+
+# "Call me <Name>" introduces the customer; it is not a request for
+# a phone call. Matched on the original casing, before lowering.
+_CALL_ME_NAME_RE = re.compile(r"(?i:\bcall me) [A-Z][a-z]+\b")
+
+# A negated request ("do not escalate", "no human needed") asks for
+# the opposite of escalation. A match only counts when no negator
+# appears earlier in the same sentence.
+_NEGATOR_RE = re.compile(r"(?:\bno\b|\bnot\b|\bnever\b|\bwithout\b|n't\b)")
+_SENTENCE_BREAKS = ".!?;"
 
 
 def needs_human(prompt: str) -> bool:
     """True when the customer explicitly asks for a human."""
-    text = _HUMAN_RESOURCES_RE.sub(" ", prompt.lower())
-    return _ESCALATION_RE.search(text) is not None
+    text = _CALL_ME_NAME_RE.sub(" ", prompt)
+    text = _TOPIC_PHRASES_RE.sub(" ", text.lower())
+    for match in _ESCALATION_RE.finditer(text):
+        sentence_start = (
+            max(text.rfind(break_char, 0, match.start()) for break_char in _SENTENCE_BREAKS)
+            + 1
+        )
+        if _NEGATOR_RE.search(text[sentence_start : match.start()]):
+            continue
+        return True
+    return False
 
 
 class SupportModule:

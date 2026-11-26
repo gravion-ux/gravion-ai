@@ -87,8 +87,10 @@ MOODS = (
 )
 
 _DURATION_RE = re.compile(
-    r"(\d+)\s*-?\s*(seconds?|secs?|minutes?|mins?)\b", re.IGNORECASE
+    r"(\d+(?:\.\d+)?)\s*-?\s*(hours?|hrs?|minutes?|mins?|seconds?|secs?)\b",
+    re.IGNORECASE,
 )
+_UNIT_SECONDS = {"hour": 3600, "hr": 3600, "minute": 60, "min": 60, "second": 1, "sec": 1}
 
 
 def detect_kind(prompt: str) -> str:
@@ -102,14 +104,19 @@ def detect_kind(prompt: str) -> str:
 
 
 def parse_duration(prompt: str) -> int | None:
-    """Extract a requested duration in seconds, or None."""
-    match = _DURATION_RE.search(prompt)
-    if not match:
+    """Extract a requested duration in seconds, or None.
+
+    Compound durations add up ("2 minutes 30 seconds" is 150),
+    fractional values count ("1.5 minutes" is 90, not the 300 a
+    whole-number scan reads from the "5"), and hours are a unit.
+    """
+    matches = _DURATION_RE.findall(prompt)
+    if not matches:
         return None
-    value = int(match.group(1))
-    if match.group(2).lower().startswith("min"):
-        return value * 60
-    return value
+    total = 0.0
+    for value, unit in matches:
+        total += float(value) * _UNIT_SECONDS[unit.lower().rstrip("s")]
+    return round(total)
 
 
 def parse_moods(prompt: str) -> list[str]:

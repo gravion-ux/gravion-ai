@@ -157,10 +157,14 @@ def translate_phrase(text: str, to_hindi: bool) -> str:
     out: list[str] = []
     known = 0
     # Longest-phrase-first greedy matching over the word stream.
+    # The span cap comes from the phrasebook itself: a fixed cap
+    # below the longest entry ("how much does this cost", five
+    # words) made that phrase unmatchable inside a longer sentence.
+    max_span = max(len(phrase.split()) for phrase in table)
     i = 0
     while i < len(words):
         matched = False
-        for span in range(min(4, len(words) - i), 0, -1):
+        for span in range(min(max_span, len(words) - i), 0, -1):
             candidate = " ".join(words[i : i + span])
             if candidate in table:
                 out.append(table[candidate])
