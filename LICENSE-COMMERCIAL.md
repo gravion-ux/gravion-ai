@@ -7,6 +7,9 @@
 > must be reviewed and adapted by a qualified lawyer before use with
 > any customer.
 
+
+The source code in this repository is MIT-licensed (see `LICENSE`). This commercial agreement additionally governs running Gravion AI as a production deployment; development and evaluation use needs no commercial agreement.
+
 ---
 
 ## 1. Parties and product
