@@ -85,10 +85,25 @@ _TOPIC_PHRASES_RE = re.compile(
 _CALL_ME_NAME_RE = re.compile(r"(?i:\bcall me) [A-Z][a-z]+\b")
 
 # A negated request ("do not escalate", "no human needed") asks for
-# the opposite of escalation. A match only counts when no negator
-# appears earlier in the same sentence.
+# the opposite of escalation. A negator only cancels a match when it
+# governs that match: it must sit in the same clause (commas break
+# clauses too, so "I am not happy, get me a human" still escalates)
+# and within the few words immediately before the escalation phrase
+# ("please do not get me a human"). A distant negator earlier in the
+# sentence ("I said no yesterday, please get a human") negates
+# something else and must not suppress a real request.
 _NEGATOR_RE = re.compile(r"(?:\bno\b|\bnot\b|\bnever\b|\bwithout\b|n't\b)")
-_SENTENCE_BREAKS = ".!?;"
+_CLAUSE_BREAKS = ".!?;,"
+_NEGATION_WINDOW_WORDS = 4
+
+
+def _is_negated(text: str, match_start: int) -> bool:
+    clause_start = (
+        max(text.rfind(break_char, 0, match_start) for break_char in _CLAUSE_BREAKS) + 1
+    )
+    words = text[clause_start:match_start].split()
+    tail = " ".join(words[-_NEGATION_WINDOW_WORDS:])
+    return bool(tail) and _NEGATOR_RE.search(tail) is not None
 
 
 def needs_human(prompt: str) -> bool:
@@ -96,11 +111,7 @@ def needs_human(prompt: str) -> bool:
     text = _CALL_ME_NAME_RE.sub(" ", prompt)
     text = _TOPIC_PHRASES_RE.sub(" ", text.lower())
     for match in _ESCALATION_RE.finditer(text):
-        sentence_start = (
-            max(text.rfind(break_char, 0, match.start()) for break_char in _SENTENCE_BREAKS)
-            + 1
-        )
-        if _NEGATOR_RE.search(text[sentence_start : match.start()]):
+        if _is_negated(text, match.start()):
             continue
         return True
     return False

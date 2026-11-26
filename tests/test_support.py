@@ -133,6 +133,35 @@ def test_topic_phrases_and_negations_do_not_escalate(prompt):
     assert not needs_human(prompt)
 
 
+@pytest.mark.parametrize(
+    "prompt",
+    [
+        # Regression: a negator anywhere earlier in the sentence
+        # used to cancel a real request, so an unhappy customer
+        # asking for a person was never handed over. Only a negator
+        # governing the escalation phrase itself counts now.
+        "I am not happy, get me a human",
+        "I said no yesterday, please get a human",
+        "no, I need a human",
+        "my order has not arrived, can I talk to a human?",
+    ],
+)
+def test_distant_negators_do_not_suppress_escalation(prompt):
+    assert needs_human(prompt)
+
+
+@pytest.mark.parametrize(
+    "prompt",
+    [
+        "please do not get me a human, just answer here",
+        "I don't want a human, the bot is fine",
+        "never escalate this ticket",
+    ],
+)
+def test_governing_negators_still_suppress_escalation(prompt):
+    assert not needs_human(prompt)
+
+
 def test_support_runtime_dev_end_to_end(make_config):
     runtime = GravionRuntime(make_config(mode="development"))
     out = runtime.support("how do I change my plan?")
