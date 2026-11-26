@@ -23,13 +23,77 @@ _STOP = frozenset(
 )
 
 _SUMMARIZE_RE = re.compile(r"summarize\s*:\s*(.+)", re.IGNORECASE | re.DOTALL)
-_SENTENCE_RE = re.compile(r"[^.!?]+[.!?]")
+
+# Abbreviations whose final dot does not end a sentence, plus
+# dotted forms (e.g. "e.g", "u.s"). Single uppercase initials
+# ("A. Smith") are handled separately in split_sentences.
+_ABBREVIATIONS = frozenset(
+    "dr mr mrs ms prof sr jr st vs etc e.g i.e u.s u.k a.m p.m".split()
+)
+_CLOSERS = "\"'”’)]"
+
+
+def _is_abbreviation_dot(text: str, index: int) -> bool:
+    """True when the dot at ``index`` belongs to an abbreviation/initial."""
+    start = index - 1
+    while start >= 0 and (text[start].isalpha() or text[start] == "."):
+        start -= 1
+    word = text[start + 1 : index]
+    if word.lower() in _ABBREVIATIONS:
+        return True
+    # A single uppercase letter before the dot is a name initial.
+    return len(word) == 1 and word.isupper()
 
 
 def split_sentences(text: str) -> list[str]:
-    sentences = [s.strip() for s in _SENTENCE_RE.findall(text)]
-    if not sentences and text.strip():
-        sentences = [text.strip()]
+    """Split ``text`` into sentences, keeping a trailing fragment.
+
+    A dot between two digits is a decimal point, not a sentence
+    boundary, and abbreviation dots ("Dr.", "e.g.") do not end a
+    sentence either. Text after the last terminator is kept as its
+    own sentence instead of being silently dropped, so callers that
+    quote sentences (document Q&A) can still find an answer in a
+    final line that has no closing punctuation.
+    """
+    stripped = text.strip()
+    if not stripped:
+        return []
+    sentences: list[str] = []
+    start = 0
+    index = 0
+    while index < len(stripped):
+        char = stripped[index]
+        if char in ".!?":
+            if char == ".":
+                # Decimal point: "3.14" stays inside its sentence.
+                if (
+                    0 < index < len(stripped) - 1
+                    and stripped[index - 1].isdigit()
+                    and stripped[index + 1].isdigit()
+                ):
+                    index += 1
+                    continue
+                # Ellipsis: only the last dot can end the sentence.
+                if index + 1 < len(stripped) and stripped[index + 1] == ".":
+                    index += 1
+                    continue
+                if _is_abbreviation_dot(stripped, index):
+                    index += 1
+                    continue
+            end = index + 1
+            while end < len(stripped) and stripped[end] in _CLOSERS:
+                end += 1
+            if end == len(stripped) or stripped[end].isspace():
+                sentence = stripped[start:end].strip()
+                if sentence:
+                    sentences.append(sentence)
+                start = end
+                index = end
+                continue
+        index += 1
+    tail = stripped[start:].strip()
+    if tail:
+        sentences.append(tail)
     return sentences
 
 

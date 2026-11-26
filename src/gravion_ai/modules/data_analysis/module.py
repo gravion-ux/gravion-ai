@@ -10,29 +10,52 @@ Analyst), whose trained weights cover analysis guidance.
 
 from __future__ import annotations
 
-import math
 import re
 import statistics
 from collections import Counter
 
 from ...registry import ModuleContext, ModuleManifest
 
-_NUMBER_RE = re.compile(r"-?\d+(?:\.\d+)?")
+# One numeric token: optional sign, then either a grouped integer
+# (Western "1,000,000" or Indian "1,00,000" digit grouping), a plain
+# integer/decimal, or a leading-dot decimal (".5"), with an optional
+# scientific-notation exponent ("2.5e3"). A comma only joins a
+# number when it sits inside a valid digit group, so comma-space
+# separated lists ("4, 8, 15") still parse as separate values.
+_NUMBER_RE = re.compile(
+    r"-?(?:\d{1,3}(?:,\d{3})+|\d{1,2}(?:,\d{2})+,\d{3}|\d+|\.\d+)"
+    r"(?:\.\d+)?(?:[eE][+-]?\d+)?"
+)
 
 
 def parse_numbers(prompt: str) -> list[float]:
-    return [float(m) for m in _NUMBER_RE.findall(prompt)]
+    return [float(m.replace(",", "")) for m in _NUMBER_RE.findall(prompt)]
+
+
+def _mode_line(numbers: list[float]) -> str:
+    """Honest mode: tied modes are all named, and a list where
+    every value appears once has no mode instead of reporting the
+    first value as one."""
+    counts = Counter(numbers)
+    mode_count = max(counts.values())
+    if mode_count == 1:
+        return "Mode: none (every value appears once)"
+    modes = sorted(value for value, seen in counts.items() if seen == mode_count)
+    if len(modes) == 1:
+        return f"Mode: {modes[0]:g} (appears {mode_count} times)"
+    listed = ", ".join(f"{value:g}" for value in modes)
+    return f"Mode: {listed} (each appears {mode_count} times)"
 
 
 def analyze(numbers: list[float]) -> str:
+    if not numbers:
+        return "No numbers to analyze."
     count = len(numbers)
     total = sum(numbers)
     mean = total / count
     median = statistics.median(numbers)
     low, high = min(numbers), max(numbers)
     stdev = statistics.pstdev(numbers) if count > 1 else 0.0
-    counts = Counter(numbers)
-    mode_value, mode_count = counts.most_common(1)[0]
     half = count // 2
     if half:
         first = sum(numbers[:half]) / half
@@ -50,7 +73,7 @@ def analyze(numbers: list[float]) -> str:
         f"Sum: {total:g}",
         f"Mean: {mean:g}",
         f"Median: {median:g}",
-        f"Mode: {mode_value:g} (appears {mode_count} time{'s' if mode_count != 1 else ''})",
+        _mode_line(numbers),
         f"Min: {low:g}",
         f"Max: {high:g}",
         f"Range: {high - low:g}",
