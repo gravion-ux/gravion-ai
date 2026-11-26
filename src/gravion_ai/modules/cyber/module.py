@@ -14,8 +14,9 @@ and adding deterministic logic of its own:
    "report:" style prefix; a request that opens with an analysis
    verb ("analyse this triage report") is analysis even when it
    later names a report or triage as a noun; then a report or
-   triage verb aimed at an item anywhere in the request ("can you
-   triage this alert", "could you write up this finding") —
+   triage verb aimed at an item or at a named indicator anywhere
+   in the request ("can you triage this alert", "triage
+   CVE-2026-12345", "could you write up this finding") —
    mirroring the coder module's task detection. Anything else is
    analysis.
 
@@ -125,12 +126,23 @@ _ANALYSE_OPENERS = (
 )
 
 _ITEM = r"(?:this|the|that|incident|finding|alert|issue|vulnerability|event)"
+# A triage/report verb aimed straight at a named indicator
+# ("triage CVE-2026-12345", "report 10.0.0.8") targets an item
+# just as surely as one aimed at "this alert"; without this the
+# request fell through to analysis. The text is already lowered,
+# so the hash form needs no case flag.
+_INDICATOR_HINT = (
+    r"(?:cve-\d{4}-\d{4,}|\d{1,3}(?:\.\d{1,3}){3}"
+    r"|[0-9a-f]{64}|https?://\S+)"
+)
 _REPORT_RES = (
     re.compile(r"\bwrite up\b"),
     re.compile(r"\bwrite (?:a|the|up)\b[^.?!]*\breport\b"),
     re.compile(r"\breport\b[^.?!]*\b" + _ITEM + r"\b"),
+    re.compile(r"\breport\b[^.?!]*" + _INDICATOR_HINT),
 )
 _TRIAGE_RE = re.compile(r"\btriage\b[^.?!]*\b" + _ITEM + r"\b")
+_TRIAGE_INDICATOR_RE = re.compile(r"\btriage\b[^.?!]*" + _INDICATOR_HINT)
 
 
 def detect_task(prompt: str) -> str:
@@ -145,7 +157,7 @@ def detect_task(prompt: str) -> str:
         return TASK_ANALYSE
     if any(pattern.search(text) for pattern in _REPORT_RES):
         return TASK_REPORT
-    if _TRIAGE_RE.search(text):
+    if _TRIAGE_RE.search(text) or _TRIAGE_INDICATOR_RE.search(text):
         return TASK_TRIAGE
     return TASK_ANALYSE
 

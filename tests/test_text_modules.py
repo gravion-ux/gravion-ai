@@ -241,6 +241,53 @@ def test_stem_word_matches_irregular_sis_plurals():
     assert stem_word("classes") == stem_word("class") == "class"
 
 
+def test_stem_word_matches_o_and_suppletive_plurals():
+    # Regression: "oes" plurals stemmed to a trailing "e" the
+    # singular never produces ("heroes" -> "heroe"), and
+    # suppletive plurals never met their singulars, so a question
+    # about heroes missed a document about a hero.
+    assert stem_word("heroes") == stem_word("hero") == "hero"
+    assert stem_word("potatoes") == stem_word("potato") == "potato"
+    assert stem_word("shoes") == stem_word("shoe") == "shoe"
+    assert stem_word("indices") == stem_word("index") == "index"
+    assert stem_word("lives") == stem_word("life") == "life"
+    assert stem_word("children") == stem_word("child") == "child"
+    assert stem_word("women") == stem_word("woman") == "woman"
+    out = answer_question(
+        "The hero saved the city at dawn. The hero helped people escape.",
+        "what did heroes do",
+    )
+    assert "hero saved the city" in out
+
+
+def test_split_sentences_keeps_numeric_abbreviations_whole():
+    # Regression: "No. 5", "Fig. 3", month abbreviations and
+    # dotted acronyms split into fragments, so document Q&A
+    # quoted "No." as a sentence and summaries counted fragments
+    # as sentences.
+    assert split_sentences("No. 5 is ready. It works well.") == [
+        "No. 5 is ready.",
+        "It works well.",
+    ]
+    assert split_sentences("Fig. 3 shows growth. Sales rose.") == [
+        "Fig. 3 shows growth.",
+        "Sales rose.",
+    ]
+    assert split_sentences("Jan. 5 was cold. Snow fell.") == [
+        "Jan. 5 was cold.",
+        "Snow fell.",
+    ]
+    assert split_sentences("The U.S.A. team won. They celebrated.") == [
+        "The U.S.A. team won.",
+        "They celebrated.",
+    ]
+    # The same word still ends a real sentence without a digit.
+    assert split_sentences("He said no. Then he left.") == [
+        "He said no.",
+        "Then he left.",
+    ]
+
+
 def test_summarize_never_returns_empty_for_stopword_text():
     # Regression: when every sentence was stopwords alone nothing
     # could be scored, and the summary came back empty instead of

@@ -66,6 +66,15 @@ def test_cyber_instantiates_and_answers():
         # Analysis openers win over later report/triage nouns:
         ("analyse this triage report", TASK_ANALYSE),
         ("explain the triage process", TASK_ANALYSE),
+        # Regression: a triage/report verb aimed straight at a
+        # named indicator fell through to analysis because the
+        # item list only named "this alert" style targets.
+        ("triage CVE-2026-12345", TASK_TRIAGE),
+        ("can you triage CVE-2026-12345?", TASK_TRIAGE),
+        ("triage 10.0.0.8", TASK_TRIAGE),
+        ("report CVE-2026-12345", TASK_REPORT),
+        ("explain triage for CVE-2026-12345", TASK_ANALYSE),
+        ("analyse CVE-2026-12345", TASK_ANALYSE),
     ],
 )
 def test_detect_task(prompt, expected):

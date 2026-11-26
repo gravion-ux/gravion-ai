@@ -28,21 +28,59 @@ _SUMMARIZE_RE = re.compile(r"summarize\s*:\s*(.+)", re.IGNORECASE | re.DOTALL)
 # dotted forms (e.g. "e.g", "u.s"). Single uppercase initials
 # ("A. Smith") are handled separately in split_sentences.
 _ABBREVIATIONS = frozenset(
-    "dr mr mrs ms prof sr jr st vs etc e.g i.e u.s u.k a.m p.m".split()
+    "dr mr mrs ms prof sr jr st vs etc e.g i.e u.s u.k a.m p.m "
+    "dept est inc ltd corp al cf ed eds gen sen rep "
+    "gov sgt capt lt col maj rev hon ph.d m.d b.a m.a".split()
+)
+# Abbreviations that only abbreviate before a number ("No. 5",
+# "Fig. 3", "Jan. 5", "approx. 5"): the same words end real
+# sentences ("he said no. Then...", "Pi is 3.14 approx. Cats
+# sleep."), so their dot counts as an abbreviation dot only
+# when a digit follows.
+_NUMERIC_ABBREVIATIONS = frozenset(
+    "no fig figs eq vol pp p ch sec approx ca jan feb mar apr "
+    "jun jul aug sep sept oct nov dec".split()
 )
 _CLOSERS = "\"'”’)]"
 
 
-# Irregular -sis plurals whose regular "es" rule would land on a
-# stem the singular never produces ("analyses" -> "analys" while
-# "analysis" stays whole), plus two common non-plurals the final-s
-# rule would otherwise mangle ("news" -> "new", "lens" -> "len").
+# Irregular plurals whose regular rules would land on a stem the
+# singular never produces: -sis plurals ("analyses" -> "analys"
+# while "analysis" stays whole), -ices plurals ("indices" ->
+# "indice"), f -> ves plurals ("lives" -> "live" while "life"
+# stays whole) and suppletive plurals ("children", "women"),
+# plus two common non-plurals the final-s rule would otherwise
+# mangle ("news" -> "new", "lens" -> "len").
 _IRREGULAR_STEMS = {
     "analyses": "analysis",
     "crises": "crisis",
     "theses": "thesis",
     "diagnoses": "diagnosis",
     "hypotheses": "hypothesis",
+    "indices": "index",
+    "matrices": "matrix",
+    "vertices": "vertex",
+    "appendices": "appendix",
+    "cacti": "cactus",
+    "fungi": "fungus",
+    "lives": "life",
+    "wives": "wife",
+    "leaves": "leaf",
+    "wolves": "wolf",
+    "knives": "knife",
+    "halves": "half",
+    "shelves": "shelf",
+    "children": "child",
+    "men": "man",
+    "women": "woman",
+    "feet": "foot",
+    "teeth": "tooth",
+    "geese": "goose",
+    "mice": "mouse",
+    "people": "person",
+    "oxen": "ox",
+    "goes": "go",
+    "does": "does",
     "news": "news",
     "lens": "lens",
 }
@@ -54,11 +92,13 @@ def stem_word(word: str) -> str:
     Singular and plural forms must land on the same stem, or a
     question about a "class" never matches a document sentence
     about "classes". The rules only strip a plural ending: "ies"
-    becomes "y" ("cities" -> "city"), "es" drops after s/x/z/ch/sh
+    becomes "y" ("cities" -> "city"), "oes" drops its "es" in
+    longer words ("heroes" -> "hero", while short "shoes" keeps
+    its "e" via the final-s rule), "es" drops after s/x/z/ch/sh
     ("classes" -> "class", "boxes" -> "box"), and a final "s"
     drops unless the word ends in "ss", "us" or "is" ("class",
     "status" and "analysis" are not plurals). A short irregular
-    map covers the -sis plurals and non-plurals the regular rules
+    map covers the plurals and non-plurals the regular rules
     would split or mangle; anything else is returned unchanged.
     """
     irregular = _IRREGULAR_STEMS.get(word)
@@ -66,6 +106,8 @@ def stem_word(word: str) -> str:
         return irregular
     if len(word) > 4 and word.endswith("ies"):
         return word[:-3] + "y"
+    if len(word) > 5 and word.endswith("oes"):
+        return word[:-2]
     if len(word) > 4 and word.endswith("es"):
         stem = word[:-2]
         if stem.endswith(("s", "x", "z", "ch", "sh")):
@@ -81,10 +123,22 @@ def _is_abbreviation_dot(text: str, index: int) -> bool:
     while start >= 0 and (text[start].isalpha() or text[start] == "."):
         start -= 1
     word = text[start + 1 : index]
-    if word.lower() in _ABBREVIATIONS:
+    lowered = word.lower()
+    if lowered in _ABBREVIATIONS:
         return True
-    # A single uppercase letter before the dot is a name initial.
-    return len(word) == 1 and word.isupper()
+    # A single uppercase letter before the dot is a name initial;
+    # check it before the numeric rule so "P. Smith" stays whole.
+    if len(word) == 1 and word.isupper():
+        return True
+    if lowered in _NUMERIC_ABBREVIATIONS:
+        # "No. 5" abbreviates; "he said no. Then" ends a sentence.
+        following = text[index + 1 :].lstrip()
+        return bool(following) and following[0].isdigit()
+    # A dotted acronym of single letters ("U.S.A.") never ends a
+    # sentence mid-text, matching the listed "u.s"/"u.k" forms.
+    if "." in word and all(len(part) == 1 for part in word.split(".")):
+        return True
+    return False
 
 
 def split_sentences(text: str) -> list[str]:
