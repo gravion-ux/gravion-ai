@@ -1,0 +1,192 @@
+{"completion": "Ranking scores each result against the query and orders the best matches first.", "prompt": "explain how search ranking works"}
+{"completion": "Ranking scores each result against the query and orders the best matches first.", "prompt": "please explain how search ranking works"}
+{"completion": "Ranking scores each result against the query and orders the best matches first.", "prompt": "gravion search explain how search ranking works"}
+{"completion": "Ranking scores each result against the query and orders the best matches first.", "prompt": "help me explain how search ranking works"}
+{"completion": "An embedding turns text into numbers so similar meanings sit close together.", "prompt": "explain embeddings in simple words"}
+{"completion": "An embedding turns text into numbers so similar meanings sit close together.", "prompt": "please explain embeddings in simple words"}
+{"completion": "An embedding turns text into numbers so similar meanings sit close together.", "prompt": "gravion search explain embeddings in simple words"}
+{"completion": "An embedding turns text into numbers so similar meanings sit close together.", "prompt": "help me explain embeddings in simple words"}
+{"completion": "Cosine similarity measures the angle between two vectors; closer angles mean closer meaning.", "prompt": "explain cosine similarity simply"}
+{"completion": "Cosine similarity measures the angle between two vectors; closer angles mean closer meaning.", "prompt": "please explain cosine similarity simply"}
+{"completion": "Cosine similarity measures the angle between two vectors; closer angles mean closer meaning.", "prompt": "gravion search explain cosine similarity simply"}
+{"completion": "Cosine similarity measures the angle between two vectors; closer angles mean closer meaning.", "prompt": "help me explain cosine similarity simply"}
+{"completion": "The best passage shares the question's key terms and answers it directly, not just mentions it.", "prompt": "find the best passage for a question"}
+{"completion": "The best passage shares the question's key terms and answers it directly, not just mentions it.", "prompt": "please find the best passage for a question"}
+{"completion": "The best passage shares the question's key terms and answers it directly, not just mentions it.", "prompt": "gravion search find the best passage for a question"}
+{"completion": "The best passage shares the question's key terms and answers it directly, not just mentions it.", "prompt": "help me find the best passage for a question"}
+{"completion": "Keyword search matches exact words; semantic search matches meaning even with different words.", "prompt": "explain keyword search versus semantic search"}
+{"completion": "Keyword search matches exact words; semantic search matches meaning even with different words.", "prompt": "please explain keyword search versus semantic search"}
+{"completion": "Keyword search matches exact words; semantic search matches meaning even with different words.", "prompt": "gravion search explain keyword search versus semantic search"}
+{"completion": "Keyword search matches exact words; semantic search matches meaning even with different words.", "prompt": "help me explain keyword search versus semantic search"}
+{"completion": "A good query uses the rarest, most specific terms and drops filler words.", "prompt": "make a good search query"}
+{"completion": "A good query uses the rarest, most specific terms and drops filler words.", "prompt": "please make a good search query"}
+{"completion": "A good query uses the rarest, most specific terms and drops filler words.", "prompt": "gravion search make a good search query"}
+{"completion": "A good query uses the rarest, most specific terms and drops filler words.", "prompt": "help me make a good search query"}
+{"completion": "N-grams are short word sequences; they help search match phrases, not only single words.", "prompt": "explain n grams in search"}
+{"completion": "N-grams are short word sequences; they help search match phrases, not only single words.", "prompt": "please explain n grams in search"}
+{"completion": "N-grams are short word sequences; they help search match phrases, not only single words.", "prompt": "gravion search explain n grams in search"}
+{"completion": "N-grams are short word sequences; they help search match phrases, not only single words.", "prompt": "help me explain n grams in search"}
+{"completion": "Relevance ranking weighs term matches, phrase matches, freshness, and source quality.", "prompt": "rank documents by relevance"}
+{"completion": "Relevance ranking weighs term matches, phrase matches, freshness, and source quality.", "prompt": "please rank documents by relevance"}
+{"completion": "Relevance ranking weighs term matches, phrase matches, freshness, and source quality.", "prompt": "gravion search rank documents by relevance"}
+{"completion": "Relevance ranking weighs term matches, phrase matches, freshness, and source quality.", "prompt": "help me rank documents by relevance"}
+{"completion": "A sparse vector stores only its non-zero entries, which suits text with huge vocabularies.", "prompt": "explain sparse vectors"}
+{"completion": "A sparse vector stores only its non-zero entries, which suits text with huge vocabularies.", "prompt": "please explain sparse vectors"}
+{"completion": "A sparse vector stores only its non-zero entries, which suits text with huge vocabularies.", "prompt": "gravion search explain sparse vectors"}
+{"completion": "A sparse vector stores only its non-zero entries, which suits text with huge vocabularies.", "prompt": "help me explain sparse vectors"}
+{"completion": "TF-IDF rewards words frequent in a document but rare across the collection.", "prompt": "explain tf idf in simple words"}
+{"completion": "TF-IDF rewards words frequent in a document but rare across the collection.", "prompt": "please explain tf idf in simple words"}
+{"completion": "TF-IDF rewards words frequent in a document but rare across the collection.", "prompt": "gravion search explain tf idf in simple words"}
+{"completion": "TF-IDF rewards words frequent in a document but rare across the collection.", "prompt": "help me explain tf idf in simple words"}
+{"completion": "Passage search embeds each passage and returns the ones nearest the query.", "prompt": "search passages about a topic"}
+{"completion": "Passage search embeds each passage and returns the ones nearest the query.", "prompt": "please search passages about a topic"}
+{"completion": "Passage search embeds each passage and returns the ones nearest the query.", "prompt": "gravion search search passages about a topic"}
+{"completion": "Passage search embeds each passage and returns the ones nearest the query.", "prompt": "help me search passages about a topic"}
+{"completion": "Scores show how strong each match is, so weak results can be filtered or explained.", "prompt": "explain why search results need scores"}
+{"completion": "Scores show how strong each match is, so weak results can be filtered or explained.", "prompt": "please explain why search results need scores"}
+{"completion": "Scores show how strong each match is, so weak results can be filtered or explained.", "prompt": "gravion search explain why search results need scores"}
+{"completion": "Scores show how strong each match is, so weak results can be filtered or explained.", "prompt": "help me explain why search results need scores"}
+{"completion": "Add the specific noun, the place or date, and remove words every document contains.", "prompt": "improve a vague search query"}
+{"completion": "Add the specific noun, the place or date, and remove words every document contains.", "prompt": "please improve a vague search query"}
+{"completion": "Add the specific noun, the place or date, and remove words every document contains.", "prompt": "gravion search improve a vague search query"}
+{"completion": "Add the specific noun, the place or date, and remove words every document contains.", "prompt": "help me improve a vague search query"}
+{"completion": "Indexing precomputes searchable structures so queries answer in milliseconds.", "prompt": "explain document indexing"}
+{"completion": "Indexing precomputes searchable structures so queries answer in milliseconds.", "prompt": "please explain document indexing"}
+{"completion": "Indexing precomputes searchable structures so queries answer in milliseconds.", "prompt": "gravion search explain document indexing"}
+{"completion": "Indexing precomputes searchable structures so queries answer in milliseconds.", "prompt": "help me explain document indexing"}
+{"completion": "Exact phrase search requires the words together in order, usually marked with quotes.", "prompt": "find exact phrase matches in text"}
+{"completion": "Exact phrase search requires the words together in order, usually marked with quotes.", "prompt": "please find exact phrase matches in text"}
+{"completion": "Exact phrase search requires the words together in order, usually marked with quotes.", "prompt": "gravion search find exact phrase matches in text"}
+{"completion": "Exact phrase search requires the words together in order, usually marked with quotes.", "prompt": "help me find exact phrase matches in text"}
+{"completion": "Synonym expansion lets a query match related words, widening recall without losing precision.", "prompt": "explain synonyms in search"}
+{"completion": "Synonym expansion lets a query match related words, widening recall without losing precision.", "prompt": "please explain synonyms in search"}
+{"completion": "Synonym expansion lets a query match related words, widening recall without losing precision.", "prompt": "gravion search explain synonyms in search"}
+{"completion": "Synonym expansion lets a query match related words, widening recall without losing precision.", "prompt": "help me explain synonyms in search"}
+{"completion": "Stronger evidence answers directly, cites specifics, and comes from reliable sources.", "prompt": "rank answers by evidence strength"}
+{"completion": "Stronger evidence answers directly, cites specifics, and comes from reliable sources.", "prompt": "please rank answers by evidence strength"}
+{"completion": "Stronger evidence answers directly, cites specifics, and comes from reliable sources.", "prompt": "gravion search rank answers by evidence strength"}
+{"completion": "Stronger evidence answers directly, cites specifics, and comes from reliable sources.", "prompt": "help me rank answers by evidence strength"}
+{"completion": "Stop words like the and of carry little meaning, so search often ignores them.", "prompt": "explain stop words in search"}
+{"completion": "Stop words like the and of carry little meaning, so search often ignores them.", "prompt": "please explain stop words in search"}
+{"completion": "Stop words like the and of carry little meaning, so search often ignores them.", "prompt": "gravion search explain stop words in search"}
+{"completion": "Stop words like the and of carry little meaning, so search often ignores them.", "prompt": "help me explain stop words in search"}
+{"completion": "Explainable results show matched terms and scores, so users see why each result ranked.", "prompt": "make search results explainable"}
+{"completion": "Explainable results show matched terms and scores, so users see why each result ranked.", "prompt": "please make search results explainable"}
+{"completion": "Explainable results show matched terms and scores, so users see why each result ranked.", "prompt": "gravion search make search results explainable"}
+{"completion": "Explainable results show matched terms and scores, so users see why each result ranked.", "prompt": "help me make search results explainable"}
+{"completion": "Recall is how much relevant material was found; precision is how much found material is relevant.", "prompt": "explain recall and precision"}
+{"completion": "Recall is how much relevant material was found; precision is how much found material is relevant.", "prompt": "please explain recall and precision"}
+{"completion": "Recall is how much relevant material was found; precision is how much found material is relevant.", "prompt": "gravion search explain recall and precision"}
+{"completion": "Recall is how much relevant material was found; precision is how much found material is relevant.", "prompt": "help me explain recall and precision"}
+{"completion": "Document search jumps to matching sections and shows context around each hit.", "prompt": "search within a long document"}
+{"completion": "Document search jumps to matching sections and shows context around each hit.", "prompt": "please search within a long document"}
+{"completion": "Document search jumps to matching sections and shows context around each hit.", "prompt": "gravion search search within a long document"}
+{"completion": "Document search jumps to matching sections and shows context around each hit.", "prompt": "help me search within a long document"}
+{"completion": "A vector database stores embeddings and finds nearest neighbors quickly at scale.", "prompt": "explain vector databases simply"}
+{"completion": "A vector database stores embeddings and finds nearest neighbors quickly at scale.", "prompt": "please explain vector databases simply"}
+{"completion": "A vector database stores embeddings and finds nearest neighbors quickly at scale.", "prompt": "gravion search explain vector databases simply"}
+{"completion": "A vector database stores embeddings and finds nearest neighbors quickly at scale.", "prompt": "help me explain vector databases simply"}
+{"completion": "Similarity search embeds the text and returns documents with the closest vectors.", "prompt": "find similar documents to a given text"}
+{"completion": "Similarity search embeds the text and returns documents with the closest vectors.", "prompt": "please find similar documents to a given text"}
+{"completion": "Similarity search embeds the text and returns documents with the closest vectors.", "prompt": "gravion search find similar documents to a given text"}
+{"completion": "Similarity search embeds the text and returns documents with the closest vectors.", "prompt": "help me find similar documents to a given text"}
+{"completion": "Query expansion adds related terms so relevant documents using other words still match.", "prompt": "explain query expansion"}
+{"completion": "Query expansion adds related terms so relevant documents using other words still match.", "prompt": "please explain query expansion"}
+{"completion": "Query expansion adds related terms so relevant documents using other words still match.", "prompt": "gravion search explain query expansion"}
+{"completion": "Query expansion adds related terms so relevant documents using other words still match.", "prompt": "help me explain query expansion"}
+{"completion": "For support, rank passages that answer the exact problem above general background.", "prompt": "rank passages for a support question"}
+{"completion": "For support, rank passages that answer the exact problem above general background.", "prompt": "please rank passages for a support question"}
+{"completion": "For support, rank passages that answer the exact problem above general background.", "prompt": "gravion search rank passages for a support question"}
+{"completion": "For support, rank passages that answer the exact problem above general background.", "prompt": "help me rank passages for a support question"}
+{"completion": "Hashing maps each term to a fixed bucket, giving compact vectors without a stored vocabulary.", "prompt": "explain hashing tricks for text features"}
+{"completion": "Hashing maps each term to a fixed bucket, giving compact vectors without a stored vocabulary.", "prompt": "please explain hashing tricks for text features"}
+{"completion": "Hashing maps each term to a fixed bucket, giving compact vectors without a stored vocabulary.", "prompt": "gravion search explain hashing tricks for text features"}
+{"completion": "Hashing maps each term to a fixed bucket, giving compact vectors without a stored vocabulary.", "prompt": "help me explain hashing tricks for text features"}
+{"completion": "Notes search works best with dates, names, and decision keywords indexed together.", "prompt": "make a search over meeting notes"}
+{"completion": "Notes search works best with dates, names, and decision keywords indexed together.", "prompt": "please make a search over meeting notes"}
+{"completion": "Notes search works best with dates, names, and decision keywords indexed together.", "prompt": "gravion search make a search over meeting notes"}
+{"completion": "Notes search works best with dates, names, and decision keywords indexed together.", "prompt": "help me make a search over meeting notes"}
+{"completion": "Duplicates waste ranks; deduplication keeps the strongest copy of near-identical results.", "prompt": "explain duplicate results in search"}
+{"completion": "Duplicates waste ranks; deduplication keeps the strongest copy of near-identical results.", "prompt": "please explain duplicate results in search"}
+{"completion": "Duplicates waste ranks; deduplication keeps the strongest copy of near-identical results.", "prompt": "gravion search explain duplicate results in search"}
+{"completion": "Duplicates waste ranks; deduplication keeps the strongest copy of near-identical results.", "prompt": "help me explain duplicate results in search"}
+{"completion": "Quote search matches the exact phrase first, then checks the earliest reliable source.", "prompt": "find the source of a quote"}
+{"completion": "Quote search matches the exact phrase first, then checks the earliest reliable source.", "prompt": "please find the source of a quote"}
+{"completion": "Quote search matches the exact phrase first, then checks the earliest reliable source.", "prompt": "gravion search find the source of a quote"}
+{"completion": "Quote search matches the exact phrase first, then checks the earliest reliable source.", "prompt": "help me find the source of a quote"}
+{"completion": "Freshness boosts newer results when the topic changes quickly, like news or prices.", "prompt": "explain freshness in ranking"}
+{"completion": "Freshness boosts newer results when the topic changes quickly, like news or prices.", "prompt": "please explain freshness in ranking"}
+{"completion": "Freshness boosts newer results when the topic changes quickly, like news or prices.", "prompt": "gravion search explain freshness in ranking"}
+{"completion": "Freshness boosts newer results when the topic changes quickly, like news or prices.", "prompt": "help me explain freshness in ranking"}
+{"completion": "Code search matches identifiers exactly and ranks definitions above usages.", "prompt": "search code for a function name"}
+{"completion": "Code search matches identifiers exactly and ranks definitions above usages.", "prompt": "please search code for a function name"}
+{"completion": "Code search matches identifiers exactly and ranks definitions above usages.", "prompt": "gravion search search code for a function name"}
+{"completion": "Code search matches identifiers exactly and ranks definitions above usages.", "prompt": "help me search code for a function name"}
+{"completion": "Facets filter results by category, date, or type while keeping counts visible.", "prompt": "explain faceted search filters"}
+{"completion": "Facets filter results by category, date, or type while keeping counts visible.", "prompt": "please explain faceted search filters"}
+{"completion": "Facets filter results by category, date, or type while keeping counts visible.", "prompt": "gravion search explain faceted search filters"}
+{"completion": "Facets filter results by category, date, or type while keeping counts visible.", "prompt": "help me explain faceted search filters"}
+{"completion": "Beginner ranking favors clear explanations, worked examples, and trusted educational sources.", "prompt": "rank web pages for a beginner question"}
+{"completion": "Beginner ranking favors clear explanations, worked examples, and trusted educational sources.", "prompt": "please rank web pages for a beginner question"}
+{"completion": "Beginner ranking favors clear explanations, worked examples, and trusted educational sources.", "prompt": "gravion search rank web pages for a beginner question"}
+{"completion": "Beginner ranking favors clear explanations, worked examples, and trusted educational sources.", "prompt": "help me rank web pages for a beginner question"}
+{"completion": "Stemming reduces words to a root form so running and runs can match.", "prompt": "explain stemming in search"}
+{"completion": "Stemming reduces words to a root form so running and runs can match.", "prompt": "please explain stemming in search"}
+{"completion": "Stemming reduces words to a root form so running and runs can match.", "prompt": "gravion search explain stemming in search"}
+{"completion": "Stemming reduces words to a root form so running and runs can match.", "prompt": "help me explain stemming in search"}
+{"completion": "Date search normalizes formats first, then matches the exact day, month, or year asked.", "prompt": "find passages mentioning a date"}
+{"completion": "Date search normalizes formats first, then matches the exact day, month, or year asked.", "prompt": "please find passages mentioning a date"}
+{"completion": "Date search normalizes formats first, then matches the exact day, month, or year asked.", "prompt": "gravion search find passages mentioning a date"}
+{"completion": "Date search normalizes formats first, then matches the exact day, month, or year asked.", "prompt": "help me find passages mentioning a date"}
+{"completion": "Zero results mean the query terms never co-occur; broaden terms or drop the rarest one.", "prompt": "explain zero result searches"}
+{"completion": "Zero results mean the query terms never co-occur; broaden terms or drop the rarest one.", "prompt": "please explain zero result searches"}
+{"completion": "Zero results mean the query terms never co-occur; broaden terms or drop the rarest one.", "prompt": "gravion search explain zero result searches"}
+{"completion": "Zero results mean the query terms never co-occur; broaden terms or drop the rarest one.", "prompt": "help me explain zero result searches"}
+{"completion": "Typo tolerance uses edit distance to match near-spellings of query terms.", "prompt": "make search tolerant of typos"}
+{"completion": "Typo tolerance uses edit distance to match near-spellings of query terms.", "prompt": "please make search tolerant of typos"}
+{"completion": "Typo tolerance uses edit distance to match near-spellings of query terms.", "prompt": "gravion search make search tolerant of typos"}
+{"completion": "Typo tolerance uses edit distance to match near-spellings of query terms.", "prompt": "help me make search tolerant of typos"}
+{"completion": "Snippets show the matching context so users can judge a result before opening it.", "prompt": "explain result snippets"}
+{"completion": "Snippets show the matching context so users can judge a result before opening it.", "prompt": "please explain result snippets"}
+{"completion": "Snippets show the matching context so users can judge a result before opening it.", "prompt": "gravion search explain result snippets"}
+{"completion": "Snippets show the matching context so users can judge a result before opening it.", "prompt": "help me explain result snippets"}
+{"completion": "Legal ranking favors exact defined terms and the governing clause over mentions.", "prompt": "rank legal clauses by relevance"}
+{"completion": "Legal ranking favors exact defined terms and the governing clause over mentions.", "prompt": "please rank legal clauses by relevance"}
+{"completion": "Legal ranking favors exact defined terms and the governing clause over mentions.", "prompt": "gravion search rank legal clauses by relevance"}
+{"completion": "Legal ranking favors exact defined terms and the governing clause over mentions.", "prompt": "help me rank legal clauses by relevance"}
+{"completion": "Personalization reorders results using history and location, which can help or bias.", "prompt": "explain personalization in search"}
+{"completion": "Personalization reorders results using history and location, which can help or bias.", "prompt": "please explain personalization in search"}
+{"completion": "Personalization reorders results using history and location, which can help or bias.", "prompt": "gravion search explain personalization in search"}
+{"completion": "Personalization reorders results using history and location, which can help or bias.", "prompt": "help me explain personalization in search"}
+{"completion": "Knowledge search works when articles use the words users actually type.", "prompt": "search a knowledge base effectively"}
+{"completion": "Knowledge search works when articles use the words users actually type.", "prompt": "please search a knowledge base effectively"}
+{"completion": "Knowledge search works when articles use the words users actually type.", "prompt": "gravion search search a knowledge base effectively"}
+{"completion": "Knowledge search works when articles use the words users actually type.", "prompt": "help me search a knowledge base effectively"}
+{"completion": "BM25 scores term frequency with saturation and document length normalization.", "prompt": "explain bm25 ranking simply"}
+{"completion": "BM25 scores term frequency with saturation and document length normalization.", "prompt": "please explain bm25 ranking simply"}
+{"completion": "BM25 scores term frequency with saturation and document length normalization.", "prompt": "gravion search explain bm25 ranking simply"}
+{"completion": "BM25 scores term frequency with saturation and document length normalization.", "prompt": "help me explain bm25 ranking simply"}
+{"completion": "Contradiction search pairs passages on the same claim with opposing statements.", "prompt": "find contradictions between passages"}
+{"completion": "Contradiction search pairs passages on the same claim with opposing statements.", "prompt": "please find contradictions between passages"}
+{"completion": "Contradiction search pairs passages on the same claim with opposing statements.", "prompt": "gravion search find contradictions between passages"}
+{"completion": "Contradiction search pairs passages on the same claim with opposing statements.", "prompt": "help me find contradictions between passages"}
+{"completion": "Chunking splits documents into passages so search can return the exact relevant part.", "prompt": "explain chunking documents for search"}
+{"completion": "Chunking splits documents into passages so search can return the exact relevant part.", "prompt": "please explain chunking documents for search"}
+{"completion": "Chunking splits documents into passages so search can return the exact relevant part.", "prompt": "gravion search explain chunking documents for search"}
+{"completion": "Chunking splits documents into passages so search can return the exact relevant part.", "prompt": "help me explain chunking documents for search"}
+{"completion": "Difficulty ranking uses prerequisites, jargon density, and assumed prior knowledge.", "prompt": "rank tutorials by difficulty"}
+{"completion": "Difficulty ranking uses prerequisites, jargon density, and assumed prior knowledge.", "prompt": "please rank tutorials by difficulty"}
+{"completion": "Difficulty ranking uses prerequisites, jargon density, and assumed prior knowledge.", "prompt": "gravion search rank tutorials by difficulty"}
+{"completion": "Difficulty ranking uses prerequisites, jargon density, and assumed prior knowledge.", "prompt": "help me rank tutorials by difficulty"}
+{"completion": "Metrics like precision at k measure how many top results were actually relevant.", "prompt": "explain search evaluation metrics"}
+{"completion": "Metrics like precision at k measure how many top results were actually relevant.", "prompt": "please explain search evaluation metrics"}
+{"completion": "Metrics like precision at k measure how many top results were actually relevant.", "prompt": "gravion search explain search evaluation metrics"}
+{"completion": "Metrics like precision at k measure how many top results were actually relevant.", "prompt": "help me explain search evaluation metrics"}
+{"completion": "Multilingual search indexes each language, detects query language, and ranks within it first.", "prompt": "make a multilingual search plan"}
+{"completion": "Multilingual search indexes each language, detects query language, and ranks within it first.", "prompt": "please make a multilingual search plan"}
+{"completion": "Multilingual search indexes each language, detects query language, and ranks within it first.", "prompt": "gravion search make a multilingual search plan"}
+{"completion": "Multilingual search indexes each language, detects query language, and ranks within it first.", "prompt": "help me make a multilingual search plan"}
+{"completion": "Top results optimize matching signals, not truth; verify claims against sources.", "prompt": "explain why the top result can be wrong"}
+{"completion": "Top results optimize matching signals, not truth; verify claims against sources.", "prompt": "please explain why the top result can be wrong"}
+{"completion": "Top results optimize matching signals, not truth; verify claims against sources.", "prompt": "gravion search explain why the top result can be wrong"}
+{"completion": "Top results optimize matching signals, not truth; verify claims against sources.", "prompt": "help me explain why the top result can be wrong"}

@@ -1,0 +1,14 @@
+{
+  "payload": {
+    "name": "document-qa",
+    "type": "document-qa",
+    "version": "0.1.0",
+    "entrypoint": "gravion_ai.modules.document_qa.module:DocumentQAModule",
+    "files": {
+      "__init__.py": "697ecc3f7c108b015957a5c1dd180bbd176464fd5aab8fe5734be279f2d925eb",
+      "module.py": "30a3a560dfd8263536aa7b23448950a761ee23bf9a1a2457eef90f51710e5f11"
+    }
+  },
+  "signature": "",
+  "note": "Unsigned in the repo: the issuer private key is (correctly) not distributed. The project owner signs this manifest with `gravion license sign-module` before a production deployment; production mode refuses unsigned or tampered modules."
+}

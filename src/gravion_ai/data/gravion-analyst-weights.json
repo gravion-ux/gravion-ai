@@ -1,0 +1,2997 @@
+{
+  "architecture": "sparse n-gram embedding + direct linear softmax classifier",
+  "bias": [
+    0.05602048,
+    -0.99386889,
+    -0.9455002,
+    -1.27759457,
+    -0.2275665,
+    0.64894223,
+    0.79565024,
+    0.66692913,
+    -0.03308507,
+    -0.34549668,
+    0.72464293,
+    -1.37498152,
+    1.82905221,
+    0.18618946,
+    1.65873516,
+    -0.23445906,
+    0.08246382,
+    0.22179881,
+    -0.45765442,
+    -0.20039949,
+    0.93217403,
+    -0.37493908,
+    0.25103271,
+    0.61470515,
+    1.00985837,
+    0.98811716,
+    -0.88518584,
+    -0.17833903,
+    -0.68350762,
+    -0.57386225,
+    -1.01062369,
+    -2.54952574,
+    0.03611391,
+    0.18712001,
+    0.90427691,
+    -0.78351474,
+    -0.72375751,
+    1.35836303,
+    0.14429072,
+    -1.45450103,
+    0.17848949,
+    0.09430423,
+    1.19679964,
+    -0.01386992,
+    0.58075565,
+    -1.89902818,
+    0.36551106,
+    1.50957072
+  ],
+  "classes": [
+    "A confidence interval gives a plausible range for the true value, not a single guess.",
+    "A histogram groups values into bins and shows how many fall in each bin.",
+    "A moving average smooths noise by averaging a sliding window of recent values.",
+    "A percentage is a part per hundred; always name the base it is a percentage of.",
+    "A pivot table regroups rows by categories and summarizes values per group.",
+    "A simple forecast extends the recent trend and states its uncertainty honestly.",
+    "A/B testing compares two variants on real users and judges the difference statistically.",
+    "Add all values, divide by how many there are, and report the count beside the average.",
+    "Bars compare categories, lines show change over time, and scatter plots show relationships.",
+    "Check formulas cell by cell, trace precedents, and test totals against raw sums.",
+    "Cleaning: fix formats, remove duplicates, flag missing values, and document every change.",
+    "Cohort analysis groups users by start time and tracks each group separately.",
+    "Compare centers, spreads, and sample sizes; a difference matters only beyond natural variation.",
+    "Compare early and late averages, check direction, and note any single month that breaks the pattern.",
+    "Compare totals, averages, and the change in percentage, then look for the cause.",
+    "Compound growth applies each period's growth to the new total, not the original.",
+    "Correlation means values move together; causation needs a mechanism and controlled evidence.",
+    "Count blanks per column, check patterns in what is missing, and decide fill or drop rules.",
+    "Dataset summary: count, center, spread, extremes, and the one pattern that matters.",
+    "Experiment summary: groups, sample sizes, effect size, and whether it clears significance.",
+    "Growth rate is change divided by the starting value, expressed as a percentage.",
+    "Honest charts show full axes, label sources, and never hide inconvenient points.",
+    "KPIs are the few numbers tied directly to a goal, reviewed on a fixed cadence.",
+    "Larger samples give steadier estimates; tiny samples swing wildly with one new value.",
+    "Mean is the average, median is the middle value, and mode is the most frequent value.",
+    "Misleading charts truncate axes, cherry-pick ranges, or hide sample sizes.",
+    "Multiply each value by its weight, sum the products, and divide by total weight.",
+    "Normalization rescales values to a common range so different units can be compared.",
+    "Outliers are values far from the rest; verify them before deciding whether they are errors or signals.",
+    "Percentage change is new minus old, divided by old, times one hundred.",
+    "Quality checks cover completeness, consistency, valid ranges, and duplicate records.",
+    "Quartiles split sorted data into four equal parts, showing where the middle half lies.",
+    "Range is maximum minus minimum; it shows total spread in one number.",
+    "Readable tables align numbers, label units, sort meaningfully, and highlight key rows.",
+    "Regression fits a line or curve that best predicts one value from others.",
+    "Sampling picks a subset to represent the whole; random sampling reduces selection bias.",
+    "Seasonality repeats on a calendar cycle; compare matching seasons across years.",
+    "Share of total is each part divided by the sum, shown as a percentage.",
+    "Significance asks whether a difference is larger than chance alone would plausibly produce.",
+    "Skew means one tail is longer; the mean gets pulled toward the long tail.",
+    "Standard deviation measures typical distance from the mean; larger means more spread.",
+    "Survey summary: response count, top answers with percentages, and who was surveyed.",
+    "The mode is the most common value; report how often it appears beside it.",
+    "Time series data is ordered by time; look for trend, seasonality, and sudden shifts.",
+    "Use the median when outliers skew the mean, such as incomes or house prices.",
+    "Variance is the average squared distance from the mean; its square root is standard deviation.",
+    "Weekly patterns repeat by weekday; compare same weekdays across weeks before judging.",
+    "Weight averages by their counts before combining, or the small group distorts the result."
+  ],
+  "classifier": {
+    "data": "xPqj0BYABQEIQPbSJPYoDgfGGfsNQUbe+TsC3b7nCSbDyBrmHzYp6cDr3+tAIxvz5q4m69zbDhvK+VPO6PTy1fEMFswktuDYEiTWuPAYOhoIEM0r9k/11RffMCS77jUQB/Xo5/ZEKAIYQzL85znVFgg2yyEfMcAPJdkVzhIBPC0NNxH0+ygfzecmSSa1yO4o9zTTAgAv6Pq26OQ8zPmjKTjXG+Ap7d0l4NTRNd/l89ci1iQE8O9o7t/jLONF8RTvBiINHfL0Bu4M8+NKOeI+LN1jwyQOGv/lMRX0KskhzPMa3BP9xe3KFhkOPTUgwfgFLhoDJuoOryUvOx8EMT7fIzLOAO0L0zY88M4E5esnFUIbNhoD877L4fMAuAbfvOnMFjnYBfU+vtsGK/xIBsLX0SgN4wQ8/NTz8wUiKCPESLonFhMB+vHWaQrQAgIZRg8Y4+tBIhkQBTAHFrvJ6w0nr639AyUXzF4gA+0G9vcHEC742iO18OfqFBLl59ofN7/lDxkYAL7x5Pjj9w+5JPMqUzTi2wD93tK4BdLrFs0d8QYKZ/r6OGXdDQwWJRARGgc3Gs9WFgXGONvmFckiCwf5+vLj2w30vST25P2l3wjP184b9wvqC2zeLQolID/OJu80IddE7v0GEhP1/eG5LKP4z7/K+Jfu6CTm4gEJyOwiIubb/io+ASjZCgIk/njRGOATQAIwMv4eCeYJGtkyqsgG8swZ1fTS5RKw2Q8I8R3T1ugcwkAyC7rpGx/lzN4P6kr3BSDhNAvG5Avt5KFLBe++59X7HiVB+uEgIeoKAP8u8V0A6egT3uMTSB45T8kVCvrW5wUm+AgLL+8SDy+BG/MnB7+q0PIEyPrrKA0AF9gmJu9LOeTRDSH4Iy8D+xQd8gqwyCQxJQXq0yofxgw++RPd1OjwEejiDhy8QO8/2BtF4e8DKtkFu/49DM/ARN/iCxEfLsi/0/zqTu0QGsPB/xAV/M9CrCj+0/7++ezgLD4p1BrwE/7bDDTuBMDPDxxO5O/l",
+    "encoding": "int8-base64",
+    "scale": 0.03832284296591451
+  },
+  "dim": 16,
+  "direct": {
+    "data": "Gjs0MBvfFN7d4twy2+Da4iDY4eDeGyAhFN3hICPfFyrh4BcZ4NscMxzi3x0QL+Da8l709fQiM+gtL/Dy7Sbu7PPvMPHu9PLy8u9A8/I89PUmMPH07u3y8/Px6fDz8+vu8vPw8fDx8/Xw8Ufv8PDx9fEx8vT0QvLu8fH1Q0L0QPLyPe0/OPTx8fL08fLz8ezx9vf39/bx9fb0NfH48yv09/c2OvT19fb29fP080v09Pjv8j71MPb3+Pb18Pb2+DTy+fn5+vjx9TX08/b49PT1XPf49Pg3+vf49/dB+fhD+frx9vn49jL4+fn28/j4+fX1+vn7+/r0+fj2OPf69S/2+Prv8fn3+vr6+fb2+vj2+vsx9Pj7PPb6+/r5QPr6+zj2SvPv70r69vn6+/rx+fr4+fL4+fn69fPx9Pj59vX69GD6+fT1+vjw7kz6+fD0Yfn4/Pz9/fw9+kbz8/r8Sz/3+Pz69/r4/Pz8+vn0/Pz3/P329/v9+fb8/Pv6+fz7/ff4+/v6+/v5+vj6+fr6S/j39/r6+fv1+Pn6+fr5W/n5+Pw8+fr4+kL7+/r79fv6+/n5/f38/f36+/v7+/r9Sfs8+/37+vr7/fz8+/v7/Pz7/P36+vv9+vn8/Pz6+fz8/ftF+vv6+fn9+/z8/Pv3+/z8/fr7/fz8T/v5+v398Pb8Tvn9/fpO/Pz5+fr9/fv7+f38/P38/Pz8/P38+vj9+/n8/fw/+/z9+/z7/Pv8+VP8+vz8+/j6Qvz8/fz8+vz8/fT7/fz9/v04+/s/+vv9+vn7/P37+Pz8/f39/Pv6/f35/f34QPz9/Pz9/f38+/38/fz8/fz9/v04+/s/+vv9+vn7/P37+Pz8/f39/Pv6/f35/f34QPz9/Pz9/f38+/38/fz8/Pv8/Pz4+/n5+Pn8+ff5+/v6QVr6/Pz7+/v6+/z6/Pz4+Pr7+vv8/Pxd+vz8/Pr4/v7+/v77/f38+f3//Pj9/f79R/39/v7+/v38/v78/v4/+/3+/P3+//79+f7+/vz9/f39/f3+/fv+/f78/P38+/z+/v74/fz9Uf39/f79/f79/v39/Ub9/P3+/Pz3/v39/f3+/v36/UX8/P3+/Pz8+f39/P76/v3+/f1Z/v7u/v78/f7+/fj+/v79/f79/vz9/Pxu+vz8/P39/f36+/37/fz9/P38+/v7/P39/Pz8+/v9/fv7/fz7+/z9/Pz8/P1J+/P9/Pz9UP38/f77/f39/fz+/v39/Pz5+/79/f38/fv9/fz9//z7+fv+/lz7/P79/v3+/v35+/b7+/39/Pv8+f39+/37/v39/v1R/v1P/v76/P7+/fr9/v79/P7+/fz9/f39/f32/P1M/f78/fz9/vv+/P79/vz9+P39/f79/f39+fz9/v39/f39/f1O/f7+/v7+/v77/f38+f3//Pj9/f79R/39/v7+/v38/v78/v4/+/3+/P3+//79+f7+/vz9+2n8/fz7Qv36/f38/f79/fz9/f39/Pv8/P39/Pz7/fz8/Pz8/v37+/z9/fn8/P39/v7//v78/v39+v3+/Pr8/f79/P78/v7+/v38/v78/v47+/7+/Pv+//7+Sf7+/vv8/v7//v5C/Ur3/P3+/fv9+/79/P77/v7+/f34/v76/v78+v7+/fr+/v79/f79/v39/v7+/v38/fb8/Pz9/P38av39/P1F/f38/f34/v35/v77/P39/PT9/f38+/39/vz7/P39/Pz+/f3+/v77/f78/vn+/v79/fv8TP7+/f3+/Pz+/vz8/v37+v3+/ftH/f79/P39/Pz+/f3+/v77/f78/vn+/v79/fv8TP7+/f3+/Pz+/vz8/v37+v3+/ftH/f79/v7+/v79/v39+f3+/Pj9/v71/f39/v7+/f39/f3+/v78/fz+Rv3+/v79+/7+/kP9/v7+/v79/v39+f3+/Pj9/v71/f39/v7+/f39/f3+/v78/fz+Rv3+/v79+/7+/kP9/fz9/f37/Pv7/Pr9+/z7/Pz891z8/f39/Pz8/P37/f38+/z8/Pz9/Pxf/P39/fz6/f39/v32/P1M/f39/P39/v39/P79/f39/P39/fv8/v39+Ur+/f79/v39/f38/f39/v7//v78/v39+v3+/Pr8/f79/P78/v7+/v38/v78/v47+/7+/Pv+//7+Sf7+/vv8+/38+/v+/P39/v76/f39/l3+/f79/Pn79f3+/P3+/Pv+/vz8/v37+vz+/ftK+/79/v79/v79/f39/fz++f1B/f79/Pz8/v79/f39/v79/v79/Pz+/fz9/v78+/79/v1J/f79/v38/f39+/3+/fr9/v38SP39/f39/f39/fv9/f38/Er+/P39/v39/f39/fz8/vX////+U/79//////////7//////v7+/v///v/9//7+/v7///7+/v7///z+/v///vX////+U/79//////////7//////v7+/v///v/9//7+/v7///7+/v7///z+/v////7////8///6/v7//v7+/v/+/f7///////7+///+///9Sv///////////v/////+//7////8///6/v7//v7+/v/+/f7///////7+///+///9Sv///////////v/////+///////9//7+/P///vv+///+Sf7+///////+///+///9/v7//v/////+/v////7+//////9F/v74/v///v3////+/v////////7+///+///+/P////////////////////////9F/v74/v///v3////+/v////////7+///+///+/P///////////////////XT9/v7+7/79/v79/v/+/v3//v7//v3+/v7+/v3+/v7+/v79///9/f3+/v3+/f/+///////8/f39/f7+/v7+/P/+/v/+//////7y//9e///8/v///v3////+/v///v7+///////8/f39/f7+/v7+/P/+/v/+//////7y//9e///8/v///v3////+/v///v7+//7////3/v5N/v///v7//////f/+//////7+///9///++v7////////+///+//////7////3/v5N/v///v7//////f/+//////7+///9///++v7////////+///+///////////+///+TP7//vj+///+/P////////7+///+///8/v///f///////v////3+///////9///++f///0X//////P////////7+///+///9/v///v///////v////z////////9///++f///0X//////P////////7+///+///9/v///v///////v////z////////9/vn+/v///v7+/P///v/9//7///9f///x///+/v///v3////+/v////7+///////9/vn+/v///v7+/P///v/9//7///9f///x///+/v///v3////+/v////7+///////9/kz+/v7//v7+/f///v/9/////v/6///9///+//////v//////v////7+///////9/kz+/v7//v7+/f///v/9/////v/6///9///+//////v//////v////7+///////9/kz+/v7//v7+/f///v/9/////v/6///9///+//////v//////v////7+/f38+v3+/f7//v56/v7///v+//7//fz9/f///P3//Pz///79//78+f3+/vz9/P/+/v7+/v7//v7////9/v/+//3////+/v7+U////v///v7///7+//7+/f7///34//////////////z//////v7//f///v/6//7//v7+///+///+/////0j//////f////7+//////////z//////v7//f///v/6//7//v7+///+///+/////0j//////f////7+///////9/kz+/v7//v7+/f///v/9/////v/6///9///+//////v//////v////7+///////9/kz+/v7//v7+/f///v/9/////v/6///9///+//////v//////v////7+///+///+//7+/v7//f79///+/v7+///+///+///////+/v7//v7+///+/v////5L///+///+//7+/v7//f79///+/v7+///+///+///////+/v7//v7+///+/v////5L/vX////+U/79//////////7//////v7+/v///v/9//7+/v7///7+/v7///z+/v///vX////+U/79//////////7//////v7+/v///v/9//7+/v7///7+/v7///z+/v///vX////+U/79//////////7//////v7+/v///v/9//7+/v7///7+/v7///z+/v////////////z//v7//v/++P7///9Q/////v/9///+///+//////r//////f////7///////////z//v7//v/++P7///9Q/////v/9///+///+//////r//////f////7////////8/f39/f7+/v7+/P/+/v/+//////7y//9e///8/v///v3////+/v///v7+///////9/vn+/v///v7+/P///v/9//7///9f///x///+/v///v3////+/v////7+///////9/kz+/v7//v7+/f///v/9/////v/6///9///+//////v//////v////7+///////9/kz+/v7//v7+/f///v/9/////v/6///9///+//////v//////v////7+//////7+/vv9/f3+/v7+cv/+/f71//7+/v77/v77///9/v/+/vr+/v7+/f7+//79//////7+/vv9/f3+/v7+cv/+/f71//7+/v77/v77///9/v/+/vr+/v7+/f7+//79//////////z//v7//v/++P7///9Q/////v/9///+///+//////r//////f////7///////////z//v7//v/++P7///9Q/////v/9///+///+//////r//////f////7///////////z//////v7//f///v/6//7//v7+///+///+/////0j//////f////7+//////////z//////v7//f///v/6//7//v7+///+///+/////0j//////f////7+/f7+/f3//f7+///9///+/2L////+/fz9/P7//v7//v3///7+//79/f7///77/f/+///////8/f39/f7+/v7+/P/+/v/+//////7y//9e///8/v///v3////+/v///v7+//7////3/v5N/v///v7//////f/+//////7+///9///++v7////////+///+//////7////3/v5N/v///v7//////f/+//////7+///9///++v7////////+///+/////v7+/v79/f39/fz//f79/v78/v3+/v/+/m7+/v7+/v7+/f7+/f3+/v3+/v7+/v3+/v7+/f7//v////78//////7/////9P7+/v//+/3/ZP7///72///+/f7///7+/v/////+//7+//7+/lj//v7+//77/v7+/v/+//3//v7//v/+/v/+/f7+///+/f7+//79///+//7+//7+/lj//v7+//77/v7+/v/+//3//v7//v/+/v/+/f7+///+/f7+//79///+//7+//7+/lj//v7+//77/v7+/v/+//3//v7//v/+/v/+/f7+///+/f7+//79/f39df3+/v7////6//////z+/v7+/f39/f7//v3+/Pr///78/v75+/3//vz9/f7//f38+v3+/f7//v56/v7///v+//7//fz9/f///P3//Pz///79//78+f3+/vz9/P/+/f38+v3+/f7//v56/v7///v+//7//fz9/f///P3//Pz///79//78+f3+/vz9/P/+///////+/////f7//v3+/v/+/v/+//////7+///////5/v///f3/////Tv////3+///////+/////f7//v3+/v/+/v/+//////7+///////5/v///f3/////Tv////3+///+///+//7+/v7//f79///+/v7+///+///+///////+/v7//v7+///+/v////5L///+///+//7+/v7//f79///+/v7+///+///+///////+/v7//v7+///+/v////5L///////+/v/+//7//P9F/v///v7+///////////+///+/v7//v7////+/v/////9///////+/v/+//7//P9F/v///v7+///////////+///+/v7//v7////+/v/////9///////+/v7+/v7/UP77/v/+//7+//7//v7+///+///9/v7//v3////+/v/+//79///////+/v7+/v7/UP77/v/+//7+//7//v7+///+///9/v7//v3////+/v/+//79//////7+/vv9/f3+/v7+cv/+/f71//7+/v77/v77///9/v/+/vr+/v7+/f7+//79//////7+/vv9/f3+/v7+cv/+/f71//7+/v77/v77///9/v/+/vr+/v7+/f7+//79Zv39/fr//v/////9///+//7+/////v39/v///v7//vn///3+///9/fr///79+f/+Zv39/fr//v/////9///+//7+/////v39/v///v7//vn///3+///9/fr///79+f/+Zv39/fr//v/////9///+//7+/////v39/v///v7//vn///3+///9/fr///79+f/+/f7+/f3//f7+///9///+/2L////+/fz9/P7//v7//v3///7+//79/f7///77/f/+/f7+/f3//f7+///9///+/2L////+/fz9/P7//v7//v3///7+//79/f7///77/f/+/f7+/f3//f7+///9///+/2L////+/fz9/P7//v7//v3///7+//79/f7///77/f/+///+///+//7+/v7//f79///+/v7+///+///+///////+/v7//v7+///+/v////5L/v7+/f7//v////78//////7/////9P7+/v//+/3/ZP7///72///+/f7///7+/v///v7+/f7//v////78//////7/////9P7+/v//+/3/ZP7///72///+/f7///7+/v///v7+/v7///////79/v////7+////8v7+/v//+vz/9f7///5m//7+/v7///7//f///v7+/v7///////79/v////7+////8v7+/v//+vz/9f7///5m//7+/v7///7//f////7////8///6/v7//v7+/v/+/f7///////7+///+///9Sv///////////v/////+//7////8///6/v7//v7+/v/+/f7///////7+///+///9Sv///////////v/////+/v79/v3//v////7+/v7+//7+////aP79/f//+/3/9f7///7y///+/f7///7//v/+/v79/v3//v////7+/v7+//7+////aP79/f//+/3/9f7///7y///+/f7///7//v/+///////9//7+/P///vv+///+Sf7+///////+///+///9/v7//v/////+/v////7+///////9//7+/P///vv+///+Sf7+///////+///+///9/v7//v/////+/v////7+///////+/////vz//v7///9N/v/////+//7//vv////+/v7+9v///////v////7+///////+/////vz//v7///9N/v/////+//7//vv////+/v7+9v///////v////7+///////+/////vz//v7///9N/v/////+//7//vv////+/v7+9v///////v////7++v79/vv//v/////+//////7//////v39/v///v7//vn///7+///9/WT///z++//++v79/vv//v/////+//////7//////v39/v///v7//vn///7+///9/WT///z++//+///+///+//7+/v7//f79///+/v7+///+///+///////+/v7//v7+///+/v////5L///+///+//7+/v7//f79///+/v7+///+///+///////+/v7//v7+///+/v////5L/P37+/z//f7+//75///+//z+//7//fz8/P7+/f7+/fr+//39/v77f/z+/vv9/P/////////+///+TP7//vj+///+/P////////7+///+///8/v///f///////v////3+///////+///+TP7//vj+///+/P////////7+///+///8/v///f///////v////3+///////+///+TP7//vj+///+/P////////7+///+///8/v///f///////v////3+/v79/v3//v////7+/v7+//7+////aP79/f//+/3/9f7///7y///+/f7///7//v/+/v7+///+/v3+/v3+/f79/v3+/G7+/v///v7+///+/v7+/f7+/v3//v7u/v7///79/v7+///+/v3+/v3+/f79/v3+/G7+/v///v7+///+/v7+/f7+/v3//v7u/v7///79/vX////+U/79//////////7//////v7+/v///v/9//7+/v7///7+/v7///z+/v///XT9/v7+7/79/v79/v/+/v3//v7//v3+/v7+/v3+/v7+/v79///9/f3+/v3+/f/+/f38+v3+/f7//v56/v7///v+//7//fz9/f///P3//Pz///79//78+f3+/vz9/P/+/f38+v3+/f7//v56/v7///v+//7//fz9/f///P3//Pz///79//78+f3+/vz9/P/+Zv39/fr//v/////9///+//7+/////v39/v///v7//vn///3+///9/fr///79+f/+Zv39/fr//v/////9///+//7+/////v39/v///v7//vn///3+///9/fr///79+f/+/f7+/f3//f7+///9///+/2L////+/fz9/P7//v7//v3///7+//79/f7///77/f/+/f7+/f3//f7+///9///+/2L////+/fz9/P7//v7//v3///7+//79/f7///77/f/+/v7+/f7//v////78//////7/////9P7+/v//+/3/ZP7///72///+/f7///7+/v///v7+/v7///////79/v////7+////8v7+/v//+vz/9f7///5m//7+/v7///7//f///v79/v3//v////7+/v7+//7+////aP79/f//+/3/9f7///7y///+/f7///7//v/+/v79/f7//v7///79/v7///z//////l7+/f///f7//v3///7+//79/f3///78/f7//v79/f7//v7///79/v7///z//////l7+/f///f7//v3///7+//79/f3///78/f7//v7+/v7//v7////9/v/+//3////+/v7+U////v///v7///7+//7+/f7///34/////v7+/v7//v7////9/v/+//3////+/v7+U////v///v7///7+//7+/f7///34/////v/+/v7//v/////+//////z///////3++f///v///v7///7+//7+/v7///5P/v///v/+/v7//v/////+//////z///////3++f///v///v7///7+//7+/v7///5P/v///f5w/P3+/v7//v/7/v7+/v3//v/+/f38/f7//f3+/fz///79/v/9/f3//v3+/f/+/f5w/P3+/v7//v/7/v7+/v3//v/+/f38/f7//f3+/fz///79/v/9/f3//v3+/f/+/v7+/v7//v////79/v/+//3+////+/39/v7/Xvz/+/7///76///+/v7//v7+/v///v7+/v7//v////79/v/+//3+////+/39/v7/Xvz/+/7///76///+/v7//v7+/v///v/+/v7//v////7+//7///76//7//f7+/v7//Fr//P7///z9/f/+/v7///7+/v7//v/+/v7//v////7+//7///76//7//f7+/v7//Fr//P7///z9/f/+/v7///7+/v7//f39df3+/v7////6//////z+/v7+/f39/f7//v3+/Pr///78/v75+/3//vz9/f7//f39df3+/v7////6//////z+/v7+/f39/f7//v3+/Pr///78/v75+/3//vz9/f7/+f7+/WL//v/////+/v/+//3//////v79/v///v7//vr///7+///9/Pz///3++//++f7+/WL//v/////+/v/+//3//////v79/v///v7//vr///7+///9/Pz///3++//++f37+/r//v7+///9//////3+/v7//f39/v7+/v7//X////7+//78+/j//v399f7/+f37+/r//v7+///9//////3+/v7//f39/v7+/v7//X////7+//78+/j//v399f7//v////7//v////7+/v////7+///+/v7+/v///vz//v7//0z//v/+//7///7+/v7+/v////7//v////7+/v////7+///+/v7+/v///vz//v7//0z//v/+//7///7+/v7+/f79/f3+/v/////+///+/v3//////f5i/v7//f7//f3///7+//79/f3//vv9/f/+/f79/f3+/v/////+///+/v3//////f5i/v7//f7//f3///7+//79/f3//vv9/f/+/P37+/z//f7+//75///+//z+//7//fz8/P7+/f7+/fr+//39/v77f/z+/vv9/P///P37+/z//f7+//75///+//z+//7//fz8/P7+/f7+/fr+//39/v77f/z+/vv9/P//+v79/vv//v/////+//////7//////v39/v///v7//vn///7+///9/WT///z++//++v79/vv//v/////+//////7//////v39/v///v7//vn///7+///9/WT///z++//+/f7++v7//f////78/v/+//3//////f39/f///v7//f3///7+//9g+/7///39/f/+/f7++v7//f////78/v/+//3//////f39/f///v7//f3///7+//9g+/7///39/f/+/f7+/f3//f///v/9///+/v3///7//v37/f///v7///3+//7+//79+/3//1/9/f/+/f7+/f3//f///v/9///+/v3///7//v37/f///v7///3+//7+//79+/3//1/9/f/++P38/Pr//v7//v/8/v/+//z+///+/f79/f7//f7//fb//v79//79/Pv///39fP/++P38/Pr//v7//v/8/v/+//z+///+/f79/f7//f7//fb//v79//79/Pv///39fP/+///////9///++f///0X//////P////////7+///+///9/v///v///////v////z////////9///++f///0X//////P////////7+///+///9/v///v///////v////z////////+///+TP7//vj+///+/P////////7+///+///8/v///f///////v////3+///////+///+TP7//vj+///+/P////////7+///+///8/v///f///////v////3+/////////////P7//vv////+/v/+/////v7////////+//7/9////////v///0v+/////////////P7//vv////+/v/+/////v7////////+//7/9////////v///0v+///////+/////f7//v3+///4/v////////////7////+/v//Tv///////f////j////////+/////f7//v3+///4/v////////////7////+/v//Tv///////f////j////////+/////f7//v3+/v/+/v/+//////7+///////5/v///f3/////Tv////3+///////9///+/f///v3//v///v/+///////+///+//9C/f///v7/////+/////7///////9F/v74/v///v3////+/v////////7+///+///+/P////////////////////////9F/v74/v///v3////+/v////////7+///+///+/P////////////////////////9F/v74/v///v3////+/v////////7+///+///+/P/////////////////////////9/kz+/v7//v7+/f///v/9/////v/6///9///+//////v//////v////7+//////9F/v74/v///v3////+/v////////7+///+///+/P////////////////////////9F/v74/v///v3////+/v////////7+///+///+/P/////////////////////////+/v7+/v7/UP77/v/+//7+//7//v7+///+///9/v7//v3////+/v/+//79///////+/v7+/v7/UP77/v/+//7+//7//v7+///+///9/v7//v3////+/v/+//79///////+/v7+/v7/UP77/v/+//7+//7//v7+///+///9/v7//v3////+/v/+//79//////////z//v7//v/++P7///9Q/////v/9///+///+//////r//////f////7///////////z//v7//v/++P7///9Q/////v/9///+///+//////r//////f////7//XT9/v7+7/79/v79/v/+/v3//v7//v3+/v7+/v3+/v7+/v79///9/f3+/v3+/f/+/f79/f3+/v/////+///+/v3//////f5i/v7//f7//f3///7+//79/f3//vv9/f/+///////+///+TP7//vj+///+/P////////7+///+///8/v///f///////v////3+///////+///+TP7//vj+///+/P////////7+///+///8/v///f///////v////3+///////9///++f///0X//////P////////7+///+///9/v///v///////v////z////////9///++f///0X//////P////////7+///+///9/v///v///////v////z//v////7//v////7+/v////7+///+/v7+/v///vz//v7//0z//v/+//7///7+/v7+/v////7//v////7+/v////7+///+/v7+/v///vz//v7//0z//v/+//7///7+/v7+/////////////P7//vv////+/v/+/////v7////////+//7/9////////v///0v+/////////////P7//vv////+/v/+/////v7////////+//7/9////////v///0v+///////9//7+/P///vv+///+Sf7+///////+///+///9/v7//v/////+/v////7+/v79/f7//v7///79/v7///z//////l7+/f///f7//v3///7+//79/f3///78/f7/Zv39/fr//v/////9///+//7+/////v39/v///v7//vn///3+///9/fr///79+f/+Zv39/fr//v/////9///+//7+/////v39/v///v7//vn///3+///9/fr///79+f/+/v79/f7//v7///79/v7///z//////l7+/f///f7//v3///7+//79/f3///78/f7//v79/f7//v7///79/v7///z//////l7+/f///f7//v3///7+//79/f3///78/f7//v79/f7//v7///79/v7///z//////l7+/f///f7//v3///7+//79/f3///78/f7////////+/v/+//7//P9F/v///v7+///////////+///+/v7//v7////+/v/////9///////+/v/+//7//P9F/v///v7+///////////+///+/v7//v7////+/v/////9//7////8///6/v7//v7+/v/+/f7///////7+///+///9Sv///////////v/////+//////9F/v74/v///v3////+/v////////7+///+///+/P////////////////////7////3/v5N/v///v7//////f/+//////7+///9///++v7////////+///+/////v/+/v7//v/////+//////z///////3++f///v///v7///7+//7+/v7///5P/v///v7+/v7//v7////9/v/+//3////+/v7+U////v///v7///7+//7+/f7///34/////v7+/v7//v7////9/v/+//3////+/v7+U////v///v7///7+//7+/f7///34/////v7+/v7//v7////9/v/+//3////+/v7+U////v///v7///7+//7+/f7///34/////v7+/v7//v7////9/v/+//3////+/v7+U////v///v7///7+//7+/f7///34/////v/+/v7//v/////+//////z///////3++f///v///v7///7+//7+/v7///5P/v///v/+/v7//v/////+//////z///////3++f///v///v7///7+//7+/v7///5P/v/////+//7+//7+/lj//v7+//77/v7+/v/+//3//v7//v/+/v/+/f7+///+/f7+//79///+//7+//7+/lj//v7+//77/v7+/v/+//3//v7//v/+/v/+/f7+///+/f7+//79///+//7+//7+/lj//v7+//77/v7+/v/+//3//v7//v/+/v/+/f7+///+/f7+//79/v7+/v7///////79/v////7+////8v7+/v//+vz/9f7///5m//7+/v7///7//f///v7+/v79/f39/fz//f79/v78/v3+/v/+/m7+/v7+/v7+/f7+/f3+/v3+/v7+/v3+/v7+/v79/f39/fz//f79/v78/v3+/v/+/m7+/v7+/v7+/f7+/f3+/v3+/v7+/v3+///////+/////vz//v7///9N/v/////+//7//vv////+/v7+9v///////v////7+///////+/////vz//v7///9N/v/////+//7//vv////+/v7+9v///////v////7+///////+/////vz//v7///9N/v/////+//7//vv////+/v7+9v///////v////7+/v7+/v7//v7////9/v/+//3////+/v7+U////v///v7///7+//7+/f7///34///////////+/v/+//7//P9F/v///v7+///////////+///+/v7//v7////+/v/////9///////+/v/+//7//P9F/v///v7+///////////+///+/v7//v7////+/v/////9///////+/v/+//7//P9F/v///v7+///////////+///+/v7//v7////+/v/////9///////9///++f///0X//////P////////7+///+///9/v///v///////v////z////////9///++f///0X//////P////////7+///+///9/v///v///////v////z////////+/////f7//v3+/v/+/v/+//////7+///////5/v///f3/////Tv////3+///////+/////f7//v3+/v/+/v/+//////7+///////5/v///f3/////Tv////3+///////+/////f7//v3+/v/+/v/+//////7+///////5/v///f3/////Tv////3+/f5w/P3+/v7//v/7/v7+/v3//v/+/f38/f7//f3+/fz///79/v/9/f3//v3+/f/+/f5w/P3+/v7//v/7/v7+/v3//v/+/f38/f7//f3+/fz///79/v/9/f3//v3+/f/+/v7+/v7//v////79/v/+//3+////+/39/v7/Xvz/+/7///76///+/v7//v7+/v///v7+/v7//v////79/v/+//3+////+/39/v7/Xvz/+/7///76///+/v7//v7+/v///v7+/v7//v////79/v/+//3+////+/39/v7/Xvz/+/7///76///+/v7//v7+/v/////+//7+//7+/lj//v7+//77/v7+/v/+//3//v7//v/+/v/+/f7+///+/f7+//79///+//7+//7+/lj//v7+//77/v7+/v/+//3//v7//v/+/v/+/f7+///+/f7+//79///////9///+/f///v3//v///v/+///////+///+//9C/f///v7/////+/////7////////9///+/f///v3//v///v/+///////+///+//9C/f///v7/////+/////7//v7+/v7//v////79/v/+//3+////+/39/v7/Xvz/+/7///76///+/v7//v7+/v/////////+/v7+/v7/UP77/v/+//7+//7//v7+///+///9/v7//v3////+/v/+//79//////////z//////v7//f///v/6//7//v7+///+///+/////0j//////f////7+/v/+/v7//v////7+//7///76//7//f7+/v7//Fr//P7///z9/f/+/v7///7+/v7//v/+/v7//v////7+//7///76//7//f7+/v7//Fr//P7///z9/f/+/v7///7+/v7//v/+/v7//v////7+//7///76//7//f7+/v7//Fr//P7///z9/f/+/v7///7+/v7///////9F/v74/v///v3////+/v////////7+///+///+/P////////////////////////9F/v74/v///v3////+/v////////7+///+///+/P/////////////////////////+/////f7//v3+///4/v////////////7////+/v//Tv///////f////j//////////////P7//vv////+/v/+/////v7////////+//7/9////////v///0v+///////8/f39/f7+/v7+/P/+/v/+//////7y//9e///8/v///v3////+/v///v7+///////8/f39/f7+/v7+/P/+/v/+//////7y//9e///8/v///v3////+/v///v7+/f39df3+/v7////6//////z+/v7+/f39/f7//v3+/Pr///78/v75+/3//vz9/f7//f39df3+/v7////6//////z+/v7+/f39/f7//v3+/Pr///78/v75+/3//vz9/f7//v79/f7//v7///79/v7///z//////l7+/f///f7//v3///7+//79/f3///78/f7//v79/f7//v7///79/v7///z//////l7+/f///f7//v3///7+//79/f3///78/f7///////////z//v7//v/++P7///9Q/////v/9///+///+//////r//////f////7/+f7+/WL//v/////+/v/+//3//////v79/v///v7//vr///7+///9/Pz///3++//++f7+/WL//v/////+/v/+//3//////v79/v///v7//vr///7+///9/Pz///3++//++f7+/WL//v/////+/v/+//3//////v79/v///v7//vr///7+///9/Pz///3++//+/f7++v7//f////78/v/+//3//////f39/f///v7//f3///7+//9g+/7///39/f/+/v7+/f7//v////78//////7/////9P7+/v//+/3/ZP7///72///+/f7///7+/v///v7+/f7//v////78//////7/////9P7+/v//+/3/ZP7///72///+/f7///7+/v//+f37+/r//v7+///9//////3+/v7//f39/v7+/v7//X////7+//78+/j//v399f7/+f37+/r//v7+///9//////3+/v7//f39/v7+/v7//X////7+//78+/j//v399f7////////9///+/f///v3//v///v/+///////+///+//9C/f///v7/////+/////7////////9///+/f///v3//v///v/+///////+///+//9C/f///v7/////+/////7////////9///+/f///v3//v///v/+///////+///+//9C/f///v7/////+/////7///////////z//v7//v/++P7///9Q/////v/9///+///+//////r//////f////7///////////z//v7//v/++P7///9Q/////v/9///+///+//////r//////f////7///////////z//v7//v/++P7///9Q/////v/9///+///+//////r//////f////7///7////8///6/v7//v7+/v/+/f7///////7+///+///9Sv///////////v/////+/v////7//v////7+/v////7+///+/v7+/v///vz//v7//0z//v/+//7///7+/v7+/v////7//v////7+/v////7+///+/v7+/v///vz//v7//0z//v/+//7///7+/v7+/v////7//v////7+/v////7+///+/v7+/v///vz//v7//0z//v/+//7///7+/v7+/////////////P7//vv////+/v/+/////v7////////+//7/9////////v///0v+/f79/f3+/v/////+///+/v3//////f5i/v7//f7//f3///7+//79/f3//vv9/f/+/f79/f3+/v/////+///+/v3//////f5i/v7//f7//f3///7+//79/f3//vv9/f/+/f79/f3+/v/////+///+/v3//////f5i/v7//f7//f3///7+//79/f3//vv9/f/+/v7+/v7///////79/v////7+////8v7+/v//+vz/9f7///5m//7+/v7///7//f///v7+/v7///////79/v////7+////8v7+/v//+vz/9f7///5m//7+/v7///7//f/////////+/////f7//v3+///4/v////////////7////+/v//Tv///////f////j////////+/////f7//v3+///4/v////////////7////+/v//Tv///////f////j////////+/////f7//v3+///4/v////////////7////+/v//Tv///////f////j//f7+/f3//f///v/9///+/v3///7//v37/f///v7///3+//7+//79+/3//1/9/f/+/f7+/f3//f///v/9///+/v3///7//v37/f///v7///3+//7+//79+/3//1/9/f/+//////////z//////v7//f///v/6//7//v7+///+///+/////0j//////f////7+//////////z//////v7//f///v/6//7//v7+///+///+/////0j//////f////7+//////////z//////v7//f///v/6//7//v7+///+///+/////0j//////f////7+/f7++v7//f////78/v/+//3//////f39/f///v7//f3///7+//9g+/7///39/f/+/f7++v7//f////78/v/+//3//////f39/f///v7//f3///7+//9g+/7///39/f/+//7////3/v5N/v///v7//////f/+//////7+///9///++v7////////+///+//////7////3/v5N/v///v7//////f/+//////7+///9///++v7////////+///+/////v////7//v////7+/v////7+///+/v7+/v///vz//v7//0z//v/+//7///7+/v7+/f79/f3+/v/////+///+/v3//////f5i/v7//f7//f3///7+//79/f3//vv9/f/+/f79/f3+/v/////+///+/v3//////f5i/v7//f7//f3///7+//79/f3//vv9/f/+/P37+/z//f7+//75///+//z+//7//fz8/P7+/f7+/fr+//39/v77f/z+/vv9/P///P37+/z//f7+//75///+//z+//7//fz8/P7+/f7+/fr+//39/v77f/z+/vv9/P///v7+/v79/f39/fz//f79/v78/v3+/v/+/m7+/v7+/v7+/f7+/f3+/v3+/v7+/v3+/v7+/v79/f39/fz//f79/v78/v3+/v/+/m7+/v7+/v7+/f7+/f3+/v3+/v7+/v3+/v7+/v79/f39/fz//f79/v78/v3+/v/+/m7+/v7+/v7+/f7+/f3+/v3+/v7+/v3+///////+///+TP7//vj+///+/P////////7+///+///8/v///f///////v////3++v79/vv//v/////+//////7//////v39/v///v7//vn///7+///9/WT///z++//++v79/vv//v/////+//////7//////v39/v///v7//vn///7+///9/WT///z++//++v79/vv//v/////+//////7//////v39/v///v7//vn///7+///9/WT///z++//+/f7++v7//f////78/v/+//3//////f39/f///v7//f3///7+//9g+/7///39/f/+/f7++v7//f////78/v/+//3//////f39/f///v7//f3///7+//9g+/7///39/f/+/f7++v7//f////78/v/+//3//////f39/f///v7//f3///7+//9g+/7///39/f/+///////9//7+/P///vv+///+Sf7+///////+///+///9/v7//v/////+/v////7+///////9//7+/P///vv+///+Sf7+///////+///+///9/v7//v/////+/v////7+/v7+///+/v3+/v3+/f79/v3+/G7+/v///v7+///+/v7+/f7+/v3//v7u/v7///79/v7+///+/v3+/v3+/f79/v3+/G7+/v///v7+///+/v7+/f7+/v3//v7u/v7///79//7///79/v39/v3//v7+/v7+++79/v7+/v7+/v/+/v79/f7+/v/+/v5w/v/+//79//7///79/v39/v3//v7+/v7+++79/v7+/v7+/v/+/v79/f7+/v/+/v5w/v/+//79//7///79/v39/v3//v7+/v7+++79/v7+/v7+/v/+/v79/f7+/v/+/v5w/v/+//79//7///79/v39/v3//v7+/v7+++79/v7+/v7+/v/+/v79/f7+/v/+/v5w/v/+//79//7////8///6/v7//v7+/v/+/f7///////7+///+///9Sv///////////v/////+//7////8///6/v7//v7+/v/+/f7///////7+///+///9Sv///////////v/////++f7+/WL//v/////+/v/+//3//////v79/v///v7//vr///7+///9/Pz///3++//++f7+/WL//v/////+/v/+//3//////v79/v///v7//vr///7+///9/Pz///3++//+/vX////+U/79//////////7//////v7+/v///v/9//7+/v7///7+/v7///z+/v///vX////+U/79//////////7//////v7+/v///v/9//7+/v7///7+/v7///z+/v/////////+/////f7//v3+/v/+/v/+//////7+///////5/v///f3/////Tv////3+///////+/////f7//v3+/v/+/v/+//////7+///////5/v///f3/////Tv////3+///////9///+/f///v3//v///v/+///////+///+//9C/f///v7/////+/////7////////9///+/f///v3//v///v/+///////+///+//9C/f///v7/////+/////7////////+/v/+//7//P9F/v///v7+///////////+///+/v7//v7////+/v/////9///////+/v/+//7//P9F/v///v7+///////////+///+/v7//v7////+/v/////9///////+/v/+//7//P9F/v///v7+///////////+///+/v7//v7////+/v/////9/f7+/f3//f///v/9///+/v3///7//v37/f///v7///3+//7+//79+/3//1/9/f/+/f7+/f3//f///v/9///+/v3///7//v37/f///v7///3+//7+//79+/3//1/9/f/+/f7+/f3//f///v/9///+/v3///7//v37/f///v7///3+//7+//79+/3//1/9/f/+//////////z//////v7//f///v/6//7//v7+///+///+/////0j//////f////7+//////////z//////v7//f///v/6//7//v7+///+///+/////0j//////f////7+//////////z//////v7//f///v/6//7//v7+///+///+/////0j//////f////7+///////9///++f///0X//////P////////7+///+///9/v///v///////v////z////////9///++f///0X//////P////////7+///+///9/v///v///////v////z////////9///++f///0X//////P////////7+///+///9/v///v///////v////z////////+/v7+/v7/UP77/v/+//7+//7//v7+///+///9/v7//v3////+/v/+//79///////+/v7+/v7/UP77/v/+//7+//7//v7+///+///9/v7//v3////+/v/+//79///////+/v7+/v7/UP77/v/+//7+//7//v7+///+///9/v7//v3////+/v/+//79///////+/////f7//v3+/v/+/v/+//////7+///////5/v///f3/////Tv////3+///////+/////vz//v7///9N/v/////+//7//vv////+/v7+9v///////v////7+///////+/////vz//v7///9N/v/////+//7//vv////+/v7+9v///////v////7+///////+/////vz//v7///9N/v/////+//7//vv////+/v7+9v///////v////7++P38/Pr//v7//v/8/v/+//z+///+/f79/f7//f7//fb//v79//79/Pv///39fP/++P38/Pr//v7//v/8/v/+//z+///+/f79/f7//f7//fb//v79//79/Pv///39fP/+/f7+/f3//f7+///9///+/2L////+/fz9/P7//v7//v3///7+//79/f7///77/f/+/v/+/v7//v/////+//////z///////3++f///v///v7///7+//7+/v7///5P/v///v/+/v7//v/////+//////z///////3++f///v///v7///7+//7+/v7///5P/v///v79/v3//v////7+/v7+//7+////aP79/f//+/3/9f7///7y///+/f7///7//v/+/v79/v3//v////7+/v7+//7+////aP79/f//+/3/9f7///7y///+/f7///7//v/+/////////////P7//vv////+/v/+/////v7////////+//7/9////////v///0v+/////////////P7//vv////+/v/+/////v7////////+//7/9////////v///0v+///////9/vn+/v///v7+/P///v/9//7///9f///x///+/v///v3////+/v////7+///////9/vn+/v///v7+/P///v/9//7///9f///x///+/v///v3////+/v////7+///+///+//7+/v7//f79///+/v7+///+///+///////+/v7//v7+///+/v////5L///+///+//7+/v7//f79///+/v7+///+///+///////+/v7//v7+///+/v////5L///////+/v/+//7//P9F/v///v7+///////////+///+/v7//v7////+/v/////9///////+/v/+//7//P9F/v///v7+///////////+///+/v7//v7////+/v/////9AAUDBQD7/P3+AAIE/vv9CP/9/Qf8AAEB/AcBAQACAAP7//0A/vsABv8F///9Bf/+AAUDBQD7/P3+AAIE/vv9CP/9/Qf8AAEB/AcBAQACAAP7//0A/vsABv8F///9Bf/+AAUDBQD7/P3+AAIE/vv9CP/9/Qf8AAEB/AcBAQACAAP7//0A/vsABv8F///9Bf/+/wYFBf/7+/7//wEF/vz9BwD+/gT9/wEA/QcB/wEBAAT7/v0A/vz/BAAF/gL9A////wYFBf/7+/7//wEF/vz9BwD+/gT9/wEA/QcB/wEBAAT7/v0A/vz/BAAF/gL9A////wYFBf/7+/7//wEF/vz9BwD+/gT9/wEA/QcB/wEBAAT7/v0A/vz/BAAF/gL9A////wcFBAD7/f79/gIH//n8CAL9/AX9AP8B/AgBAAAB/wX7/v3//PwBBv8I///8Bf7/BgwJCgb5Bfn4+vgK+Pn4+gb4+fn4BQcHA/j5CAj5BQn5+QYH+fgGCwX6+QUECvr4BgwJCgb5Bfn4+vgK+Pn4+gb4+fn4BQcHA/j5CAj5BQn5+QYH+fgGCwX6+QUECvr4BQwLCwX5BPn5+vgK+Pr4+Qb3+vn4BQcHBfj6Bwn5BQn6+QUH+fgGCgf5+QcECPn4BQwLCwX5BPn5+vgK+Pr4+Qb3+vn4BQcHBfj6Bwn5BQn6+QUH+fgGCgf5+QcECPn4Bg4NCwf4Bfj4+fcO9vf2+An2+Pj4BwcIBff5Bwj4Bgv4+AYG+PcIDAb5+AcEDPj3//7+//79/Qz9/v7+/f39FP7+/f8M//7+/v4O//4Q///8/v7//gv+//7+/f7+/v79///////9/v7+Df7//Qv+/v/8/P7+//////7+//7+//8L/f7/Dv3////+Dv///wz9//7+//79/Qz9/v7+/f39FP7+/f8M//7+/v4O//4Q///8/v7//gv+//7+/f7+/v79///////9/v7+Df7//Qv+/v/8/P7+//////7+//7+//8L/f7/Dv3////+Dv///wz9/v/+//78/Qz9/f7//f7+FP7+/f4M//7+/v4O/v4P///8/v/+/gv+//7+/f7+//7+/v/////9/v79Df7//Qr9/v/8/P7+/////v7+/v7+//8M/f7/Dv7////+Dv///w39/v/+//78/Qz9/f7//f7+FP7+/f4M//7+/v4O/v4P///8/v/+/gv+//7+/f7+//7+/v/////9/v79Df7//Qr9/v/8/P7+/////v7+/v7+//8M/f7/Dv7////+Dv///w39/v7+/v78/g39/f3+/f39F/7+/f4O/v3+/v4Q/v4S/v/9/f7+/Q3+/v7+/f7+/v3+/v7//v/9/v79Dv7//Qv+/v/8/P7+/v7+/v79/v7+//8N/f7+D/7///7+Ef7+/w7+////////////////Ef8O//////////////////////////////7/////////AP8Q/////v7////////+//////7/////Ef/+/////P3/Ev////8S/////v///////wD/////AP8N//8P/////v7//////v///wD////////+///+D///////AP//////AP//////AP8N//8P/////v7//////v///wD////////+///+D///////AP//////AP/////////+/////v7//v7+/v//DxT////////////////+/////v////8T///////+////////////////Ef8O//////////////////////////////7/////////AP8Q////AP8N//8P/////v7//////v///wD////////+///+D///////AP//////AP/////////+/////v7//v7+/v//DxT////////////////+/////v////8T///////+///////+//7/////Ef8O//////7////////////////+//////7//////v////8QAP//AP8M//8P/////////wD//v/////////////+///+Dv////8A/////wD////////////+///+/v7//v7+///+DxP////////////////+//////////8T///////+///////+//7/////Ef8O//////7////////////////+//////7//////v////8Q///+/v7////////+////////AP//Ef/+/////P7/Ev////8T///+/v///////v//AP//AP8M//8P/////////wD//v/////////////+///+Dv////8A/////wD/////AP//AP8M//8P/////////wD//v/////////////+///+Dv////8A/////wD////////////+///+/v7//v7+///+DxP////////////////+//////////8T///////+//////////////7/E/8Q/////v7////////////+/////////v7//////v////8R///+/v7///////7+/v//////////FP7+/v//+/7/FP7///8T/////v7//////v////////8P//8Q//////7//////v/////////+///+///+EP////////////////////////8P//8Q//////7//////v/////////+///+///+EP/////////////////////////+//7+/v7//v7+////EBX+/////v/////+///+/v7//v////8Y//////7+////AP/+//3//wD//////v8A////AP//AP8S//8SAP/+//8A//4AAP////8A/////xf/////D//+////AAD/////////////////////////////AP////////7/////AAAAAAD//////v8A//7/////////AAAAAP//AP//AAAO/wAA//8AAAAAEf//AP//AP//AP/+/v7///8A/////v///wD/AP//AP8T//8SAAD+/wD///7/AAD//wD//////xf/////D////////wD//////////////////////////////////v//AP7//wD///8AAAD/AAD///8A//7//wD/////AAAA/////wD/AAAO/wAA////AAD/EQAAAP////////////3/////////////////AP8A//8TAP8U/wD//////////////////////xn/////EP//////////////AP////////////////////////////////////////8A//////////8A//7//wD/////AP//AP//////AAAP//8A//8AAP//EgD/////AAAAAAD/ABL/AAAAAAAA/wAAAAD/AAAAAAD/AAD/AAAAAAAAAP8AAAAAAAAAAAAAAAAAAAD/AP//AP8A/wD/GgAA/wD8AAAA/wD/AP//AAD/AAAA//4AAAAAAAAA/wD/AAAAAAAAAP8AAAAAAAD//gAAAAATAAAAAAD/AAD/AAAA/wAAAP8AAAAA/wAAAAAAAAAAAAAAAP8AAAAA/wAA/wAAAAD+AAAAAAAAAAAAAAAAAAAAABEAAAAA/wAAAAD/AAAAAAD/AAAAABQA/wD/AAD/AAD/AAAAAP8A/wAA/wAA/wAAAAAAAAD//wAAAAD/AAAAAAD/AAAAABQA/wD/AAD/AAD/AAAAAP8A/wAA/wAA/wAAAAAAAAD//wAAAAD/AAAAAAAAAAAAAP8A/wD/AAAAAAD/AAAAAAAAAAAAAAAAAP8AAP8AAAD/AAAAAP8SAAAAAAAAAAAAAAAA/wAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wAAAAD/AAAAAAD/AP8AAAAAEwD/AAAAAAD/AAAA/wAAAAAAAAAAAAAA//8AAAAAAAAAAP//AAAAAAAAAAAAAP8AAAAAAAASAAAAAAAAAAAAAP8AAAD/AAAA/gAAAAAAAAAAAP//AAAAAAAAAAAAAP8AAAAAAAASAAAAAAAAAAAAAP8AAAD/AAAA/gAAAAAAAAAAAP////////8AAAAAAAAb/wAA//8AAAAA//8A/wAA/wAA//8AAP//AAD//gAAAP///wAAGP////8A/wAAAAD/AAAAAP8AAAAAAP///wAAAAAA//8AAP8AAAD///4AAP///gAAAAAA/wAA/wAAAAD/AAAAABYAAAD//////wAAAAAA//8AAAAAAAD///8AAAD//wAA//////8A/wAAAAD/AAAAAP8AAAAAABX//wAA/wAAAAAAAAAAAAD///8AAP///wAAAAAA//8AAAAAAAD/AAAAAP8AAAD/AP//EwAAAAAA/wAAAAAAAAD//wAAAAD+AAAA/wAAAP8A/wAAAAD/AAAAAP8AAAAAAP8A/gAAAAAAAAAAAAAAAAD///8AAAATAAAAAAAY//8A/wAAAAD/AAAAAP8AAAAA////AAAA/wAA//8AAAD/AAD///8AAP//AAAAAAD/AAAAAAAAAAD/AAAAAP8AAAAA////AAAAFv8A//8AAAD/AAAAAP8AAAAAAAAAAAAAAP8AAAAAAP8AAAAAAAD/AAAAAAAAAAAA/xQA/wAAAP///wAAAP8AAAD//wAA////G/8AAAAAAAD+AAAAAP8AAAAA/////wAAAP8A//8AAP//AAD+//8AAP///wAA/gAA/xcAAAAAAAD/AAAAAP8AAAAAAAD//wAAAP8AAP4AAP8AAAD///8AAP8A/wAA/v////4AAAAAAAD/AAAAAAAAAAAA/////wAA/wAAAB0AAP8AAAD///4AAP///gAA/wAAAAAAAAAAAAAAAAAAAAAAAAD/AAD//wAA//8AAAAAABIAAAAAAP8AAAAAAP8A//////8AAAAAAAAAAAAAAP8AAAD/AP8W/wAA//8A//8AAAAAAAD///8AAP///wAA//////8AAAAA/wD+AAAAAP8AAAAA//////8A//8A//8AAP//AAD/Hf8AAP///wAA/wD/AP8A/wAAAAD/AAAAAP8AAAAA////AAAAAAAAAP4AAAAAAAD//xYAAP8A/wAA/wD//v8A/wAAAAD/AAAAAP8AAAAAAP///wAAAAAA//8AAP//AAAW//8AAP///wAAAAD//wAA/wAAAAD/AAAAAP8AAAAA/////wAAAAAAAP8AAP8AAAD///8AABb//wAA/v////8AAAAAAAD/AAAAAP8AAAAA/////wAA/wAA//0AAAAAAAD///8AAP//GwD/AAAAAAD/AAAA/gAAABAAAAAA/wAAAAAAAAAAAAAAAAD/AAAA/wAAAAAA/wAAAP8AAAAAAAAAAAD/Ev8AAP4AAAD//wAAAAAAAAAAAAD/AAD/AAAA/wAAAAAA/wAAAP//AAAAAAAAAAAA/wAA//8AAAD//wAAAAAAAAAAAAAAAAD/AAAA/gAAAAAA/wAAABL/AAAAAAAAAAAA//8AAP8AAAD+AAAAAAAAAAAAAP8AAAAAAAAAEwAAAAAA/wAAAP4AAAAAAP////////8A//8AAP//AAAAAAAAABgAAAAAAAD///////8AAP///wAAAP8AAAAAAP////////8A//8AAP//AAAAAAAAABgAAAAAAAD///////8AAP///wAAAP8AAAAAAAD/AAAA/wAAAP//AAAAEf8AAAAAAAAAAAAAAAD//wAAAAAAAAD/AAAAAAAAAAAAAAD/AP//AP8A/////wAA/xoAAAAAAAAAAAAAAP8AAP8A/wAAAAD7/wAAAP//AAAAAAD/AAD/AP8AAP8A/wD///v/AAAA/wAAAAAAAAAA/wAAAAAAAAAZAAAAAAD/AAAAAAD/AAAAABQA/wD/AAD/AAD/AAAAAP8A/wAA/wAA/wAAAAAAAAD//wAAAAD/AAAAAAAAAAAAAP8AAAAAAAASAAAAAAAAAAAAAP8AAAD/AAAA/gAAAAAAAAAAAP//AAAAAP////////8A//8AAP//AAAAAAAAABgAAAAAAAD///////8AAP///wAAAP8AAAAAAAAAAAD/ABQA/wD/AAD/AP8AAAAAAP8A//8AAAAA/wD//wAAAAD//wAAAAAAAAAAAAAAAAAAAP8AAP8AAAAS/wAAAAAAAAAAAP8AAAAA//8A/gAAAAAAAAAAAP8AAAAAAAD//wD/AP8A/wD/AAD/////AAD//xgA/wAAAAAA/wAA//8AAP8AAAAAAP8AAAAAAAD/ABIAAAAAAAAA/wAAAAD/AAAAAAD+AAD/AAAAAAAAAP8AAAAAAAAAAAAAAAAAAAD///8A//8A/wAAGgAAAP/9AAAAAP//AAD/AAD/AAAAAP4AAAD/AAAAAP//AAAAAAAAAP8AAAAAAAAA/gAAAAATAAAAAAD/AAD/AAD/AAAAAP8AAAAA/wAAAAAAAAAAAAAAAP8AAAAA/wAA/wAAAAD/AP8AAAD/AAAAAAD/AAAAABEAAAAA/wAAAAAAAAAAAAAAAAD/ABQA/wD/AAD/AP8AAAAAAP8A//8AAAAA/wD//wAAAAD//wAAAAAAAAAAAAAAAAD/ABQA/wD/AAD/AP8AAAAAAP8A//8AAAAA/wD//wAAAAD//wAAAAAAAAAAAAAAAP8AAAAA/wD/AAAA//8AAAAAAAAAAAAAAAAAAP8AAP8AAAAAAAAAAP8SAAAAAAAAAAD/AAAA/wAQAAAA//8AAAAAAAAAAAAAAAD/AAAAAP8AAAAA/wAAAAD/AAAAAAD/AP8AAP8AEwD/AAAAAAAAAAAAAAAAAAAAAAD/AAAAAP8AAAAAAAAAAP//AAAAAAAAAAAAAP8AAP8AAAAS/wAAAAAAAAAAAP8AAAAA//8A/gAAAAAAAAAAAP8AAAAAAAAAAAAAAP8AAP8AAAAS/wAAAAAAAAAAAP8AAAAA//8A/gAAAAAAAAAAAP8A//////8A/wAAAAAbAAAAAP8AAAAA/////wAA//8A//8AAP//AAD//v8AAP///wD/GP//AP4AAAAAAAD/AAAAAP8AAAAAAP//AAAAAAAA//8AAP//AAD///4AAP///gAA//8A//8A/wAAAAD/AAAAABYAAAAA/////wAAAAAAAP8AAAAAAAAA//8AAP///wD///////8AAAAAAAD/AAAAAP8AAAAA/xX//wAAAAAA//8AAP8AAAD///8AAAD//wD//wAA//8AAAAAAAAAAAAAAP8AAAAAAP8AEwAA/wAAAAAAAP//AAD///8AAP/+AAAAAAAA/wAAAAAAAAD/AAAAAP8AAAAAAP8A/gAAAAAAAAAAAP8AAAD//wAAAP8TAAAA//8Z//8AAAAAAAD/AAAAAP8A/wAA/////wAA/wAA//8AAP//AAAA//8AAP8A/wAA/wD//wAAAAAAAP//AAAAAP8AAAAA////AAAAFv8A/gAAAAD/AAAAAP8AAAAA/wAAAAAA/wAAAAAAAAAAAAAAAAD/AAAA/wD/AAAA/xUA//8AAP///wAAAAAAAAD/AAAA////G/8A/wAAAAD+AAAAAP8AAAD//////wAA//8A//8AAP//AAD+//8AAP///wAA/gAAABYAAAAAAAAAAAAAAAAAAAAA/////wAA/wAA//8AAAAAAAD///8AAP8A/wAA/v////4A/wAAAAD/AAAAAP8AAAAA////AAAAAP8AAB0AAAAAAAD///4AAP///QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP8A/wAAAP8AAAAAABIAAAAAAP8AAAD///8A/wD///8A/wAAAAAAAAD/AP8AAAAA//8WAAAA//8A//8AAAD/AAD///8AAP///wD///////8A//8AAAD+AAAAAP8AAAAA/////wD//wAA//8AAP//AAD/HP8AAP///wAA/gD///8AAAAAAAAAAAAAAP8AAAAAAP///wAA/wAAAP8AAP//AAD/ABcAAP8A/wAA/wAA/v8A/wAAAAD/AAAAAP8AAAAA/////wAA//8AAP8AAAAAAAAW/gAAAP//AAAA/wAA//8A/wAAAAD/AAAAAP8AAAAAAAD//wAAAAAAAP8AAAD/AAD///8AABb//wAA/v////8A/wAAAAAAAAAAAP8AAAAA////AAAA//8A//0AAP//AAD///8AAAD/GwAAAAAAAAD/AAAA/gAAABAAAAAA/wAAAAAAAAD/AAAAAAD/AAAAAAAAAAAA/wAAAP8AAAAAAAAAAAD/EgAAAP4AAAAA/wAAAAAAAAAAAAAAAAD//wAA/wAAAAAAAAAAAP//AAAAAAAAAAAA/wAA//8AAAD/AAAAAAAAAAAAAAAAAAAAAP8A/gAAAAAA/wAAABIAAAAAAAAAAAAA//8AAP8AAAD+AAAAAAAAAAAAAP8AAAD/AAAAEgAAAAAA/wAAAP4AAAAAAAD//wD/AP8A/wD/AAD/////AAD//xgA/wAAAAAA/wAA//8AAP8AAAAAAP8AAAAAAAD//wD/AP8A/wD/AAD/////AAD//xgA/wAAAAAA/wAA//8AAP8AAAAAAP8AAAAAAAD/AAD//wAA//8AAAAAEf8AAAAAAAAAAAAAAAD/AAAAAAAAAAD/AAAAAAD/AAAAAAAA/wD/AP8A/wD//////xgAAAAAAP//AAAAAAAA/wAAAAAA/wD7/wAAAP//AAAAAAD/AAAAAP8A////AAD///v/AAD/AAAAAAAAAAAAAAAA/wAAAAAZAAAAAAD/AAAAAAD/ABMAAP8AAP8A/wAAAAD/AAAA/wD/AAD/AAAAAAAAAP8AAAAA/wAAAAAAAAAAAAD/AP8A////////HAAAAAD+////AAD/////AAD//wAA////AAAA////AAD/AAAAAAAAAP8AAAAAAAD//gAAAAAUAAAAAAD/AAAAAAAAAAAAAP4AAAAAAAAAAAAAAAAAAAAAAP8AAAAA/wAA/wAAAAD+AAAAAAD/AAAAAAD/AAAAABIAAAAA/wAAAP8AAAAA/wAAAAAAABYAAAD/AP//AAD//wAAAP8A/wAAAAD//wAA/wAAAAD//wAAAP//AAAA/wAAAAAAABYAAAD/AP//AAD//wAAAP8A/wAAAAD//wAA/wAAAAD//wAAAP//AAD/AAAAAAD/AP8A/wD/AAAA//8AAAD/AAAAAAAAAAAAAP8AAP8AAAAA/wAAAAATAAAAAAD/AAAAAP8A/wARAAAA/wD/AAAAAAAAAAD/AAAAAAAAAAAAAAD//wAAAAD/AAAAAAAAAAAAAAAAFAD//wAAAP8AAAAA/wD/AAD/AAD//wAA//8AAAAA/wD/AAD/AAAAAAAAAAAAAP8AAAAAAAAT/wAAAAAAAAAA//8AAAAAAAAA/gAAAAAAAAAAAP8AAAAAAAAAAAAAAP8AAAAAAAAT/wAAAAAAAAAA//8AAAAAAAAA/gAAAAAAAAAAAP8A//////8A/wAAAP8fAAAAAP//AAAA/////wAA//8A//8AAP//AAD/////AP///wAAGP////4AAAAAAAD/AAAAAAAAAAAAAP///wD//wAAAP4AAP//AAD///8AAAD//wAA/wD///8A/wAAAAD/AAAAABgAAAD//////wAAAP8A//8AAP//AAD//wAAAP///wAA//////8AAAAAAP//AAAAAP//AAAA/xgA/wAA/wAA//8AAP//AP////8AAP///wAA/wAAAP8A/wAAAAD/AAD/AP8AAAAAAAAAFAAA/wAAAP8AAP8AAAAA/wAAAP/+AAAAAAAA/wAAAAAAAAD/AAAAAP8AAAAAAP///gAAAAAAAAAAAAAAAAD//wAAAAAUAAAA//8c//8A/wAA/wD/AP///wAAAP8A//////8A//8A//8AAP//AAD///8A//8A/wAAAAD///8AAAAAAP8AAAAAAP8A/wD//////wAAF/8A/wAAAP/+AAD//wAAAP8A/wAAAAD/AP8AAAAAAP8AAP8AAAD/AAAA/wD/AAD//xcA/wAAAP///wAA//8AAP8AAAAAAP//Hf8AAAAAAAD/AAAAAP8A/wAA//////8AAP8A//8AAAD/AAD+//8AAP////8A/gD//xgAAAAAAAD//wAAAP8AAAAAAP///wAA//8AAP8AAAAAAAD///8AAP///wAA/gD///8AAAAAAAD//wAAAP//AAAA//8A/wAAAP8A/yAAAP//AP////4AAP///P8A/wAAAP8AAAAAAAAAAAAAAAAAAAAAAAD//wAAAP8AAAAAABMA/wAAAAAAAAD//wAA/wD//////wAAAAAAAAAAAP8AAAAA//8ZAAAA//8A//8AAAD/AP////8AAP///wAA///+/v8A/wAAAAD+AAAAAP8AAAD/AP////8A/wAAAP8AAP//////H/8A//////8A//////8AAAAAAAAAAAAAAP8AAAD/AP///wAAAAAA//4AAAAAAAD//xgAAP////8A/////v8A/wAAAAD//wAAAP8AAAAA/////wAAAAAA//8AAP8AAAAY//8AAP///wAA////AAAA/wAAAAD/AAD/AP8AAAAA/////wD/AP8AAP8A//8AAAD///8AABf//wAA/v////4A/wAAAAD/AAAAAP//AAAAAP///wAA//8A//0AAP//AAD///8AAP//HgAAAAAAAAD/AAAA/gAAABEAAAAA/wAAAAAAAP8AAAAAAAD/AAAAAAAAAAAA/wAAAP8AAAAAAAD/AAAAEwAAAP4AAAD//wAAAAAAAAD/AAD/AAD//wAA/wAAAAAAAAAAAP8AAAAAAAAAAAAA/wAAAP8AAAD/AAAAAAAAAAAAAAAAAAAAAAAA/gAAAAAAAAAAABMAAAAAAAAAAAAA/wAAAP8AAAD+AAAAAAAAAAAAAP8AAAAA/wAAEwAAAAAA/wAAAP4AAP//AAD///////8AAP///wD///8A////ABsAAAD/AAAA//8A//8AAP///wD/////AP//AAD///////8AAP///wD///8A////ABsAAAD/AAAA//8A//8AAP///wD/////AAAAAAD/AAAA/wAAAP8AAAAAEgD/AAAAAAAAAAD/AAD//wAA/wAAAAAA/wAAAP8AAAAA/wD/AP//AP8A////AP8A/xv/AAAAAP8AAAD//wAA//8A//8A/wD8AAAAAP//AAAAAAD/AP//AP8A/wD///8A//r//wAA//8AAAD/AAD//wAAAAAAAAAc/wAAAP//",
+    "encoding": "int8-base64",
+    "scale": 0.022831064509594535
+  },
+  "embedding": {
+    "data": "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/wT8/gECAAQB/P79Av/+Agb+/P7+AAQDA/oI+gcF/vsAAwEEBQD+AAIBAPkBAv0CAgL9AAL+AfwB/wQCAwEAA/4A+wEEBQIABAT9AgIAAQD///4GAP0AAAEDAQH9/wIBBP//AQH/Af8AAv8EA/0B/QP//gL+/f4D/v///gP9Af0DAP4C/v3+A/7///7/AQD+AQMAAP39AQEE/v/+Af4BAP3//gEBAQMCAf0AAAACAQH//wH/AQD+BAP+AwIBAgL///3+/v8A/QD+/f/+AQMC///9/f7/AP7//v3//gP+AwH//wf//f0D/wX+Af/8Afr+AQH/AAEE//8C/wIBBP0A/wH+AgT//QAA/gMBBfsBAAMC/QUCAP8AAf8AAAQCAgEB/QD9AP8AAP4C/wIFAAP9AfwBAwH9/AQA/gEBAfv9Af8DBQL++/78AQUDAv8C/gUCAP0D/f4C/QQAAf8A///9Af/9Av//APv+AP3+/v77A//9/QAD/P8H/v3//vwAAgL+Avz9/gEC/f3/AQMC+/0A+P7/Af79AAH+/gIB/v0C/gD+/wD7/gEBAAL9/v8A/wL8///9AgL+/f8CA/v+/wIDAAEBAv8CAQP3Av8CAfz8/QEB/f7/AwAABP0CAf8BAP4C/v8ABQIDBf4BAf/+/wAB//4BAPwE/wT/AgT+/wb9+/7//wb/AQL7/QAAAAD/BP4BAQEA/wMB/wH9Av7/AAH+AAAC/wD7/v8C/gD8A/0C/AIA/gEAAP//AQQD/wIBAf4CAf3/Af/+/AQA//3/BP7+AAD+/fsA/f4C/AL/AQP+/QAA/v37AP3+AfwC/wECAv8A/wP9/gECAAMC/P/9AgD/AQT//f/+AAMCAvwG/AUE//wAAgEDBAD/AAEBAPs=",
+    "encoding": "int8-base64",
+    "scale": 0.043514225426621325
+  },
+  "exact_prompts": {
+    "calculate a percentage change": 29,
+    "calculate a weighted average": 26,
+    "calculate an average from numbers": 7,
+    "calculate compound growth": 15,
+    "calculate growth rate between periods": 20,
+    "calculate total and share of total": 37,
+    "clean messy numeric data": 10,
+    "compare averages with different counts": 47,
+    "compare this month with last month": 14,
+    "compare two groups of numbers": 12,
+    "detect missing values in data": 17,
+    "explain a b testing basics": 6,
+    "explain a histogram": 1,
+    "explain cohort analysis": 11,
+    "explain confidence intervals simply": 0,
+    "explain correlation versus causation": 16,
+    "explain data quality checks": 30,
+    "explain data sampling methods": 35,
+    "explain data visualization ethics": 21,
+    "explain key performance indicators": 22,
+    "explain mean median and mode": 24,
+    "explain median versus mean choice": 44,
+    "explain moving averages": 2,
+    "explain normalization of data": 27,
+    "explain outliers in data": 28,
+    "explain percentages clearly": 3,
+    "explain pivot tables simply": 4,
+    "explain quartiles simply": 31,
+    "explain regression in simple words": 34,
+    "explain sample size importance": 23,
+    "explain skewed distributions": 39,
+    "explain standard deviation simply": 40,
+    "explain statistical significance plainly": 38,
+    "explain time series basics": 43,
+    "explain variance simply": 45,
+    "find a trend in monthly numbers": 13,
+    "find errors in a spreadsheet": 9,
+    "find patterns in weekly sales": 46,
+    "find seasonal patterns in data": 36,
+    "find the most common value": 42,
+    "find the range of a dataset": 32,
+    "gravion analyst calculate a percentage change": 29,
+    "gravion analyst calculate a weighted average": 26,
+    "gravion analyst calculate an average from numbers": 7,
+    "gravion analyst calculate compound growth": 15,
+    "gravion analyst calculate growth rate between periods": 20,
+    "gravion analyst calculate total and share of total": 37,
+    "gravion analyst clean messy numeric data": 10,
+    "gravion analyst compare averages with different counts": 47,
+    "gravion analyst compare this month with last month": 14,
+    "gravion analyst compare two groups of numbers": 12,
+    "gravion analyst detect missing values in data": 17,
+    "gravion analyst explain a b testing basics": 6,
+    "gravion analyst explain a histogram": 1,
+    "gravion analyst explain cohort analysis": 11,
+    "gravion analyst explain confidence intervals simply": 0,
+    "gravion analyst explain correlation versus causation": 16,
+    "gravion analyst explain data quality checks": 30,
+    "gravion analyst explain data sampling methods": 35,
+    "gravion analyst explain data visualization ethics": 21,
+    "gravion analyst explain key performance indicators": 22,
+    "gravion analyst explain mean median and mode": 24,
+    "gravion analyst explain median versus mean choice": 44,
+    "gravion analyst explain moving averages": 2,
+    "gravion analyst explain normalization of data": 27,
+    "gravion analyst explain outliers in data": 28,
+    "gravion analyst explain percentages clearly": 3,
+    "gravion analyst explain pivot tables simply": 4,
+    "gravion analyst explain quartiles simply": 31,
+    "gravion analyst explain regression in simple words": 34,
+    "gravion analyst explain sample size importance": 23,
+    "gravion analyst explain skewed distributions": 39,
+    "gravion analyst explain standard deviation simply": 40,
+    "gravion analyst explain statistical significance plainly": 38,
+    "gravion analyst explain time series basics": 43,
+    "gravion analyst explain variance simply": 45,
+    "gravion analyst find a trend in monthly numbers": 13,
+    "gravion analyst find errors in a spreadsheet": 9,
+    "gravion analyst find patterns in weekly sales": 46,
+    "gravion analyst find seasonal patterns in data": 36,
+    "gravion analyst find the most common value": 42,
+    "gravion analyst find the range of a dataset": 32,
+    "gravion analyst make a data table readable": 33,
+    "gravion analyst make a forecast from past numbers": 5,
+    "gravion analyst make a simple chart choice": 8,
+    "gravion analyst spot misleading charts": 25,
+    "gravion analyst summarize a dataset in words": 18,
+    "gravion analyst summarize experiment results": 19,
+    "gravion analyst summarize survey results": 41,
+    "help me calculate a percentage change": 29,
+    "help me calculate a weighted average": 26,
+    "help me calculate an average from numbers": 7,
+    "help me calculate compound growth": 15,
+    "help me calculate growth rate between periods": 20,
+    "help me calculate total and share of total": 37,
+    "help me clean messy numeric data": 10,
+    "help me compare averages with different counts": 47,
+    "help me compare this month with last month": 14,
+    "help me compare two groups of numbers": 12,
+    "help me detect missing values in data": 17,
+    "help me explain a b testing basics": 6,
+    "help me explain a histogram": 1,
+    "help me explain cohort analysis": 11,
+    "help me explain confidence intervals simply": 0,
+    "help me explain correlation versus causation": 16,
+    "help me explain data quality checks": 30,
+    "help me explain data sampling methods": 35,
+    "help me explain data visualization ethics": 21,
+    "help me explain key performance indicators": 22,
+    "help me explain mean median and mode": 24,
+    "help me explain median versus mean choice": 44,
+    "help me explain moving averages": 2,
+    "help me explain normalization of data": 27,
+    "help me explain outliers in data": 28,
+    "help me explain percentages clearly": 3,
+    "help me explain pivot tables simply": 4,
+    "help me explain quartiles simply": 31,
+    "help me explain regression in simple words": 34,
+    "help me explain sample size importance": 23,
+    "help me explain skewed distributions": 39,
+    "help me explain standard deviation simply": 40,
+    "help me explain statistical significance plainly": 38,
+    "help me explain time series basics": 43,
+    "help me explain variance simply": 45,
+    "help me find a trend in monthly numbers": 13,
+    "help me find errors in a spreadsheet": 9,
+    "help me find patterns in weekly sales": 46,
+    "help me find seasonal patterns in data": 36,
+    "help me find the most common value": 42,
+    "help me find the range of a dataset": 32,
+    "help me make a data table readable": 33,
+    "help me make a forecast from past numbers": 5,
+    "help me make a simple chart choice": 8,
+    "help me spot misleading charts": 25,
+    "help me summarize a dataset in words": 18,
+    "help me summarize experiment results": 19,
+    "help me summarize survey results": 41,
+    "make a data table readable": 33,
+    "make a forecast from past numbers": 5,
+    "make a simple chart choice": 8,
+    "please calculate a percentage change": 29,
+    "please calculate a weighted average": 26,
+    "please calculate an average from numbers": 7,
+    "please calculate compound growth": 15,
+    "please calculate growth rate between periods": 20,
+    "please calculate total and share of total": 37,
+    "please clean messy numeric data": 10,
+    "please compare averages with different counts": 47,
+    "please compare this month with last month": 14,
+    "please compare two groups of numbers": 12,
+    "please detect missing values in data": 17,
+    "please explain a b testing basics": 6,
+    "please explain a histogram": 1,
+    "please explain cohort analysis": 11,
+    "please explain confidence intervals simply": 0,
+    "please explain correlation versus causation": 16,
+    "please explain data quality checks": 30,
+    "please explain data sampling methods": 35,
+    "please explain data visualization ethics": 21,
+    "please explain key performance indicators": 22,
+    "please explain mean median and mode": 24,
+    "please explain median versus mean choice": 44,
+    "please explain moving averages": 2,
+    "please explain normalization of data": 27,
+    "please explain outliers in data": 28,
+    "please explain percentages clearly": 3,
+    "please explain pivot tables simply": 4,
+    "please explain quartiles simply": 31,
+    "please explain regression in simple words": 34,
+    "please explain sample size importance": 23,
+    "please explain skewed distributions": 39,
+    "please explain standard deviation simply": 40,
+    "please explain statistical significance plainly": 38,
+    "please explain time series basics": 43,
+    "please explain variance simply": 45,
+    "please find a trend in monthly numbers": 13,
+    "please find errors in a spreadsheet": 9,
+    "please find patterns in weekly sales": 46,
+    "please find seasonal patterns in data": 36,
+    "please find the most common value": 42,
+    "please find the range of a dataset": 32,
+    "please make a data table readable": 33,
+    "please make a forecast from past numbers": 5,
+    "please make a simple chart choice": 8,
+    "please spot misleading charts": 25,
+    "please summarize a dataset in words": 18,
+    "please summarize experiment results": 19,
+    "please summarize survey results": 41,
+    "spot misleading charts": 25,
+    "summarize a dataset in words": 18,
+    "summarize experiment results": 19,
+    "summarize survey results": 41
+  },
+  "features": [
+    "explain",
+    "a",
+    "data",
+    "in",
+    "calculate",
+    "find",
+    "simply",
+    "numbers",
+    "of",
+    "compare",
+    "explain data",
+    "in data",
+    "make",
+    "make a",
+    "summarize",
+    "a dataset",
+    "and",
+    "average",
+    "averages",
+    "basics",
+    "calculate a",
+    "choice",
+    "dataset",
+    "explain a",
+    "find the",
+    "from",
+    "growth",
+    "mean",
+    "median",
+    "patterns",
+    "patterns in",
+    "results",
+    "simple",
+    "the",
+    "versus",
+    "with",
+    "words",
+    "a b",
+    "a b testing",
+    "a data",
+    "a data table",
+    "a dataset in",
+    "a forecast",
+    "a forecast from",
+    "a histogram",
+    "a percentage",
+    "a percentage change",
+    "a simple",
+    "a simple chart",
+    "a spreadsheet",
+    "a trend",
+    "a trend in",
+    "a weighted",
+    "a weighted average",
+    "an",
+    "an average",
+    "an average from",
+    "analysis",
+    "and mode",
+    "and share",
+    "and share of",
+    "average from",
+    "average from numbers",
+    "averages with",
+    "averages with different",
+    "b",
+    "b testing",
+    "b testing basics",
+    "between",
+    "between periods",
+    "calculate a percentage",
+    "calculate a weighted",
+    "calculate an",
+    "calculate an average",
+    "calculate compound",
+    "calculate compound growth",
+    "calculate growth",
+    "calculate growth rate",
+    "calculate total",
+    "calculate total and",
+    "causation",
+    "change",
+    "chart",
+    "chart choice",
+    "charts",
+    "checks",
+    "clean",
+    "clean messy",
+    "clean messy numeric",
+    "clearly",
+    "cohort",
+    "cohort analysis",
+    "common",
+    "common value",
+    "compare averages",
+    "compare averages with",
+    "compare this",
+    "compare this month",
+    "compare two",
+    "compare two groups",
+    "compound",
+    "compound growth",
+    "confidence",
+    "confidence intervals",
+    "confidence intervals simply",
+    "correlation",
+    "correlation versus",
+    "correlation versus causation",
+    "counts",
+    "data quality",
+    "data quality checks",
+    "data sampling",
+    "data sampling methods",
+    "data table",
+    "data table readable",
+    "data visualization",
+    "data visualization ethics",
+    "dataset in",
+    "dataset in words",
+    "detect",
+    "detect missing",
+    "detect missing values",
+    "deviation",
+    "deviation simply",
+    "different",
+    "different counts",
+    "distributions",
+    "errors",
+    "errors in",
+    "errors in a",
+    "ethics",
+    "experiment",
+    "experiment results",
+    "explain a b",
+    "explain a histogram",
+    "explain cohort",
+    "explain cohort analysis",
+    "explain confidence",
+    "explain confidence intervals",
+    "explain correlation",
+    "explain correlation versus",
+    "explain data quality",
+    "explain data sampling",
+    "explain data visualization",
+    "explain key",
+    "explain key performance",
+    "explain mean",
+    "explain mean median",
+    "explain median",
+    "explain median versus",
+    "explain moving",
+    "explain moving averages",
+    "explain normalization",
+    "explain normalization of",
+    "explain outliers",
+    "explain outliers in",
+    "explain percentages",
+    "explain percentages clearly",
+    "explain pivot",
+    "explain pivot tables",
+    "explain quartiles",
+    "explain quartiles simply",
+    "explain regression",
+    "explain regression in",
+    "explain sample",
+    "explain sample size",
+    "explain skewed",
+    "explain skewed distributions",
+    "explain standard",
+    "explain standard deviation",
+    "explain statistical",
+    "explain statistical significance",
+    "explain time",
+    "explain time series",
+    "explain variance",
+    "explain variance simply",
+    "find a",
+    "find a trend",
+    "find errors",
+    "find errors in",
+    "find patterns",
+    "find patterns in",
+    "find seasonal",
+    "find seasonal patterns",
+    "find the most",
+    "find the range",
+    "forecast",
+    "forecast from",
+    "forecast from past",
+    "from numbers",
+    "from past",
+    "from past numbers",
+    "groups",
+    "groups of",
+    "groups of numbers",
+    "growth rate",
+    "growth rate between",
+    "histogram",
+    "importance",
+    "in a",
+    "in a spreadsheet",
+    "in monthly",
+    "in monthly numbers",
+    "in simple",
+    "in simple words",
+    "in weekly",
+    "in weekly sales",
+    "in words",
+    "indicators",
+    "intervals",
+    "intervals simply",
+    "key",
+    "key performance",
+    "key performance indicators",
+    "last",
+    "last month",
+    "make a data",
+    "make a forecast",
+    "make a simple",
+    "mean choice",
+    "mean median",
+    "mean median and",
+    "median and",
+    "median and mode",
+    "median versus",
+    "median versus mean",
+    "messy",
+    "messy numeric",
+    "messy numeric data",
+    "methods",
+    "misleading",
+    "misleading charts",
+    "missing",
+    "missing values",
+    "missing values in",
+    "mode",
+    "month",
+    "month with",
+    "month with last",
+    "monthly",
+    "monthly numbers",
+    "most",
+    "most common",
+    "most common value",
+    "moving",
+    "moving averages",
+    "normalization",
+    "normalization of",
+    "normalization of data",
+    "numeric",
+    "numeric data",
+    "of a",
+    "of a dataset",
+    "of data",
+    "of numbers",
+    "of total",
+    "outliers",
+    "outliers in",
+    "outliers in data",
+    "past",
+    "past numbers",
+    "patterns in data",
+    "patterns in weekly",
+    "percentage",
+    "percentage change",
+    "percentages",
+    "percentages clearly",
+    "performance",
+    "performance indicators",
+    "periods",
+    "pivot",
+    "pivot tables",
+    "pivot tables simply",
+    "plainly",
+    "quality",
+    "quality checks",
+    "quartiles",
+    "quartiles simply",
+    "range",
+    "range of",
+    "range of a",
+    "rate",
+    "rate between",
+    "rate between periods",
+    "readable",
+    "regression",
+    "regression in",
+    "regression in simple",
+    "sales",
+    "sample",
+    "sample size",
+    "sample size importance",
+    "sampling",
+    "sampling methods",
+    "seasonal",
+    "seasonal patterns",
+    "seasonal patterns in",
+    "series",
+    "series basics",
+    "share",
+    "share of",
+    "share of total",
+    "significance",
+    "significance plainly",
+    "simple chart",
+    "simple chart choice",
+    "simple words",
+    "size",
+    "size importance",
+    "skewed",
+    "skewed distributions",
+    "spot",
+    "spot misleading",
+    "spot misleading charts",
+    "spreadsheet",
+    "standard",
+    "standard deviation",
+    "standard deviation simply",
+    "statistical",
+    "statistical significance",
+    "statistical significance plainly",
+    "summarize a",
+    "summarize a dataset",
+    "summarize experiment",
+    "summarize experiment results",
+    "summarize survey",
+    "summarize survey results",
+    "survey",
+    "survey results",
+    "table",
+    "table readable",
+    "tables",
+    "tables simply",
+    "testing",
+    "testing basics",
+    "the most",
+    "the most common",
+    "the range",
+    "the range of",
+    "this",
+    "this month",
+    "this month with",
+    "time",
+    "time series",
+    "time series basics",
+    "total",
+    "total and",
+    "total and share",
+    "trend",
+    "trend in",
+    "trend in monthly",
+    "two",
+    "two groups",
+    "two groups of",
+    "value",
+    "values",
+    "values in",
+    "values in data",
+    "variance",
+    "variance simply",
+    "versus causation",
+    "versus mean",
+    "versus mean choice",
+    "visualization",
+    "visualization ethics",
+    "weekly",
+    "weekly sales",
+    "weighted",
+    "weighted average",
+    "with different",
+    "with different counts",
+    "with last",
+    "with last month",
+    "analyst",
+    "gravion",
+    "gravion analyst",
+    "help",
+    "help me",
+    "me",
+    "please",
+    "analyst explain",
+    "gravion analyst explain",
+    "help me explain",
+    "me explain",
+    "please explain",
+    "analyst calculate",
+    "analyst find",
+    "gravion analyst calculate",
+    "gravion analyst find",
+    "help me calculate",
+    "help me find",
+    "me calculate",
+    "me find",
+    "please calculate",
+    "please find",
+    "analyst compare",
+    "analyst explain data",
+    "analyst make",
+    "analyst make a",
+    "analyst summarize",
+    "gravion analyst compare",
+    "gravion analyst make",
+    "gravion analyst summarize",
+    "help me compare",
+    "help me make",
+    "help me summarize",
+    "me compare",
+    "me explain data",
+    "me make",
+    "me make a",
+    "me summarize",
+    "please compare",
+    "please explain data",
+    "please make",
+    "please make a",
+    "please summarize",
+    "analyst calculate a",
+    "analyst explain a",
+    "analyst find the",
+    "me calculate a",
+    "me explain a",
+    "me find the",
+    "please calculate a",
+    "please explain a",
+    "please find the",
+    "analyst calculate an",
+    "analyst calculate compound",
+    "analyst calculate growth",
+    "analyst calculate total",
+    "analyst clean",
+    "analyst clean messy",
+    "analyst compare averages",
+    "analyst compare this",
+    "analyst compare two",
+    "analyst detect",
+    "analyst detect missing",
+    "analyst explain cohort",
+    "analyst explain confidence",
+    "analyst explain correlation",
+    "analyst explain key",
+    "analyst explain mean",
+    "analyst explain median",
+    "analyst explain moving",
+    "analyst explain normalization",
+    "analyst explain outliers",
+    "analyst explain percentages",
+    "analyst explain pivot",
+    "analyst explain quartiles",
+    "analyst explain regression",
+    "analyst explain sample",
+    "analyst explain skewed",
+    "analyst explain standard",
+    "analyst explain statistical",
+    "analyst explain time",
+    "analyst explain variance",
+    "analyst find a",
+    "analyst find errors",
+    "analyst find patterns",
+    "analyst find seasonal",
+    "analyst spot",
+    "analyst spot misleading",
+    "analyst summarize a",
+    "analyst summarize experiment",
+    "analyst summarize survey",
+    "gravion analyst clean",
+    "gravion analyst detect",
+    "gravion analyst spot",
+    "help me clean",
+    "help me detect",
+    "help me spot",
+    "me calculate an",
+    "me calculate compound",
+    "me calculate growth",
+    "me calculate total",
+    "me clean",
+    "me clean messy",
+    "me compare averages",
+    "me compare this",
+    "me compare two",
+    "me detect",
+    "me detect missing",
+    "me explain cohort",
+    "me explain confidence",
+    "me explain correlation",
+    "me explain key",
+    "me explain mean",
+    "me explain median",
+    "me explain moving",
+    "me explain normalization",
+    "me explain outliers",
+    "me explain percentages",
+    "me explain pivot",
+    "me explain quartiles",
+    "me explain regression",
+    "me explain sample",
+    "me explain skewed",
+    "me explain standard",
+    "me explain statistical",
+    "me explain time",
+    "me explain variance",
+    "me find a",
+    "me find errors",
+    "me find patterns",
+    "me find seasonal",
+    "me spot",
+    "me spot misleading",
+    "me summarize a",
+    "me summarize experiment",
+    "me summarize survey",
+    "please calculate an",
+    "please calculate compound",
+    "please calculate growth",
+    "please calculate total",
+    "please clean",
+    "please clean messy",
+    "please compare averages",
+    "please compare this",
+    "please compare two",
+    "please detect",
+    "please detect missing",
+    "please explain cohort",
+    "please explain confidence",
+    "please explain correlation",
+    "please explain key",
+    "please explain mean",
+    "please explain median",
+    "please explain moving",
+    "please explain normalization",
+    "please explain outliers",
+    "please explain percentages",
+    "please explain pivot",
+    "please explain quartiles",
+    "please explain regression",
+    "please explain sample",
+    "please explain skewed",
+    "please explain standard",
+    "please explain statistical",
+    "please explain time",
+    "please explain variance",
+    "please find a",
+    "please find errors",
+    "please find patterns",
+    "please find seasonal",
+    "please spot",
+    "please spot misleading",
+    "please summarize a",
+    "please summarize experiment",
+    "please summarize survey"
+  ],
+  "format": "gravion-core-local-v3",
+  "model_id": "gravion-analyst",
+  "parameter_count": 36887,
+  "trained_from": {
+    "classes": 48,
+    "dataset_sha256": "26bfa1696c1556275612aa991aed6fc6443ec5b89f13d775e4f569044a05b079",
+    "examples": 192,
+    "features": 548,
+    "source": "data/gravion-analyst-seed.jsonl"
+  },
+  "transitions": {
+    "<s>": {
+      "a": 0.14583333,
+      "add": 0.02083333,
+      "bars": 0.02083333,
+      "check": 0.02083333,
+      "cleaning": 0.02083333,
+      "cohort": 0.02083333,
+      "compare": 0.0625,
+      "compound": 0.02083333,
+      "correlation": 0.02083333,
+      "count": 0.02083333,
+      "dataset": 0.02083333,
+      "experiment": 0.02083333,
+      "growth": 0.02083333,
+      "honest": 0.02083333,
+      "kpis": 0.02083333,
+      "larger": 0.02083333,
+      "mean": 0.02083333,
+      "misleading": 0.02083333,
+      "multiply": 0.02083333,
+      "normalization": 0.02083333,
+      "outliers": 0.02083333,
+      "percentage": 0.02083333,
+      "quality": 0.02083333,
+      "quartiles": 0.02083333,
+      "range": 0.02083333,
+      "readable": 0.02083333,
+      "regression": 0.02083333,
+      "sampling": 0.02083333,
+      "seasonality": 0.02083333,
+      "share": 0.02083333,
+      "significance": 0.02083333,
+      "skew": 0.02083333,
+      "standard": 0.02083333,
+      "survey": 0.02083333,
+      "the": 0.02083333,
+      "time": 0.02083333,
+      "use": 0.02083333,
+      "variance": 0.02083333,
+      "weekly": 0.02083333,
+      "weight": 0.02083333
+    },
+    "a": {
+      "b": 0.04347826,
+      "calendar": 0.04347826,
+      "common": 0.04347826,
+      "confidence": 0.04347826,
+      "difference": 0.08695652,
+      "fixed": 0.04347826,
+      "goal": 0.04347826,
+      "histogram": 0.04347826,
+      "line": 0.04347826,
+      "mechanism": 0.04347826,
+      "moving": 0.04347826,
+      "part": 0.04347826,
+      "percentage": 0.17391304,
+      "pivot": 0.04347826,
+      "plausible": 0.04347826,
+      "simple": 0.04347826,
+      "single": 0.04347826,
+      "sliding": 0.04347826,
+      "subset": 0.04347826
+    },
+    "across": {
+      "weeks": 0.5,
+      "years": 0.5
+    },
+    "add": {
+      "all": 1.0
+    },
+    "against": {
+      "raw": 1.0
+    },
+    "align": {
+      "numbers": 1.0
+    },
+    "all": {
+      "values": 1.0
+    },
+    "alone": {
+      "would": 1.0
+    },
+    "always": {
+      "name": 1.0
+    },
+    "analysis": {
+      "groups": 1.0
+    },
+    "and": {
+      "controlled": 0.04166667,
+      "decide": 0.04166667,
+      "divide": 0.04166667,
+      "document": 0.04166667,
+      "duplicate": 0.04166667,
+      "highlight": 0.04166667,
+      "judges": 0.04166667,
+      "late": 0.04166667,
+      "mode": 0.04166667,
+      "never": 0.04166667,
+      "note": 0.04166667,
+      "report": 0.04166667,
+      "sample": 0.04166667,
+      "scatter": 0.04166667,
+      "shows": 0.04166667,
+      "states": 0.04166667,
+      "sudden": 0.04166667,
+      "summarizes": 0.04166667,
+      "test": 0.04166667,
+      "the": 0.08333333,
+      "tracks": 0.04166667,
+      "whether": 0.04166667,
+      "who": 0.04166667
+    },
+    "answers": {
+      "with": 1.0
+    },
+    "any": {
+      "single": 1.0
+    },
+    "appears": {
+      "beside": 1.0
+    },
+    "applies": {
+      "each": 1.0
+    },
+    "are": {
+      "and": 0.25,
+      "errors": 0.25,
+      "the": 0.25,
+      "values": 0.25
+    },
+    "as": {
+      "a": 0.66666667,
+      "incomes": 0.33333333
+    },
+    "asks": {
+      "whether": 1.0
+    },
+    "average": {
+      "</s>": 0.25,
+      "median": 0.25,
+      "smooths": 0.25,
+      "squared": 0.25
+    },
+    "averages": {
+      "and": 0.33333333,
+      "by": 0.33333333,
+      "check": 0.33333333
+    },
+    "averaging": {
+      "a": 1.0
+    },
+    "axes": {
+      "cherry": 0.5,
+      "label": 0.5
+    },
+    "b": {
+      "testing": 1.0
+    },
+    "bars": {
+      "compare": 1.0
+    },
+    "base": {
+      "it": 1.0
+    },
+    "be": {
+      "compared": 1.0
+    },
+    "before": {
+      "combining": 0.33333333,
+      "deciding": 0.33333333,
+      "judging": 0.33333333
+    },
+    "beside": {
+      "it": 0.5,
+      "the": 0.5
+    },
+    "best": {
+      "predicts": 1.0
+    },
+    "beyond": {
+      "natural": 1.0
+    },
+    "bias": {
+      "</s>": 1.0
+    },
+    "bin": {
+      "</s>": 1.0
+    },
+    "bins": {
+      "and": 1.0
+    },
+    "blanks": {
+      "per": 1.0
+    },
+    "breaks": {
+      "the": 1.0
+    },
+    "by": {
+      "averaging": 0.07692308,
+      "categories": 0.07692308,
+      "cell": 0.07692308,
+      "how": 0.07692308,
+      "its": 0.07692308,
+      "old": 0.07692308,
+      "start": 0.07692308,
+      "the": 0.15384615,
+      "their": 0.07692308,
+      "time": 0.07692308,
+      "total": 0.07692308,
+      "weekday": 0.07692308
+    },
+    "cadence": {
+      "</s>": 1.0
+    },
+    "calendar": {
+      "cycle": 1.0
+    },
+    "can": {
+      "be": 1.0
+    },
+    "categories": {
+      "and": 0.5,
+      "lines": 0.5
+    },
+    "causation": {
+      "needs": 1.0
+    },
+    "cause": {
+      "</s>": 1.0
+    },
+    "cell": {
+      "by": 0.5,
+      "trace": 0.5
+    },
+    "center": {
+      "spread": 1.0
+    },
+    "centers": {
+      "spreads": 1.0
+    },
+    "chance": {
+      "alone": 1.0
+    },
+    "change": {
+      "</s>": 0.2,
+      "divided": 0.2,
+      "in": 0.2,
+      "is": 0.2,
+      "over": 0.2
+    },
+    "charts": {
+      "show": 0.5,
+      "truncate": 0.5
+    },
+    "check": {
+      "direction": 0.33333333,
+      "formulas": 0.33333333,
+      "patterns": 0.33333333
+    },
+    "checks": {
+      "cover": 1.0
+    },
+    "cherry": {
+      "pick": 1.0
+    },
+    "cleaning": {
+      "fix": 1.0
+    },
+    "clears": {
+      "significance": 1.0
+    },
+    "cohort": {
+      "analysis": 1.0
+    },
+    "column": {
+      "check": 1.0
+    },
+    "combining": {
+      "or": 1.0
+    },
+    "common": {
+      "range": 0.5,
+      "value": 0.5
+    },
+    "compare": {
+      "categories": 0.16666667,
+      "centers": 0.16666667,
+      "early": 0.16666667,
+      "matching": 0.16666667,
+      "same": 0.16666667,
+      "totals": 0.16666667
+    },
+    "compared": {
+      "</s>": 1.0
+    },
+    "compares": {
+      "two": 1.0
+    },
+    "completeness": {
+      "consistency": 1.0
+    },
+    "compound": {
+      "growth": 1.0
+    },
+    "confidence": {
+      "interval": 1.0
+    },
+    "consistency": {
+      "valid": 1.0
+    },
+    "controlled": {
+      "evidence": 1.0
+    },
+    "correlation": {
+      "means": 1.0
+    },
+    "count": {
+      "beside": 0.25,
+      "blanks": 0.25,
+      "center": 0.25,
+      "top": 0.25
+    },
+    "counts": {
+      "before": 1.0
+    },
+    "cover": {
+      "completeness": 1.0
+    },
+    "curve": {
+      "that": 1.0
+    },
+    "cycle": {
+      "compare": 1.0
+    },
+    "data": {
+      "into": 0.5,
+      "is": 0.5
+    },
+    "dataset": {
+      "summary": 1.0
+    },
+    "decide": {
+      "fill": 1.0
+    },
+    "deciding": {
+      "whether": 1.0
+    },
+    "deviation": {
+      "</s>": 0.5,
+      "measures": 0.5
+    },
+    "difference": {
+      "is": 0.33333333,
+      "matters": 0.33333333,
+      "statistically": 0.33333333
+    },
+    "different": {
+      "units": 1.0
+    },
+    "direction": {
+      "and": 1.0
+    },
+    "directly": {
+      "to": 1.0
+    },
+    "distance": {
+      "from": 1.0
+    },
+    "distorts": {
+      "the": 1.0
+    },
+    "divide": {
+      "by": 1.0
+    },
+    "divided": {
+      "by": 1.0
+    },
+    "document": {
+      "every": 1.0
+    },
+    "drop": {
+      "rules": 1.0
+    },
+    "duplicate": {
+      "records": 1.0
+    },
+    "duplicates": {
+      "flag": 1.0
+    },
+    "each": {
+      "bin": 0.2,
+      "group": 0.2,
+      "part": 0.2,
+      "period": 0.2,
+      "value": 0.2
+    },
+    "early": {
+      "and": 1.0
+    },
+    "effect": {
+      "size": 1.0
+    },
+    "equal": {
+      "parts": 1.0
+    },
+    "errors": {
+      "or": 1.0
+    },
+    "estimates": {
+      "tiny": 1.0
+    },
+    "every": {
+      "change": 1.0
+    },
+    "evidence": {
+      "</s>": 1.0
+    },
+    "experiment": {
+      "summary": 1.0
+    },
+    "expressed": {
+      "as": 1.0
+    },
+    "extends": {
+      "the": 1.0
+    },
+    "extremes": {
+      "and": 1.0
+    },
+    "fall": {
+      "in": 1.0
+    },
+    "far": {
+      "from": 1.0
+    },
+    "few": {
+      "numbers": 1.0
+    },
+    "fill": {
+      "or": 1.0
+    },
+    "fits": {
+      "a": 1.0
+    },
+    "fix": {
+      "formats": 1.0
+    },
+    "fixed": {
+      "cadence": 1.0
+    },
+    "flag": {
+      "missing": 1.0
+    },
+    "for": {
+      "the": 0.66666667,
+      "trend": 0.33333333
+    },
+    "forecast": {
+      "extends": 1.0
+    },
+    "formats": {
+      "remove": 1.0
+    },
+    "formulas": {
+      "cell": 1.0
+    },
+    "four": {
+      "equal": 1.0
+    },
+    "frequent": {
+      "value": 1.0
+    },
+    "from": {
+      "others": 0.25,
+      "the": 0.75
+    },
+    "full": {
+      "axes": 1.0
+    },
+    "gets": {
+      "pulled": 1.0
+    },
+    "give": {
+      "steadier": 1.0
+    },
+    "gives": {
+      "a": 1.0
+    },
+    "goal": {
+      "reviewed": 1.0
+    },
+    "group": {
+      "</s>": 0.33333333,
+      "distorts": 0.33333333,
+      "separately": 0.33333333
+    },
+    "groups": {
+      "sample": 0.33333333,
+      "users": 0.33333333,
+      "values": 0.33333333
+    },
+    "growth": {
+      "applies": 0.33333333,
+      "rate": 0.33333333,
+      "to": 0.33333333
+    },
+    "guess": {
+      "</s>": 1.0
+    },
+    "half": {
+      "lies": 1.0
+    },
+    "hide": {
+      "inconvenient": 0.5,
+      "sample": 0.5
+    },
+    "highlight": {
+      "key": 1.0
+    },
+    "histogram": {
+      "groups": 1.0
+    },
+    "honest": {
+      "charts": 1.0
+    },
+    "honestly": {
+      "</s>": 1.0
+    },
+    "house": {
+      "prices": 1.0
+    },
+    "how": {
+      "many": 0.66666667,
+      "often": 0.33333333
+    },
+    "hundred": {
+      "</s>": 0.5,
+      "always": 0.5
+    },
+    "in": {
+      "each": 0.25,
+      "one": 0.25,
+      "percentage": 0.25,
+      "what": 0.25
+    },
+    "incomes": {
+      "or": 1.0
+    },
+    "inconvenient": {
+      "points": 1.0
+    },
+    "interval": {
+      "gives": 1.0
+    },
+    "into": {
+      "bins": 0.5,
+      "four": 0.5
+    },
+    "is": {
+      "a": 0.125,
+      "change": 0.0625,
+      "each": 0.0625,
+      "larger": 0.0625,
+      "longer": 0.0625,
+      "maximum": 0.0625,
+      "missing": 0.0625,
+      "new": 0.0625,
+      "ordered": 0.0625,
+      "standard": 0.0625,
+      "the": 0.3125
+    },
+    "it": {
+      "</s>": 0.2,
+      "appears": 0.2,
+      "clears": 0.2,
+      "is": 0.2,
+      "shows": 0.2
+    },
+    "its": {
+      "square": 0.33333333,
+      "uncertainty": 0.33333333,
+      "weight": 0.33333333
+    },
+    "judges": {
+      "the": 1.0
+    },
+    "judging": {
+      "</s>": 1.0
+    },
+    "key": {
+      "rows": 1.0
+    },
+    "kpis": {
+      "are": 1.0
+    },
+    "label": {
+      "sources": 0.5,
+      "units": 0.5
+    },
+    "larger": {
+      "means": 0.33333333,
+      "samples": 0.33333333,
+      "than": 0.33333333
+    },
+    "late": {
+      "averages": 1.0
+    },
+    "lies": {
+      "</s>": 1.0
+    },
+    "line": {
+      "or": 1.0
+    },
+    "lines": {
+      "show": 1.0
+    },
+    "long": {
+      "tail": 1.0
+    },
+    "longer": {
+      "the": 1.0
+    },
+    "look": {
+      "for": 1.0
+    },
+    "many": {
+      "fall": 0.5,
+      "there": 0.5
+    },
+    "matching": {
+      "seasons": 1.0
+    },
+    "matters": {
+      "</s>": 0.5,
+      "only": 0.5
+    },
+    "maximum": {
+      "minus": 1.0
+    },
+    "mean": {
+      "gets": 0.2,
+      "is": 0.2,
+      "its": 0.2,
+      "larger": 0.2,
+      "such": 0.2
+    },
+    "meaningfully": {
+      "and": 1.0
+    },
+    "means": {
+      "more": 0.33333333,
+      "one": 0.33333333,
+      "values": 0.33333333
+    },
+    "measures": {
+      "typical": 1.0
+    },
+    "mechanism": {
+      "and": 1.0
+    },
+    "median": {
+      "is": 0.5,
+      "when": 0.5
+    },
+    "middle": {
+      "half": 0.5,
+      "value": 0.5
+    },
+    "minimum": {
+      "it": 1.0
+    },
+    "minus": {
+      "minimum": 0.5,
+      "old": 0.5
+    },
+    "misleading": {
+      "charts": 1.0
+    },
+    "missing": {
+      "and": 0.5,
+      "values": 0.5
+    },
+    "mode": {
+      "is": 1.0
+    },
+    "month": {
+      "that": 1.0
+    },
+    "more": {
+      "spread": 1.0
+    },
+    "most": {
+      "common": 0.5,
+      "frequent": 0.5
+    },
+    "move": {
+      "together": 1.0
+    },
+    "moving": {
+      "average": 1.0
+    },
+    "multiply": {
+      "each": 1.0
+    },
+    "name": {
+      "the": 1.0
+    },
+    "natural": {
+      "variation": 1.0
+    },
+    "needs": {
+      "a": 1.0
+    },
+    "never": {
+      "hide": 1.0
+    },
+    "new": {
+      "minus": 0.33333333,
+      "total": 0.33333333,
+      "value": 0.33333333
+    },
+    "noise": {
+      "by": 1.0
+    },
+    "normalization": {
+      "rescales": 1.0
+    },
+    "not": {
+      "a": 0.5,
+      "the": 0.5
+    },
+    "note": {
+      "any": 1.0
+    },
+    "number": {
+      "</s>": 1.0
+    },
+    "numbers": {
+      "label": 0.5,
+      "tied": 0.5
+    },
+    "of": {
+      "</s>": 0.33333333,
+      "recent": 0.33333333,
+      "total": 0.33333333
+    },
+    "often": {
+      "it": 1.0
+    },
+    "old": {
+      "divided": 0.5,
+      "times": 0.5
+    },
+    "on": {
+      "a": 0.66666667,
+      "real": 0.33333333
+    },
+    "one": {
+      "hundred": 0.16666667,
+      "new": 0.16666667,
+      "number": 0.16666667,
+      "pattern": 0.16666667,
+      "tail": 0.16666667,
+      "value": 0.16666667
+    },
+    "only": {
+      "beyond": 1.0
+    },
+    "or": {
+      "curve": 0.16666667,
+      "drop": 0.16666667,
+      "hide": 0.16666667,
+      "house": 0.16666667,
+      "signals": 0.16666667,
+      "the": 0.16666667
+    },
+    "ordered": {
+      "by": 1.0
+    },
+    "original": {
+      "</s>": 1.0
+    },
+    "others": {
+      "</s>": 1.0
+    },
+    "outliers": {
+      "are": 0.5,
+      "skew": 0.5
+    },
+    "over": {
+      "time": 1.0
+    },
+    "part": {
+      "divided": 0.5,
+      "per": 0.5
+    },
+    "parts": {
+      "showing": 1.0
+    },
+    "pattern": {
+      "</s>": 0.5,
+      "that": 0.5
+    },
+    "patterns": {
+      "in": 0.5,
+      "repeat": 0.5
+    },
+    "per": {
+      "column": 0.33333333,
+      "group": 0.33333333,
+      "hundred": 0.33333333
+    },
+    "percentage": {
+      "</s>": 0.33333333,
+      "change": 0.16666667,
+      "is": 0.16666667,
+      "of": 0.16666667,
+      "then": 0.16666667
+    },
+    "percentages": {
+      "and": 1.0
+    },
+    "period": {
+      "s": 1.0
+    },
+    "pick": {
+      "ranges": 1.0
+    },
+    "picks": {
+      "a": 1.0
+    },
+    "pivot": {
+      "table": 1.0
+    },
+    "plausible": {
+      "range": 1.0
+    },
+    "plausibly": {
+      "produce": 1.0
+    },
+    "plots": {
+      "show": 1.0
+    },
+    "points": {
+      "</s>": 1.0
+    },
+    "precedents": {
+      "and": 1.0
+    },
+    "predicts": {
+      "one": 1.0
+    },
+    "prices": {
+      "</s>": 1.0
+    },
+    "produce": {
+      "</s>": 1.0
+    },
+    "products": {
+      "and": 1.0
+    },
+    "pulled": {
+      "toward": 1.0
+    },
+    "quality": {
+      "checks": 1.0
+    },
+    "quartiles": {
+      "split": 1.0
+    },
+    "random": {
+      "sampling": 1.0
+    },
+    "range": {
+      "for": 0.33333333,
+      "is": 0.33333333,
+      "so": 0.33333333
+    },
+    "ranges": {
+      "and": 0.5,
+      "or": 0.5
+    },
+    "rate": {
+      "is": 1.0
+    },
+    "raw": {
+      "sums": 1.0
+    },
+    "readable": {
+      "tables": 1.0
+    },
+    "real": {
+      "users": 1.0
+    },
+    "recent": {
+      "trend": 0.5,
+      "values": 0.5
+    },
+    "records": {
+      "</s>": 1.0
+    },
+    "reduces": {
+      "selection": 1.0
+    },
+    "regression": {
+      "fits": 1.0
+    },
+    "regroups": {
+      "rows": 1.0
+    },
+    "relationships": {
+      "</s>": 1.0
+    },
+    "remove": {
+      "duplicates": 1.0
+    },
+    "repeat": {
+      "by": 1.0
+    },
+    "repeats": {
+      "on": 1.0
+    },
+    "report": {
+      "how": 0.5,
+      "the": 0.5
+    },
+    "represent": {
+      "the": 1.0
+    },
+    "rescales": {
+      "values": 1.0
+    },
+    "response": {
+      "count": 1.0
+    },
+    "rest": {
+      "verify": 1.0
+    },
+    "result": {
+      "</s>": 1.0
+    },
+    "reviewed": {
+      "on": 1.0
+    },
+    "root": {
+      "is": 1.0
+    },
+    "rows": {
+      "</s>": 0.5,
+      "by": 0.5
+    },
+    "rules": {
+      "</s>": 1.0
+    },
+    "s": {
+      "growth": 1.0
+    },
+    "same": {
+      "weekdays": 1.0
+    },
+    "sample": {
+      "sizes": 1.0
+    },
+    "samples": {
+      "give": 0.5,
+      "swing": 0.5
+    },
+    "sampling": {
+      "picks": 0.5,
+      "reduces": 0.5
+    },
+    "scatter": {
+      "plots": 1.0
+    },
+    "seasonality": {
+      "and": 0.5,
+      "repeats": 0.5
+    },
+    "seasons": {
+      "across": 1.0
+    },
+    "selection": {
+      "bias": 1.0
+    },
+    "separately": {
+      "</s>": 1.0
+    },
+    "series": {
+      "data": 1.0
+    },
+    "share": {
+      "of": 1.0
+    },
+    "shifts": {
+      "</s>": 1.0
+    },
+    "show": {
+      "change": 0.33333333,
+      "full": 0.33333333,
+      "relationships": 0.33333333
+    },
+    "showing": {
+      "where": 1.0
+    },
+    "shown": {
+      "as": 1.0
+    },
+    "shows": {
+      "how": 0.5,
+      "total": 0.5
+    },
+    "signals": {
+      "</s>": 1.0
+    },
+    "significance": {
+      "</s>": 0.5,
+      "asks": 0.5
+    },
+    "simple": {
+      "forecast": 1.0
+    },
+    "single": {
+      "guess": 0.5,
+      "month": 0.5
+    },
+    "size": {
+      "and": 1.0
+    },
+    "sizes": {
+      "</s>": 0.33333333,
+      "a": 0.33333333,
+      "effect": 0.33333333
+    },
+    "skew": {
+      "means": 0.5,
+      "the": 0.5
+    },
+    "sliding": {
+      "window": 1.0
+    },
+    "small": {
+      "group": 1.0
+    },
+    "smooths": {
+      "noise": 1.0
+    },
+    "so": {
+      "different": 1.0
+    },
+    "sort": {
+      "meaningfully": 1.0
+    },
+    "sorted": {
+      "data": 1.0
+    },
+    "sources": {
+      "and": 1.0
+    },
+    "split": {
+      "sorted": 1.0
+    },
+    "spread": {
+      "</s>": 0.33333333,
+      "extremes": 0.33333333,
+      "in": 0.33333333
+    },
+    "spreads": {
+      "and": 1.0
+    },
+    "square": {
+      "root": 1.0
+    },
+    "squared": {
+      "distance": 1.0
+    },
+    "standard": {
+      "deviation": 1.0
+    },
+    "start": {
+      "time": 1.0
+    },
+    "starting": {
+      "value": 1.0
+    },
+    "states": {
+      "its": 1.0
+    },
+    "statistically": {
+      "</s>": 1.0
+    },
+    "steadier": {
+      "estimates": 1.0
+    },
+    "subset": {
+      "to": 1.0
+    },
+    "such": {
+      "as": 1.0
+    },
+    "sudden": {
+      "shifts": 1.0
+    },
+    "sum": {
+      "shown": 0.5,
+      "the": 0.5
+    },
+    "summarizes": {
+      "values": 1.0
+    },
+    "summary": {
+      "count": 0.33333333,
+      "groups": 0.33333333,
+      "response": 0.33333333
+    },
+    "sums": {
+      "</s>": 1.0
+    },
+    "survey": {
+      "summary": 1.0
+    },
+    "surveyed": {
+      "</s>": 1.0
+    },
+    "swing": {
+      "wildly": 1.0
+    },
+    "table": {
+      "regroups": 1.0
+    },
+    "tables": {
+      "align": 1.0
+    },
+    "tail": {
+      "</s>": 0.5,
+      "is": 0.5
+    },
+    "test": {
+      "totals": 1.0
+    },
+    "testing": {
+      "compares": 1.0
+    },
+    "than": {
+      "chance": 1.0
+    },
+    "that": {
+      "best": 0.33333333,
+      "breaks": 0.33333333,
+      "matters": 0.33333333
+    },
+    "the": {
+      "average": 0.09090909,
+      "base": 0.03030303,
+      "cause": 0.03030303,
+      "change": 0.03030303,
+      "count": 0.03030303,
+      "difference": 0.03030303,
+      "few": 0.03030303,
+      "long": 0.03030303,
+      "mean": 0.12121212,
+      "median": 0.03030303,
+      "middle": 0.06060606,
+      "mode": 0.03030303,
+      "most": 0.06060606,
+      "new": 0.03030303,
+      "one": 0.03030303,
+      "original": 0.03030303,
+      "pattern": 0.03030303,
+      "products": 0.03030303,
+      "recent": 0.03030303,
+      "rest": 0.03030303,
+      "result": 0.03030303,
+      "small": 0.03030303,
+      "starting": 0.03030303,
+      "sum": 0.03030303,
+      "true": 0.03030303,
+      "whole": 0.03030303
+    },
+    "their": {
+      "counts": 1.0
+    },
+    "them": {
+      "before": 1.0
+    },
+    "then": {
+      "look": 1.0
+    },
+    "there": {
+      "are": 1.0
+    },
+    "they": {
+      "are": 1.0
+    },
+    "tied": {
+      "directly": 1.0
+    },
+    "time": {
+      "and": 0.5,
+      "look": 0.25,
+      "series": 0.25
+    },
+    "times": {
+      "one": 1.0
+    },
+    "tiny": {
+      "samples": 1.0
+    },
+    "to": {
+      "a": 0.5,
+      "represent": 0.25,
+      "the": 0.25
+    },
+    "together": {
+      "causation": 1.0
+    },
+    "top": {
+      "answers": 1.0
+    },
+    "total": {
+      "is": 0.25,
+      "not": 0.25,
+      "spread": 0.25,
+      "weight": 0.25
+    },
+    "totals": {
+      "against": 0.5,
+      "averages": 0.5
+    },
+    "toward": {
+      "the": 1.0
+    },
+    "trace": {
+      "precedents": 1.0
+    },
+    "tracks": {
+      "each": 1.0
+    },
+    "trend": {
+      "and": 0.5,
+      "seasonality": 0.5
+    },
+    "true": {
+      "value": 1.0
+    },
+    "truncate": {
+      "axes": 1.0
+    },
+    "two": {
+      "variants": 1.0
+    },
+    "typical": {
+      "distance": 1.0
+    },
+    "uncertainty": {
+      "honestly": 1.0
+    },
+    "units": {
+      "can": 0.5,
+      "sort": 0.5
+    },
+    "use": {
+      "the": 1.0
+    },
+    "users": {
+      "and": 0.5,
+      "by": 0.5
+    },
+    "valid": {
+      "ranges": 1.0
+    },
+    "value": {
+      "</s>": 0.25,
+      "and": 0.125,
+      "by": 0.125,
+      "expressed": 0.125,
+      "from": 0.125,
+      "not": 0.125,
+      "report": 0.125
+    },
+    "values": {
+      "</s>": 0.125,
+      "and": 0.125,
+      "divide": 0.125,
+      "far": 0.125,
+      "into": 0.125,
+      "move": 0.125,
+      "per": 0.125,
+      "to": 0.125
+    },
+    "variance": {
+      "is": 1.0
+    },
+    "variants": {
+      "on": 1.0
+    },
+    "variation": {
+      "</s>": 1.0
+    },
+    "verify": {
+      "them": 1.0
+    },
+    "was": {
+      "surveyed": 1.0
+    },
+    "weekday": {
+      "compare": 1.0
+    },
+    "weekdays": {
+      "across": 1.0
+    },
+    "weekly": {
+      "patterns": 1.0
+    },
+    "weeks": {
+      "before": 1.0
+    },
+    "weight": {
+      "</s>": 0.33333333,
+      "averages": 0.33333333,
+      "sum": 0.33333333
+    },
+    "what": {
+      "is": 1.0
+    },
+    "when": {
+      "outliers": 1.0
+    },
+    "where": {
+      "the": 1.0
+    },
+    "whether": {
+      "a": 0.33333333,
+      "it": 0.33333333,
+      "they": 0.33333333
+    },
+    "who": {
+      "was": 1.0
+    },
+    "whole": {
+      "random": 1.0
+    },
+    "wildly": {
+      "with": 1.0
+    },
+    "window": {
+      "of": 1.0
+    },
+    "with": {
+      "one": 0.5,
+      "percentages": 0.5
+    },
+    "would": {
+      "plausibly": 1.0
+    },
+    "years": {
+      "</s>": 1.0
+    }
+  },
+  "unigram_weights": {
+    "a": 0.03599374,
+    "across": 0.00312989,
+    "add": 0.00156495,
+    "against": 0.00156495,
+    "align": 0.00156495,
+    "all": 0.00156495,
+    "alone": 0.00156495,
+    "always": 0.00156495,
+    "analysis": 0.00156495,
+    "and": 0.03755869,
+    "answers": 0.00156495,
+    "any": 0.00156495,
+    "appears": 0.00156495,
+    "applies": 0.00156495,
+    "are": 0.00625978,
+    "as": 0.00469484,
+    "asks": 0.00156495,
+    "average": 0.00625978,
+    "averages": 0.00469484,
+    "averaging": 0.00156495,
+    "axes": 0.00312989,
+    "b": 0.00156495,
+    "bars": 0.00156495,
+    "base": 0.00156495,
+    "be": 0.00156495,
+    "before": 0.00469484,
+    "beside": 0.00312989,
+    "best": 0.00156495,
+    "beyond": 0.00156495,
+    "bias": 0.00156495,
+    "bin": 0.00156495,
+    "bins": 0.00156495,
+    "blanks": 0.00156495,
+    "breaks": 0.00156495,
+    "by": 0.02034429,
+    "cadence": 0.00156495,
+    "calendar": 0.00156495,
+    "can": 0.00156495,
+    "categories": 0.00312989,
+    "causation": 0.00156495,
+    "cause": 0.00156495,
+    "cell": 0.00312989,
+    "center": 0.00156495,
+    "centers": 0.00156495,
+    "chance": 0.00156495,
+    "change": 0.00782473,
+    "charts": 0.00312989,
+    "check": 0.00469484,
+    "checks": 0.00156495,
+    "cherry": 0.00156495,
+    "cleaning": 0.00156495,
+    "clears": 0.00156495,
+    "cohort": 0.00156495,
+    "column": 0.00156495,
+    "combining": 0.00156495,
+    "common": 0.00312989,
+    "compare": 0.00938967,
+    "compared": 0.00156495,
+    "compares": 0.00156495,
+    "completeness": 0.00156495,
+    "compound": 0.00156495,
+    "confidence": 0.00156495,
+    "consistency": 0.00156495,
+    "controlled": 0.00156495,
+    "correlation": 0.00156495,
+    "count": 0.00625978,
+    "counts": 0.00156495,
+    "cover": 0.00156495,
+    "curve": 0.00156495,
+    "cycle": 0.00156495,
+    "data": 0.00312989,
+    "dataset": 0.00156495,
+    "decide": 0.00156495,
+    "deciding": 0.00156495,
+    "deviation": 0.00312989,
+    "difference": 0.00469484,
+    "different": 0.00156495,
+    "direction": 0.00156495,
+    "directly": 0.00156495,
+    "distance": 0.00312989,
+    "distorts": 0.00156495,
+    "divide": 0.00312989,
+    "divided": 0.00469484,
+    "document": 0.00156495,
+    "drop": 0.00156495,
+    "duplicate": 0.00156495,
+    "duplicates": 0.00156495,
+    "each": 0.00782473,
+    "early": 0.00156495,
+    "effect": 0.00156495,
+    "equal": 0.00156495,
+    "errors": 0.00156495,
+    "estimates": 0.00156495,
+    "every": 0.00156495,
+    "evidence": 0.00156495,
+    "experiment": 0.00156495,
+    "expressed": 0.00156495,
+    "extends": 0.00156495,
+    "extremes": 0.00156495,
+    "fall": 0.00156495,
+    "far": 0.00156495,
+    "few": 0.00156495,
+    "fill": 0.00156495,
+    "fits": 0.00156495,
+    "fix": 0.00156495,
+    "fixed": 0.00156495,
+    "flag": 0.00156495,
+    "for": 0.00469484,
+    "forecast": 0.00156495,
+    "formats": 0.00156495,
+    "formulas": 0.00156495,
+    "four": 0.00156495,
+    "frequent": 0.00156495,
+    "from": 0.00625978,
+    "full": 0.00156495,
+    "gets": 0.00156495,
+    "give": 0.00156495,
+    "gives": 0.00156495,
+    "goal": 0.00156495,
+    "group": 0.00469484,
+    "groups": 0.00469484,
+    "growth": 0.00469484,
+    "guess": 0.00156495,
+    "half": 0.00156495,
+    "hide": 0.00312989,
+    "highlight": 0.00156495,
+    "histogram": 0.00156495,
+    "honest": 0.00156495,
+    "honestly": 0.00156495,
+    "house": 0.00156495,
+    "how": 0.00469484,
+    "hundred": 0.00312989,
+    "in": 0.00625978,
+    "incomes": 0.00156495,
+    "inconvenient": 0.00156495,
+    "interval": 0.00156495,
+    "into": 0.00312989,
+    "is": 0.02503912,
+    "it": 0.00782473,
+    "its": 0.00469484,
+    "judges": 0.00156495,
+    "judging": 0.00156495,
+    "key": 0.00156495,
+    "kpis": 0.00156495,
+    "label": 0.00312989,
+    "larger": 0.00469484,
+    "late": 0.00156495,
+    "lies": 0.00156495,
+    "line": 0.00156495,
+    "lines": 0.00156495,
+    "long": 0.00156495,
+    "longer": 0.00156495,
+    "look": 0.00312989,
+    "many": 0.00312989,
+    "matching": 0.00156495,
+    "matters": 0.00312989,
+    "maximum": 0.00156495,
+    "mean": 0.00782473,
+    "meaningfully": 0.00156495,
+    "means": 0.00469484,
+    "measures": 0.00156495,
+    "mechanism": 0.00156495,
+    "median": 0.00312989,
+    "middle": 0.00312989,
+    "minimum": 0.00156495,
+    "minus": 0.00312989,
+    "misleading": 0.00156495,
+    "missing": 0.00312989,
+    "mode": 0.00312989,
+    "month": 0.00156495,
+    "more": 0.00156495,
+    "most": 0.00312989,
+    "move": 0.00156495,
+    "moving": 0.00156495,
+    "multiply": 0.00156495,
+    "name": 0.00156495,
+    "natural": 0.00156495,
+    "needs": 0.00156495,
+    "never": 0.00156495,
+    "new": 0.00469484,
+    "noise": 0.00156495,
+    "normalization": 0.00156495,
+    "not": 0.00312989,
+    "note": 0.00156495,
+    "number": 0.00156495,
+    "numbers": 0.00312989,
+    "of": 0.00469484,
+    "often": 0.00156495,
+    "old": 0.00312989,
+    "on": 0.00469484,
+    "one": 0.00938967,
+    "only": 0.00156495,
+    "or": 0.00938967,
+    "ordered": 0.00156495,
+    "original": 0.00156495,
+    "others": 0.00156495,
+    "outliers": 0.00312989,
+    "over": 0.00156495,
+    "part": 0.00312989,
+    "parts": 0.00156495,
+    "pattern": 0.00312989,
+    "patterns": 0.00312989,
+    "per": 0.00469484,
+    "percentage": 0.00938967,
+    "percentages": 0.00156495,
+    "period": 0.00156495,
+    "pick": 0.00156495,
+    "picks": 0.00156495,
+    "pivot": 0.00156495,
+    "plausible": 0.00156495,
+    "plausibly": 0.00156495,
+    "plots": 0.00156495,
+    "points": 0.00156495,
+    "precedents": 0.00156495,
+    "predicts": 0.00156495,
+    "prices": 0.00156495,
+    "produce": 0.00156495,
+    "products": 0.00156495,
+    "pulled": 0.00156495,
+    "quality": 0.00156495,
+    "quartiles": 0.00156495,
+    "random": 0.00156495,
+    "range": 0.00469484,
+    "ranges": 0.00312989,
+    "rate": 0.00156495,
+    "raw": 0.00156495,
+    "readable": 0.00156495,
+    "real": 0.00156495,
+    "recent": 0.00312989,
+    "records": 0.00156495,
+    "reduces": 0.00156495,
+    "regression": 0.00156495,
+    "regroups": 0.00156495,
+    "relationships": 0.00156495,
+    "remove": 0.00156495,
+    "repeat": 0.00156495,
+    "repeats": 0.00156495,
+    "report": 0.00312989,
+    "represent": 0.00156495,
+    "rescales": 0.00156495,
+    "response": 0.00156495,
+    "rest": 0.00156495,
+    "result": 0.00156495,
+    "reviewed": 0.00156495,
+    "root": 0.00156495,
+    "rows": 0.00312989,
+    "rules": 0.00156495,
+    "s": 0.00156495,
+    "same": 0.00156495,
+    "sample": 0.00469484,
+    "samples": 0.00312989,
+    "sampling": 0.00312989,
+    "scatter": 0.00156495,
+    "seasonality": 0.00312989,
+    "seasons": 0.00156495,
+    "selection": 0.00156495,
+    "separately": 0.00156495,
+    "series": 0.00156495,
+    "share": 0.00156495,
+    "shifts": 0.00156495,
+    "show": 0.00469484,
+    "showing": 0.00156495,
+    "shown": 0.00156495,
+    "shows": 0.00312989,
+    "signals": 0.00156495,
+    "significance": 0.00312989,
+    "simple": 0.00156495,
+    "single": 0.00312989,
+    "size": 0.00156495,
+    "sizes": 0.00469484,
+    "skew": 0.00312989,
+    "sliding": 0.00156495,
+    "small": 0.00156495,
+    "smooths": 0.00156495,
+    "so": 0.00156495,
+    "sort": 0.00156495,
+    "sorted": 0.00156495,
+    "sources": 0.00156495,
+    "split": 0.00156495,
+    "spread": 0.00469484,
+    "spreads": 0.00156495,
+    "square": 0.00156495,
+    "squared": 0.00156495,
+    "standard": 0.00312989,
+    "start": 0.00156495,
+    "starting": 0.00156495,
+    "states": 0.00156495,
+    "statistically": 0.00156495,
+    "steadier": 0.00156495,
+    "subset": 0.00156495,
+    "such": 0.00156495,
+    "sudden": 0.00156495,
+    "sum": 0.00312989,
+    "summarizes": 0.00156495,
+    "summary": 0.00469484,
+    "sums": 0.00156495,
+    "survey": 0.00156495,
+    "surveyed": 0.00156495,
+    "swing": 0.00156495,
+    "table": 0.00156495,
+    "tables": 0.00156495,
+    "tail": 0.00312989,
+    "test": 0.00156495,
+    "testing": 0.00156495,
+    "than": 0.00156495,
+    "that": 0.00469484,
+    "the": 0.05164319,
+    "their": 0.00156495,
+    "them": 0.00156495,
+    "then": 0.00156495,
+    "there": 0.00156495,
+    "they": 0.00156495,
+    "tied": 0.00156495,
+    "time": 0.00625978,
+    "times": 0.00156495,
+    "tiny": 0.00156495,
+    "to": 0.00625978,
+    "together": 0.00156495,
+    "top": 0.00156495,
+    "total": 0.00625978,
+    "totals": 0.00312989,
+    "toward": 0.00156495,
+    "trace": 0.00156495,
+    "tracks": 0.00156495,
+    "trend": 0.00312989,
+    "true": 0.00156495,
+    "truncate": 0.00156495,
+    "two": 0.00156495,
+    "typical": 0.00156495,
+    "uncertainty": 0.00156495,
+    "units": 0.00312989,
+    "use": 0.00156495,
+    "users": 0.00312989,
+    "valid": 0.00156495,
+    "value": 0.01251956,
+    "values": 0.01251956,
+    "variance": 0.00156495,
+    "variants": 0.00156495,
+    "variation": 0.00156495,
+    "verify": 0.00156495,
+    "was": 0.00156495,
+    "weekday": 0.00156495,
+    "weekdays": 0.00156495,
+    "weekly": 0.00156495,
+    "weeks": 0.00156495,
+    "weight": 0.00469484,
+    "what": 0.00156495,
+    "when": 0.00156495,
+    "where": 0.00156495,
+    "whether": 0.00469484,
+    "who": 0.00156495,
+    "whole": 0.00156495,
+    "wildly": 0.00156495,
+    "window": 0.00156495,
+    "with": 0.00312989,
+    "would": 0.00156495,
+    "years": 0.00156495
+  },
+  "vocabulary": [
+    "a",
+    "across",
+    "add",
+    "against",
+    "align",
+    "all",
+    "alone",
+    "always",
+    "an",
+    "analysis",
+    "analyst",
+    "and",
+    "answers",
+    "any",
+    "appears",
+    "applies",
+    "are",
+    "as",
+    "asks",
+    "average",
+    "averages",
+    "averaging",
+    "axes",
+    "b",
+    "bars",
+    "base",
+    "basics",
+    "be",
+    "before",
+    "beside",
+    "best",
+    "between",
+    "beyond",
+    "bias",
+    "bin",
+    "bins",
+    "blanks",
+    "breaks",
+    "by",
+    "cadence",
+    "calculate",
+    "calendar",
+    "can",
+    "categories",
+    "causation",
+    "cause",
+    "cell",
+    "center",
+    "centers",
+    "chance",
+    "change",
+    "chart",
+    "charts",
+    "check",
+    "checks",
+    "cherry",
+    "choice",
+    "clean",
+    "cleaning",
+    "clearly",
+    "clears",
+    "cohort",
+    "column",
+    "combining",
+    "common",
+    "compare",
+    "compared",
+    "compares",
+    "completeness",
+    "compound",
+    "confidence",
+    "consistency",
+    "controlled",
+    "correlation",
+    "count",
+    "counts",
+    "cover",
+    "curve",
+    "cycle",
+    "data",
+    "dataset",
+    "decide",
+    "deciding",
+    "detect",
+    "deviation",
+    "difference",
+    "different",
+    "direction",
+    "directly",
+    "distance",
+    "distorts",
+    "distributions",
+    "divide",
+    "divided",
+    "document",
+    "drop",
+    "duplicate",
+    "duplicates",
+    "each",
+    "early",
+    "effect",
+    "equal",
+    "errors",
+    "estimates",
+    "ethics",
+    "every",
+    "evidence",
+    "experiment",
+    "explain",
+    "expressed",
+    "extends",
+    "extremes",
+    "fall",
+    "far",
+    "few",
+    "fill",
+    "find",
+    "fits",
+    "fix",
+    "fixed",
+    "flag",
+    "for",
+    "forecast",
+    "formats",
+    "formulas",
+    "four",
+    "frequent",
+    "from",
+    "full",
+    "gets",
+    "give",
+    "gives",
+    "goal",
+    "gravion",
+    "group",
+    "groups",
+    "growth",
+    "guess",
+    "half",
+    "help",
+    "hide",
+    "highlight",
+    "histogram",
+    "honest",
+    "honestly",
+    "house",
+    "how",
+    "hundred",
+    "importance",
+    "in",
+    "incomes",
+    "inconvenient",
+    "indicators",
+    "interval",
+    "intervals",
+    "into",
+    "is",
+    "it",
+    "its",
+    "judges",
+    "judging",
+    "key",
+    "kpis",
+    "label",
+    "larger",
+    "last",
+    "late",
+    "lies",
+    "line",
+    "lines",
+    "long",
+    "longer",
+    "look",
+    "make",
+    "many",
+    "matching",
+    "matters",
+    "maximum",
+    "me",
+    "mean",
+    "meaningfully",
+    "means",
+    "measures",
+    "mechanism",
+    "median",
+    "messy",
+    "methods",
+    "middle",
+    "minimum",
+    "minus",
+    "misleading",
+    "missing",
+    "mode",
+    "month",
+    "monthly",
+    "more",
+    "most",
+    "move",
+    "moving",
+    "multiply",
+    "name",
+    "natural",
+    "needs",
+    "never",
+    "new",
+    "noise",
+    "normalization",
+    "not",
+    "note",
+    "number",
+    "numbers",
+    "numeric",
+    "of",
+    "often",
+    "old",
+    "on",
+    "one",
+    "only",
+    "or",
+    "ordered",
+    "original",
+    "others",
+    "outliers",
+    "over",
+    "part",
+    "parts",
+    "past",
+    "pattern",
+    "patterns",
+    "per",
+    "percentage",
+    "percentages",
+    "performance",
+    "period",
+    "periods",
+    "pick",
+    "picks",
+    "pivot",
+    "plainly",
+    "plausible",
+    "plausibly",
+    "please",
+    "plots",
+    "points",
+    "precedents",
+    "predicts",
+    "prices",
+    "produce",
+    "products",
+    "pulled",
+    "quality",
+    "quartiles",
+    "random",
+    "range",
+    "ranges",
+    "rate",
+    "raw",
+    "readable",
+    "real",
+    "recent",
+    "records",
+    "reduces",
+    "regression",
+    "regroups",
+    "relationships",
+    "remove",
+    "repeat",
+    "repeats",
+    "report",
+    "represent",
+    "rescales",
+    "response",
+    "rest",
+    "result",
+    "results",
+    "reviewed",
+    "root",
+    "rows",
+    "rules",
+    "s",
+    "sales",
+    "same",
+    "sample",
+    "samples",
+    "sampling",
+    "scatter",
+    "seasonal",
+    "seasonality",
+    "seasons",
+    "selection",
+    "separately",
+    "series",
+    "share",
+    "shifts",
+    "show",
+    "showing",
+    "shown",
+    "shows",
+    "signals",
+    "significance",
+    "simple",
+    "simply",
+    "single",
+    "size",
+    "sizes",
+    "skew",
+    "skewed",
+    "sliding",
+    "small",
+    "smooths",
+    "so",
+    "sort",
+    "sorted",
+    "sources",
+    "split",
+    "spot",
+    "spread",
+    "spreads",
+    "spreadsheet",
+    "square",
+    "squared",
+    "standard",
+    "start",
+    "starting",
+    "states",
+    "statistical",
+    "statistically",
+    "steadier",
+    "subset",
+    "such",
+    "sudden",
+    "sum",
+    "summarize",
+    "summarizes",
+    "summary",
+    "sums",
+    "survey",
+    "surveyed",
+    "swing",
+    "table",
+    "tables",
+    "tail",
+    "test",
+    "testing",
+    "than",
+    "that",
+    "the",
+    "their",
+    "them",
+    "then",
+    "there",
+    "they",
+    "this",
+    "tied",
+    "time",
+    "times",
+    "tiny",
+    "to",
+    "together",
+    "top",
+    "total",
+    "totals",
+    "toward",
+    "trace",
+    "tracks",
+    "trend",
+    "true",
+    "truncate",
+    "two",
+    "typical",
+    "uncertainty",
+    "units",
+    "use",
+    "users",
+    "valid",
+    "value",
+    "values",
+    "variance",
+    "variants",
+    "variation",
+    "verify",
+    "versus",
+    "visualization",
+    "was",
+    "weekday",
+    "weekdays",
+    "weekly",
+    "weeks",
+    "weight",
+    "weighted",
+    "what",
+    "when",
+    "where",
+    "whether",
+    "who",
+    "whole",
+    "wildly",
+    "window",
+    "with",
+    "words",
+    "would",
+    "years"
+  ],
+  "weights_sha256": "5e737ff9bf475ffd0180db3baaabcf308ac6fc954b5efb9420f82c0399207053"
+}

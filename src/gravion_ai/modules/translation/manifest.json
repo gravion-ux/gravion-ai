@@ -1,0 +1,14 @@
+{
+  "payload": {
+    "name": "translation",
+    "type": "translation",
+    "version": "0.1.0",
+    "entrypoint": "gravion_ai.modules.translation.module:TranslationModule",
+    "files": {
+      "__init__.py": "52055d5c5b6048d3ef11d270a0f1a1d9c5aafa73e564b4e2ae681800fb19290f",
+      "module.py": "075042dab5895cfead3ffddc0f3d9a0cfe449da35c2de726ee6153c696a9740b"
+    }
+  },
+  "signature": "",
+  "note": "Unsigned in the repo: the issuer private key is (correctly) not distributed. The project owner signs this manifest with `gravion license sign-module` before a production deployment; production mode refuses unsigned or tampered modules."
+}

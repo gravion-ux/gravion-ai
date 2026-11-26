@@ -1,0 +1,192 @@
+{"completion": "Mean is the average, median is the middle value, and mode is the most frequent value.", "prompt": "explain mean median and mode"}
+{"completion": "Mean is the average, median is the middle value, and mode is the most frequent value.", "prompt": "please explain mean median and mode"}
+{"completion": "Mean is the average, median is the middle value, and mode is the most frequent value.", "prompt": "gravion analyst explain mean median and mode"}
+{"completion": "Mean is the average, median is the middle value, and mode is the most frequent value.", "prompt": "help me explain mean median and mode"}
+{"completion": "Add all values, divide by how many there are, and report the count beside the average.", "prompt": "calculate an average from numbers"}
+{"completion": "Add all values, divide by how many there are, and report the count beside the average.", "prompt": "please calculate an average from numbers"}
+{"completion": "Add all values, divide by how many there are, and report the count beside the average.", "prompt": "gravion analyst calculate an average from numbers"}
+{"completion": "Add all values, divide by how many there are, and report the count beside the average.", "prompt": "help me calculate an average from numbers"}
+{"completion": "Standard deviation measures typical distance from the mean; larger means more spread.", "prompt": "explain standard deviation simply"}
+{"completion": "Standard deviation measures typical distance from the mean; larger means more spread.", "prompt": "please explain standard deviation simply"}
+{"completion": "Standard deviation measures typical distance from the mean; larger means more spread.", "prompt": "gravion analyst explain standard deviation simply"}
+{"completion": "Standard deviation measures typical distance from the mean; larger means more spread.", "prompt": "help me explain standard deviation simply"}
+{"completion": "Compare early and late averages, check direction, and note any single month that breaks the pattern.", "prompt": "find a trend in monthly numbers"}
+{"completion": "Compare early and late averages, check direction, and note any single month that breaks the pattern.", "prompt": "please find a trend in monthly numbers"}
+{"completion": "Compare early and late averages, check direction, and note any single month that breaks the pattern.", "prompt": "gravion analyst find a trend in monthly numbers"}
+{"completion": "Compare early and late averages, check direction, and note any single month that breaks the pattern.", "prompt": "help me find a trend in monthly numbers"}
+{"completion": "Outliers are values far from the rest; verify them before deciding whether they are errors or signals.", "prompt": "explain outliers in data"}
+{"completion": "Outliers are values far from the rest; verify them before deciding whether they are errors or signals.", "prompt": "please explain outliers in data"}
+{"completion": "Outliers are values far from the rest; verify them before deciding whether they are errors or signals.", "prompt": "gravion analyst explain outliers in data"}
+{"completion": "Outliers are values far from the rest; verify them before deciding whether they are errors or signals.", "prompt": "help me explain outliers in data"}
+{"completion": "Dataset summary: count, center, spread, extremes, and the one pattern that matters.", "prompt": "summarize a dataset in words"}
+{"completion": "Dataset summary: count, center, spread, extremes, and the one pattern that matters.", "prompt": "please summarize a dataset in words"}
+{"completion": "Dataset summary: count, center, spread, extremes, and the one pattern that matters.", "prompt": "gravion analyst summarize a dataset in words"}
+{"completion": "Dataset summary: count, center, spread, extremes, and the one pattern that matters.", "prompt": "help me summarize a dataset in words"}
+{"completion": "Compare centers, spreads, and sample sizes; a difference matters only beyond natural variation.", "prompt": "compare two groups of numbers"}
+{"completion": "Compare centers, spreads, and sample sizes; a difference matters only beyond natural variation.", "prompt": "please compare two groups of numbers"}
+{"completion": "Compare centers, spreads, and sample sizes; a difference matters only beyond natural variation.", "prompt": "gravion analyst compare two groups of numbers"}
+{"completion": "Compare centers, spreads, and sample sizes; a difference matters only beyond natural variation.", "prompt": "help me compare two groups of numbers"}
+{"completion": "A percentage is a part per hundred; always name the base it is a percentage of.", "prompt": "explain percentages clearly"}
+{"completion": "A percentage is a part per hundred; always name the base it is a percentage of.", "prompt": "please explain percentages clearly"}
+{"completion": "A percentage is a part per hundred; always name the base it is a percentage of.", "prompt": "gravion analyst explain percentages clearly"}
+{"completion": "A percentage is a part per hundred; always name the base it is a percentage of.", "prompt": "help me explain percentages clearly"}
+{"completion": "Bars compare categories, lines show change over time, and scatter plots show relationships.", "prompt": "make a simple chart choice"}
+{"completion": "Bars compare categories, lines show change over time, and scatter plots show relationships.", "prompt": "please make a simple chart choice"}
+{"completion": "Bars compare categories, lines show change over time, and scatter plots show relationships.", "prompt": "gravion analyst make a simple chart choice"}
+{"completion": "Bars compare categories, lines show change over time, and scatter plots show relationships.", "prompt": "help me make a simple chart choice"}
+{"completion": "Correlation means values move together; causation needs a mechanism and controlled evidence.", "prompt": "explain correlation versus causation"}
+{"completion": "Correlation means values move together; causation needs a mechanism and controlled evidence.", "prompt": "please explain correlation versus causation"}
+{"completion": "Correlation means values move together; causation needs a mechanism and controlled evidence.", "prompt": "gravion analyst explain correlation versus causation"}
+{"completion": "Correlation means values move together; causation needs a mechanism and controlled evidence.", "prompt": "help me explain correlation versus causation"}
+{"completion": "Cleaning: fix formats, remove duplicates, flag missing values, and document every change.", "prompt": "clean messy numeric data"}
+{"completion": "Cleaning: fix formats, remove duplicates, flag missing values, and document every change.", "prompt": "please clean messy numeric data"}
+{"completion": "Cleaning: fix formats, remove duplicates, flag missing values, and document every change.", "prompt": "gravion analyst clean messy numeric data"}
+{"completion": "Cleaning: fix formats, remove duplicates, flag missing values, and document every change.", "prompt": "help me clean messy numeric data"}
+{"completion": "Larger samples give steadier estimates; tiny samples swing wildly with one new value.", "prompt": "explain sample size importance"}
+{"completion": "Larger samples give steadier estimates; tiny samples swing wildly with one new value.", "prompt": "please explain sample size importance"}
+{"completion": "Larger samples give steadier estimates; tiny samples swing wildly with one new value.", "prompt": "gravion analyst explain sample size importance"}
+{"completion": "Larger samples give steadier estimates; tiny samples swing wildly with one new value.", "prompt": "help me explain sample size importance"}
+{"completion": "Growth rate is change divided by the starting value, expressed as a percentage.", "prompt": "calculate growth rate between periods"}
+{"completion": "Growth rate is change divided by the starting value, expressed as a percentage.", "prompt": "please calculate growth rate between periods"}
+{"completion": "Growth rate is change divided by the starting value, expressed as a percentage.", "prompt": "gravion analyst calculate growth rate between periods"}
+{"completion": "Growth rate is change divided by the starting value, expressed as a percentage.", "prompt": "help me calculate growth rate between periods"}
+{"completion": "Use the median when outliers skew the mean, such as incomes or house prices.", "prompt": "explain median versus mean choice"}
+{"completion": "Use the median when outliers skew the mean, such as incomes or house prices.", "prompt": "please explain median versus mean choice"}
+{"completion": "Use the median when outliers skew the mean, such as incomes or house prices.", "prompt": "gravion analyst explain median versus mean choice"}
+{"completion": "Use the median when outliers skew the mean, such as incomes or house prices.", "prompt": "help me explain median versus mean choice"}
+{"completion": "Range is maximum minus minimum; it shows total spread in one number.", "prompt": "find the range of a dataset"}
+{"completion": "Range is maximum minus minimum; it shows total spread in one number.", "prompt": "please find the range of a dataset"}
+{"completion": "Range is maximum minus minimum; it shows total spread in one number.", "prompt": "gravion analyst find the range of a dataset"}
+{"completion": "Range is maximum minus minimum; it shows total spread in one number.", "prompt": "help me find the range of a dataset"}
+{"completion": "Quartiles split sorted data into four equal parts, showing where the middle half lies.", "prompt": "explain quartiles simply"}
+{"completion": "Quartiles split sorted data into four equal parts, showing where the middle half lies.", "prompt": "please explain quartiles simply"}
+{"completion": "Quartiles split sorted data into four equal parts, showing where the middle half lies.", "prompt": "gravion analyst explain quartiles simply"}
+{"completion": "Quartiles split sorted data into four equal parts, showing where the middle half lies.", "prompt": "help me explain quartiles simply"}
+{"completion": "Count blanks per column, check patterns in what is missing, and decide fill or drop rules.", "prompt": "detect missing values in data"}
+{"completion": "Count blanks per column, check patterns in what is missing, and decide fill or drop rules.", "prompt": "please detect missing values in data"}
+{"completion": "Count blanks per column, check patterns in what is missing, and decide fill or drop rules.", "prompt": "gravion analyst detect missing values in data"}
+{"completion": "Count blanks per column, check patterns in what is missing, and decide fill or drop rules.", "prompt": "help me detect missing values in data"}
+{"completion": "A histogram groups values into bins and shows how many fall in each bin.", "prompt": "explain a histogram"}
+{"completion": "A histogram groups values into bins and shows how many fall in each bin.", "prompt": "please explain a histogram"}
+{"completion": "A histogram groups values into bins and shows how many fall in each bin.", "prompt": "gravion analyst explain a histogram"}
+{"completion": "A histogram groups values into bins and shows how many fall in each bin.", "prompt": "help me explain a histogram"}
+{"completion": "Compare totals, averages, and the change in percentage, then look for the cause.", "prompt": "compare this month with last month"}
+{"completion": "Compare totals, averages, and the change in percentage, then look for the cause.", "prompt": "please compare this month with last month"}
+{"completion": "Compare totals, averages, and the change in percentage, then look for the cause.", "prompt": "gravion analyst compare this month with last month"}
+{"completion": "Compare totals, averages, and the change in percentage, then look for the cause.", "prompt": "help me compare this month with last month"}
+{"completion": "Significance asks whether a difference is larger than chance alone would plausibly produce.", "prompt": "explain statistical significance plainly"}
+{"completion": "Significance asks whether a difference is larger than chance alone would plausibly produce.", "prompt": "please explain statistical significance plainly"}
+{"completion": "Significance asks whether a difference is larger than chance alone would plausibly produce.", "prompt": "gravion analyst explain statistical significance plainly"}
+{"completion": "Significance asks whether a difference is larger than chance alone would plausibly produce.", "prompt": "help me explain statistical significance plainly"}
+{"completion": "Readable tables align numbers, label units, sort meaningfully, and highlight key rows.", "prompt": "make a data table readable"}
+{"completion": "Readable tables align numbers, label units, sort meaningfully, and highlight key rows.", "prompt": "please make a data table readable"}
+{"completion": "Readable tables align numbers, label units, sort meaningfully, and highlight key rows.", "prompt": "gravion analyst make a data table readable"}
+{"completion": "Readable tables align numbers, label units, sort meaningfully, and highlight key rows.", "prompt": "help me make a data table readable"}
+{"completion": "A moving average smooths noise by averaging a sliding window of recent values.", "prompt": "explain moving averages"}
+{"completion": "A moving average smooths noise by averaging a sliding window of recent values.", "prompt": "please explain moving averages"}
+{"completion": "A moving average smooths noise by averaging a sliding window of recent values.", "prompt": "gravion analyst explain moving averages"}
+{"completion": "A moving average smooths noise by averaging a sliding window of recent values.", "prompt": "help me explain moving averages"}
+{"completion": "The mode is the most common value; report how often it appears beside it.", "prompt": "find the most common value"}
+{"completion": "The mode is the most common value; report how often it appears beside it.", "prompt": "please find the most common value"}
+{"completion": "The mode is the most common value; report how often it appears beside it.", "prompt": "gravion analyst find the most common value"}
+{"completion": "The mode is the most common value; report how often it appears beside it.", "prompt": "help me find the most common value"}
+{"completion": "Quality checks cover completeness, consistency, valid ranges, and duplicate records.", "prompt": "explain data quality checks"}
+{"completion": "Quality checks cover completeness, consistency, valid ranges, and duplicate records.", "prompt": "please explain data quality checks"}
+{"completion": "Quality checks cover completeness, consistency, valid ranges, and duplicate records.", "prompt": "gravion analyst explain data quality checks"}
+{"completion": "Quality checks cover completeness, consistency, valid ranges, and duplicate records.", "prompt": "help me explain data quality checks"}
+{"completion": "Percentage change is new minus old, divided by old, times one hundred.", "prompt": "calculate a percentage change"}
+{"completion": "Percentage change is new minus old, divided by old, times one hundred.", "prompt": "please calculate a percentage change"}
+{"completion": "Percentage change is new minus old, divided by old, times one hundred.", "prompt": "gravion analyst calculate a percentage change"}
+{"completion": "Percentage change is new minus old, divided by old, times one hundred.", "prompt": "help me calculate a percentage change"}
+{"completion": "Skew means one tail is longer; the mean gets pulled toward the long tail.", "prompt": "explain skewed distributions"}
+{"completion": "Skew means one tail is longer; the mean gets pulled toward the long tail.", "prompt": "please explain skewed distributions"}
+{"completion": "Skew means one tail is longer; the mean gets pulled toward the long tail.", "prompt": "gravion analyst explain skewed distributions"}
+{"completion": "Skew means one tail is longer; the mean gets pulled toward the long tail.", "prompt": "help me explain skewed distributions"}
+{"completion": "Survey summary: response count, top answers with percentages, and who was surveyed.", "prompt": "summarize survey results"}
+{"completion": "Survey summary: response count, top answers with percentages, and who was surveyed.", "prompt": "please summarize survey results"}
+{"completion": "Survey summary: response count, top answers with percentages, and who was surveyed.", "prompt": "gravion analyst summarize survey results"}
+{"completion": "Survey summary: response count, top answers with percentages, and who was surveyed.", "prompt": "help me summarize survey results"}
+{"completion": "A confidence interval gives a plausible range for the true value, not a single guess.", "prompt": "explain confidence intervals simply"}
+{"completion": "A confidence interval gives a plausible range for the true value, not a single guess.", "prompt": "please explain confidence intervals simply"}
+{"completion": "A confidence interval gives a plausible range for the true value, not a single guess.", "prompt": "gravion analyst explain confidence intervals simply"}
+{"completion": "A confidence interval gives a plausible range for the true value, not a single guess.", "prompt": "help me explain confidence intervals simply"}
+{"completion": "Misleading charts truncate axes, cherry-pick ranges, or hide sample sizes.", "prompt": "spot misleading charts"}
+{"completion": "Misleading charts truncate axes, cherry-pick ranges, or hide sample sizes.", "prompt": "please spot misleading charts"}
+{"completion": "Misleading charts truncate axes, cherry-pick ranges, or hide sample sizes.", "prompt": "gravion analyst spot misleading charts"}
+{"completion": "Misleading charts truncate axes, cherry-pick ranges, or hide sample sizes.", "prompt": "help me spot misleading charts"}
+{"completion": "Regression fits a line or curve that best predicts one value from others.", "prompt": "explain regression in simple words"}
+{"completion": "Regression fits a line or curve that best predicts one value from others.", "prompt": "please explain regression in simple words"}
+{"completion": "Regression fits a line or curve that best predicts one value from others.", "prompt": "gravion analyst explain regression in simple words"}
+{"completion": "Regression fits a line or curve that best predicts one value from others.", "prompt": "help me explain regression in simple words"}
+{"completion": "Share of total is each part divided by the sum, shown as a percentage.", "prompt": "calculate total and share of total"}
+{"completion": "Share of total is each part divided by the sum, shown as a percentage.", "prompt": "please calculate total and share of total"}
+{"completion": "Share of total is each part divided by the sum, shown as a percentage.", "prompt": "gravion analyst calculate total and share of total"}
+{"completion": "Share of total is each part divided by the sum, shown as a percentage.", "prompt": "help me calculate total and share of total"}
+{"completion": "Time series data is ordered by time; look for trend, seasonality, and sudden shifts.", "prompt": "explain time series basics"}
+{"completion": "Time series data is ordered by time; look for trend, seasonality, and sudden shifts.", "prompt": "please explain time series basics"}
+{"completion": "Time series data is ordered by time; look for trend, seasonality, and sudden shifts.", "prompt": "gravion analyst explain time series basics"}
+{"completion": "Time series data is ordered by time; look for trend, seasonality, and sudden shifts.", "prompt": "help me explain time series basics"}
+{"completion": "Weight averages by their counts before combining, or the small group distorts the result.", "prompt": "compare averages with different counts"}
+{"completion": "Weight averages by their counts before combining, or the small group distorts the result.", "prompt": "please compare averages with different counts"}
+{"completion": "Weight averages by their counts before combining, or the small group distorts the result.", "prompt": "gravion analyst compare averages with different counts"}
+{"completion": "Weight averages by their counts before combining, or the small group distorts the result.", "prompt": "help me compare averages with different counts"}
+{"completion": "Variance is the average squared distance from the mean; its square root is standard deviation.", "prompt": "explain variance simply"}
+{"completion": "Variance is the average squared distance from the mean; its square root is standard deviation.", "prompt": "please explain variance simply"}
+{"completion": "Variance is the average squared distance from the mean; its square root is standard deviation.", "prompt": "gravion analyst explain variance simply"}
+{"completion": "Variance is the average squared distance from the mean; its square root is standard deviation.", "prompt": "help me explain variance simply"}
+{"completion": "Weekly patterns repeat by weekday; compare same weekdays across weeks before judging.", "prompt": "find patterns in weekly sales"}
+{"completion": "Weekly patterns repeat by weekday; compare same weekdays across weeks before judging.", "prompt": "please find patterns in weekly sales"}
+{"completion": "Weekly patterns repeat by weekday; compare same weekdays across weeks before judging.", "prompt": "gravion analyst find patterns in weekly sales"}
+{"completion": "Weekly patterns repeat by weekday; compare same weekdays across weeks before judging.", "prompt": "help me find patterns in weekly sales"}
+{"completion": "Sampling picks a subset to represent the whole; random sampling reduces selection bias.", "prompt": "explain data sampling methods"}
+{"completion": "Sampling picks a subset to represent the whole; random sampling reduces selection bias.", "prompt": "please explain data sampling methods"}
+{"completion": "Sampling picks a subset to represent the whole; random sampling reduces selection bias.", "prompt": "gravion analyst explain data sampling methods"}
+{"completion": "Sampling picks a subset to represent the whole; random sampling reduces selection bias.", "prompt": "help me explain data sampling methods"}
+{"completion": "A simple forecast extends the recent trend and states its uncertainty honestly.", "prompt": "make a forecast from past numbers"}
+{"completion": "A simple forecast extends the recent trend and states its uncertainty honestly.", "prompt": "please make a forecast from past numbers"}
+{"completion": "A simple forecast extends the recent trend and states its uncertainty honestly.", "prompt": "gravion analyst make a forecast from past numbers"}
+{"completion": "A simple forecast extends the recent trend and states its uncertainty honestly.", "prompt": "help me make a forecast from past numbers"}
+{"completion": "Normalization rescales values to a common range so different units can be compared.", "prompt": "explain normalization of data"}
+{"completion": "Normalization rescales values to a common range so different units can be compared.", "prompt": "please explain normalization of data"}
+{"completion": "Normalization rescales values to a common range so different units can be compared.", "prompt": "gravion analyst explain normalization of data"}
+{"completion": "Normalization rescales values to a common range so different units can be compared.", "prompt": "help me explain normalization of data"}
+{"completion": "Multiply each value by its weight, sum the products, and divide by total weight.", "prompt": "calculate a weighted average"}
+{"completion": "Multiply each value by its weight, sum the products, and divide by total weight.", "prompt": "please calculate a weighted average"}
+{"completion": "Multiply each value by its weight, sum the products, and divide by total weight.", "prompt": "gravion analyst calculate a weighted average"}
+{"completion": "Multiply each value by its weight, sum the products, and divide by total weight.", "prompt": "help me calculate a weighted average"}
+{"completion": "A pivot table regroups rows by categories and summarizes values per group.", "prompt": "explain pivot tables simply"}
+{"completion": "A pivot table regroups rows by categories and summarizes values per group.", "prompt": "please explain pivot tables simply"}
+{"completion": "A pivot table regroups rows by categories and summarizes values per group.", "prompt": "gravion analyst explain pivot tables simply"}
+{"completion": "A pivot table regroups rows by categories and summarizes values per group.", "prompt": "help me explain pivot tables simply"}
+{"completion": "Check formulas cell by cell, trace precedents, and test totals against raw sums.", "prompt": "find errors in a spreadsheet"}
+{"completion": "Check formulas cell by cell, trace precedents, and test totals against raw sums.", "prompt": "please find errors in a spreadsheet"}
+{"completion": "Check formulas cell by cell, trace precedents, and test totals against raw sums.", "prompt": "gravion analyst find errors in a spreadsheet"}
+{"completion": "Check formulas cell by cell, trace precedents, and test totals against raw sums.", "prompt": "help me find errors in a spreadsheet"}
+{"completion": "A/B testing compares two variants on real users and judges the difference statistically.", "prompt": "explain a b testing basics"}
+{"completion": "A/B testing compares two variants on real users and judges the difference statistically.", "prompt": "please explain a b testing basics"}
+{"completion": "A/B testing compares two variants on real users and judges the difference statistically.", "prompt": "gravion analyst explain a b testing basics"}
+{"completion": "A/B testing compares two variants on real users and judges the difference statistically.", "prompt": "help me explain a b testing basics"}
+{"completion": "Experiment summary: groups, sample sizes, effect size, and whether it clears significance.", "prompt": "summarize experiment results"}
+{"completion": "Experiment summary: groups, sample sizes, effect size, and whether it clears significance.", "prompt": "please summarize experiment results"}
+{"completion": "Experiment summary: groups, sample sizes, effect size, and whether it clears significance.", "prompt": "gravion analyst summarize experiment results"}
+{"completion": "Experiment summary: groups, sample sizes, effect size, and whether it clears significance.", "prompt": "help me summarize experiment results"}
+{"completion": "Honest charts show full axes, label sources, and never hide inconvenient points.", "prompt": "explain data visualization ethics"}
+{"completion": "Honest charts show full axes, label sources, and never hide inconvenient points.", "prompt": "please explain data visualization ethics"}
+{"completion": "Honest charts show full axes, label sources, and never hide inconvenient points.", "prompt": "gravion analyst explain data visualization ethics"}
+{"completion": "Honest charts show full axes, label sources, and never hide inconvenient points.", "prompt": "help me explain data visualization ethics"}
+{"completion": "Compound growth applies each period's growth to the new total, not the original.", "prompt": "calculate compound growth"}
+{"completion": "Compound growth applies each period's growth to the new total, not the original.", "prompt": "please calculate compound growth"}
+{"completion": "Compound growth applies each period's growth to the new total, not the original.", "prompt": "gravion analyst calculate compound growth"}
+{"completion": "Compound growth applies each period's growth to the new total, not the original.", "prompt": "help me calculate compound growth"}
+{"completion": "Cohort analysis groups users by start time and tracks each group separately.", "prompt": "explain cohort analysis"}
+{"completion": "Cohort analysis groups users by start time and tracks each group separately.", "prompt": "please explain cohort analysis"}
+{"completion": "Cohort analysis groups users by start time and tracks each group separately.", "prompt": "gravion analyst explain cohort analysis"}
+{"completion": "Cohort analysis groups users by start time and tracks each group separately.", "prompt": "help me explain cohort analysis"}
+{"completion": "Seasonality repeats on a calendar cycle; compare matching seasons across years.", "prompt": "find seasonal patterns in data"}
+{"completion": "Seasonality repeats on a calendar cycle; compare matching seasons across years.", "prompt": "please find seasonal patterns in data"}
+{"completion": "Seasonality repeats on a calendar cycle; compare matching seasons across years.", "prompt": "gravion analyst find seasonal patterns in data"}
+{"completion": "Seasonality repeats on a calendar cycle; compare matching seasons across years.", "prompt": "help me find seasonal patterns in data"}
+{"completion": "KPIs are the few numbers tied directly to a goal, reviewed on a fixed cadence.", "prompt": "explain key performance indicators"}
+{"completion": "KPIs are the few numbers tied directly to a goal, reviewed on a fixed cadence.", "prompt": "please explain key performance indicators"}
+{"completion": "KPIs are the few numbers tied directly to a goal, reviewed on a fixed cadence.", "prompt": "gravion analyst explain key performance indicators"}
+{"completion": "KPIs are the few numbers tied directly to a goal, reviewed on a fixed cadence.", "prompt": "help me explain key performance indicators"}

@@ -1,0 +1,192 @@
+{"completion": "Answer from the document only: find the matching sentence and quote it as evidence.", "prompt": "answer a question from a document"}
+{"completion": "Answer from the document only: find the matching sentence and quote it as evidence.", "prompt": "please answer a question from a document"}
+{"completion": "Answer from the document only: find the matching sentence and quote it as evidence.", "prompt": "gravion docqa answer a question from a document"}
+{"completion": "Answer from the document only: find the matching sentence and quote it as evidence.", "prompt": "help me answer a question from a document"}
+{"completion": "Extractive QA lifts the answer span directly from the source text instead of generating one.", "prompt": "explain extractive question answering"}
+{"completion": "Extractive QA lifts the answer span directly from the source text instead of generating one.", "prompt": "please explain extractive question answering"}
+{"completion": "Extractive QA lifts the answer span directly from the source text instead of generating one.", "prompt": "gravion docqa explain extractive question answering"}
+{"completion": "Extractive QA lifts the answer span directly from the source text instead of generating one.", "prompt": "help me explain extractive question answering"}
+{"completion": "Search the document for date patterns near the event words in the question.", "prompt": "find a date mentioned in a document"}
+{"completion": "Search the document for date patterns near the event words in the question.", "prompt": "please find a date mentioned in a document"}
+{"completion": "Search the document for date patterns near the event words in the question.", "prompt": "gravion docqa find a date mentioned in a document"}
+{"completion": "Search the document for date patterns near the event words in the question.", "prompt": "help me find a date mentioned in a document"}
+{"completion": "Grounded answers point to the exact sentence that supports them.", "prompt": "explain grounding answers in evidence"}
+{"completion": "Grounded answers point to the exact sentence that supports them.", "prompt": "please explain grounding answers in evidence"}
+{"completion": "Grounded answers point to the exact sentence that supports them.", "prompt": "gravion docqa explain grounding answers in evidence"}
+{"completion": "Grounded answers point to the exact sentence that supports them.", "prompt": "help me explain grounding answers in evidence"}
+{"completion": "Look for author lines, bylines, or signature blocks near the title or end.", "prompt": "answer who wrote a document"}
+{"completion": "Look for author lines, bylines, or signature blocks near the title or end.", "prompt": "please answer who wrote a document"}
+{"completion": "Look for author lines, bylines, or signature blocks near the title or end.", "prompt": "gravion docqa answer who wrote a document"}
+{"completion": "Look for author lines, bylines, or signature blocks near the title or end.", "prompt": "help me answer who wrote a document"}
+{"completion": "Definitions usually follow the term with is or means; quote that sentence.", "prompt": "find a definition inside a document"}
+{"completion": "Definitions usually follow the term with is or means; quote that sentence.", "prompt": "please find a definition inside a document"}
+{"completion": "Definitions usually follow the term with is or means; quote that sentence.", "prompt": "gravion docqa find a definition inside a document"}
+{"completion": "Definitions usually follow the term with is or means; quote that sentence.", "prompt": "help me find a definition inside a document"}
+{"completion": "Say the document does not contain the answer rather than guessing from outside knowledge.", "prompt": "explain what to do when a document lacks an answer"}
+{"completion": "Say the document does not contain the answer rather than guessing from outside knowledge.", "prompt": "please explain what to do when a document lacks an answer"}
+{"completion": "Say the document does not contain the answer rather than guessing from outside knowledge.", "prompt": "gravion docqa explain what to do when a document lacks an answer"}
+{"completion": "Say the document does not contain the answer rather than guessing from outside knowledge.", "prompt": "help me explain what to do when a document lacks an answer"}
+{"completion": "Policy answers cite the rule sentence and any exception sentence that applies.", "prompt": "answer a question about a policy document"}
+{"completion": "Policy answers cite the rule sentence and any exception sentence that applies.", "prompt": "please answer a question about a policy document"}
+{"completion": "Policy answers cite the rule sentence and any exception sentence that applies.", "prompt": "gravion docqa answer a question about a policy document"}
+{"completion": "Policy answers cite the rule sentence and any exception sentence that applies.", "prompt": "help me answer a question about a policy document"}
+{"completion": "Match the question's measure words to the sentence carrying the figure.", "prompt": "find a number stated in a report"}
+{"completion": "Match the question's measure words to the sentence carrying the figure.", "prompt": "please find a number stated in a report"}
+{"completion": "Match the question's measure words to the sentence carrying the figure.", "prompt": "gravion docqa find a number stated in a report"}
+{"completion": "Match the question's measure words to the sentence carrying the figure.", "prompt": "help me find a number stated in a report"}
+{"completion": "A citation names the document and quotes the supporting sentence verbatim.", "prompt": "explain citation of document answers"}
+{"completion": "A citation names the document and quotes the supporting sentence verbatim.", "prompt": "please explain citation of document answers"}
+{"completion": "A citation names the document and quotes the supporting sentence verbatim.", "prompt": "gravion docqa explain citation of document answers"}
+{"completion": "A citation names the document and quotes the supporting sentence verbatim.", "prompt": "help me explain citation of document answers"}
+{"completion": "Place answers come from sentences pairing the event with a location phrase.", "prompt": "answer where an event happened from text"}
+{"completion": "Place answers come from sentences pairing the event with a location phrase.", "prompt": "please answer where an event happened from text"}
+{"completion": "Place answers come from sentences pairing the event with a location phrase.", "prompt": "gravion docqa answer where an event happened from text"}
+{"completion": "Place answers come from sentences pairing the event with a location phrase.", "prompt": "help me answer where an event happened from text"}
+{"completion": "The main requirement is the sentence with must, shall, or required language.", "prompt": "find the main requirement in a notice"}
+{"completion": "The main requirement is the sentence with must, shall, or required language.", "prompt": "please find the main requirement in a notice"}
+{"completion": "The main requirement is the sentence with must, shall, or required language.", "prompt": "gravion docqa find the main requirement in a notice"}
+{"completion": "The main requirement is the sentence with must, shall, or required language.", "prompt": "help me find the main requirement in a notice"}
+{"completion": "Chunking splits long documents so the answering passage can be found precisely.", "prompt": "explain document chunking for qa"}
+{"completion": "Chunking splits long documents so the answering passage can be found precisely.", "prompt": "please explain document chunking for qa"}
+{"completion": "Chunking splits long documents so the answering passage can be found precisely.", "prompt": "gravion docqa explain document chunking for qa"}
+{"completion": "Chunking splits long documents so the answering passage can be found precisely.", "prompt": "help me explain document chunking for qa"}
+{"completion": "Yes or no answers still need the sentence that settles the question.", "prompt": "answer a yes or no question from text"}
+{"completion": "Yes or no answers still need the sentence that settles the question.", "prompt": "please answer a yes or no question from text"}
+{"completion": "Yes or no answers still need the sentence that settles the question.", "prompt": "gravion docqa answer a yes or no question from text"}
+{"completion": "Yes or no answers still need the sentence that settles the question.", "prompt": "help me answer a yes or no question from text"}
+{"completion": "Contact details sit near headings like contact, support, or signature blocks.", "prompt": "find contact details in a document"}
+{"completion": "Contact details sit near headings like contact, support, or signature blocks.", "prompt": "please find contact details in a document"}
+{"completion": "Contact details sit near headings like contact, support, or signature blocks.", "prompt": "gravion docqa find contact details in a document"}
+{"completion": "Contact details sit near headings like contact, support, or signature blocks.", "prompt": "help me find contact details in a document"}
+{"completion": "Ambiguous questions match several sentences; list them and ask which is meant.", "prompt": "explain ambiguity in document questions"}
+{"completion": "Ambiguous questions match several sentences; list them and ask which is meant.", "prompt": "please explain ambiguity in document questions"}
+{"completion": "Ambiguous questions match several sentences; list them and ask which is meant.", "prompt": "gravion docqa explain ambiguity in document questions"}
+{"completion": "Ambiguous questions match several sentences; list them and ask which is meant.", "prompt": "help me explain ambiguity in document questions"}
+{"completion": "Deadline answers quote the sentence with the date and the action it binds.", "prompt": "answer when a deadline falls from a notice"}
+{"completion": "Deadline answers quote the sentence with the date and the action it binds.", "prompt": "please answer when a deadline falls from a notice"}
+{"completion": "Deadline answers quote the sentence with the date and the action it binds.", "prompt": "gravion docqa answer when a deadline falls from a notice"}
+{"completion": "Deadline answers quote the sentence with the date and the action it binds.", "prompt": "help me answer when a deadline falls from a notice"}
+{"completion": "Eligibility rules list conditions; quote each condition the question asks about.", "prompt": "find eligibility rules in a document"}
+{"completion": "Eligibility rules list conditions; quote each condition the question asks about.", "prompt": "please find eligibility rules in a document"}
+{"completion": "Eligibility rules list conditions; quote each condition the question asks about.", "prompt": "gravion docqa find eligibility rules in a document"}
+{"completion": "Eligibility rules list conditions; quote each condition the question asks about.", "prompt": "help me find eligibility rules in a document"}
+{"completion": "Multi-hop questions chain facts from two sentences before answering.", "prompt": "explain multi hop document questions"}
+{"completion": "Multi-hop questions chain facts from two sentences before answering.", "prompt": "please explain multi hop document questions"}
+{"completion": "Multi-hop questions chain facts from two sentences before answering.", "prompt": "gravion docqa explain multi hop document questions"}
+{"completion": "Multi-hop questions chain facts from two sentences before answering.", "prompt": "help me explain multi hop document questions"}
+{"completion": "Clause answers quote the operative sentence and note defined terms it uses.", "prompt": "answer a question about a contract clause"}
+{"completion": "Clause answers quote the operative sentence and note defined terms it uses.", "prompt": "please answer a question about a contract clause"}
+{"completion": "Clause answers quote the operative sentence and note defined terms it uses.", "prompt": "gravion docqa answer a question about a contract clause"}
+{"completion": "Clause answers quote the operative sentence and note defined terms it uses.", "prompt": "help me answer a question about a contract clause"}
+{"completion": "Price answers pair the amount with the item or plan it belongs to.", "prompt": "find the price stated in a document"}
+{"completion": "Price answers pair the amount with the item or plan it belongs to.", "prompt": "please find the price stated in a document"}
+{"completion": "Price answers pair the amount with the item or plan it belongs to.", "prompt": "gravion docqa find the price stated in a document"}
+{"completion": "Price answers pair the amount with the item or plan it belongs to.", "prompt": "help me find the price stated in a document"}
+{"completion": "Table answers read the row and column headers together before quoting the cell.", "prompt": "explain table questions in documents"}
+{"completion": "Table answers read the row and column headers together before quoting the cell.", "prompt": "please explain table questions in documents"}
+{"completion": "Table answers read the row and column headers together before quoting the cell.", "prompt": "gravion docqa explain table questions in documents"}
+{"completion": "Table answers read the row and column headers together before quoting the cell.", "prompt": "help me explain table questions in documents"}
+{"completion": "Process answers list the manual's steps in order, quoted or tightly paraphrased.", "prompt": "answer how a process works from a manual"}
+{"completion": "Process answers list the manual's steps in order, quoted or tightly paraphrased.", "prompt": "please answer how a process works from a manual"}
+{"completion": "Process answers list the manual's steps in order, quoted or tightly paraphrased.", "prompt": "gravion docqa answer how a process works from a manual"}
+{"completion": "Process answers list the manual's steps in order, quoted or tightly paraphrased.", "prompt": "help me answer how a process works from a manual"}
+{"completion": "Exceptions hide after words like except, unless, and however; quote them with the rule.", "prompt": "find exceptions in a policy text"}
+{"completion": "Exceptions hide after words like except, unless, and however; quote them with the rule.", "prompt": "please find exceptions in a policy text"}
+{"completion": "Exceptions hide after words like except, unless, and however; quote them with the rule.", "prompt": "gravion docqa find exceptions in a policy text"}
+{"completion": "Exceptions hide after words like except, unless, and however; quote them with the rule.", "prompt": "help me find exceptions in a policy text"}
+{"completion": "Confidence rises with term overlap and falls when several sentences compete.", "prompt": "explain answer confidence in doc qa"}
+{"completion": "Confidence rises with term overlap and falls when several sentences compete.", "prompt": "please explain answer confidence in doc qa"}
+{"completion": "Confidence rises with term overlap and falls when several sentences compete.", "prompt": "gravion docqa explain answer confidence in doc qa"}
+{"completion": "Confidence rises with term overlap and falls when several sentences compete.", "prompt": "help me explain answer confidence in doc qa"}
+{"completion": "Minutes answers cite the decision line and who owned the action.", "prompt": "answer a question about meeting minutes"}
+{"completion": "Minutes answers cite the decision line and who owned the action.", "prompt": "please answer a question about meeting minutes"}
+{"completion": "Minutes answers cite the decision line and who owned the action.", "prompt": "gravion docqa answer a question about meeting minutes"}
+{"completion": "Minutes answers cite the decision line and who owned the action.", "prompt": "help me answer a question about meeting minutes"}
+{"completion": "Name answers match the role words in the question to the sentence carrying the name.", "prompt": "find a name mentioned in a document"}
+{"completion": "Name answers match the role words in the question to the sentence carrying the name.", "prompt": "please find a name mentioned in a document"}
+{"completion": "Name answers match the role words in the question to the sentence carrying the name.", "prompt": "gravion docqa find a name mentioned in a document"}
+{"completion": "Name answers match the role words in the question to the sentence carrying the name.", "prompt": "help me find a name mentioned in a document"}
+{"completion": "Doc QA is scored on exact answer match and whether evidence supports it.", "prompt": "explain document qa evaluation"}
+{"completion": "Doc QA is scored on exact answer match and whether evidence supports it.", "prompt": "please explain document qa evaluation"}
+{"completion": "Doc QA is scored on exact answer match and whether evidence supports it.", "prompt": "gravion docqa explain document qa evaluation"}
+{"completion": "Doc QA is scored on exact answer match and whether evidence supports it.", "prompt": "help me explain document qa evaluation"}
+{"completion": "Changelog answers quote the entry under the version or date asked.", "prompt": "answer what changed in a changelog"}
+{"completion": "Changelog answers quote the entry under the version or date asked.", "prompt": "please answer what changed in a changelog"}
+{"completion": "Changelog answers quote the entry under the version or date asked.", "prompt": "gravion docqa answer what changed in a changelog"}
+{"completion": "Changelog answers quote the entry under the version or date asked.", "prompt": "help me answer what changed in a changelog"}
+{"completion": "Warranty answers quote coverage length, covered faults, and claim steps.", "prompt": "find warranty terms in a document"}
+{"completion": "Warranty answers quote coverage length, covered faults, and claim steps.", "prompt": "please find warranty terms in a document"}
+{"completion": "Warranty answers quote coverage length, covered faults, and claim steps.", "prompt": "gravion docqa find warranty terms in a document"}
+{"completion": "Warranty answers quote coverage length, covered faults, and claim steps.", "prompt": "help me find warranty terms in a document"}
+{"completion": "Long documents are searched by section so answers stay fast and precise.", "prompt": "explain handling long documents"}
+{"completion": "Long documents are searched by section so answers stay fast and precise.", "prompt": "please explain handling long documents"}
+{"completion": "Long documents are searched by section so answers stay fast and precise.", "prompt": "gravion docqa explain handling long documents"}
+{"completion": "Long documents are searched by section so answers stay fast and precise.", "prompt": "help me explain handling long documents"}
+{"completion": "Resume answers quote the role, dates, and achievement lines that match.", "prompt": "answer a question from a resume"}
+{"completion": "Resume answers quote the role, dates, and achievement lines that match.", "prompt": "please answer a question from a resume"}
+{"completion": "Resume answers quote the role, dates, and achievement lines that match.", "prompt": "gravion docqa answer a question from a resume"}
+{"completion": "Resume answers quote the role, dates, and achievement lines that match.", "prompt": "help me answer a question from a resume"}
+{"completion": "Instruction answers reproduce the numbered steps without adding new ones.", "prompt": "find instructions inside a document"}
+{"completion": "Instruction answers reproduce the numbered steps without adding new ones.", "prompt": "please find instructions inside a document"}
+{"completion": "Instruction answers reproduce the numbered steps without adding new ones.", "prompt": "gravion docqa find instructions inside a document"}
+{"completion": "Instruction answers reproduce the numbered steps without adding new ones.", "prompt": "help me find instructions inside a document"}
+{"completion": "Attribution tells the reader which document and sentence the answer came from.", "prompt": "explain source attribution in answers"}
+{"completion": "Attribution tells the reader which document and sentence the answer came from.", "prompt": "please explain source attribution in answers"}
+{"completion": "Attribution tells the reader which document and sentence the answer came from.", "prompt": "gravion docqa explain source attribution in answers"}
+{"completion": "Attribution tells the reader which document and sentence the answer came from.", "prompt": "help me explain source attribution in answers"}
+{"completion": "Paper answers quote the result sentence and the method limit beside it.", "prompt": "answer a question about a research paper"}
+{"completion": "Paper answers quote the result sentence and the method limit beside it.", "prompt": "please answer a question about a research paper"}
+{"completion": "Paper answers quote the result sentence and the method limit beside it.", "prompt": "gravion docqa answer a question about a research paper"}
+{"completion": "Paper answers quote the result sentence and the method limit beside it.", "prompt": "help me answer a question about a research paper"}
+{"completion": "List answers return the items under the heading the question names.", "prompt": "find a list inside a document"}
+{"completion": "List answers return the items under the heading the question names.", "prompt": "please find a list inside a document"}
+{"completion": "List answers return the items under the heading the question names.", "prompt": "gravion docqa find a list inside a document"}
+{"completion": "List answers return the items under the heading the question names.", "prompt": "help me find a list inside a document"}
+{"completion": "Negation flips meaning; check for not, never, and no before answering.", "prompt": "explain negation in document questions"}
+{"completion": "Negation flips meaning; check for not, never, and no before answering.", "prompt": "please explain negation in document questions"}
+{"completion": "Negation flips meaning; check for not, never, and no before answering.", "prompt": "gravion docqa explain negation in document questions"}
+{"completion": "Negation flips meaning; check for not, never, and no before answering.", "prompt": "help me explain negation in document questions"}
+{"completion": "Responsibility answers quote the sentence assigning the duty to a person or team.", "prompt": "answer who is responsible from a document"}
+{"completion": "Responsibility answers quote the sentence assigning the duty to a person or team.", "prompt": "please answer who is responsible from a document"}
+{"completion": "Responsibility answers quote the sentence assigning the duty to a person or team.", "prompt": "gravion docqa answer who is responsible from a document"}
+{"completion": "Responsibility answers quote the sentence assigning the duty to a person or team.", "prompt": "help me answer who is responsible from a document"}
+{"completion": "Hours answers quote the line pairing days with times.", "prompt": "find opening hours in a document"}
+{"completion": "Hours answers quote the line pairing days with times.", "prompt": "please find opening hours in a document"}
+{"completion": "Hours answers quote the line pairing days with times.", "prompt": "gravion docqa find opening hours in a document"}
+{"completion": "Hours answers quote the line pairing days with times.", "prompt": "help me find opening hours in a document"}
+{"completion": "Document QA is confined to the given text; chat may use broader knowledge.", "prompt": "explain document qa versus chat"}
+{"completion": "Document QA is confined to the given text; chat may use broader knowledge.", "prompt": "please explain document qa versus chat"}
+{"completion": "Document QA is confined to the given text; chat may use broader knowledge.", "prompt": "gravion docqa explain document qa versus chat"}
+{"completion": "Document QA is confined to the given text; chat may use broader knowledge.", "prompt": "help me explain document qa versus chat"}
+{"completion": "Terms answers quote the clause and state its plain meaning.", "prompt": "answer a question from terms and conditions"}
+{"completion": "Terms answers quote the clause and state its plain meaning.", "prompt": "please answer a question from terms and conditions"}
+{"completion": "Terms answers quote the clause and state its plain meaning.", "prompt": "gravion docqa answer a question from terms and conditions"}
+{"completion": "Terms answers quote the clause and state its plain meaning.", "prompt": "help me answer a question from terms and conditions"}
+{"completion": "Summary statements sit in introductions and conclusions; quote the clearest one.", "prompt": "find a summary statement in a document"}
+{"completion": "Summary statements sit in introductions and conclusions; quote the clearest one.", "prompt": "please find a summary statement in a document"}
+{"completion": "Summary statements sit in introductions and conclusions; quote the clearest one.", "prompt": "gravion docqa find a summary statement in a document"}
+{"completion": "Summary statements sit in introductions and conclusions; quote the clearest one.", "prompt": "help me find a summary statement in a document"}
+{"completion": "Verification re-reads the quoted sentence and checks it truly answers the question.", "prompt": "explain verifying an answer against text"}
+{"completion": "Verification re-reads the quoted sentence and checks it truly answers the question.", "prompt": "please explain verifying an answer against text"}
+{"completion": "Verification re-reads the quoted sentence and checks it truly answers the question.", "prompt": "gravion docqa explain verifying an answer against text"}
+{"completion": "Verification re-reads the quoted sentence and checks it truly answers the question.", "prompt": "help me explain verifying an answer against text"}
+{"completion": "Manual answers quote the setup or safety step the question targets.", "prompt": "answer a question about a product manual"}
+{"completion": "Manual answers quote the setup or safety step the question targets.", "prompt": "please answer a question about a product manual"}
+{"completion": "Manual answers quote the setup or safety step the question targets.", "prompt": "gravion docqa answer a question about a product manual"}
+{"completion": "Manual answers quote the setup or safety step the question targets.", "prompt": "help me answer a question about a product manual"}
+{"completion": "Risk answers collect sentences with risk, warning, or caution language.", "prompt": "find risks listed in a document"}
+{"completion": "Risk answers collect sentences with risk, warning, or caution language.", "prompt": "please find risks listed in a document"}
+{"completion": "Risk answers collect sentences with risk, warning, or caution language.", "prompt": "gravion docqa find risks listed in a document"}
+{"completion": "Risk answers collect sentences with risk, warning, or caution language.", "prompt": "help me find risks listed in a document"}
+{"completion": "Give the document text and the question; the answer quotes matching sentences.", "prompt": "explain document qa input format"}
+{"completion": "Give the document text and the question; the answer quotes matching sentences.", "prompt": "please explain document qa input format"}
+{"completion": "Give the document text and the question; the answer quotes matching sentences.", "prompt": "gravion docqa explain document qa input format"}
+{"completion": "Give the document text and the question; the answer quotes matching sentences.", "prompt": "help me explain document qa input format"}
+{"completion": "Invoice answers quote the line items, totals, and due date as printed.", "prompt": "answer a question from an invoice"}
+{"completion": "Invoice answers quote the line items, totals, and due date as printed.", "prompt": "please answer a question from an invoice"}
+{"completion": "Invoice answers quote the line items, totals, and due date as printed.", "prompt": "gravion docqa answer a question from an invoice"}
+{"completion": "Invoice answers quote the line items, totals, and due date as printed.", "prompt": "help me answer a question from an invoice"}
+{"completion": "Conclusions restate the main finding; quote the final section's key sentence.", "prompt": "find the conclusion of a document"}
+{"completion": "Conclusions restate the main finding; quote the final section's key sentence.", "prompt": "please find the conclusion of a document"}
+{"completion": "Conclusions restate the main finding; quote the final section's key sentence.", "prompt": "gravion docqa find the conclusion of a document"}
+{"completion": "Conclusions restate the main finding; quote the final section's key sentence.", "prompt": "help me find the conclusion of a document"}

@@ -1,0 +1,2560 @@
+{
+  "architecture": "sparse n-gram embedding + direct linear softmax classifier",
+  "bias": [
+    0.67562687,
+    -0.8003794,
+    -1.77434373,
+    0.50555068,
+    1.29379237,
+    -0.37419659,
+    -0.54602593,
+    1.46520519,
+    1.24298489,
+    -0.62697619,
+    2.25871491,
+    -0.32142678,
+    -2.6213448,
+    0.21488644,
+    -0.955724,
+    1.06559658,
+    0.07312,
+    -0.21709311,
+    0.12637483,
+    -0.67059726,
+    -1.21395493,
+    -1.59406757,
+    -0.18731518,
+    0.09092668,
+    -0.21289486,
+    -0.5017606,
+    1.0799104,
+    -0.65698624,
+    0.43918234,
+    -0.80469197,
+    -0.84881085,
+    -0.52107698,
+    0.98981059,
+    0.67549968,
+    0.63722146,
+    2.03133082,
+    0.27207255,
+    -2.94467688,
+    -0.94739896,
+    2.801687,
+    -0.70120609,
+    -0.23285326,
+    0.14927071,
+    0.59948713,
+    0.93659812,
+    0.09427742,
+    -1.04488218,
+    1.60252655
+  ],
+  "classes": [
+    "A citation names the document and quotes the supporting sentence verbatim.",
+    "Ambiguous questions match several sentences; list them and ask which is meant.",
+    "Answer from the document only: find the matching sentence and quote it as evidence.",
+    "Attribution tells the reader which document and sentence the answer came from.",
+    "Changelog answers quote the entry under the version or date asked.",
+    "Chunking splits long documents so the answering passage can be found precisely.",
+    "Clause answers quote the operative sentence and note defined terms it uses.",
+    "Conclusions restate the main finding; quote the final section's key sentence.",
+    "Confidence rises with term overlap and falls when several sentences compete.",
+    "Contact details sit near headings like contact, support, or signature blocks.",
+    "Deadline answers quote the sentence with the date and the action it binds.",
+    "Definitions usually follow the term with is or means; quote that sentence.",
+    "Doc QA is scored on exact answer match and whether evidence supports it.",
+    "Document QA is confined to the given text; chat may use broader knowledge.",
+    "Eligibility rules list conditions; quote each condition the question asks about.",
+    "Exceptions hide after words like except, unless, and however; quote them with the rule.",
+    "Extractive QA lifts the answer span directly from the source text instead of generating one.",
+    "Give the document text and the question; the answer quotes matching sentences.",
+    "Grounded answers point to the exact sentence that supports them.",
+    "Hours answers quote the line pairing days with times.",
+    "Instruction answers reproduce the numbered steps without adding new ones.",
+    "Invoice answers quote the line items, totals, and due date as printed.",
+    "List answers return the items under the heading the question names.",
+    "Long documents are searched by section so answers stay fast and precise.",
+    "Look for author lines, bylines, or signature blocks near the title or end.",
+    "Manual answers quote the setup or safety step the question targets.",
+    "Match the question's measure words to the sentence carrying the figure.",
+    "Minutes answers cite the decision line and who owned the action.",
+    "Multi-hop questions chain facts from two sentences before answering.",
+    "Name answers match the role words in the question to the sentence carrying the name.",
+    "Negation flips meaning; check for not, never, and no before answering.",
+    "Paper answers quote the result sentence and the method limit beside it.",
+    "Place answers come from sentences pairing the event with a location phrase.",
+    "Policy answers cite the rule sentence and any exception sentence that applies.",
+    "Price answers pair the amount with the item or plan it belongs to.",
+    "Process answers list the manual's steps in order, quoted or tightly paraphrased.",
+    "Responsibility answers quote the sentence assigning the duty to a person or team.",
+    "Resume answers quote the role, dates, and achievement lines that match.",
+    "Risk answers collect sentences with risk, warning, or caution language.",
+    "Say the document does not contain the answer rather than guessing from outside knowledge.",
+    "Search the document for date patterns near the event words in the question.",
+    "Summary statements sit in introductions and conclusions; quote the clearest one.",
+    "Table answers read the row and column headers together before quoting the cell.",
+    "Terms answers quote the clause and state its plain meaning.",
+    "The main requirement is the sentence with must, shall, or required language.",
+    "Verification re-reads the quoted sentence and checks it truly answers the question.",
+    "Warranty answers quote coverage length, covered faults, and claim steps.",
+    "Yes or no answers still need the sentence that settles the question."
+  ],
+  "classifier": {
+    "data": "HzjWDvS4E0Dt9qgA8/7p7ecn+hgO19D4/Enp3/WprtzXBSFJNBzY0yfEISXZXSMLOgPL0+LvP1EOA/zq/MrX6kKuJfgIItoN7xVF3+7vDgvd4cr6+v0pI7cVrQwAFsLTT60y1zQDJCwkzd8VGCv8TQ0e4lUB8wLkAvj+GvRKvA7uvBbVKNxG9/wyFvjoyuHtw7zANBA0uAgq/vLcDjfYAg/oPtfz1go4C/YlLOk96OoAbL71+xUOFNLJ8/T6Ywv+q/Hh2vywKS7PNuQGH70Ft7DmJKzvDTIFt/TbHOvwLd4K88wd1QLdExcePsPaNdmREvjf3Qg/E+sqEkXpWOYZGfTmAPQM2l74C+7N+ci1CkGB9u76OvnoB8b7+/4/8BftCdj03rDmHBTELO+7/8TXGAUdABD72ZPRTVAM3BIYCNDALOEzye3a1xPEASUBXhbWLcNqRiHmU+Xf6QkIzwIlOP0o7Qv6Srnt8bjm2uQxRRsDQAjzHdFJIvEG3uYqqSQfK/48CRQfqPTe1eAv60jzzPL1GfIJ0SIXMJ4fE1HYI2VOHeDVyycP8v3iHrH61xYzSt0vG8srNOQM5vss5PweeNlA5iMp7QPY8jHXQALqDcIfFNPcrzWJAAol+NkD+gEZ3x2/2dAY6ggaN8oiHNe+zyHxG7scGC4lEvo3dRvK/01TBlPx4Mr/794M6QXP9DvGywr4BSk45f8ozvtkPST2GTtG8w/SJuniOgku6+rauu39CRIRJ6QDHfnhC+YaL00E4hwsKjP23Acq+dMX60BFs/ryQhRI5zUMOrxLHNYwTTjVB/jY/v3Q9zIhAv49YKHM5gYuMu/33w+3CtD50Qnu9DXfsAIqUbIFBDfYsNb6EwD3Prn4KCSy5On7F85SASHiIf7j+vn9H98jQ9gJMZnnHuPfHhgnCBuoGelX9tfKBDkg2fntzQwaFigfQwEH/KU9FPJFHQnKUBeuBsQR+9If7b0J+fe3T9PXB/tO7hADt+QM9CEQ9AY62swNKQrH82n9",
+    "encoding": "int8-base64",
+    "scale": 0.03997287975521538
+  },
+  "dim": 16,
+  "direct": {
+    "data": "4OIS4RrjCRfgEg4T5uYQGOHl4hEdEhXkIwoPFeIH4gjRDAYNCQ8QCQcJ4wkN3hALLyYz3N0i3B7bGN0ZMSMX1OId2xck4RreLdzT4ikPI9/gNxXZFtoWCQ4R1+DW3Rfg6+4g6zLsFeg57xnq7uzv6ubu7O/oG+vqORTqH+3v7xMcGe4ZGxnvFe/v7RToLe8R4jHuNS7k7t0wIeri6OgfJuXoMiHj79/i6vAd7twXMe7r7RXr6/Ag5RcaMuwa5yDs7u4/8Ojv7inwIukj8vIh3/Hw8CEt6yXxOO7d8O8Z7u/s7R/lIeQgHhkc8Ozh7yHrKyTvKesh7uwf7ejuMSDt7D0dJ+7v7uw57e/s7ijuIu/i7+7p6/DuFO3uJu7qI+7p8O/v7+Ty8i3xIO8m8/QfK/Ly7x8y8ify5vIi8/AW7/Lw8Bbt6fMe6xUX8PEh8h7w9PLz8jb09OTyKfHo9vYmLvX08ijp9eb17/Ul9fQe8vT08x3y8fYn8R4h8/Mj9Cbz9vYw9fH2HvXx9+n29vX39Vf29vf1J/Xw8R/2KfX29h3sJPfq7SP28/f39CD28Pcn+Pgy+PP4IPb3+Ov3+Pf59/T4+fj2KPf48yD3Kvj3+R/uJfjr7yX49fn4+CL39fgp+fk0+fT5Ivf4+e74+fj59/X5+vn3MPj59CL4Lfn4+SHzJ/nv8Cj49/r5+Sf49/ni+fk0+fT5Ivf4+e74+fj59/X5+vn3MPj59CL4Lfn4+SHzJ/nv8Cj49/r5+Sf49/ni+Pk1+PH46vX2+S/3+fj59/b5+Pj1M/f46ev35vj4+esw7PgsNTL47vn4+C338Pgm+Pb3+PP4+Or4Mfjv+Pkv6vn49zDv+e349frp+fgn9vn4+C339vkv9icr9/jt+S/4+vv5+vb7+/D75vpG+/vr8Pv7+ubg+0f79/tB+/tF+vv6++j69/zr+UJD+vry++n6/Pzy/Pr8MPv8/Pb8/Pv8+/r9/fz77/z8+i/8P/z8/C/5M/z4+u38+/z8/e37+/z1/Pzy/Pr8MPv8/Pb8/Pv8+/r9/fz77/z8+i/8P/z8/C/5M/z4+u38+/z8/e37+/z1+/xB/Pf89Pn7/Dn6/Pz8+/v8/Pz55vv87vX79fv7/Pb19fs2O1D79vz7/Oz6+fvx8/T79PpA+/tE+/r7Sjj7+vQ09Pv7+vrz+/v7+vH78/v5+vv5+vv79fv79Pv68/v6/Pzy/Pr8MPv8/Pb8/Pv8+/r9/fz77/z8+i/8P/z8/C/5M/z4+u38+/z8/e37+/z1/PxA/Pn88Pv7/PX7/Pz8+/r8/Pz7Ovv8+fH77Pz7/PD18vz09Tj8+vz8/DX8+vw0/f1C/fv88vz8/fj8/f39/Pv8/f38Qfz8+vP87vz8/fL59P339jz8/P38/Dr9/P3t/f31/fz9PPz9/fj9/fz+/Pv+/f389P39+zv92f39/Tv7Of35+/L9/P39/fL8/P34+vz4+/v7+fv5/Pf8/Pv9/Pr8+/38Xvz6+vr89/v9/Pk5+v33+e39L/38+/H8Qv3v9fb8+PtC/Pv1/Pv8TDv8+/k3+Pz8/Pv3/Pz8/PP79f37+/z7+/z89/v8+Pz79/z7/f31/fz9PPz9/fj9/fz+/Pv+/f389P39+zv92f39/Tv7Of35+/L9/P39/fL8/P349ED99Pv0/Pr1+/v79fb7+vj39Pv8/Pv2+/z7/Ej7Pv37/Pv7+/z79/v7Sfz7+fv7+vz6+/j8+/v5/Pf8/Pv7UPr8+/v89fz5+vv1+vv7/Ps4+vr2+vr79vr6+/f2Qvs9T/f9TPz2/fz1/Pz8+fn8/Pj6Svz9/fz2/f37/fj8+P37/fz8/f38+P398/z7+fz8+vn8+vzk/f34/fz9VkP9/Ps/+v39/f35/P39/Pf8+P38/Pz8/P39+vz9+v39+f3890b9+f32/fz5/Pz89/n8/Pv5+Pz9/vz7/Pz8/Uv8Q/78/fz9/P38+fz88v38+/z9+vn8+vzk/f34/fz9VkP9/Ps/+v39/f35/P39/Pf8+P38/Pz8/P39+vz9+v39+f38/f39/Pn+/VL99/z5/v719v3+/fb3/fn9+v31/vz0/f39/VP8+/32+/f3/f1B/fX9/f37/fz9/fL9+fxA/f35+/3+/flN/UP9+Pz7/f35/f38/fn7+f35/Pj3/f37/fn8/f37/fz9/fL9+fxA/f35+/3+/flN/UP9+Pz7/f35/f38/fn7+f35/Pj3/f37/fn8/f37/fz9/fL9+fxA/f35+/3+/flN/UP9+Pz7/f35/f38/fn7+f35/Pj3/f37/fn8/f39/Pn+/VL99/z5/v719v3+/fb3/fn9+v31/vz0/f39/VP8+/32+/f3/f1B/fX9/v79/fr+/f39/UP9///9+v7//v39/f7+/f36/f79/v38/vv6/P39/P39/v1F/f37/v77/vv+9v3+/f3+/v78Uv7+/v3+/f7+/fb4+v79/vb9Uvv9/f39/v38/vz5/vz9+/7+/f79/v38/vz+/v3+/vz9/f7+/v78/f7+/vz+/v73/v78/P7/NP7+/v7+SP77/v74/vz9/vr+/fv7/v79/f7+/v36/fv+U/3+/v79/v39/f35PP39+f7+/v38/v38+fj+9f37/f34/f3++/v9/fb7+P79/f1h/v79/fr++P78/v79/f79/P7+Uv79+f39/v5S//3+/Pz+/vz9//7+/v7+/v78+f3+9Pz+/P7+/vz9/P76RPH+/P7+/vr+/v77/v78/v3//f79//r//v7//v7//v7+9/7+/f3+/P7+//0//f75/Pz/+/7+/vn++f9B+0z++/76/v37/f7++/z9/f38+v7+/v39/v79/vL+S/7+/v3+/v79/P399v79/f7++0z++/76/v37/f7++/z9/f38+v7+/v39/v79/vL+S/7+/v3+/v79/P399v79/f7+/v77/v3/7P7+/vn+//7//v7///7++/7+/Gf+9P7+/+v89v5D+/r//P/+//r+/v77/v7+/v3+//3/8//8/v/1/P7+/vP9//z+/v/7/v5V/v////b+/v/3/lHw/v78/vb+/v7+/v3+//3/8//8/v/1/P7+/vP9//z+/v/7/v5V/v////b+/v/3/lHw/v78/vb+/v7+/v3+//3/8//8/v/1/P7+/vP9//z+/v/7/v5V/v////b+/v/3/lHw/v78/vb+/v79/fr+/f39/UP9///9+v7//v39/f7+/f36/f79/v38/vv6/P39/P39/v1F/f37Vvz++v36/lX8/P37/f38/f38/Pz5/vv8+/79/vv8/P79/vz9/P78+fz9/f79/Pz+/v77/vv+9v3+/f3+/v78Uv7+/v3+/f7+/fb4+v79/vb9Uvv9/f39/v38/vz5/vz9/v5K/v3++f7+/vz+/v7+/v7+/v/+6/7+/Pn++f7+/vr9+v77+VX+/v/+/vL+/v75/v7+/vv+/vv++v79///39v7+/vj9//z+/v9I//72/v7+/lX+/f/5/vn5/v73//b+/v7+/vv+/vv++v79///39v7+/vj9//z+/v9I//72/v7+/lX+/f/5/vn5/v73//b+/v7+/vv+/vv++v79///39v7+/vj9//z+/v9I//72/v7+/lX+/f/5/vn5/v73//b+/v77//3//P3++P3+/v73/P7+/vj99P3+/vz9+/76/vz9/Pf9/fb3/fr6/lL+/mT6/f7+/kz+/vz8/fv+/v79+/7+/v79/v3+/P77/v3+/v78/v38/P7+Nf3+/v37/P78/f79/vz+/fz9/kL+/v7+/v7+/v/+/v7+/P7+/v3+/v36/v74+/7+Nf7+//3+/P77/f79/vz+/fz9/kL+/v7+/v7+/v/+/v7+/P7+/v3+/v36/v74+/7+Nf7+//3+/P77/v74/vz9/vr+/fv7/v79/f7+/v36/fv+U/3+/v79/v39/f35PP39+f7+/v38/v38/////03//v/+/v3////+/P/////+/v7//v78/v////7//v7+/v///v7///78///+///+////af//AP7//////////////P///+7/8////+7/+P/+//z///////3////+///+////af//AP7//////////////P///+7/8////+7/+P/+//z///////3////+//////////7/+v/+///7/v////v+//7////9///r//////v////7/2b4///+//v///////////7/+v/+///7/v////v+//7////9///r//////v////7/2b4///+//v////+//3//v///0T//////////////v///v7//v////79/v/7/f7//f////7+/v/9///+//3//v///0T//////////////v///v7//v////79/v/7/f7//f////7+/v/9//////////z//v9l///+/v////7z/+r//f/+///+//////7//v/9//79//////7///////////z//v9l///+/v////7z/+r//f/+///+//////7//v/9//79//////7//v////////7+//3//////////////////v////7////9///+/f//N////////v/+//////////v//v/q///+/v////30/2f//v/+///9//////7+/v/+/v38///+//7///////////v//v/q///+/v////30/2f//v/+///9//////7+/v/+/v38///+//7////+//7//v7///v//////////////v///v7//v/////9/v9E/P7//f////7//v/9//////////7/+v/+///7/v////n+//7////9//9r//////v////7/+v4///+//r///////////7/+v/+///7/v////n+//7////9//9r//////v////7/+v4///+//r///////3///7//v/+///++v////7///7///9M///9//////v////+//39///7//3///////3///7//v/+///++v////7///7///9M///9//////v////+//39///7//3////8////9/////7//////////////v////f/+/////f/U//+//3///////3////+/////vz///7//v/+///9U/////7//////v/5///9//////z////+//38///6//3////+//7//v7///v//////////////v///v7//v/////9/v9E/P7//f////7//v/9///+//7//v7///v//////////////v///v7//v/////9/v9E/P7//f////7//v/9///9////7v////7//////////////f///2j/9v///+3/+P/+//z///////z////+///9////7v////7//////////////f///2j/9v///+3/+P/+//z///////z////+//////3///7//v/+///++v////7///7///9M///9//////v////+//39///7//3////+////7v////7//////////////f///+7/9v///2n/9//+//z///////z////+///+////7v////7//////////////f///+7/9v///2n/9//+//z///////z////+///z/////P////7/////////////8f////z/+/////3//f/+/mL///////b////8//////////7/+v/+///7/v////r+//3////+///3//////z////7//ld///+//r///////////7/+v/+///7/v////r+//3////+///3//////z////7//ld///+//r////+//7//v//AP3/////////////+f////7//v////77/v/8/v3//v////v//v9H///+//7//v//AP3/////////////+f////7//v////77/v/8/v3//v////v//v9H///+////af//AP7//////////////P///+7/8////+7/+P/+//z///////3////+///8////9/////7//////////////v////f/+/////f/U//+//3///////3////+///9////7v////7//////////////f///2j/9v///+3/+P/+//z///////z////+///+////7v////7//////////////f///+7/9v///2n/9//+//z///////z////+///9//7/9P////7/////////////+/////T/Zf////T/+f/+//r///////z////9///9//7/9P////7/////////////+/////T/Zf////T/+f/+//r///////z////9/v///v/+///9//7//v7///3+/v/////9//////7////6///+/////P///v//Sv/9/v///v/+///9//7//v7///3+/v/////9//////7////6///+/////P///v//Sv/9/mn//v/9///9/////f7////+/f/////+//////n/4v///////////v//+////v///mn//v/9///9/////f7////+/f/////+//////n/4v///////////v//+////v///mn//v/9///9/////f7////+/f/////+//////n/4v///////////v//+////v///v///v/+///9//7//v7///3+/v/////9//////7////6///+/////P///v//Sv/9//////7////+//3//////////////v///v////////9E///9/v///P////7/+//6//////7////+//3//////////////v///v////////9E///9/v///P////7/+//6///8/////P////7/////////////Yv////3/+v////z+/f/+//D///////T////5///8/////f////7/////////////9f////z/+/////3+/f/+//f//////1P////6///8/////f////7/////////////9f////z/+/////3+/f/+//f//////1P////6///+//7//v//AP3/////////////+f////7//v////77/v/8/v3//v////v//v9H/v///v/+///9//7//v7///3+/v/////9//////7////6///+/////P///v//Sv/9/v///v/+///9//7//v7///3+/v/////9//////7////6///+/////P///v//Sv/9/v7//P7+//9O//7//v3///v9/P/////9//////7//v/+/////////v///f///P///v7//P7+//9O//7//v3///v9/P/////9//////7//v/+/////////v///f///P/////+//7//v7///v//////////////v///v7//v/////9/v9E/P7//f////7//v/9///+//7//v7///v//////////////v///v7//v/////9/v9E/P7//f////7//v/9/////03//v/+/v3////+/P/////+/v7//v78/v////7//v7+/v///v7///78///+/////03//v/+/v3////+/P/////+/v7//v78/v////7//v7+/v///v7///78///+///+//3//v///0T//////////////v///v7//v////79/v/7/f7//f////7+/v/9///+//3//v///0T//////////////v///v7//v////79/v/7/f7//f////7+/v/9//////7////+//3//////////////v///v////////9E///9/v///P////7/+//6//////7////+//3//////////////v///v////////9E///9/v///P////7/+//6///7//7///7///7+///////////9//7/9v/////////+///8Sf///f////7////+///9//7+//3//v38///+///////9//3/XP7////+//7+/v798//+/P////7+//7+/v7+/f7+/v/6//7//v7+/2P+/f///v74/v7///3//v7+/v/+/v7//v///P7/+//+/Pz/9P79///7/////v7///3+Wf/////9///+//7//v////7//////v//+//+/v///Pz/9P79///7/////v7///3+Wf/////9///+//7//v////7//////v//+//+/v//+/3/Xf/9///8/v///v7//v3+9P/////8///+//7//f/+/////////v//+v/+/f//+/3/Xf/9///8/v///v7//v3+9P/////8///+//7//f/+/////////v//+v/+/f//+/3/Xf/9///8/v///v7//v3+9P/////8///+//7//f/+/////////v//+v/+/f///////03//v/+/v3////+/P/////+/v7//v78/v////7//v7+/v///v7///78///+/////03//v/+/v3////+/P/////+/v7//v78/v////7//v7+/v///v7///78///+/////03//v/+/v3////+/P/////+/v7//v78/v////7//v7+/v///v7///78///+/////03//v/+/v3////+/P/////+/v7//v78/v////7//v7+/v///v7///78///+/v7////4///9//7/7Wv///7t/v/////+//////3//v///////////v///v///f//+/3//v9e///9////9vj///74/v/////+//////z//f///////////f///v///v//+/3//v9e///9////9vj///74/v/////+//////z//f///////////f///v///v//+/3//v9e///9////9vj///74/v/////+//////z//f///////////f///v///v//V/3/+//7//79/////f7///79/f/////9//////z//f/+/////////P///v/+/f//V/3/+//7//79/////f7///79/f/////9//////z//f/+/////////P///v/+/f//V/3/+//7//79/////f7///79/f/////9//////z//f/+/////////P///v/+/f/////+////af//AP7//////////////P///+7/8////+7/+P/+//z///////3////+/v////7//1b//f78///9/v////36//z//f/+///9//////3+/f/9/f3+///+//7//v////7//1b//f78///9/v////36//z//f/+///9//////3+/f/9/f3+///+//7//v////7//1b//f78///9/v////36//z//f/+///9//////3+/f/9/f3+///+//7////8/////f////7/////////////9f////z/+/////3+/f/+//f//////1P////6/v7//P7+//9O//7//v3///v9/P/////9//////7//v/+/////////v///f///P///v7//P7+//9O//7//v3///v9/P/////9//////7//v/+/////////v///f///P///v7//P7+//9O//7//v3///v9/P/////9//////7//v/+/////////v///f///P////////////3/Z//+///4/v////j+//7////+///5//////v////3//n5///+//n///////////3/Z//+///4/v////j+//7////+///5//////v////3//n5///+//n///////////3/Z//+///4/v////j+//7////+///5//////v////3//n5///+//n////+////af//AP7//////////////P///+7/8////+7/+P/+//z///////3////+///+////af//AP7//////////////P///+7/8////+7/+P/+//z///////3////+//////////7/+v/+///7/v////v+//7////9///r//////v////7/2b4///+//v///////////7/+v/+///7/v////v+//7////9///r//////v////7/2b4///+//v///////////7/+v/+///7/v////v+//7////9///r//////v////7/2b4///+//v////+//3//v///0T//////////////v///v7//v////79/v/7/f7//f////7+/v/9///+//3//v///0T//////////////v///v7//v////79/v/7/f7//f////7+/v/9///+//3//v///0T//////////////v///v7//v////79/v/7/f7//f////7+/v/9//////////z//v9l///+/v////7z/+r//f/+///+//////7//v/9//79//////7///////////z//v9l///+/v////7z/+r//f/+///+//////7//v/9//79//////7///////////z//v9l///+/v////7z/+r//f/+///+//////7//v/9//79//////7///////////3/Z//+///4/v////j+//7////+///5//////v////3//n5///+//n///////////3/Z//+///4/v////j+//7////+///5//////v////3//n5///+//n///////////3/Z//+///4/v////j+//7////+///5//////v////3//n5///+//n//v////////7+//3//////////////////v////7////9///+/f//N////////v/+/v////////7+//3//////////////////v////7////9///+/f//N////////v/+/v////////7+//3//////////////////v////7////9///+/f//N////////v/+/v7//P7+//9O//7//v3///v9/P/////9//////7//v/+/////////v///f///P///v7//P7+//9O//7//v3///v9/P/////9//////7//v/+/////////v///f///P//V/3/+//7//79/////f7///79/f/////9//////z//f/+/////////P///v/+/f//+/3//v9e///9////9vj///74/v/////+//////z//f///////////f///v///v//+/3//v9e///9////9vj///74/v/////+//////z//f///////////f///v///v///v////////7+//3//////////////////v////7////9///+/f//N////////v/+/v////////7+//3//////////////////v////7////9///+/f//N////////v/+/v7//f/0///+////f+j//v7p/v/////+//////z+/f///////v///v///v///v/+/v7//v/4///9////6vD///5p/v/////9//////3//v/+/////////v///v///v///v7////4///9//7/7Wv///7t/v/////+//////3//v///////////v///v///f////////////7/9//+//9n/v////j+//7////+///7//////n////3//r6///+//f///////////7/9//+//9n/v////j+//7////+///7//////n////3//r6///+//f///////////7/9//+//9n/v////j+//7////+///7//////n////3//r6///+//f//v7//f/0///+////f+j//v7p/v/////+//////z+/f///////v///v///v///v/+//////7////+//3//////////////v///v////////9E///9/v///P////7/+//6//////7////+//3//////////////v///v////////9E///9/v///P////7/+//6//////7////+//3//////////////v///v////////9E///9/v///P////7/+//6/Pz/9P79///7/////v7///3+Wf/////9///+//7//v////7//////v//+//+/v///////vz///7//v/+///9U/////7//////v/5///9//////z////+//38///6//3//////vz///7//v/+///9U/////7//////v/5///9//////z////+//38///6//3//////vz///7//v/+///9U/////7//////v/5///9//////z////+//38///6//3//mn//v/9///9/////f7////+/f/////+//////n/4v///////////v//+////v///mn//v/9///9/////f7////+/f/////+//////n/4v///////////v//+////v///v7//P7+//9O//7//v3///v9/P/////9//////7//v/+/////////v///f///P///v7//P7+//9O//7//v3///v9/P/////9//////7//v/+/////////v///f///P//V/3/+//7//79/////f7///79/f/////9//////z//f/+/////////P///v/+/f//V/3/+//7//79/////f7///79/f/////9//////z//f/+/////////P///v/+/f//+/3//v9e///9////9vj///74/v/////+//////z//f///////////f///v///v///v7+/f7+/v/6//7//v7+/2P+/f///v74/v7///3//v7+/v/+/v7//v///P7/+//+/v7+/f7+/v/6//7//v7+/2P+/f///v74/v7///3//v7+/v/+/v7//v///P7/+//+/Pz/9P79///7/////v7///3+Wf/////9///+//7//v////7//////v//+//+/v///Pz/9P79///7/////v7///3+Wf/////9///+//7//v////7//////v//+//+/v///P3/+/79/v/8/////f7+/vn9/P///v9m///+//3//v/+///+/v///v//+///+/7+/P3/+/79/v/8/////f7+/vn9/P///v9m///+//3//v/+///+/v///v//+///+/7+/Pr//v/8//7+///+/P3///79/f/////+/v7//1r/+P///////////P7//f///v///Pr//v/8//7+///+/P3///79/f/////+/v7//1r/+P///////////P7//f///v///eP//v/9//7+/////f7///7+/f/////+//////n/af////7//////v/++////////eP//v/9//7+/////f7///7+/f/////+//////n/af////7//////v/++///////+/3/Xf/9///8/v///v7//v3+9P/////8///+//7//f/+/////////v//+v/+/f//+/3/Xf/9///8/v///v7//v3+9P/////8///+//7//f/+/////////v//+v/+/f///fv/+v/+///8/////v3//v3+/P/////8//////3/+////////////v//V//+/v///fv/+v/+///8/////v3//v3+/P/////8//////3/+////////////v//V//+/v///v///v/+///9//7//v7///3+/v/////9//////7////6///+/////P///v//Sv/9/v///v/+///9//7//v7///3+/v/////9//////7////6///+/////P///v//Sv/9/v////////7+//3//////////////////v////7////9///+/f//N////////v/+/v////////7+//3//////////////////v////7////9///+/f//N////////v/+/v7+/f7+/v/6//7//v7+/2P+/f///v74/v7///3//v7+/v/+/v7//v///P7/+//+/v7+/f7+/v/6//7//v7+/2P+/f///v74/v7///3//v7+/v/+/v7//v///P7/+//+/v7+/f7+/v/6//7//v7+/2P+/f///v74/v7///3//v7+/v/+/v7//v///P7/+//+///+//3//v///0T//////////////v///v7//v////79/v/7/f7//f////7+/v/9///+//3//v///0T//////////////v///v7//v////79/v/7/f7//f////7+/v/9///+//3//v///0T//////////////v///v7//v////79/v/7/f7//f////7+/v/9//////////7/+v/+///7/v////v+//7////9///r//////v////7/2b4///+//v///////////z//v9l///+/v////7z/+r//f/+///+//////7//v/9//79//////7///////////v//v/q///+/v////30/2f//v/+///9//////7+/v/+/v38///+//7///////////7/+v/+///7/v////n+//7////9//9r//////v////7/+v4///+//r///////3///7//v/+///++v////7///7///9M///9//////v////+//39///7//3///////////7/+v/+///7/v////r+//3////+///3//////z////7//ld///+//r///////////3/Z//+///4/v////j+//7////+///5//////v////3//n5///+//n///////////3/Z//+///4/v////j+//7////+///5//////v////3//n5///+//n///////////7/9//+//9n/v////j+//7////+///7//////n////3//r6///+//f///////////7/9//+//9n/v////j+//7////+///7//////n////3//r6///+//f//////vz///7//v/+///9U/////7//////v/5///9//////z////+//38///6//3//////vz///7//v/+///9U/////7//////v/5///9//////z////+//38///6//3////+//7///r//f/y///+/v////1m//L//f/+///+//////7+/f/9//3+///+//3////+//7///r//f/y///+/v////1m//L//f/+///+//////7+/f/9//3+///+//3///7///7///3/+f/+///3/v///2j+//7////+///4//////r////3//n6///+//r///7///7///3/+f/+///3/v///2j+//7////+///4//////r////3//n6///+//r///////////7/+P/+///3/v////j+//7////+///6//////v///9l//v7///+//j///////////7/+P/+///3/v////j+//7////+///6//////v///9l//v7///+//j//v////7//1b//f78///9/v////36//z//f/+///9//////3+/f/9/f3+///+//7//////v3///7//v7+///++/////7////////7///+//////z////+//7+//9G//7///////7///3//P/+///5/f////v///7//wD8///5/////1r////7//z7///8//n///////////3/+f/+///3/f////n+//7////+///7//////j////4//v7///+/2T///////////3/+f/+///3/f////n+//7////+///7//////j////4//v7///+/2T/+/3//v9e///9////9vj///74/v/////+//////z//f///////////f///v///v//+/3//v9e///9////9vj///74/v/////+//////z//f///////////f///v///v///v7//v/4///9////6vD///5p/v/////9//////3//v/+/////////v///v///v/////+//7//v7///v//////////////v///v7//v/////9/v9E/P7//f////7//v/9///+//3//v///0T//////////////v///v7//v////79/v/7/f7//f////7+/v/9///z/////P////7/////////////8f////z/+/////3//f/+/mL///////b////8///8/////P////7/////////////Yv////3/+v////z+/f/+//D///////T////5///8/////P////7/////////////Yv////3/+v////z+/f/+//D///////T////5///8/////f////7/////////////9f////z/+/////3+/f/+//f//////1P////6///8/////f////7/////////////9f////z/+/////3+/f/+//f//////1P////6/Pz/9P79///7/////v7///3+Wf/////9///+//7//v////7//////v//+//+/v///Pz/9P79///7/////v7///3+Wf/////9///+//7//v////7//////v//+//+/v///Pz/9P79///7/////v7///3+Wf/////9///+//7//v////7//////v//+//+/v///P3/+/79/v/8/////f7+/vn9/P///v9m///+//3//v/+///+/v///v//+///+/7+/P3/+/79/v/8/////f7+/vn9/P///v9m///+//3//v/+///+/v///v//+///+/7+/P3/+/79/v/8/////f7+/vn9/P///v9m///+//3//v/+///+/v///v//+///+/7+//////7////+//3//////////////v///v////////9E///9/v///P////7/+//6//////7////+//3//////////////v///v////////9E///9/v///P////7/+//6//////7////+//3//////////////v///v////////9E///9/v///P////7/+//6/Pr//v/8//7+///+/P3///79/f/////+/v7//1r/+P///////////P7//f///v///Pr//v/8//7+///+/P3///79/f/////+/v7//1r/+P///////////P7//f///v///Pr//v/8//7+///+/P3///79/f/////+/v7//1r/+P///////////P7//f///v////7///7///3/+f/+///3/v///2j+//7////+///4//////r////3//n6///+//r///7///7///3/+f/+///3/v///2j+//7////+///4//////r////3//n6///+//r///7///7///3/+f/+///3/v///2j+//7////+///4//////r////3//n6///+//r////+//7//v7///v//////////////v///v7//v/////9/v9E/P7//f////7//v/9///+//7//v7///v//////////////v///v7//v/////9/v9E/P7//f////7//v/9///+//7//v7///v//////////////v///v7//v/////9/v9E/P7//f////7//v/9/////03//v/+/v3////+/P/////+/v7//v78/v////7//v7+/v///v7///78///+/////v3///7//v7+///++/////7////////7///+//////z////+//7+//9G//7//////vz///7//v/+///9U/////7//////v/5///9//////z////+//38///6//3///////3///7//v/+///++v////7///7///9M///9//////v////+//39///7//3/+/3/Xf/9///8/v///v7//v3+9P/////8///+//7//f/+/////////v//+v/+/f///v7//P7+//9O//7//v3///v9/P/////9//////7//v/+/////////v///f///P///v7//P7+//9O//7//v3///v9/P/////9//////7//v/+/////////v///f///P///fv/+v/+///8/////v3//v3+/P/////8//////3/+////////////v//V//+/v///Pz/9P79///7/////v7///3+Wf/////9///+//7//v////7//////v//+//+/v///v7//v/4///9////6vD///5p/v/////9//////3//v/+/////////v///v///v///v7//v/4///9////6vD///5p/v/////9//////3//v/+/////////v///v///v/////+//7///r//f/y///+/v////1m//L//f/+///+//////7+/f/9//3+///+//3////+//7///r//f/y///+/v////1m//L//f/+///+//////7+/f/9//3+///+//3////+//7///r//f/y///+/v////1m//L//f/+///+//////7+/f/9//3+///+//3////8/////P////7/////////////Yv////3/+v////z+/f/+//D///////T////5///7//7///7///7+///////////9//7/9v/////////+///8Sf///f////7////+///7//7///7///7+///////////9//7/9v/////////+///8Sf///f////7////+///7//7///7///7+///////////9//7/9v/////////+///8Sf///f////7////+/v////////7+//3//////////////////v////7////9///+/f//N////////v/+/v////////7+//3//////////////////v////7////9///+/f//N////////v/+/v////////7+//3//////////////////v////7////9///+/f//N////////v/+//////////v//v/q///+/v////30/2f//v/+///9//////7+/v/+/v38///+//7///////////v//v/q///+/v////30/2f//v/+///9//////7+/v/+/v38///+//7///////////v//v/q///+/v////30/2f//v/+///9//////7+/v/+/v38///+//7///////////7/+P/+///3/v////j+//7////+///6//////v///9l//v7///+//j///////////7/+P/+///3/v////j+//7////+///6//////v///9l//v7///+//j///////////7/+P/+///3/v////j+//7////+///6//////v///9l//v7///+//j//P3/+/79/v/8/////f7+/vn9/P///v9m///+//3//v/+///+/v///v//+///+/7+/P3/+/79/v/8/////f7+/vn9/P///v9m///+//3//v/+///+/v///v//+///+/7+/////v3///7//v7+///++/////7////////7///+//////z////+//7+//9G//7//////v3///7//v7+///++/////7////////7///+//////z////+//7+//9G//7//////v3///7//v7+///++/////7////////7///+//////z////+//7+//9G//7////9//7/9P////7/////////////+/////T/Zf////T/+f/+//r///////z////9///9//7/9P////7/////////////+/////T/Zf////T/+f/+//r///////z////9///9//7/9P////7/////////////+/////T/Zf////T/+f/+//r///////z////9/Pr//v/8//7+///+/P3///79/f/////+/v7//1r/+P///////////P7//f///v///Pr//v/8//7+///+/P3///79/f/////+/v7//1r/+P///////////P7//f///v///Pr//v/8//7+///+/P3///79/f/////+/v7//1r/+P///////////P7//f///v////////////7/+v/+///7/v////n+//7////9//9r//////v////7/+v4///+//r///////////7/+v/+///7/v////n+//7////9//9r//////v////7/+v4///+//r///////////7/+v/+///7/v////n+//7////9//9r//////v////7/+v4///+//r//eP//v/9//7+/////f7///7+/f/////+//////n/af////7//////v/++////////eP//v/9//7+/////f7///7+/f/////+//////n/af////7//////v/++////////eP//v/9//7+/////f7///7+/f/////+//////n/af////7//////v/++//////////+//7//v//AP3/////////////+f////7//v////77/v/8/v3//v////v//v9H///+//7//v//AP3/////////////+f////7//v////77/v/8/v3//v////v//v9H///+//7//v//AP3/////////////+f////7//v////77/v/8/v3//v////v//v9H//////3///7//v/+///++v////7///7///9M///9//////v////+//39///7//3///////3///7//v/+///++v////7///7///9M///9//////v////+//39///7//3///////3///7//v/+///++v////7///7///9M///9//////v////+//39///7//3//v////7//1b//f78///9/v////36//z//f/+///9//////3+/f/9/f3+///+//7//v////7//1b//f78///9/v////36//z//f/+///9//////3+/f/9/f3+///+//7/V/3/+//7//79/////f7///79/f/////9//////z//f/+/////////P///v/+/f//V/3/+//7//79/////f7///79/f/////9//////z//f/+/////////P///v/+/f////7///7///3/+f/+///3/v///2j+//7////+///4//////r////3//n6///+//r///7///7///3/+f/+///3/v///2j+//7////+///4//////r////3//n6///+//r///7///7///3/+f/+///3/v///2j+//7////+///4//////r////3//n6///+//r////+//7//v//AP3/////////////+f////7//v////77/v/8/v3//v////v//v9H///+//7//v//AP3/////////////+f////7//v////77/v/8/v3//v////v//v9H///+//7//v//AP3/////////////+f////7//v////77/v/8/v3//v////v//v9H///+////7v////7//////////////f///+7/9v///2n/9//+//z///////z////+///8////9/////7//////////////v////f/+/////f/U//+//3///////3////+/////vz///7//v/+///9U/////7//////v/5///9//////z////+//38///6//3///////7///3//P/+///5/f////v///7//wD8///5/////1r////7//z7///8//n///////7///3//P/+///5/f////v///7//wD8///5/////1r////7//z7///8//n///////7///3//P/+///5/f////v///7//wD8///5/////1r////7//z7///8//n////+//7//v7///v//////////////v///v7//v/////9/v9E/P7//f////7//v/9///+//7//v7///v//////////////v///v7//v/////9/v9E/P7//f////7//v/9///+//7//v7///v//////////////v///v7//v/////9/v9E/P7//f////7//v/9///9////7v////7//////////////f///2j/9v///+3/+P/+//z///////z////+///9////7v////7//////////////f///2j/9v///+3/+P/+//z///////z////+/v7//f/0///+////f+j//v7p/v/////+//////z+/f///////v///v///v///v/+/v7//v/4///9////6vD///5p/v/////9//////3//v/+/////////v///v///v///v7//v/4///9////6vD///5p/v/////9//////3//v/+/////////v///v///v///v7////4///9//7/7Wv///7t/v/////+//////3//v///////////v///v///f///v7////4///9//7/7Wv///7t/v/////+//////3//v///////////v///v///f/////9//7/9P////7/////////////+/////T/Zf////T/+f/+//r///////z////9/v7+/f7+/v/6//7//v7+/2P+/f///v74/v7///3//v7+/v/+/v7//v///P7/+//+///8/////P////7/////////////Yv////3/+v////z+/f/+//D///////T////5///8/////f////7/////////////9f////z/+/////3+/f/+//f//////1P////6///+//7//v//AP3/////////////+f////7//v////77/v/8/v3//v////v//v9H/fv/+v/+///8/////v3//v3+/P/////8//////3/+////////////v//V//+/v///fv/+v/+///8/////v3//v3+/P/////8//////3/+////////////v//V//+/v////////3///7//v/+///++v////7///7///9M///9//////v////+//39///7//3//////v3///7//v7+///++/////7////////7///+//////z////+//7+//9G//7//////v3///7//v7+///++/////7////////7///+//////z////+//7+//9G//7//////v3///7//v7+///++/////7////////7///+//////z////+//7+//9G//7////+////7v////7//////////////f///+7/9v///2n/9//+//z///////z////+///+////7v////7//////////////f///+7/9v///2n/9//+//z///////z////+///7//7///7///7+///////////9//7/9v/////////+///8Sf///f////7////+///7//7///7///7+///////////9//7/9v/////////+///8Sf///f////7////+///7//7///7///7+///////////9//7/9v/////////+///8Sf///f////7////+///z/////P////7/////////////8f////z/+/////3//f/+/mL///////b////8//////////7/+P/+///3/v////j+//7////+///6//////v///9l//v7///+//j///////////7/+P/+///3/v////j+//7////+///6//////v///9l//v7///+//j///////////7/+P/+///3/v////j+//7////+///6//////v///9l//v7///+//j///////////7/9//+//9n/v////j+//7////+///7//////n////3//r6///+//f///////////7/9//+//9n/v////j+//7////+///7//////n////3//r6///+//f///////////7/9//+//9n/v////j+//7////+///7//////n////3//r6///+//f/+/3/Xf/9///8/v///v7//v3+9P/////8///+//7//f/+/////////v//+v/+/f//+/3/Xf/9///8/v///v7//v3+9P/////8///+//7//f/+/////////v//+v/+/f//+/3/Xf/9///8/v///v7//v3+9P/////8///+//7//f/+/////////v//+v/+/f////////////7/+v/+///7/v////r+//3////+///3//////z////7//ld///+//r///////////7/+v/+///7/v////r+//3////+///3//////z////7//ld///+//r///////////7/+v/+///7/v////r+//3////+///3//////z////7//ld///+//r///////////7/+v/+///7/v////r+//3////+///3//////z////7//ld///+//r///////////7/+v/+///7/v////r+//3////+///3//////z////7//ld///+//r///////////7/+v/+///7/v////r+//3////+///3//////z////7//ld///+//r//fv/+v/+///8/////v3//v3+/P/////8//////3/+////////////v//V//+/v///fv/+v/+///8/////v3//v3+/P/////8//////3/+////////////v//V//+/v///fv/+v/+///8/////v3//v3+/P/////8//////3/+////////////v//V//+/v/////8/////f////7/////////////9f////z/+/////3+/f/+//f//////1P////6///8/////f////7/////////////9f////z/+/////3+/f/+//f//////1P////6//////////3/+f/+///3/f////n+//7////+///7//////j////4//v7///+/2T///////////3/+f/+///3/f////n+//7////+///7//////j////4//v7///+/2T//v////7//1b//f78///9/v////36//z//f/+///9//////3+/f/9/f3+///+//7//v////7//1b//f78///9/v////36//z//f/+///9//////3+/f/9/f3+///+//7//////v3///7//v7+///++/////7////////7///+//////z////+//7+//9G//7//////v3///7//v7+///++/////7////////7///+//////z////+//7+//9G//7///////7///3//P/+///5/f////v///7//wD8///5/////1r////7//z7///8//n///////7///3//P/+///5/f////v///7//wD8///5/////1r////7//z7///8//n//v////////7+//3//////////////////v////7////9///+/f//N////////v/+/v////////7+//3//////////////////v////7////9///+/f//N////////v/+/v////////7+//3//////////////////v////7////9///+/f//N////////v/+/v///v/+///9//7//v7///3+/v/////9//////7////6///+/////P///v//Sv/9/v///v/+///9//7//v7///3+/v/////9//////7////6///+/////P///v//Sv/9/v///v/+///9//7//v7///3+/v/////9//////7////6///+/////P///v//Sv/9/v7////4///9//7/7Wv///7t/v/////+//////3//v///////////v///v///f///v7////4///9//7/7Wv///7t/v/////+//////3//v///////////v///v///f////////////3/+f/+///3/f////n+//7////+///7//////j////4//v7///+/2T///////////3/+f/+///3/f////n+//7////+///7//////j////4//v7///+/2T///////////3/+f/+///3/f////n+//7////+///7//////j////4//v7///+/2T//////03//v/+/v3////+/P/////+/v7//v78/v////7//v7+/v///v7///78///+/////03//v/+/v3////+/P/////+/v7//v78/v////7//v7+/v///v7///78///+/v////////7+//3//////////////////v////7////9///+/f//N////////v/+/v////////7+//3//////////////////v////7////9///+/f//N////////v/+///+//3//v///0T//////////////v///v7//v////79/v/7/f7//f////7+/v/9/v////////7+//3//////////////////v////7////9///+/f//N////////v/+//////7////+//3//////////////v///v////////9E///9/v///P////7/+//6//////7////+//3//////////////v///v////////9E///9/v///P////7/+//6//////7////+//3//////////////v///v////////9E///9/v///P////7/+//6///7//7///7///7+///////////9//7/9v/////////+///8Sf///f////7////+///7//7///7///7+///////////9//7/9v/////////+///8Sf///f////7////+///9//7+//3//v38///+///////9//3/XP7////+//7+/v798//+/P////7+//7+///9//7+//3//v38///+///////9//3/XP7////+//7+/v798//+/P////7+//7+///+//7//v7///v//////////////v///v7//v/////9/v9E/P7//f////7//v/9///+//7//v7///v//////////////v///v7//v/////9/v9E/P7//f////7//v/9///+//7//v7///v//////////////v///v7//v/////9/v9E/P7//f////7//v/9///9//7+//3//v38///+///////9//3/XP7////+//7+/v798//+/P////7+//7+///9//7+//3//v38///+///////9//3/XP7////+//7+/v798//+/P////7+//7+///9//7+//3//v38///+///////9//3/XP7////+//7+/v798//+/P////7+//7+///+//7//v//AP3/////////////+f////7//v////77/v/8/v3//v////v//v9H///+//7//v//AP3/////////////+f////7//v////77/v/8/v3//v////v//v9H///+//7//v//AP3/////////////+f////7//v////77/v/8/v3//v////v//v9HAQECAgEB/wD+Af0ABQAAAQUCAQEDAQIGA/3+AgH+Af////39/QEB+P/+Av3+/wD7AQECAgEB/wD+Af0ABQAAAQUCAQEDAQIGA/3+AgH+Af////39/QEB+P/+Av3+/wD7AQECAgEB/wD+Af0ABQAAAQUCAQEDAQIGA/3+AgH+Af////39/QEB+P/+Av3+/wD7AgEBAwEA/wD/AP0BB/4BAQcCAgAEAAAFBf8A/wL+Av7+APz9/QIA+P7+Av39/gH7AgEBAwEA/wD/AP0BB/4BAQcCAgAEAAAFBf8A/wL+Av7+APz9/QIA+P7+Av39/gH7AgEBAwEA/wD/AP0BB/4BAQcCAgAEAAAFBf8A/wL+Av7+APz9/QIA+P7+Av39/gH7BAD/AgEB/QH/AP4CBQT/AAj+AgEC/wEHBf//AAL9Af7+//39/gAA+f79Af7+AAD9/f0J/Qz9Bfv8/Qb8/f39/Pz9/f37CPz9DgT7Cf39/QYJBv0HBwf9+f39/QT8+v0ECQj8CfsI/PsG/Pv8Cwb8/AwICfz8/PwM+/z7/Qj8CP35/fz7/Pz8BPz9CPz8B/z7/P38/Pn9/Qr8CPwI/f0HCv39/AgL/Qr9+f0H/fwF/P39/AT8+/0H+wYF/P0G/Qf9/f0J/Qz9Bfv8/Qb8/f39/Pz9/f37CPz9DgT7Cf39/QYJBv0HBwf9+f39/QT8+v0ECQj8CfsI/PsG/Pv8Cwb8/AwICfz8/PwM+/z7/Qj8CP35/fz7/Pz8BPz9CPz8B/z7/P38/Pn9/Qr8CPwI/f0HCv39/AgL/Qr9+f0H/fwF/P39/AT8+/0H+wYF/P0G/Qf9/f0J/Q39Bvv8/Qb8/f39/Pv9/f38B/v8Dwb8Bv38/QUJCP0HBwj8+P39/QX7+v0ECQj8CvsI/PwH/Pv8DQX8/A8HCPz8/PwL/Pz8/Aj8CPz5/Pz7+/z8BPv8Cfz7B/z7/fz8/Pn8/Qn8B/wJ/f0ICv39/AcM/Qn9+v0I/f0G/P38/AT8+/0H+wYF/P0I/Qj8/f0J/Q39Bvv8/Qb8/f39/Pv9/f38B/v8Dwb8Bv38/QUJCP0HBwj8+P39/QX7+v0ECQj8CvsI/PwH/Pv8DQX8/A8HCPz8/PwL/Pz8/Aj8CPz5/Pz7+/z8BPv8Cfz7B/z7/fz8/Pn8/Qn8B/wJ/f0ICv39/AcM/Qn9+v0I/f0G/P38/AT8+/0H+wYF/P0I/Qj8/PwI/A79Bfv8/Qj7/fz8+/z9/f37B/z8EAb7CPz9/QYJB/wICAf8+fz8/Ab6+/wHCwj7CvsI/PsH+/r8DAv7+xAFCvv8/PsP/Pz7+wv7Cfz5/Pz6+/z7Bfz7CPv7Cfv6/Pv8/Pn9/Av8B/sL/f0HC/z8/AkL/Ar8+v0I/PwF/P38/AX7+v0J+wUG/PwJ/An8/v4N/v3+CP7+/vv+/v7+/v3+/v7+Cv7+/Qb+C/7+/gj8CP77+wn+/f7+/gf+/f4J/v4N/v3+CP7+/vv+//7+/v3+//7+Cf7+/Qj+CP7+/gf8Cv76/Ar+/f7+/gf+/f4J/v4M/v3+CP7+/vv+/v7+/f3+/v7+Cf7+/Qn+Cv7+/gj8Cf77/An+/f7+/gn+/f4L/////v7///z/+v8R///7/P///vr4/xH//v8P//8R/v////r//v/7/hEP///8//v///////3///z/+v4Q///7/P////r4/xD//v8Q//8Q//////r+/v/7/hAP/v/9//v//v7+//7///z/+f4S///7/P////r3/xP+/v8Q//8R//////r+/f/7/hAR///9//v+/f3//v8Q///9////EQ7///4O/v/////+//////z//f///////////f///v///f///f3//v8P///9////Ewv///8N/v/////+//////3//f///////////v///v///f///f7//v8Q///9////ExH///4M/v/////+//////3//f///////////v///v///v///////////xP//v/+/wD+/v////7+///////9AP/9/////xP////+//7+//8P//3///////7//xP//v/+/wD9/f8A//7+//4A///9///9/////xP////+//7+//8PAP7///////4A/xX//v/+/wD9/f////3+//7//wD9///9/////xX////+//7+//8R//3/AP/+AP////8A////AAD//wD/////////FAD/////AP///wD+Dv///gAA/////////wD+AP//AP8A//7/AAD/AAD/AAD/////EwD//wD/AP/////+Dv///v//AP///////wD+////////////AP///wAAAP/+//8AFf/////////////+D/8A/gD/////////AAD/AAAAAAAAAP8AAAAAAAAAAAAA/wAAAP8AAAAAAAD//wAQ/wAA/wAAAAAAAAD/AAAAABIAAAAAAP8AAAAA/wAAAAAAAAAAAAD/AAAAAAAAAAAAAAAA/wAAAAD/AAD/AAAAAP8AAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/AAD//wAA/wAAAAAAAAD/AAAAAAAAAAAAAP8AAAAAAAAAAAAAAAAA/wAAAAAAAAAQAAD/AAAA/wAAAAAA/wD+/xkA/wD/AAD/AAAA//8AAAAA/wAAAAAAAAAAAP4A+AAAAAAAAAAA/wAA/wAAAAAAAAAA/wD/AAATAAAA//8AAP///wAAAAD/AAAAAP8AAAD/AAAAAAAAAAAA/wAA/wAAFP8A/wD/AAD/AAAA/wAAAP///wAAAAD/AAAAAP8A/wAAAAAAAAAA/wAA/wAA/wAA/wAA/wAAAAD+AP8AAP8AABYA/wAAAAD+AAAAAAAA/wAAAAAAAAAA/wAA/wAA/wAA//8A/QD/AAD/AAAAAP8AAAAAFQAAAAD/AAAAAP8A/wAAAAAAAAAAAAAA/wD/AAAA//8A////AAD/AAAA//8AAP7//wAAAAAXAAAAAP8A/wAAAP8AAAAAAAAA/wAA/wAA//4AAAD/AAD/AAAA//8AAAD//wAAAAD//wAAABUA/gAAAAAAAAAA/wAA/wAAAAAA//gA/wD/AAAAAAAA//8AAAD//wAAAAAAAAAAAP4AGgAAAAAAAAAAAAAA/wAAAAAA/v8AFgD/AAD/AAAAAP8AAP8A/QAAAAD/AAD/AAAAAAAAAAAAAAAAAAAA/wD//wAA//8A/wAAAAD/AAAAAAAAAP8A/wAAAAD/AAAAAP8A/wAAAAAAAAAAAAAAFAAAAAAA/wAAAAAAAAD/AAAAAP8AAP8A/wAAAAD/AAAAAP8AAAD/AAAAAAAA/wAAAAAAEQD/AAAAAAAAAP8AAP8AAAAAAAAAAAAAAAAAAAAAAAAAAAD/AAD//wAADQAAAAAA/wAAAAAAAAAAAP8AGAAAAAD+/wAAAP7/AAAAAAD/AAD/AAAAAP8AAAD+AP7+AAAAAP4AAAAAAAAAAP8A/gAAAAAY/wAAAP7/AP8AAAD/AAD/AAAAAP4AAAD+AP//AAAAAP4AAAAAAP8AAAAA/wAAAAAAFAAAAP8AAAAAAAD+AAD/AAAAAP8AAAD/AP//AAD+AP8AAAAAAAAAAP4AAAD8AAAA/wAAAP8YAP0A/wAAAAD/AAAAAP8A/wD/AAD/AAAAAP8AAAAAAAAAAP8A/gAAAAD+AAAAABn/AAAAAAD/AAD+AAAAAP8AAAD+AP/+AAD/AP4AAAAAAAAAAP8A/gAAAAD9/wAAAP7/AAAAAAAAAAD/AAAAAP8AAAAYAP//AAAAAP4AAAAAAAAAAP8A/wAAAAD+/wAAAP//AP8AAAAAAAD+AAAAAP4AAAD+AP//AAD/ABgAAAD/AAAAAAAAAP8AAAAAAAAAAAAAAAAA/wAAAAAAAAD/AAAQ/wAA/wAAAP8AAAD/AAAAABIAAAAAAP8AAAAA/wAAAAAAAP8AAAD/AAAAAAAAAP8AAAAA/wAAAP//AAD/AAAAAP8AAAAAABAAAAAAAAAAAAAAAAAA/wAAAAAAAAD/AAD//wAA/wAAAP8AAAD/AAAAAAAAAAAAAP8AAAAAAAAAAAAA/wAAAAAAAAAAAAAQAAAA/wAA/wAAAAAA/wD+/xgA/wD/AAD/AAAA/wAAAAAA/wAAAAAAAAAAAP4A+QAAAAAAAAAAAAAA/wAAAAAAAAAA/wAAAAASAAAA/wAAAP///wAAAAD/AAAAAAAAAAAAAAAAAAAA/wAA/wAA/wAAFP8A/wD/AAAAAAAAAP8AAP///wAAAAD/AAAAAP8A/wAAAAAAAAAA/wAAAAAA/wAAAAAA/wAAAAD+AAAAAP8AABf//wAAAAD9AAAAAP8AAAD/AAAAAAAAAAAA/wD//wD///8A/QD/AAD/AAAA/wAAAP8AFAAAAAD/AAAAAAAA/wAAAAAAAAAA/wAA/wD/AAAA//8A/wD/AAD/AAAA//8AAP7//wAAAAAXAAAA/wAA/wAAAAAAAAAAAAAA/wAA/wD///4AAAD/AAAAAAAA//8AAAD/AAAAAAAAAAAAABUA/gAAAAAAAAAA/wAA/wAA/wAA//kAAAD/AAAAAAAA/wAAAAAA/wAAAAD/AAAAAP4AGAAAAAAAAAAAAAAA/wAAAAAA/wAAFgD/AAD/AAAA/wAAAP8A/QAAAAD/AAAAAP8AAAAAAAAAAAAAAAAA/wAA/wAA//8A/wAAAAD/AAAAAP8AAP///wAAAAD/AAAAAP8A/wAAAAAAAAAAAAAAFAAA/wAAAAAAAAAAAAD/AAAAAP8AAP8AAAAAAAD/AAAAAAAAAAD/AAD/AAAA/wAAAAAAEQD//wAAAAAAAP8AAP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wAADQAAAAAA/wAAAAAAAAAAAP8AGAD/AAD+/wAAAP7/AAAAAAD/AAD/AAAAAP8AAAD+AP7/AAD/AP4AAAAAAAAAAP8A/gAAAAAY/wAAAP4AAAAAAAD/AAD/AAAAAP4AAAD+AP//AAAAAP4AAAAAAP8AAP8A/wAAAAD/EwAAAAAAAAAAAAD+AAD/AAAAAP8AAAD/AP//AAD+AP8AAAAAAAAAAP4A/wD9AAD/AAAAAP8YAPwA/wAAAAAAAAAAAP8A/wD/AP//AAAAAAAAAAAAAAAAAP8A/gAAAAD+/wAAABgAAAAAAAD/AAD+AAAAAP8AAAD+AP7+AAAAAP8AAAAAAAAAAP8A/gD/AAD/AAAAAP4AAAAAAAAAAAD/AAAAAP4AAAAXAP//AAAAAP8AAAAAAAAAAP8A/gAAAAD+/wAAAP4AAAAAAAD/AAD/AAAAAP4AAAD+AP//AAD/ABcAAAAAAAAA/wAAAP8AAAAAAAAAAAAA/wAA/wAAAAAAAAD/AAAR//8A/wAAAP8AAAD/AAAAABMAAAAAAP8AAAD//wAAAAAAAAAAAAD/AAAAAAAAAP8AAAD///8AAAD/AAAAAAAAAP8A/wAAABIAAAAAAAAAAAAAAAAA/wAAAAAAAAD/AAD+/wAA/wAAAAD/AAD/AAAAAAAAAAAAAP8AAAAAAAAAAAAAAAD/AAAAAAAAAAARAAD/AAAA/wAAAAAA/wD//xoA/wD/AAD/AAAA//8A/wD//wAAAAAAAAAAAP4A+QAAAAAAAAAAAAAA/wAAAAAA//8A/wD/AAATAAAA//8AAP///wAAAAD/AAAAAP8A/wAAAAAAAAAA/wAA/wAA/wAAFv8A/wD/AAD/AAAA//8AAAD//wAAAAD/AAAAAP8A/wAAAAAAAAAA/wAA/wAA/wD//////wAAAAD/AAAA/wAAABn//wAAAP/+AAAAAP8AAP8AAAAAAP8A/wAA/wAA/wD///8A/QD/AAD//wAA/wAAAP//FwAAAAD/AAAAAAAA/wAAAAAAAAAAAAAA/wAAAAAA//8A/wD/AAD/AAAA/wAAAP7//gAAAAAaAAAAAP8A/wD/AAD/AAAAAAAA/wAA/gAA//4AAAD/AAD/AAAA//8AAAD//wAAAAD/AP8AABcA/gAAAAAAAAAA/wAA/wAA/wAAAPkA/wD/AAD/AAAA/wD/AP///wAAAAAAAAAAAP4AGgAAAAAAAAAAAAAA/wAAAAAA//8AFwD/AAD/AAAAAAAAAP///QAAAAD/AAAAAP8A/wAAAAAAAAAA/wAA/wAA/wAA//8A/wD/AAD/AAAAAP8AAP///wAAAAD/AAAAAP8A/wAAAAAAAAD//wAAFQAA/wAA/wAAAAD/AAD/AAAAAP8AAP///wAAAAD/AAAAAAAAAAD/AAD/AAAA/wAA/wAAEwD/AAAAAAAAAAAAAP8AAAAAAAAAAAAAAAAA/wAAAAAAAAD/AAD//wAADgAAAAAAAAAAAAAAAAAAAP8AGgD/AAD+/wAAAP4AAP8AAAAAAAD+AAAAAP8AAAD+AP7/AAD/AP4AAAAAAAAAAP8A/gAAAAAa/wAAAP//AAAAAAD/AAD/AAAAAP4AAAD+AP/+AAD/AP4AAAAAAP8AAAAAAAAAAAD/FQAAAP8AAAAAAAD+AP//AAAAAP8AAAAAAP//AAD+AP8AAAAAAAAAAP8A/wD9AAD/AAAAAAAZAP0AAAD/AAD/AAAAAP//AAD/AP//AAAAAAAAAAAAAAAAAP8A/gAAAAD+/wAAABn/AAAAAAAAAAD+AAAAAP4AAAD+AP//AAD/AP8AAAAAAAAAAP8A/gAAAAD+AAAAAP7/AP8A/wD/AAD+AAAAAP8AAAAZAP//AAD/AP4AAAAAAAAAAP8A/gAAAAD9AAAAAP8AAP8AAAD/AAD/AAAAAP4AAAD+AP/+AAAAABoA",
+    "encoding": "int8-base64",
+    "scale": 0.02050603656318244
+  },
+  "embedding": {
+    "data": "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",
+    "encoding": "int8-base64",
+    "scale": 0.0368231825941191
+  },
+  "exact_prompts": {
+    "answer a question about a contract clause": 6,
+    "answer a question about a policy document": 33,
+    "answer a question about a product manual": 25,
+    "answer a question about a research paper": 31,
+    "answer a question about meeting minutes": 27,
+    "answer a question from a document": 2,
+    "answer a question from a resume": 37,
+    "answer a question from an invoice": 21,
+    "answer a question from terms and conditions": 43,
+    "answer a yes or no question from text": 47,
+    "answer how a process works from a manual": 35,
+    "answer what changed in a changelog": 4,
+    "answer when a deadline falls from a notice": 10,
+    "answer where an event happened from text": 32,
+    "answer who is responsible from a document": 36,
+    "answer who wrote a document": 24,
+    "explain ambiguity in document questions": 1,
+    "explain answer confidence in doc qa": 8,
+    "explain citation of document answers": 0,
+    "explain document chunking for qa": 5,
+    "explain document qa evaluation": 12,
+    "explain document qa input format": 17,
+    "explain document qa versus chat": 13,
+    "explain extractive question answering": 16,
+    "explain grounding answers in evidence": 18,
+    "explain handling long documents": 23,
+    "explain multi hop document questions": 28,
+    "explain negation in document questions": 30,
+    "explain source attribution in answers": 3,
+    "explain table questions in documents": 42,
+    "explain verifying an answer against text": 45,
+    "explain what to do when a document lacks an answer": 39,
+    "find a date mentioned in a document": 40,
+    "find a definition inside a document": 11,
+    "find a list inside a document": 22,
+    "find a name mentioned in a document": 29,
+    "find a number stated in a report": 26,
+    "find a summary statement in a document": 41,
+    "find contact details in a document": 9,
+    "find eligibility rules in a document": 14,
+    "find exceptions in a policy text": 15,
+    "find instructions inside a document": 20,
+    "find opening hours in a document": 19,
+    "find risks listed in a document": 38,
+    "find the conclusion of a document": 7,
+    "find the main requirement in a notice": 44,
+    "find the price stated in a document": 34,
+    "find warranty terms in a document": 46,
+    "gravion docqa answer a question about a contract clause": 6,
+    "gravion docqa answer a question about a policy document": 33,
+    "gravion docqa answer a question about a product manual": 25,
+    "gravion docqa answer a question about a research paper": 31,
+    "gravion docqa answer a question about meeting minutes": 27,
+    "gravion docqa answer a question from a document": 2,
+    "gravion docqa answer a question from a resume": 37,
+    "gravion docqa answer a question from an invoice": 21,
+    "gravion docqa answer a question from terms and conditions": 43,
+    "gravion docqa answer a yes or no question from text": 47,
+    "gravion docqa answer how a process works from a manual": 35,
+    "gravion docqa answer what changed in a changelog": 4,
+    "gravion docqa answer when a deadline falls from a notice": 10,
+    "gravion docqa answer where an event happened from text": 32,
+    "gravion docqa answer who is responsible from a document": 36,
+    "gravion docqa answer who wrote a document": 24,
+    "gravion docqa explain ambiguity in document questions": 1,
+    "gravion docqa explain answer confidence in doc qa": 8,
+    "gravion docqa explain citation of document answers": 0,
+    "gravion docqa explain document chunking for qa": 5,
+    "gravion docqa explain document qa evaluation": 12,
+    "gravion docqa explain document qa input format": 17,
+    "gravion docqa explain document qa versus chat": 13,
+    "gravion docqa explain extractive question answering": 16,
+    "gravion docqa explain grounding answers in evidence": 18,
+    "gravion docqa explain handling long documents": 23,
+    "gravion docqa explain multi hop document questions": 28,
+    "gravion docqa explain negation in document questions": 30,
+    "gravion docqa explain source attribution in answers": 3,
+    "gravion docqa explain table questions in documents": 42,
+    "gravion docqa explain verifying an answer against text": 45,
+    "gravion docqa explain what to do when a document lacks an answer": 39,
+    "gravion docqa find a date mentioned in a document": 40,
+    "gravion docqa find a definition inside a document": 11,
+    "gravion docqa find a list inside a document": 22,
+    "gravion docqa find a name mentioned in a document": 29,
+    "gravion docqa find a number stated in a report": 26,
+    "gravion docqa find a summary statement in a document": 41,
+    "gravion docqa find contact details in a document": 9,
+    "gravion docqa find eligibility rules in a document": 14,
+    "gravion docqa find exceptions in a policy text": 15,
+    "gravion docqa find instructions inside a document": 20,
+    "gravion docqa find opening hours in a document": 19,
+    "gravion docqa find risks listed in a document": 38,
+    "gravion docqa find the conclusion of a document": 7,
+    "gravion docqa find the main requirement in a notice": 44,
+    "gravion docqa find the price stated in a document": 34,
+    "gravion docqa find warranty terms in a document": 46,
+    "help me answer a question about a contract clause": 6,
+    "help me answer a question about a policy document": 33,
+    "help me answer a question about a product manual": 25,
+    "help me answer a question about a research paper": 31,
+    "help me answer a question about meeting minutes": 27,
+    "help me answer a question from a document": 2,
+    "help me answer a question from a resume": 37,
+    "help me answer a question from an invoice": 21,
+    "help me answer a question from terms and conditions": 43,
+    "help me answer a yes or no question from text": 47,
+    "help me answer how a process works from a manual": 35,
+    "help me answer what changed in a changelog": 4,
+    "help me answer when a deadline falls from a notice": 10,
+    "help me answer where an event happened from text": 32,
+    "help me answer who is responsible from a document": 36,
+    "help me answer who wrote a document": 24,
+    "help me explain ambiguity in document questions": 1,
+    "help me explain answer confidence in doc qa": 8,
+    "help me explain citation of document answers": 0,
+    "help me explain document chunking for qa": 5,
+    "help me explain document qa evaluation": 12,
+    "help me explain document qa input format": 17,
+    "help me explain document qa versus chat": 13,
+    "help me explain extractive question answering": 16,
+    "help me explain grounding answers in evidence": 18,
+    "help me explain handling long documents": 23,
+    "help me explain multi hop document questions": 28,
+    "help me explain negation in document questions": 30,
+    "help me explain source attribution in answers": 3,
+    "help me explain table questions in documents": 42,
+    "help me explain verifying an answer against text": 45,
+    "help me explain what to do when a document lacks an answer": 39,
+    "help me find a date mentioned in a document": 40,
+    "help me find a definition inside a document": 11,
+    "help me find a list inside a document": 22,
+    "help me find a name mentioned in a document": 29,
+    "help me find a number stated in a report": 26,
+    "help me find a summary statement in a document": 41,
+    "help me find contact details in a document": 9,
+    "help me find eligibility rules in a document": 14,
+    "help me find exceptions in a policy text": 15,
+    "help me find instructions inside a document": 20,
+    "help me find opening hours in a document": 19,
+    "help me find risks listed in a document": 38,
+    "help me find the conclusion of a document": 7,
+    "help me find the main requirement in a notice": 44,
+    "help me find the price stated in a document": 34,
+    "help me find warranty terms in a document": 46,
+    "please answer a question about a contract clause": 6,
+    "please answer a question about a policy document": 33,
+    "please answer a question about a product manual": 25,
+    "please answer a question about a research paper": 31,
+    "please answer a question about meeting minutes": 27,
+    "please answer a question from a document": 2,
+    "please answer a question from a resume": 37,
+    "please answer a question from an invoice": 21,
+    "please answer a question from terms and conditions": 43,
+    "please answer a yes or no question from text": 47,
+    "please answer how a process works from a manual": 35,
+    "please answer what changed in a changelog": 4,
+    "please answer when a deadline falls from a notice": 10,
+    "please answer where an event happened from text": 32,
+    "please answer who is responsible from a document": 36,
+    "please answer who wrote a document": 24,
+    "please explain ambiguity in document questions": 1,
+    "please explain answer confidence in doc qa": 8,
+    "please explain citation of document answers": 0,
+    "please explain document chunking for qa": 5,
+    "please explain document qa evaluation": 12,
+    "please explain document qa input format": 17,
+    "please explain document qa versus chat": 13,
+    "please explain extractive question answering": 16,
+    "please explain grounding answers in evidence": 18,
+    "please explain handling long documents": 23,
+    "please explain multi hop document questions": 28,
+    "please explain negation in document questions": 30,
+    "please explain source attribution in answers": 3,
+    "please explain table questions in documents": 42,
+    "please explain verifying an answer against text": 45,
+    "please explain what to do when a document lacks an answer": 39,
+    "please find a date mentioned in a document": 40,
+    "please find a definition inside a document": 11,
+    "please find a list inside a document": 22,
+    "please find a name mentioned in a document": 29,
+    "please find a number stated in a report": 26,
+    "please find a summary statement in a document": 41,
+    "please find contact details in a document": 9,
+    "please find eligibility rules in a document": 14,
+    "please find exceptions in a policy text": 15,
+    "please find instructions inside a document": 20,
+    "please find opening hours in a document": 19,
+    "please find risks listed in a document": 38,
+    "please find the conclusion of a document": 7,
+    "please find the main requirement in a notice": 44,
+    "please find the price stated in a document": 34,
+    "please find warranty terms in a document": 46
+  },
+  "features": [
+    "a",
+    "document",
+    "answer",
+    "in",
+    "a document",
+    "explain",
+    "find",
+    "in a",
+    "question",
+    "answer a",
+    "a question",
+    "answer a question",
+    "from",
+    "in a document",
+    "find a",
+    "a question about",
+    "about",
+    "from a",
+    "qa",
+    "question about",
+    "question from",
+    "a question from",
+    "about a",
+    "an",
+    "explain document",
+    "question about a",
+    "questions",
+    "text",
+    "answers",
+    "document qa",
+    "document questions",
+    "explain document qa",
+    "find the",
+    "inside",
+    "inside a",
+    "inside a document",
+    "the",
+    "a notice",
+    "a policy",
+    "an answer",
+    "answer who",
+    "documents",
+    "from a document",
+    "from text",
+    "in document",
+    "in document questions",
+    "manual",
+    "mentioned",
+    "mentioned in",
+    "mentioned in a",
+    "notice",
+    "of",
+    "policy",
+    "question from a",
+    "stated",
+    "stated in",
+    "stated in a",
+    "terms",
+    "what",
+    "when",
+    "when a",
+    "who",
+    "a changelog",
+    "a contract",
+    "a contract clause",
+    "a date",
+    "a date mentioned",
+    "a deadline",
+    "a deadline falls",
+    "a definition",
+    "a definition inside",
+    "a document lacks",
+    "a list",
+    "a list inside",
+    "a manual",
+    "a name",
+    "a name mentioned",
+    "a number",
+    "a number stated",
+    "a policy document",
+    "a policy text",
+    "a process",
+    "a process works",
+    "a product",
+    "a product manual",
+    "a report",
+    "a research",
+    "a research paper",
+    "a resume",
+    "a summary",
+    "a summary statement",
+    "a yes",
+    "a yes or",
+    "about a contract",
+    "about a policy",
+    "about a product",
+    "about a research",
+    "about meeting",
+    "about meeting minutes",
+    "against",
+    "against text",
+    "ambiguity",
+    "ambiguity in",
+    "ambiguity in document",
+    "an answer against",
+    "an event",
+    "an event happened",
+    "an invoice",
+    "and",
+    "and conditions",
+    "answer a yes",
+    "answer against",
+    "answer against text",
+    "answer confidence",
+    "answer confidence in",
+    "answer how",
+    "answer how a",
+    "answer what",
+    "answer what changed",
+    "answer when",
+    "answer when a",
+    "answer where",
+    "answer where an",
+    "answer who is",
+    "answer who wrote",
+    "answering",
+    "answers in",
+    "answers in evidence",
+    "attribution",
+    "attribution in",
+    "attribution in answers",
+    "changed",
+    "changed in",
+    "changed in a",
+    "changelog",
+    "chat",
+    "chunking",
+    "chunking for",
+    "chunking for qa",
+    "citation",
+    "citation of",
+    "citation of document",
+    "clause",
+    "conclusion",
+    "conclusion of",
+    "conclusion of a",
+    "conditions",
+    "confidence",
+    "confidence in",
+    "confidence in doc",
+    "contact",
+    "contact details",
+    "contact details in",
+    "contract",
+    "contract clause",
+    "date",
+    "date mentioned",
+    "date mentioned in",
+    "deadline",
+    "deadline falls",
+    "deadline falls from",
+    "definition",
+    "definition inside",
+    "definition inside a",
+    "details",
+    "details in",
+    "details in a",
+    "do",
+    "do when",
+    "do when a",
+    "doc",
+    "doc qa",
+    "document answers",
+    "document chunking",
+    "document chunking for",
+    "document lacks",
+    "document lacks an",
+    "document qa evaluation",
+    "document qa input",
+    "document qa versus",
+    "eligibility",
+    "eligibility rules",
+    "eligibility rules in",
+    "evaluation",
+    "event",
+    "event happened",
+    "event happened from",
+    "evidence",
+    "exceptions",
+    "exceptions in",
+    "exceptions in a",
+    "explain ambiguity",
+    "explain ambiguity in",
+    "explain answer",
+    "explain answer confidence",
+    "explain citation",
+    "explain citation of",
+    "explain document chunking",
+    "explain extractive",
+    "explain extractive question",
+    "explain grounding",
+    "explain grounding answers",
+    "explain handling",
+    "explain handling long",
+    "explain multi",
+    "explain multi hop",
+    "explain negation",
+    "explain negation in",
+    "explain source",
+    "explain source attribution",
+    "explain table",
+    "explain table questions",
+    "explain verifying",
+    "explain verifying an",
+    "explain what",
+    "explain what to",
+    "extractive",
+    "extractive question",
+    "extractive question answering",
+    "falls",
+    "falls from",
+    "falls from a",
+    "find a date",
+    "find a definition",
+    "find a list",
+    "find a name",
+    "find a number",
+    "find a summary",
+    "find contact",
+    "find contact details",
+    "find eligibility",
+    "find eligibility rules",
+    "find exceptions",
+    "find exceptions in",
+    "find instructions",
+    "find instructions inside",
+    "find opening",
+    "find opening hours",
+    "find risks",
+    "find risks listed",
+    "find the conclusion",
+    "find the main",
+    "find the price",
+    "find warranty",
+    "find warranty terms",
+    "for",
+    "for qa",
+    "format",
+    "from a manual",
+    "from a notice",
+    "from a resume",
+    "from an",
+    "from an invoice",
+    "from terms",
+    "from terms and",
+    "grounding",
+    "grounding answers",
+    "grounding answers in",
+    "handling",
+    "handling long",
+    "handling long documents",
+    "happened",
+    "happened from",
+    "happened from text",
+    "hop",
+    "hop document",
+    "hop document questions",
+    "hours",
+    "hours in",
+    "hours in a",
+    "how",
+    "how a",
+    "how a process",
+    "in a changelog",
+    "in a notice",
+    "in a policy",
+    "in a report",
+    "in answers",
+    "in doc",
+    "in doc qa",
+    "in documents",
+    "in evidence",
+    "input",
+    "input format",
+    "instructions",
+    "instructions inside",
+    "instructions inside a",
+    "invoice",
+    "is",
+    "is responsible",
+    "is responsible from",
+    "lacks",
+    "lacks an",
+    "lacks an answer",
+    "list",
+    "list inside",
+    "list inside a",
+    "listed",
+    "listed in",
+    "listed in a",
+    "long",
+    "long documents",
+    "main",
+    "main requirement",
+    "main requirement in",
+    "meeting",
+    "meeting minutes",
+    "minutes",
+    "multi",
+    "multi hop",
+    "multi hop document",
+    "name",
+    "name mentioned",
+    "name mentioned in",
+    "negation",
+    "negation in",
+    "negation in document",
+    "no",
+    "no question",
+    "no question from",
+    "number",
+    "number stated",
+    "number stated in",
+    "of a",
+    "of a document",
+    "of document",
+    "of document answers",
+    "opening",
+    "opening hours",
+    "opening hours in",
+    "or",
+    "or no",
+    "or no question",
+    "paper",
+    "policy document",
+    "policy text",
+    "price",
+    "price stated",
+    "price stated in",
+    "process",
+    "process works",
+    "process works from",
+    "product",
+    "product manual",
+    "qa evaluation",
+    "qa input",
+    "qa input format",
+    "qa versus",
+    "qa versus chat",
+    "question about meeting",
+    "question answering",
+    "question from an",
+    "question from terms",
+    "question from text",
+    "questions in",
+    "questions in documents",
+    "report",
+    "requirement",
+    "requirement in",
+    "requirement in a",
+    "research",
+    "research paper",
+    "responsible",
+    "responsible from",
+    "responsible from a",
+    "resume",
+    "risks",
+    "risks listed",
+    "risks listed in",
+    "rules",
+    "rules in",
+    "rules in a",
+    "source",
+    "source attribution",
+    "source attribution in",
+    "statement",
+    "statement in",
+    "statement in a",
+    "summary",
+    "summary statement",
+    "summary statement in",
+    "table",
+    "table questions",
+    "table questions in",
+    "terms and",
+    "terms and conditions",
+    "terms in",
+    "terms in a",
+    "the conclusion",
+    "the conclusion of",
+    "the main",
+    "the main requirement",
+    "the price",
+    "the price stated",
+    "to",
+    "to do",
+    "to do when",
+    "verifying",
+    "verifying an",
+    "verifying an answer",
+    "versus",
+    "versus chat",
+    "warranty",
+    "warranty terms",
+    "warranty terms in",
+    "what changed",
+    "what changed in",
+    "what to",
+    "what to do",
+    "when a deadline",
+    "when a document",
+    "where",
+    "where an",
+    "where an event",
+    "who is",
+    "who is responsible",
+    "who wrote",
+    "who wrote a",
+    "works",
+    "works from",
+    "works from a",
+    "wrote",
+    "wrote a",
+    "wrote a document",
+    "yes",
+    "yes or",
+    "yes or no",
+    "docqa",
+    "gravion",
+    "gravion docqa",
+    "help",
+    "help me",
+    "me",
+    "please",
+    "docqa answer",
+    "docqa explain",
+    "docqa find",
+    "gravion docqa answer",
+    "gravion docqa explain",
+    "gravion docqa find",
+    "help me answer",
+    "help me explain",
+    "help me find",
+    "me answer",
+    "me explain",
+    "me find",
+    "please answer",
+    "please explain",
+    "please find",
+    "docqa answer a",
+    "me answer a",
+    "please answer a",
+    "docqa find a",
+    "me find a",
+    "please find a",
+    "docqa explain document",
+    "me explain document",
+    "please explain document",
+    "docqa find the",
+    "me find the",
+    "please find the",
+    "docqa answer who",
+    "me answer who",
+    "please answer who",
+    "docqa answer how",
+    "docqa answer what",
+    "docqa answer when",
+    "docqa answer where",
+    "docqa explain ambiguity",
+    "docqa explain answer",
+    "docqa explain citation",
+    "docqa explain extractive",
+    "docqa explain grounding",
+    "docqa explain handling",
+    "docqa explain multi",
+    "docqa explain negation",
+    "docqa explain source",
+    "docqa explain table",
+    "docqa explain verifying",
+    "docqa explain what",
+    "docqa find contact",
+    "docqa find eligibility",
+    "docqa find exceptions",
+    "docqa find instructions",
+    "docqa find opening",
+    "docqa find risks",
+    "docqa find warranty",
+    "me answer how",
+    "me answer what",
+    "me answer when",
+    "me answer where",
+    "me explain ambiguity",
+    "me explain answer",
+    "me explain citation",
+    "me explain extractive",
+    "me explain grounding",
+    "me explain handling",
+    "me explain multi",
+    "me explain negation",
+    "me explain source",
+    "me explain table",
+    "me explain verifying",
+    "me explain what",
+    "me find contact",
+    "me find eligibility",
+    "me find exceptions",
+    "me find instructions",
+    "me find opening",
+    "me find risks",
+    "me find warranty",
+    "please answer how",
+    "please answer what",
+    "please answer when",
+    "please answer where",
+    "please explain ambiguity",
+    "please explain answer",
+    "please explain citation",
+    "please explain extractive",
+    "please explain grounding",
+    "please explain handling",
+    "please explain multi",
+    "please explain negation",
+    "please explain source",
+    "please explain table",
+    "please explain verifying",
+    "please explain what",
+    "please find contact",
+    "please find eligibility",
+    "please find exceptions",
+    "please find instructions",
+    "please find opening",
+    "please find risks",
+    "please find warranty"
+  ],
+  "format": "gravion-core-local-v3",
+  "model_id": "gravion-docqa",
+  "parameter_count": 35741,
+  "trained_from": {
+    "classes": 48,
+    "dataset_sha256": "aa9807e71ec07c9962bb84e82aec84c5a67b4506e6f81e2921e22c34c6ffcc81",
+    "examples": 192,
+    "features": 533,
+    "source": "data/gravion-docqa-seed.jsonl"
+  },
+  "transitions": {
+    "<s>": {
+      "a": 0.02083333,
+      "ambiguous": 0.02083333,
+      "answer": 0.02083333,
+      "attribution": 0.02083333,
+      "changelog": 0.02083333,
+      "chunking": 0.02083333,
+      "clause": 0.02083333,
+      "conclusions": 0.02083333,
+      "confidence": 0.02083333,
+      "contact": 0.02083333,
+      "deadline": 0.02083333,
+      "definitions": 0.02083333,
+      "doc": 0.02083333,
+      "document": 0.02083333,
+      "eligibility": 0.02083333,
+      "exceptions": 0.02083333,
+      "extractive": 0.02083333,
+      "give": 0.02083333,
+      "grounded": 0.02083333,
+      "hours": 0.02083333,
+      "instruction": 0.02083333,
+      "invoice": 0.02083333,
+      "list": 0.02083333,
+      "long": 0.02083333,
+      "look": 0.02083333,
+      "manual": 0.02083333,
+      "match": 0.02083333,
+      "minutes": 0.02083333,
+      "multi": 0.02083333,
+      "name": 0.02083333,
+      "negation": 0.02083333,
+      "paper": 0.02083333,
+      "place": 0.02083333,
+      "policy": 0.02083333,
+      "price": 0.02083333,
+      "process": 0.02083333,
+      "responsibility": 0.02083333,
+      "resume": 0.02083333,
+      "risk": 0.02083333,
+      "say": 0.02083333,
+      "search": 0.02083333,
+      "summary": 0.02083333,
+      "table": 0.02083333,
+      "terms": 0.02083333,
+      "the": 0.02083333,
+      "verification": 0.02083333,
+      "warranty": 0.02083333,
+      "yes": 0.02083333
+    },
+    "a": {
+      "citation": 0.33333333,
+      "location": 0.33333333,
+      "person": 0.33333333
+    },
+    "about": {
+      "</s>": 1.0
+    },
+    "achievement": {
+      "lines": 1.0
+    },
+    "action": {
+      "</s>": 0.5,
+      "it": 0.5
+    },
+    "adding": {
+      "new": 1.0
+    },
+    "after": {
+      "words": 1.0
+    },
+    "ambiguous": {
+      "questions": 1.0
+    },
+    "amount": {
+      "with": 1.0
+    },
+    "and": {
+      "achievement": 0.04545455,
+      "any": 0.04545455,
+      "ask": 0.04545455,
+      "checks": 0.04545455,
+      "claim": 0.04545455,
+      "column": 0.04545455,
+      "conclusions": 0.04545455,
+      "due": 0.04545455,
+      "falls": 0.04545455,
+      "however": 0.04545455,
+      "no": 0.04545455,
+      "note": 0.04545455,
+      "precise": 0.04545455,
+      "quote": 0.04545455,
+      "quotes": 0.04545455,
+      "sentence": 0.04545455,
+      "state": 0.04545455,
+      "the": 0.13636364,
+      "whether": 0.04545455,
+      "who": 0.04545455
+    },
+    "answer": {
+      "came": 0.16666667,
+      "from": 0.16666667,
+      "match": 0.16666667,
+      "quotes": 0.16666667,
+      "rather": 0.16666667,
+      "span": 0.16666667
+    },
+    "answering": {
+      "</s>": 0.66666667,
+      "passage": 0.33333333
+    },
+    "answers": {
+      "cite": 0.08,
+      "collect": 0.04,
+      "come": 0.04,
+      "list": 0.04,
+      "match": 0.04,
+      "pair": 0.04,
+      "point": 0.04,
+      "quote": 0.44,
+      "read": 0.04,
+      "reproduce": 0.04,
+      "return": 0.04,
+      "stay": 0.04,
+      "still": 0.04,
+      "the": 0.04
+    },
+    "any": {
+      "exception": 1.0
+    },
+    "applies": {
+      "</s>": 1.0
+    },
+    "are": {
+      "searched": 1.0
+    },
+    "as": {
+      "evidence": 0.5,
+      "printed": 0.5
+    },
+    "ask": {
+      "which": 1.0
+    },
+    "asked": {
+      "</s>": 1.0
+    },
+    "asks": {
+      "about": 1.0
+    },
+    "assigning": {
+      "the": 1.0
+    },
+    "attribution": {
+      "tells": 1.0
+    },
+    "author": {
+      "lines": 1.0
+    },
+    "be": {
+      "found": 1.0
+    },
+    "before": {
+      "answering": 0.66666667,
+      "quoting": 0.33333333
+    },
+    "belongs": {
+      "to": 1.0
+    },
+    "beside": {
+      "it": 1.0
+    },
+    "binds": {
+      "</s>": 1.0
+    },
+    "blocks": {
+      "</s>": 0.5,
+      "near": 0.5
+    },
+    "broader": {
+      "knowledge": 1.0
+    },
+    "by": {
+      "section": 1.0
+    },
+    "bylines": {
+      "or": 1.0
+    },
+    "came": {
+      "from": 1.0
+    },
+    "can": {
+      "be": 1.0
+    },
+    "carrying": {
+      "the": 1.0
+    },
+    "caution": {
+      "language": 1.0
+    },
+    "cell": {
+      "</s>": 1.0
+    },
+    "chain": {
+      "facts": 1.0
+    },
+    "changelog": {
+      "answers": 1.0
+    },
+    "chat": {
+      "may": 1.0
+    },
+    "check": {
+      "for": 1.0
+    },
+    "checks": {
+      "it": 1.0
+    },
+    "chunking": {
+      "splits": 1.0
+    },
+    "citation": {
+      "names": 1.0
+    },
+    "cite": {
+      "the": 1.0
+    },
+    "claim": {
+      "steps": 1.0
+    },
+    "clause": {
+      "and": 0.5,
+      "answers": 0.5
+    },
+    "clearest": {
+      "one": 1.0
+    },
+    "collect": {
+      "sentences": 1.0
+    },
+    "column": {
+      "headers": 1.0
+    },
+    "come": {
+      "from": 1.0
+    },
+    "compete": {
+      "</s>": 1.0
+    },
+    "conclusions": {
+      "quote": 0.5,
+      "restate": 0.5
+    },
+    "condition": {
+      "the": 1.0
+    },
+    "conditions": {
+      "quote": 1.0
+    },
+    "confidence": {
+      "rises": 1.0
+    },
+    "confined": {
+      "to": 1.0
+    },
+    "contact": {
+      "details": 0.5,
+      "support": 0.5
+    },
+    "contain": {
+      "the": 1.0
+    },
+    "coverage": {
+      "length": 1.0
+    },
+    "covered": {
+      "faults": 1.0
+    },
+    "date": {
+      "and": 0.25,
+      "as": 0.25,
+      "asked": 0.25,
+      "patterns": 0.25
+    },
+    "dates": {
+      "and": 1.0
+    },
+    "days": {
+      "with": 1.0
+    },
+    "deadline": {
+      "answers": 1.0
+    },
+    "decision": {
+      "line": 1.0
+    },
+    "defined": {
+      "terms": 1.0
+    },
+    "definitions": {
+      "usually": 1.0
+    },
+    "details": {
+      "sit": 1.0
+    },
+    "directly": {
+      "from": 1.0
+    },
+    "doc": {
+      "qa": 1.0
+    },
+    "document": {
+      "and": 0.28571429,
+      "does": 0.14285714,
+      "for": 0.14285714,
+      "only": 0.14285714,
+      "qa": 0.14285714,
+      "text": 0.14285714
+    },
+    "documents": {
+      "are": 0.5,
+      "so": 0.5
+    },
+    "does": {
+      "not": 1.0
+    },
+    "due": {
+      "date": 1.0
+    },
+    "duty": {
+      "to": 1.0
+    },
+    "each": {
+      "condition": 1.0
+    },
+    "eligibility": {
+      "rules": 1.0
+    },
+    "end": {
+      "</s>": 1.0
+    },
+    "entry": {
+      "under": 1.0
+    },
+    "event": {
+      "with": 0.5,
+      "words": 0.5
+    },
+    "evidence": {
+      "</s>": 0.5,
+      "supports": 0.5
+    },
+    "exact": {
+      "answer": 0.5,
+      "sentence": 0.5
+    },
+    "except": {
+      "unless": 1.0
+    },
+    "exception": {
+      "sentence": 1.0
+    },
+    "exceptions": {
+      "hide": 1.0
+    },
+    "extractive": {
+      "qa": 1.0
+    },
+    "facts": {
+      "from": 1.0
+    },
+    "falls": {
+      "when": 1.0
+    },
+    "fast": {
+      "and": 1.0
+    },
+    "faults": {
+      "and": 1.0
+    },
+    "figure": {
+      "</s>": 1.0
+    },
+    "final": {
+      "section": 1.0
+    },
+    "find": {
+      "the": 1.0
+    },
+    "finding": {
+      "quote": 1.0
+    },
+    "flips": {
+      "meaning": 1.0
+    },
+    "follow": {
+      "the": 1.0
+    },
+    "for": {
+      "author": 0.33333333,
+      "date": 0.33333333,
+      "not": 0.33333333
+    },
+    "found": {
+      "precisely": 1.0
+    },
+    "from": {
+      "</s>": 0.16666667,
+      "outside": 0.16666667,
+      "sentences": 0.16666667,
+      "the": 0.33333333,
+      "two": 0.16666667
+    },
+    "generating": {
+      "one": 1.0
+    },
+    "give": {
+      "the": 1.0
+    },
+    "given": {
+      "text": 1.0
+    },
+    "grounded": {
+      "answers": 1.0
+    },
+    "guessing": {
+      "from": 1.0
+    },
+    "headers": {
+      "together": 1.0
+    },
+    "heading": {
+      "the": 1.0
+    },
+    "headings": {
+      "like": 1.0
+    },
+    "hide": {
+      "after": 1.0
+    },
+    "hop": {
+      "questions": 1.0
+    },
+    "hours": {
+      "answers": 1.0
+    },
+    "however": {
+      "quote": 1.0
+    },
+    "in": {
+      "introductions": 0.25,
+      "order": 0.25,
+      "the": 0.5
+    },
+    "instead": {
+      "of": 1.0
+    },
+    "instruction": {
+      "answers": 1.0
+    },
+    "introductions": {
+      "and": 1.0
+    },
+    "invoice": {
+      "answers": 1.0
+    },
+    "is": {
+      "confined": 0.2,
+      "meant": 0.2,
+      "or": 0.2,
+      "scored": 0.2,
+      "the": 0.2
+    },
+    "it": {
+      "</s>": 0.28571429,
+      "as": 0.14285714,
+      "belongs": 0.14285714,
+      "binds": 0.14285714,
+      "truly": 0.14285714,
+      "uses": 0.14285714
+    },
+    "item": {
+      "or": 1.0
+    },
+    "items": {
+      "totals": 0.5,
+      "under": 0.5
+    },
+    "its": {
+      "plain": 1.0
+    },
+    "key": {
+      "sentence": 1.0
+    },
+    "knowledge": {
+      "</s>": 1.0
+    },
+    "language": {
+      "</s>": 1.0
+    },
+    "length": {
+      "covered": 1.0
+    },
+    "lifts": {
+      "the": 1.0
+    },
+    "like": {
+      "contact": 0.5,
+      "except": 0.5
+    },
+    "limit": {
+      "beside": 1.0
+    },
+    "line": {
+      "and": 0.33333333,
+      "items": 0.33333333,
+      "pairing": 0.33333333
+    },
+    "lines": {
+      "bylines": 0.5,
+      "that": 0.5
+    },
+    "list": {
+      "answers": 0.25,
+      "conditions": 0.25,
+      "the": 0.25,
+      "them": 0.25
+    },
+    "location": {
+      "phrase": 1.0
+    },
+    "long": {
+      "documents": 1.0
+    },
+    "look": {
+      "for": 1.0
+    },
+    "main": {
+      "finding": 0.5,
+      "requirement": 0.5
+    },
+    "manual": {
+      "answers": 0.5,
+      "s": 0.5
+    },
+    "match": {
+      "</s>": 0.2,
+      "and": 0.2,
+      "several": 0.2,
+      "the": 0.4
+    },
+    "matching": {
+      "sentence": 0.5,
+      "sentences": 0.5
+    },
+    "may": {
+      "use": 1.0
+    },
+    "meaning": {
+      "</s>": 0.5,
+      "check": 0.5
+    },
+    "means": {
+      "quote": 1.0
+    },
+    "meant": {
+      "</s>": 1.0
+    },
+    "measure": {
+      "words": 1.0
+    },
+    "method": {
+      "limit": 1.0
+    },
+    "minutes": {
+      "answers": 1.0
+    },
+    "multi": {
+      "hop": 1.0
+    },
+    "must": {
+      "shall": 1.0
+    },
+    "name": {
+      "</s>": 0.5,
+      "answers": 0.5
+    },
+    "names": {
+      "</s>": 0.5,
+      "the": 0.5
+    },
+    "near": {
+      "headings": 0.33333333,
+      "the": 0.66666667
+    },
+    "need": {
+      "the": 1.0
+    },
+    "negation": {
+      "flips": 1.0
+    },
+    "never": {
+      "and": 1.0
+    },
+    "new": {
+      "ones": 1.0
+    },
+    "no": {
+      "answers": 0.5,
+      "before": 0.5
+    },
+    "not": {
+      "contain": 0.5,
+      "never": 0.5
+    },
+    "note": {
+      "defined": 1.0
+    },
+    "numbered": {
+      "steps": 1.0
+    },
+    "of": {
+      "generating": 1.0
+    },
+    "on": {
+      "exact": 1.0
+    },
+    "one": {
+      "</s>": 1.0
+    },
+    "ones": {
+      "</s>": 1.0
+    },
+    "only": {
+      "find": 1.0
+    },
+    "operative": {
+      "sentence": 1.0
+    },
+    "or": {
+      "caution": 0.08333333,
+      "date": 0.08333333,
+      "end": 0.08333333,
+      "means": 0.08333333,
+      "no": 0.08333333,
+      "plan": 0.08333333,
+      "required": 0.08333333,
+      "safety": 0.08333333,
+      "signature": 0.16666667,
+      "team": 0.08333333,
+      "tightly": 0.08333333
+    },
+    "order": {
+      "quoted": 1.0
+    },
+    "outside": {
+      "knowledge": 1.0
+    },
+    "overlap": {
+      "and": 1.0
+    },
+    "owned": {
+      "the": 1.0
+    },
+    "pair": {
+      "the": 1.0
+    },
+    "pairing": {
+      "days": 0.5,
+      "the": 0.5
+    },
+    "paper": {
+      "answers": 1.0
+    },
+    "paraphrased": {
+      "</s>": 1.0
+    },
+    "passage": {
+      "can": 1.0
+    },
+    "patterns": {
+      "near": 1.0
+    },
+    "person": {
+      "or": 1.0
+    },
+    "phrase": {
+      "</s>": 1.0
+    },
+    "place": {
+      "answers": 1.0
+    },
+    "plain": {
+      "meaning": 1.0
+    },
+    "plan": {
+      "it": 1.0
+    },
+    "point": {
+      "to": 1.0
+    },
+    "policy": {
+      "answers": 1.0
+    },
+    "precise": {
+      "</s>": 1.0
+    },
+    "precisely": {
+      "</s>": 1.0
+    },
+    "price": {
+      "answers": 1.0
+    },
+    "printed": {
+      "</s>": 1.0
+    },
+    "process": {
+      "answers": 1.0
+    },
+    "qa": {
+      "is": 0.66666667,
+      "lifts": 0.33333333
+    },
+    "question": {
+      "</s>": 0.33333333,
+      "asks": 0.11111111,
+      "names": 0.11111111,
+      "s": 0.11111111,
+      "targets": 0.11111111,
+      "the": 0.11111111,
+      "to": 0.11111111
+    },
+    "questions": {
+      "chain": 0.5,
+      "match": 0.5
+    },
+    "quote": {
+      "coverage": 0.05882353,
+      "each": 0.05882353,
+      "it": 0.05882353,
+      "that": 0.05882353,
+      "the": 0.70588235,
+      "them": 0.05882353
+    },
+    "quoted": {
+      "or": 0.5,
+      "sentence": 0.5
+    },
+    "quotes": {
+      "matching": 0.5,
+      "the": 0.5
+    },
+    "quoting": {
+      "the": 1.0
+    },
+    "rather": {
+      "than": 1.0
+    },
+    "re": {
+      "reads": 1.0
+    },
+    "read": {
+      "the": 1.0
+    },
+    "reader": {
+      "which": 1.0
+    },
+    "reads": {
+      "the": 1.0
+    },
+    "reproduce": {
+      "the": 1.0
+    },
+    "required": {
+      "language": 1.0
+    },
+    "requirement": {
+      "is": 1.0
+    },
+    "responsibility": {
+      "answers": 1.0
+    },
+    "restate": {
+      "the": 1.0
+    },
+    "result": {
+      "sentence": 1.0
+    },
+    "resume": {
+      "answers": 1.0
+    },
+    "return": {
+      "the": 1.0
+    },
+    "rises": {
+      "with": 1.0
+    },
+    "risk": {
+      "answers": 0.5,
+      "warning": 0.5
+    },
+    "role": {
+      "dates": 0.5,
+      "words": 0.5
+    },
+    "row": {
+      "and": 1.0
+    },
+    "rule": {
+      "</s>": 0.5,
+      "sentence": 0.5
+    },
+    "rules": {
+      "list": 1.0
+    },
+    "s": {
+      "key": 0.33333333,
+      "measure": 0.33333333,
+      "steps": 0.33333333
+    },
+    "safety": {
+      "step": 1.0
+    },
+    "say": {
+      "the": 1.0
+    },
+    "scored": {
+      "on": 1.0
+    },
+    "search": {
+      "the": 1.0
+    },
+    "searched": {
+      "by": 1.0
+    },
+    "section": {
+      "s": 0.5,
+      "so": 0.5
+    },
+    "sentence": {
+      "</s>": 0.11764706,
+      "and": 0.29411765,
+      "assigning": 0.05882353,
+      "carrying": 0.11764706,
+      "that": 0.17647059,
+      "the": 0.05882353,
+      "verbatim": 0.05882353,
+      "with": 0.11764706
+    },
+    "sentences": {
+      "</s>": 0.16666667,
+      "before": 0.16666667,
+      "compete": 0.16666667,
+      "list": 0.16666667,
+      "pairing": 0.16666667,
+      "with": 0.16666667
+    },
+    "settles": {
+      "the": 1.0
+    },
+    "setup": {
+      "or": 1.0
+    },
+    "several": {
+      "sentences": 1.0
+    },
+    "shall": {
+      "or": 1.0
+    },
+    "signature": {
+      "blocks": 1.0
+    },
+    "sit": {
+      "in": 0.5,
+      "near": 0.5
+    },
+    "so": {
+      "answers": 0.5,
+      "the": 0.5
+    },
+    "source": {
+      "text": 1.0
+    },
+    "span": {
+      "directly": 1.0
+    },
+    "splits": {
+      "long": 1.0
+    },
+    "state": {
+      "its": 1.0
+    },
+    "statements": {
+      "sit": 1.0
+    },
+    "stay": {
+      "fast": 1.0
+    },
+    "step": {
+      "the": 1.0
+    },
+    "steps": {
+      "</s>": 0.33333333,
+      "in": 0.33333333,
+      "without": 0.33333333
+    },
+    "still": {
+      "need": 1.0
+    },
+    "summary": {
+      "statements": 1.0
+    },
+    "support": {
+      "or": 1.0
+    },
+    "supporting": {
+      "sentence": 1.0
+    },
+    "supports": {
+      "it": 0.5,
+      "them": 0.5
+    },
+    "table": {
+      "answers": 1.0
+    },
+    "targets": {
+      "</s>": 1.0
+    },
+    "team": {
+      "</s>": 1.0
+    },
+    "tells": {
+      "the": 1.0
+    },
+    "term": {
+      "overlap": 0.5,
+      "with": 0.5
+    },
+    "terms": {
+      "answers": 0.5,
+      "it": 0.5
+    },
+    "text": {
+      "and": 0.33333333,
+      "chat": 0.33333333,
+      "instead": 0.33333333
+    },
+    "than": {
+      "guessing": 1.0
+    },
+    "that": {
+      "applies": 0.2,
+      "match": 0.2,
+      "sentence": 0.2,
+      "settles": 0.2,
+      "supports": 0.2
+    },
+    "the": {
+      "action": 0.02941176,
+      "amount": 0.01470588,
+      "answer": 0.05882353,
+      "answering": 0.01470588,
+      "cell": 0.01470588,
+      "clause": 0.01470588,
+      "clearest": 0.01470588,
+      "date": 0.01470588,
+      "decision": 0.01470588,
+      "document": 0.07352941,
+      "duty": 0.01470588,
+      "entry": 0.01470588,
+      "event": 0.02941176,
+      "exact": 0.01470588,
+      "figure": 0.01470588,
+      "final": 0.01470588,
+      "given": 0.01470588,
+      "heading": 0.01470588,
+      "item": 0.01470588,
+      "items": 0.01470588,
+      "line": 0.02941176,
+      "main": 0.02941176,
+      "manual": 0.01470588,
+      "matching": 0.01470588,
+      "method": 0.01470588,
+      "name": 0.01470588,
+      "numbered": 0.01470588,
+      "operative": 0.01470588,
+      "question": 0.13235294,
+      "quoted": 0.01470588,
+      "reader": 0.01470588,
+      "result": 0.01470588,
+      "role": 0.02941176,
+      "row": 0.01470588,
+      "rule": 0.02941176,
+      "sentence": 0.08823529,
+      "setup": 0.01470588,
+      "source": 0.01470588,
+      "supporting": 0.01470588,
+      "term": 0.01470588,
+      "title": 0.01470588,
+      "version": 0.01470588
+    },
+    "them": {
+      "</s>": 0.33333333,
+      "and": 0.33333333,
+      "with": 0.33333333
+    },
+    "tightly": {
+      "paraphrased": 1.0
+    },
+    "times": {
+      "</s>": 1.0
+    },
+    "title": {
+      "or": 1.0
+    },
+    "to": {
+      "</s>": 0.16666667,
+      "a": 0.16666667,
+      "the": 0.66666667
+    },
+    "together": {
+      "before": 1.0
+    },
+    "totals": {
+      "and": 1.0
+    },
+    "truly": {
+      "answers": 1.0
+    },
+    "two": {
+      "sentences": 1.0
+    },
+    "under": {
+      "the": 1.0
+    },
+    "unless": {
+      "and": 1.0
+    },
+    "use": {
+      "broader": 1.0
+    },
+    "uses": {
+      "</s>": 1.0
+    },
+    "usually": {
+      "follow": 1.0
+    },
+    "verbatim": {
+      "</s>": 1.0
+    },
+    "verification": {
+      "re": 1.0
+    },
+    "version": {
+      "or": 1.0
+    },
+    "warning": {
+      "or": 1.0
+    },
+    "warranty": {
+      "answers": 1.0
+    },
+    "when": {
+      "several": 1.0
+    },
+    "whether": {
+      "evidence": 1.0
+    },
+    "which": {
+      "document": 0.5,
+      "is": 0.5
+    },
+    "who": {
+      "owned": 1.0
+    },
+    "with": {
+      "a": 0.11111111,
+      "is": 0.11111111,
+      "must": 0.11111111,
+      "risk": 0.11111111,
+      "term": 0.11111111,
+      "the": 0.33333333,
+      "times": 0.11111111
+    },
+    "without": {
+      "adding": 1.0
+    },
+    "words": {
+      "in": 0.5,
+      "like": 0.25,
+      "to": 0.25
+    },
+    "yes": {
+      "or": 1.0
+    }
+  },
+  "unigram_weights": {
+    "a": 0.00524476,
+    "about": 0.00174825,
+    "achievement": 0.00174825,
+    "action": 0.0034965,
+    "adding": 0.00174825,
+    "after": 0.00174825,
+    "ambiguous": 0.00174825,
+    "amount": 0.00174825,
+    "and": 0.03846154,
+    "answer": 0.01048951,
+    "answering": 0.00524476,
+    "answers": 0.04370629,
+    "any": 0.00174825,
+    "applies": 0.00174825,
+    "are": 0.00174825,
+    "as": 0.0034965,
+    "ask": 0.00174825,
+    "asked": 0.00174825,
+    "asks": 0.00174825,
+    "assigning": 0.00174825,
+    "attribution": 0.00174825,
+    "author": 0.00174825,
+    "be": 0.00174825,
+    "before": 0.00524476,
+    "belongs": 0.00174825,
+    "beside": 0.00174825,
+    "binds": 0.00174825,
+    "blocks": 0.0034965,
+    "broader": 0.00174825,
+    "by": 0.00174825,
+    "bylines": 0.00174825,
+    "came": 0.00174825,
+    "can": 0.00174825,
+    "carrying": 0.0034965,
+    "caution": 0.00174825,
+    "cell": 0.00174825,
+    "chain": 0.00174825,
+    "changelog": 0.00174825,
+    "chat": 0.00174825,
+    "check": 0.00174825,
+    "checks": 0.00174825,
+    "chunking": 0.00174825,
+    "citation": 0.00174825,
+    "cite": 0.0034965,
+    "claim": 0.00174825,
+    "clause": 0.0034965,
+    "clearest": 0.00174825,
+    "collect": 0.00174825,
+    "column": 0.00174825,
+    "come": 0.00174825,
+    "compete": 0.00174825,
+    "conclusions": 0.0034965,
+    "condition": 0.00174825,
+    "conditions": 0.00174825,
+    "confidence": 0.00174825,
+    "confined": 0.00174825,
+    "contact": 0.0034965,
+    "contain": 0.00174825,
+    "coverage": 0.00174825,
+    "covered": 0.00174825,
+    "date": 0.00699301,
+    "dates": 0.00174825,
+    "days": 0.00174825,
+    "deadline": 0.00174825,
+    "decision": 0.00174825,
+    "defined": 0.00174825,
+    "definitions": 0.00174825,
+    "details": 0.00174825,
+    "directly": 0.00174825,
+    "doc": 0.00174825,
+    "document": 0.01223776,
+    "documents": 0.0034965,
+    "does": 0.00174825,
+    "due": 0.00174825,
+    "duty": 0.00174825,
+    "each": 0.00174825,
+    "eligibility": 0.00174825,
+    "end": 0.00174825,
+    "entry": 0.00174825,
+    "event": 0.0034965,
+    "evidence": 0.0034965,
+    "exact": 0.0034965,
+    "except": 0.00174825,
+    "exception": 0.00174825,
+    "exceptions": 0.00174825,
+    "extractive": 0.00174825,
+    "facts": 0.00174825,
+    "falls": 0.00174825,
+    "fast": 0.00174825,
+    "faults": 0.00174825,
+    "figure": 0.00174825,
+    "final": 0.00174825,
+    "find": 0.00174825,
+    "finding": 0.00174825,
+    "flips": 0.00174825,
+    "follow": 0.00174825,
+    "for": 0.00524476,
+    "found": 0.00174825,
+    "from": 0.01048951,
+    "generating": 0.00174825,
+    "give": 0.00174825,
+    "given": 0.00174825,
+    "grounded": 0.00174825,
+    "guessing": 0.00174825,
+    "headers": 0.00174825,
+    "heading": 0.00174825,
+    "headings": 0.00174825,
+    "hide": 0.00174825,
+    "hop": 0.00174825,
+    "hours": 0.00174825,
+    "however": 0.00174825,
+    "in": 0.00699301,
+    "instead": 0.00174825,
+    "instruction": 0.00174825,
+    "introductions": 0.00174825,
+    "invoice": 0.00174825,
+    "is": 0.00874126,
+    "it": 0.01223776,
+    "item": 0.00174825,
+    "items": 0.0034965,
+    "its": 0.00174825,
+    "key": 0.00174825,
+    "knowledge": 0.0034965,
+    "language": 0.0034965,
+    "length": 0.00174825,
+    "lifts": 0.00174825,
+    "like": 0.0034965,
+    "limit": 0.00174825,
+    "line": 0.00524476,
+    "lines": 0.0034965,
+    "list": 0.00699301,
+    "location": 0.00174825,
+    "long": 0.0034965,
+    "look": 0.00174825,
+    "main": 0.0034965,
+    "manual": 0.0034965,
+    "match": 0.00874126,
+    "matching": 0.0034965,
+    "may": 0.00174825,
+    "meaning": 0.0034965,
+    "means": 0.00174825,
+    "meant": 0.00174825,
+    "measure": 0.00174825,
+    "method": 0.00174825,
+    "minutes": 0.00174825,
+    "multi": 0.00174825,
+    "must": 0.00174825,
+    "name": 0.0034965,
+    "names": 0.0034965,
+    "near": 0.00524476,
+    "need": 0.00174825,
+    "negation": 0.00174825,
+    "never": 0.00174825,
+    "new": 0.00174825,
+    "no": 0.0034965,
+    "not": 0.0034965,
+    "note": 0.00174825,
+    "numbered": 0.00174825,
+    "of": 0.00174825,
+    "on": 0.00174825,
+    "one": 0.0034965,
+    "ones": 0.00174825,
+    "only": 0.00174825,
+    "operative": 0.00174825,
+    "or": 0.02097902,
+    "order": 0.00174825,
+    "outside": 0.00174825,
+    "overlap": 0.00174825,
+    "owned": 0.00174825,
+    "pair": 0.00174825,
+    "pairing": 0.0034965,
+    "paper": 0.00174825,
+    "paraphrased": 0.00174825,
+    "passage": 0.00174825,
+    "patterns": 0.00174825,
+    "person": 0.00174825,
+    "phrase": 0.00174825,
+    "place": 0.00174825,
+    "plain": 0.00174825,
+    "plan": 0.00174825,
+    "point": 0.00174825,
+    "policy": 0.00174825,
+    "precise": 0.00174825,
+    "precisely": 0.00174825,
+    "price": 0.00174825,
+    "printed": 0.00174825,
+    "process": 0.00174825,
+    "qa": 0.00524476,
+    "question": 0.01573427,
+    "questions": 0.0034965,
+    "quote": 0.02972028,
+    "quoted": 0.0034965,
+    "quotes": 0.0034965,
+    "quoting": 0.00174825,
+    "rather": 0.00174825,
+    "re": 0.00174825,
+    "read": 0.00174825,
+    "reader": 0.00174825,
+    "reads": 0.00174825,
+    "reproduce": 0.00174825,
+    "required": 0.00174825,
+    "requirement": 0.00174825,
+    "responsibility": 0.00174825,
+    "restate": 0.00174825,
+    "result": 0.00174825,
+    "resume": 0.00174825,
+    "return": 0.00174825,
+    "rises": 0.00174825,
+    "risk": 0.0034965,
+    "role": 0.0034965,
+    "row": 0.00174825,
+    "rule": 0.0034965,
+    "rules": 0.00174825,
+    "s": 0.00524476,
+    "safety": 0.00174825,
+    "say": 0.00174825,
+    "scored": 0.00174825,
+    "search": 0.00174825,
+    "searched": 0.00174825,
+    "section": 0.0034965,
+    "sentence": 0.02972028,
+    "sentences": 0.01048951,
+    "settles": 0.00174825,
+    "setup": 0.00174825,
+    "several": 0.0034965,
+    "shall": 0.00174825,
+    "signature": 0.0034965,
+    "sit": 0.0034965,
+    "so": 0.0034965,
+    "source": 0.00174825,
+    "span": 0.00174825,
+    "splits": 0.00174825,
+    "state": 0.00174825,
+    "statements": 0.00174825,
+    "stay": 0.00174825,
+    "step": 0.00174825,
+    "steps": 0.00524476,
+    "still": 0.00174825,
+    "summary": 0.00174825,
+    "support": 0.00174825,
+    "supporting": 0.00174825,
+    "supports": 0.0034965,
+    "table": 0.00174825,
+    "targets": 0.00174825,
+    "team": 0.00174825,
+    "tells": 0.00174825,
+    "term": 0.0034965,
+    "terms": 0.0034965,
+    "text": 0.00524476,
+    "than": 0.00174825,
+    "that": 0.00874126,
+    "the": 0.11888112,
+    "them": 0.00524476,
+    "tightly": 0.00174825,
+    "times": 0.00174825,
+    "title": 0.00174825,
+    "to": 0.01048951,
+    "together": 0.00174825,
+    "totals": 0.00174825,
+    "truly": 0.00174825,
+    "two": 0.00174825,
+    "under": 0.0034965,
+    "unless": 0.00174825,
+    "use": 0.00174825,
+    "uses": 0.00174825,
+    "usually": 0.00174825,
+    "verbatim": 0.00174825,
+    "verification": 0.00174825,
+    "version": 0.00174825,
+    "warning": 0.00174825,
+    "warranty": 0.00174825,
+    "when": 0.00174825,
+    "whether": 0.00174825,
+    "which": 0.0034965,
+    "who": 0.00174825,
+    "with": 0.01573427,
+    "without": 0.00174825,
+    "words": 0.00699301,
+    "yes": 0.00174825
+  },
+  "vocabulary": [
+    "a",
+    "about",
+    "achievement",
+    "action",
+    "adding",
+    "after",
+    "against",
+    "ambiguity",
+    "ambiguous",
+    "amount",
+    "an",
+    "and",
+    "answer",
+    "answering",
+    "answers",
+    "any",
+    "applies",
+    "are",
+    "as",
+    "ask",
+    "asked",
+    "asks",
+    "assigning",
+    "attribution",
+    "author",
+    "be",
+    "before",
+    "belongs",
+    "beside",
+    "binds",
+    "blocks",
+    "broader",
+    "by",
+    "bylines",
+    "came",
+    "can",
+    "carrying",
+    "caution",
+    "cell",
+    "chain",
+    "changed",
+    "changelog",
+    "chat",
+    "check",
+    "checks",
+    "chunking",
+    "citation",
+    "cite",
+    "claim",
+    "clause",
+    "clearest",
+    "collect",
+    "column",
+    "come",
+    "compete",
+    "conclusion",
+    "conclusions",
+    "condition",
+    "conditions",
+    "confidence",
+    "confined",
+    "contact",
+    "contain",
+    "contract",
+    "coverage",
+    "covered",
+    "date",
+    "dates",
+    "days",
+    "deadline",
+    "decision",
+    "defined",
+    "definition",
+    "definitions",
+    "details",
+    "directly",
+    "do",
+    "doc",
+    "docqa",
+    "document",
+    "documents",
+    "does",
+    "due",
+    "duty",
+    "each",
+    "eligibility",
+    "end",
+    "entry",
+    "evaluation",
+    "event",
+    "evidence",
+    "exact",
+    "except",
+    "exception",
+    "exceptions",
+    "explain",
+    "extractive",
+    "facts",
+    "falls",
+    "fast",
+    "faults",
+    "figure",
+    "final",
+    "find",
+    "finding",
+    "flips",
+    "follow",
+    "for",
+    "format",
+    "found",
+    "from",
+    "generating",
+    "give",
+    "given",
+    "gravion",
+    "grounded",
+    "grounding",
+    "guessing",
+    "handling",
+    "happened",
+    "headers",
+    "heading",
+    "headings",
+    "help",
+    "hide",
+    "hop",
+    "hours",
+    "how",
+    "however",
+    "in",
+    "input",
+    "inside",
+    "instead",
+    "instruction",
+    "instructions",
+    "introductions",
+    "invoice",
+    "is",
+    "it",
+    "item",
+    "items",
+    "its",
+    "key",
+    "knowledge",
+    "lacks",
+    "language",
+    "length",
+    "lifts",
+    "like",
+    "limit",
+    "line",
+    "lines",
+    "list",
+    "listed",
+    "location",
+    "long",
+    "look",
+    "main",
+    "manual",
+    "match",
+    "matching",
+    "may",
+    "me",
+    "meaning",
+    "means",
+    "meant",
+    "measure",
+    "meeting",
+    "mentioned",
+    "method",
+    "minutes",
+    "multi",
+    "must",
+    "name",
+    "names",
+    "near",
+    "need",
+    "negation",
+    "never",
+    "new",
+    "no",
+    "not",
+    "note",
+    "notice",
+    "number",
+    "numbered",
+    "of",
+    "on",
+    "one",
+    "ones",
+    "only",
+    "opening",
+    "operative",
+    "or",
+    "order",
+    "outside",
+    "overlap",
+    "owned",
+    "pair",
+    "pairing",
+    "paper",
+    "paraphrased",
+    "passage",
+    "patterns",
+    "person",
+    "phrase",
+    "place",
+    "plain",
+    "plan",
+    "please",
+    "point",
+    "policy",
+    "precise",
+    "precisely",
+    "price",
+    "printed",
+    "process",
+    "product",
+    "qa",
+    "question",
+    "questions",
+    "quote",
+    "quoted",
+    "quotes",
+    "quoting",
+    "rather",
+    "re",
+    "read",
+    "reader",
+    "reads",
+    "report",
+    "reproduce",
+    "required",
+    "requirement",
+    "research",
+    "responsibility",
+    "responsible",
+    "restate",
+    "result",
+    "resume",
+    "return",
+    "rises",
+    "risk",
+    "risks",
+    "role",
+    "row",
+    "rule",
+    "rules",
+    "s",
+    "safety",
+    "say",
+    "scored",
+    "search",
+    "searched",
+    "section",
+    "sentence",
+    "sentences",
+    "settles",
+    "setup",
+    "several",
+    "shall",
+    "signature",
+    "sit",
+    "so",
+    "source",
+    "span",
+    "splits",
+    "state",
+    "stated",
+    "statement",
+    "statements",
+    "stay",
+    "step",
+    "steps",
+    "still",
+    "summary",
+    "support",
+    "supporting",
+    "supports",
+    "table",
+    "targets",
+    "team",
+    "tells",
+    "term",
+    "terms",
+    "text",
+    "than",
+    "that",
+    "the",
+    "them",
+    "tightly",
+    "times",
+    "title",
+    "to",
+    "together",
+    "totals",
+    "truly",
+    "two",
+    "under",
+    "unless",
+    "use",
+    "uses",
+    "usually",
+    "verbatim",
+    "verification",
+    "verifying",
+    "version",
+    "versus",
+    "warning",
+    "warranty",
+    "what",
+    "when",
+    "where",
+    "whether",
+    "which",
+    "who",
+    "with",
+    "without",
+    "words",
+    "works",
+    "wrote",
+    "yes"
+  ],
+  "weights_sha256": "c2f36757c80d4e1cf9bdeea6e70415ad9ce9fc31c453448fc0850a32f7197fe1"
+}

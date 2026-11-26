@@ -30,6 +30,11 @@ MODULE_PROMPTS = {
     "website-builder": "Build a landing page for a bakery, pages: home, about",
     "cyber": "Triage: alert from 10.0.0.8 severity: high",
     "agentic": "Plan an agent that checks email and drafts replies",
+    "translation": "translate to hindi: thank you",
+    "summarization": "summarize: Cats sleep for long hours each day. Cats also groom themselves carefully. Dogs need daily walks and training. Birds sing at dawn in spring.",
+    "retrieval": "query: how do cats groom\npassage: Cats groom themselves with their tongues.\npassage: Dogs enjoy long walks in parks.",
+    "data-analysis": "analyze these numbers: 4, 8, 15, 16, 23, 42",
+    "document-qa": "document: The library opens at nine in the morning. It closes at eight in the evening.\nquestion: when does the library open",
     "all-in-one": "coder: write a python function that adds two numbers",
 }
 
@@ -46,6 +51,11 @@ MODEL_PROMPTS = {
     "gravion-audio": "Compose a track",
     "gravion-shield": "Analyse this alert",
     "gravion-agent": "Plan an agent",
+    "gravion-translate": "translate thank you into hindi",
+    "gravion-summary": "summarize a long article briefly",
+    "gravion-search": "explain how search ranking works",
+    "gravion-analyst": "explain mean median and mode",
+    "gravion-docqa": "answer a question from a document",
     "gravion-omni": "Hello",
 }
 

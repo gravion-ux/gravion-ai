@@ -194,7 +194,7 @@ def test_web_dashboard_status_catalog_and_runs(make_config):
         assert core["training_examples"] == 5657
         assert core["answer_classes"] == 779
         # All 12 bundled models (core + 11 specialists) ship included weights.
-        assert status["catalog"]["summary"]["weights_included"] == 12
+        assert status["catalog"]["summary"]["weights_included"] == 17
         assert any(
             module["name"] == "chat" and module["description"]
             for module in status["modules"]

@@ -1,0 +1,192 @@
+{"completion": "A brief summary keeps the main claim, the strongest evidence, and the conclusion, in that order.", "prompt": "summarize a long article briefly"}
+{"completion": "A brief summary keeps the main claim, the strongest evidence, and the conclusion, in that order.", "prompt": "please summarize a long article briefly"}
+{"completion": "A brief summary keeps the main claim, the strongest evidence, and the conclusion, in that order.", "prompt": "gravion summary summarize a long article briefly"}
+{"completion": "A brief summary keeps the main claim, the strongest evidence, and the conclusion, in that order.", "prompt": "help me summarize a long article briefly"}
+{"completion": "Extractive summarization selects the source's own most important sentences instead of rewriting them.", "prompt": "explain extractive summarization"}
+{"completion": "Extractive summarization selects the source's own most important sentences instead of rewriting them.", "prompt": "please explain extractive summarization"}
+{"completion": "Extractive summarization selects the source's own most important sentences instead of rewriting them.", "prompt": "gravion summary explain extractive summarization"}
+{"completion": "Extractive summarization selects the source's own most important sentences instead of rewriting them.", "prompt": "help me explain extractive summarization"}
+{"completion": "One line: state what happened, why it matters, and what happens next.", "prompt": "make a one line summary of a report"}
+{"completion": "One line: state what happened, why it matters, and what happens next.", "prompt": "please make a one line summary of a report"}
+{"completion": "One line: state what happened, why it matters, and what happens next.", "prompt": "gravion summary make a one line summary of a report"}
+{"completion": "One line: state what happened, why it matters, and what happens next.", "prompt": "help me make a one line summary of a report"}
+{"completion": "Meeting summary: decisions made, owners named, deadlines set, and open questions listed.", "prompt": "summarize a meeting into action points"}
+{"completion": "Meeting summary: decisions made, owners named, deadlines set, and open questions listed.", "prompt": "please summarize a meeting into action points"}
+{"completion": "Meeting summary: decisions made, owners named, deadlines set, and open questions listed.", "prompt": "gravion summary summarize a meeting into action points"}
+{"completion": "Meeting summary: decisions made, owners named, deadlines set, and open questions listed.", "prompt": "help me summarize a meeting into action points"}
+{"completion": "Key sentences carry the thesis, repeated central terms, numbers, and conclusions.", "prompt": "explain how to choose key sentences"}
+{"completion": "Key sentences carry the thesis, repeated central terms, numbers, and conclusions.", "prompt": "please explain how to choose key sentences"}
+{"completion": "Key sentences carry the thesis, repeated central terms, numbers, and conclusions.", "prompt": "gravion summary explain how to choose key sentences"}
+{"completion": "Key sentences carry the thesis, repeated central terms, numbers, and conclusions.", "prompt": "help me explain how to choose key sentences"}
+{"completion": "Cut examples and repetition first; keep definitions, claims, and the final point.", "prompt": "shorten a paragraph without losing meaning"}
+{"completion": "Cut examples and repetition first; keep definitions, claims, and the final point.", "prompt": "please shorten a paragraph without losing meaning"}
+{"completion": "Cut examples and repetition first; keep definitions, claims, and the final point.", "prompt": "gravion summary shorten a paragraph without losing meaning"}
+{"completion": "Cut examples and repetition first; keep definitions, claims, and the final point.", "prompt": "help me shorten a paragraph without losing meaning"}
+{"completion": "A fair summary reports who, what, when, where, and why, without adding opinion.", "prompt": "summarize a news story fairly"}
+{"completion": "A fair summary reports who, what, when, where, and why, without adding opinion.", "prompt": "please summarize a news story fairly"}
+{"completion": "A fair summary reports who, what, when, where, and why, without adding opinion.", "prompt": "gravion summary summarize a news story fairly"}
+{"completion": "A fair summary reports who, what, when, where, and why, without adding opinion.", "prompt": "help me summarize a news story fairly"}
+{"completion": "Turn each main idea into one short bullet, ordered as the text presents them.", "prompt": "make bullet points from a long text"}
+{"completion": "Turn each main idea into one short bullet, ordered as the text presents them.", "prompt": "please make bullet points from a long text"}
+{"completion": "Turn each main idea into one short bullet, ordered as the text presents them.", "prompt": "gravion summary make bullet points from a long text"}
+{"completion": "Turn each main idea into one short bullet, ordered as the text presents them.", "prompt": "help me make bullet points from a long text"}
+{"completion": "A summary condenses the whole text; a paraphrase rewrites a passage at similar length.", "prompt": "explain the difference between summary and paraphrase"}
+{"completion": "A summary condenses the whole text; a paraphrase rewrites a passage at similar length.", "prompt": "please explain the difference between summary and paraphrase"}
+{"completion": "A summary condenses the whole text; a paraphrase rewrites a passage at similar length.", "prompt": "gravion summary explain the difference between summary and paraphrase"}
+{"completion": "A summary condenses the whole text; a paraphrase rewrites a passage at similar length.", "prompt": "help me explain the difference between summary and paraphrase"}
+{"completion": "Revision summary: key terms, main arguments, one example each, and likely exam points.", "prompt": "summarize a chapter for revision"}
+{"completion": "Revision summary: key terms, main arguments, one example each, and likely exam points.", "prompt": "please summarize a chapter for revision"}
+{"completion": "Revision summary: key terms, main arguments, one example each, and likely exam points.", "prompt": "gravion summary summarize a chapter for revision"}
+{"completion": "Revision summary: key terms, main arguments, one example each, and likely exam points.", "prompt": "help me summarize a chapter for revision"}
+{"completion": "Executive summary: purpose, findings, risks, recommendation, and next step.", "prompt": "create an executive summary outline"}
+{"completion": "Executive summary: purpose, findings, risks, recommendation, and next step.", "prompt": "please create an executive summary outline"}
+{"completion": "Executive summary: purpose, findings, risks, recommendation, and next step.", "prompt": "gravion summary create an executive summary outline"}
+{"completion": "Executive summary: purpose, findings, risks, recommendation, and next step.", "prompt": "help me create an executive summary outline"}
+{"completion": "Pros and cons summary: strongest benefit, strongest cost, and who each side suits.", "prompt": "summarize pros and cons of a choice"}
+{"completion": "Pros and cons summary: strongest benefit, strongest cost, and who each side suits.", "prompt": "please summarize pros and cons of a choice"}
+{"completion": "Pros and cons summary: strongest benefit, strongest cost, and who each side suits.", "prompt": "gravion summary summarize pros and cons of a choice"}
+{"completion": "Pros and cons summary: strongest benefit, strongest cost, and who each side suits.", "prompt": "help me summarize pros and cons of a choice"}
+{"completion": "A summary must not add claims the source never made; faithfulness keeps trust.", "prompt": "explain why summaries must stay faithful"}
+{"completion": "A summary must not add claims the source never made; faithfulness keeps trust.", "prompt": "please explain why summaries must stay faithful"}
+{"completion": "A summary must not add claims the source never made; faithfulness keeps trust.", "prompt": "gravion summary explain why summaries must stay faithful"}
+{"completion": "A summary must not add claims the source never made; faithfulness keeps trust.", "prompt": "help me explain why summaries must stay faithful"}
+{"completion": "Abstract style: question, method, result, and implication in four short sentences.", "prompt": "summarize a research paper abstract style"}
+{"completion": "Abstract style: question, method, result, and implication in four short sentences.", "prompt": "please summarize a research paper abstract style"}
+{"completion": "Abstract style: question, method, result, and implication in four short sentences.", "prompt": "gravion summary summarize a research paper abstract style"}
+{"completion": "Abstract style: question, method, result, and implication in four short sentences.", "prompt": "help me summarize a research paper abstract style"}
+{"completion": "For a busy reader: headline point first, three supporting facts, and the decision needed.", "prompt": "make a summary for a busy reader"}
+{"completion": "For a busy reader: headline point first, three supporting facts, and the decision needed.", "prompt": "please make a summary for a busy reader"}
+{"completion": "For a busy reader: headline point first, three supporting facts, and the decision needed.", "prompt": "gravion summary make a summary for a busy reader"}
+{"completion": "For a busy reader: headline point first, three supporting facts, and the decision needed.", "prompt": "help me make a summary for a busy reader"}
+{"completion": "Email thread summary: original request, replies that changed anything, and the current open item.", "prompt": "summarize a long email thread"}
+{"completion": "Email thread summary: original request, replies that changed anything, and the current open item.", "prompt": "please summarize a long email thread"}
+{"completion": "Email thread summary: original request, replies that changed anything, and the current open item.", "prompt": "gravion summary summarize a long email thread"}
+{"completion": "Email thread summary: original request, replies that changed anything, and the current open item.", "prompt": "help me summarize a long email thread"}
+{"completion": "Sentence scoring rates sentences by important terms, position, and length, then keeps the best.", "prompt": "explain sentence scoring in summaries"}
+{"completion": "Sentence scoring rates sentences by important terms, position, and length, then keeps the best.", "prompt": "please explain sentence scoring in summaries"}
+{"completion": "Sentence scoring rates sentences by important terms, position, and length, then keeps the best.", "prompt": "gravion summary explain sentence scoring in summaries"}
+{"completion": "Sentence scoring rates sentences by important terms, position, and length, then keeps the best.", "prompt": "help me explain sentence scoring in summaries"}
+{"completion": "Product summary: what it is, who it serves, key features, and price or availability.", "prompt": "summarize a product description"}
+{"completion": "Product summary: what it is, who it serves, key features, and price or availability.", "prompt": "please summarize a product description"}
+{"completion": "Product summary: what it is, who it serves, key features, and price or availability.", "prompt": "gravion summary summarize a product description"}
+{"completion": "Product summary: what it is, who it serves, key features, and price or availability.", "prompt": "help me summarize a product description"}
+{"completion": "With a word limit, draft long, then cut adjectives and examples until only essentials remain.", "prompt": "create a summary with a word limit"}
+{"completion": "With a word limit, draft long, then cut adjectives and examples until only essentials remain.", "prompt": "please create a summary with a word limit"}
+{"completion": "With a word limit, draft long, then cut adjectives and examples until only essentials remain.", "prompt": "gravion summary create a summary with a word limit"}
+{"completion": "With a word limit, draft long, then cut adjectives and examples until only essentials remain.", "prompt": "help me create a summary with a word limit"}
+{"completion": "Brief history summary: cause, turning point, outcome, and lasting effect.", "prompt": "summarize a historical event briefly"}
+{"completion": "Brief history summary: cause, turning point, outcome, and lasting effect.", "prompt": "please summarize a historical event briefly"}
+{"completion": "Brief history summary: cause, turning point, outcome, and lasting effect.", "prompt": "gravion summary summarize a historical event briefly"}
+{"completion": "Brief history summary: cause, turning point, outcome, and lasting effect.", "prompt": "help me summarize a historical event briefly"}
+{"completion": "Neutral summary uses the source's own claims, attributes opinions, and avoids loaded words.", "prompt": "explain how to summarize without bias"}
+{"completion": "Neutral summary uses the source's own claims, attributes opinions, and avoids loaded words.", "prompt": "please explain how to summarize without bias"}
+{"completion": "Neutral summary uses the source's own claims, attributes opinions, and avoids loaded words.", "prompt": "gravion summary explain how to summarize without bias"}
+{"completion": "Neutral summary uses the source's own claims, attributes opinions, and avoids loaded words.", "prompt": "help me explain how to summarize without bias"}
+{"completion": "Tutorial summary: goal, materials, numbered steps, and the check that proves success.", "prompt": "summarize a tutorial into steps"}
+{"completion": "Tutorial summary: goal, materials, numbered steps, and the check that proves success.", "prompt": "please summarize a tutorial into steps"}
+{"completion": "Tutorial summary: goal, materials, numbered steps, and the check that proves success.", "prompt": "gravion summary summarize a tutorial into steps"}
+{"completion": "Tutorial summary: goal, materials, numbered steps, and the check that proves success.", "prompt": "help me summarize a tutorial into steps"}
+{"completion": "Conversation summary: topics covered, agreements reached, disagreements left, and next meeting.", "prompt": "make a summary of a long conversation"}
+{"completion": "Conversation summary: topics covered, agreements reached, disagreements left, and next meeting.", "prompt": "please make a summary of a long conversation"}
+{"completion": "Conversation summary: topics covered, agreements reached, disagreements left, and next meeting.", "prompt": "gravion summary make a summary of a long conversation"}
+{"completion": "Conversation summary: topics covered, agreements reached, disagreements left, and next meeting.", "prompt": "help me make a summary of a long conversation"}
+{"completion": "Book summary: premise, main conflict or argument, turning point, and ending or conclusion.", "prompt": "summarize a book in one paragraph"}
+{"completion": "Book summary: premise, main conflict or argument, turning point, and ending or conclusion.", "prompt": "please summarize a book in one paragraph"}
+{"completion": "Book summary: premise, main conflict or argument, turning point, and ending or conclusion.", "prompt": "gravion summary summarize a book in one paragraph"}
+{"completion": "Book summary: premise, main conflict or argument, turning point, and ending or conclusion.", "prompt": "help me summarize a book in one paragraph"}
+{"completion": "A lead sentence states the whole point first, so readers grasp the summary instantly.", "prompt": "explain lead sentences in summaries"}
+{"completion": "A lead sentence states the whole point first, so readers grasp the summary instantly.", "prompt": "please explain lead sentences in summaries"}
+{"completion": "A lead sentence states the whole point first, so readers grasp the summary instantly.", "prompt": "gravion summary explain lead sentences in summaries"}
+{"completion": "A lead sentence states the whole point first, so readers grasp the summary instantly.", "prompt": "help me explain lead sentences in summaries"}
+{"completion": "Plain summary of a notice: who must do what, by when, and what happens if they do not.", "prompt": "summarize a legal notice plainly"}
+{"completion": "Plain summary of a notice: who must do what, by when, and what happens if they do not.", "prompt": "please summarize a legal notice plainly"}
+{"completion": "Plain summary of a notice: who must do what, by when, and what happens if they do not.", "prompt": "gravion summary summarize a legal notice plainly"}
+{"completion": "Plain summary of a notice: who must do what, by when, and what happens if they do not.", "prompt": "help me summarize a legal notice plainly"}
+{"completion": "Social summary: one hook line, two facts, and a question or link for detail.", "prompt": "create a summary for social media"}
+{"completion": "Social summary: one hook line, two facts, and a question or link for detail.", "prompt": "please create a summary for social media"}
+{"completion": "Social summary: one hook line, two facts, and a question or link for detail.", "prompt": "gravion summary create a summary for social media"}
+{"completion": "Social summary: one hook line, two facts, and a question or link for detail.", "prompt": "help me create a summary for social media"}
+{"completion": "Careful summary: what was measured, the result size, uncertainty, and limits of the claim.", "prompt": "summarize a scientific result carefully"}
+{"completion": "Careful summary: what was measured, the result size, uncertainty, and limits of the claim.", "prompt": "please summarize a scientific result carefully"}
+{"completion": "Careful summary: what was measured, the result size, uncertainty, and limits of the claim.", "prompt": "gravion summary summarize a scientific result carefully"}
+{"completion": "Careful summary: what was measured, the result size, uncertainty, and limits of the claim.", "prompt": "help me summarize a scientific result carefully"}
+{"completion": "Compression ratio compares summary length to source length; smaller ratios demand stricter selection.", "prompt": "explain compression ratio in summaries"}
+{"completion": "Compression ratio compares summary length to source length; smaller ratios demand stricter selection.", "prompt": "please explain compression ratio in summaries"}
+{"completion": "Compression ratio compares summary length to source length; smaller ratios demand stricter selection.", "prompt": "gravion summary explain compression ratio in summaries"}
+{"completion": "Compression ratio compares summary length to source length; smaller ratios demand stricter selection.", "prompt": "help me explain compression ratio in summaries"}
+{"completion": "Quote summary: pick the lines that carry the argument, keep them exact, and attribute them.", "prompt": "summarize a speech into quotes"}
+{"completion": "Quote summary: pick the lines that carry the argument, keep them exact, and attribute them.", "prompt": "please summarize a speech into quotes"}
+{"completion": "Quote summary: pick the lines that carry the argument, keep them exact, and attribute them.", "prompt": "gravion summary summarize a speech into quotes"}
+{"completion": "Quote summary: pick the lines that carry the argument, keep them exact, and attribute them.", "prompt": "help me summarize a speech into quotes"}
+{"completion": "Summary table: rows for findings, columns for evidence, impact, and owner.", "prompt": "make a summary table from a report"}
+{"completion": "Summary table: rows for findings, columns for evidence, impact, and owner.", "prompt": "please make a summary table from a report"}
+{"completion": "Summary table: rows for findings, columns for evidence, impact, and owner.", "prompt": "gravion summary make a summary table from a report"}
+{"completion": "Summary table: rows for findings, columns for evidence, impact, and owner.", "prompt": "help me make a summary table from a report"}
+{"completion": "Status summary: done, in progress, blocked, and next milestone with its date.", "prompt": "summarize a project status update"}
+{"completion": "Status summary: done, in progress, blocked, and next milestone with its date.", "prompt": "please summarize a project status update"}
+{"completion": "Status summary: done, in progress, blocked, and next milestone with its date.", "prompt": "gravion summary summarize a project status update"}
+{"completion": "Status summary: done, in progress, blocked, and next milestone with its date.", "prompt": "help me summarize a project status update"}
+{"completion": "Keeping the source order preserves cause and effect, so the summary reads logically.", "prompt": "explain why order matters in summaries"}
+{"completion": "Keeping the source order preserves cause and effect, so the summary reads logically.", "prompt": "please explain why order matters in summaries"}
+{"completion": "Keeping the source order preserves cause and effect, so the summary reads logically.", "prompt": "gravion summary explain why order matters in summaries"}
+{"completion": "Keeping the source order preserves cause and effect, so the summary reads logically.", "prompt": "help me explain why order matters in summaries"}
+{"completion": "Debate summary: each side's strongest point, the evidence offered, and where they disagree.", "prompt": "summarize a debate fairly"}
+{"completion": "Debate summary: each side's strongest point, the evidence offered, and where they disagree.", "prompt": "please summarize a debate fairly"}
+{"completion": "Debate summary: each side's strongest point, the evidence offered, and where they disagree.", "prompt": "gravion summary summarize a debate fairly"}
+{"completion": "Debate summary: each side's strongest point, the evidence offered, and where they disagree.", "prompt": "help me summarize a debate fairly"}
+{"completion": "Child-friendly summary: short sentences, familiar words, one idea at a time, and a friendly tone.", "prompt": "create a summary for children"}
+{"completion": "Child-friendly summary: short sentences, familiar words, one idea at a time, and a friendly tone.", "prompt": "please create a summary for children"}
+{"completion": "Child-friendly summary: short sentences, familiar words, one idea at a time, and a friendly tone.", "prompt": "gravion summary create a summary for children"}
+{"completion": "Child-friendly summary: short sentences, familiar words, one idea at a time, and a friendly tone.", "prompt": "help me create a summary for children"}
+{"completion": "Financial summary: revenue direction, profit direction, cash position, and the main risk.", "prompt": "summarize a financial report briefly"}
+{"completion": "Financial summary: revenue direction, profit direction, cash position, and the main risk.", "prompt": "please summarize a financial report briefly"}
+{"completion": "Financial summary: revenue direction, profit direction, cash position, and the main risk.", "prompt": "gravion summary summarize a financial report briefly"}
+{"completion": "Financial summary: revenue direction, profit direction, cash position, and the main risk.", "prompt": "help me summarize a financial report briefly"}
+{"completion": "A summary headline names the actor and the outcome in under ten words.", "prompt": "explain headline writing for summaries"}
+{"completion": "A summary headline names the actor and the outcome in under ten words.", "prompt": "please explain headline writing for summaries"}
+{"completion": "A summary headline names the actor and the outcome in under ten words.", "prompt": "gravion summary explain headline writing for summaries"}
+{"completion": "A summary headline names the actor and the outcome in under ten words.", "prompt": "help me explain headline writing for summaries"}
+{"completion": "Manual summary: purpose, safety notes, main steps, and troubleshooting pointers.", "prompt": "summarize a long instruction manual"}
+{"completion": "Manual summary: purpose, safety notes, main steps, and troubleshooting pointers.", "prompt": "please summarize a long instruction manual"}
+{"completion": "Manual summary: purpose, safety notes, main steps, and troubleshooting pointers.", "prompt": "gravion summary summarize a long instruction manual"}
+{"completion": "Manual summary: purpose, safety notes, main steps, and troubleshooting pointers.", "prompt": "help me summarize a long instruction manual"}
+{"completion": "From bullets: group related points, drop duplicates, and write one sentence per group.", "prompt": "make a summary from bullet notes"}
+{"completion": "From bullets: group related points, drop duplicates, and write one sentence per group.", "prompt": "please make a summary from bullet notes"}
+{"completion": "From bullets: group related points, drop duplicates, and write one sentence per group.", "prompt": "gravion summary make a summary from bullet notes"}
+{"completion": "From bullets: group related points, drop duplicates, and write one sentence per group.", "prompt": "help me make a summary from bullet notes"}
+{"completion": "Biography summary: origin, defining work, major turning point, and legacy.", "prompt": "summarize a biography briefly"}
+{"completion": "Biography summary: origin, defining work, major turning point, and legacy.", "prompt": "please summarize a biography briefly"}
+{"completion": "Biography summary: origin, defining work, major turning point, and legacy.", "prompt": "gravion summary summarize a biography briefly"}
+{"completion": "Biography summary: origin, defining work, major turning point, and legacy.", "prompt": "help me summarize a biography briefly"}
+{"completion": "Leave out repetition, minor examples, side stories, and anything the conclusion does not need.", "prompt": "explain what to leave out of a summary"}
+{"completion": "Leave out repetition, minor examples, side stories, and anything the conclusion does not need.", "prompt": "please explain what to leave out of a summary"}
+{"completion": "Leave out repetition, minor examples, side stories, and anything the conclusion does not need.", "prompt": "gravion summary explain what to leave out of a summary"}
+{"completion": "Leave out repetition, minor examples, side stories, and anything the conclusion does not need.", "prompt": "help me explain what to leave out of a summary"}
+{"completion": "Policy summary: who it covers, what changes, when it starts, and how exceptions work.", "prompt": "summarize a policy document"}
+{"completion": "Policy summary: who it covers, what changes, when it starts, and how exceptions work.", "prompt": "please summarize a policy document"}
+{"completion": "Policy summary: who it covers, what changes, when it starts, and how exceptions work.", "prompt": "gravion summary summarize a policy document"}
+{"completion": "Policy summary: who it covers, what changes, when it starts, and how exceptions work.", "prompt": "help me summarize a policy document"}
+{"completion": "Two sentences: first the main point, second the evidence or consequence.", "prompt": "create a two sentence summary"}
+{"completion": "Two sentences: first the main point, second the evidence or consequence.", "prompt": "please create a two sentence summary"}
+{"completion": "Two sentences: first the main point, second the evidence or consequence.", "prompt": "gravion summary create a two sentence summary"}
+{"completion": "Two sentences: first the main point, second the evidence or consequence.", "prompt": "help me create a two sentence summary"}
+{"completion": "Travel summary: best sights, best season, costs to expect, and one local tip.", "prompt": "summarize a travel guide page"}
+{"completion": "Travel summary: best sights, best season, costs to expect, and one local tip.", "prompt": "please summarize a travel guide page"}
+{"completion": "Travel summary: best sights, best season, costs to expect, and one local tip.", "prompt": "gravion summary summarize a travel guide page"}
+{"completion": "Travel summary: best sights, best season, costs to expect, and one local tip.", "prompt": "help me summarize a travel guide page"}
+{"completion": "Choose length by use: one line for lists, a paragraph for reports, a page for decisions.", "prompt": "explain summary length choices"}
+{"completion": "Choose length by use: one line for lists, a paragraph for reports, a page for decisions.", "prompt": "please explain summary length choices"}
+{"completion": "Choose length by use: one line for lists, a paragraph for reports, a page for decisions.", "prompt": "gravion summary explain summary length choices"}
+{"completion": "Choose length by use: one line for lists, a paragraph for reports, a page for decisions.", "prompt": "help me explain summary length choices"}
+{"completion": "Review summary: common praise, common complaints, average rating, and who the product suits.", "prompt": "summarize a customer review set"}
+{"completion": "Review summary: common praise, common complaints, average rating, and who the product suits.", "prompt": "please summarize a customer review set"}
+{"completion": "Review summary: common praise, common complaints, average rating, and who the product suits.", "prompt": "gravion summary summarize a customer review set"}
+{"completion": "Review summary: common praise, common complaints, average rating, and who the product suits.", "prompt": "help me summarize a customer review set"}
+{"completion": "Keep the numbers that change decisions: totals, percentages, dates, and comparisons.", "prompt": "make a summary that keeps numbers"}
+{"completion": "Keep the numbers that change decisions: totals, percentages, dates, and comparisons.", "prompt": "please make a summary that keeps numbers"}
+{"completion": "Keep the numbers that change decisions: totals, percentages, dates, and comparisons.", "prompt": "gravion summary make a summary that keeps numbers"}
+{"completion": "Keep the numbers that change decisions: totals, percentages, dates, and comparisons.", "prompt": "help me make a summary that keeps numbers"}
+{"completion": "Story summary: hero, goal, obstacle, climax, and resolution in five beats.", "prompt": "summarize a long story briefly"}
+{"completion": "Story summary: hero, goal, obstacle, climax, and resolution in five beats.", "prompt": "please summarize a long story briefly"}
+{"completion": "Story summary: hero, goal, obstacle, climax, and resolution in five beats.", "prompt": "gravion summary summarize a long story briefly"}
+{"completion": "Story summary: hero, goal, obstacle, climax, and resolution in five beats.", "prompt": "help me summarize a long story briefly"}

@@ -193,19 +193,24 @@
                 "image",
                 "video",
                 "cyber",
-                "agentic"
+                "agentic",
+                "translation",
+                "summarization",
+                "retrieval",
+                "data-analysis",
+                "document-qa"
             ],
             "context_window": 262144,
             "id": "gravion-omni",
             "name": "Gravion Omni",
-            "notes": "Includes local sparse n-gram classifier weights (2,677,485 parameters counted from stored quantized weights) trained only from the bundled Gravion-owned Gravion Omni seed corpus (2172 examples, 542 answer classes), with deterministic fallback when no confident trained match is available. It runs offline with no network and no API key.",
-            "parameter_count": 2677485,
+            "notes": "Includes local sparse n-gram classifier weights (5,549,315 parameters counted from stored quantized weights) trained only from the bundled Gravion-owned Gravion Omni seed corpus (3132 examples, 782 answer classes), with deterministic fallback when no confident trained match is available. It runs offline with no network and no API key.",
+            "parameter_count": 5549315,
             "status": "available",
             "tiers": [
                 "tier-4-advanced"
             ],
             "weights_artifact": "data/gravion-omni-weights.json",
-            "weights_sha256": "3fb1fde8d0c51e208a02e57653806d888707459f3b5596337851b2f69c113b07",
+            "weights_sha256": "f538a9c0bb0ba1af720be5fa997ff97c34b72a3b45334677dd6b9bd8cc7ef7a4",
             "weights_status": "included"
         },
         {
@@ -225,7 +230,7 @@
                 "tier-4-advanced"
             ],
             "weights_artifact": "data/gravion-support-weights.json",
-            "weights_sha256": "00c8684beae33cceacdeb29c9ed0f2e3bc172af91d8d020b013d878bea17f960",
+            "weights_sha256": "b1f2c8d550117448bc5ef46c6ef0b44c272dc3c4c62246414abc380cb0596e79",
             "weights_status": "included"
         },
         {
@@ -246,6 +251,106 @@
             ],
             "weights_artifact": "data/gravion-review-weights.json",
             "weights_sha256": "f42b57751a6f5f97ca70aca59a0cb684805c675eeed9ac36941c1a069672cc1e",
+            "weights_status": "included"
+        },
+        {
+            "capabilities": [
+                "translation"
+            ],
+            "context_window": 131072,
+            "id": "gravion-translate",
+            "name": "Gravion Translate",
+            "notes": "Includes local sparse n-gram classifier weights (36,192 parameters counted from stored quantized weights) trained only from the bundled Gravion-owned Gravion Translate seed corpus (192 examples, 48 answer classes), with deterministic fallback when no confident trained match is available. It runs offline with no network and no API key. The trained local weights guide translation requests; the translation module\u2019s Gravion-owned phrasebook is the offline translation path, and text outside the phrasebook is marked rather than guessed.",
+            "parameter_count": 36192,
+            "status": "available",
+            "tiers": [
+                "tier-1-complete",
+                "tier-2-basic",
+                "tier-3-intermediate",
+                "tier-4-advanced"
+            ],
+            "weights_artifact": "data/gravion-translate-weights.json",
+            "weights_sha256": "9d3208c3bca41afa26a62989c6d0138a2d380dbcf6611f46b330f0c341d7dd30",
+            "weights_status": "included"
+        },
+        {
+            "capabilities": [
+                "summarization"
+            ],
+            "context_window": 131072,
+            "id": "gravion-summary",
+            "name": "Gravion Summary",
+            "notes": "Includes local sparse n-gram classifier weights (34,983 parameters counted from stored quantized weights) trained only from the bundled Gravion-owned Gravion Summary seed corpus (192 examples, 48 answer classes), with deterministic fallback when no confident trained match is available. It runs offline with no network and no API key. The trained local weights guide summarization requests; the summarization module\u2019s local extractive summarizer is the offline summary path.",
+            "parameter_count": 34983,
+            "status": "available",
+            "tiers": [
+                "tier-1-complete",
+                "tier-2-basic",
+                "tier-3-intermediate",
+                "tier-4-advanced"
+            ],
+            "weights_artifact": "data/gravion-summary-weights.json",
+            "weights_sha256": "c654757629015f3bfb57badccb721f87db68153938b2762b93c8b78459eb9e9f",
+            "weights_status": "included"
+        },
+        {
+            "capabilities": [
+                "retrieval"
+            ],
+            "context_window": 131072,
+            "id": "gravion-search",
+            "name": "Gravion Search",
+            "notes": "Includes local sparse n-gram classifier weights (39,404 parameters counted from stored quantized weights) trained only from the bundled Gravion-owned Gravion Search seed corpus (192 examples, 48 answer classes), with deterministic fallback when no confident trained match is available. It runs offline with no network and no API key. The trained local weights guide search requests; the retrieval module\u2019s local sparse-embedding ranking is the offline search path.",
+            "parameter_count": 39404,
+            "status": "available",
+            "tiers": [
+                "tier-1-complete",
+                "tier-2-basic",
+                "tier-3-intermediate",
+                "tier-4-advanced"
+            ],
+            "weights_artifact": "data/gravion-search-weights.json",
+            "weights_sha256": "dfea7a68b65c13820de4109e0b219a0c562ba37d58ac4434d4e23c62c04c9968",
+            "weights_status": "included"
+        },
+        {
+            "capabilities": [
+                "data-analysis"
+            ],
+            "context_window": 131072,
+            "id": "gravion-analyst",
+            "name": "Gravion Analyst",
+            "notes": "Includes local sparse n-gram classifier weights (36,887 parameters counted from stored quantized weights) trained only from the bundled Gravion-owned Gravion Analyst seed corpus (192 examples, 48 answer classes), with deterministic fallback when no confident trained match is available. It runs offline with no network and no API key. The trained local weights guide analysis requests; the data-analysis module computes statistics locally from supplied numbers.",
+            "parameter_count": 36887,
+            "status": "available",
+            "tiers": [
+                "tier-1-complete",
+                "tier-2-basic",
+                "tier-3-intermediate",
+                "tier-4-advanced"
+            ],
+            "weights_artifact": "data/gravion-analyst-weights.json",
+            "weights_sha256": "5e737ff9bf475ffd0180db3baaabcf308ac6fc954b5efb9420f82c0399207053",
+            "weights_status": "included"
+        },
+        {
+            "capabilities": [
+                "document-qa"
+            ],
+            "context_window": 131072,
+            "id": "gravion-docqa",
+            "name": "Gravion DocQA",
+            "notes": "Includes local sparse n-gram classifier weights (35,741 parameters counted from stored quantized weights) trained only from the bundled Gravion-owned Gravion DocQA seed corpus (192 examples, 48 answer classes), with deterministic fallback when no confident trained match is available. It runs offline with no network and no API key. The trained local weights guide document questions; the document-qa module answers extractively from supplied documents and says plainly when a document holds no answer.",
+            "parameter_count": 35741,
+            "status": "available",
+            "tiers": [
+                "tier-1-complete",
+                "tier-2-basic",
+                "tier-3-intermediate",
+                "tier-4-advanced"
+            ],
+            "weights_artifact": "data/gravion-docqa-weights.json",
+            "weights_sha256": "c2f36757c80d4e1cf9bdeea6e70415ad9ce9fc31c453448fc0850a32f7197fe1",
             "weights_status": "included"
         }
     ],

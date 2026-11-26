@@ -23,6 +23,11 @@ MODULE_FOR_MODEL = {
     "gravion-audio": "music",
     "gravion-shield": "cyber",
     "gravion-agent": "agentic",
+    "gravion-translate": "translation",
+    "gravion-summary": "summarization",
+    "gravion-search": "retrieval",
+    "gravion-analyst": "data-analysis",
+    "gravion-docqa": "document-qa",
     "gravion-omni": "all-in-one",
 }
 

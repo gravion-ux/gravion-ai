@@ -36,6 +36,11 @@ class ModuleType(str, Enum):
     VIDEO = "video"
     CYBER = "cyber"
     AGENTIC = "agentic"
+    TRANSLATION = "translation"
+    SUMMARIZATION = "summarization"
+    RETRIEVAL = "retrieval"
+    DATA_ANALYSIS = "data-analysis"
+    DOCUMENT_QA = "document-qa"
     ALL_IN_ONE = "all-in-one"
 
 
@@ -140,9 +145,14 @@ def default_registry() -> ModuleRegistry:
     from .modules import chat as chat_module_pkg
     from .modules import coder as coder_module_pkg
     from .modules import cyber as cyber_module_pkg
+    from .modules import data_analysis as data_analysis_module_pkg
+    from .modules import document_qa as document_qa_module_pkg
     from .modules import image as image_module_pkg
     from .modules import music as music_module_pkg
+    from .modules import retrieval as retrieval_module_pkg
+    from .modules import summarization as summarization_module_pkg
     from .modules import support as support_module_pkg
+    from .modules import translation as translation_module_pkg
     from .modules import video as video_module_pkg
     from .modules import website_builder as website_builder_module_pkg
 
@@ -248,6 +258,61 @@ def default_registry() -> ModuleRegistry:
     )
     registry.register(
         ModuleManifest(
+            name="translation",
+            type=ModuleType.TRANSLATION,
+            version="0.1.0",
+            entrypoint="gravion_ai.modules.translation.module:TranslationModule",
+            description="Translation: Hindi, English and Hinglish phrasebook translation with a Gravion-owned glossary, briefed for Gravion Translate.",
+            status=ModuleStatus.IMPLEMENTED,
+            path=Path(translation_module_pkg.__file__).parent,
+        )
+    )
+    registry.register(
+        ModuleManifest(
+            name="summarization",
+            type=ModuleType.SUMMARIZATION,
+            version="0.1.0",
+            entrypoint="gravion_ai.modules.summarization.module:SummarizationModule",
+            description="Summarization: local extractive summaries that keep the source's own sentences, briefed for Gravion Summary.",
+            status=ModuleStatus.IMPLEMENTED,
+            path=Path(summarization_module_pkg.__file__).parent,
+        )
+    )
+    registry.register(
+        ModuleManifest(
+            name="retrieval",
+            type=ModuleType.RETRIEVAL,
+            version="0.1.0",
+            entrypoint="gravion_ai.modules.retrieval.module:RetrievalModule",
+            description="Search and retrieval: sparse embedding ranking of supplied passages, briefed for Gravion Search.",
+            status=ModuleStatus.IMPLEMENTED,
+            path=Path(retrieval_module_pkg.__file__).parent,
+        )
+    )
+    registry.register(
+        ModuleManifest(
+            name="data-analysis",
+            type=ModuleType.DATA_ANALYSIS,
+            version="0.1.0",
+            entrypoint="gravion_ai.modules.data_analysis.module:DataAnalysisModule",
+            description="Data analysis: descriptive statistics and trend checks computed locally from supplied numbers, briefed for Gravion Analyst.",
+            status=ModuleStatus.IMPLEMENTED,
+            path=Path(data_analysis_module_pkg.__file__).parent,
+        )
+    )
+    registry.register(
+        ModuleManifest(
+            name="document-qa",
+            type=ModuleType.DOCUMENT_QA,
+            version="0.1.0",
+            entrypoint="gravion_ai.modules.document_qa.module:DocumentQAModule",
+            description="Document Q&A: extractive answers quoted from a supplied document, briefed for Gravion DocQA.",
+            status=ModuleStatus.IMPLEMENTED,
+            path=Path(document_qa_module_pkg.__file__).parent,
+        )
+    )
+    registry.register(
+        ModuleManifest(
             name="all-in-one",
             type=ModuleType.ALL_IN_ONE,
             version="0.1.0",
@@ -257,16 +322,4 @@ def default_registry() -> ModuleRegistry:
             path=Path(all_in_one_module_pkg.__file__).parent,
         )
     )
-    planned = []
-    for name, mtype, desc in planned:
-        registry.register(
-            ModuleManifest(
-                name=name,
-                type=mtype,
-                version="0.0.0",
-                entrypoint="",
-                description=desc,
-                status=ModuleStatus.PLANNED,
-            )
-        )
     return registry

@@ -1,0 +1,2935 @@
+{
+  "architecture": "sparse n-gram embedding + direct linear softmax classifier",
+  "bias": [
+    -1.54791284,
+    -1.30569422,
+    -0.32725993,
+    0.08900789,
+    -1.03271806,
+    -0.6149314,
+    1.29689336,
+    1.32573926,
+    0.60440904,
+    0.18077895,
+    -0.34816676,
+    -0.45165226,
+    0.35958445,
+    0.52275699,
+    -0.22175036,
+    1.61527348,
+    -0.82622474,
+    -0.3555181,
+    -0.36051637,
+    -1.1771785,
+    1.5526849,
+    -1.48128521,
+    1.28567791,
+    0.4036395,
+    0.68534064,
+    0.02472957,
+    -1.114851,
+    0.09557304,
+    0.52144551,
+    0.04387669,
+    -1.93541145,
+    -0.52996832,
+    0.5247522,
+    0.65302938,
+    0.42302099,
+    -0.51825994,
+    0.71271437,
+    1.52258623,
+    -1.62845492,
+    -1.63162208,
+    0.1613965,
+    0.96663016,
+    -1.98267984,
+    1.48993909,
+    0.21260016,
+    2.11904693,
+    0.41320017,
+    -0.4134455
+  ],
+  "classes": [
+    "A good query uses the rarest, most specific terms and drops filler words.",
+    "A sparse vector stores only its non-zero entries, which suits text with huge vocabularies.",
+    "A vector database stores embeddings and finds nearest neighbors quickly at scale.",
+    "Add the specific noun, the place or date, and remove words every document contains.",
+    "An embedding turns text into numbers so similar meanings sit close together.",
+    "BM25 scores term frequency with saturation and document length normalization.",
+    "Beginner ranking favors clear explanations, worked examples, and trusted educational sources.",
+    "Chunking splits documents into passages so search can return the exact relevant part.",
+    "Code search matches identifiers exactly and ranks definitions above usages.",
+    "Contradiction search pairs passages on the same claim with opposing statements.",
+    "Cosine similarity measures the angle between two vectors; closer angles mean closer meaning.",
+    "Date search normalizes formats first, then matches the exact day, month, or year asked.",
+    "Difficulty ranking uses prerequisites, jargon density, and assumed prior knowledge.",
+    "Document search jumps to matching sections and shows context around each hit.",
+    "Duplicates waste ranks; deduplication keeps the strongest copy of near-identical results.",
+    "Exact phrase search requires the words together in order, usually marked with quotes.",
+    "Explainable results show matched terms and scores, so users see why each result ranked.",
+    "Facets filter results by category, date, or type while keeping counts visible.",
+    "For support, rank passages that answer the exact problem above general background.",
+    "Freshness boosts newer results when the topic changes quickly, like news or prices.",
+    "Hashing maps each term to a fixed bucket, giving compact vectors without a stored vocabulary.",
+    "Indexing precomputes searchable structures so queries answer in milliseconds.",
+    "Keyword search matches exact words; semantic search matches meaning even with different words.",
+    "Knowledge search works when articles use the words users actually type.",
+    "Legal ranking favors exact defined terms and the governing clause over mentions.",
+    "Metrics like precision at k measure how many top results were actually relevant.",
+    "Multilingual search indexes each language, detects query language, and ranks within it first.",
+    "N-grams are short word sequences; they help search match phrases, not only single words.",
+    "Notes search works best with dates, names, and decision keywords indexed together.",
+    "Passage search embeds each passage and returns the ones nearest the query.",
+    "Personalization reorders results using history and location, which can help or bias.",
+    "Query expansion adds related terms so relevant documents using other words still match.",
+    "Quote search matches the exact phrase first, then checks the earliest reliable source.",
+    "Ranking scores each result against the query and orders the best matches first.",
+    "Recall is how much relevant material was found; precision is how much found material is relevant.",
+    "Relevance ranking weighs term matches, phrase matches, freshness, and source quality.",
+    "Scores show how strong each match is, so weak results can be filtered or explained.",
+    "Similarity search embeds the text and returns documents with the closest vectors.",
+    "Snippets show the matching context so users can judge a result before opening it.",
+    "Stemming reduces words to a root form so running and runs can match.",
+    "Stop words like the and of carry little meaning, so search often ignores them.",
+    "Stronger evidence answers directly, cites specifics, and comes from reliable sources.",
+    "Synonym expansion lets a query match related words, widening recall without losing precision.",
+    "TF-IDF rewards words frequent in a document but rare across the collection.",
+    "The best passage shares the question's key terms and answers it directly, not just mentions it.",
+    "Top results optimize matching signals, not truth; verify claims against sources.",
+    "Typo tolerance uses edit distance to match near-spellings of query terms.",
+    "Zero results mean the query terms never co-occur; broaden terms or drop the rarest one."
+  ],
+  "classifier": {
+    "data": "95wzPf/e5OkW9C0269xJqPJbCK4gRx0CC9Db0+wb3Mj+LxjMM8IMPfkB0vuuL7jq1bgj6wEc+gYd010Vq88Q2eIsnPit/iUTssIK0uMJ1gMkG8DROCYRI0w1reLTBe0ZNQEkLjbeFUMPWBYOPPPfMdoP7vI/Gxnv9B44thzOKuHundQzCNLoM0QfHkP/8QQg/xIrSZA/6T4H09fw8PwBLiEgIMoY76PbK/i/zNcc0Sre/l1D4hLlQf8FAEKw2+dPA0IP2QLnLikq6er+cs0n+MLMFuYTxArJCC0tKNv9J0QYzwHzyhQBvLczCe/nagH5/A/8XdEsF/DSFs4OIea3HzOwRezh5e/k2gcVHlRPMuQC0tPbNqncsfrY+dQBAysA8CT+N/HxP18wMCREB6IeItwIgQH3GSHv7y2k2QDs1g3tOu4OFizsW/u92ALgydTuuSK7rS3/uwIB4h34xBDXBua50/QWLunq99P9LiId3a7/2idF7Pj8zQYdY+INBjpC4Dcm7AD3+AHrN/ZnYCUJ+iz/HKr4zCr0Ft79zcgsKthRsUs96sAs6zElE0kIJgr38h0GJ+8aXsvBTDvLGx7Q/EDxKjslyyMCF69PEAsjF9Td3AtltutK6SHzBj7W8BMc3iarB+c2JJkW/O/aKS8HsaDo3O8S7eUN9APt16fAANI1DU5J8haZHg/ROQki4wszwODk6CoI4NRUOdgJ+jYYBAgszOLt/5cF2DPN6BXW0OkWLjLgJBIfDtFGIzMzrDrKL9gkphI1xOzfEivyCzgs7ekFSy8FPt4kDv0EEgmXEsz18s2vBCHtLrjxmMwNIhoD3L3W8fTdN58t5fTI9DC1Au8iEhyf/EDJA+u72/9ECxgx7B3jJ9TyCPsUzBpDpcjaETK8Ag/qUZOr6Qvp7BDT2xAt/em21z9OA8MB5x4Q2S8fEudTDh7PXEgfJe/T3edXOTHX7h5IxS4D6B4HAwo/MD8FQBsHA/mk2NILDD7rReIgD86vLevUS8vM5RvvMw5F",
+    "encoding": "int8-base64",
+    "scale": 0.03539164235272745
+  },
+  "dim": 16,
+  "direct": {
+    "data": "FO7oHODp3iMX7+fn7R0X5Cku5OPl7hge5jMWFwseJ+3jIevuEODvJhznJ97j2xrq4Tke3RAd4B/f3iHf3NsR1twn4BsROhHd3CfhD9/gHz/gFybdEN04HRHZHgbe/NogKPPyL/PzHu4j4fEx7jPy6eXxIvPu8+8z7PIt8yQv8vIl8PHu7yH08/Ps9PEY7uPz9e7v9DXt9ez08vD09PQ1NvTs9Eft7+v09Ov1L/TzQO/07e707/PtQjPzPyzz8PPw9/v69vr67/nyTvo9+Pf6OPn67fr1+vn2+Pr3+fbz+voz+vn3+TH7+/n2+/ks9/j69/n59vj5MVJA9fny+PX59vn4N/lE+fj2+Pj3+ff1+vfw+Pj39/H6+/n2+vgx8/j4+fX2+e32+fP5+fb5+fk99vjz+e329vL4+PP4Ofn5Sfb69Pb59Pn2SkD4SPD59/j39/n69/n6Mfby9/n0Sff59ff6Ovn2+vj1OPj2+ff2+vr0+PhG+PD6+vk8+vnw9/b4Qfv67vv79/n1+fr5+fP6+U75+Pv6+/nw+Po9+zTz+vv2+vv59ff6+vv5+vr4+kD7+fv7+vv79Pn5+/r6TPr7+Pn79/v5/Pr5O/r6+/r6+/v5+vpJ+vb7+/tA+/v6+vj6+f38+fz9NPtD+P30+/f8+vv9Ovz7/fz4+vz5/fn3/fzz/P36/PX9/fz6/fw0+/v8+Pz8+Pz78PvzVvtE+/f79fr8Qvz5+/z2+vz3/PdL+/zy/Pv6+/L8/Pv5/Pru+vr8/Pz8+/z8+VX7+/z59vv8+vz7+fz5/fv78Pv8+/z7/Pv4+vxe+j/9/fz2/Pz6+vv8SP398v39+/34/Pz7/fj9/Pb9+/39/fz2/P1G/T74/f36/f39/Pv9/P38/f37/Pb9S/r6Svz6+/r4+/r7/Pf7+/n6+/r79/n5+/r1+/L5+3r7+vr8+vn5+/z7/Pv7+vn7/P7++/3+OP31+v73/Pv9+/3+Pv38/f37/P38/vz7/v32/f78/ff+/v37/v04/Pz9/fj2/Plc/fn8/fb8/Pz6/P34/Fr69/j8/Pj8+fz8+Pj9Uff8+vz2+Pn8+fn8+fz4/ff2/Pr1/fr8+/j8/Pz6+/z5/Pn39vn8/Pn8+/z8+/n8+vf8+P1z+vr8+/n9MvxY+vz7+/v8/Pr8/Pv9/PtZ/Fz5/Pv8/Pj7/Pr49fn7+Pz8+/v8RPv79/f89/r8+fL8/PNb/PlZ/Pr9/Vr8/Pz6/P35/Pf49Pr8/Pb8+/z8+vf99vb8+fz1+/r8+vn8+Pz1/Pz8/Pv8+vv7+Pz5/Pz8Qf39+vxH/Pz8/Pz9/P37/fz4/Pv8/D/8/fz7/fv5+fz8/f39/P39+Pz5+P32/fz9+/39+P37/fz8/f39/fz8/v1D/fz9+/f9/v38/f06Of37/fv7/Uj7/vv9/Pv9/Pz3+v37/fj5+/v9/Pr99P399fv9+/v9+/3791v89T39+/37/f39/f7++/z9/f388v39/Pz+/P78/v38Rv39/v39/f78/f1X/fv+/v71/f79/fz9+vr5+vz7/Pv6/Pv9/Vf9/fz8/fr8ffz2/fz7/fz7/fj8+/r9/Pz7/Pz9/Pv8+/z6/v39/v79/vz+/v3+/v78/vz8/v78/fv+/vz+/f7+/v7+/P3+SP79/f39/f3+OP37/f/+/f7++f76+f73/v3//P7++f79/v79/v7+/v39//5E/v7+/vj///79/v48/f3+/vz8/kz9/v3+/v3+/v78/P79/vv7/f3+/vz++/7+/Pz+/fz+/f78/Pj++0H+/f78/vz8/kz9/v3+/v3+/v78/P79/vv7/f3+/vz++/7+/Pz+/fz+/f78/Pj++0H+/f78+f7++/3+/fz9/f79/Pz9/Vf8/f7+/v37/P33/fb7/v78/f38+fz9/v79/f39/Ur++/7+/P7+/P38+/76/fz+/PX9/P79/v37/f77/vn8/v5I/v79/Pn+/v79/v74/VT+/f39/f7++/z9/f388v39/Pz+/P78/v38Rv39/v39/f78/f1X/fv+/v71/f79/fz9TP7+Tf7+/P36/f79/vn+/fv+/P7+/v36/f32/vT7/v38/v7+/fz+/f79/v79/fv++/39/P39/fz9/v3+/fz7/V77/f39/fv8/fz6/fr8/v39/P39R/39/f39/f39+/P9/vz8/kz9/v3+/v3+/v78/P79/vv7/f3+/vz++/7+/Pz+/fz+/f78/Pj++0H+/f78/vz8/kz9/v3+/v3+/v78/P79/vv7/f3+/vz++/7+/Pz+/fz+/f78/Pj++0H+/f78/v39/v79/vz+/v3+/v78/vz8/v78/fv+/vz+/f7+/v7+/P3+SP79/f39/f3+OP37////////Rf/8///+//7//v//9//////+/v/+//7+///+///+//3////+///8////////////Rf/8///+//7//v//9//////+/v/+//7+///+///+//3////+///8/////v///v///v/++v9T//7//v///P/+///+///+//79///7//////z////////5//7//f///v///P9O///9//z///7//P/////9/v/9//38///9//////7////////9/////f///v///P9O///9//z///7//P/////9/v/9//38///9//////7////////9/////////v///f/+/v/9/////v///f/+///+/v/////+///7///+/0T////+///9/////////v///f/+/v/9/////v///f/+///+/v/////+///7///+/0T////+///9////Vv//+P///v/9/v////3///3//v/////9///5//j+///+//////7////////+//3/Vv//+P///v/9/v////3///3//v/////9///5//j+///+//////7////////+//3//f///P///v77/v///vj+/v3+/v////9a/v/8//z7///9//////7////////+//3//f///P///v77/v///vj+/v3+/v////9a/v/8//z7///9//////7////////+//3//P///P///f77/v/+/1n///7//v////74///9//38///+/v///v7////+///+/v7//P///P///f77/v/+/1n///7//v////74///9//38///+/v///v7////+///+/v7/+f///f///v/9//7+//3///z//v/////8//9X//b9///+//////7////+///+//3/+f///f///v/9//7+//3///z//v/////8//9X//b9///+//////7////+///+//3//////v///P/9/f/8/////v//+//////////////////7//////3///////9C/////////v///f/+/P/7//7//v///v/////+//////7+//9J//////v////////6////+f///f///v/9//////7///3//v/////9///2/1D9///+//////7///////////z/+f///f///v/9//////7///3//v/////9///2/1D9///+//////7///////////z//////v//+P/8/v/9//7//v8AS//////+///+///+///9//////3////+///6/////////v//+P/8/v/9//7//v8AS//////+///+///+///9//////3////+///6/////f///f///f/8/v/8/vz//v7//f/////8///8//1U///+//////7///////7+//7/9v//Vf///v/9/v/+//z//v7//v////79///9//39//7+/////v3////////+//7/9v//Vf///v/9/v/+//z//v7//v////79///9//39//7+/////v3////////+//7//f///f///f/8/v/8/vz//v7//f/////8///8//1U///+//////7///////7+//7//f///f///f/8/v/8/vz//v7//f/////8///8//1U///+//////7///////7+//7//f///f///f/8/v/8/vz//v7//f/////8///8//1U///+//////7///////7+//7///39//79//3+/vz//v7+/v/+//z8/f7+/v7//v7//v3//mX+/v79/v7+//7//f78//39//79//3+/vz//v7+/v/+//z8/f7+/v7//v7//v3//mX+/v79/v7+//7//f78//////7//P7+////+v///v///v/+//7+/P/+//7////+/v/7/v3///9S/////v7///////7//P7+////+v///v///v/+//7+/P/+//7////+/v/7/v3///9S/////v7///////7//P7+////+v///v///v/+//7+/P/+//7////+/v/7/v3///9S/////v7//f///P///v77/v///vj+/v3+/v////9a/v/8//z7///9//////7////////+//3//f///P///v77/v///vj+/v3+/v////9a/v/8//z7///9//////7////////+//3////////+//7///7////////////9//7///////////////7//f//////////PP/8///////+//7///7////////////9//7///////////////7//f//////////PP/8////////Rf/8///+//7//v//9//////+/v/+//7+///+///+//3////+///8////////////Rf/8///+//7//v//9//////+/v/+//7+///+///+//3////+///8/////////v///P/9/f/8/////v//+//////////////////7//////3///////9C/////////v///P/9/f/8/////v//+//////////////////7//////3///////9C/////////v///P/9/f/8/////v//+//////////////////7//////3///////9C/////v/////+/f/9YP/4//7/+//+/f/+///+/v/+//39/v77//7+/vz////+//78/v///v/////+/f/9YP/4//7/+//+/f/+///+/v/+//39/v77//7+/vz////+//78/v////z8//5k//7///r//v/+///+//z9/P3///3//v7//v3//Pz//v/8/v7+/v7//f/8//z8//5k//7///r//v/+///+//z9/P3///3//v7//v3//Pz//v/8/v7+/v7//f/8//z8//5k//7///r//v/+///+//z9/P3///3//v7//v3//Pz//v/8/v7+/v7//f/8/v7//v///f7+/v//YP///v7+/f/+///++f/+/v7+/////v74/v7//v74//7+/v7+//////7//P7+////+v///v///v/+//7+/P/+//7////+/v/7/v3///9S/////v7///////7//P7+////+v///v///v/+//7+/P/+//7////+/v/7/v3///9S/////v7////////+//7///7////////////9//7///////////////7//f//////////PP/8///////+//7///7////////////9//7///////////////7//f//////////PP/8///////+//7///7////////////9//7///////////////7//f//////////PP/8//7+/v7+/ln///7//v/+/v/9/v79/v3//v3//f///v3//f7+/f7//v7+/v7+/f7+//7+/v7+/ln///7//v/+/v/9/v79/v3//v3//f///v3//f7+/f7//v7+/v7+/f7+//7+/v7+/ln///7//v/+/v/9/v79/v3//v3//f///v3//f7+/f7//v7+/v7+/f7+/////////f7////++f7//v7//v/+///+U//+///////+///1//7////7//////7//////////f7////++f7//v7//v/+///+U//+///////+///1//7////7//////7//////////f7////++f7//v7//v/+///+U//+///////+///1//7////7//////7//f///v///P9O///9//z///7//P/////9/v/9//38///9//////7////////9/////f///v///P9O///9//z///7//P/////9/v/9//38///9//////7////////9/////f///v///P9O///9//z///7//P/////9/v/9//38///9//////7////////9/////v/////+/f/9YP/4//7/+//+/f/+///+/v/+//39/v77//7+/vz////+//78/v///v/////+/f/9YP/4//7/+//+/f/+///+/v/+//39/v77//7+/vz////+//78/v///v/////+/f/9YP/4//7/+//+/f/+///+/v/+//39/v77//7+/vz////+//78/v////z5//36//7//2b////9///+/v79/P7+//3//////v3//fz//f/8/v7//v7//f79//z5//36//7//2b////9///+/v79/P7+//3//////v3//fz//f/8/v7//v7//f79//z5//36//7//2b////9///+/v79/P7+//3//////v3//fz//f/8/v7//v7//f79//tm//36//7///n+///+/v/9/v79/P7///z//v///v3//v3//v79/v7+/v7//v/8//tm//36//7///n+///+/v/9/v79/P7///z//v///v3//v3//v79/v7+/v7//v/8/v///v///v/++v9T//7//v///P/+///+///+//79///7//////z////////5//7//v7//v///f7+/v//YP///v7+/f/+///++f/+/v7+/////v74/v7//v74//7+/v7+/vv6/v38/vz+/vz//v/+/v/9//v9fv3+/v3+/v///vn+/fv+/f78/f3+/fz+/f77/v///////f7+///++f7+/v7//v/+//7+8/7+//7+/v/+/v5i/v3////6/v/+//7+/v///////f7+///++f7+/v7//v/+//7+8/7+//7+/v/+/v5i/v3////6/v/+//7+//7+/v7+/ln///7//v/+/v/9/v79/v3//v3//f///v3//f7+/f7//v7+/v7+/f7+//7+/v7+/ln///7//v/+/v/9/v79/v3//v3//f///v3//f7+/f7//v7+/v7+/f7+/////v///f/+/v/9/////v///f/+///+/v/////+///7///+/0T////+///9/////////v///f/+/v/9/////v///f/+///+/v/////+///7///+/0T////+///9//////7+//3///7///7///9e//7+//7///3///7/+f//+////v7//f//+vr/+v7//v////7+//3///7///7///9e//7+//7///3///7/+f//+////v7//f//+vr/+v7//v////7+//3///7///7///9e//7+//7///3///7/+f//+////v7//f//+vr/+v7//v///f///P///v77/v///vj+/v3+/v////9a/v/8//z7///9//////7////////+//3///7+/1/+//7///7////+/v/+//3+/v////7//f///v7//v7+///+/vz//uz//v/+//7+/1/+//7///7////+/v/+//3+/v////7//f///v7//v7+///+/vz//uz//v/+//7+/1/+//7///7////+/v/+//3+/v////7//f///v7//v7+///+/vz//uz//v/+//38/v39//3//v3///79/v76//7+/f3+/2v//f/+/v3//P7//P/9/f3+/f3//f/9//38/v39//3//v3///79/v76//7+/f3+/2v//f/+/v3//P7//P/9/f3+/f3//f/9//////7//P7+////+v///v///v/+//7+/P/+//7////+/v/7/v3///9S/////v7///////7//P7+////+v///v///v/+//7+/P/+//7////+/v/7/v3///9S/////v7///////7//v/+/P/+///+Rv///v/+//7//////v/+///+//////3///7+//7+/v7///////7//v/+/P/+///+Rv///v/+//7//////v/+///+//////3///7+//7+/v7///////7//v/+/P/+///+Rv///v/+//7//////v/+///+//////3///7+//7+/v7///39/f78/v3+/vz+/v/9/v79//z9+fz//vz+/f7+/Xz+/Pz+/f77/f7+/f3+/f79//z8//5k//7///r//v/+///+//z9/P3///3//v7//v3//Pz//v/8/v7+/v7//f/8//z8//5k//7///r//v/+///+//z9/P3///3//v7//v3//Pz//v/8/v7+/v7//f/8//7+/v7+/ln///7//v/+/v/9/v79/v3//v3//f///v3//f7+/f7//v7+/v7+/f7+//7+/v7+/ln///7//v/+/v/9/v79/v3//v3//f///v3//f7+/f7//v7+/v7+/f7+//z5//36//7//2b////9///+/v79/P7+//3//////v3//fz//f/8/v7//v7//f79//z5//36//7//2b////9///+/v79/P7+//3//////v3//fz//f/8/v7//v7//f79/vv6/v38/vz+/vz//v/+/v/9//v9fv3+/v3+/v///vn+/fv+/f78/f3+/fz+/f77/vv6/v38/vz+/vz//v/+/v/9//v9fv3+/v3+/v///vn+/fv+/f78/f3+/fz+/f77//7+//3///7///7///9e//7+//7///3///7/+f//+////v7//f//+vr/+v7//v////7+//3///7///7///9e//7+//7///3///7/+f//+////v7//f//+vr/+v7//v////7+/1/+//7///7////+/v/+//3+/v////7//f///v7//v7+///+/vz//uz//v/+//7+/1/+//7///7////+/v/+//3+/v////7//f///v7//v7+///+/vz//uz//v/+//7+//3+/vz///3//v79/v9n//7+/Pz///r+/f7//v3/+/7//f/+/P7+/f7//v79//7+//3+/vz///3//v79/v9n//7+/Pz///r+/f7//v3/+/7//f/+/P7+/f7//v79//79/v38//7///7////+/v/+/2H+/f7///3//f///P3//f3+/v/8/P3//f3+/v/+//79/v38//7///7////+/v/+/2H+/f7///3//f///P3//f3+/v/8/P3//f3+/v/+//7+//7+//7//v7+/////v////5M/v7///7///////7+/v3//v7+//7+//7+/P/+//7+//7+//7//v7+/////v////5M/v7///7///////7+/v3//v7+//7+//7+/P/+//79//78//3+//3///7+///8//7//v3///7+/v///v3/WP7//f/+/f7//v7//v/+//79//78//3+//3///7+///8//7//v3///7+/v///v3/WP7//f/+/f7//v7//v/+//7//v7///7///7////+//7+//7+/k7+/v7//v///f7//P7//P/+/v7//v7//v7+//7//v7///7///7////+//7+//7+/k7+/v7//v///f7//P7//P/+/v7//v7//v7+//7///7///7////////4/v/+//3+//7///7/Yv//+f///v/////++vr/9f7///////7///7///7////////4/v/+//3+//7///7/Yv//+f///v/////++vr/9f7///////7+//3+//7///7//v/6//7+//z+/v3+//7/+P//eP7//v7////+9fj/8P3//v/+//7+//3+//7///7//v/6//7+//z+/v3+//7/+P//eP7//v7////+9fj/8P3//v/+//39/f78/v3+/vz+/v/9/v79//z9+fz//vz+/f7+/Xz+/Pz+/f77/f7+/f3+/f79//39/f78/v3+/vz+/v/9/v79//z9+fz//vz+/f7+/Xz+/Pz+/f77/f7+/f3+/f79//39//79//3+/vz//v7+/v/+//z8/f7+/v7//v7//v3//mX+/v79/v7+//7//f78//39//79//3+/vz//v7+/v/+//z8/f7+/v7//v7//v3//mX+/v79/v7+//7//f78/vv8//37//7+/v3+/v79/v79/vz9+/3+/v3//v7+/vz//fz+/v9//f3+/v3//P70/vv8//37//7+/v3+/v79/v79/vz9+/3+/v3//v7+/vz//fz+/v9//f3+/v3//P70//38/v39//3//v3///79/v76//7+/f3+/2v//f/+/v3//P7//P/9/f3+/f3//f/9//38/v39//3//v3///79/v76//7+/f3+/2v//f/+/v3//P7//P/9/f3+/f3//f/9/nv5/v38/v7+/vv+/v7+//79/vz8+/3+//z//v///f3+/f3+/f77/f3+/f3+/f78/nv5/v38/v7+/vv+/v7+//79/vz8+/3+//z//v///f3+/f3+/f77/f3+/f3+/f78//7+//3+//7///7+///4//7+//3+/v7+//3/+f//9P7//v///v/+c/n+9v3///////7+//3+//7///7+///4//7+//3+/v7+//3/+f//9P7//v///v/+c/n+9v3///////7///z+//7//v7////6/v/+//3+/v7///7/+P//+P7//v///v/++2P/+vz//v/+//7///z+//7//v7////6/v/+//3+/v7///7/+P//+P7//v///v/++2P/+vz//v/+//7+//3+//7////////6/v/9//3+/v7///7+9P//8f7//v7//v/+9Pn/eP7///////7+//3+//7////////6/v/9//3+/v7///7+9P//8f7//v7//v/+9Pn/eP7///////7+/+7+//7////////+/v/+//79//7///7//v///v7//v7//v/+/vz//lX////+//7+/+7+//7////////+/v/+//79//7///7//v///v7//v7//v/+/vz//lX////+//tm//36//7///n+///+/v/9/v79/P7///z//v///v3//v3//v79/v7+/v7//v/8//tm//36//7///n+///+/v/9/v79/P7///z//v///v3//v3//v79/v7+/v7//v/8//7+//////7///7///79//3+///+/v3///3//v///////v//TP/+/v7///7//P7+///////+//7///7////////////9//7///////////////7//f//////////PP/8//37//78//7///3///7+/v79//79/P7///3//v///v7//v3//v/2/v7//v3/+v9n//37//78//7///3///7+/v79//79/P7///3//v///v7//v3//v/2/v7//v3/+v9n/P///v7//v7+/////v7+/mH+/v////7+/v77/vv9///+///+/P7//////v7+//X///7+//3+/vz///3//v79/v9n//7+/Pz///r+/f7//v3/+/7//f/+/P7+/f7//v79//7+//3+/vz///3//v79/v9n//7+/Pz///r+/f7//v3/+/7//f/+/P7+/f7//v79//7+//3+/vz///3//v79/v9n//7+/Pz///r+/f7//v3/+/7//f/+/P7+/f7//v79//7+//7+//7//v7+/////v////5M/v7///7///////7+/v3//v7+//7+//7+/P/+//7+//3+/vz///3//v79/v9n//7+/Pz///r+/f7//v3/+/7//f/+/P7+/f7//v79/v/////+/f/9YP/4//7/+//+/f/+///+/v/+//39/v77//7+/vz////+//78/v///v/////+/f/9YP/4//7/+//+/f/+///+/v/+//39/v77//7+/vz////+//78/v////////7//v/+/P/+///+Rv///v/+//7//////v/+///+//////3///7+//7+/v7///////7//v/+/P/+///+Rv///v/+//7//////v/+///+//////3///7+//7+/v7//v///v///v/++v9T//7//v///P/+///+///+//79///7//////z////////5//7//v///v///v/++v9T//7//v///P/+///+///+//79///7//////z////////5//7//////v///f/+/v/9/////v///f/+///+/v/////+///7///+/0T////+///9/////////v///f/+/v/9/////v///f/+///+/v/////+///7///+/0T////+///9/////////v///P/9/f/8/////v//+//////////////////7//////3///////9C/////////v///f/+/P/7//7//v///v/////+//////7+//9J//////v////////6////////////Rf/8///+//7//v//9//////+/v/+//7+///+///+//3////+///8/////f///v///P9O///9//z///7//P/////9/v/9//38///9//////7////////9/////////v///P/9/f/8/////v//+//////////////////7//////3///////9C/////////v//+P/8/v/9//7//v8AS//////+///+///+///9//////3////+///6//////7+/v7+/ln///7//v/+/v/9/v79/v3//v3//f///v3//f7+/f7//v7+/v7+/f7+//7+//7+//7//v7+/////v////5M/v7///7///////7+/v3//v7+//7+//7+/P/+//7+//7+//7//v7+/////v////5M/v7///7///////7+/v3//v7+//7+//7+/P/+//79/v38//7///7////+/v/+/2H+/f7///3//f///P3//f3+/v/8/P3//f3+/v/+//79/v38//7///7////+/v/+/2H+/f7///3//f///P3//f3+/v/8/P3//f3+/v/+//79/v38//7///7////+/v/+/2H+/f7///3//f///P3//f3+/v/8/P3//f3+/v/+/f///v///P9O///9//z///7//P/////9/v/9//38///9//////7////////9/////f///v///P9O///9//z///7//P/////9/v/9//38///9//////7////////9/////////v///f/+/v/9/////v///f/+///+/v/////+///7///+/0T////+///9/////////v///f/+/v/9/////v///f/+///+/v/////+///7///+/0T////+///9////Vv//+P///v/9/v////3///3//v/////9///5//j+///+//////7////////+//3/Vv//+P///v/9/v////3///3//v/////9///5//j+///+//////7////////+//3/Vv//+P///v/9/v////3///3//v/////9///5//j+///+//////7////////+//3///7///7///7////////4/v/+//3+//7///7/Yv//+f///v/////++vr/9f7///////7///7///7////////4/v/+//3+//7///7/Yv//+f///v/////++vr/9f7///////7///7///7////////4/v/+//3+//7///7/Yv//+f///v/////++vr/9f7///////7+//7+//7//v7+/////v////5M/v7///7///////7+/v3//v7+//7+//7+/P/+//7+//7+//7//v7+/////v////5M/v7///7///////7+/v3//v7+//7+//7+/P/+//7+//7+//7//v7+/////v////5M/v7///7///////7+/v3//v7+//7+//7+/P/+//79//78//3+//3///7+///8//7//v3///7+/v///v3/WP7//f/+/f7//v7//v/+//79//78//3+//3///7+///8//7//v3///7+/v///v3/WP7//f/+/f7//v7//v/+//79//78//3+//3///7+///8//7//v3///7+/v///v3/WP7//f/+/f7//v7//v/+//7+/+7+//7////////+/v/+//79//7///7//v///v7//v7//v/+/vz//lX////+//7+/+7+//7////////+/v/+//79//7///7//v///v7//v7//v/+/vz//lX////+//7+/+7+//7////////+/v/+//79//7///7//v///v7//v7//v/+/vz//lX////+9v//Vf///v/9/v/+//z//v7//v////79///9//39//7+/////v3////////+//7/9v//Vf///v/9/v/+//z//v7//v////79///9//39//7+/////v3////////+//7/9v//Vf///v/9/v/+//z//v7//v////79///9//39//7+/////v3////////+//7///79/v38//7///7////+/v/+/2H+/f7///3//f///P3//f3+/v/8/P3//f3+/v/+//////7//v/+/P/+///+Rv///v/+//7//////v/+///+//////3///7+//7+/v7//vv6/v38/vz+/vz//v/+/v/9//v9fv3+/v3+/v///vn+/fv+/f78/f3+/fz+/f77//7//v7///7///7////+//7+//7+/k7+/v7//v///f7//P7//P/+/v7//v7//v7+//7//v7///7///7////+//7+//7+/k7+/v7//v///f7//P7//P/+/v7//v7//v7+//7//v7///7///7////+//7+//7+/k7+/v7//v///f7//P7//P/+/v7//v7//v7+/f///P///v77/v///vj+/v3+/v////9a/v/8//z7///9//////7////////+//3//f///P///v77/v///vj+/v3+/v////9a/v/8//z7///9//////7////////+//3//f///P///v77/v///vj+/v3+/v////9a/v/8//z7///9//////7////////+//3//////////f7////++f7//v7//v/+///+U//+///////+///1//7////7//////7//////////f7////++f7//v7//v/+///+U//+///////+///1//7////7//////7//////////f7////++f7//v7//v/+///+U//+///////+///1//7////7//////7//P///P///f77/v/+/1n///7//v////74///9//38///+/v///v7////+///+/v7//P///P///f77/v/+/1n///7//v////74///9//38///+/v///v7////+///+/v7/Vv//+P///v/9/v////3///3//v/////9///5//j+///+//////7////////+//3/+f///f///v/9//7+//3///z//v/////8//9X//b9///+//////7////+///+//3/+f///f///v/9//////7///3//v/////9///2/1D9///+//////7///////////z//P///v7//v7+/////v7+/mH+/v////7+/v77/vv9///+///+/P7//////v7+//X//f///v///v7//////v7//vb+//////79/v/9//v+///+///+/f7////+///+/1X///////7//v/+/P/+///+Rv///v/+//7//////v/+///+//////3///7+//7+/v7///////7//v/+/P/+///+Rv///v/+//7//////v/+///+//////3///7+//7+/v7///////7//v/+/P/+///+Rv///v/+//7//////v/+///+//////3///7+//7+/v7/+f///f///v/9//////7///3//v/////9///2/1D9///+//////7///////////z/+f///f///v/9//////7///3//v/////9///2/1D9///+//////7///////////z//v///v///v/++v9T//7//v///P/+///+///+//79///7//////z////////5//7//v///v///v/++v9T//7//v///P/+///+///+//79///7//////z////////5//7//v///v///v/++v9T//7//v///P/+///+///+//79///7//////z////////5//7///38/v39//3//v3///79/v76//7+/f3+/2v//f/+/v3//P7//P/9/f3+/f3//f/9+f///f///v/9//7+//3///z//v/////8//9X//b9///+//////7////+///+//3/+f///f///v/9//7+//3///z//v/////8//9X//b9///+//////7////+///+//3/+f///f///v/9//7+//3///z//v/////8//9X//b9///+//////7////+///+//3///7///7///7////////4/v/+//3+//7///7/Yv//+f///v/////++vr/9f7///////7///7///7////////4/v/+//3+//7///7/Yv//+f///v/////++vr/9f7///////7///7///7////////4/v/+//3+//7///7/Yv//+f///v/////++vr/9f7//////f///v///P9O///9//z///7//P/////9/v/9//38///9//////7////////9//////7+//////7///7///79//3+///+/v3///3//v///////v//TP/+/v7///7//P7+//7+//////7///7///79//3+///+/v3///3//v///////v//TP/+/v7///7//P7++f///f///v/9//////7///3//v/////9///2/1D9///+//////7///////////z//////v///f/+/P/7//7//v///v/////+//////7+//9J//////v////////6/////////v///f/+/P/7//7//v///v/////+//////7+//9J//////v////////6/////f///v///v7//////v7//vb+//////79/v/9//v+///+///+/f7////+///+/1X/+f///f///v/9//////7///3//v/////9///2/1D9///+//////7///////////z/+f///f///v/9//////7///3//v/////9///2/1D9///+//////7///////////z/+f///f///v/9//////7///3//v/////9///2/1D9///+//////7///////////z/////////Rf/8///+//7//v//9//////+/v/+//7+///+///+//3////+///8////////////Rf/8///+//7//v//9//////+/v/+//7+///+///+//3////+///8////////////Rf/8///+//7//v//9//////+/v/+//7+///+///+//3////+///8/////////v///P/9/f/8/////v//+//////////////////7//////3///////9C/////////v///P/9/f/8/////v//+//////////////////7//////3///////9C/////////v///P/9/f/8/////v//+//////////////////7//////3///////9C/////f///f///f/8/v/8/vz//v7//f/////8///8//1U///+//////7///////7+//7//f///f///f/8/v/8/vz//v7//f/////8///8//1U///+//////7///////7+//7//////v//+P/8/v/9//7//v8AS//////+///+///+///9//////3////+///6/////////v//+P/8/v/9//7//v8AS//////+///+///+///9//////3////+///6/////v///v///v/++v9T//7//v///P/+///+///+//79///7//////z////////5//7//v///v///v/++v9T//7//v///P/+///+///+//79///7//////z////////5//7///7+//3+//7///7//v/6//7+//z+/v3+//7/+P//eP7//v7////+9fj/8P3//v/+//7+//3+//7///7//v/6//7+//z+/v3+//7/+P//eP7//v7////+9fj/8P3//v/+//7+//3+//7///7//v/6//7+//z+/v3+//7/+P//eP7//v7////+9fj/8P3//v/+//////7//v/+/P/+///+Rv///v/+//7//////v/+///+//////3///7+//7+/v7///////7//v/+/P/+///+Rv///v/+//7//////v/+///+//////3///7+//7+/v7///////7//v/+/P/+///+Rv///v/+//7//////v/+///+//////3///7+//7+/v7/+f///f///v/9//7+//3///z//v/////8//9X//b9///+//////7////+///+//3///39//79//3+/vz//v7+/v/+//z8/f7+/v7//v7//v3//mX+/v79/v7+//7//f78//39/f78/v3+/vz+/v/9/v79//z9+fz//vz+/f7+/Xz+/Pz+/f77/f7+/f3+/f79/////v///f/+/P/7//7//v///v/////+//////7+//9J//////v////////6//////////7//P7+////+v///v///v/+//7+/P/+//7////+/v/7/v3///9S/////v7///////7//P7+////+v///v///v/+//7+/P/+//7////+/v/7/v3///9S/////v7//v///////f7+///++f7+/v7//v/+//7+8/7+//7+/v/+/v5i/v3////6/v/+//7+/v///////f7+///++f7+/v7//v/+//7+8/7+//7+/v/+/v5i/v3////6/v/+//7+/////////f7////++f7//v7//v/+///+U//+///////+///1//7////7//////7//////////f7////++f7//v7//v/+///+U//+///////+///1//7////7//////7//////v//+P/8/v/9//7//v8AS//////+///+///+///9//////3////+///6/////////v//+P/8/v/9//7//v8AS//////+///+///+///9//////3////+///6/////v7//v///f7+/v//YP///v7+/f/+///++f/+/v7+/////v74/v7//v74//7+/v7+/v7//v///f7+/v//YP///v7+/f/+///++f/+/v7+/////v74/v7//v74//7+/v7+////////Rf/8///+//7//v//9//////+/v/+//7+///+///+//3////+///8////////////Rf/8///+//7//v//9//////+/v/+//7+///+///+//3////+///8//////z8//5k//7///r//v/+///+//z9/P3///3//v7//v3//Pz//v/8/v7+/v7//f/8//79//78//3+//3///7+///8//7//v3///7+/v///v3/WP7//f/+/f7//v7//v/+//39//79//3+/vz//v7+/v/+//z8/f7+/v7//v7//v3//mX+/v79/v7+//7//f78//39//79//3+/vz//v7+/v/+//z8/f7+/v7//v7//v3//mX+/v79/v7+//7//f78//39//79//3+/vz//v7+/v/+//z8/f7+/v7//v7//v3//mX+/v79/v7+//7//f78///////+//7///7////////////9//7///////////////7//f//////////PP/8///////+//7///7////////////9//7///////////////7//f//////////PP/8//37//78//7///3///7+/v79//79/P7///3//v///v7//v3//v/2/v7//v3/+v9n/vv8//37//7+/v3+/v79/v79/vz9+/3+/v3//v7+/vz//fz+/v9//f3+/v3//P70/P///v7//v7+/////v7+/mH+/v////7+/v77/vv9///+///+/P7//////v7+//X///7+//3///7///7///9e//7+//7///3///7/+f//+////v7//f//+vr/+v7//v////7+//3///7///7///9e//7+//7///3///7/+f//+////v7//f//+vr/+v7//v////7+//////7///7///79//3+///+/v3///3//v///////v//TP/+/v7///7//P7+//7+//////7///7///79//3+///+/v3///3//v///////v//TP/+/v7///7//P7+//7+//////7///7///79//3+///+/v3///3//v///////v//TP/+/v7///7//P7+/f///P///v77/v///vj+/v3+/v////9a/v/8//z7///9//////7////////+//3//f///P///v77/v///vj+/v3+/v////9a/v/8//z7///9//////7////////+//3//f///v///P9O///9//z///7//P/////9/v/9//38///9//////7////////9/////f///v///P9O///9//z///7//P/////9/v/9//38///9//////7////////9//////38/v39//3//v3///79/v76//7+/f3+/2v//f/+/v3//P7//P/9/f3+/f3//f/9//38/v39//3//v3///79/v76//7+/f3+/2v//f/+/v3//P7//P/9/f3+/f3//f/9//7+//3+/vz///3//v79/v9n//7+/Pz///r+/f7//v3/+/7//f/+/P7+/f7//v79+f///f///v/9//////7///3//v/////9///2/1D9///+//////7///////////z/+f///f///v/9//////7///3//v/////9///2/1D9///+//////7///////////z//f///f///f/8/v/8/vz//v7//f/////8///8//1U///+//////7///////7+//7//f///f///f/8/v/8/vz//v7//f/////8///8//1U///+//////7///////7+//7/+f///f///v/9//7+//3///z//v/////8//9X//b9///+//////7////+///+//3///79//78//3+//3///7+///8//7//v3///7+/v///v3/WP7//f/+/f7//v7//v/+//79//78//3+//3///7+///8//7//v3///7+/v///v3/WP7//f/+/f7//v7//v/+/P///v7//v7+/////v7+/mH+/v////7+/v77/vv9///+///+/P7//////v7+//X///7+//////7///7///79//3+///+/v3///3//v///////v//TP/+/v7///7//P7+/f///v///v7//////v7//vb+//////79/v/9//v+///+///+/f7////+///+/1X//f///v///v7//////v7//vb+//////79/v/9//v+///+///+/f7////+///+/1X///7//v7///7///7////+//7+//7+/k7+/v7//v///f7//P7//P/+/v7//v7//v7+//7//v7///7///7////+//7+//7+/k7+/v7//v///f7//P7//P/+/v7//v7//v7+/P///P///f77/v/+/1n///7//v////74///9//38///+/v///v7////+///+/v7//P///P///f77/v/+/1n///7//v////74///9//38///+/v///v7////+///+/v7///37//78//7///3///7+/v79//79/P7///3//v///v7//v3//v/2/v7//v3/+v9n//7//v7///7///7////+//7+//7+/k7+/v7//v///f7//P7//P/+/v7//v7//v7+//7//v7///7///7////+//7+//7+/k7+/v7//v///f7//P7//P/+/v7//v7//v7+/////v///f/+/v/9/////v///f/+///+/v/////+///7///+/0T////+///9/////////v///f/+/v/9/////v///f/+///+/v/////+///7///+/0T////+///9/////////v///f/+/v/9/////v///f/+///+/v/////+///7///+/0T////+///9//////z5//36//7//2b////9///+/v79/P7+//3//////v3//fz//f/8/v7//v7//f79//z5//36//7//2b////9///+/v79/P7+//3//////v3//fz//f/8/v7//v7//f79/vv8//37//7+/v3+/v79/v79/vz9+/3+/v3//v7+/vz//fz+/v9//f3+/v3//P70/////v///f/+/P/7//7//v///v/////+//////7+//9J//////v////////6/////////v///f/+/P/7//7//v///v/////+//////7+//9J//////v////////6/////////v///f/+/P/7//7//v///v/////+//////7+//9J//////v////////6/////nv5/v38/v7+/vv+/v7+//79/vz8+/3+//z//v///f3+/f3+/f77/f3+/f3+/f78/nv5/v38/v7+/vv+/v7+//79/vz8+/3+//z//v///f3+/f3+/f77/f3+/f3+/f78//7+//3+//7///7+///4//7+//3+/v7+//3/+f//9P7//v///v/+c/n+9v3///////7+//3+//7///7+///4//7+//3+/v7+//3/+f//9P7//v///v/+c/n+9v3///////7+//3+//7///7+///4//7+//3+/v7+//3/+f//9P7//v///v/+c/n+9v3///////7///z+//7//v7////6/v/+//3+/v7///7/+P//+P7//v///v/++2P/+vz//v/+//7///z+//7//v7////6/v/+//3+/v7///7/+P//+P7//v///v/++2P/+vz//v/+//7///z+//7//v7////6/v/+//3+/v7///7/+P//+P7//v///v/++2P/+vz//v/+//////7//P7+////+v///v///v/+//7+/P/+//7////+/v/7/v3///9S/////v7//////v//+P/8/v/9//7//v8AS//////+///+///+///9//////3////+///6/////////v//+P/8/v/9//7//v8AS//////+///+///+///9//////3////+///6//////7+//3+//7////////6/v/9//3+/v7///7+9P//8f7//v7//v/+9Pn/eP7///////7+//3+//7////////6/v/9//3+/v7///7+9P//8f7//v7//v/+9Pn/eP7///////7+//3+//7////////6/v/9//3+/v7///7+9P//8f7//v7//v/+9Pn/eP7///////7+//7+//7//v7+/////v////5M/v7///7///////7+/v3//v7+//7+//7+/P/+//7+/+7+//7////////+/v/+//79//7///7//v///v7//v7//v/+/vz//lX////+//7+/+7+//7////////+/v/+//79//7///7//v///v7//v7//v/+/vz//lX////+//7+/+7+//7////////+/v/+//79//7///7//v///v7//v7//v/+/vz//lX////+/////v///P/9/f/8/////v//+//////////////////7//////3///////9C/////////v///P/9/f/8/////v//+//////////////////7//////3///////9C/////////v///f/+/P/7//7//v///v/////+//////7+//9J//////v////////6/////////v///f/+/P/7//7//v///v/////+//////7+//9J//////v////////6///////////+//7///7////////////9//7///////////////7//f//////////PP/8///////+//7///7////////////9//7///////////////7//f//////////PP/8/////v///f/+/v/9/////v///f/+///+/v/////+///7///+/0T////+///9/////////v///f/+/v/9/////v///f/+///+/v/////+///7///+/0T////+///9/////////v///f/+/v/9/////v///f/+///+/v/////+///7///+/0T////+///9/////f///v///v7//////v7//vb+//////79/v/9//v+///+///+/f7////+///+/1X//f///v///v7//////v7//vb+//////79/v/9//v+///+///+/f7////+///+/1X//f///v///v7//////v7//vb+//////79/v/9//v+///+///+/f7////+///+/1X////////+//7///7////////////9//7///////////////7//f//////////PP/8///////+//7///7////////////9//7///////////////7//f//////////PP/8///////+//7///7////////////9//7///////////////7//f//////////PP/8/f///f///f/8/v/8/vz//v7//f/////8///8//1U///+//////7///////7+//7///7+//7+//7//v7+/////v////5M/v7///7///////7+/v3//v7+//7+//7+/P/+//7+//7+//7//v7+/////v////5M/v7///7///////7+/v3//v7+//7+//7+/P/+//7+//7+//7//v7+/////v////5M/v7///7///////7+/v3//v7+//7+//7+/P/+/v7//v///f7+/v//YP///v7+/f/+///++f/+/v7+/////v74/v7//v74//7+/v7+/v7//v///f7+/v//YP///v7+/f/+///++f/+/v7+/////v74/v7//v74//7+/v7+/v7//v///f7+/v//YP///v7+/f/+///++f/+/v7+/////v74/v7//v74//7+/v7+/f///v///v7//////v7//vb+//////79/v/9//v+///+///+/f7////+///+/1X/9v//Vf///v/9/v/+//z//v7//v////79///9//39//7+/////v3////////+//7/9v//Vf///v/9/v/+//z//v7//v////79///9//39//7+/////v3////////+//7/9v//Vf///v/9/v/+//z//v7//v////79///9//39//7+/////v3////////+//7///tm//36//7///n+///+/v/9/v79/P7///z//v///v3//v3//v79/v7+/v7//v/8//tm//36//7///n+///+/v/9/v79/P7///z//v///v3//v3//v79/v7+/v7//v/8//tm//36//7///n+///+/v/9/v79/P7///z//v///v3//v3//v79/v7+/v7//v/8/nv5/v38/v7+/vv+/v7+//79/vz8+/3+//z//v///f3+/f3+/f77/f3+/f3+/f78//7//v7///7///7////+//7+//7+/k7+/v7//v///f7//P7//P/+/v7//v7//v7+//7//v7///7///7////+//7+//7+/k7+/v7//v///f7//P7//P/+/v7//v7//v7+//7//v7///7///7////+//7+//7+/k7+/v7//v///f7//P7//P/+/v7//v7//v7+////////Rf/8///+//7//v//9//////+/v/+//7+///+///+//3////+///8////////////Rf/8///+//7//v//9//////+/v/+//7+///+///+//3////+///8////////////Rf/8///+//7//v//9//////+/v/+//7+///+///+//3////+///8//////7+//////7///7///79//3+///+/v3///3//v///////v//TP/+/v7///7//P7+//7+//////7///7///79//3+///+/v3///3//v///////v//TP/+/v7///7//P7+///////+//7///7////////////9//7///////////////7//f//////////PP/8///////+//7///7////////////9//7///////////////7//f//////////PP/8/P///P///f77/v/+/1n///7//v////74///9//38///+/v///v7////+///+/v7//P///P///f77/v/+/1n///7//v////74///9//38///+/v///v7////+///+/v7//P///P///f77/v/+/1n///7//v////74///9//38///+/v///v7////+///+/v7///7///z+//7//v7////6/v/+//3+/v7///7/+P//+P7//v///v/++2P/+vz//v/+//7///z+//7//v7////6/v/+//3+/v7///7/+P//+P7//v///v/++2P/+vz//v/+//79//78//3+//3///7+///8//7//v3///7+/v///v3/WP7//f/+/f7//v7//v/+///////+//7///7////////////9//7///////////////7//f//////////PP/8//37//78//7///3///7+/v79//79/P7///3//v///v7//v3//v/2/v7//v3/+v9n//37//78//7///3///7+/v79//79/P7///3//v///v7//v3//v/2/v7//v3/+v9n//37//78//7///3///7+/v79//79/P7///3//v///v7//v3//v/2/v7//v3/+v9nAAcDAP8D+v79BgAABAD+/QQC/gH+B/z//gAA//wAAgf+/gUE+/oHA/3/Avz89/4DAAcDAP8D+v79BgAABAD+/QQC/gH+B/z//gAA//wAAgf+/gUE+/oHA/3/Avz89/4D/wYBAP4B+wD9AwMBBP/+/gQC/QL7B/0B/wMA//z/Agj//gED/PoHAv4AA/v79wAB/wYBAP4B+wD9AwMBBP/+/gQC/QL7B/0B/wMA//z/Agj//gED/PoHAv4AA/v79wAB/wYBAP4B+wD9AwMBBP/+/gQC/QL7B/0B/wMA//z/Agj//gED/PoHAv4AA/v79wABAAgC//4A+gL+BQL+AwH+/AIC/AL7B/0A/wX//P0AAQr9/wID/PsJA/8BAvz69wAC+gwI+QQJ+Qb5+Qb59/gE9vgI+AYFDAP5+Ab5Bfn5CAz5BAr5AvgMCAL3BwH5/vcI+gsF+AMG+Qf5+Aj5+PcD9/kI+QcCDAT5+Aj5BPn5CA36BQf4BfgMBgT4BwH5/vgH+gsF+AMG+Qf5+Aj5+PcD9/kI+QcCDAT5+Aj5BPn5CA36BQf4BfgMBgT4BwH5/vgH+A4I9wUG+An49wn39/cF9fcJ+AgEDQT39wv4Avj4BxD4Bwn3BPcOCAX2CAL4//cJ+gwI+QQJ+Qb5+Qb59/gE9vgI+AYFDAP5+Ab5Bfn5CAz5BAr5AvgMCAL3BwH5/vcI/f///v///P78E/8O/v7/Df7//P/+//79/v/+/v78//8M///+/gv///7+//4M/v7//v///v7/C/38/v/+Ef7+/f7/D//+//79C/7+/v7+/v/9/v4P/vz///8O/v79/v3+/v///v7+/P/9Ef8O/v7+Df7/+//9//7+/v/+//79//8M//7+/gv///7+//4K/v7//v///v//C/79/v/9EP7+/v7/Df7+//7+DP/+//79//79/v4Q/vv//v8O//78/v7+/v///v7+/P/9Ef8O/v7+Df7/+//9//7+/v/+//79//8M//7+/gv///7+//4K/v7//v///v//C/79/v/9EP7+/v7/Df7+//7+DP/+//79//79/v4Q/vv//v8O//78/v7+/v///v7+/P79FP4O/v7+Dv7++//9/v7+/v/+/v79/v4N/v79/g3////+//4L/v7+/v7//f7/DP79/v79Ev7+/f7+Dv79/v7+D/7+/v7+//79/v4S/vz+/v4Q/v77/v3+/f///v///P78E/8O/v7/Df7//P/+//79/v/+/v78//8M///+/gv///7+//4M/v7//v///v7/C/38/v/+Ef7+/f7/D//+//79C/7+/v7+/v/9/v4P/vz///8O/v79/v3+EP///P///v79/v/+//3+/xL+/v////78/v4P/wz9/v/+/////f7////+//7+/w7/D///+////v79/v/+/v3//xL+/v/////8/v8O/wv9///+/v/+/f7////////+/w7/D///+////v79/v/+/v3//xL+/v/////8/v8O/wv9///+/v/+/f7////////+/w7/Ef///P///v7+/v7+/v3//hL+/v////78/v4P/w39///9/v/+/v7//v/+/v/+/hH/EP///P///v79/v/+//3+/xL+/v////78/v4P/wz9/v/+/////f7////+//7+/w7//f///f///f4P/v/9/xH//v7//f////8R/v/9//0R///+/v////7////////+//7//f///f///v8O/v/+/xD///7//v////8R///9//0Q///+//////7////////+//7//f///f///v8O/v/+/xD///7//v////8R///9//0Q///+//////7////////+//7//f///P///v8Q/v/9/hP//v7+/f////8T/v/9//0S///+///+//7////////+//7//f///f///f4P/v/9/xH//v7//f////8R/v/9//0R///+/v////7////////+//7/EP///f/////+//////7///7////////9//8Q/w7+/wD///////////////////3/Ev///f/////+//////7///7//v/////9//8R/xD+///+//////////////////3/Ev///P/////+//////7///3////////+//8R/w7+//////////7///////////7/////AP////8AAP8A/wD/AP//AP////8A//8A//8A////////Ef//////AP//Df///wAA/wAA/gD//gD+//8A//8A/gD/AAD//wD/AP//AAAQAP8AAP4AAAD/AAAO//8A//8A/wD//////////////xT//////////wD+AP7//wD//////v8AAP///wD//xAAAP//AP//AP//AP////////////////8A//8A//8A/wD///8AEv//////////Dv///wAA/////gD//v/+//8A//8A/gD/AP///wAAAP//AAAR/wD///4AAAD/AAAP//8A/v8A//8A/////wD//////xT//wD////////+//3//////////////////////xMAAP//AP//AP8A//8AAP//////AP//////AP8A/wAAAP//////EQD/////////Df///wAA/wAA/v///v/+AP8A//8A/gD/AP///wD/AP//AAAQAAD/AP4AAAD/AAAP//8A/v///wD/////AP8A////ABX//wD////+///+//7//wD//////v//AP///////xH//gAAFAAA/wD/AAAAAP8AAAAA/wAAAAD/AAD/AP//AAAAAAAAAP8AAAAAAAAAAAAA/gAAEwAA/wD//wAAAP8AAP8AAAAAAP//AAAAAP//AAAAAAAAAP8AAAAAAAAAAAAAAP//AAAXAAAAAP4AAAAAAAAAAP8A//8AAAAAAAAA//8A//8A/wD/AP8AAAAA/wD/AP8AAAAAABQAAAAAAAAAAAD/AAAAAP8AAP8A/wAA//8A/wAA/wAA/wAAAAAA/wAAAP/+AP//AP8AABgAAAD/AAAAAP///wAAAP8AAAAAAP8A//8A/wD/AAAAAAAA/wD/AP/+AP//AAAAAP8AAAD/AAD/AP//Hf//////AAAA//4A/////wD/AP8AAP8A////AAAAAAAAAP8AAAAAAAAWAAD/AP8AAP8AAP8A/gAA/gAAAAAA/wAA//4A//8AAAAAAP//ABYAAAAAAAAAAAD/AAD/AP8AAAAAAP8A/wAAAAAAAAAAAAD/AP8A//sAAAD/AP8AAP//AP8AAP8AAP//AAAXAAD///8AAP4AAAAAAP8A/wAA/wAA/wAAAAAAAAAAAP//AP//AP8AAAAAAAAAAAD/ABYAAAAAAAAA/wAA//8A//8AAAD///8A//8AAAD/AAAAAP8AAP8AAP8AAAAAAAAAAAAS/wAAAAAAAAAAAAAAAP8AAP8AAAAAAP8A/wD/AP//AAD/AP8AAP8AAP8AAAD/AP8AAP8AAP8A/wAA/wAAFf8A/wD///8AAAAAAAD/AAAAAAAAAAAAAAAAAAD/AAD/AAAAABMAAAAAAAAAAP8A//8A/wAA/wAA/wAA/wD/AP8AAP8AAP8AAAAAAAD+AAAAAAAAAAAAAAAAFwAA/wAA/wAAAAAA//4A/QAAAAAAAP8AAP8AAP8AAAAAAAD/AAD/AP8AAP8AAP8A/gAAGwAA/wAAAAAA/f4A/f8AAAAAAP//AP//AP8A//8AAAD/AAD/AP///v8AAP8AAP8AABwA//8A/wD//wAA//8A/wD/AP//AP//AAAAAP8A/wAAAAD/AP////8AAAAAAAAAAP8AABcAAAD/AAD/AP8A/wD/AP//AP//AP8AAP8AAAAAAAAAAP////8AAP8A/wAA//8A//8A/wAd//8A//8A/wD8AP//AP//AP8AAP8AAP//AAD+AAD///8AABgA/wAAAP8A/wAA/wD///8A//8AAAAAABv+////AAAAAP8AAAD/AAD//////wAAAP8A/wAA/wAA//8A/wD/AP8AAP8A/wD/AAAAAP//AP8AAAAAAAD+AAD/AP8AAP8AAP8A/wAA/QAA/wAAAAAAGv4A/v8AAAAAAAAAAP8AAAAAAAAAAAD+/wAAAP8A/wAAAP8A/gAA/gAAAAAAAAAA/xcA//8AAAAAAAAAAP8AAP8AAAAAAAD+AAD/AP8AAP8AAAAA/QAA/f8AAAAAAAAA/P8AHP8AAAAAAAAAAPwAAAAAAAAAAAAA/wAAAP//AAAAAAAAAAAAAAAAAAAAAAAAAP8A/xQAAAAAAP8XAP//AP8AAP8AAAAAAAAAAP////8AAP8AAAAAAP8A//8AAAD/AP8AAP8AAAD/AP//AP//AAAAAP8AAAAAAAAAAP////8AAP8AAAAAAP8A/wAAAAD9AAAAAP8A/gAYAAAAAAAA/wD/FgD+AAAA/gAA/wD/AAD/AAAAAP//AAD/AAAAAP8AAAAAAAD/AAAAAAAAAAAAAAAA/wAAAAAAEAAAAAAAAAAAAAAAAAD/AAAAAAAAAP8AAAAAAAD/AAAAAAAAAAAA/wD//gAUAAAA/wAA/wAAAAAAAAAAAAD/AAD/AAAAAP8AAAAAAAD+AAAAAAAAAAAA/wAA/wD/AAAA/wAA/wD/AAD/AAAAAAAAAAD/AAAAABAAAAAAAAD/AAAA/gAAEwAA/wD//wAAAP8AAP8AAAAAAP//AAAAAP//AAAAAAAAAP8AAAAAAAAAAAAA/gAAEwAA/wD//wAAAP8AAP8AAAAAAP//AAAAAP//AAAAAAAAAP8AAAAAAAAAAAAAAAAAAAAA/wAAAAAA/gAA/wAAAAAAAP///wAAAAAAAAAAAAD/AP8AAAATAAAAAAAAAAAAAAAA////AAAA/gAA/wAA/wAAAAAA/QAAAAAAAAAA/wAWAP8AAAD/AAAAAAAAAAAAAAAA/wAAAAD//gAAAAAAAAAAAAAAEwAAAAAAAAAAAAD+AP8AAAD/AAAAAAAAAAAAAAAA/gD//wD/AAAAAAAAEQAAAAAAAAAAAAAAAAD/AAAAAP8AAAAAAAD/AAAAAAAAAAAA/wAAAAAAFv8AAAAA/wAAAAAA/gAAAAAAAAAAAAD+////AAD+AAAAAAAAAAAAAAAAEAD/AAD/AAAAAAAA/gAAAAAAAAAAAAAAAAAAAAAAAP8AAAD/AAD/AAAA/wAA/wAA/wD/AAAAAP4AAP8A/wAAAAAVAAD/AP//AAD/AAAAAAAAAAAAAAAAAP8AAAAA/wAA/wASAAAAAP8AAAAA/wAAAAD/AAD/AP//AAD/AAAAAP8AAAAAAAD/AAAA/wAA/wAAAAD//wD/AP8AAAAA/wAAAAD/AAD/AP8TAAAAAAAAAAAAAAAAAAD/AAAA/wAA/wAA/wD/AAD/ABQAAP8AAAAAAAD+AAD/AP//AAAAAAAA//8AAAAAAAD/AAAAAP//AP8YAP8AAP8A/wAAAAD/AP////8AAP8A/wAAAAAA//8A/wD//wAA/wAA/wD/AP8AAP///xYAAAAAAAAA/wD/AAD/AP8AAP8A/wAAAP///wAA/wAAAP8AAAAA/wD/AP//AP/+AAAAABkAAAD/AAD/AP//////AP8AAAAA//8AAP8A//////8AAP8A////AP/+//////8A//8A/wAA/wD/AP//Hv//AP8AAAAA//8A//8A//////8A/////wD/AAAAAAAAAAAAAAAAAAAXAAD/AP8AAP8AAAAA/gAA/wAAAP8A/wAA/v4A//8AAAAAAAAAABgAAP8AAAAAAAAAAAAAAP//AP8AAAAA/wAAAAAA//8AAAAAAP8A//sAAAD/AAAAAP8AAP8AAP8AAP///wAZAAAA//8AAP8A/wD///8A//8A/wD//wD//wAAAP//AAD/////AAAAAP8AAAD//wD/ABcA/wAAAP8A/wAA//8A//8AAAD///8A//8AAAD/AP8AAAAAAP8A/wAAAAAA/wAAAAAT/wAAAAAAAAAAAAAAAP8AAAAAAP8AAP8A/wD/AP//AAD/AP//AP8AAP8AAAD/AAAA//8AAP8AAAAA//8AFv8A/wD//wAAAAAA/wD/AAAAAAAAAP8AAAAAAAAAAAD/AAD/ABMAAAAAAAAA/wAA//8A/wAA/wAAAAAA/wAAAAAAAAAAAP8AAAAAAAD+AAAAAP8AAAAAAAAAGAAA/wAAAAAAAAAA//8A/f8AAAAAAP8AAP//AAAAAP8AAAD+AAD/AP8AAAD/AP8A/gD/HgAA//8AAAD//v4A/QAAAAAAAP//AAD/AP8AAP//AAAA////AP///v8A//8AAP8A/x7///8A/////////wAA////AP//AP//AP8AAP8AAAD/AAD/AP////8AAP8AAAAAAP8A/xkA/wD/AAD/AP8A/wD/AP//AP//AP///////wD/////AP////////8AAAD/AP8AAP///wAfAP8AAP8A///9AP//AP//AP8AAP//AAD/AAD+AP8A//8AABsA//8A//8A//8A/wD/////AP8A/wD/AB7+AP//AP8A//8A/wAAAAD/AP//////AP8AAAAA//////8A///+AAAAAP///wD/AAD/AP8A/wAAAAAAAAD+AP//AP8AAAAAAP8A/gAA/AAAAAAA/wD/Hf4A/f8AAAAAAP8AAP//AAAAAAAAAAD//wD/AP8AAP8AAAAA/gAA/gAAAAAA/wAA/hkA/v8AAAAAAAD/AP//AP8AAAAAAAD/AAD/AP8A/wAAAAAA/AAA/AAA//8A/wD//f4AH/8AAAAAAAAAAPsAAAAAAAAAAAD//wAAAAD/AAAAAAAA/wAAAAAAAP8AAAAAAP8A/xUAAAAAAP8ZAP//AAAAAP8AAAAAAAD/AAD//wAAAP8A/wAAAP8A/////wD/AAAA//8A/wD/AP//AP//AAAAAP8AAP8AAAD/AAD///8AAAAA/wAA//8A//8AAAD+/wAAAP8A/gAaAAAAAAD/AAD/GAD9AAAA/wD//wD/AAAAAAAAAAD/AAD/AP//AP8AAAD/AAD//wAAAAAAAP8A/wAA/wAAAAAAEgAA/wD//wAAAAAAAAD/AAD/AAAAAP8AAAAAAP//AAAA/wAA/wAA/wD///8UAP8A/wAA/gAAAAAAAAD/AAD/AAD/AAAAAP8AAAAAAAD/AAAAAAAAAAAA/wD//wD/AAAAAAAA/wD/AAAA/wAAAAD/AAD/AAAAABEAAAAAAAD/AAAA/gAAFQAAAAD/AAAAAP8AAAAAAAAAAAD/AAD/AP//AP8AAAAAAP8AAP8AAAD/AP8A/gAAFQAAAAD/AAAAAP8AAAAAAAAAAAD/AAD/AP//AP8AAAAAAP8AAP8AAAD/AP8AAAAAAAAA/wAAAAAA/wAA/wAAAAD/AP8A/wAAAAAAAAD/AP//AP8AAAAVAAAAAP8A/wAAAAAA/wD/AAAA/gAA/wAA/wD/AAAA/f8AAAAAAAD/AAAZAP8AAAD/AAAAAP//AAAA/wAA/wAAAP8A/gAAAAAAAAAAAAAAFQAAAAAAAAD/AAD9AAAAAAD/AAAAAAAAAAAAAAAA/gD//wD/AAAAAAAAEwAAAAD/AAAAAAD/AAD/AAAAAP8AAAAAAAD+AAAA/wAA/wAA//8AAAAAGAAA/wD//wD/AAAA/wAAAAD/AAAAAP/+AP8AAAD/AAAA////AAAAAAAAEQD/AAAAAAAAAAAA/gAAAAD//wAAAAD/AAD/AAAAAP8AAAAAAAD/AAAA/wAA/wAA/wD/AAAA//4AAP8A/wAAAAAWAAD/AP//AAAAAAAAAP8AAP8AAAD/AP8A/wAA/wAA/wATAAD/AP8AAAAA/wAAAAD/AAD/AP//AAD/AAAAAP8AAAAAAAD/AAAA/wAA/wAAAAD//wD/AP8AAAAA/wAAAAD/AAD/AP8VAAD/AAAAAP8AAAAAAP//AAAA/wAA/wAA/wD//wD/ABYAAP8AAAAAAAD+AAD/AP//AAD//wAAAAAAAAAAAAAA//8AAP//AAAYAP8AAP4AAAAAAAD/AP////8AAP8AAAAAAP8A/v8A/wD/AAAAAAAA/wD/AAD/AP8AABUAAAAA/wAAAAD/AP//AP8AAP8A/wAAAP8A/////wAAAAAAAAAA/wD/AP/+AP//AAAAABgAAAD/AAD/AAD//wAAAP8AAAAAAP8A//8A/wD/AP8A/wAA/wD/AP//AP//AP8AAP8AAAD/AAD/AP//HP8AAP8AAAAAAP7///8AAAD///8AAP8A/wD/AP8AAP8AAAAAAAAAAAAXAAD/AAAAAP8AAP8A/gAA/wAA/wAA/wAA/v4A/gAAAAAAAAAAABcAAAAAAAAAAAAAAAAAAP//AAAAAP8A/wAA/wAAAP8AAAAA//8A//sAAAD/AP//AAD/AP8AAP8AAAD//wAZAP8A//8AAP8AAAAA//8A//8A/wD//wAA/wAAAAD/AP//AP//AP8AAAAAAAD/AAD/ABcA/wAAAP8A/wAA//8A//8AAAD///8A//8AAAAAAAD/AAD/AAAAAP8AAAAAAAAAAAAT/wAAAAAAAAAAAP8A//8AAP8AAAAAAP8A/wAAAAD/AP//AP8AAP8AAAAAAAD/AP8A//8AAP8AAAAA//8AFv8A/wAA/wAAAAAA/wD/AAAAAAAAAP8AAAAAAAAAAAD/AP8AABMAAP8A/wAA//8A//8A/wD/AAAAAAAA/wAAAAAAAP8AAP8AAAAAAAD+/wAAAP8AAP8AAAAAGAAA/gAA/wAAAAAA//8A/v8AAAAAAP8AAP//AAAAAAAAAAD+AAAAAP8AAP8AAP8A/wAAHAAAAAAA/wAA/f4A/P8AAAAAAP////////8AAP8AAAD/AAD/AP///v8AAP8A/wAA/xwA//8A////////AAAA/wD/AP//AAD/AP8AAP8AAAD/AAD/AP////8AAP8A/wAAAP8A/xkA/wD///8AAP8A/wD/AP//AP//AAAAAP8AAP//AAD///////8AAP8A/wAAAP8A//8A/wAd//8A//8A/wD9AP//AP//AP8AAP8AAAD/AAD/AAD///8AABkAAAAAAP8A/wAA/wD///8A//8A/wD/ABz+AP//AP8AAP8AAAD/AAD/AP////8AAP8A/wAA/wAA//8A/wD///8A/wAA/wD/AAAAAP8AAAAAAP8AAAD+AAD/AP8A//8AAP8A/gAA/QAA/wAAAAAAHP4A/f8AAAAAAAAAAP4AAP8A/wAAAAD//wD/AP8AAP8AAP8A/gAA//8A/wAAAAAA/xgA//8AAAAAAAAAAP8AAP8AAAAAAAD//wD/AP8A/wAAAP8A/QAA/P8AAP8A/wD//f7/Hf8AAAAAAAD/APwAAP8AAAAAAAAAAAAAAP//AAAAAAAA/wAAAAAAAAAAAAAA//8A/xQAAAAAAP8YAP//AAAAAP4AAAAAAAD/AP///wAAAP8AAAAAAP8A//8A////AAAAAP8AAAD/AP//AAD/AP8AAP8AAAD/AAD/AP///wAAAP8AAAAAAAAA//8A/wD9AP8A//8A/gAZAAAAAAAA/wD/FwD+AAAA/gAAAAD/AAD/AAAAAP///wD+AAAAAP8AAAAAAAD/AAAAAAAAAAAAAAD//wD/AAAAEQAAAAAAAAAAAAAA/wD/AAD/AAAAAP8AAP8AAP8AAAAA/wAAAAAA/wD//wAUAAAA/wAA/wAAAAD/AAAAAAD/AAD/AAAAAP8AAAAAAAD+AAAAAAAA/wAA/wD/AAD/AAAA/wAA/wD/AAD/AAAAAAAAAAD/AAD/ABAAAAD/AAD/AAAA/gAAFAAA/wD/AAAAAP8AAAAA/wAAAAD/AAD/AP//AAAAAAAAAP8AAAAAAAAAAAAA/gAAFAAA/wD/AAAAAP8AAAAA/wAAAAD/AAD/AP//AAAAAAAAAP8AAAAAAAAAAAAAAAAAAAAA/wAAAAAA/gAA/wAAAAAAAAAA/wAAAAAAAAAAAAD+AP8AAAATAAD/AAAAAAAAAAAA//8AAAAA//8AAP8AAAAAAAD//AAAAAAAAAD/AAAXAP8AAAD+AAAAAP8AAAAAAAAA/wAAAAAA/wAA/wAAAAAAAAAAEwAAAAAAAAAAAAD9AAAAAAD/AAAAAP8AAAAAAAAA/gD/AAD/AAAA/wAAEgAAAAD//wAAAAD/AAD/AAAAAP8AAAAAAAD/AAAAAAAAAAAA//8AAAAAFgAAAAAAAAD/AAAA/gAAAP8AAAAAAAD+AP8AAAD+AAAA/wAAAAAAAAAAEAD/AAAAAAAAAAAA/gAAAAAAAAAAAAAAAAAAAAAAAP8AAAD/AAD/AAAA/wAA/wAA////AAAAAP4AAP8A/wAAAAAVAAD/AP//AAD/AAAAAP8AAAAAAAD/AP8A/wAAAAAA/wASAAD/AP8AAAAA/wAAAAD//wD/AP//AAD/AAAAAAAAAAAAAAD/AAAA/wAA/wAA/wD/AAD/AP8A/wAA/wAAAAD/AAD/AP8UAAAAAAAAAP8AAAAAAAD/AAAA/wAA/wAAAAD/AAD/ABUAAAAA/wAAAAD+AAD/AP//AAAA/wAAAP8AAAAAAAAAAP8A",
+    "encoding": "int8-base64",
+    "scale": 0.021593373591505635
+  },
+  "embedding": {
+    "data": "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",
+    "encoding": "int8-base64",
+    "scale": 0.034118783755565256
+  },
+  "exact_prompts": {
+    "explain bm25 ranking simply": 5,
+    "explain chunking documents for search": 7,
+    "explain cosine similarity simply": 10,
+    "explain document indexing": 21,
+    "explain duplicate results in search": 14,
+    "explain embeddings in simple words": 4,
+    "explain faceted search filters": 17,
+    "explain freshness in ranking": 19,
+    "explain hashing tricks for text features": 20,
+    "explain how search ranking works": 33,
+    "explain keyword search versus semantic search": 22,
+    "explain n grams in search": 27,
+    "explain personalization in search": 30,
+    "explain query expansion": 31,
+    "explain recall and precision": 34,
+    "explain result snippets": 38,
+    "explain search evaluation metrics": 25,
+    "explain sparse vectors": 1,
+    "explain stemming in search": 39,
+    "explain stop words in search": 40,
+    "explain synonyms in search": 42,
+    "explain tf idf in simple words": 43,
+    "explain vector databases simply": 2,
+    "explain why search results need scores": 36,
+    "explain why the top result can be wrong": 45,
+    "explain zero result searches": 47,
+    "find contradictions between passages": 9,
+    "find exact phrase matches in text": 15,
+    "find passages mentioning a date": 11,
+    "find similar documents to a given text": 37,
+    "find the best passage for a question": 44,
+    "find the source of a quote": 32,
+    "gravion search explain bm25 ranking simply": 5,
+    "gravion search explain chunking documents for search": 7,
+    "gravion search explain cosine similarity simply": 10,
+    "gravion search explain document indexing": 21,
+    "gravion search explain duplicate results in search": 14,
+    "gravion search explain embeddings in simple words": 4,
+    "gravion search explain faceted search filters": 17,
+    "gravion search explain freshness in ranking": 19,
+    "gravion search explain hashing tricks for text features": 20,
+    "gravion search explain how search ranking works": 33,
+    "gravion search explain keyword search versus semantic search": 22,
+    "gravion search explain n grams in search": 27,
+    "gravion search explain personalization in search": 30,
+    "gravion search explain query expansion": 31,
+    "gravion search explain recall and precision": 34,
+    "gravion search explain result snippets": 38,
+    "gravion search explain search evaluation metrics": 25,
+    "gravion search explain sparse vectors": 1,
+    "gravion search explain stemming in search": 39,
+    "gravion search explain stop words in search": 40,
+    "gravion search explain synonyms in search": 42,
+    "gravion search explain tf idf in simple words": 43,
+    "gravion search explain vector databases simply": 2,
+    "gravion search explain why search results need scores": 36,
+    "gravion search explain why the top result can be wrong": 45,
+    "gravion search explain zero result searches": 47,
+    "gravion search find contradictions between passages": 9,
+    "gravion search find exact phrase matches in text": 15,
+    "gravion search find passages mentioning a date": 11,
+    "gravion search find similar documents to a given text": 37,
+    "gravion search find the best passage for a question": 44,
+    "gravion search find the source of a quote": 32,
+    "gravion search improve a vague search query": 3,
+    "gravion search make a good search query": 0,
+    "gravion search make a multilingual search plan": 26,
+    "gravion search make a search over meeting notes": 28,
+    "gravion search make search results explainable": 16,
+    "gravion search make search tolerant of typos": 46,
+    "gravion search rank answers by evidence strength": 41,
+    "gravion search rank documents by relevance": 35,
+    "gravion search rank legal clauses by relevance": 24,
+    "gravion search rank passages for a support question": 18,
+    "gravion search rank tutorials by difficulty": 12,
+    "gravion search rank web pages for a beginner question": 6,
+    "gravion search search a knowledge base effectively": 23,
+    "gravion search search code for a function name": 8,
+    "gravion search search passages about a topic": 29,
+    "gravion search search within a long document": 13,
+    "help me explain bm25 ranking simply": 5,
+    "help me explain chunking documents for search": 7,
+    "help me explain cosine similarity simply": 10,
+    "help me explain document indexing": 21,
+    "help me explain duplicate results in search": 14,
+    "help me explain embeddings in simple words": 4,
+    "help me explain faceted search filters": 17,
+    "help me explain freshness in ranking": 19,
+    "help me explain hashing tricks for text features": 20,
+    "help me explain how search ranking works": 33,
+    "help me explain keyword search versus semantic search": 22,
+    "help me explain n grams in search": 27,
+    "help me explain personalization in search": 30,
+    "help me explain query expansion": 31,
+    "help me explain recall and precision": 34,
+    "help me explain result snippets": 38,
+    "help me explain search evaluation metrics": 25,
+    "help me explain sparse vectors": 1,
+    "help me explain stemming in search": 39,
+    "help me explain stop words in search": 40,
+    "help me explain synonyms in search": 42,
+    "help me explain tf idf in simple words": 43,
+    "help me explain vector databases simply": 2,
+    "help me explain why search results need scores": 36,
+    "help me explain why the top result can be wrong": 45,
+    "help me explain zero result searches": 47,
+    "help me find contradictions between passages": 9,
+    "help me find exact phrase matches in text": 15,
+    "help me find passages mentioning a date": 11,
+    "help me find similar documents to a given text": 37,
+    "help me find the best passage for a question": 44,
+    "help me find the source of a quote": 32,
+    "help me improve a vague search query": 3,
+    "help me make a good search query": 0,
+    "help me make a multilingual search plan": 26,
+    "help me make a search over meeting notes": 28,
+    "help me make search results explainable": 16,
+    "help me make search tolerant of typos": 46,
+    "help me rank answers by evidence strength": 41,
+    "help me rank documents by relevance": 35,
+    "help me rank legal clauses by relevance": 24,
+    "help me rank passages for a support question": 18,
+    "help me rank tutorials by difficulty": 12,
+    "help me rank web pages for a beginner question": 6,
+    "help me search a knowledge base effectively": 23,
+    "help me search code for a function name": 8,
+    "help me search passages about a topic": 29,
+    "help me search within a long document": 13,
+    "improve a vague search query": 3,
+    "make a good search query": 0,
+    "make a multilingual search plan": 26,
+    "make a search over meeting notes": 28,
+    "make search results explainable": 16,
+    "make search tolerant of typos": 46,
+    "please explain bm25 ranking simply": 5,
+    "please explain chunking documents for search": 7,
+    "please explain cosine similarity simply": 10,
+    "please explain document indexing": 21,
+    "please explain duplicate results in search": 14,
+    "please explain embeddings in simple words": 4,
+    "please explain faceted search filters": 17,
+    "please explain freshness in ranking": 19,
+    "please explain hashing tricks for text features": 20,
+    "please explain how search ranking works": 33,
+    "please explain keyword search versus semantic search": 22,
+    "please explain n grams in search": 27,
+    "please explain personalization in search": 30,
+    "please explain query expansion": 31,
+    "please explain recall and precision": 34,
+    "please explain result snippets": 38,
+    "please explain search evaluation metrics": 25,
+    "please explain sparse vectors": 1,
+    "please explain stemming in search": 39,
+    "please explain stop words in search": 40,
+    "please explain synonyms in search": 42,
+    "please explain tf idf in simple words": 43,
+    "please explain vector databases simply": 2,
+    "please explain why search results need scores": 36,
+    "please explain why the top result can be wrong": 45,
+    "please explain zero result searches": 47,
+    "please find contradictions between passages": 9,
+    "please find exact phrase matches in text": 15,
+    "please find passages mentioning a date": 11,
+    "please find similar documents to a given text": 37,
+    "please find the best passage for a question": 44,
+    "please find the source of a quote": 32,
+    "please improve a vague search query": 3,
+    "please make a good search query": 0,
+    "please make a multilingual search plan": 26,
+    "please make a search over meeting notes": 28,
+    "please make search results explainable": 16,
+    "please make search tolerant of typos": 46,
+    "please rank answers by evidence strength": 41,
+    "please rank documents by relevance": 35,
+    "please rank legal clauses by relevance": 24,
+    "please rank passages for a support question": 18,
+    "please rank tutorials by difficulty": 12,
+    "please rank web pages for a beginner question": 6,
+    "please search a knowledge base effectively": 23,
+    "please search code for a function name": 8,
+    "please search passages about a topic": 29,
+    "please search within a long document": 13,
+    "rank answers by evidence strength": 41,
+    "rank documents by relevance": 35,
+    "rank legal clauses by relevance": 24,
+    "rank passages for a support question": 18,
+    "rank tutorials by difficulty": 12,
+    "rank web pages for a beginner question": 6,
+    "search a knowledge base effectively": 23,
+    "search code for a function name": 8,
+    "search passages about a topic": 29,
+    "search within a long document": 13
+  },
+  "features": [
+    "search",
+    "explain",
+    "a",
+    "in",
+    "find",
+    "for",
+    "in search",
+    "rank",
+    "make",
+    "by",
+    "for a",
+    "passages",
+    "documents",
+    "make a",
+    "query",
+    "question",
+    "ranking",
+    "result",
+    "results",
+    "simply",
+    "text",
+    "the",
+    "words",
+    "by relevance",
+    "document",
+    "explain why",
+    "find the",
+    "in simple",
+    "in simple words",
+    "make search",
+    "of",
+    "relevance",
+    "search query",
+    "search results",
+    "simple",
+    "simple words",
+    "why",
+    "a beginner",
+    "a beginner question",
+    "a date",
+    "a function",
+    "a function name",
+    "a given",
+    "a given text",
+    "a good",
+    "a good search",
+    "a knowledge",
+    "a knowledge base",
+    "a long",
+    "a long document",
+    "a multilingual",
+    "a multilingual search",
+    "a question",
+    "a quote",
+    "a search",
+    "a search over",
+    "a support",
+    "a support question",
+    "a topic",
+    "a vague",
+    "a vague search",
+    "about",
+    "about a",
+    "about a topic",
+    "and",
+    "and precision",
+    "answers",
+    "answers by",
+    "answers by evidence",
+    "base",
+    "base effectively",
+    "be",
+    "be wrong",
+    "beginner",
+    "beginner question",
+    "best",
+    "best passage",
+    "best passage for",
+    "between",
+    "between passages",
+    "bm25",
+    "bm25 ranking",
+    "bm25 ranking simply",
+    "by difficulty",
+    "by evidence",
+    "by evidence strength",
+    "can",
+    "can be",
+    "can be wrong",
+    "chunking",
+    "chunking documents",
+    "chunking documents for",
+    "clauses",
+    "clauses by",
+    "clauses by relevance",
+    "code",
+    "code for",
+    "code for a",
+    "contradictions",
+    "contradictions between",
+    "contradictions between passages",
+    "cosine",
+    "cosine similarity",
+    "cosine similarity simply",
+    "databases",
+    "databases simply",
+    "date",
+    "difficulty",
+    "document indexing",
+    "documents by",
+    "documents by relevance",
+    "documents for",
+    "documents for search",
+    "documents to",
+    "documents to a",
+    "duplicate",
+    "duplicate results",
+    "duplicate results in",
+    "effectively",
+    "embeddings",
+    "embeddings in",
+    "embeddings in simple",
+    "evaluation",
+    "evaluation metrics",
+    "evidence",
+    "evidence strength",
+    "exact",
+    "exact phrase",
+    "exact phrase matches",
+    "expansion",
+    "explain bm25",
+    "explain bm25 ranking",
+    "explain chunking",
+    "explain chunking documents",
+    "explain cosine",
+    "explain cosine similarity",
+    "explain document",
+    "explain document indexing",
+    "explain duplicate",
+    "explain duplicate results",
+    "explain embeddings",
+    "explain embeddings in",
+    "explain faceted",
+    "explain faceted search",
+    "explain freshness",
+    "explain freshness in",
+    "explain hashing",
+    "explain hashing tricks",
+    "explain how",
+    "explain how search",
+    "explain keyword",
+    "explain keyword search",
+    "explain n",
+    "explain n grams",
+    "explain personalization",
+    "explain personalization in",
+    "explain query",
+    "explain query expansion",
+    "explain recall",
+    "explain recall and",
+    "explain result",
+    "explain result snippets",
+    "explain search",
+    "explain search evaluation",
+    "explain sparse",
+    "explain sparse vectors",
+    "explain stemming",
+    "explain stemming in",
+    "explain stop",
+    "explain stop words",
+    "explain synonyms",
+    "explain synonyms in",
+    "explain tf",
+    "explain tf idf",
+    "explain vector",
+    "explain vector databases",
+    "explain why search",
+    "explain why the",
+    "explain zero",
+    "explain zero result",
+    "explainable",
+    "faceted",
+    "faceted search",
+    "faceted search filters",
+    "features",
+    "filters",
+    "find contradictions",
+    "find contradictions between",
+    "find exact",
+    "find exact phrase",
+    "find passages",
+    "find passages mentioning",
+    "find similar",
+    "find similar documents",
+    "find the best",
+    "find the source",
+    "for a beginner",
+    "for a function",
+    "for a question",
+    "for a support",
+    "for search",
+    "for text",
+    "for text features",
+    "freshness",
+    "freshness in",
+    "freshness in ranking",
+    "function",
+    "function name",
+    "given",
+    "given text",
+    "good",
+    "good search",
+    "good search query",
+    "grams",
+    "grams in",
+    "grams in search",
+    "hashing",
+    "hashing tricks",
+    "hashing tricks for",
+    "how",
+    "how search",
+    "how search ranking",
+    "idf",
+    "idf in",
+    "idf in simple",
+    "improve",
+    "improve a",
+    "improve a vague",
+    "in ranking",
+    "in text",
+    "indexing",
+    "keyword",
+    "keyword search",
+    "keyword search versus",
+    "knowledge",
+    "knowledge base",
+    "knowledge base effectively",
+    "legal",
+    "legal clauses",
+    "legal clauses by",
+    "long",
+    "long document",
+    "make a good",
+    "make a multilingual",
+    "make a search",
+    "make search results",
+    "make search tolerant",
+    "matches",
+    "matches in",
+    "matches in text",
+    "meeting",
+    "meeting notes",
+    "mentioning",
+    "mentioning a",
+    "mentioning a date",
+    "metrics",
+    "multilingual",
+    "multilingual search",
+    "multilingual search plan",
+    "n",
+    "n grams",
+    "n grams in",
+    "name",
+    "need",
+    "need scores",
+    "notes",
+    "of a",
+    "of a quote",
+    "of typos",
+    "over",
+    "over meeting",
+    "over meeting notes",
+    "pages",
+    "pages for",
+    "pages for a",
+    "passage",
+    "passage for",
+    "passage for a",
+    "passages about",
+    "passages about a",
+    "passages for",
+    "passages for a",
+    "passages mentioning",
+    "passages mentioning a",
+    "personalization",
+    "personalization in",
+    "personalization in search",
+    "phrase",
+    "phrase matches",
+    "phrase matches in",
+    "plan",
+    "precision",
+    "query expansion",
+    "quote",
+    "rank answers",
+    "rank answers by",
+    "rank documents",
+    "rank documents by",
+    "rank legal",
+    "rank legal clauses",
+    "rank passages",
+    "rank passages for",
+    "rank tutorials",
+    "rank tutorials by",
+    "rank web",
+    "rank web pages",
+    "ranking simply",
+    "ranking works",
+    "recall",
+    "recall and",
+    "recall and precision",
+    "result can",
+    "result can be",
+    "result searches",
+    "result snippets",
+    "results explainable",
+    "results in",
+    "results in search",
+    "results need",
+    "results need scores",
+    "scores",
+    "search a",
+    "search a knowledge",
+    "search code",
+    "search code for",
+    "search evaluation",
+    "search evaluation metrics",
+    "search filters",
+    "search over",
+    "search over meeting",
+    "search passages",
+    "search passages about",
+    "search plan",
+    "search ranking",
+    "search ranking works",
+    "search results explainable",
+    "search results need",
+    "search tolerant",
+    "search tolerant of",
+    "search versus",
+    "search versus semantic",
+    "search within",
+    "search within a",
+    "searches",
+    "semantic",
+    "semantic search",
+    "similar",
+    "similar documents",
+    "similar documents to",
+    "similarity",
+    "similarity simply",
+    "snippets",
+    "source",
+    "source of",
+    "source of a",
+    "sparse",
+    "sparse vectors",
+    "stemming",
+    "stemming in",
+    "stemming in search",
+    "stop",
+    "stop words",
+    "stop words in",
+    "strength",
+    "support",
+    "support question",
+    "synonyms",
+    "synonyms in",
+    "synonyms in search",
+    "text features",
+    "tf",
+    "tf idf",
+    "tf idf in",
+    "the best",
+    "the best passage",
+    "the source",
+    "the source of",
+    "the top",
+    "the top result",
+    "to",
+    "to a",
+    "to a given",
+    "tolerant",
+    "tolerant of",
+    "tolerant of typos",
+    "top",
+    "top result",
+    "top result can",
+    "topic",
+    "tricks",
+    "tricks for",
+    "tricks for text",
+    "tutorials",
+    "tutorials by",
+    "tutorials by difficulty",
+    "typos",
+    "vague",
+    "vague search",
+    "vague search query",
+    "vector",
+    "vector databases",
+    "vector databases simply",
+    "vectors",
+    "versus",
+    "versus semantic",
+    "versus semantic search",
+    "web",
+    "web pages",
+    "web pages for",
+    "why search",
+    "why search results",
+    "why the",
+    "why the top",
+    "within",
+    "within a",
+    "within a long",
+    "words in",
+    "words in search",
+    "works",
+    "wrong",
+    "zero",
+    "zero result",
+    "zero result searches",
+    "gravion",
+    "gravion search",
+    "help",
+    "help me",
+    "me",
+    "please",
+    "gravion search explain",
+    "help me explain",
+    "me explain",
+    "please explain",
+    "search explain",
+    "gravion search find",
+    "gravion search rank",
+    "help me find",
+    "help me rank",
+    "me find",
+    "me rank",
+    "please find",
+    "please rank",
+    "search find",
+    "search rank",
+    "gravion search make",
+    "help me make",
+    "me make",
+    "please make",
+    "search make",
+    "gravion search search",
+    "help me search",
+    "me search",
+    "please search",
+    "search search",
+    "me make a",
+    "please make a",
+    "search make a",
+    "me explain why",
+    "me find the",
+    "me make search",
+    "please explain why",
+    "please find the",
+    "please make search",
+    "search explain why",
+    "search find the",
+    "search make search",
+    "gravion search improve",
+    "help me improve",
+    "me explain bm25",
+    "me explain chunking",
+    "me explain cosine",
+    "me explain document",
+    "me explain duplicate",
+    "me explain embeddings",
+    "me explain faceted",
+    "me explain freshness",
+    "me explain hashing",
+    "me explain how",
+    "me explain keyword",
+    "me explain n",
+    "me explain personalization",
+    "me explain query",
+    "me explain recall",
+    "me explain result",
+    "me explain search",
+    "me explain sparse",
+    "me explain stemming",
+    "me explain stop",
+    "me explain synonyms",
+    "me explain tf",
+    "me explain vector",
+    "me explain zero",
+    "me find contradictions",
+    "me find exact",
+    "me find passages",
+    "me find similar",
+    "me improve",
+    "me improve a",
+    "me rank answers",
+    "me rank documents",
+    "me rank legal",
+    "me rank passages",
+    "me rank tutorials",
+    "me rank web",
+    "me search a",
+    "me search code",
+    "me search passages",
+    "me search within",
+    "please explain bm25",
+    "please explain chunking",
+    "please explain cosine",
+    "please explain document",
+    "please explain duplicate",
+    "please explain embeddings",
+    "please explain faceted",
+    "please explain freshness",
+    "please explain hashing",
+    "please explain how",
+    "please explain keyword",
+    "please explain n",
+    "please explain personalization",
+    "please explain query",
+    "please explain recall",
+    "please explain result",
+    "please explain search",
+    "please explain sparse",
+    "please explain stemming",
+    "please explain stop",
+    "please explain synonyms",
+    "please explain tf",
+    "please explain vector",
+    "please explain zero",
+    "please find contradictions",
+    "please find exact",
+    "please find passages",
+    "please find similar",
+    "please improve",
+    "please improve a",
+    "please rank answers",
+    "please rank documents",
+    "please rank legal",
+    "please rank passages",
+    "please rank tutorials",
+    "please rank web",
+    "please search a",
+    "please search code",
+    "please search passages",
+    "please search within",
+    "search explain bm25",
+    "search explain chunking",
+    "search explain cosine",
+    "search explain document",
+    "search explain duplicate",
+    "search explain embeddings",
+    "search explain faceted",
+    "search explain freshness",
+    "search explain hashing",
+    "search explain how",
+    "search explain keyword",
+    "search explain n",
+    "search explain personalization",
+    "search explain query",
+    "search explain recall",
+    "search explain result",
+    "search explain search",
+    "search explain sparse",
+    "search explain stemming",
+    "search explain stop",
+    "search explain synonyms",
+    "search explain tf",
+    "search explain vector",
+    "search explain zero",
+    "search find contradictions",
+    "search find exact",
+    "search find passages",
+    "search find similar",
+    "search improve",
+    "search improve a",
+    "search rank answers",
+    "search rank documents",
+    "search rank legal",
+    "search rank passages",
+    "search rank tutorials",
+    "search rank web",
+    "search search a",
+    "search search code",
+    "search search passages",
+    "search search within"
+  ],
+  "format": "gravion-core-local-v3",
+  "model_id": "gravion-search",
+  "parameter_count": 39404,
+  "trained_from": {
+    "classes": 48,
+    "dataset_sha256": "e36f69abed6ce7f138c73d168a2f59aeafbf46529a607398c3fee538fabba629",
+    "examples": 192,
+    "features": 588,
+    "source": "data/gravion-search-seed.jsonl"
+  },
+  "transitions": {
+    "<s>": {
+      "a": 0.0625,
+      "add": 0.02083333,
+      "an": 0.02083333,
+      "beginner": 0.02083333,
+      "bm25": 0.02083333,
+      "chunking": 0.02083333,
+      "code": 0.02083333,
+      "contradiction": 0.02083333,
+      "cosine": 0.02083333,
+      "date": 0.02083333,
+      "difficulty": 0.02083333,
+      "document": 0.02083333,
+      "duplicates": 0.02083333,
+      "exact": 0.02083333,
+      "explainable": 0.02083333,
+      "facets": 0.02083333,
+      "for": 0.02083333,
+      "freshness": 0.02083333,
+      "hashing": 0.02083333,
+      "indexing": 0.02083333,
+      "keyword": 0.02083333,
+      "knowledge": 0.02083333,
+      "legal": 0.02083333,
+      "metrics": 0.02083333,
+      "multilingual": 0.02083333,
+      "n": 0.02083333,
+      "notes": 0.02083333,
+      "passage": 0.02083333,
+      "personalization": 0.02083333,
+      "query": 0.02083333,
+      "quote": 0.02083333,
+      "ranking": 0.02083333,
+      "recall": 0.02083333,
+      "relevance": 0.02083333,
+      "scores": 0.02083333,
+      "similarity": 0.02083333,
+      "snippets": 0.02083333,
+      "stemming": 0.02083333,
+      "stop": 0.02083333,
+      "stronger": 0.02083333,
+      "synonym": 0.02083333,
+      "tf": 0.02083333,
+      "the": 0.02083333,
+      "top": 0.02083333,
+      "typo": 0.02083333,
+      "zero": 0.02083333
+    },
+    "a": {
+      "document": 0.11111111,
+      "fixed": 0.11111111,
+      "good": 0.11111111,
+      "query": 0.11111111,
+      "result": 0.11111111,
+      "root": 0.11111111,
+      "sparse": 0.11111111,
+      "stored": 0.11111111,
+      "vector": 0.11111111
+    },
+    "above": {
+      "general": 0.5,
+      "usages": 0.5
+    },
+    "across": {
+      "the": 1.0
+    },
+    "actually": {
+      "relevant": 0.5,
+      "type": 0.5
+    },
+    "add": {
+      "the": 1.0
+    },
+    "adds": {
+      "related": 1.0
+    },
+    "against": {
+      "sources": 0.5,
+      "the": 0.5
+    },
+    "an": {
+      "embedding": 1.0
+    },
+    "and": {
+      "answers": 0.04761905,
+      "assumed": 0.04761905,
+      "comes": 0.04761905,
+      "decision": 0.04761905,
+      "document": 0.04761905,
+      "drops": 0.04761905,
+      "finds": 0.04761905,
+      "location": 0.04761905,
+      "of": 0.04761905,
+      "orders": 0.04761905,
+      "ranks": 0.0952381,
+      "remove": 0.04761905,
+      "returns": 0.0952381,
+      "runs": 0.04761905,
+      "scores": 0.04761905,
+      "shows": 0.04761905,
+      "source": 0.04761905,
+      "the": 0.04761905,
+      "trusted": 0.04761905
+    },
+    "angle": {
+      "between": 1.0
+    },
+    "angles": {
+      "mean": 1.0
+    },
+    "answer": {
+      "in": 0.5,
+      "the": 0.5
+    },
+    "answers": {
+      "directly": 0.5,
+      "it": 0.5
+    },
+    "are": {
+      "short": 1.0
+    },
+    "around": {
+      "each": 1.0
+    },
+    "articles": {
+      "use": 1.0
+    },
+    "asked": {
+      "</s>": 1.0
+    },
+    "assumed": {
+      "prior": 1.0
+    },
+    "at": {
+      "k": 0.5,
+      "scale": 0.5
+    },
+    "background": {
+      "</s>": 1.0
+    },
+    "be": {
+      "filtered": 1.0
+    },
+    "before": {
+      "opening": 1.0
+    },
+    "beginner": {
+      "ranking": 1.0
+    },
+    "best": {
+      "matches": 0.33333333,
+      "passage": 0.33333333,
+      "with": 0.33333333
+    },
+    "between": {
+      "two": 1.0
+    },
+    "bias": {
+      "</s>": 1.0
+    },
+    "bm25": {
+      "scores": 1.0
+    },
+    "boosts": {
+      "newer": 1.0
+    },
+    "broaden": {
+      "terms": 1.0
+    },
+    "bucket": {
+      "giving": 1.0
+    },
+    "but": {
+      "rare": 1.0
+    },
+    "by": {
+      "category": 1.0
+    },
+    "can": {
+      "be": 0.2,
+      "help": 0.2,
+      "judge": 0.2,
+      "match": 0.2,
+      "return": 0.2
+    },
+    "carry": {
+      "little": 1.0
+    },
+    "category": {
+      "date": 1.0
+    },
+    "changes": {
+      "quickly": 1.0
+    },
+    "checks": {
+      "the": 1.0
+    },
+    "chunking": {
+      "splits": 1.0
+    },
+    "cites": {
+      "specifics": 1.0
+    },
+    "claim": {
+      "with": 1.0
+    },
+    "claims": {
+      "against": 1.0
+    },
+    "clause": {
+      "over": 1.0
+    },
+    "clear": {
+      "explanations": 1.0
+    },
+    "close": {
+      "together": 1.0
+    },
+    "closer": {
+      "angles": 0.5,
+      "meaning": 0.5
+    },
+    "closest": {
+      "vectors": 1.0
+    },
+    "co": {
+      "occur": 1.0
+    },
+    "code": {
+      "search": 1.0
+    },
+    "collection": {
+      "</s>": 1.0
+    },
+    "comes": {
+      "from": 1.0
+    },
+    "compact": {
+      "vectors": 1.0
+    },
+    "contains": {
+      "</s>": 1.0
+    },
+    "context": {
+      "around": 0.5,
+      "so": 0.5
+    },
+    "contradiction": {
+      "search": 1.0
+    },
+    "copy": {
+      "of": 1.0
+    },
+    "cosine": {
+      "similarity": 1.0
+    },
+    "counts": {
+      "visible": 1.0
+    },
+    "database": {
+      "stores": 1.0
+    },
+    "date": {
+      "and": 0.33333333,
+      "or": 0.33333333,
+      "search": 0.33333333
+    },
+    "dates": {
+      "names": 1.0
+    },
+    "day": {
+      "month": 1.0
+    },
+    "decision": {
+      "keywords": 1.0
+    },
+    "deduplication": {
+      "keeps": 1.0
+    },
+    "defined": {
+      "terms": 1.0
+    },
+    "definitions": {
+      "above": 1.0
+    },
+    "density": {
+      "and": 1.0
+    },
+    "detects": {
+      "query": 1.0
+    },
+    "different": {
+      "words": 1.0
+    },
+    "difficulty": {
+      "ranking": 1.0
+    },
+    "directly": {
+      "cites": 0.5,
+      "not": 0.5
+    },
+    "distance": {
+      "to": 1.0
+    },
+    "document": {
+      "but": 0.25,
+      "contains": 0.25,
+      "length": 0.25,
+      "search": 0.25
+    },
+    "documents": {
+      "into": 0.33333333,
+      "using": 0.33333333,
+      "with": 0.33333333
+    },
+    "drop": {
+      "the": 1.0
+    },
+    "drops": {
+      "filler": 1.0
+    },
+    "duplicates": {
+      "waste": 1.0
+    },
+    "each": {
+      "hit": 0.14285714,
+      "language": 0.14285714,
+      "match": 0.14285714,
+      "passage": 0.14285714,
+      "result": 0.28571429,
+      "term": 0.14285714
+    },
+    "earliest": {
+      "reliable": 1.0
+    },
+    "edit": {
+      "distance": 1.0
+    },
+    "educational": {
+      "sources": 1.0
+    },
+    "embedding": {
+      "turns": 1.0
+    },
+    "embeddings": {
+      "and": 1.0
+    },
+    "embeds": {
+      "each": 0.5,
+      "the": 0.5
+    },
+    "entries": {
+      "which": 1.0
+    },
+    "even": {
+      "with": 1.0
+    },
+    "every": {
+      "document": 1.0
+    },
+    "evidence": {
+      "answers": 1.0
+    },
+    "exact": {
+      "day": 0.14285714,
+      "defined": 0.14285714,
+      "phrase": 0.28571429,
+      "problem": 0.14285714,
+      "relevant": 0.14285714,
+      "words": 0.14285714
+    },
+    "exactly": {
+      "and": 1.0
+    },
+    "examples": {
+      "and": 1.0
+    },
+    "expansion": {
+      "adds": 0.5,
+      "lets": 0.5
+    },
+    "explainable": {
+      "results": 1.0
+    },
+    "explained": {
+      "</s>": 1.0
+    },
+    "explanations": {
+      "worked": 1.0
+    },
+    "facets": {
+      "filter": 1.0
+    },
+    "favors": {
+      "clear": 0.5,
+      "exact": 0.5
+    },
+    "filler": {
+      "words": 1.0
+    },
+    "filter": {
+      "results": 1.0
+    },
+    "filtered": {
+      "or": 1.0
+    },
+    "finds": {
+      "nearest": 1.0
+    },
+    "first": {
+      "</s>": 0.5,
+      "then": 0.5
+    },
+    "fixed": {
+      "bucket": 1.0
+    },
+    "for": {
+      "support": 1.0
+    },
+    "form": {
+      "so": 1.0
+    },
+    "formats": {
+      "first": 1.0
+    },
+    "found": {
+      "material": 0.5,
+      "precision": 0.5
+    },
+    "frequency": {
+      "with": 1.0
+    },
+    "frequent": {
+      "in": 1.0
+    },
+    "freshness": {
+      "and": 0.5,
+      "boosts": 0.5
+    },
+    "from": {
+      "reliable": 1.0
+    },
+    "general": {
+      "background": 1.0
+    },
+    "giving": {
+      "compact": 1.0
+    },
+    "good": {
+      "query": 1.0
+    },
+    "governing": {
+      "clause": 1.0
+    },
+    "grams": {
+      "are": 1.0
+    },
+    "hashing": {
+      "maps": 1.0
+    },
+    "help": {
+      "or": 0.5,
+      "search": 0.5
+    },
+    "history": {
+      "and": 1.0
+    },
+    "hit": {
+      "</s>": 1.0
+    },
+    "how": {
+      "many": 0.25,
+      "much": 0.5,
+      "strong": 0.25
+    },
+    "huge": {
+      "vocabularies": 1.0
+    },
+    "identical": {
+      "results": 1.0
+    },
+    "identifiers": {
+      "exactly": 1.0
+    },
+    "idf": {
+      "rewards": 1.0
+    },
+    "ignores": {
+      "them": 1.0
+    },
+    "in": {
+      "a": 0.33333333,
+      "milliseconds": 0.33333333,
+      "order": 0.33333333
+    },
+    "indexed": {
+      "together": 1.0
+    },
+    "indexes": {
+      "each": 1.0
+    },
+    "indexing": {
+      "precomputes": 1.0
+    },
+    "into": {
+      "numbers": 0.5,
+      "passages": 0.5
+    },
+    "is": {
+      "how": 0.5,
+      "relevant": 0.25,
+      "so": 0.25
+    },
+    "it": {
+      "</s>": 0.5,
+      "directly": 0.25,
+      "first": 0.25
+    },
+    "its": {
+      "non": 1.0
+    },
+    "jargon": {
+      "density": 1.0
+    },
+    "judge": {
+      "a": 1.0
+    },
+    "jumps": {
+      "to": 1.0
+    },
+    "just": {
+      "mentions": 1.0
+    },
+    "k": {
+      "measure": 1.0
+    },
+    "keeping": {
+      "counts": 1.0
+    },
+    "keeps": {
+      "the": 1.0
+    },
+    "key": {
+      "terms": 1.0
+    },
+    "keyword": {
+      "search": 1.0
+    },
+    "keywords": {
+      "indexed": 1.0
+    },
+    "knowledge": {
+      "</s>": 0.5,
+      "search": 0.5
+    },
+    "language": {
+      "and": 0.5,
+      "detects": 0.5
+    },
+    "legal": {
+      "ranking": 1.0
+    },
+    "length": {
+      "normalization": 1.0
+    },
+    "lets": {
+      "a": 1.0
+    },
+    "like": {
+      "news": 0.33333333,
+      "precision": 0.33333333,
+      "the": 0.33333333
+    },
+    "little": {
+      "meaning": 1.0
+    },
+    "location": {
+      "which": 1.0
+    },
+    "losing": {
+      "precision": 1.0
+    },
+    "many": {
+      "top": 1.0
+    },
+    "maps": {
+      "each": 1.0
+    },
+    "marked": {
+      "with": 1.0
+    },
+    "match": {
+      "</s>": 0.33333333,
+      "is": 0.16666667,
+      "near": 0.16666667,
+      "phrases": 0.16666667,
+      "related": 0.16666667
+    },
+    "matched": {
+      "terms": 1.0
+    },
+    "matches": {
+      "exact": 0.125,
+      "first": 0.125,
+      "freshness": 0.125,
+      "identifiers": 0.125,
+      "meaning": 0.125,
+      "phrase": 0.125,
+      "the": 0.25
+    },
+    "matching": {
+      "context": 0.33333333,
+      "sections": 0.33333333,
+      "signals": 0.33333333
+    },
+    "material": {
+      "is": 0.5,
+      "was": 0.5
+    },
+    "mean": {
+      "closer": 0.5,
+      "the": 0.5
+    },
+    "meaning": {
+      "</s>": 0.33333333,
+      "even": 0.33333333,
+      "so": 0.33333333
+    },
+    "meanings": {
+      "sit": 1.0
+    },
+    "measure": {
+      "how": 1.0
+    },
+    "measures": {
+      "the": 1.0
+    },
+    "mentions": {
+      "</s>": 0.5,
+      "it": 0.5
+    },
+    "metrics": {
+      "like": 1.0
+    },
+    "milliseconds": {
+      "</s>": 1.0
+    },
+    "month": {
+      "or": 1.0
+    },
+    "most": {
+      "specific": 1.0
+    },
+    "much": {
+      "found": 0.5,
+      "relevant": 0.5
+    },
+    "multilingual": {
+      "search": 1.0
+    },
+    "n": {
+      "grams": 1.0
+    },
+    "names": {
+      "and": 1.0
+    },
+    "near": {
+      "identical": 0.5,
+      "spellings": 0.5
+    },
+    "nearest": {
+      "neighbors": 0.5,
+      "the": 0.5
+    },
+    "neighbors": {
+      "quickly": 1.0
+    },
+    "never": {
+      "co": 1.0
+    },
+    "newer": {
+      "results": 1.0
+    },
+    "news": {
+      "or": 1.0
+    },
+    "non": {
+      "zero": 1.0
+    },
+    "normalization": {
+      "</s>": 1.0
+    },
+    "normalizes": {
+      "formats": 1.0
+    },
+    "not": {
+      "just": 0.33333333,
+      "only": 0.33333333,
+      "truth": 0.33333333
+    },
+    "notes": {
+      "search": 1.0
+    },
+    "noun": {
+      "the": 1.0
+    },
+    "numbers": {
+      "so": 1.0
+    },
+    "occur": {
+      "broaden": 1.0
+    },
+    "of": {
+      "carry": 0.33333333,
+      "near": 0.33333333,
+      "query": 0.33333333
+    },
+    "often": {
+      "ignores": 1.0
+    },
+    "on": {
+      "the": 1.0
+    },
+    "one": {
+      "</s>": 1.0
+    },
+    "ones": {
+      "nearest": 1.0
+    },
+    "only": {
+      "its": 0.5,
+      "single": 0.5
+    },
+    "opening": {
+      "it": 1.0
+    },
+    "opposing": {
+      "statements": 1.0
+    },
+    "optimize": {
+      "matching": 1.0
+    },
+    "or": {
+      "bias": 0.14285714,
+      "date": 0.14285714,
+      "drop": 0.14285714,
+      "explained": 0.14285714,
+      "prices": 0.14285714,
+      "type": 0.14285714,
+      "year": 0.14285714
+    },
+    "order": {
+      "usually": 1.0
+    },
+    "orders": {
+      "the": 1.0
+    },
+    "other": {
+      "words": 1.0
+    },
+    "over": {
+      "mentions": 1.0
+    },
+    "pairs": {
+      "passages": 1.0
+    },
+    "part": {
+      "</s>": 1.0
+    },
+    "passage": {
+      "and": 0.33333333,
+      "search": 0.33333333,
+      "shares": 0.33333333
+    },
+    "passages": {
+      "on": 0.33333333,
+      "so": 0.33333333,
+      "that": 0.33333333
+    },
+    "personalization": {
+      "reorders": 1.0
+    },
+    "phrase": {
+      "first": 0.33333333,
+      "matches": 0.33333333,
+      "search": 0.33333333
+    },
+    "phrases": {
+      "not": 1.0
+    },
+    "place": {
+      "or": 1.0
+    },
+    "precision": {
+      "</s>": 0.33333333,
+      "at": 0.33333333,
+      "is": 0.33333333
+    },
+    "precomputes": {
+      "searchable": 1.0
+    },
+    "prerequisites": {
+      "jargon": 1.0
+    },
+    "prices": {
+      "</s>": 1.0
+    },
+    "prior": {
+      "knowledge": 1.0
+    },
+    "problem": {
+      "above": 1.0
+    },
+    "quality": {
+      "</s>": 1.0
+    },
+    "queries": {
+      "answer": 1.0
+    },
+    "query": {
+      "</s>": 0.125,
+      "and": 0.125,
+      "expansion": 0.125,
+      "language": 0.125,
+      "match": 0.125,
+      "terms": 0.25,
+      "uses": 0.125
+    },
+    "question": {
+      "s": 1.0
+    },
+    "quickly": {
+      "at": 0.5,
+      "like": 0.5
+    },
+    "quote": {
+      "search": 1.0
+    },
+    "quotes": {
+      "</s>": 1.0
+    },
+    "rank": {
+      "passages": 1.0
+    },
+    "ranked": {
+      "</s>": 1.0
+    },
+    "ranking": {
+      "favors": 0.4,
+      "scores": 0.2,
+      "uses": 0.2,
+      "weighs": 0.2
+    },
+    "ranks": {
+      "deduplication": 0.33333333,
+      "definitions": 0.33333333,
+      "within": 0.33333333
+    },
+    "rare": {
+      "across": 1.0
+    },
+    "rarest": {
+      "most": 0.5,
+      "one": 0.5
+    },
+    "recall": {
+      "is": 0.5,
+      "without": 0.5
+    },
+    "reduces": {
+      "words": 1.0
+    },
+    "related": {
+      "terms": 0.5,
+      "words": 0.5
+    },
+    "relevance": {
+      "ranking": 1.0
+    },
+    "relevant": {
+      "</s>": 0.4,
+      "documents": 0.2,
+      "material": 0.2,
+      "part": 0.2
+    },
+    "reliable": {
+      "source": 0.5,
+      "sources": 0.5
+    },
+    "remove": {
+      "words": 1.0
+    },
+    "reorders": {
+      "results": 1.0
+    },
+    "requires": {
+      "the": 1.0
+    },
+    "result": {
+      "against": 0.33333333,
+      "before": 0.33333333,
+      "ranked": 0.33333333
+    },
+    "results": {
+      "</s>": 0.11111111,
+      "by": 0.11111111,
+      "can": 0.11111111,
+      "mean": 0.11111111,
+      "optimize": 0.11111111,
+      "show": 0.11111111,
+      "using": 0.11111111,
+      "were": 0.11111111,
+      "when": 0.11111111
+    },
+    "return": {
+      "the": 1.0
+    },
+    "returns": {
+      "documents": 0.5,
+      "the": 0.5
+    },
+    "rewards": {
+      "words": 1.0
+    },
+    "root": {
+      "form": 1.0
+    },
+    "running": {
+      "and": 1.0
+    },
+    "runs": {
+      "can": 1.0
+    },
+    "s": {
+      "key": 1.0
+    },
+    "same": {
+      "claim": 1.0
+    },
+    "saturation": {
+      "and": 1.0
+    },
+    "scale": {
+      "</s>": 1.0
+    },
+    "scores": {
+      "each": 0.25,
+      "show": 0.25,
+      "so": 0.25,
+      "term": 0.25
+    },
+    "search": {
+      "can": 0.0625,
+      "embeds": 0.125,
+      "indexes": 0.0625,
+      "jumps": 0.0625,
+      "match": 0.0625,
+      "matches": 0.25,
+      "normalizes": 0.0625,
+      "often": 0.0625,
+      "pairs": 0.0625,
+      "requires": 0.0625,
+      "works": 0.125
+    },
+    "searchable": {
+      "structures": 1.0
+    },
+    "sections": {
+      "and": 1.0
+    },
+    "see": {
+      "why": 1.0
+    },
+    "semantic": {
+      "search": 1.0
+    },
+    "sequences": {
+      "they": 1.0
+    },
+    "shares": {
+      "the": 1.0
+    },
+    "short": {
+      "word": 1.0
+    },
+    "show": {
+      "how": 0.33333333,
+      "matched": 0.33333333,
+      "the": 0.33333333
+    },
+    "shows": {
+      "context": 1.0
+    },
+    "signals": {
+      "not": 1.0
+    },
+    "similar": {
+      "meanings": 1.0
+    },
+    "similarity": {
+      "measures": 0.5,
+      "search": 0.5
+    },
+    "single": {
+      "words": 1.0
+    },
+    "sit": {
+      "close": 1.0
+    },
+    "snippets": {
+      "show": 1.0
+    },
+    "so": {
+      "queries": 0.11111111,
+      "relevant": 0.11111111,
+      "running": 0.11111111,
+      "search": 0.22222222,
+      "similar": 0.11111111,
+      "users": 0.22222222,
+      "weak": 0.11111111
+    },
+    "source": {
+      "</s>": 0.5,
+      "quality": 0.5
+    },
+    "sources": {
+      "</s>": 1.0
+    },
+    "sparse": {
+      "vector": 1.0
+    },
+    "specific": {
+      "noun": 0.5,
+      "terms": 0.5
+    },
+    "specifics": {
+      "and": 1.0
+    },
+    "spellings": {
+      "of": 1.0
+    },
+    "splits": {
+      "documents": 1.0
+    },
+    "statements": {
+      "</s>": 1.0
+    },
+    "stemming": {
+      "reduces": 1.0
+    },
+    "still": {
+      "match": 1.0
+    },
+    "stop": {
+      "words": 1.0
+    },
+    "stored": {
+      "vocabulary": 1.0
+    },
+    "stores": {
+      "embeddings": 0.5,
+      "only": 0.5
+    },
+    "strong": {
+      "each": 1.0
+    },
+    "stronger": {
+      "evidence": 1.0
+    },
+    "strongest": {
+      "copy": 1.0
+    },
+    "structures": {
+      "so": 1.0
+    },
+    "suits": {
+      "text": 1.0
+    },
+    "support": {
+      "rank": 1.0
+    },
+    "synonym": {
+      "expansion": 1.0
+    },
+    "term": {
+      "frequency": 0.33333333,
+      "matches": 0.33333333,
+      "to": 0.33333333
+    },
+    "terms": {
+      "</s>": 0.125,
+      "and": 0.5,
+      "never": 0.125,
+      "or": 0.125,
+      "so": 0.125
+    },
+    "text": {
+      "and": 0.33333333,
+      "into": 0.33333333,
+      "with": 0.33333333
+    },
+    "tf": {
+      "idf": 1.0
+    },
+    "that": {
+      "answer": 1.0
+    },
+    "the": {
+      "and": 0.03571429,
+      "angle": 0.03571429,
+      "best": 0.07142857,
+      "closest": 0.03571429,
+      "collection": 0.03571429,
+      "earliest": 0.03571429,
+      "exact": 0.14285714,
+      "governing": 0.03571429,
+      "matching": 0.03571429,
+      "ones": 0.03571429,
+      "place": 0.03571429,
+      "query": 0.10714286,
+      "question": 0.03571429,
+      "rarest": 0.07142857,
+      "same": 0.03571429,
+      "specific": 0.03571429,
+      "strongest": 0.03571429,
+      "text": 0.03571429,
+      "topic": 0.03571429,
+      "words": 0.07142857
+    },
+    "them": {
+      "</s>": 1.0
+    },
+    "then": {
+      "checks": 0.5,
+      "matches": 0.5
+    },
+    "they": {
+      "help": 1.0
+    },
+    "to": {
+      "a": 0.5,
+      "match": 0.25,
+      "matching": 0.25
+    },
+    "together": {
+      "</s>": 0.66666667,
+      "in": 0.33333333
+    },
+    "tolerance": {
+      "uses": 1.0
+    },
+    "top": {
+      "results": 1.0
+    },
+    "topic": {
+      "changes": 1.0
+    },
+    "trusted": {
+      "educational": 1.0
+    },
+    "truth": {
+      "verify": 1.0
+    },
+    "turns": {
+      "text": 1.0
+    },
+    "two": {
+      "vectors": 1.0
+    },
+    "type": {
+      "</s>": 0.5,
+      "while": 0.5
+    },
+    "typo": {
+      "tolerance": 1.0
+    },
+    "usages": {
+      "</s>": 1.0
+    },
+    "use": {
+      "the": 1.0
+    },
+    "users": {
+      "actually": 0.33333333,
+      "can": 0.33333333,
+      "see": 0.33333333
+    },
+    "uses": {
+      "edit": 0.33333333,
+      "prerequisites": 0.33333333,
+      "the": 0.33333333
+    },
+    "using": {
+      "history": 0.5,
+      "other": 0.5
+    },
+    "usually": {
+      "marked": 1.0
+    },
+    "vector": {
+      "database": 0.5,
+      "stores": 0.5
+    },
+    "vectors": {
+      "</s>": 0.33333333,
+      "closer": 0.33333333,
+      "without": 0.33333333
+    },
+    "verify": {
+      "claims": 1.0
+    },
+    "visible": {
+      "</s>": 1.0
+    },
+    "vocabularies": {
+      "</s>": 1.0
+    },
+    "vocabulary": {
+      "</s>": 1.0
+    },
+    "was": {
+      "found": 1.0
+    },
+    "waste": {
+      "ranks": 1.0
+    },
+    "weak": {
+      "results": 1.0
+    },
+    "weighs": {
+      "term": 1.0
+    },
+    "were": {
+      "actually": 1.0
+    },
+    "when": {
+      "articles": 0.5,
+      "the": 0.5
+    },
+    "which": {
+      "can": 0.5,
+      "suits": 0.5
+    },
+    "while": {
+      "keeping": 1.0
+    },
+    "why": {
+      "each": 1.0
+    },
+    "widening": {
+      "recall": 1.0
+    },
+    "with": {
+      "dates": 0.14285714,
+      "different": 0.14285714,
+      "huge": 0.14285714,
+      "opposing": 0.14285714,
+      "quotes": 0.14285714,
+      "saturation": 0.14285714,
+      "the": 0.14285714
+    },
+    "within": {
+      "it": 1.0
+    },
+    "without": {
+      "a": 0.5,
+      "losing": 0.5
+    },
+    "word": {
+      "sequences": 1.0
+    },
+    "words": {
+      "</s>": 0.25,
+      "every": 0.08333333,
+      "frequent": 0.08333333,
+      "like": 0.08333333,
+      "semantic": 0.08333333,
+      "still": 0.08333333,
+      "to": 0.08333333,
+      "together": 0.08333333,
+      "users": 0.08333333,
+      "widening": 0.08333333
+    },
+    "worked": {
+      "examples": 1.0
+    },
+    "works": {
+      "best": 0.5,
+      "when": 0.5
+    },
+    "year": {
+      "asked": 1.0
+    },
+    "zero": {
+      "entries": 0.5,
+      "results": 0.5
+    }
+  },
+  "unigram_weights": {
+    "a": 0.0147541,
+    "above": 0.00327869,
+    "across": 0.00163934,
+    "actually": 0.00327869,
+    "add": 0.00163934,
+    "adds": 0.00163934,
+    "against": 0.00327869,
+    "an": 0.00163934,
+    "and": 0.03442623,
+    "angle": 0.00163934,
+    "angles": 0.00163934,
+    "answer": 0.00327869,
+    "answers": 0.00327869,
+    "are": 0.00163934,
+    "around": 0.00163934,
+    "articles": 0.00163934,
+    "asked": 0.00163934,
+    "assumed": 0.00163934,
+    "at": 0.00327869,
+    "background": 0.00163934,
+    "be": 0.00163934,
+    "before": 0.00163934,
+    "beginner": 0.00163934,
+    "best": 0.00491803,
+    "between": 0.00163934,
+    "bias": 0.00163934,
+    "bm25": 0.00163934,
+    "boosts": 0.00163934,
+    "broaden": 0.00163934,
+    "bucket": 0.00163934,
+    "but": 0.00163934,
+    "by": 0.00163934,
+    "can": 0.00819672,
+    "carry": 0.00163934,
+    "category": 0.00163934,
+    "changes": 0.00163934,
+    "checks": 0.00163934,
+    "chunking": 0.00163934,
+    "cites": 0.00163934,
+    "claim": 0.00163934,
+    "claims": 0.00163934,
+    "clause": 0.00163934,
+    "clear": 0.00163934,
+    "close": 0.00163934,
+    "closer": 0.00327869,
+    "closest": 0.00163934,
+    "co": 0.00163934,
+    "code": 0.00163934,
+    "collection": 0.00163934,
+    "comes": 0.00163934,
+    "compact": 0.00163934,
+    "contains": 0.00163934,
+    "context": 0.00327869,
+    "contradiction": 0.00163934,
+    "copy": 0.00163934,
+    "cosine": 0.00163934,
+    "counts": 0.00163934,
+    "database": 0.00163934,
+    "date": 0.00491803,
+    "dates": 0.00163934,
+    "day": 0.00163934,
+    "decision": 0.00163934,
+    "deduplication": 0.00163934,
+    "defined": 0.00163934,
+    "definitions": 0.00163934,
+    "density": 0.00163934,
+    "detects": 0.00163934,
+    "different": 0.00163934,
+    "difficulty": 0.00163934,
+    "directly": 0.00327869,
+    "distance": 0.00163934,
+    "document": 0.00655738,
+    "documents": 0.00491803,
+    "drop": 0.00163934,
+    "drops": 0.00163934,
+    "duplicates": 0.00163934,
+    "each": 0.01147541,
+    "earliest": 0.00163934,
+    "edit": 0.00163934,
+    "educational": 0.00163934,
+    "embedding": 0.00163934,
+    "embeddings": 0.00163934,
+    "embeds": 0.00327869,
+    "entries": 0.00163934,
+    "even": 0.00163934,
+    "every": 0.00163934,
+    "evidence": 0.00163934,
+    "exact": 0.01147541,
+    "exactly": 0.00163934,
+    "examples": 0.00163934,
+    "expansion": 0.00327869,
+    "explainable": 0.00163934,
+    "explained": 0.00163934,
+    "explanations": 0.00163934,
+    "facets": 0.00163934,
+    "favors": 0.00327869,
+    "filler": 0.00163934,
+    "filter": 0.00163934,
+    "filtered": 0.00163934,
+    "finds": 0.00163934,
+    "first": 0.00655738,
+    "fixed": 0.00163934,
+    "for": 0.00163934,
+    "form": 0.00163934,
+    "formats": 0.00163934,
+    "found": 0.00327869,
+    "frequency": 0.00163934,
+    "frequent": 0.00163934,
+    "freshness": 0.00327869,
+    "from": 0.00163934,
+    "general": 0.00163934,
+    "giving": 0.00163934,
+    "good": 0.00163934,
+    "governing": 0.00163934,
+    "grams": 0.00163934,
+    "hashing": 0.00163934,
+    "help": 0.00327869,
+    "history": 0.00163934,
+    "hit": 0.00163934,
+    "how": 0.00655738,
+    "huge": 0.00163934,
+    "identical": 0.00163934,
+    "identifiers": 0.00163934,
+    "idf": 0.00163934,
+    "ignores": 0.00163934,
+    "in": 0.00491803,
+    "indexed": 0.00163934,
+    "indexes": 0.00163934,
+    "indexing": 0.00163934,
+    "into": 0.00327869,
+    "is": 0.00655738,
+    "it": 0.00655738,
+    "its": 0.00163934,
+    "jargon": 0.00163934,
+    "judge": 0.00163934,
+    "jumps": 0.00163934,
+    "just": 0.00163934,
+    "k": 0.00163934,
+    "keeping": 0.00163934,
+    "keeps": 0.00163934,
+    "key": 0.00163934,
+    "keyword": 0.00163934,
+    "keywords": 0.00163934,
+    "knowledge": 0.00327869,
+    "language": 0.00327869,
+    "legal": 0.00163934,
+    "length": 0.00163934,
+    "lets": 0.00163934,
+    "like": 0.00491803,
+    "little": 0.00163934,
+    "location": 0.00163934,
+    "losing": 0.00163934,
+    "many": 0.00163934,
+    "maps": 0.00163934,
+    "marked": 0.00163934,
+    "match": 0.00983607,
+    "matched": 0.00163934,
+    "matches": 0.01311475,
+    "matching": 0.00491803,
+    "material": 0.00327869,
+    "mean": 0.00327869,
+    "meaning": 0.00491803,
+    "meanings": 0.00163934,
+    "measure": 0.00163934,
+    "measures": 0.00163934,
+    "mentions": 0.00327869,
+    "metrics": 0.00163934,
+    "milliseconds": 0.00163934,
+    "month": 0.00163934,
+    "most": 0.00163934,
+    "much": 0.00327869,
+    "multilingual": 0.00163934,
+    "n": 0.00163934,
+    "names": 0.00163934,
+    "near": 0.00327869,
+    "nearest": 0.00327869,
+    "neighbors": 0.00163934,
+    "never": 0.00163934,
+    "newer": 0.00163934,
+    "news": 0.00163934,
+    "non": 0.00163934,
+    "normalization": 0.00163934,
+    "normalizes": 0.00163934,
+    "not": 0.00491803,
+    "notes": 0.00163934,
+    "noun": 0.00163934,
+    "numbers": 0.00163934,
+    "occur": 0.00163934,
+    "of": 0.00491803,
+    "often": 0.00163934,
+    "on": 0.00163934,
+    "one": 0.00163934,
+    "ones": 0.00163934,
+    "only": 0.00327869,
+    "opening": 0.00163934,
+    "opposing": 0.00163934,
+    "optimize": 0.00163934,
+    "or": 0.01147541,
+    "order": 0.00163934,
+    "orders": 0.00163934,
+    "other": 0.00163934,
+    "over": 0.00163934,
+    "pairs": 0.00163934,
+    "part": 0.00163934,
+    "passage": 0.00491803,
+    "passages": 0.00491803,
+    "personalization": 0.00163934,
+    "phrase": 0.00491803,
+    "phrases": 0.00163934,
+    "place": 0.00163934,
+    "precision": 0.00491803,
+    "precomputes": 0.00163934,
+    "prerequisites": 0.00163934,
+    "prices": 0.00163934,
+    "prior": 0.00163934,
+    "problem": 0.00163934,
+    "quality": 0.00163934,
+    "queries": 0.00163934,
+    "query": 0.01311475,
+    "question": 0.00163934,
+    "quickly": 0.00327869,
+    "quote": 0.00163934,
+    "quotes": 0.00163934,
+    "rank": 0.00163934,
+    "ranked": 0.00163934,
+    "ranking": 0.00819672,
+    "ranks": 0.00491803,
+    "rare": 0.00163934,
+    "rarest": 0.00327869,
+    "recall": 0.00327869,
+    "reduces": 0.00163934,
+    "related": 0.00327869,
+    "relevance": 0.00163934,
+    "relevant": 0.00819672,
+    "reliable": 0.00327869,
+    "remove": 0.00163934,
+    "reorders": 0.00163934,
+    "requires": 0.00163934,
+    "result": 0.00491803,
+    "results": 0.0147541,
+    "return": 0.00163934,
+    "returns": 0.00327869,
+    "rewards": 0.00163934,
+    "root": 0.00163934,
+    "running": 0.00163934,
+    "runs": 0.00163934,
+    "s": 0.00163934,
+    "same": 0.00163934,
+    "saturation": 0.00163934,
+    "scale": 0.00163934,
+    "scores": 0.00655738,
+    "search": 0.02622951,
+    "searchable": 0.00163934,
+    "sections": 0.00163934,
+    "see": 0.00163934,
+    "semantic": 0.00163934,
+    "sequences": 0.00163934,
+    "shares": 0.00163934,
+    "short": 0.00163934,
+    "show": 0.00491803,
+    "shows": 0.00163934,
+    "signals": 0.00163934,
+    "similar": 0.00163934,
+    "similarity": 0.00327869,
+    "single": 0.00163934,
+    "sit": 0.00163934,
+    "snippets": 0.00163934,
+    "so": 0.0147541,
+    "source": 0.00327869,
+    "sources": 0.00491803,
+    "sparse": 0.00163934,
+    "specific": 0.00327869,
+    "specifics": 0.00163934,
+    "spellings": 0.00163934,
+    "splits": 0.00163934,
+    "statements": 0.00163934,
+    "stemming": 0.00163934,
+    "still": 0.00163934,
+    "stop": 0.00163934,
+    "stored": 0.00163934,
+    "stores": 0.00327869,
+    "strong": 0.00163934,
+    "stronger": 0.00163934,
+    "strongest": 0.00163934,
+    "structures": 0.00163934,
+    "suits": 0.00163934,
+    "support": 0.00163934,
+    "synonym": 0.00163934,
+    "term": 0.00491803,
+    "terms": 0.01311475,
+    "text": 0.00491803,
+    "tf": 0.00163934,
+    "that": 0.00163934,
+    "the": 0.04590164,
+    "them": 0.00163934,
+    "then": 0.00327869,
+    "they": 0.00163934,
+    "to": 0.00655738,
+    "together": 0.00491803,
+    "tolerance": 0.00163934,
+    "top": 0.00327869,
+    "topic": 0.00163934,
+    "trusted": 0.00163934,
+    "truth": 0.00163934,
+    "turns": 0.00163934,
+    "two": 0.00163934,
+    "type": 0.00327869,
+    "typo": 0.00163934,
+    "usages": 0.00163934,
+    "use": 0.00163934,
+    "users": 0.00491803,
+    "uses": 0.00491803,
+    "using": 0.00327869,
+    "usually": 0.00163934,
+    "vector": 0.00327869,
+    "vectors": 0.00491803,
+    "verify": 0.00163934,
+    "visible": 0.00163934,
+    "vocabularies": 0.00163934,
+    "vocabulary": 0.00163934,
+    "was": 0.00163934,
+    "waste": 0.00163934,
+    "weak": 0.00163934,
+    "weighs": 0.00163934,
+    "were": 0.00163934,
+    "when": 0.00327869,
+    "which": 0.00327869,
+    "while": 0.00163934,
+    "why": 0.00163934,
+    "widening": 0.00163934,
+    "with": 0.01147541,
+    "within": 0.00163934,
+    "without": 0.00327869,
+    "word": 0.00163934,
+    "words": 0.01967213,
+    "worked": 0.00163934,
+    "works": 0.00327869,
+    "year": 0.00163934,
+    "zero": 0.00327869
+  },
+  "vocabulary": [
+    "a",
+    "about",
+    "above",
+    "across",
+    "actually",
+    "add",
+    "adds",
+    "against",
+    "an",
+    "and",
+    "angle",
+    "angles",
+    "answer",
+    "answers",
+    "are",
+    "around",
+    "articles",
+    "asked",
+    "assumed",
+    "at",
+    "background",
+    "base",
+    "be",
+    "before",
+    "beginner",
+    "best",
+    "between",
+    "bias",
+    "bm25",
+    "boosts",
+    "broaden",
+    "bucket",
+    "but",
+    "by",
+    "can",
+    "carry",
+    "category",
+    "changes",
+    "checks",
+    "chunking",
+    "cites",
+    "claim",
+    "claims",
+    "clause",
+    "clauses",
+    "clear",
+    "close",
+    "closer",
+    "closest",
+    "co",
+    "code",
+    "collection",
+    "comes",
+    "compact",
+    "contains",
+    "context",
+    "contradiction",
+    "contradictions",
+    "copy",
+    "cosine",
+    "counts",
+    "database",
+    "databases",
+    "date",
+    "dates",
+    "day",
+    "decision",
+    "deduplication",
+    "defined",
+    "definitions",
+    "density",
+    "detects",
+    "different",
+    "difficulty",
+    "directly",
+    "distance",
+    "document",
+    "documents",
+    "drop",
+    "drops",
+    "duplicate",
+    "duplicates",
+    "each",
+    "earliest",
+    "edit",
+    "educational",
+    "effectively",
+    "embedding",
+    "embeddings",
+    "embeds",
+    "entries",
+    "evaluation",
+    "even",
+    "every",
+    "evidence",
+    "exact",
+    "exactly",
+    "examples",
+    "expansion",
+    "explain",
+    "explainable",
+    "explained",
+    "explanations",
+    "faceted",
+    "facets",
+    "favors",
+    "features",
+    "filler",
+    "filter",
+    "filtered",
+    "filters",
+    "find",
+    "finds",
+    "first",
+    "fixed",
+    "for",
+    "form",
+    "formats",
+    "found",
+    "frequency",
+    "frequent",
+    "freshness",
+    "from",
+    "function",
+    "general",
+    "given",
+    "giving",
+    "good",
+    "governing",
+    "grams",
+    "gravion",
+    "hashing",
+    "help",
+    "history",
+    "hit",
+    "how",
+    "huge",
+    "identical",
+    "identifiers",
+    "idf",
+    "ignores",
+    "improve",
+    "in",
+    "indexed",
+    "indexes",
+    "indexing",
+    "into",
+    "is",
+    "it",
+    "its",
+    "jargon",
+    "judge",
+    "jumps",
+    "just",
+    "k",
+    "keeping",
+    "keeps",
+    "key",
+    "keyword",
+    "keywords",
+    "knowledge",
+    "language",
+    "legal",
+    "length",
+    "lets",
+    "like",
+    "little",
+    "location",
+    "long",
+    "losing",
+    "make",
+    "many",
+    "maps",
+    "marked",
+    "match",
+    "matched",
+    "matches",
+    "matching",
+    "material",
+    "me",
+    "mean",
+    "meaning",
+    "meanings",
+    "measure",
+    "measures",
+    "meeting",
+    "mentioning",
+    "mentions",
+    "metrics",
+    "milliseconds",
+    "month",
+    "most",
+    "much",
+    "multilingual",
+    "n",
+    "name",
+    "names",
+    "near",
+    "nearest",
+    "need",
+    "neighbors",
+    "never",
+    "newer",
+    "news",
+    "non",
+    "normalization",
+    "normalizes",
+    "not",
+    "notes",
+    "noun",
+    "numbers",
+    "occur",
+    "of",
+    "often",
+    "on",
+    "one",
+    "ones",
+    "only",
+    "opening",
+    "opposing",
+    "optimize",
+    "or",
+    "order",
+    "orders",
+    "other",
+    "over",
+    "pages",
+    "pairs",
+    "part",
+    "passage",
+    "passages",
+    "personalization",
+    "phrase",
+    "phrases",
+    "place",
+    "plan",
+    "please",
+    "precision",
+    "precomputes",
+    "prerequisites",
+    "prices",
+    "prior",
+    "problem",
+    "quality",
+    "queries",
+    "query",
+    "question",
+    "quickly",
+    "quote",
+    "quotes",
+    "rank",
+    "ranked",
+    "ranking",
+    "ranks",
+    "rare",
+    "rarest",
+    "recall",
+    "reduces",
+    "related",
+    "relevance",
+    "relevant",
+    "reliable",
+    "remove",
+    "reorders",
+    "requires",
+    "result",
+    "results",
+    "return",
+    "returns",
+    "rewards",
+    "root",
+    "running",
+    "runs",
+    "s",
+    "same",
+    "saturation",
+    "scale",
+    "scores",
+    "search",
+    "searchable",
+    "searches",
+    "sections",
+    "see",
+    "semantic",
+    "sequences",
+    "shares",
+    "short",
+    "show",
+    "shows",
+    "signals",
+    "similar",
+    "similarity",
+    "simple",
+    "simply",
+    "single",
+    "sit",
+    "snippets",
+    "so",
+    "source",
+    "sources",
+    "sparse",
+    "specific",
+    "specifics",
+    "spellings",
+    "splits",
+    "statements",
+    "stemming",
+    "still",
+    "stop",
+    "stored",
+    "stores",
+    "strength",
+    "strong",
+    "stronger",
+    "strongest",
+    "structures",
+    "suits",
+    "support",
+    "synonym",
+    "synonyms",
+    "term",
+    "terms",
+    "text",
+    "tf",
+    "that",
+    "the",
+    "them",
+    "then",
+    "they",
+    "to",
+    "together",
+    "tolerance",
+    "tolerant",
+    "top",
+    "topic",
+    "tricks",
+    "trusted",
+    "truth",
+    "turns",
+    "tutorials",
+    "two",
+    "type",
+    "typo",
+    "typos",
+    "usages",
+    "use",
+    "users",
+    "uses",
+    "using",
+    "usually",
+    "vague",
+    "vector",
+    "vectors",
+    "verify",
+    "versus",
+    "visible",
+    "vocabularies",
+    "vocabulary",
+    "was",
+    "waste",
+    "weak",
+    "web",
+    "weighs",
+    "were",
+    "when",
+    "which",
+    "while",
+    "why",
+    "widening",
+    "with",
+    "within",
+    "without",
+    "word",
+    "words",
+    "worked",
+    "works",
+    "wrong",
+    "year",
+    "zero"
+  ],
+  "weights_sha256": "dfea7a68b65c13820de4109e0b219a0c562ba37d58ac4434d4e23c62c04c9968"
+}

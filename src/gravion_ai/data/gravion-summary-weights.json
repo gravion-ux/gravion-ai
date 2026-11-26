@@ -1,0 +1,2839 @@
+{
+  "architecture": "sparse n-gram embedding + direct linear softmax classifier",
+  "bias": [
+    -1.38186562,
+    -0.01901972,
+    -1.08054912,
+    1.8341223,
+    -0.22280838,
+    0.95371628,
+    1.99352229,
+    -2.80778718,
+    1.22772658,
+    -0.24668767,
+    0.12893437,
+    -2.27654338,
+    -0.08391824,
+    -0.45733276,
+    -0.50812453,
+    2.00372362,
+    -2.04251242,
+    -0.4295204,
+    1.07196498,
+    -1.02185822,
+    0.28591201,
+    -0.92679673,
+    -0.69289309,
+    -0.11797057,
+    -0.00267128,
+    0.36158928,
+    1.74844456,
+    -0.50687206,
+    1.6969316,
+    1.08821332,
+    1.31649077,
+    -0.10055218,
+    -2.48832822,
+    -2.39660168,
+    2.03780675,
+    -0.1754601,
+    0.52530348,
+    0.09538455,
+    -0.71220523,
+    0.10486712,
+    0.46860653,
+    -1.50707805,
+    0.12125657,
+    0.13576379,
+    1.30124247,
+    -0.04118779,
+    0.42841116,
+    1.31820655
+  ],
+  "classes": [
+    "A brief summary keeps the main claim, the strongest evidence, and the conclusion, in that order.",
+    "A fair summary reports who, what, when, where, and why, without adding opinion.",
+    "A lead sentence states the whole point first, so readers grasp the summary instantly.",
+    "A summary condenses the whole text; a paraphrase rewrites a passage at similar length.",
+    "A summary headline names the actor and the outcome in under ten words.",
+    "A summary must not add claims the source never made; faithfulness keeps trust.",
+    "Abstract style: question, method, result, and implication in four short sentences.",
+    "Biography summary: origin, defining work, major turning point, and legacy.",
+    "Book summary: premise, main conflict or argument, turning point, and ending or conclusion.",
+    "Brief history summary: cause, turning point, outcome, and lasting effect.",
+    "Careful summary: what was measured, the result size, uncertainty, and limits of the claim.",
+    "Child-friendly summary: short sentences, familiar words, one idea at a time, and a friendly tone.",
+    "Choose length by use: one line for lists, a paragraph for reports, a page for decisions.",
+    "Compression ratio compares summary length to source length; smaller ratios demand stricter selection.",
+    "Conversation summary: topics covered, agreements reached, disagreements left, and next meeting.",
+    "Cut examples and repetition first; keep definitions, claims, and the final point.",
+    "Debate summary: each side's strongest point, the evidence offered, and where they disagree.",
+    "Email thread summary: original request, replies that changed anything, and the current open item.",
+    "Executive summary: purpose, findings, risks, recommendation, and next step.",
+    "Extractive summarization selects the source's own most important sentences instead of rewriting them.",
+    "Financial summary: revenue direction, profit direction, cash position, and the main risk.",
+    "For a busy reader: headline point first, three supporting facts, and the decision needed.",
+    "From bullets: group related points, drop duplicates, and write one sentence per group.",
+    "Keep the numbers that change decisions: totals, percentages, dates, and comparisons.",
+    "Keeping the source order preserves cause and effect, so the summary reads logically.",
+    "Key sentences carry the thesis, repeated central terms, numbers, and conclusions.",
+    "Leave out repetition, minor examples, side stories, and anything the conclusion does not need.",
+    "Manual summary: purpose, safety notes, main steps, and troubleshooting pointers.",
+    "Meeting summary: decisions made, owners named, deadlines set, and open questions listed.",
+    "Neutral summary uses the source's own claims, attributes opinions, and avoids loaded words.",
+    "One line: state what happened, why it matters, and what happens next.",
+    "Plain summary of a notice: who must do what, by when, and what happens if they do not.",
+    "Policy summary: who it covers, what changes, when it starts, and how exceptions work.",
+    "Product summary: what it is, who it serves, key features, and price or availability.",
+    "Pros and cons summary: strongest benefit, strongest cost, and who each side suits.",
+    "Quote summary: pick the lines that carry the argument, keep them exact, and attribute them.",
+    "Review summary: common praise, common complaints, average rating, and who the product suits.",
+    "Revision summary: key terms, main arguments, one example each, and likely exam points.",
+    "Sentence scoring rates sentences by important terms, position, and length, then keeps the best.",
+    "Social summary: one hook line, two facts, and a question or link for detail.",
+    "Status summary: done, in progress, blocked, and next milestone with its date.",
+    "Story summary: hero, goal, obstacle, climax, and resolution in five beats.",
+    "Summary table: rows for findings, columns for evidence, impact, and owner.",
+    "Travel summary: best sights, best season, costs to expect, and one local tip.",
+    "Turn each main idea into one short bullet, ordered as the text presents them.",
+    "Tutorial summary: goal, materials, numbered steps, and the check that proves success.",
+    "Two sentences: first the main point, second the evidence or consequence.",
+    "With a word limit, draft long, then cut adjectives and examples until only essentials remain."
+  ],
+  "classifier": {
+    "data": "0Ar4683f6dGDEvfpHM4DDcwe5cDd9dP8MAQn7cQwGdAe5Moe9xfb1wrDwPonVfbE99voEdbw0/3hzvYYBiutFiXn1SMqNuX7TfXFFuASwA8S0QVJMhcfDlTTCxcOB/nc/ggNNSLfH/7UBCYz2x0yD8HTA93eCPLYzkv0G/DEPMkJCy0b9xnU2fAQ1/TQHfyrAdwGGukoF9LBOMjM9/9B3fgdIz8KxAgs7tYquAnmMeJM5RjjLCHrDCo+Gzof5eZkKgsIGvfeF/gnIaYQBB6qHvkFGSZXDgHN6dSpCB4VzuED/+HruNgqEOLsA/gVFfF60ik+KC72+vUxDP8c//zMAZzm4eL8Ff8mBQ1EDarVEujtKxq60tQYGLSxKugIGQf4FOEMDAkRuwwCMvgnH0gINBzH0jP7/RQg9fXHCTYCptn+6Cm4B//S89Lt0xPs9lQPLffTGzsmHQc0GzD4+dnFW/Icvz0mzTv2KOI+1yLm4DsN8u4ELw0FGxbKC+Yb7Sd/IQU/HxT/8gY4vvQPTEzy4AEcqhf9ITE6A7/bBh8w5e9e6eIGzfcYNCXn9Q4dCewSpOj6DtfKFimrBxv8GiYXEhrhHO0D/SQtHShC7AAw/8nQAeb9DS8VK/ft3AUBBPiZLOEB7PrxOeIyCt3iySQVRfAhCfpn9hDhzwrR/O3jOtfj0T7A9fUMGOISIcW+6Bi+zxn5/BTA1w4EKBjA6LpN5fjn6Aio7+sXHeb+D7sPFRD9+Ob/LhT22AY5XfEu2yvTrin+JAku2usCLwnO/eIjIwD9Bs8rDvv8/z0XDL+q5hVmFigVAf7azeflwygHN+nUIvrt9/9SvCccLAUV5si7I+sx9w/vMykOv/U26czS8uTI/+28kAEP3s8C2xX/IDnhDVPc7iAFN9g++Pf9HyflSiXqDebN7c4YLCkY/QSxJM/fNNAC38Ux2eHlGvsxJt8M6AxV4BYFLg0e4SYKErst31UlM9br9NrZDivrKPQHHB0qGETd9v3bHAvwISc20t0d",
+    "encoding": "int8-base64",
+    "scale": 0.04245358564722256
+  },
+  "dim": 16,
+  "direct": {
+    "data": "CQ7dztfWBxsKDRAa09kFFR0MyNwQAg4Q2dUPDQbOAg8bHAQNEA/bCxEIBhAHDiAJFBjp4uflFSQXGBvm5+bl2SgY5Ogb5+fm59viGRMt4xolJxkZGx3o5RwT5x3dGuLk9vfzHuvt8/vz9vglRPIW7Pv5Lvr1Dhsd7e0P9fPyEPf7++n29/TxF/b3FfTl9y0VFhzs5+rpGScbHB7o6uno3Ssb5+se6enp6unoHBfg5x0oKdMbHSDq5x8V6R/hHeTn9PUlIiwj8/Xu9PTvSSrt6vT161r07u7uHCMg9PMs6/P19e329PQo7vX07vTs9e7t+fn28fP09/n3+Pk88fYs8vj47fX4IjAy9fIz+Pf24Pj5+PL4+fb2Lvj5K/js+Okz+vr49vf4+fr6+vrx9vkq9vr59fn6LjE0+Pbw+fn5LPr6+vT6+vn58/n6Kvoy+fb0RfL6+Pr69O/38/X5+fpB+PVH+fvx+PX0+vr3SPb59Pbz9fb09ff7+fNG8/U39fn5RfL6+Pr69O/38/X5+fpB+PVH+fvx+PX0+vr3SPb59Pbz9fb09ff7+fNG8/U39fn5+/v5+Pj5+vv7+/vy9/ov+Pv79/r7LzQ2+fjy+/r7Lvv7+/b7+/r69Pr7Lvvw+vj2+vs470M3+vv3+vr57z349fr79+v6+Pn4Le3y+vrz9/v7+/n7+/s59/v6+Pr3+/j3VvD7+/v782DyUvP7+/v6+vHk+/tV+/v6+/r73PT6+u3t8Pfy8PT7+vJP+/L68vr7+/v69/j5+vv6+vtB9/r39vv6Sfr67vb1+fn1+vr59fv7+/j7+/n5Mfv79vr4+0Uw+vn491H2+Pr5+fpL9vj2+Pj69ff5P/Lx9/j2+vn59/n5+Pn4+Vz4O/j68/j5+PPp+vpA9PDq+vpN+Pr69EP69/r6+PH6+vr5OvP3+/n0+fn6+/n6+vs/+fr6+/n5+vr5/Pz7+fr6+/z8/Pzz+fs0+fz8+Pv8Mjc6+vn1+/v76vz8/Pn7/Pv69vv8M/zy/Pn3/Pz8+vr7+/z7+/xF+fv5+fz78fv78Pn3+/v4/Pv7+Pz8/Pr8/Pr7Nfz8+Pv6/Es1/P1B9fHs/Pz6/Pz79UT7+v39+vL8+/v6O/T4/Pz3+v39/fv8/f1B+v38/Pz6/Pv7/fv79vr6+/37/Pz6+PxA+vz8+vz89/bz+/k7/Pv7OPz9/EH8/Pz8+vz98/z2+/r5/fv79vr6+/37/Pz6+PxA+vz8+vz89/bz+/k7/Pv7OPz9/EH8/Pz8+vz98/z2+/r5R/T8/Pz89vH59Pb8/Pz8+/dK/Pzz/fz8/Pz8S/j7/Pf19vn29/n9+/VH/Pb59/z8/f39/Pz9/f79/f1O/P35/P39+P39QfX0/fz7/f38+f39/fz9/vz9P/399v38/fbs/f39/Pv9/f79/f1L+/37+/389v398vr6/fz6/f38+v39/fz9/fz9Ov39+v38/fE+/f39+/39/f39/f77/P3w+/38+/3+8Uju/fz6/P399f39/vv9/v39/P39Qv08/fz7+ff9/f389vj4+PX9/f38+/b4/P34/f39/v39+VH8/fb09Ppb9fX+/fb6/vP8X/z8+vv9/P39+/n7+fz8/P30/Pz7+/1n9fDz/fz6+/v9Pfn7+/r8+/z9/Pv6Tvv5+/z8/f39/Pz9/f79/f1O/P35/P39+P39QfX0/fz7/f38+f39/fz9/vz9P/399v38/fbs/f359vn3/f78/f38+Pr7+/39/Pj9+/z8+kE//v1B+v3+/fr+/f37/P39/P37/fz7///+/f3+/v/+/v79/f71/f7+/f7/9vH0/v77//7+P/7//vz+//7+/f7+T/76/v39/v38Rvz9/P79/f39/P39/P79/Pz+/v79/fz4/fz8+/7+/kb+/v79/v3+/v38/v39/v7+/f7+/f7+/v79/f72/f79/f7++FT2/v38/f7++v7+//3+/v7+/f7+7v4//v39/v77+vv6/v79/v7++/v+/f7+/fr+/f39+0T7//5D/v7+/v3+/v78/v7+/v79/v7+/v77+vv6/v79/v7++/v+/f7+/fr+/f39+0T7//5D/v7+/v3+/v78/v7+/v79/v7+///0+/hJ/v7+/v7+/PT+/P7+/fn+/v7+TPr7/v78/f7//v7+/v71/v7+/v/9/v79+1v+/f7++/n7+vr9/v7+/W77/v75/v3+/v79+vn9/vr09/v5+fj+/vf6/fn++f7+/v7+/f7+/v/+/v79/f72/f79/f7++PH3/v38/f7++f7+/v3+/v7+/f7+UP4//v39/v77+vv6/v79/v7++/v+/f7+/fr+/f39+0T7//5D/v7+/v3+/v78/v7+/v79/v7+/v77+vv6/v79/v7++/v+/f7+/fr+/f39+0T7//5D/v7+/v3+/v78/v7+/v79/v7+/f3+/f79/f1T+/39/f76/P39/f79/Pz7/v78/vz9Q/z9/fv9/f3+/vz9+v38/f39/fz+/f78+/xR+/z9/f3+S/39/f78/v7+/f79/vv7/fv8/fz8/Pz9/fz9/fz9/Pz8/Pv+/f7++/38/fv+/v/6/fz8/f78/vz9/v79/Fn9/f37/fv6/Pz+/vz9/PtB+/39/v7z+/v6/v78/v76+/X9/P7++vv9/f389vz8/v38/P7+/v3+/v1d+v7+/f39/lj2/v5c+vn5/v79/v7++/T9/f7+/fn+/f399Ez7/v7x/f7//v3+/v7y/f/+/f79/v397V/+/v7+/Pn8+/v9/v7+/ff1/v75/v3+/v7+8vv+/vz5+fv6+/v+/vlr/vv++/7+//7+/f79/v/+///9/f5E/f7+/f7/+vj1/v76//7+Pv7//vz+//7+/f7/9f75/v39//7+/f79/v/+///9/f5E/f7+/f7/+vj1/v76//7+Pv7//vz+//7+/f7/9f75/v39///0+/hJ/v7+/v7+/PT+/P7+/fn+/v7+TPr7/v78/f7//v7+/v71/v7+/v/9/v79/v39+/36/P77/v39/Pz9S/7+/f39/f39/PL7/v1N/f3+/vz+/f39/f3+/f79/f38/P3//////nj+9vz//////vv9///6/////////P3///z6+/78/P3///76//3//f///P3//////nj+9vz//////vv9///6/////////P3///z6+/78/P3///76//3//f///v7////+/v1T/P3//////v7+///+/////////v3+//3+/v7+/f7///3+//3//v///v7////+/v1T/P3//////v7+///+/////////v3+//3+/v7+/f7///3+//3//v///////////wD////6///8/////v//Tfn4///+/////f///////////P//+/////7+/////////wD////6///8/////v//Tfn4///+/////f///////////P//+/////7+/v3//////f39/f3//////vz+/v/9/////////v3///39/P78/GH//vz+//z//P/+/v3//////f39/f3//////vz+/v/9/////////v3///39/P78/GH//vz+//z//P/+//3//v///v/+/v7////+/v/+/v/+///////9/v7//f///0j+//////7///7+/v7+/v3//////f39/P3//////vz9///9/////////f3//vz8+/78Z/z///z+//3+/P///v3//////f39/P3//////vz9///9/////////f3//vz8+/78Z/z///z+//3+/P///fn//////vv+/fz//////3X9///9/////////fz+//z5+/78/Pv///v9//z//P///fn//////vv+/fz//////3X9///9/////////fz+//z5+/78/Pv///v9//z//P//+/3//////fr9+/3///////39//9o/////////f3//vv8/f39/f7///38//z//f//+/3//////fr9+/3///////39//9o/////////f3//vv8/f39/f7///38//z//f///f3//////ff7Z/3///////3+///6/////////f3///v8/f79/f3///z9//3//v///f3//////ff7Z/3///////3+///6/////////f3///v8/f79/f3///z9//3//v///f3/////+/z9/P3//////v7+///7/////////f3+/2X8+/79/Pz///z+//3//P///f3/////+/z9/P3//////v7+///7/////////f3+/2X8+/79/Pz///z+//3//P//cv3//////vv+/f7///////72///9////////8f7///7+/v/+/v7///3v//3+/v///////v/////////+/v9J/////////fz6///9////+v////7//////v8A+v/8///+9f3//////f3+/v3///////5r///+////////8v7///79/v79/v7///32//7+/v//8P3//////f3+/f3///////7y///9////////dP7///79/f79/v7///30//3+/f//7/3//////vv+/f7///////73///8////////9f7///79/v7+/v7///5u//7//v///////v///v/////////7/v/+/v////3+///+/v///v////7//////////P9C///+/vz//////P79/vz//////v3+///9/////////lr+//78/f77/f3///3+//z//P/+/vz//////P79/vz//////v3+///9/////////lr+//78/f77/f3///3+//z//P/+/mL//////f3+/v3//////vn+///8/////////v3///78/P38/f3///z9//3//f///mL//////f3+/v3//////vn+///8/////////v3///78/P38/f3///z9//3//f///////////////////v/7/////v///f38///9AP//RP////3/////////+//+///+/////////////////v/7/////v///f38///9AP//RP////3/////////+//+///+/////v/+/f/9/////v7/Tf///v/+/v7//v/+//7+/v////7//v7//v///v/+/v79/////v/+/f/9/////v7/Tf///v/+/v7//v/+//7+/v////7//v7//v///v/+/v79/Pz//////fn9/Pz///7///n9/v/7/////////fz+//x6+v79/Pz///r+//z/+////Pz//////fn9/Pz///7///n9/v/7/////////fz+//x6+v79/Pz///r+//z/+////fz//////fv9/fr///////v9///8/////////fz+//z6ev77+vz///z9//r/+//+/fz//////fv9/fr///////v9///8/////////fz+//z6ev77+vz///z9//r/+//+/f3//////P39/Pz//////vv9///+/////////fz+//38/f79+/z//2r9//3/+////f3//////P39/Pz//////vv9///+/////////fz+//38/f79+/z//2r9//3/+////v7/////W/79/fz//////v7+///9/////////v3///z+/f39/f7///z+//3+/f///v7/////W/79/fz//////v7+///9/////////v3///z+/f39/f7///z+//3+/f///v3//////P79/WT//////v39///9/////////v3///z9+v78/f3///z+//z/+////v3//////P79/WT//////v39///9/////////v3///z9+v78/f3///z+//z/+////v3//////fz+/f3///////z9///9/////////vv///38+/5l+/3///z+//v/+////v3//////fz+/f3///////z9///9/////////vv///38+/5l+/3///z+//v/+//////////////////+///6////////+Vf4//7+/////P//////////////8v/9/////////v/////////+/v9J/////////fz6///9////+v////7//////v8A+v/8///+///////////////+///6/v///v//+fT4///+////+////////////v//VP/9///+///////////////+///5////////9/dY//7+////+////////////v//+P/+//7+//////7////////3///+/v///f///f/+///+/////v//////////9////v/+//pQ/fz//////f39/fz//////v3+///9/////////vz+//37+/37/Pz///3+/2j/+////fz//////f39/fz//////v3+///9/////////vz+//37+/37/Pz///3+/2j/+////v3//////f39/fz//////v39///+/////////vv+//z7/P76/fz///z+//v/aP///v3//////f39/fz//////v39///+/////////vv+//z7/P76/fz///z+//v/aP///////v/+/v/+//77/v/+/v//+//+/v7+///+///+/v////7///7//P///v7+/1n3/////v/+/v/+//77/v/+/v//+//+/v7+///+///+/v////7///7//P///v7+/1n3//////7////////3///+/v///f///f/+///+/////v//////////9////v/+//pQ//////7////////3///+/v///f///f/+///+/////v//////////9////v/+//pQ/v7/////W/79/fz//////v7+///9/////////v3///z+/f39/f7///z+//3+/f///v7/////W/79/fz//////v7+///9/////////v3///z+/f39/f7///z+//3+/f///vz//////P79/vz//////v3+///9/////////lr+//78/f77/f3///3+//z//P/+/vz//////P79/vz//////v3+///9/////////lr+//78/f77/f3///3+//z//P/+///+/f7+/v/////8/v7+/f//V/7//v7+/v79/////f////7////+/P///v/+//v8///+/f7+/v/////8/v7+/f//V/7//v7+/v79/////f////7////+/P///v/+//v8///+/f7+/v/////8/v7+/f//V/7//v7+/v79/////f////7////+/P///v/+//v8//3//v///v/+/v7////+/v/+/v/+///////9/v7//f///0j+//////7///7+/v7+//3//v///v/+/v7////+/v/+/v/+///////9/v7//f///0j+//////7///7+/v7+///9SP3+/////////f7+/v///v3//////v37///+/v////7////+///////+//7/cv3//////vv+/f7///////72///9////////8f7///7+/v/+/v7///3v//3+/v//cv3//////vv+/f7///////72///9////////8f7///7+/v/+/v7///3v//3+/v/////9SP3+/////////f7+/v///v3//////v37///+/v////7////+///////+//7////9SP3+/////////f7+/v///v3//////v37///+/v////7////+///////+//7////9SP3+/////////f7+/v///v3//////v37///+/v////7////+///////+//7////+/f79///+/////v7//v////7//////vP+//9P//////7////+/////////////P3//////nj+9vz//////vv9///6/////////P3///z6+/78/P3///76//3//f///P3//////nj+9vz//////vv9///6/////////P3///z6+/78/P3///76//3//f///v7////+/v1T/P3//////v7+///+/////////v3+//3+/v7+/f7///3+//3//v///v7////+/v1T/P3//////v7+///+/////////v3+//3+/v7+/f7///3+//3//v///v7////+/v1T/P3//////v7+///+/////////v3+//3+/v7+/f7///3+//3//v/////////////////+///6////////+Vf4//7+/////P//////////////8v/9/////////v///v/////////7/v/+/v////3+///+/v///v////7//////////P9C///+/////v///v/////////7/v/+/v////3+///+/v///v////7//////////P9C///+/////////wD////6///8/////v//Tfn4///+/////f///////////P//+/////7+/////////wD////6///8/////v//Tfn4///+/////f///////////P//+/////7+/v3//////P79/WT//////v39///9/////////v3///z9+v78/f3///z+//z/+////v3//////f39/f3//////vz+/v/9/////////v3///39/P78/GH//vz+//z//P/+/v3//////f39/f3//////vz+/v/9/////////v3///39/P78/GH//vz+//z//P/+/v3//////f39/f3//////vz+/v/9/////////v3///39/P78/GH//vz+//z//P/+//////7///////9y/v/+///+/f//+v7+///+///+/v////7/////3f///v/+//z3//3//v///v/+/v7////+/v/+/v/+///////9/v7//f///0j+//////7///7+/v7+//79+/n8//7+///+avz+/f///fv//v3+/P35///+/v/////////8/v/+/v/+//7+///9/f39/////////v3//v///vz//////VD9///0//////7////+///////+///////9/f39/////////v3//v///vz//////VD9///0//////7////+///////+///////9/f39/////////v3//v///vz//////VD9///0//////7////+///////+///////2/fz8/////////V/+/v///v3////+9/3+///9///////////1///////////////2/fz8/////////V/+/v///v3////+9/3+///9///////////1///////////////2/fz8/////////V/+/v///v3////+9/3+///9///////////1//////////////3//v///v/+/v7////+/v/+/v/+///////9/v7//f///0j+//////7///7+/v7+//3//v///v/+/v7////+/v/+/v/+///////9/v7//f///0j+//////7///7+/v7+//3//v///v/+/v7////+/v/+/v/+///////9/v7//f///0j+//////7///7+/v7+/////v/////////+/v9J/////////fz6///9////+v////7//////v8A+v/8///+/////v/+/v/+//77/v/+/v//+//+/v7+///+///+/v////7///7//P///v7+/1n3///+/f7+/v/////8/v7+/f//V/7//v7+/v79/////f////7////+/P///v/+//v8///+/f7+/v/////8/v7+/f//V/7//v7+/v79/////f////7////+/P///v/+//v8/v3//////f39/P3//////vz9///9/////////f3//vz8+/78Z/z///z+//3+/P///v3//////f39/P3//////vz9///9/////////f3//vz8+/78Z/z///z+//3+/P///v3//////f39/P3//////vz9///9/////////f3//vz8+/78Z/z///z+//3+/P///fn//////vv+/fz//////3X9///9/////////fz+//z5+/78/Pv///v9//z//P///fn//////vv+/fz//////3X9///9/////////fz+//z5+/78/Pv///v9//z//P///fz//////fv9/fr///////v9///8/////////fz+//z6ev77+vz///z9//r/+//+///9SP3+/////////f7+/v///v3//////v37///+/v////7////+///////+//7////9SP3+/////////f7+/v///v3//////v37///+/v////7////+///////+//7////9SP3+/////////f7+/v///v3//////v37///+/v////7////+///////+//7//Pz//////fn9/Pz///7///n9/v/7/////////fz+//x6+v79/Pz///r+//z/+///9f3//////f3+/v3///////5r///+////////8v7///79/v79/v7///32//7+/v//9f3//////f3+/v3///////5r///+////////8v7///79/v79/v7///32//7+/v///f3//////ff7Z/3///////3+///6/////////f3///v8/f79/f3///z9//3//v///f3//////ff7Z/3///////3+///6/////////f3///v8/f79/f3///z9//3//v/////+/f7+/v/////8/v7+/f//V/7//v7+/v79/////f////7////+/P///v/+//v8///+/f7+/v/////8/v7+/f//V/7//v7+/v79/////f////7////+/P///v/+//v8///+/f7+/v/////8/v7+/f//V/7//v7+/v79/////f////7////+/P///v/+//v8///2/fz8/////////V/+/v///v3////+9/3+///9///////////1///////////////2/fz8/////////V/+/v///v3////+9/3+///9///////////1///////////////6+vr7/v/+/v/9+/r+/v7//n///f7++/r7/v79/v7+/v7//v77/v7//v/+/v3+///6+vr7/v/+/v/9+/r+/v7//n///f7++/r7/v79/v7+/v7//v77/v7//v/+/v3+///8/Ff6///////++/z//v///vz///7+/P39///+/v/////////8/v///v/+//7+///8/Ff6///////++/z//v///vz///7+/P39///+/v/////////8/v///v/+//7+//9f/fz8/////////vf///////z//v//9/z+///9///////////0/v////////////9f/fz8/////////vf///////z//v//9/z+///9///////////0/v/////////////0/fz7///+/////ff//v///v3/////9/3+///+//////////9e///////+///////0/fz7///+/////ff//v///v3/////9/3+///+//////////9e///////+//////79+/n8//7+///+avz+/f///fv//v3+/P35///+/v/////////8/v/+/v/+//7+//79+/n8//7+///+avz+/f///fv//v3+/P35///+/v/////////8/v/+/v/+//7+///9SP3+/////////f7+/v///v3//////v37///+/v////7////+///////+//7////9SP3+/////////f7+/v///v3//////v37///+/v////7////+///////+//7//////P7+/wD////+/f7+/v///v7//v7+/v1E///+/f////3//////v///v/+//7+/////P7+/wD////+/f7+/v///v7//v7+/v1E///+/f////3//////v///v/+//7+///4/v33/////////vn///////z/////Vf3+///+///////////5///////////+///8/ftR/////////vz//f////3/////9/39///+//8A///////8///////+///+///6+vr7/v/+/v/9+/r+/v7//n///f7++/r7/v79/v7+/v7//v77/v7//v/+/v3+///6+vr7/v/+/v/9+/r+/v7//n///f7++/r7/v79/v7+/v7//v77/v7//v/+/v3+///8/ftR/////////vz//f////3/////9/39///+//8A///////8///////+///++/3//////fr9+/3///////39//9o/////////f3//vv8/f39/f7///38//z//f//+/3//////fr9+/3///////39//9o/////////f3//vv8/f39/f7///38//z//f//+/3//////fr9+/3///////39//9o/////////f3//vv8/f39/f7///38//z//f///////////wD////6///8/////v//Tfn4///+/////f///////////P//+/////7+/////////wD////6///8/////v//Tfn4///+/////f///////////P//+/////7+//////7///////9y/v/+///+/f//+v7+///+///+/v////7/////3f///v/+//z3/v3//////f39/f3//////vz+/v/9/////////v3///39/P78/GH//vz+//z//P/+///////////////h///+/////f//+/7+///+/////v////////7/Zv///v////z3///////////////h///+/////f//+/7+///+/////v////////7/Zv///v////z3///8/Ff6///////++/z//v///vz///7+/P39///+/v/////////8/v///v/+//7+/////v///v/////////7/v/+/v////3+///+/v///v////7//////////P9C///+///////////////+///6/v///v//+fT4///+////+////////////v//VP/9///+///////////////+///6////////+Vf4//7+/////P//////////////8v/9///////////////////+///6////////+Vf4//7+/////P//////////////8v/9/////fz//////f39/fz//////v3+///9/////////vz+//37+/37/Pz///3+/2j/+////fz//////f39/fz//////v3+///9/////////vz+//37+/37/Pz///3+/2j/+//////8/Ff6///////++/z//v///vz///7+/P39///+/v/////////8/v///v/+//7+///8/Ff6///////++/z//v///vz///7+/P39///+/v/////////8/v///v/+//7+///8/Ff6///////++/z//v///vz///7+/P39///+/v/////////8/v///v/+//7+/f3//////ff7Z/3///////3+///6/////////f3///v8/f79/f3///z9//3//v///f3//////ff7Z/3///////3+///6/////////f3///v8/f79/f3///z9//3//v///f3//////ff7Z/3///////3+///6/////////f3///v8/f79/f3///z9//3//v/////9/f39/////////v3//v///vz//////VD9///0//////7////+///////+///////+/f79///+/////v7//v////7//////vP+//9P//////7////+/////////////v7////+/v1T/P3//////v7+///+/////////v3+//3+/v7+/f7///3+//3//v///v7////+/v1T/P3//////v7+///+/////////v3+//3+/v7+/f7///3+//3//v//8P3//////f3+/f3///////7y///9////////dP7///79/f79/v7///30//3+/f//8P3//////f3+/f3///////7y///9////////dP7///79/f79/v7///30//3+/f///vz//////P79/vz//////v3+///9/////////lr+//78/f77/f3///3+//z//P/+/vz//////P79/vz//////v3+///9/////////lr+//78/f77/f3///3+//z//P/+/v3//////fz+/f3///////z9///9/////////vv///38+/5l+/3///z+//v/+////v3//////f39/fz//////v39///+/////////vv+//z7/P76/fz///z+//v/aP/////////////////+///5////////9/dY//7+////+////////////v//+P/+//7+///////////////+///5////////9/dY//7+////+////////////v//+P/+//7+///9/f39/////////v3//v///vz//////VD9///0//////7////+///////+///////9/f39/////////v3//v///vz//////VD9///0//////7////+///////+//////9f/fz8/////////vf///////z//v//9/z+///9///////////0/v////////////9f/fz8/////////vf///////z//v//9/z+///9///////////0/v////////////9f/fz8/////////vf///////z//v//9/z+///9///////////0/v///////////////P7+/wD////+/f7+/v///v7//v7+/v1E///+/f////3//////v///v/+//7+/////P7+/wD////+/f7+/v///v7//v7+/v1E///+/f////3//////v///v/+//7+/////P7+/wD////+/f7+/v///v7//v7+/v1E///+/f////3//////v///v/+//7+/f3/////+/z9/P3//////v7+///7/////////f3+/2X8+/79/Pz///z+//3//P///f3/////+/z9/P3//////v7+///7/////////f3+/2X8+/79/Pz///z+//3//P///f3/////+/z9/P3//////v7+///7/////////f3+/2X8+/79/Pz///z+//3//P////79+/n8//7+///+avz+/f///fv//v3+/P35///+/v/////////8/v/+/v/+//7+//79+/n8//7+///+avz+/f///fv//v3+/P35///+/v/////////8/v/+/v/+//7+//////7////////3///+/v///f///f/+///+/////v//////////9////v/+//pQ/////////////////v/7/////v///f38///9AP//RP////3/////////+//+///+/////////////////v/7/////v///f38///9AP//RP////3/////////+//+///+/////////////////v/7/////v///f38///9AP//RP////3/////////+//+///+cv3//////vv+/f7///////72///9////////8f7///7+/v/+/v7///3v//3+/v//cv3//////vv+/f7///////72///9////////8f7///7+/v/+/v7///3v//3+/v///////v/////////+/v9J/////////fz6///9////+v////7//////v8A+v/8///+9f3//////f3+/v3///////5r///+////////8v7///79/v79/v7///32//7+/v//9f3//////f3+/v3///////5r///+////////8v7///79/v79/v7///32//7+/v//8P3//////f3+/f3///////7y///9////////dP7///79/f79/v7///30//3+/f//8P3//////f3+/f3///////7y///9////////dP7///79/f79/v7///30//3+/f//7/3//////vv+/f7///////73///8////////9f7///79/v7+/v7///5u//7//v//7/3//////vv+/f7///////73///8////////9f7///79/v7+/v7///5u//7//v///////v///v/////////7/v/+/v////3+///+/v///v////7//////////P9C///+/////v/+/f/9/////v7/Tf///v/+/v7//v/+//7+/v////7//v7//v///v/+/v79/////v/+/f/9/////v7/Tf///v/+/v7//v/+//7+/v////7//v7//v///v/+/v79/////////////////v/7/////v///f38///9AP//RP////3/////////+//+///+/////v///v/////////7/v/+/v////3+///+/v///v////7//////////P9C///+/////v///v/////////7/v/+/v////3+///+/v///v////7//////////P9C///+8P3//////f3+/f3///////7y///9////////dP7///79/f79/v7///30//3+/f/////4/v33/////////vn///////z/////Vf3+///+///////////5///////////+///4/v33/////////vn///////z/////Vf3+///+///////////5///////////+///4/v33/////////vn///////z/////Vf3+///+///////////5///////////+/////v/+/f/9/////v7/Tf///v/+/v7//v/+//7+/v////7//v7//v///v/+/v79///////////////h///+/////f//+/7+///+/////v////////7/Zv///v////z3/vz//////P79/vz//////v3+///9/////////lr+//78/f77/f3///3+//z//P/+/vz//////P79/vz//////v3+///9/////////lr+//78/f77/f3///3+//z//P/+/vz//////P79/vz//////v3+///9/////////lr+//78/f77/f3///3+//z//P/+///8/ftR/////////vz//f////3/////9/39///+//8A///////8///////+///+///8/ftR/////////vz//f////3/////9/39///+//8A///////8///////+///+///8/ftR/////////vz//f////3/////9/39///+//8A///////8///////+///+/mL//////f3+/v3//////vn+///8/////////v3///78/P38/f3///z9//3//f///mL//////f3+/v3//////vn+///8/////////v3///78/P38/f3///z9//3//f///mL//////f3+/v3//////vn+///8/////////v3///78/P38/f3///z9//3//f/////////////////+///6////////+Vf4//7+/////P//////////////8v/9/////f3/////+/z9/P3//////v7+///7/////////f3+/2X8+/79/Pz///z+//3//P///f3/////+/z9/P3//////v7+///7/////////f3+/2X8+/79/Pz///z+//3//P/////////////////+///5////////9/dY//7+////+////////////v//+P/+//7+//3//v///v/+/v7////+/v/+/v/+///////9/v7//f///0j+//////7///7+/v7+/////v/////////+/v9J/////////fz6///9////+v////7//////v8A+v/8///+/////////////////v/7/////v///f38///9AP//RP////3/////////+//+///+/////P7+/wD////+/f7+/v///v7//v7+/v1E///+/f////3//////v///v/+//7+/////////////////v/7/////v///f38///9AP//RP////3/////////+//+///+/////////////////v/7/////v///f38///9AP//RP////3/////////+//+///+/v7////+/v1T/P3//////v7+///+/////////v3+//3+/v7+/f7///3+//3//v/////4/v33/////////vn///////z/////Vf3+///+///////////5///////////+///4/v33/////////vn///////z/////Vf3+///+///////////5///////////+///4/v33/////////vn///////z/////Vf3+///+///////////5///////////+/////P7+/wD////+/f7+/v///v7//v7+/v1E///+/f////3//////v///v/+//7+/////P7+/wD////+/f7+/v///v7//v7+/v1E///+/f////3//////v///v/+//7+/////P7+/wD////+/f7+/v///v7//v7+/v1E///+/f////3//////v///v/+//7+///+/f7+/v/////8/v7+/f//V/7//v7+/v79/////f////7////+/P///v/+//v8/fz//////f39/fz//////v3+///9/////////vz+//37+/37/Pz///3+/2j/+////v7/////W/79/fz//////v7+///9/////////v3///z+/f39/f7///z+//3+/f///v7/////W/79/fz//////v7+///9/////////v3///z+/f39/f7///z+//3+/f///v7/////W/79/fz//////v7+///9/////////v3///z+/f39/f7///z+//3+/f///////v/+/f/9/////v7/Tf///v/+/v7//v/+//7+/v////7//v7//v///v/+/v79/////v/+/f/9/////v7/Tf///v/+/v7//v/+//7+/v////7//v7//v///v/+/v79///9SP3+/////////f7+/v///v3//////v37///+/v////7////+///////+//7//f3/////+/z9/P3//////v7+///7/////////f3+/2X8+/79/Pz///z+//3//P///////v///v/////////7/v/+/v////3+///+/v///v////7//////////P9C///+/////v///v/////////7/v/+/v////3+///+/v///v////7//////////P9C///+/Pz//////fn9/Pz///7///n9/v/7/////////fz+//x6+v79/Pz///r+//z/+////Pz//////fn9/Pz///7///n9/v/7/////////fz+//x6+v79/Pz///r+//z/+////fz//////fv9/fr///////v9///8/////////fz+//z6ev77+vz///z9//r/+//+/fz//////fv9/fr///////v9///8/////////fz+//z6ev77+vz///z9//r/+//+/f3//////P39/Pz//////vv9///+/////////fz+//38/f79+/z//2r9//3/+////f3//////P39/Pz//////vv9///+/////////fz+//38/f79+/z//2r9//3/+////f3//////P39/Pz//////vv9///+/////////fz+//38/f79+/z//2r9//3/+/////3//v///v/+/v7////+/v/+/v/+///////9/v7//f///0j+//////7///7+/v7+//3//v///v/+/v7////+/v/+/v/+///////9/v7//f///0j+//////7///7+/v7+//3//v///v/+/v7////+/v/+/v/+///////9/v7//f///0j+//////7///7+/v7+/v3//////fz+/f3///////z9///9/////////vv///38+/5l+/3///z+//v/+//////2/fz8/////////V/+/v///v3////+9/3+///9///////////1///////////////2/fz8/////////V/+/v///v3////+9/3+///9///////////1///////////////2/fz8/////////V/+/v///v3////+9/3+///9///////////1/////////////////////wD////6///8/////v//Tfn4///+/////f///////////P//+/////7++/3//////fr9+/3///////39//9o/////////f3//vv8/f39/f7///38//z//f///v7/////W/79/fz//////v7+///9/////////v3///z+/f39/f7///z+//3+/f///v7/////W/79/fz//////v7+///9/////////v3///z+/f39/f7///z+//3+/f///v7/////W/79/fz//////v7+///9/////////v3///z+/f39/f7///z+//3+/f///v3//////P79/WT//////v39///9/////////v3///z9+v78/f3///z+//z/+////v3//////P79/WT//////v39///9/////////v3///z9+v78/f3///z+//z/+////v3//////f39/P3//////vz9///9/////////f3//vz8+/78Z/z///z+//3+/P///v3//////f39/P3//////vz9///9/////////f3//vz8+/78Z/z///z+//3+/P///v3//////f39/f3//////vz+/v/9/////////v3///39/P78/GH//vz+//z//P/+/v3//////P79/WT//////v39///9/////////v3///z9+v78/f3///z+//z/+////v3//////P79/WT//////v39///9/////////v3///z9+v78/f3///z+//z/+////v3//////P79/WT//////v39///9/////////v3///z9+v78/f3///z+//z/+//////0/fz7///+/////ff//v///v3/////9/3+///+//////////9e///////+///////0/fz7///+/////ff//v///v3/////9/3+///+//////////9e///////+///////0/fz7///+/////ff//v///v3/////9/3+///+//////////9e///////+///////0/fz7///+/////ff//v///v3/////9/3+///+//////////9e///////+///////0/fz7///+/////ff//v///v3/////9/3+///+//////////9e///////+/////////v/+/v/+//77/v/+/v//+//+/v7+///+///+/v////7///7//P///v7+/1n3//9f/fz8/////////vf///////z//v//9/z+///9///////////0/v////////////9f/fz8/////////vf///////z//v//9/z+///9///////////0/v///////////v3//////f39/P3//////vz9///9/////////f3//vz8+/78Z/z///z+//3+/P///////v/+/f/9/////v7/Tf///v/+/v7//v/+//7+/v////7//v7//v///v/+/v79/////v/+/f/9/////v7/Tf///v/+/v7//v/+//7+/v////7//v7//v///v/+/v79/////v/+/f/9/////v7/Tf///v/+/v7//v/+//7+/v////7//v7//v///v/+/v79///////////////h///+/////f//+/7+///+/////v////////7/Zv///v////z3///////////////h///+/////f//+/7+///+/////v////////7/Zv///v////z3/v3//////fz+/f3///////z9///9/////////vv///38+/5l+/3///z+//v/+////v3//////fz+/f3///////z9///9/////////vv///38+/5l+/3///z+//v/+////v3//////fz+/f3///////z9///9/////////vv///38+/5l+/3///z+//v/+////f3//////P39/Pz//////vv9///+/////////fz+//38/f79+/z//2r9//3/+////f3//////P39/Pz//////vv9///+/////////fz+//38/f79+/z//2r9//3/+//////8/ftR/////////vz//f////3/////9/39///+//8A///////8///////+///+///8/ftR/////////vz//f////3/////9/39///+//8A///////8///////+///+/v3//////f39/fz//////v39///+/////////vv+//z7/P76/fz///z+//v/aP//7/3//////vv+/f7///////73///8////////9f7///79/v7+/v7///5u//7//v///mL//////f3+/v3//////vn+///8/////////v3///78/P38/f3///z9//3//f///v7/////W/79/fz//////v7+///9/////////v3///z+/f39/f7///z+//3+/f/////8/ftR/////////vz//f////3/////9/39///+//8A///////8///////+///+///8/ftR/////////vz//f////3/////9/39///+//8A///////8///////+///+///6+vr7/v/+/v/9+/r+/v7//n///f7++/r7/v79/v7+/v7//v77/v7//v/+/v3+/P3//////nj+9vz//////vv9///6/////////P3///z6+/78/P3///76//3//f///v7////+/v1T/P3//////v7+///+/////////v3+//3+/v7+/f7///3+//3//v///v3//////f39/f3//////vz+/v/9/////////v3///39/P78/GH//vz+//z//P/+/v3//////f39/P3//////vz9///9/////////f3//vz8+/78Z/z///z+//3+/P///fn//////vv+/fz//////3X9///9/////////fz+//z5+/78/Pv///v9//z//P//+/3//////fr9+/3///////39//9o/////////f3//vv8/f39/f7///38//z//f///f3//////ff7Z/3///////3+///6/////////f3///v8/f79/f3///z9//3//v///f3/////+/z9/P3//////v7+///7/////////f3+/2X8+/79/Pz///z+//3//P///vz//////P79/vz//////v3+///9/////////lr+//78/f77/f3///3+//z//P/+/mL//////f3+/v3//////vn+///8/////////v3///78/P38/f3///z9//3//f///Pz//////fn9/Pz///7///n9/v/7/////////fz+//x6+v79/Pz///r+//z/+////fz//////fv9/fr///////v9///8/////////fz+//z6ev77+vz///z9//r/+//+/f3//////P39/Pz//////vv9///+/////////fz+//38/f79+/z//2r9//3/+////v7/////W/79/fz//////v7+///9/////////v3///z+/f39/f7///z+//3+/f///v3//////P79/WT//////v39///9/////////v3///z9+v78/f3///z+//z/+////v3//////fz+/f3///////z9///9/////////vv///38+/5l+/3///z+//v/+////fz//////f39/fz//////v3+///9/////////vz+//37+/37/Pz///3+/2j/+////v3//////f39/fz//////v39///+/////////vv+//z7/P76/fz///z+//v/aP////3//v///v/+/v7////+/v/+/v/+///////9/v7//f///0j+//////7///7+/v7+//3//v///v/+/v7////+/v/+/v/+///////9/v7//f///0j+//////7///7+/v7+///+/f79///+/////v7//v////7//////vP+//9P//////7////+///////////////+/f79///+/////v7//v////7//////vP+//9P//////7////+///////////////9SP3+/////////f7+/v///v3//////v37///+/v////7////+///////+//7////9SP3+/////////f7+/v///v3//////v37///+/v////7////+///////+//7//////////wD////6///8/////v//Tfn4///+/////f///////////P//+/////7+//////7///////9y/v/+///+/f//+v7+///+///+/v////7/////3f///v/+//z3///////////////h///+/////f//+/7+///+/////v////////7/Zv///v////z3///////////////+///6////////+Vf4//7+/////P//////////////8v/9///////////////////+///6////////+Vf4//7+/////P//////////////8v/9//////79+/n8//7+///+avz+/f///fv//v3+/P35///+/v/////////8/v/+/v/+//7+//79+/n8//7+///+avz+/f///fv//v3+/P35///+/v/////////8/v/+/v/+//7+///+/f7+/v/////8/v7+/f//V/7//v7+/v79/////f////7////+/P///v/+//v8///////////////+///6/v///v//+fT4///+////+////////////v//VP/9///+///////////////+///6/v///v//+fT4///+////+////////////v//VP/9///+///////////////+///5////////9/dY//7+////+////////////v//+P/+//7+///////////////+///5////////9/dY//7+////+////////////v//+P/+//7+//////7////////3///+/v///f///f/+///+/////v//////////9////v/+//pQ//////7////////3///+/v///f///f/+///+/////v//////////9////v/+//pQ///////////////+///6/v///v//+fT4///+////+////////////v//VP/9///+///////////////+///6/v///v//+fT4///+////+////////////v//VP/9///+///////////////+///6/v///v//+fT4///+////+////////////v//VP/9///+/////v///v/////////7/v/+/v////3+///+/v///v////7//////////P9C///+///////////////+///5////////9/dY//7+////+////////////v//+P/+//7+///////////////+///5////////9/dY//7+////+////////////v//+P/+//7+///////////////+///5////////9/dY//7+////+////////////v//+P/+//7+///9SP3+/////////f7+/v///v3//////v37///+/v////7////+///////+//7////9SP3+/////////f7+/v///v3//////v37///+/v////7////+///////+//7////9SP3+/////////f7+/v///v3//////v37///+/v////7////+///////+//7/9f3//////f3+/v3///////5r///+////////8v7///79/v79/v7///32//7+/v/////9/f39/////////v3//v///vz//////VD9///0//////7////+///////+///////9/f39/////////v3//v///vz//////VD9///0//////7////+///////+/////////P7+/wD////+/f7+/v///v7//v7+/v1E///+/f////3//////v///v/+//7+/////P7+/wD////+/f7+/v///v7//v7+/v1E///+/f////3//////v///v/+//7+///+/f79///+/////v7//v////7//////vP+//9P//////7////+///////////////+/f79///+/////v7//v////7//////vP+//9P//////7////+/////////////fz//////f39/fz//////v3+///9/////////vz+//37+/37/Pz///3+/2j/+////fz//////f39/fz//////v3+///9/////////vz+//37+/37/Pz///3+/2j/+////fz//////f39/fz//////v3+///9/////////vz+//37+/37/Pz///3+/2j/+////v3//////f39/fz//////v39///+/////////vv+//z7/P76/fz///z+//v/aP///v3//////f39/fz//////v39///+/////////vv+//z7/P76/fz///z+//v/aP///v3//////f39/fz//////v39///+/////////vv+//z7/P76/fz///z+//v/aP///////v/+/v/+//77/v/+/v//+//+/v7+///+///+/v////7///7//P///v7+/1n3/////v/+/v/+//77/v/+/v//+//+/v7+///+///+/v////7///7//P///v7+/1n3/////v/+/v/+//77/v/+/v//+//+/v7+///+///+/v////7///7//P///v7+/1n3/f3//////P39/Pz//////vv9///+/////////fz+//38/f79+/z//2r9//3/+////////P7+/wD////+/f7+/v///v7//v7+/v1E///+/f////3//////v///v/+//7+/////P7+/wD////+/f7+/v///v7//v7+/v1E///+/f////3//////v///v/+//7+/////P7+/wD////+/f7+/v///v7//v7+/v1E///+/f////3//////v///v/+//7+///4/v33/////////vn///////z/////Vf3+///+///////////5///////////+///4/v33/////////vn///////z/////Vf3+///+///////////5///////////+///8/ftR/////////vz//f////3/////9/39///+//8A///////8///////+///+///8/ftR/////////vz//f////3/////9/39///+//8A///////8///////+///+//////7////////3///+/v///f///f/+///+/////v//////////9////v/+//pQ//////7////////3///+/v///f///f/+///+/////v//////////9////v/+//pQ//////7////////3///+/v///f///f/+///+/////v//////////9////v/+//pQ///+/f79///+/////v7//v////7//////vP+//9P//////7////+/////////////////v/+/f/9/////v7/Tf///v/+/v7//v/+//7+/v////7//v7//v///v/+/v79/////v/+/f/9/////v7/Tf///v/+/v7//v/+//7+/v////7//v7//v///v/+/v79//////7////////3///+/v///f///f/+///+/////v//////////9////v/+//pQ//////7////////3///+/v///f///f/+///+/////v//////////9////v/+//pQ///8/Ff6///////++/z//v///vz///7+/P39///+/v/////////8/v///v/+//7+///8/Ff6///////++/z//v///vz///7+/P39///+/v/////////8/v///v/+//7+///8/Ff6///////++/z//v///vz///7+/P39///+/v/////////8/v///v/+//7+/wEC+wD+/gT/AQIEBQH+/gUDAgv//P8A/f/4//4A+gEFBfwAAQAB/QAB/v/8AQL8/wEC+wD+/gT/AQIEBQH+/gUDAgv//P8A/f/4//4A+gEFBfwAAQAB/QAB/v/8AQL8AAAB/QH+/QT9AQAEBwH/AAUBAwsB/gAA/f76Af3/+/8EBP0AAQEA/AAA/AH9AAL9AAAB/QH+/QT9AQAEBwH/AAUBAwsB/gAA/f76Af3/+/8EBP0AAQEA/AAA/AH9AAL9AAAB/QH+/QT9AQAEBwH/AAUBAwsB/gAA/f76Af3/+/8EBP0AAQEA/AAA/AH9AAL9AgEA/QH+/wT+/gABBwD9AQL/BA0B/f7+/v37//7+/QAFA/0CAQH//gH+/QH9AQP9BQb8+fv7BQkHBgf6+/r69wsI+vsF+vv7+/v5BQT4+gcJCgUFBgf7+gYG+wX3B/n5BgX8+vv6BAgFBgb6+/v7+AoH+vsG+/v7+/v6BwT4+QUJCQYGBwf7+gUG+gb5Bfn6BgX8+vv6BAgFBgb6+/v7+AoH+vsG+/v7+/v6BwT4+QUJCQYGBwf7+gUG+gb5Bfn6Bwf7+fv6BgoGBAb6+vr69wgG+fsH+/r5+vr5BgX3+QYJCQgHBwn6+QcE+gf5B/n5BQb8+fv7BQkHBgf6+/r69wsI+vsF+vv7+/v5BQT4+gcJCgUFBgf7+gYG+wX3B/n5Bgb8+/v7BQgFBwb6+/z7+AsH+/sH/Pv7+/v7BwT4+gUJCfUGBwf7+gYG+wb5Bvr6CAj7+fv6BgsHBQb7+vr6+AkG+fsH+/r5+/r6Bgb4+gYKCvUHCAn6+QgF+wj5B/n6BQf8+vv7BQoHBgf7+/r79wsJ+vsF+/v7+/v6BgX5+gcJCvQFBwf8+gYH+wb4B/n6/f0KBwkI/f37/v78Dwr8+v7++xT9/Pz8BggG/f0L+/7+/vz9/f0J/P39/P37/vz8/f4JBwsH/f78/f39EAn8+/7++xP9/Pz8BggH/f0K+/3+/vv+/f0K/P79+/77/fz8/f4JBwsH/f78/f39EAn8+/7++xP9/Pz8BggH/f0K+/3+/vv+/f0K/P79+/77/fz8/f0JCQoI/f37/f38Ewr7+/39+xX9/Pv8CAgJ/f0K+/3+/fv+/f0J+/39/P37/fv7/f0KBwkI/f37/v78Dwr8+v7++xT9/Pz8BggG/f0L+/7+/vz9/f0J/P39/P37/vz8///+/v7+/v/////8/f4K/v/+/f7/CwsM/v78/v7/Cv7///7///7+/f7/Cv8M/v79/v7+/v7+/v/////8/v4K/v///v7/DAsM/v78//7/Cv////3+///+/f7/CP8L//39/v7+/v7+/v/////8/v4K/v///v7/DAsM/v78//7/Cv////3+///+/f7/CP8L//39///+/v7+/v/+///8/f4L/f///f7/CwwN/v38/v7+C/7///3+/v7+/f/+Cv4N/v79///+/v7+/v/////8/f4K/v/+/f7/CwsM/v78/v7/Cv7///7///7+/f7/Cv8M/v79/////v7+///////9/v8L/v///v//DAwN//79////Cv////7////+/f//Cf/7//79///+/v7+///////8/f8M/v///v7/DAwO/v79//7/DP////3///7+/f/+C//8//7+///+/v7+///////9/v8L/v///f//Cw0N/v78////Cv7///7///7//f//C//8//7+//7+/v7+/v////8S/v/+/v//Ef7//P7+///9//7+/f////7///7/Cv///v7+/xAL///+/v7+/v/+//8R/v/+/v//EP7//P79//79/////v////7///7+Cf///v///xAL///+/v7+/v/+//8R/v/+/v//EP7//P79//79/////v////7///7+Cf///v///xAL/////f7+///+//8P/v7+/v/+Ev///P79/v79/v7+/f7//v7///7+Df///f/+/hIM//7+/v7+/v////8S/v/+/v//Ef7//P7+///9//7+/f////7///7/Cv///v7+/xAL//////7///////8S/////v///P///P7+///+/////v//////////Cv///////xEM/////v////////8Q/v/+/v///f///P7+///+/////v//////////Dv///v/+/xMN/////v////////8T/v/+/v///P///P7+///+/////v////////7/C////v/+/xIMAAD//v/+/wD///8A//8A/wAA//8A/////xD/AAAQ/wAA//8AAP//AP8A/wD/AAAAAAD9//4RAAD/AP8A//3//wAA//8A////Ef//AAD//wAAAP8A/wD+/wAA/wD/AP//AP/////+/////////////wD///8A/wD//xH/AAAQAP8AAP8A/////wAA/wD/AP//AAD9//4SAAD//wD///0A/wAA//8A////E/7/AAD//wAAAP8A///8/////wD/AP//AAD+/v//////AAD//////wAA//4A/////w/+AAAR/wAAAP8AAP////8A/wD/AAD/AAD9//4RAAD/AAAA//0A/wAA//4A//8AE//+AP///wAAAP8AAAD9//8AAAD//wD/AAAA/wD//wD/AAAA/wAAEgAAAAAAAAAAAAD/AAAAAAAAAAAAAP8AAAAAAAD/AP//AAAAAAD//wD/AAAAAAAAEgAAAAAA/wAAAAAAAAD//wAAAP8AAAAAAAAAAAAA/wD/AAAA//8AAAAAAAD//wAA/wAAFAAA/wD/AAD/AAAA/wAAAAAAAAAA/wAAAAAAAP//AAD+///+AAAAAAAA/xYAAAAAAP8AAAAA/v8AAAD/AAAAAAAAAAD+AAAAAAAAAAAAAAD+/v7/AAAAAAAA//4AAP8AABwAAAAA//7/AAD//wAAAP8AAAD/AAAA/wD/AAAAAAD//xX+AAAAAAAA//8A/wAAAP8A/wAA////AAAAAAAAAAAAAAD/AAAAAAAAAAAAAAAW////AAAAAAAAAP0AAAAAAP8AAAAA/f8AAAD/AAAAAAAAAAD9AAAAAAAAAAAAAAD9////AAD/AAAA//4AAAAAAP8AAAAA/v8AAAAAAAAAAAAAAAAWAAAAAAAAAAAAAAD///7/AAAAAAAAGP8A/wAA//8AAP8A///+AAD/AAAAAAAAAAD/AAAA/wD/AP//AAD/Ef8AAAAAAAAA/wAAAAAA//8AAAAA////AAD//wAAAP8AAAAAAAAAAAD/AAAAAAAA/wD/AAAAAAAA/wD/AAAAAP8AAAAAAP8QAAAA/wAAAP8AAAAAAAAAAAAAAAAAAAAA/wAAAAAAAAAAAAD/AAAAAAAAAP8AAAAA/wAAAAAAAP8AAAAAAAAA/wAQAAAAAAAAAAD//wD/AAAAAAAAEgAAAAAA/wAAAAAAAAD//wAAAP8AAAAAAAAAAAAA/wD/AAAAAAD//wD/AAAAAAAAEgAAAAAA/wAAAAAAAAD//wAAAP8AAAAAAAAAAAAA/wD/AP8A/wAA/wAAAAAAAAAA/wAAAAD/AAAAAAD/AP8A/wAAABEAAAAAAAAAAP8AAAAAAAAA/wD/AAAAAAD//wAA/wAAFgAA/wD/AAD/AAAA/wAAAAAAAAAA/wAA/wAA////AAD+////AAAAAAAA/xcAAAAAAP8AAAAA/v8AAAAAAAAAAAAAAAD+AAAAAAAAAAAAAAD+//7/AAAAAP////7/AP8AAB8A//8A//7/AP///wAA/wAAAAD//wAA/wD/AP//AAD//xX+AAAAAAAA//8AAAAAAP8AAAAA////AAD/AAAAAAAAAAD/AAAAAAD/AAAAAAAY////AAAAAAAA//4AAAAAAP8AAAAA/v//AAD/AAAAAAAAAAD9AAAAAAAAAP8AAAD9///+AAD/AAAAAP0AAAD///8AAAAA/gD/AAD/AAAAAAAAAAAYAAAAAAAAAAAAAAD///7/AAAAAAAAGv///wAA//8A//8A///+AAD//wAAAAAAAAD//wAA/wAAAAD/AAD/Ev//AAAAAAAA/wAAAAAA//8AAAAAAP//AAD//wAAAP8AAAD/AAAAAAD/AAAAAAAA/wD/AAAAAAAA/wD/AAAAAAAA/wAAAP8RAAAA/wAAAP8AAAAAAAAAAAD/AAD/AAAAAAAAAAAAAAAAAAD/AAD/AAAAAP8AAAD/AAAA/wAAAP8AAAAAAAAA/wAQAAAAAAAA/wD//wD/AAAAAP8AEwAA/wD/AP8AAAD/AAD/AAAAAAAA//8AAAAAAAD/AP//AAAA/wD//wD/AAAAAP8AEwAA/wD/AP8AAAD/AAD/AAAAAAAA//8AAAAAAAD/AP//AP8A/wAA/wD/AAAAAAAAAAD/AAAAAAAAAAD/AP8A/wAAABIAAAAAAAAAAAD//wAAAAAA//8AAAAAAAD//wAA/wAAFQAAAP//AAD/AAAA/wAAAAAAAAAA/wAAAAAAAP//AAD+//8AAAAAAAAA/xYAAAAAAP8AAAAA/v//AAD/AAAAAAAAAAD9AAAAAAAAAAAAAAD//v/+AAD/AAAA/v//AAAAAB0A///////+AAD/AAAAAAAAAAD/AAAA/wAAAP8AAAD//xT/AAAAAAAA/v8AAAAA//8AAAAA////AAAAAAAAAAAAAAD/AAAAAAAAAAD/AAAX////AAAAAAAA//4AAAAAAP8AAAAA/v//AAAAAAAAAAAAAAD9AAAAAAAAAAAAAAD9////AAD/AAAA//4A/wAAAP8AAAAA/f//AAAAAAAAAAAAAAAXAAAAAAAAAAAAAP//////AAAAAAD/Gf///wAA//4A/wAA///+AAD//wAAAAAAAAD/AAAAAAAAAAAAAAD/Ef//AAAAAAAA/wAAAAAA//8AAAAAAP//AAD//wAAAP8AAAAAAAAAAAD/AAAAAAAA////AAAAAAAA/wAA/wAAAP8AAAD/AP8RAAAA/wAAAP8AAAAAAAAAAAAAAAAAAAAA/wAAAAAAAAAAAAD/AAAAAAAAAP8AAAAAAAAA/wAAAAAAAAAAAAAA/wAQAAAAAAAA/wD//wD/AAAA/wAAEgAAAAAAAAAAAAD/AAAAAAAAAAAAAP8AAAAAAAD/AP//AAAA/wD//wD/AAAA/wAAEgAAAAAAAAAAAAD/AAAAAAAAAAAAAP8AAAAAAAD/AP//AP8A/wAA/wD/AAAAAAAAAAAAAAAAAAAAAAD/AP8A/wAAABEAAAAAAAAAAAAAAAAA",
+    "encoding": "int8-base64",
+    "scale": 0.020351575115534263
+  },
+  "embedding": {
+    "data": "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",
+    "encoding": "int8-base64",
+    "scale": 0.02698365346653255
+  },
+  "exact_prompts": {
+    "create a summary for children": 11,
+    "create a summary for social media": 39,
+    "create a summary with a word limit": 47,
+    "create a two sentence summary": 46,
+    "create an executive summary outline": 18,
+    "explain compression ratio in summaries": 13,
+    "explain extractive summarization": 19,
+    "explain headline writing for summaries": 4,
+    "explain how to choose key sentences": 25,
+    "explain how to summarize without bias": 29,
+    "explain lead sentences in summaries": 2,
+    "explain sentence scoring in summaries": 38,
+    "explain summary length choices": 12,
+    "explain the difference between summary and paraphrase": 3,
+    "explain what to leave out of a summary": 26,
+    "explain why order matters in summaries": 24,
+    "explain why summaries must stay faithful": 5,
+    "gravion summary create a summary for children": 11,
+    "gravion summary create a summary for social media": 39,
+    "gravion summary create a summary with a word limit": 47,
+    "gravion summary create a two sentence summary": 46,
+    "gravion summary create an executive summary outline": 18,
+    "gravion summary explain compression ratio in summaries": 13,
+    "gravion summary explain extractive summarization": 19,
+    "gravion summary explain headline writing for summaries": 4,
+    "gravion summary explain how to choose key sentences": 25,
+    "gravion summary explain how to summarize without bias": 29,
+    "gravion summary explain lead sentences in summaries": 2,
+    "gravion summary explain sentence scoring in summaries": 38,
+    "gravion summary explain summary length choices": 12,
+    "gravion summary explain the difference between summary and paraphrase": 3,
+    "gravion summary explain what to leave out of a summary": 26,
+    "gravion summary explain why order matters in summaries": 24,
+    "gravion summary explain why summaries must stay faithful": 5,
+    "gravion summary make a one line summary of a report": 30,
+    "gravion summary make a summary for a busy reader": 21,
+    "gravion summary make a summary from bullet notes": 22,
+    "gravion summary make a summary of a long conversation": 14,
+    "gravion summary make a summary table from a report": 42,
+    "gravion summary make a summary that keeps numbers": 23,
+    "gravion summary make bullet points from a long text": 44,
+    "gravion summary shorten a paragraph without losing meaning": 15,
+    "gravion summary summarize a biography briefly": 7,
+    "gravion summary summarize a book in one paragraph": 8,
+    "gravion summary summarize a chapter for revision": 37,
+    "gravion summary summarize a customer review set": 36,
+    "gravion summary summarize a debate fairly": 16,
+    "gravion summary summarize a financial report briefly": 20,
+    "gravion summary summarize a historical event briefly": 9,
+    "gravion summary summarize a legal notice plainly": 31,
+    "gravion summary summarize a long article briefly": 0,
+    "gravion summary summarize a long email thread": 17,
+    "gravion summary summarize a long instruction manual": 27,
+    "gravion summary summarize a long story briefly": 41,
+    "gravion summary summarize a meeting into action points": 28,
+    "gravion summary summarize a news story fairly": 1,
+    "gravion summary summarize a policy document": 32,
+    "gravion summary summarize a product description": 33,
+    "gravion summary summarize a project status update": 40,
+    "gravion summary summarize a research paper abstract style": 6,
+    "gravion summary summarize a scientific result carefully": 10,
+    "gravion summary summarize a speech into quotes": 35,
+    "gravion summary summarize a travel guide page": 43,
+    "gravion summary summarize a tutorial into steps": 45,
+    "gravion summary summarize pros and cons of a choice": 34,
+    "help me create a summary for children": 11,
+    "help me create a summary for social media": 39,
+    "help me create a summary with a word limit": 47,
+    "help me create a two sentence summary": 46,
+    "help me create an executive summary outline": 18,
+    "help me explain compression ratio in summaries": 13,
+    "help me explain extractive summarization": 19,
+    "help me explain headline writing for summaries": 4,
+    "help me explain how to choose key sentences": 25,
+    "help me explain how to summarize without bias": 29,
+    "help me explain lead sentences in summaries": 2,
+    "help me explain sentence scoring in summaries": 38,
+    "help me explain summary length choices": 12,
+    "help me explain the difference between summary and paraphrase": 3,
+    "help me explain what to leave out of a summary": 26,
+    "help me explain why order matters in summaries": 24,
+    "help me explain why summaries must stay faithful": 5,
+    "help me make a one line summary of a report": 30,
+    "help me make a summary for a busy reader": 21,
+    "help me make a summary from bullet notes": 22,
+    "help me make a summary of a long conversation": 14,
+    "help me make a summary table from a report": 42,
+    "help me make a summary that keeps numbers": 23,
+    "help me make bullet points from a long text": 44,
+    "help me shorten a paragraph without losing meaning": 15,
+    "help me summarize a biography briefly": 7,
+    "help me summarize a book in one paragraph": 8,
+    "help me summarize a chapter for revision": 37,
+    "help me summarize a customer review set": 36,
+    "help me summarize a debate fairly": 16,
+    "help me summarize a financial report briefly": 20,
+    "help me summarize a historical event briefly": 9,
+    "help me summarize a legal notice plainly": 31,
+    "help me summarize a long article briefly": 0,
+    "help me summarize a long email thread": 17,
+    "help me summarize a long instruction manual": 27,
+    "help me summarize a long story briefly": 41,
+    "help me summarize a meeting into action points": 28,
+    "help me summarize a news story fairly": 1,
+    "help me summarize a policy document": 32,
+    "help me summarize a product description": 33,
+    "help me summarize a project status update": 40,
+    "help me summarize a research paper abstract style": 6,
+    "help me summarize a scientific result carefully": 10,
+    "help me summarize a speech into quotes": 35,
+    "help me summarize a travel guide page": 43,
+    "help me summarize a tutorial into steps": 45,
+    "help me summarize pros and cons of a choice": 34,
+    "make a one line summary of a report": 30,
+    "make a summary for a busy reader": 21,
+    "make a summary from bullet notes": 22,
+    "make a summary of a long conversation": 14,
+    "make a summary table from a report": 42,
+    "make a summary that keeps numbers": 23,
+    "make bullet points from a long text": 44,
+    "please create a summary for children": 11,
+    "please create a summary for social media": 39,
+    "please create a summary with a word limit": 47,
+    "please create a two sentence summary": 46,
+    "please create an executive summary outline": 18,
+    "please explain compression ratio in summaries": 13,
+    "please explain extractive summarization": 19,
+    "please explain headline writing for summaries": 4,
+    "please explain how to choose key sentences": 25,
+    "please explain how to summarize without bias": 29,
+    "please explain lead sentences in summaries": 2,
+    "please explain sentence scoring in summaries": 38,
+    "please explain summary length choices": 12,
+    "please explain the difference between summary and paraphrase": 3,
+    "please explain what to leave out of a summary": 26,
+    "please explain why order matters in summaries": 24,
+    "please explain why summaries must stay faithful": 5,
+    "please make a one line summary of a report": 30,
+    "please make a summary for a busy reader": 21,
+    "please make a summary from bullet notes": 22,
+    "please make a summary of a long conversation": 14,
+    "please make a summary table from a report": 42,
+    "please make a summary that keeps numbers": 23,
+    "please make bullet points from a long text": 44,
+    "please shorten a paragraph without losing meaning": 15,
+    "please summarize a biography briefly": 7,
+    "please summarize a book in one paragraph": 8,
+    "please summarize a chapter for revision": 37,
+    "please summarize a customer review set": 36,
+    "please summarize a debate fairly": 16,
+    "please summarize a financial report briefly": 20,
+    "please summarize a historical event briefly": 9,
+    "please summarize a legal notice plainly": 31,
+    "please summarize a long article briefly": 0,
+    "please summarize a long email thread": 17,
+    "please summarize a long instruction manual": 27,
+    "please summarize a long story briefly": 41,
+    "please summarize a meeting into action points": 28,
+    "please summarize a news story fairly": 1,
+    "please summarize a policy document": 32,
+    "please summarize a product description": 33,
+    "please summarize a project status update": 40,
+    "please summarize a research paper abstract style": 6,
+    "please summarize a scientific result carefully": 10,
+    "please summarize a speech into quotes": 35,
+    "please summarize a travel guide page": 43,
+    "please summarize a tutorial into steps": 45,
+    "please summarize pros and cons of a choice": 34,
+    "shorten a paragraph without losing meaning": 15,
+    "summarize a biography briefly": 7,
+    "summarize a book in one paragraph": 8,
+    "summarize a chapter for revision": 37,
+    "summarize a customer review set": 36,
+    "summarize a debate fairly": 16,
+    "summarize a financial report briefly": 20,
+    "summarize a historical event briefly": 9,
+    "summarize a legal notice plainly": 31,
+    "summarize a long article briefly": 0,
+    "summarize a long email thread": 17,
+    "summarize a long instruction manual": 27,
+    "summarize a long story briefly": 41,
+    "summarize a meeting into action points": 28,
+    "summarize a news story fairly": 1,
+    "summarize a policy document": 32,
+    "summarize a product description": 33,
+    "summarize a project status update": 40,
+    "summarize a research paper abstract style": 6,
+    "summarize a scientific result carefully": 10,
+    "summarize a speech into quotes": 35,
+    "summarize a travel guide page": 43,
+    "summarize a tutorial into steps": 45,
+    "summarize pros and cons of a choice": 34
+  },
+  "features": [
+    "a",
+    "summarize",
+    "summary",
+    "summarize a",
+    "explain",
+    "a summary",
+    "make",
+    "a long",
+    "long",
+    "make a",
+    "summaries",
+    "briefly",
+    "create",
+    "for",
+    "in",
+    "make a summary",
+    "create a",
+    "in summaries",
+    "of",
+    "of a",
+    "summarize a long",
+    "a summary for",
+    "create a summary",
+    "from",
+    "into",
+    "report",
+    "summary for",
+    "to",
+    "a report",
+    "and",
+    "bullet",
+    "explain how",
+    "explain how to",
+    "explain why",
+    "fairly",
+    "from a",
+    "how",
+    "how to",
+    "one",
+    "paragraph",
+    "points",
+    "sentence",
+    "sentences",
+    "story",
+    "summary of",
+    "summary of a",
+    "why",
+    "without",
+    "a biography",
+    "a biography briefly",
+    "a book",
+    "a book in",
+    "a busy",
+    "a busy reader",
+    "a chapter",
+    "a chapter for",
+    "a choice",
+    "a customer",
+    "a customer review",
+    "a debate",
+    "a debate fairly",
+    "a financial",
+    "a financial report",
+    "a historical",
+    "a historical event",
+    "a legal",
+    "a legal notice",
+    "a long article",
+    "a long conversation",
+    "a long email",
+    "a long instruction",
+    "a long story",
+    "a long text",
+    "a meeting",
+    "a meeting into",
+    "a news",
+    "a news story",
+    "a one",
+    "a one line",
+    "a paragraph",
+    "a paragraph without",
+    "a policy",
+    "a policy document",
+    "a product",
+    "a product description",
+    "a project",
+    "a project status",
+    "a research",
+    "a research paper",
+    "a scientific",
+    "a scientific result",
+    "a speech",
+    "a speech into",
+    "a summary from",
+    "a summary of",
+    "a summary table",
+    "a summary that",
+    "a summary with",
+    "a travel",
+    "a travel guide",
+    "a tutorial",
+    "a tutorial into",
+    "a two",
+    "a two sentence",
+    "a word",
+    "a word limit",
+    "abstract",
+    "abstract style",
+    "action",
+    "action points",
+    "an",
+    "an executive",
+    "an executive summary",
+    "and cons",
+    "and cons of",
+    "and paraphrase",
+    "article",
+    "article briefly",
+    "between",
+    "between summary",
+    "between summary and",
+    "bias",
+    "biography",
+    "biography briefly",
+    "book",
+    "book in",
+    "book in one",
+    "bullet notes",
+    "bullet points",
+    "bullet points from",
+    "busy",
+    "busy reader",
+    "carefully",
+    "chapter",
+    "chapter for",
+    "chapter for revision",
+    "children",
+    "choice",
+    "choices",
+    "choose",
+    "choose key",
+    "choose key sentences",
+    "compression",
+    "compression ratio",
+    "compression ratio in",
+    "cons",
+    "cons of",
+    "cons of a",
+    "conversation",
+    "create a two",
+    "create an",
+    "create an executive",
+    "customer",
+    "customer review",
+    "customer review set",
+    "debate",
+    "debate fairly",
+    "description",
+    "difference",
+    "difference between",
+    "difference between summary",
+    "document",
+    "email",
+    "email thread",
+    "event",
+    "event briefly",
+    "executive",
+    "executive summary",
+    "executive summary outline",
+    "explain compression",
+    "explain compression ratio",
+    "explain extractive",
+    "explain extractive summarization",
+    "explain headline",
+    "explain headline writing",
+    "explain lead",
+    "explain lead sentences",
+    "explain sentence",
+    "explain sentence scoring",
+    "explain summary",
+    "explain summary length",
+    "explain the",
+    "explain the difference",
+    "explain what",
+    "explain what to",
+    "explain why order",
+    "explain why summaries",
+    "extractive",
+    "extractive summarization",
+    "faithful",
+    "financial",
+    "financial report",
+    "financial report briefly",
+    "for a",
+    "for a busy",
+    "for children",
+    "for revision",
+    "for social",
+    "for social media",
+    "for summaries",
+    "from a long",
+    "from a report",
+    "from bullet",
+    "from bullet notes",
+    "guide",
+    "guide page",
+    "headline",
+    "headline writing",
+    "headline writing for",
+    "historical",
+    "historical event",
+    "historical event briefly",
+    "how to choose",
+    "how to summarize",
+    "in one",
+    "in one paragraph",
+    "instruction",
+    "instruction manual",
+    "into action",
+    "into action points",
+    "into quotes",
+    "into steps",
+    "keeps",
+    "keeps numbers",
+    "key",
+    "key sentences",
+    "lead",
+    "lead sentences",
+    "lead sentences in",
+    "leave",
+    "leave out",
+    "leave out of",
+    "legal",
+    "legal notice",
+    "legal notice plainly",
+    "length",
+    "length choices",
+    "limit",
+    "line",
+    "line summary",
+    "line summary of",
+    "long article",
+    "long article briefly",
+    "long conversation",
+    "long email",
+    "long email thread",
+    "long instruction",
+    "long instruction manual",
+    "long story",
+    "long story briefly",
+    "long text",
+    "losing",
+    "losing meaning",
+    "make a one",
+    "make bullet",
+    "make bullet points",
+    "manual",
+    "matters",
+    "matters in",
+    "matters in summaries",
+    "meaning",
+    "media",
+    "meeting",
+    "meeting into",
+    "meeting into action",
+    "must",
+    "must stay",
+    "must stay faithful",
+    "news",
+    "news story",
+    "news story fairly",
+    "notes",
+    "notice",
+    "notice plainly",
+    "numbers",
+    "of a choice",
+    "of a long",
+    "of a report",
+    "of a summary",
+    "one line",
+    "one line summary",
+    "one paragraph",
+    "order",
+    "order matters",
+    "order matters in",
+    "out",
+    "out of",
+    "out of a",
+    "outline",
+    "page",
+    "paper",
+    "paper abstract",
+    "paper abstract style",
+    "paragraph without",
+    "paragraph without losing",
+    "paraphrase",
+    "plainly",
+    "points from",
+    "points from a",
+    "policy",
+    "policy document",
+    "product",
+    "product description",
+    "project",
+    "project status",
+    "project status update",
+    "pros",
+    "pros and",
+    "pros and cons",
+    "quotes",
+    "ratio",
+    "ratio in",
+    "ratio in summaries",
+    "reader",
+    "report briefly",
+    "research",
+    "research paper",
+    "research paper abstract",
+    "result",
+    "result carefully",
+    "review",
+    "review set",
+    "revision",
+    "scientific",
+    "scientific result",
+    "scientific result carefully",
+    "scoring",
+    "scoring in",
+    "scoring in summaries",
+    "sentence scoring",
+    "sentence scoring in",
+    "sentence summary",
+    "sentences in",
+    "sentences in summaries",
+    "set",
+    "shorten",
+    "shorten a",
+    "shorten a paragraph",
+    "social",
+    "social media",
+    "speech",
+    "speech into",
+    "speech into quotes",
+    "status",
+    "status update",
+    "stay",
+    "stay faithful",
+    "steps",
+    "story briefly",
+    "story fairly",
+    "style",
+    "summaries must",
+    "summaries must stay",
+    "summarization",
+    "summarize a biography",
+    "summarize a book",
+    "summarize a chapter",
+    "summarize a customer",
+    "summarize a debate",
+    "summarize a financial",
+    "summarize a historical",
+    "summarize a legal",
+    "summarize a meeting",
+    "summarize a news",
+    "summarize a policy",
+    "summarize a product",
+    "summarize a project",
+    "summarize a research",
+    "summarize a scientific",
+    "summarize a speech",
+    "summarize a travel",
+    "summarize a tutorial",
+    "summarize pros",
+    "summarize pros and",
+    "summarize without",
+    "summarize without bias",
+    "summary and",
+    "summary and paraphrase",
+    "summary for a",
+    "summary for children",
+    "summary for social",
+    "summary from",
+    "summary from bullet",
+    "summary length",
+    "summary length choices",
+    "summary outline",
+    "summary table",
+    "summary table from",
+    "summary that",
+    "summary that keeps",
+    "summary with",
+    "summary with a",
+    "table",
+    "table from",
+    "table from a",
+    "text",
+    "that",
+    "that keeps",
+    "that keeps numbers",
+    "the",
+    "the difference",
+    "the difference between",
+    "thread",
+    "to choose",
+    "to choose key",
+    "to leave",
+    "to leave out",
+    "to summarize",
+    "to summarize without",
+    "travel",
+    "travel guide",
+    "travel guide page",
+    "tutorial",
+    "tutorial into",
+    "tutorial into steps",
+    "two",
+    "two sentence",
+    "two sentence summary",
+    "update",
+    "what",
+    "what to",
+    "what to leave",
+    "why order",
+    "why order matters",
+    "why summaries",
+    "why summaries must",
+    "with",
+    "with a",
+    "with a word",
+    "without bias",
+    "without losing",
+    "without losing meaning",
+    "word",
+    "word limit",
+    "writing",
+    "writing for",
+    "writing for summaries",
+    "gravion",
+    "gravion summary",
+    "help",
+    "help me",
+    "me",
+    "please",
+    "gravion summary summarize",
+    "help me summarize",
+    "me summarize",
+    "please summarize",
+    "summary summarize",
+    "me summarize a",
+    "please summarize a",
+    "summary summarize a",
+    "gravion summary explain",
+    "help me explain",
+    "me explain",
+    "please explain",
+    "summary explain",
+    "gravion summary make",
+    "help me make",
+    "me make",
+    "please make",
+    "summary make",
+    "me make a",
+    "please make a",
+    "summary make a",
+    "gravion summary create",
+    "help me create",
+    "me create",
+    "please create",
+    "summary create",
+    "me create a",
+    "please create a",
+    "summary create a",
+    "me explain how",
+    "me explain why",
+    "please explain how",
+    "please explain why",
+    "summary explain how",
+    "summary explain why",
+    "gravion summary shorten",
+    "help me shorten",
+    "me create an",
+    "me explain compression",
+    "me explain extractive",
+    "me explain headline",
+    "me explain lead",
+    "me explain sentence",
+    "me explain summary",
+    "me explain the",
+    "me explain what",
+    "me make bullet",
+    "me shorten",
+    "me shorten a",
+    "me summarize pros",
+    "please create an",
+    "please explain compression",
+    "please explain extractive",
+    "please explain headline",
+    "please explain lead",
+    "please explain sentence",
+    "please explain summary",
+    "please explain the",
+    "please explain what",
+    "please make bullet",
+    "please shorten",
+    "please shorten a",
+    "please summarize pros",
+    "summary create an",
+    "summary explain compression",
+    "summary explain extractive",
+    "summary explain headline",
+    "summary explain lead",
+    "summary explain sentence",
+    "summary explain summary",
+    "summary explain the",
+    "summary explain what",
+    "summary make bullet",
+    "summary shorten",
+    "summary shorten a",
+    "summary summarize pros"
+  ],
+  "format": "gravion-core-local-v3",
+  "model_id": "gravion-summary",
+  "parameter_count": 34983,
+  "trained_from": {
+    "classes": 48,
+    "dataset_sha256": "e3ac55c03be98b0e0d9b5371cec0b8af2fedcfb3346c17a21c2a5892ee0b4f43",
+    "examples": 192,
+    "features": 519,
+    "source": "data/gravion-summary-seed.jsonl"
+  },
+  "transitions": {
+    "<s>": {
+      "a": 0.125,
+      "abstract": 0.02083333,
+      "biography": 0.02083333,
+      "book": 0.02083333,
+      "brief": 0.02083333,
+      "careful": 0.02083333,
+      "child": 0.02083333,
+      "choose": 0.02083333,
+      "compression": 0.02083333,
+      "conversation": 0.02083333,
+      "cut": 0.02083333,
+      "debate": 0.02083333,
+      "email": 0.02083333,
+      "executive": 0.02083333,
+      "extractive": 0.02083333,
+      "financial": 0.02083333,
+      "for": 0.02083333,
+      "from": 0.02083333,
+      "keep": 0.02083333,
+      "keeping": 0.02083333,
+      "key": 0.02083333,
+      "leave": 0.02083333,
+      "manual": 0.02083333,
+      "meeting": 0.02083333,
+      "neutral": 0.02083333,
+      "one": 0.02083333,
+      "plain": 0.02083333,
+      "policy": 0.02083333,
+      "product": 0.02083333,
+      "pros": 0.02083333,
+      "quote": 0.02083333,
+      "review": 0.02083333,
+      "revision": 0.02083333,
+      "sentence": 0.02083333,
+      "social": 0.02083333,
+      "status": 0.02083333,
+      "story": 0.02083333,
+      "summary": 0.02083333,
+      "travel": 0.02083333,
+      "turn": 0.02083333,
+      "tutorial": 0.02083333,
+      "two": 0.02083333,
+      "with": 0.02083333
+    },
+    "a": {
+      "brief": 0.0625,
+      "busy": 0.0625,
+      "fair": 0.0625,
+      "friendly": 0.0625,
+      "lead": 0.0625,
+      "notice": 0.0625,
+      "page": 0.0625,
+      "paragraph": 0.0625,
+      "paraphrase": 0.0625,
+      "passage": 0.0625,
+      "question": 0.0625,
+      "summary": 0.1875,
+      "time": 0.0625,
+      "word": 0.0625
+    },
+    "abstract": {
+      "style": 1.0
+    },
+    "actor": {
+      "and": 1.0
+    },
+    "add": {
+      "claims": 1.0
+    },
+    "adding": {
+      "opinion": 1.0
+    },
+    "adjectives": {
+      "and": 1.0
+    },
+    "agreements": {
+      "reached": 1.0
+    },
+    "and": {
+      "a": 0.04761905,
+      "anything": 0.02380952,
+      "attribute": 0.02380952,
+      "avoids": 0.02380952,
+      "comparisons": 0.02380952,
+      "conclusions": 0.02380952,
+      "cons": 0.02380952,
+      "effect": 0.02380952,
+      "ending": 0.02380952,
+      "examples": 0.02380952,
+      "how": 0.02380952,
+      "implication": 0.02380952,
+      "lasting": 0.02380952,
+      "legacy": 0.02380952,
+      "length": 0.02380952,
+      "likely": 0.02380952,
+      "limits": 0.02380952,
+      "next": 0.07142857,
+      "one": 0.02380952,
+      "open": 0.02380952,
+      "owner": 0.02380952,
+      "price": 0.02380952,
+      "repetition": 0.02380952,
+      "resolution": 0.02380952,
+      "the": 0.16666667,
+      "troubleshooting": 0.02380952,
+      "what": 0.04761905,
+      "where": 0.02380952,
+      "who": 0.04761905,
+      "why": 0.02380952,
+      "write": 0.02380952
+    },
+    "anything": {
+      "and": 0.5,
+      "the": 0.5
+    },
+    "argument": {
+      "keep": 0.5,
+      "turning": 0.5
+    },
+    "arguments": {
+      "one": 1.0
+    },
+    "as": {
+      "the": 1.0
+    },
+    "at": {
+      "a": 0.5,
+      "similar": 0.5
+    },
+    "attribute": {
+      "them": 1.0
+    },
+    "attributes": {
+      "opinions": 1.0
+    },
+    "availability": {
+      "</s>": 1.0
+    },
+    "average": {
+      "rating": 1.0
+    },
+    "avoids": {
+      "loaded": 1.0
+    },
+    "beats": {
+      "</s>": 1.0
+    },
+    "benefit": {
+      "strongest": 1.0
+    },
+    "best": {
+      "</s>": 0.33333333,
+      "season": 0.33333333,
+      "sights": 0.33333333
+    },
+    "biography": {
+      "summary": 1.0
+    },
+    "blocked": {
+      "and": 1.0
+    },
+    "book": {
+      "summary": 1.0
+    },
+    "brief": {
+      "history": 0.5,
+      "summary": 0.5
+    },
+    "bullet": {
+      "ordered": 1.0
+    },
+    "bullets": {
+      "group": 1.0
+    },
+    "busy": {
+      "reader": 1.0
+    },
+    "by": {
+      "important": 0.33333333,
+      "use": 0.33333333,
+      "when": 0.33333333
+    },
+    "careful": {
+      "summary": 1.0
+    },
+    "carry": {
+      "the": 1.0
+    },
+    "cash": {
+      "position": 1.0
+    },
+    "cause": {
+      "and": 0.5,
+      "turning": 0.5
+    },
+    "central": {
+      "terms": 1.0
+    },
+    "change": {
+      "decisions": 1.0
+    },
+    "changed": {
+      "anything": 1.0
+    },
+    "changes": {
+      "when": 1.0
+    },
+    "check": {
+      "that": 1.0
+    },
+    "child": {
+      "friendly": 1.0
+    },
+    "choose": {
+      "length": 1.0
+    },
+    "claim": {
+      "</s>": 0.5,
+      "the": 0.5
+    },
+    "claims": {
+      "and": 0.33333333,
+      "attributes": 0.33333333,
+      "the": 0.33333333
+    },
+    "climax": {
+      "and": 1.0
+    },
+    "columns": {
+      "for": 1.0
+    },
+    "common": {
+      "complaints": 0.5,
+      "praise": 0.5
+    },
+    "compares": {
+      "summary": 1.0
+    },
+    "comparisons": {
+      "</s>": 1.0
+    },
+    "complaints": {
+      "average": 1.0
+    },
+    "compression": {
+      "ratio": 1.0
+    },
+    "conclusion": {
+      "</s>": 0.33333333,
+      "does": 0.33333333,
+      "in": 0.33333333
+    },
+    "conclusions": {
+      "</s>": 1.0
+    },
+    "condenses": {
+      "the": 1.0
+    },
+    "conflict": {
+      "or": 1.0
+    },
+    "cons": {
+      "summary": 1.0
+    },
+    "consequence": {
+      "</s>": 1.0
+    },
+    "conversation": {
+      "summary": 1.0
+    },
+    "cost": {
+      "and": 1.0
+    },
+    "costs": {
+      "to": 1.0
+    },
+    "covered": {
+      "agreements": 1.0
+    },
+    "covers": {
+      "what": 1.0
+    },
+    "current": {
+      "open": 1.0
+    },
+    "cut": {
+      "adjectives": 0.5,
+      "examples": 0.5
+    },
+    "date": {
+      "</s>": 1.0
+    },
+    "dates": {
+      "and": 1.0
+    },
+    "deadlines": {
+      "set": 1.0
+    },
+    "debate": {
+      "summary": 1.0
+    },
+    "decision": {
+      "needed": 1.0
+    },
+    "decisions": {
+      "</s>": 0.33333333,
+      "made": 0.33333333,
+      "totals": 0.33333333
+    },
+    "defining": {
+      "work": 1.0
+    },
+    "definitions": {
+      "claims": 1.0
+    },
+    "demand": {
+      "stricter": 1.0
+    },
+    "detail": {
+      "</s>": 1.0
+    },
+    "direction": {
+      "cash": 0.5,
+      "profit": 0.5
+    },
+    "disagree": {
+      "</s>": 1.0
+    },
+    "disagreements": {
+      "left": 1.0
+    },
+    "do": {
+      "not": 0.5,
+      "what": 0.5
+    },
+    "does": {
+      "not": 1.0
+    },
+    "done": {
+      "in": 1.0
+    },
+    "draft": {
+      "long": 1.0
+    },
+    "drop": {
+      "duplicates": 1.0
+    },
+    "duplicates": {
+      "and": 1.0
+    },
+    "each": {
+      "and": 0.25,
+      "main": 0.25,
+      "side": 0.5
+    },
+    "effect": {
+      "</s>": 0.5,
+      "so": 0.5
+    },
+    "email": {
+      "thread": 1.0
+    },
+    "ending": {
+      "or": 1.0
+    },
+    "essentials": {
+      "remain": 1.0
+    },
+    "evidence": {
+      "and": 0.25,
+      "impact": 0.25,
+      "offered": 0.25,
+      "or": 0.25
+    },
+    "exact": {
+      "and": 1.0
+    },
+    "exam": {
+      "points": 1.0
+    },
+    "example": {
+      "each": 1.0
+    },
+    "examples": {
+      "and": 0.33333333,
+      "side": 0.33333333,
+      "until": 0.33333333
+    },
+    "exceptions": {
+      "work": 1.0
+    },
+    "executive": {
+      "summary": 1.0
+    },
+    "expect": {
+      "and": 1.0
+    },
+    "extractive": {
+      "summarization": 1.0
+    },
+    "facts": {
+      "and": 1.0
+    },
+    "fair": {
+      "summary": 1.0
+    },
+    "faithfulness": {
+      "keeps": 1.0
+    },
+    "familiar": {
+      "words": 1.0
+    },
+    "features": {
+      "and": 1.0
+    },
+    "final": {
+      "point": 1.0
+    },
+    "financial": {
+      "summary": 1.0
+    },
+    "findings": {
+      "columns": 0.5,
+      "risks": 0.5
+    },
+    "first": {
+      "keep": 0.25,
+      "so": 0.25,
+      "the": 0.25,
+      "three": 0.25
+    },
+    "five": {
+      "beats": 1.0
+    },
+    "for": {
+      "a": 0.14285714,
+      "decisions": 0.14285714,
+      "detail": 0.14285714,
+      "evidence": 0.14285714,
+      "findings": 0.14285714,
+      "lists": 0.14285714,
+      "reports": 0.14285714
+    },
+    "four": {
+      "short": 1.0
+    },
+    "friendly": {
+      "summary": 0.5,
+      "tone": 0.5
+    },
+    "from": {
+      "bullets": 1.0
+    },
+    "goal": {
+      "materials": 0.5,
+      "obstacle": 0.5
+    },
+    "grasp": {
+      "the": 1.0
+    },
+    "group": {
+      "</s>": 0.5,
+      "related": 0.5
+    },
+    "happened": {
+      "why": 1.0
+    },
+    "happens": {
+      "if": 0.5,
+      "next": 0.5
+    },
+    "headline": {
+      "names": 0.5,
+      "point": 0.5
+    },
+    "hero": {
+      "goal": 1.0
+    },
+    "history": {
+      "summary": 1.0
+    },
+    "hook": {
+      "line": 1.0
+    },
+    "how": {
+      "exceptions": 1.0
+    },
+    "idea": {
+      "at": 0.5,
+      "into": 0.5
+    },
+    "if": {
+      "they": 1.0
+    },
+    "impact": {
+      "and": 1.0
+    },
+    "implication": {
+      "in": 1.0
+    },
+    "important": {
+      "sentences": 0.5,
+      "terms": 0.5
+    },
+    "in": {
+      "five": 0.2,
+      "four": 0.2,
+      "progress": 0.2,
+      "that": 0.2,
+      "under": 0.2
+    },
+    "instantly": {
+      "</s>": 1.0
+    },
+    "instead": {
+      "of": 1.0
+    },
+    "into": {
+      "one": 1.0
+    },
+    "is": {
+      "who": 1.0
+    },
+    "it": {
+      "covers": 0.2,
+      "is": 0.2,
+      "matters": 0.2,
+      "serves": 0.2,
+      "starts": 0.2
+    },
+    "item": {
+      "</s>": 1.0
+    },
+    "its": {
+      "date": 1.0
+    },
+    "keep": {
+      "definitions": 0.33333333,
+      "the": 0.33333333,
+      "them": 0.33333333
+    },
+    "keeping": {
+      "the": 1.0
+    },
+    "keeps": {
+      "the": 0.66666667,
+      "trust": 0.33333333
+    },
+    "key": {
+      "features": 0.33333333,
+      "sentences": 0.33333333,
+      "terms": 0.33333333
+    },
+    "lasting": {
+      "effect": 1.0
+    },
+    "lead": {
+      "sentence": 1.0
+    },
+    "leave": {
+      "out": 1.0
+    },
+    "left": {
+      "and": 1.0
+    },
+    "legacy": {
+      "</s>": 1.0
+    },
+    "length": {
+      "</s>": 0.2,
+      "by": 0.2,
+      "smaller": 0.2,
+      "then": 0.2,
+      "to": 0.2
+    },
+    "likely": {
+      "exam": 1.0
+    },
+    "limit": {
+      "draft": 1.0
+    },
+    "limits": {
+      "of": 1.0
+    },
+    "line": {
+      "for": 0.33333333,
+      "state": 0.33333333,
+      "two": 0.33333333
+    },
+    "lines": {
+      "that": 1.0
+    },
+    "link": {
+      "for": 1.0
+    },
+    "listed": {
+      "</s>": 1.0
+    },
+    "lists": {
+      "a": 1.0
+    },
+    "loaded": {
+      "words": 1.0
+    },
+    "local": {
+      "tip": 1.0
+    },
+    "logically": {
+      "</s>": 1.0
+    },
+    "long": {
+      "then": 1.0
+    },
+    "made": {
+      "faithfulness": 0.5,
+      "owners": 0.5
+    },
+    "main": {
+      "arguments": 0.14285714,
+      "claim": 0.14285714,
+      "conflict": 0.14285714,
+      "idea": 0.14285714,
+      "point": 0.14285714,
+      "risk": 0.14285714,
+      "steps": 0.14285714
+    },
+    "major": {
+      "turning": 1.0
+    },
+    "manual": {
+      "summary": 1.0
+    },
+    "materials": {
+      "numbered": 1.0
+    },
+    "matters": {
+      "and": 1.0
+    },
+    "measured": {
+      "the": 1.0
+    },
+    "meeting": {
+      "</s>": 0.5,
+      "summary": 0.5
+    },
+    "method": {
+      "result": 1.0
+    },
+    "milestone": {
+      "with": 1.0
+    },
+    "minor": {
+      "examples": 1.0
+    },
+    "most": {
+      "important": 1.0
+    },
+    "must": {
+      "do": 0.5,
+      "not": 0.5
+    },
+    "named": {
+      "deadlines": 1.0
+    },
+    "names": {
+      "the": 1.0
+    },
+    "need": {
+      "</s>": 1.0
+    },
+    "needed": {
+      "</s>": 1.0
+    },
+    "neutral": {
+      "summary": 1.0
+    },
+    "never": {
+      "made": 1.0
+    },
+    "next": {
+      "</s>": 0.25,
+      "meeting": 0.25,
+      "milestone": 0.25,
+      "step": 0.25
+    },
+    "not": {
+      "</s>": 0.33333333,
+      "add": 0.33333333,
+      "need": 0.33333333
+    },
+    "notes": {
+      "main": 1.0
+    },
+    "notice": {
+      "who": 1.0
+    },
+    "numbered": {
+      "steps": 1.0
+    },
+    "numbers": {
+      "and": 0.5,
+      "that": 0.5
+    },
+    "obstacle": {
+      "climax": 1.0
+    },
+    "of": {
+      "a": 0.33333333,
+      "rewriting": 0.33333333,
+      "the": 0.33333333
+    },
+    "offered": {
+      "and": 1.0
+    },
+    "one": {
+      "example": 0.125,
+      "hook": 0.125,
+      "idea": 0.125,
+      "line": 0.25,
+      "local": 0.125,
+      "sentence": 0.125,
+      "short": 0.125
+    },
+    "only": {
+      "essentials": 1.0
+    },
+    "open": {
+      "item": 0.5,
+      "questions": 0.5
+    },
+    "opinion": {
+      "</s>": 1.0
+    },
+    "opinions": {
+      "and": 1.0
+    },
+    "or": {
+      "argument": 0.2,
+      "availability": 0.2,
+      "conclusion": 0.2,
+      "consequence": 0.2,
+      "link": 0.2
+    },
+    "order": {
+      "</s>": 0.5,
+      "preserves": 0.5
+    },
+    "ordered": {
+      "as": 1.0
+    },
+    "origin": {
+      "defining": 1.0
+    },
+    "original": {
+      "request": 1.0
+    },
+    "out": {
+      "repetition": 1.0
+    },
+    "outcome": {
+      "and": 0.5,
+      "in": 0.5
+    },
+    "own": {
+      "claims": 0.5,
+      "most": 0.5
+    },
+    "owner": {
+      "</s>": 1.0
+    },
+    "owners": {
+      "named": 1.0
+    },
+    "page": {
+      "for": 1.0
+    },
+    "paragraph": {
+      "for": 1.0
+    },
+    "paraphrase": {
+      "rewrites": 1.0
+    },
+    "passage": {
+      "at": 1.0
+    },
+    "per": {
+      "group": 1.0
+    },
+    "percentages": {
+      "dates": 1.0
+    },
+    "pick": {
+      "the": 1.0
+    },
+    "plain": {
+      "summary": 1.0
+    },
+    "point": {
+      "</s>": 0.125,
+      "and": 0.25,
+      "first": 0.25,
+      "outcome": 0.125,
+      "second": 0.125,
+      "the": 0.125
+    },
+    "pointers": {
+      "</s>": 1.0
+    },
+    "points": {
+      "</s>": 0.5,
+      "drop": 0.5
+    },
+    "policy": {
+      "summary": 1.0
+    },
+    "position": {
+      "and": 1.0
+    },
+    "praise": {
+      "common": 1.0
+    },
+    "premise": {
+      "main": 1.0
+    },
+    "presents": {
+      "them": 1.0
+    },
+    "preserves": {
+      "cause": 1.0
+    },
+    "price": {
+      "or": 1.0
+    },
+    "product": {
+      "suits": 0.5,
+      "summary": 0.5
+    },
+    "profit": {
+      "direction": 1.0
+    },
+    "progress": {
+      "blocked": 1.0
+    },
+    "pros": {
+      "and": 1.0
+    },
+    "proves": {
+      "success": 1.0
+    },
+    "purpose": {
+      "findings": 0.5,
+      "safety": 0.5
+    },
+    "question": {
+      "method": 0.5,
+      "or": 0.5
+    },
+    "questions": {
+      "listed": 1.0
+    },
+    "quote": {
+      "summary": 1.0
+    },
+    "rates": {
+      "sentences": 1.0
+    },
+    "rating": {
+      "and": 1.0
+    },
+    "ratio": {
+      "compares": 1.0
+    },
+    "ratios": {
+      "demand": 1.0
+    },
+    "reached": {
+      "disagreements": 1.0
+    },
+    "reader": {
+      "headline": 1.0
+    },
+    "readers": {
+      "grasp": 1.0
+    },
+    "reads": {
+      "logically": 1.0
+    },
+    "recommendation": {
+      "and": 1.0
+    },
+    "related": {
+      "points": 1.0
+    },
+    "remain": {
+      "</s>": 1.0
+    },
+    "repeated": {
+      "central": 1.0
+    },
+    "repetition": {
+      "first": 0.5,
+      "minor": 0.5
+    },
+    "replies": {
+      "that": 1.0
+    },
+    "reports": {
+      "a": 0.5,
+      "who": 0.5
+    },
+    "request": {
+      "replies": 1.0
+    },
+    "resolution": {
+      "in": 1.0
+    },
+    "result": {
+      "and": 0.5,
+      "size": 0.5
+    },
+    "revenue": {
+      "direction": 1.0
+    },
+    "review": {
+      "summary": 1.0
+    },
+    "revision": {
+      "summary": 1.0
+    },
+    "rewrites": {
+      "a": 1.0
+    },
+    "rewriting": {
+      "them": 1.0
+    },
+    "risk": {
+      "</s>": 1.0
+    },
+    "risks": {
+      "recommendation": 1.0
+    },
+    "rows": {
+      "for": 1.0
+    },
+    "s": {
+      "own": 0.66666667,
+      "strongest": 0.33333333
+    },
+    "safety": {
+      "notes": 1.0
+    },
+    "scoring": {
+      "rates": 1.0
+    },
+    "season": {
+      "costs": 1.0
+    },
+    "second": {
+      "the": 1.0
+    },
+    "selection": {
+      "</s>": 1.0
+    },
+    "selects": {
+      "the": 1.0
+    },
+    "sentence": {
+      "per": 0.33333333,
+      "scoring": 0.33333333,
+      "states": 0.33333333
+    },
+    "sentences": {
+      "</s>": 0.16666667,
+      "by": 0.16666667,
+      "carry": 0.16666667,
+      "familiar": 0.16666667,
+      "first": 0.16666667,
+      "instead": 0.16666667
+    },
+    "serves": {
+      "key": 1.0
+    },
+    "set": {
+      "and": 1.0
+    },
+    "short": {
+      "bullet": 0.33333333,
+      "sentences": 0.66666667
+    },
+    "side": {
+      "s": 0.33333333,
+      "stories": 0.33333333,
+      "suits": 0.33333333
+    },
+    "sights": {
+      "best": 1.0
+    },
+    "similar": {
+      "length": 1.0
+    },
+    "size": {
+      "uncertainty": 1.0
+    },
+    "smaller": {
+      "ratios": 1.0
+    },
+    "so": {
+      "readers": 0.5,
+      "the": 0.5
+    },
+    "social": {
+      "summary": 1.0
+    },
+    "source": {
+      "length": 0.2,
+      "never": 0.2,
+      "order": 0.2,
+      "s": 0.4
+    },
+    "starts": {
+      "and": 1.0
+    },
+    "state": {
+      "what": 1.0
+    },
+    "states": {
+      "the": 1.0
+    },
+    "status": {
+      "summary": 1.0
+    },
+    "step": {
+      "</s>": 1.0
+    },
+    "steps": {
+      "and": 1.0
+    },
+    "stories": {
+      "and": 1.0
+    },
+    "story": {
+      "summary": 1.0
+    },
+    "stricter": {
+      "selection": 1.0
+    },
+    "strongest": {
+      "benefit": 0.25,
+      "cost": 0.25,
+      "evidence": 0.25,
+      "point": 0.25
+    },
+    "style": {
+      "question": 1.0
+    },
+    "success": {
+      "</s>": 1.0
+    },
+    "suits": {
+      "</s>": 1.0
+    },
+    "summarization": {
+      "selects": 1.0
+    },
+    "summary": {
+      "best": 0.02941176,
+      "cause": 0.02941176,
+      "common": 0.02941176,
+      "condenses": 0.02941176,
+      "decisions": 0.02941176,
+      "done": 0.02941176,
+      "each": 0.02941176,
+      "goal": 0.02941176,
+      "headline": 0.02941176,
+      "hero": 0.02941176,
+      "instantly": 0.02941176,
+      "keeps": 0.02941176,
+      "key": 0.02941176,
+      "length": 0.02941176,
+      "must": 0.02941176,
+      "of": 0.02941176,
+      "one": 0.02941176,
+      "origin": 0.02941176,
+      "original": 0.02941176,
+      "pick": 0.02941176,
+      "premise": 0.02941176,
+      "purpose": 0.05882353,
+      "reads": 0.02941176,
+      "reports": 0.02941176,
+      "revenue": 0.02941176,
+      "short": 0.02941176,
+      "strongest": 0.02941176,
+      "table": 0.02941176,
+      "topics": 0.02941176,
+      "uses": 0.02941176,
+      "what": 0.05882353,
+      "who": 0.02941176
+    },
+    "supporting": {
+      "facts": 1.0
+    },
+    "table": {
+      "rows": 1.0
+    },
+    "ten": {
+      "words": 1.0
+    },
+    "terms": {
+      "main": 0.33333333,
+      "numbers": 0.33333333,
+      "position": 0.33333333
+    },
+    "text": {
+      "a": 0.5,
+      "presents": 0.5
+    },
+    "that": {
+      "carry": 0.2,
+      "change": 0.2,
+      "changed": 0.2,
+      "order": 0.2,
+      "proves": 0.2
+    },
+    "the": {
+      "actor": 0.03225806,
+      "argument": 0.03225806,
+      "best": 0.03225806,
+      "check": 0.03225806,
+      "claim": 0.03225806,
+      "conclusion": 0.06451613,
+      "current": 0.03225806,
+      "decision": 0.03225806,
+      "evidence": 0.06451613,
+      "final": 0.03225806,
+      "lines": 0.03225806,
+      "main": 0.09677419,
+      "numbers": 0.03225806,
+      "outcome": 0.03225806,
+      "product": 0.03225806,
+      "result": 0.03225806,
+      "source": 0.12903226,
+      "strongest": 0.03225806,
+      "summary": 0.06451613,
+      "text": 0.03225806,
+      "thesis": 0.03225806,
+      "whole": 0.06451613
+    },
+    "them": {
+      "</s>": 0.75,
+      "exact": 0.25
+    },
+    "then": {
+      "cut": 0.5,
+      "keeps": 0.5
+    },
+    "thesis": {
+      "repeated": 1.0
+    },
+    "they": {
+      "disagree": 0.5,
+      "do": 0.5
+    },
+    "thread": {
+      "summary": 1.0
+    },
+    "three": {
+      "supporting": 1.0
+    },
+    "time": {
+      "and": 1.0
+    },
+    "tip": {
+      "</s>": 1.0
+    },
+    "to": {
+      "expect": 0.5,
+      "source": 0.5
+    },
+    "tone": {
+      "</s>": 1.0
+    },
+    "topics": {
+      "covered": 1.0
+    },
+    "totals": {
+      "percentages": 1.0
+    },
+    "travel": {
+      "summary": 1.0
+    },
+    "troubleshooting": {
+      "pointers": 1.0
+    },
+    "trust": {
+      "</s>": 1.0
+    },
+    "turn": {
+      "each": 1.0
+    },
+    "turning": {
+      "point": 1.0
+    },
+    "tutorial": {
+      "summary": 1.0
+    },
+    "two": {
+      "facts": 0.5,
+      "sentences": 0.5
+    },
+    "uncertainty": {
+      "and": 1.0
+    },
+    "under": {
+      "ten": 1.0
+    },
+    "until": {
+      "only": 1.0
+    },
+    "use": {
+      "one": 1.0
+    },
+    "uses": {
+      "the": 1.0
+    },
+    "was": {
+      "measured": 1.0
+    },
+    "what": {
+      "by": 0.125,
+      "changes": 0.125,
+      "happened": 0.125,
+      "happens": 0.25,
+      "it": 0.125,
+      "was": 0.125,
+      "when": 0.125
+    },
+    "when": {
+      "and": 0.33333333,
+      "it": 0.33333333,
+      "where": 0.33333333
+    },
+    "where": {
+      "and": 0.5,
+      "they": 0.5
+    },
+    "who": {
+      "each": 0.16666667,
+      "it": 0.33333333,
+      "must": 0.16666667,
+      "the": 0.16666667,
+      "what": 0.16666667
+    },
+    "whole": {
+      "point": 0.5,
+      "text": 0.5
+    },
+    "why": {
+      "it": 0.5,
+      "without": 0.5
+    },
+    "with": {
+      "a": 0.5,
+      "its": 0.5
+    },
+    "without": {
+      "adding": 1.0
+    },
+    "word": {
+      "limit": 1.0
+    },
+    "words": {
+      "</s>": 0.66666667,
+      "one": 0.33333333
+    },
+    "work": {
+      "</s>": 0.5,
+      "major": 0.5
+    },
+    "write": {
+      "one": 1.0
+    }
+  },
+  "unigram_weights": {
+    "a": 0.02568218,
+    "abstract": 0.00160514,
+    "actor": 0.00160514,
+    "add": 0.00160514,
+    "adding": 0.00160514,
+    "adjectives": 0.00160514,
+    "agreements": 0.00160514,
+    "and": 0.06741573,
+    "anything": 0.00321027,
+    "argument": 0.00321027,
+    "arguments": 0.00160514,
+    "as": 0.00160514,
+    "at": 0.00321027,
+    "attribute": 0.00160514,
+    "attributes": 0.00160514,
+    "availability": 0.00160514,
+    "average": 0.00160514,
+    "avoids": 0.00160514,
+    "beats": 0.00160514,
+    "benefit": 0.00160514,
+    "best": 0.00481541,
+    "biography": 0.00160514,
+    "blocked": 0.00160514,
+    "book": 0.00160514,
+    "brief": 0.00321027,
+    "bullet": 0.00160514,
+    "bullets": 0.00160514,
+    "busy": 0.00160514,
+    "by": 0.00481541,
+    "careful": 0.00160514,
+    "carry": 0.00321027,
+    "cash": 0.00160514,
+    "cause": 0.00321027,
+    "central": 0.00160514,
+    "change": 0.00160514,
+    "changed": 0.00160514,
+    "changes": 0.00160514,
+    "check": 0.00160514,
+    "child": 0.00160514,
+    "choose": 0.00160514,
+    "claim": 0.00321027,
+    "claims": 0.00481541,
+    "climax": 0.00160514,
+    "columns": 0.00160514,
+    "common": 0.00321027,
+    "compares": 0.00160514,
+    "comparisons": 0.00160514,
+    "complaints": 0.00160514,
+    "compression": 0.00160514,
+    "conclusion": 0.00481541,
+    "conclusions": 0.00160514,
+    "condenses": 0.00160514,
+    "conflict": 0.00160514,
+    "cons": 0.00160514,
+    "consequence": 0.00160514,
+    "conversation": 0.00160514,
+    "cost": 0.00160514,
+    "costs": 0.00160514,
+    "covered": 0.00160514,
+    "covers": 0.00160514,
+    "current": 0.00160514,
+    "cut": 0.00321027,
+    "date": 0.00160514,
+    "dates": 0.00160514,
+    "deadlines": 0.00160514,
+    "debate": 0.00160514,
+    "decision": 0.00160514,
+    "decisions": 0.00481541,
+    "defining": 0.00160514,
+    "definitions": 0.00160514,
+    "demand": 0.00160514,
+    "detail": 0.00160514,
+    "direction": 0.00321027,
+    "disagree": 0.00160514,
+    "disagreements": 0.00160514,
+    "do": 0.00321027,
+    "does": 0.00160514,
+    "done": 0.00160514,
+    "draft": 0.00160514,
+    "drop": 0.00160514,
+    "duplicates": 0.00160514,
+    "each": 0.00642055,
+    "effect": 0.00321027,
+    "email": 0.00160514,
+    "ending": 0.00160514,
+    "essentials": 0.00160514,
+    "evidence": 0.00642055,
+    "exact": 0.00160514,
+    "exam": 0.00160514,
+    "example": 0.00160514,
+    "examples": 0.00481541,
+    "exceptions": 0.00160514,
+    "executive": 0.00160514,
+    "expect": 0.00160514,
+    "extractive": 0.00160514,
+    "facts": 0.00321027,
+    "fair": 0.00160514,
+    "faithfulness": 0.00160514,
+    "familiar": 0.00160514,
+    "features": 0.00160514,
+    "final": 0.00160514,
+    "financial": 0.00160514,
+    "findings": 0.00321027,
+    "first": 0.00642055,
+    "five": 0.00160514,
+    "for": 0.01123596,
+    "four": 0.00160514,
+    "friendly": 0.00321027,
+    "from": 0.00160514,
+    "goal": 0.00321027,
+    "grasp": 0.00160514,
+    "group": 0.00321027,
+    "happened": 0.00160514,
+    "happens": 0.00321027,
+    "headline": 0.00321027,
+    "hero": 0.00160514,
+    "history": 0.00160514,
+    "hook": 0.00160514,
+    "how": 0.00160514,
+    "idea": 0.00321027,
+    "if": 0.00160514,
+    "impact": 0.00160514,
+    "implication": 0.00160514,
+    "important": 0.00321027,
+    "in": 0.00802568,
+    "instantly": 0.00160514,
+    "instead": 0.00160514,
+    "into": 0.00160514,
+    "is": 0.00160514,
+    "it": 0.00802568,
+    "item": 0.00160514,
+    "its": 0.00160514,
+    "keep": 0.00481541,
+    "keeping": 0.00160514,
+    "keeps": 0.00481541,
+    "key": 0.00481541,
+    "lasting": 0.00160514,
+    "lead": 0.00160514,
+    "leave": 0.00160514,
+    "left": 0.00160514,
+    "legacy": 0.00160514,
+    "length": 0.00802568,
+    "likely": 0.00160514,
+    "limit": 0.00160514,
+    "limits": 0.00160514,
+    "line": 0.00481541,
+    "lines": 0.00160514,
+    "link": 0.00160514,
+    "listed": 0.00160514,
+    "lists": 0.00160514,
+    "loaded": 0.00160514,
+    "local": 0.00160514,
+    "logically": 0.00160514,
+    "long": 0.00160514,
+    "made": 0.00321027,
+    "main": 0.01123596,
+    "major": 0.00160514,
+    "manual": 0.00160514,
+    "materials": 0.00160514,
+    "matters": 0.00160514,
+    "measured": 0.00160514,
+    "meeting": 0.00321027,
+    "method": 0.00160514,
+    "milestone": 0.00160514,
+    "minor": 0.00160514,
+    "most": 0.00160514,
+    "must": 0.00321027,
+    "named": 0.00160514,
+    "names": 0.00160514,
+    "need": 0.00160514,
+    "needed": 0.00160514,
+    "neutral": 0.00160514,
+    "never": 0.00160514,
+    "next": 0.00642055,
+    "not": 0.00481541,
+    "notes": 0.00160514,
+    "notice": 0.00160514,
+    "numbered": 0.00160514,
+    "numbers": 0.00321027,
+    "obstacle": 0.00160514,
+    "of": 0.00481541,
+    "offered": 0.00160514,
+    "one": 0.01284109,
+    "only": 0.00160514,
+    "open": 0.00321027,
+    "opinion": 0.00160514,
+    "opinions": 0.00160514,
+    "or": 0.00802568,
+    "order": 0.00321027,
+    "ordered": 0.00160514,
+    "origin": 0.00160514,
+    "original": 0.00160514,
+    "out": 0.00160514,
+    "outcome": 0.00321027,
+    "own": 0.00321027,
+    "owner": 0.00160514,
+    "owners": 0.00160514,
+    "page": 0.00160514,
+    "paragraph": 0.00160514,
+    "paraphrase": 0.00160514,
+    "passage": 0.00160514,
+    "per": 0.00160514,
+    "percentages": 0.00160514,
+    "pick": 0.00160514,
+    "plain": 0.00160514,
+    "point": 0.01284109,
+    "pointers": 0.00160514,
+    "points": 0.00321027,
+    "policy": 0.00160514,
+    "position": 0.00321027,
+    "praise": 0.00160514,
+    "premise": 0.00160514,
+    "presents": 0.00160514,
+    "preserves": 0.00160514,
+    "price": 0.00160514,
+    "product": 0.00321027,
+    "profit": 0.00160514,
+    "progress": 0.00160514,
+    "pros": 0.00160514,
+    "proves": 0.00160514,
+    "purpose": 0.00321027,
+    "question": 0.00321027,
+    "questions": 0.00160514,
+    "quote": 0.00160514,
+    "rates": 0.00160514,
+    "rating": 0.00160514,
+    "ratio": 0.00160514,
+    "ratios": 0.00160514,
+    "reached": 0.00160514,
+    "reader": 0.00160514,
+    "readers": 0.00160514,
+    "reads": 0.00160514,
+    "recommendation": 0.00160514,
+    "related": 0.00160514,
+    "remain": 0.00160514,
+    "repeated": 0.00160514,
+    "repetition": 0.00321027,
+    "replies": 0.00160514,
+    "reports": 0.00321027,
+    "request": 0.00160514,
+    "resolution": 0.00160514,
+    "result": 0.00321027,
+    "revenue": 0.00160514,
+    "review": 0.00160514,
+    "revision": 0.00160514,
+    "rewrites": 0.00160514,
+    "rewriting": 0.00160514,
+    "risk": 0.00160514,
+    "risks": 0.00160514,
+    "rows": 0.00160514,
+    "s": 0.00481541,
+    "safety": 0.00160514,
+    "scoring": 0.00160514,
+    "season": 0.00160514,
+    "second": 0.00160514,
+    "selection": 0.00160514,
+    "selects": 0.00160514,
+    "sentence": 0.00481541,
+    "sentences": 0.00963082,
+    "serves": 0.00160514,
+    "set": 0.00160514,
+    "short": 0.00481541,
+    "side": 0.00481541,
+    "sights": 0.00160514,
+    "similar": 0.00160514,
+    "size": 0.00160514,
+    "smaller": 0.00160514,
+    "so": 0.00321027,
+    "social": 0.00160514,
+    "source": 0.00802568,
+    "starts": 0.00160514,
+    "state": 0.00160514,
+    "states": 0.00160514,
+    "status": 0.00160514,
+    "step": 0.00160514,
+    "steps": 0.00321027,
+    "stories": 0.00160514,
+    "story": 0.00160514,
+    "stricter": 0.00160514,
+    "strongest": 0.00642055,
+    "style": 0.00160514,
+    "success": 0.00160514,
+    "suits": 0.00321027,
+    "summarization": 0.00160514,
+    "summary": 0.05457464,
+    "supporting": 0.00160514,
+    "table": 0.00160514,
+    "ten": 0.00160514,
+    "terms": 0.00481541,
+    "text": 0.00321027,
+    "that": 0.00802568,
+    "the": 0.04975923,
+    "them": 0.00642055,
+    "then": 0.00321027,
+    "thesis": 0.00160514,
+    "they": 0.00321027,
+    "thread": 0.00160514,
+    "three": 0.00160514,
+    "time": 0.00160514,
+    "tip": 0.00160514,
+    "to": 0.00321027,
+    "tone": 0.00160514,
+    "topics": 0.00160514,
+    "totals": 0.00160514,
+    "travel": 0.00160514,
+    "troubleshooting": 0.00160514,
+    "trust": 0.00160514,
+    "turn": 0.00160514,
+    "turning": 0.00481541,
+    "tutorial": 0.00160514,
+    "two": 0.00321027,
+    "uncertainty": 0.00160514,
+    "under": 0.00160514,
+    "until": 0.00160514,
+    "use": 0.00160514,
+    "uses": 0.00160514,
+    "was": 0.00160514,
+    "what": 0.01284109,
+    "when": 0.00481541,
+    "where": 0.00321027,
+    "who": 0.00963082,
+    "whole": 0.00321027,
+    "why": 0.00321027,
+    "with": 0.00321027,
+    "without": 0.00160514,
+    "word": 0.00160514,
+    "words": 0.00481541,
+    "work": 0.00321027,
+    "write": 0.00160514
+  },
+  "vocabulary": [
+    "a",
+    "abstract",
+    "action",
+    "actor",
+    "add",
+    "adding",
+    "adjectives",
+    "agreements",
+    "an",
+    "and",
+    "anything",
+    "argument",
+    "arguments",
+    "article",
+    "as",
+    "at",
+    "attribute",
+    "attributes",
+    "availability",
+    "average",
+    "avoids",
+    "beats",
+    "benefit",
+    "best",
+    "between",
+    "bias",
+    "biography",
+    "blocked",
+    "book",
+    "brief",
+    "briefly",
+    "bullet",
+    "bullets",
+    "busy",
+    "by",
+    "careful",
+    "carefully",
+    "carry",
+    "cash",
+    "cause",
+    "central",
+    "change",
+    "changed",
+    "changes",
+    "chapter",
+    "check",
+    "child",
+    "children",
+    "choice",
+    "choices",
+    "choose",
+    "claim",
+    "claims",
+    "climax",
+    "columns",
+    "common",
+    "compares",
+    "comparisons",
+    "complaints",
+    "compression",
+    "conclusion",
+    "conclusions",
+    "condenses",
+    "conflict",
+    "cons",
+    "consequence",
+    "conversation",
+    "cost",
+    "costs",
+    "covered",
+    "covers",
+    "create",
+    "current",
+    "customer",
+    "cut",
+    "date",
+    "dates",
+    "deadlines",
+    "debate",
+    "decision",
+    "decisions",
+    "defining",
+    "definitions",
+    "demand",
+    "description",
+    "detail",
+    "difference",
+    "direction",
+    "disagree",
+    "disagreements",
+    "do",
+    "document",
+    "does",
+    "done",
+    "draft",
+    "drop",
+    "duplicates",
+    "each",
+    "effect",
+    "email",
+    "ending",
+    "essentials",
+    "event",
+    "evidence",
+    "exact",
+    "exam",
+    "example",
+    "examples",
+    "exceptions",
+    "executive",
+    "expect",
+    "explain",
+    "extractive",
+    "facts",
+    "fair",
+    "fairly",
+    "faithful",
+    "faithfulness",
+    "familiar",
+    "features",
+    "final",
+    "financial",
+    "findings",
+    "first",
+    "five",
+    "for",
+    "four",
+    "friendly",
+    "from",
+    "goal",
+    "grasp",
+    "gravion",
+    "group",
+    "guide",
+    "happened",
+    "happens",
+    "headline",
+    "help",
+    "hero",
+    "historical",
+    "history",
+    "hook",
+    "how",
+    "idea",
+    "if",
+    "impact",
+    "implication",
+    "important",
+    "in",
+    "instantly",
+    "instead",
+    "instruction",
+    "into",
+    "is",
+    "it",
+    "item",
+    "its",
+    "keep",
+    "keeping",
+    "keeps",
+    "key",
+    "lasting",
+    "lead",
+    "leave",
+    "left",
+    "legacy",
+    "legal",
+    "length",
+    "likely",
+    "limit",
+    "limits",
+    "line",
+    "lines",
+    "link",
+    "listed",
+    "lists",
+    "loaded",
+    "local",
+    "logically",
+    "long",
+    "losing",
+    "made",
+    "main",
+    "major",
+    "make",
+    "manual",
+    "materials",
+    "matters",
+    "me",
+    "meaning",
+    "measured",
+    "media",
+    "meeting",
+    "method",
+    "milestone",
+    "minor",
+    "most",
+    "must",
+    "named",
+    "names",
+    "need",
+    "needed",
+    "neutral",
+    "never",
+    "news",
+    "next",
+    "not",
+    "notes",
+    "notice",
+    "numbered",
+    "numbers",
+    "obstacle",
+    "of",
+    "offered",
+    "one",
+    "only",
+    "open",
+    "opinion",
+    "opinions",
+    "or",
+    "order",
+    "ordered",
+    "origin",
+    "original",
+    "out",
+    "outcome",
+    "outline",
+    "own",
+    "owner",
+    "owners",
+    "page",
+    "paper",
+    "paragraph",
+    "paraphrase",
+    "passage",
+    "per",
+    "percentages",
+    "pick",
+    "plain",
+    "plainly",
+    "please",
+    "point",
+    "pointers",
+    "points",
+    "policy",
+    "position",
+    "praise",
+    "premise",
+    "presents",
+    "preserves",
+    "price",
+    "product",
+    "profit",
+    "progress",
+    "project",
+    "pros",
+    "proves",
+    "purpose",
+    "question",
+    "questions",
+    "quote",
+    "quotes",
+    "rates",
+    "rating",
+    "ratio",
+    "ratios",
+    "reached",
+    "reader",
+    "readers",
+    "reads",
+    "recommendation",
+    "related",
+    "remain",
+    "repeated",
+    "repetition",
+    "replies",
+    "report",
+    "reports",
+    "request",
+    "research",
+    "resolution",
+    "result",
+    "revenue",
+    "review",
+    "revision",
+    "rewrites",
+    "rewriting",
+    "risk",
+    "risks",
+    "rows",
+    "s",
+    "safety",
+    "scientific",
+    "scoring",
+    "season",
+    "second",
+    "selection",
+    "selects",
+    "sentence",
+    "sentences",
+    "serves",
+    "set",
+    "short",
+    "shorten",
+    "side",
+    "sights",
+    "similar",
+    "size",
+    "smaller",
+    "so",
+    "social",
+    "source",
+    "speech",
+    "starts",
+    "state",
+    "states",
+    "status",
+    "stay",
+    "step",
+    "steps",
+    "stories",
+    "story",
+    "stricter",
+    "strongest",
+    "style",
+    "success",
+    "suits",
+    "summaries",
+    "summarization",
+    "summarize",
+    "summary",
+    "supporting",
+    "table",
+    "ten",
+    "terms",
+    "text",
+    "that",
+    "the",
+    "them",
+    "then",
+    "thesis",
+    "they",
+    "thread",
+    "three",
+    "time",
+    "tip",
+    "to",
+    "tone",
+    "topics",
+    "totals",
+    "travel",
+    "troubleshooting",
+    "trust",
+    "turn",
+    "turning",
+    "tutorial",
+    "two",
+    "uncertainty",
+    "under",
+    "until",
+    "update",
+    "use",
+    "uses",
+    "was",
+    "what",
+    "when",
+    "where",
+    "who",
+    "whole",
+    "why",
+    "with",
+    "without",
+    "word",
+    "words",
+    "work",
+    "write",
+    "writing"
+  ],
+  "weights_sha256": "c654757629015f3bfb57badccb721f87db68153938b2762b93c8b78459eb9e9f"
+}

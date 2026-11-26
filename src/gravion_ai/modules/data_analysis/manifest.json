@@ -1,0 +1,14 @@
+{
+  "payload": {
+    "name": "data-analysis",
+    "type": "data-analysis",
+    "version": "0.1.0",
+    "entrypoint": "gravion_ai.modules.data_analysis.module:DataAnalysisModule",
+    "files": {
+      "__init__.py": "71af1268092e865f3e094997efefaec953617d324e6984bcc59cf5933699556f",
+      "module.py": "1fd181d22836941bc820472ab115d0a97c8afe7dd31bdd0c7d3609ff311128fc"
+    }
+  },
+  "signature": "",
+  "note": "Unsigned in the repo: the issuer private key is (correctly) not distributed. The project owner signs this manifest with `gravion license sign-module` before a production deployment; production mode refuses unsigned or tampered modules."
+}

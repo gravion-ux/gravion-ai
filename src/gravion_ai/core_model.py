@@ -53,6 +53,11 @@ SPECIALIST_MODEL_IDS = (
     "gravion-audio",
     "gravion-shield",
     "gravion-agent",
+    "gravion-translate",
+    "gravion-summary",
+    "gravion-search",
+    "gravion-analyst",
+    "gravion-docqa",
     "gravion-omni",
 )
 LOCAL_MODEL_IDS = (CORE_MODEL_ID, *SPECIALIST_MODEL_IDS)

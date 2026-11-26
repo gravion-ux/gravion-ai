@@ -52,6 +52,11 @@ ROUTEABLE = (
     "website-builder",
     "cyber",
     "agentic",
+    "translation",
+    "summarization",
+    "retrieval",
+    "data-analysis",
+    "document-qa",
 )
 
 DEFAULT_ROUTE = "chat"

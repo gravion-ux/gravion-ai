@@ -58,6 +58,11 @@ Module types (the catalogue in `registry.py`):
 | `video` | Video | Generation and editing ✅ (Piece 4); long-form (see §7) 🧩 |
 | `cyber` | Cyber/security AI | Defensive analysis, triage, reporting assistance ✅ (Piece 6) |
 | `agentic` | Agentic tool developer | Builds and runs tool-using agents ✅ (Piece 6) |
+| `translation` | Translation | Hindi/English/Hinglish phrasebook translation ✅ |
+| `summarization` | Summarization | Local extractive summaries ✅ |
+| `retrieval` | Search/retrieval | Sparse-embedding ranking of supplied passages ✅ |
+| `data-analysis` | Data analysis | Descriptive statistics from supplied numbers ✅ |
+| `document-qa` | Document Q&A | Extractive answers quoted from a supplied document ✅ |
 | `all-in-one` | All-in-one | Every module under one deployment ✅ (Piece 8) |
 
 Modules are distributed individually (variant packages) or as the

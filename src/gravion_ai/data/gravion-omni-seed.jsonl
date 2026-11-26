@@ -410,14 +410,6 @@
 {"completion": "Sorry you received the wrong item. Share your order number and a photo of what arrived, and I will arrange the correct item.", "prompt": "please help with a wrong item received"}
 {"completion": "Sorry you received the wrong item. Share your order number and a photo of what arrived, and I will arrange the correct item.", "prompt": "gravion omni help with a wrong item received"}
 {"completion": "Sorry you received the wrong item. Share your order number and a photo of what arrived, and I will arrange the correct item.", "prompt": "help me help with a wrong item received"}
-{"completion": "Sorry your order is running late. Share your order number and I will track the package and tell you the latest delivery update.", "prompt": "my package is late"}
-{"completion": "Sorry your order is running late. Share your order number and I will track the package and tell you the latest delivery update.", "prompt": "please my package is late"}
-{"completion": "Sorry your order is running late. Share your order number and I will track the package and tell you the latest delivery update.", "prompt": "gravion omni my package is late"}
-{"completion": "Sorry your order is running late. Share your order number and I will track the package and tell you the latest delivery update.", "prompt": "help me my package is late"}
-{"completion": "Sorry the wrong order arrived. Share your order number and I will arrange a refund or the correct item for you.", "prompt": "paisa wapas chahiye order galat aaya"}
-{"completion": "Sorry the wrong order arrived. Share your order number and I will arrange a refund or the correct item for you.", "prompt": "please paisa wapas chahiye order galat aaya"}
-{"completion": "Sorry the wrong order arrived. Share your order number and I will arrange a refund or the correct item for you.", "prompt": "gravion omni paisa wapas chahiye order galat aaya"}
-{"completion": "Sorry the wrong order arrived. Share your order number and I will arrange a refund or the correct item for you.", "prompt": "help me paisa wapas chahiye order galat aaya"}
 {"completion": "Enter the code in the discount field before paying and check that the total updates. Codes cannot usually be added after payment.", "prompt": "explain how to apply a discount code"}
 {"completion": "Enter the code in the discount field before paying and check that the total updates. Codes cannot usually be added after payment.", "prompt": "please explain how to apply a discount code"}
 {"completion": "Enter the code in the discount field before paying and check that the total updates. Codes cannot usually be added after payment.", "prompt": "gravion omni explain how to apply a discount code"}
@@ -482,6 +474,14 @@
 {"completion": "Sorry your delivery is late. Share your order number and I will check the latest carrier update right away.", "prompt": "please help with a late delivery apology"}
 {"completion": "Sorry your delivery is late. Share your order number and I will check the latest carrier update right away.", "prompt": "gravion omni help with a late delivery apology"}
 {"completion": "Sorry your delivery is late. Share your order number and I will check the latest carrier update right away.", "prompt": "help me help with a late delivery apology"}
+{"completion": "Sorry your order is running late. Share your order number and I will track the package and tell you the latest delivery update.", "prompt": "my package is late"}
+{"completion": "Sorry your order is running late. Share your order number and I will track the package and tell you the latest delivery update.", "prompt": "please my package is late"}
+{"completion": "Sorry your order is running late. Share your order number and I will track the package and tell you the latest delivery update.", "prompt": "gravion omni my package is late"}
+{"completion": "Sorry your order is running late. Share your order number and I will track the package and tell you the latest delivery update.", "prompt": "help me my package is late"}
+{"completion": "Sorry the wrong order arrived. Share your order number and I will arrange a refund or the correct item for you.", "prompt": "paisa wapas chahiye order galat aaya"}
+{"completion": "Sorry the wrong order arrived. Share your order number and I will arrange a refund or the correct item for you.", "prompt": "please paisa wapas chahiye order galat aaya"}
+{"completion": "Sorry the wrong order arrived. Share your order number and I will arrange a refund or the correct item for you.", "prompt": "gravion omni paisa wapas chahiye order galat aaya"}
+{"completion": "Sorry the wrong order arrived. Share your order number and I will arrange a refund or the correct item for you.", "prompt": "help me paisa wapas chahiye order galat aaya"}
 {"completion": "Open the order in your account and choose download receipt; a copy is also attached to your confirmation email.", "prompt": "explain how to download a receipt"}
 {"completion": "Open the order in your account and choose download receipt; a copy is also attached to your confirmation email.", "prompt": "please explain how to download a receipt"}
 {"completion": "Open the order in your account and choose download receipt; a copy is also attached to your confirmation email.", "prompt": "gravion omni explain how to download a receipt"}
@@ -2170,3 +2170,963 @@
 {"completion": "Agent plan: collect reports, validate them, file by date and topic, log each location, and flag missing reports.", "prompt": "please plan an agent that files reports"}
 {"completion": "Agent plan: collect reports, validate them, file by date and topic, log each location, and flag missing reports.", "prompt": "gravion omni plan an agent that files reports"}
 {"completion": "Agent plan: collect reports, validate them, file by date and topic, log each location, and flag missing reports.", "prompt": "help me plan an agent that files reports"}
+{"completion": "Hello in Hindi is namaste (\u0928\u092e\u0938\u094d\u0924\u0947), the warm everyday greeting.", "prompt": "translate a greeting into hindi"}
+{"completion": "Hello in Hindi is namaste (\u0928\u092e\u0938\u094d\u0924\u0947), the warm everyday greeting.", "prompt": "please translate a greeting into hindi"}
+{"completion": "Hello in Hindi is namaste (\u0928\u092e\u0938\u094d\u0924\u0947), the warm everyday greeting.", "prompt": "gravion omni translate a greeting into hindi"}
+{"completion": "Hello in Hindi is namaste (\u0928\u092e\u0938\u094d\u0924\u0947), the warm everyday greeting.", "prompt": "help me translate a greeting into hindi"}
+{"completion": "Thank you in Hindi is dhanyavaad (\u0927\u0928\u094d\u092f\u0935\u093e\u0926); shukriya is also common.", "prompt": "translate thank you into hindi"}
+{"completion": "Thank you in Hindi is dhanyavaad (\u0927\u0928\u094d\u092f\u0935\u093e\u0926); shukriya is also common.", "prompt": "please translate thank you into hindi"}
+{"completion": "Thank you in Hindi is dhanyavaad (\u0927\u0928\u094d\u092f\u0935\u093e\u0926); shukriya is also common.", "prompt": "gravion omni translate thank you into hindi"}
+{"completion": "Thank you in Hindi is dhanyavaad (\u0927\u0928\u094d\u092f\u0935\u093e\u0926); shukriya is also common.", "prompt": "help me translate thank you into hindi"}
+{"completion": "Good morning in Hindi is suprabhaat (\u0938\u0941\u092a\u094d\u0930\u092d\u093e\u0924).", "prompt": "translate good morning into hindi"}
+{"completion": "Good morning in Hindi is suprabhaat (\u0938\u0941\u092a\u094d\u0930\u092d\u093e\u0924).", "prompt": "please translate good morning into hindi"}
+{"completion": "Good morning in Hindi is suprabhaat (\u0938\u0941\u092a\u094d\u0930\u092d\u093e\u0924).", "prompt": "gravion omni translate good morning into hindi"}
+{"completion": "Good morning in Hindi is suprabhaat (\u0938\u0941\u092a\u094d\u0930\u092d\u093e\u0924).", "prompt": "help me translate good morning into hindi"}
+{"completion": "How are you in Hindi is aap kaise hain (\u0906\u092a \u0915\u0948\u0938\u0947 \u0939\u0948\u0902).", "prompt": "translate how are you into hindi"}
+{"completion": "How are you in Hindi is aap kaise hain (\u0906\u092a \u0915\u0948\u0938\u0947 \u0939\u0948\u0902).", "prompt": "please translate how are you into hindi"}
+{"completion": "How are you in Hindi is aap kaise hain (\u0906\u092a \u0915\u0948\u0938\u0947 \u0939\u0948\u0902).", "prompt": "gravion omni translate how are you into hindi"}
+{"completion": "How are you in Hindi is aap kaise hain (\u0906\u092a \u0915\u0948\u0938\u0947 \u0939\u0948\u0902).", "prompt": "help me translate how are you into hindi"}
+{"completion": "Please in Hindi is kripya (\u0915\u0943\u092a\u092f\u093e).", "prompt": "translate please into hindi"}
+{"completion": "Please in Hindi is kripya (\u0915\u0943\u092a\u092f\u093e).", "prompt": "please translate please into hindi"}
+{"completion": "Please in Hindi is kripya (\u0915\u0943\u092a\u092f\u093e).", "prompt": "gravion omni translate please into hindi"}
+{"completion": "Please in Hindi is kripya (\u0915\u0943\u092a\u092f\u093e).", "prompt": "help me translate please into hindi"}
+{"completion": "Sorry in Hindi is maaf kijiye (\u092e\u093e\u092b\u093c \u0915\u0940\u091c\u093f\u090f).", "prompt": "translate sorry into hindi"}
+{"completion": "Sorry in Hindi is maaf kijiye (\u092e\u093e\u092b\u093c \u0915\u0940\u091c\u093f\u090f).", "prompt": "please translate sorry into hindi"}
+{"completion": "Sorry in Hindi is maaf kijiye (\u092e\u093e\u092b\u093c \u0915\u0940\u091c\u093f\u090f).", "prompt": "gravion omni translate sorry into hindi"}
+{"completion": "Sorry in Hindi is maaf kijiye (\u092e\u093e\u092b\u093c \u0915\u0940\u091c\u093f\u090f).", "prompt": "help me translate sorry into hindi"}
+{"completion": "Yes is haan (\u0939\u093e\u0901) and no is nahi (\u0928\u0939\u0940\u0902) in Hindi.", "prompt": "translate yes and no into hindi"}
+{"completion": "Yes is haan (\u0939\u093e\u0901) and no is nahi (\u0928\u0939\u0940\u0902) in Hindi.", "prompt": "please translate yes and no into hindi"}
+{"completion": "Yes is haan (\u0939\u093e\u0901) and no is nahi (\u0928\u0939\u0940\u0902) in Hindi.", "prompt": "gravion omni translate yes and no into hindi"}
+{"completion": "Yes is haan (\u0939\u093e\u0901) and no is nahi (\u0928\u0939\u0940\u0902) in Hindi.", "prompt": "help me translate yes and no into hindi"}
+{"completion": "Welcome in Hindi is swagat hai (\u0938\u094d\u0935\u093e\u0917\u0924 \u0939\u0948).", "prompt": "translate welcome into hindi"}
+{"completion": "Welcome in Hindi is swagat hai (\u0938\u094d\u0935\u093e\u0917\u0924 \u0939\u0948).", "prompt": "please translate welcome into hindi"}
+{"completion": "Welcome in Hindi is swagat hai (\u0938\u094d\u0935\u093e\u0917\u0924 \u0939\u0948).", "prompt": "gravion omni translate welcome into hindi"}
+{"completion": "Welcome in Hindi is swagat hai (\u0938\u094d\u0935\u093e\u0917\u0924 \u0939\u0948).", "prompt": "help me translate welcome into hindi"}
+{"completion": "Congratulations in Hindi is badhai ho (\u092c\u0927\u093e\u0908 \u0939\u094b).", "prompt": "translate congratulations into hindi"}
+{"completion": "Congratulations in Hindi is badhai ho (\u092c\u0927\u093e\u0908 \u0939\u094b).", "prompt": "please translate congratulations into hindi"}
+{"completion": "Congratulations in Hindi is badhai ho (\u092c\u0927\u093e\u0908 \u0939\u094b).", "prompt": "gravion omni translate congratulations into hindi"}
+{"completion": "Congratulations in Hindi is badhai ho (\u092c\u0927\u093e\u0908 \u0939\u094b).", "prompt": "help me translate congratulations into hindi"}
+{"completion": "Happy birthday in Hindi is janamdin mubarak (\u091c\u0928\u094d\u092e\u0926\u093f\u0928 \u092e\u0941\u092c\u093e\u0930\u0915).", "prompt": "translate happy birthday into hindi"}
+{"completion": "Happy birthday in Hindi is janamdin mubarak (\u091c\u0928\u094d\u092e\u0926\u093f\u0928 \u092e\u0941\u092c\u093e\u0930\u0915).", "prompt": "please translate happy birthday into hindi"}
+{"completion": "Happy birthday in Hindi is janamdin mubarak (\u091c\u0928\u094d\u092e\u0926\u093f\u0928 \u092e\u0941\u092c\u093e\u0930\u0915).", "prompt": "gravion omni translate happy birthday into hindi"}
+{"completion": "Happy birthday in Hindi is janamdin mubarak (\u091c\u0928\u094d\u092e\u0926\u093f\u0928 \u092e\u0941\u092c\u093e\u0930\u0915).", "prompt": "help me translate happy birthday into hindi"}
+{"completion": "Water in Hindi is paani (\u092a\u093e\u0928\u0940).", "prompt": "translate water into hindi"}
+{"completion": "Water in Hindi is paani (\u092a\u093e\u0928\u0940).", "prompt": "please translate water into hindi"}
+{"completion": "Water in Hindi is paani (\u092a\u093e\u0928\u0940).", "prompt": "gravion omni translate water into hindi"}
+{"completion": "Water in Hindi is paani (\u092a\u093e\u0928\u0940).", "prompt": "help me translate water into hindi"}
+{"completion": "Friend in Hindi is dost (\u0926\u094b\u0938\u094d\u0924).", "prompt": "translate friend into hindi"}
+{"completion": "Friend in Hindi is dost (\u0926\u094b\u0938\u094d\u0924).", "prompt": "please translate friend into hindi"}
+{"completion": "Friend in Hindi is dost (\u0926\u094b\u0938\u094d\u0924).", "prompt": "gravion omni translate friend into hindi"}
+{"completion": "Friend in Hindi is dost (\u0926\u094b\u0938\u094d\u0924).", "prompt": "help me translate friend into hindi"}
+{"completion": "Home in Hindi is ghar (\u0918\u0930).", "prompt": "translate home into hindi"}
+{"completion": "Home in Hindi is ghar (\u0918\u0930).", "prompt": "please translate home into hindi"}
+{"completion": "Home in Hindi is ghar (\u0918\u0930).", "prompt": "gravion omni translate home into hindi"}
+{"completion": "Home in Hindi is ghar (\u0918\u0930).", "prompt": "help me translate home into hindi"}
+{"completion": "Work in Hindi is kaam (\u0915\u093e\u092e).", "prompt": "translate work into hindi"}
+{"completion": "Work in Hindi is kaam (\u0915\u093e\u092e).", "prompt": "please translate work into hindi"}
+{"completion": "Work in Hindi is kaam (\u0915\u093e\u092e).", "prompt": "gravion omni translate work into hindi"}
+{"completion": "Work in Hindi is kaam (\u0915\u093e\u092e).", "prompt": "help me translate work into hindi"}
+{"completion": "Book in Hindi is kitaab (\u0915\u093f\u0924\u093e\u092c).", "prompt": "translate book into hindi"}
+{"completion": "Book in Hindi is kitaab (\u0915\u093f\u0924\u093e\u092c).", "prompt": "please translate book into hindi"}
+{"completion": "Book in Hindi is kitaab (\u0915\u093f\u0924\u093e\u092c).", "prompt": "gravion omni translate book into hindi"}
+{"completion": "Book in Hindi is kitaab (\u0915\u093f\u0924\u093e\u092c).", "prompt": "help me translate book into hindi"}
+{"completion": "Money in Hindi is paisa (\u092a\u0948\u0938\u093e).", "prompt": "translate money into hindi"}
+{"completion": "Money in Hindi is paisa (\u092a\u0948\u0938\u093e).", "prompt": "please translate money into hindi"}
+{"completion": "Money in Hindi is paisa (\u092a\u0948\u0938\u093e).", "prompt": "gravion omni translate money into hindi"}
+{"completion": "Money in Hindi is paisa (\u092a\u0948\u0938\u093e).", "prompt": "help me translate money into hindi"}
+{"completion": "Time in Hindi is samay (\u0938\u092e\u092f).", "prompt": "translate time into hindi"}
+{"completion": "Time in Hindi is samay (\u0938\u092e\u092f).", "prompt": "please translate time into hindi"}
+{"completion": "Time in Hindi is samay (\u0938\u092e\u092f).", "prompt": "gravion omni translate time into hindi"}
+{"completion": "Time in Hindi is samay (\u0938\u092e\u092f).", "prompt": "help me translate time into hindi"}
+{"completion": "Success in Hindi is safalta (\u0938\u092b\u0932\u0924\u093e).", "prompt": "translate success into hindi"}
+{"completion": "Success in Hindi is safalta (\u0938\u092b\u0932\u0924\u093e).", "prompt": "please translate success into hindi"}
+{"completion": "Success in Hindi is safalta (\u0938\u092b\u0932\u0924\u093e).", "prompt": "gravion omni translate success into hindi"}
+{"completion": "Success in Hindi is safalta (\u0938\u092b\u0932\u0924\u093e).", "prompt": "help me translate success into hindi"}
+{"completion": "Hard work in Hindi is mehnat (\u092e\u0947\u0939\u0928\u0924).", "prompt": "translate hard work into hindi"}
+{"completion": "Hard work in Hindi is mehnat (\u092e\u0947\u0939\u0928\u0924).", "prompt": "please translate hard work into hindi"}
+{"completion": "Hard work in Hindi is mehnat (\u092e\u0947\u0939\u0928\u0924).", "prompt": "gravion omni translate hard work into hindi"}
+{"completion": "Hard work in Hindi is mehnat (\u092e\u0947\u0939\u0928\u0924).", "prompt": "help me translate hard work into hindi"}
+{"completion": "Knowledge in Hindi is gyaan (\u091c\u094d\u091e\u093e\u0928).", "prompt": "translate knowledge into hindi"}
+{"completion": "Knowledge in Hindi is gyaan (\u091c\u094d\u091e\u093e\u0928).", "prompt": "please translate knowledge into hindi"}
+{"completion": "Knowledge in Hindi is gyaan (\u091c\u094d\u091e\u093e\u0928).", "prompt": "gravion omni translate knowledge into hindi"}
+{"completion": "Knowledge in Hindi is gyaan (\u091c\u094d\u091e\u093e\u0928).", "prompt": "help me translate knowledge into hindi"}
+{"completion": "Peace in Hindi is shaanti (\u0936\u093e\u0902\u0924\u093f).", "prompt": "translate peace into hindi"}
+{"completion": "Peace in Hindi is shaanti (\u0936\u093e\u0902\u0924\u093f).", "prompt": "please translate peace into hindi"}
+{"completion": "Peace in Hindi is shaanti (\u0936\u093e\u0902\u0924\u093f).", "prompt": "gravion omni translate peace into hindi"}
+{"completion": "Peace in Hindi is shaanti (\u0936\u093e\u0902\u0924\u093f).", "prompt": "help me translate peace into hindi"}
+{"completion": "Security in Hindi is suraksha (\u0938\u0941\u0930\u0915\u094d\u0937\u093e).", "prompt": "translate security into hindi"}
+{"completion": "Security in Hindi is suraksha (\u0938\u0941\u0930\u0915\u094d\u0937\u093e).", "prompt": "please translate security into hindi"}
+{"completion": "Security in Hindi is suraksha (\u0938\u0941\u0930\u0915\u094d\u0937\u093e).", "prompt": "gravion omni translate security into hindi"}
+{"completion": "Security in Hindi is suraksha (\u0938\u0941\u0930\u0915\u094d\u0937\u093e).", "prompt": "help me translate security into hindi"}
+{"completion": "Namaste means hello, a respectful greeting.", "prompt": "translate namaste into english"}
+{"completion": "Namaste means hello, a respectful greeting.", "prompt": "please translate namaste into english"}
+{"completion": "Namaste means hello, a respectful greeting.", "prompt": "gravion omni translate namaste into english"}
+{"completion": "Namaste means hello, a respectful greeting.", "prompt": "help me translate namaste into english"}
+{"completion": "Dhanyavaad means thank you.", "prompt": "translate dhanyavaad into english"}
+{"completion": "Dhanyavaad means thank you.", "prompt": "please translate dhanyavaad into english"}
+{"completion": "Dhanyavaad means thank you.", "prompt": "gravion omni translate dhanyavaad into english"}
+{"completion": "Dhanyavaad means thank you.", "prompt": "help me translate dhanyavaad into english"}
+{"completion": "Shukriya means thank you.", "prompt": "translate shukriya into english"}
+{"completion": "Shukriya means thank you.", "prompt": "please translate shukriya into english"}
+{"completion": "Shukriya means thank you.", "prompt": "gravion omni translate shukriya into english"}
+{"completion": "Shukriya means thank you.", "prompt": "help me translate shukriya into english"}
+{"completion": "Theek hai means alright or okay.", "prompt": "translate theek hai into english"}
+{"completion": "Theek hai means alright or okay.", "prompt": "please translate theek hai into english"}
+{"completion": "Theek hai means alright or okay.", "prompt": "gravion omni translate theek hai into english"}
+{"completion": "Theek hai means alright or okay.", "prompt": "help me translate theek hai into english"}
+{"completion": "Koi baat nahi means no problem or never mind.", "prompt": "translate koi baat nahi into english"}
+{"completion": "Koi baat nahi means no problem or never mind.", "prompt": "please translate koi baat nahi into english"}
+{"completion": "Koi baat nahi means no problem or never mind.", "prompt": "gravion omni translate koi baat nahi into english"}
+{"completion": "Koi baat nahi means no problem or never mind.", "prompt": "help me translate koi baat nahi into english"}
+{"completion": "Samajh gaya means understood.", "prompt": "translate samajh gaya into english"}
+{"completion": "Samajh gaya means understood.", "prompt": "please translate samajh gaya into english"}
+{"completion": "Samajh gaya means understood.", "prompt": "gravion omni translate samajh gaya into english"}
+{"completion": "Samajh gaya means understood.", "prompt": "help me translate samajh gaya into english"}
+{"completion": "Phir milenge means see you again.", "prompt": "translate phir milenge into english"}
+{"completion": "Phir milenge means see you again.", "prompt": "please translate phir milenge into english"}
+{"completion": "Phir milenge means see you again.", "prompt": "gravion omni translate phir milenge into english"}
+{"completion": "Phir milenge means see you again.", "prompt": "help me translate phir milenge into english"}
+{"completion": "Dhyaan se means carefully.", "prompt": "translate dhyaan se into english"}
+{"completion": "Dhyaan se means carefully.", "prompt": "please translate dhyaan se into english"}
+{"completion": "Dhyaan se means carefully.", "prompt": "gravion omni translate dhyaan se into english"}
+{"completion": "Dhyaan se means carefully.", "prompt": "help me translate dhyaan se into english"}
+{"completion": "Jaldi karo means hurry up.", "prompt": "translate jaldi karo into english"}
+{"completion": "Jaldi karo means hurry up.", "prompt": "please translate jaldi karo into english"}
+{"completion": "Jaldi karo means hurry up.", "prompt": "gravion omni translate jaldi karo into english"}
+{"completion": "Jaldi karo means hurry up.", "prompt": "help me translate jaldi karo into english"}
+{"completion": "Bahut badhiya means very good or well done.", "prompt": "translate bahut badhiya into english"}
+{"completion": "Bahut badhiya means very good or well done.", "prompt": "please translate bahut badhiya into english"}
+{"completion": "Bahut badhiya means very good or well done.", "prompt": "gravion omni translate bahut badhiya into english"}
+{"completion": "Bahut badhiya means very good or well done.", "prompt": "help me translate bahut badhiya into english"}
+{"completion": "Mujhe madad chahiye means I need help.", "prompt": "translate mujhe madad chahiye into english"}
+{"completion": "Mujhe madad chahiye means I need help.", "prompt": "please translate mujhe madad chahiye into english"}
+{"completion": "Mujhe madad chahiye means I need help.", "prompt": "gravion omni translate mujhe madad chahiye into english"}
+{"completion": "Mujhe madad chahiye means I need help.", "prompt": "help me translate mujhe madad chahiye into english"}
+{"completion": "Kal milte hain means see you tomorrow.", "prompt": "translate kal milte hain into english"}
+{"completion": "Kal milte hain means see you tomorrow.", "prompt": "please translate kal milte hain into english"}
+{"completion": "Kal milte hain means see you tomorrow.", "prompt": "gravion omni translate kal milte hain into english"}
+{"completion": "Kal milte hain means see you tomorrow.", "prompt": "help me translate kal milte hain into english"}
+{"completion": "Apna khayal rakhna means take care of yourself.", "prompt": "translate apna khayal rakhna into english"}
+{"completion": "Apna khayal rakhna means take care of yourself.", "prompt": "please translate apna khayal rakhna into english"}
+{"completion": "Apna khayal rakhna means take care of yourself.", "prompt": "gravion omni translate apna khayal rakhna into english"}
+{"completion": "Apna khayal rakhna means take care of yourself.", "prompt": "help me translate apna khayal rakhna into english"}
+{"completion": "Ye kitne ka hai means how much does this cost.", "prompt": "translate ye kitne ka hai into english"}
+{"completion": "Ye kitne ka hai means how much does this cost.", "prompt": "please translate ye kitne ka hai into english"}
+{"completion": "Ye kitne ka hai means how much does this cost.", "prompt": "gravion omni translate ye kitne ka hai into english"}
+{"completion": "Ye kitne ka hai means how much does this cost.", "prompt": "help me translate ye kitne ka hai into english"}
+{"completion": "Hinglish mixes Hindi and English in one sentence, written in Roman letters, as many people speak daily.", "prompt": "explain hinglish in simple words"}
+{"completion": "Hinglish mixes Hindi and English in one sentence, written in Roman letters, as many people speak daily.", "prompt": "please explain hinglish in simple words"}
+{"completion": "Hinglish mixes Hindi and English in one sentence, written in Roman letters, as many people speak daily.", "prompt": "gravion omni explain hinglish in simple words"}
+{"completion": "Hinglish mixes Hindi and English in one sentence, written in Roman letters, as many people speak daily.", "prompt": "help me explain hinglish in simple words"}
+{"completion": "Hindi is the language itself; Hinglish is Hindi written in Roman script and mixed with English words.", "prompt": "explain the difference between hindi and hinglish"}
+{"completion": "Hindi is the language itself; Hinglish is Hindi written in Roman script and mixed with English words.", "prompt": "please explain the difference between hindi and hinglish"}
+{"completion": "Hindi is the language itself; Hinglish is Hindi written in Roman script and mixed with English words.", "prompt": "gravion omni explain the difference between hindi and hinglish"}
+{"completion": "Hindi is the language itself; Hinglish is Hindi written in Roman script and mixed with English words.", "prompt": "help me explain the difference between hindi and hinglish"}
+{"completion": "A polite request: kripya meri madad kijiye \u2014 please help me.", "prompt": "give a polite hindi request phrase"}
+{"completion": "A polite request: kripya meri madad kijiye \u2014 please help me.", "prompt": "please give a polite hindi request phrase"}
+{"completion": "A polite request: kripya meri madad kijiye \u2014 please help me.", "prompt": "gravion omni give a polite hindi request phrase"}
+{"completion": "A polite request: kripya meri madad kijiye \u2014 please help me.", "prompt": "help me give a polite hindi request phrase"}
+{"completion": "Ask directions with: station kahan hai \u2014 where is the station.", "prompt": "give a hindi phrase for asking directions"}
+{"completion": "Ask directions with: station kahan hai \u2014 where is the station.", "prompt": "please give a hindi phrase for asking directions"}
+{"completion": "Ask directions with: station kahan hai \u2014 where is the station.", "prompt": "gravion omni give a hindi phrase for asking directions"}
+{"completion": "Ask directions with: station kahan hai \u2014 where is the station.", "prompt": "help me give a hindi phrase for asking directions"}
+{"completion": "Say: mujhe samajh nahi aaya \u2014 I did not understand.", "prompt": "give a hindi phrase for saying i do not understand"}
+{"completion": "Say: mujhe samajh nahi aaya \u2014 I did not understand.", "prompt": "please give a hindi phrase for saying i do not understand"}
+{"completion": "Say: mujhe samajh nahi aaya \u2014 I did not understand.", "prompt": "gravion omni give a hindi phrase for saying i do not understand"}
+{"completion": "Say: mujhe samajh nahi aaya \u2014 I did not understand.", "prompt": "help me give a hindi phrase for saying i do not understand"}
+{"completion": "Say: kripya dheere boliye \u2014 please speak slowly.", "prompt": "give a hindi phrase for please speak slowly"}
+{"completion": "Say: kripya dheere boliye \u2014 please speak slowly.", "prompt": "please give a hindi phrase for please speak slowly"}
+{"completion": "Say: kripya dheere boliye \u2014 please speak slowly.", "prompt": "gravion omni give a hindi phrase for please speak slowly"}
+{"completion": "Say: kripya dheere boliye \u2014 please speak slowly.", "prompt": "help me give a hindi phrase for please speak slowly"}
+{"completion": "Today is aaj, tomorrow is kal, and yesterday is also kal; context decides which kal is meant.", "prompt": "translate today tomorrow yesterday into hindi"}
+{"completion": "Today is aaj, tomorrow is kal, and yesterday is also kal; context decides which kal is meant.", "prompt": "please translate today tomorrow yesterday into hindi"}
+{"completion": "Today is aaj, tomorrow is kal, and yesterday is also kal; context decides which kal is meant.", "prompt": "gravion omni translate today tomorrow yesterday into hindi"}
+{"completion": "Today is aaj, tomorrow is kal, and yesterday is also kal; context decides which kal is meant.", "prompt": "help me translate today tomorrow yesterday into hindi"}
+{"completion": "I am fine in Hindi is main theek hoon (\u092e\u0948\u0902 \u0920\u0940\u0915 \u0939\u0942\u0901).", "prompt": "translate i am fine into hindi"}
+{"completion": "I am fine in Hindi is main theek hoon (\u092e\u0948\u0902 \u0920\u0940\u0915 \u0939\u0942\u0901).", "prompt": "please translate i am fine into hindi"}
+{"completion": "I am fine in Hindi is main theek hoon (\u092e\u0948\u0902 \u0920\u0940\u0915 \u0939\u0942\u0901).", "prompt": "gravion omni translate i am fine into hindi"}
+{"completion": "I am fine in Hindi is main theek hoon (\u092e\u0948\u0902 \u0920\u0940\u0915 \u0939\u0942\u0901).", "prompt": "help me translate i am fine into hindi"}
+{"completion": "What is your name in Hindi is aapka naam kya hai (\u0906\u092a\u0915\u093e \u0928\u093e\u092e \u0915\u094d\u092f\u093e \u0939\u0948).", "prompt": "translate what is your name into hindi"}
+{"completion": "What is your name in Hindi is aapka naam kya hai (\u0906\u092a\u0915\u093e \u0928\u093e\u092e \u0915\u094d\u092f\u093e \u0939\u0948).", "prompt": "please translate what is your name into hindi"}
+{"completion": "What is your name in Hindi is aapka naam kya hai (\u0906\u092a\u0915\u093e \u0928\u093e\u092e \u0915\u094d\u092f\u093e \u0939\u0948).", "prompt": "gravion omni translate what is your name into hindi"}
+{"completion": "What is your name in Hindi is aapka naam kya hai (\u0906\u092a\u0915\u093e \u0928\u093e\u092e \u0915\u094d\u092f\u093e \u0939\u0948).", "prompt": "help me translate what is your name into hindi"}
+{"completion": "See you tomorrow in Hindi is kal milte hain (\u0915\u0932 \u092e\u093f\u0932\u0924\u0947 \u0939\u0948\u0902).", "prompt": "translate see you tomorrow into hindi"}
+{"completion": "See you tomorrow in Hindi is kal milte hain (\u0915\u0932 \u092e\u093f\u0932\u0924\u0947 \u0939\u0948\u0902).", "prompt": "please translate see you tomorrow into hindi"}
+{"completion": "See you tomorrow in Hindi is kal milte hain (\u0915\u0932 \u092e\u093f\u0932\u0924\u0947 \u0939\u0948\u0902).", "prompt": "gravion omni translate see you tomorrow into hindi"}
+{"completion": "See you tomorrow in Hindi is kal milte hain (\u0915\u0932 \u092e\u093f\u0932\u0924\u0947 \u0939\u0948\u0902).", "prompt": "help me translate see you tomorrow into hindi"}
+{"completion": "Take care in Hindi is apna khayal rakhna (\u0905\u092a\u0928\u093e \u0916\u094d\u092f\u093e\u0932 \u0930\u0916\u0928\u093e).", "prompt": "translate take care into hindi"}
+{"completion": "Take care in Hindi is apna khayal rakhna (\u0905\u092a\u0928\u093e \u0916\u094d\u092f\u093e\u0932 \u0930\u0916\u0928\u093e).", "prompt": "please translate take care into hindi"}
+{"completion": "Take care in Hindi is apna khayal rakhna (\u0905\u092a\u0928\u093e \u0916\u094d\u092f\u093e\u0932 \u0930\u0916\u0928\u093e).", "prompt": "gravion omni translate take care into hindi"}
+{"completion": "Take care in Hindi is apna khayal rakhna (\u0905\u092a\u0928\u093e \u0916\u094d\u092f\u093e\u0932 \u0930\u0916\u0928\u093e).", "prompt": "help me translate take care into hindi"}
+{"completion": "Well done in Hindi is bahut badhiya (\u092c\u0939\u0941\u0924 \u092c\u0922\u093c\u093f\u092f\u093e).", "prompt": "translate well done into hindi"}
+{"completion": "Well done in Hindi is bahut badhiya (\u092c\u0939\u0941\u0924 \u092c\u0922\u093c\u093f\u092f\u093e).", "prompt": "please translate well done into hindi"}
+{"completion": "Well done in Hindi is bahut badhiya (\u092c\u0939\u0941\u0924 \u092c\u0922\u093c\u093f\u092f\u093e).", "prompt": "gravion omni translate well done into hindi"}
+{"completion": "Well done in Hindi is bahut badhiya (\u092c\u0939\u0941\u0924 \u092c\u0922\u093c\u093f\u092f\u093e).", "prompt": "help me translate well done into hindi"}
+{"completion": "A brief summary keeps the main claim, the strongest evidence, and the conclusion, in that order.", "prompt": "summarize a long article briefly"}
+{"completion": "A brief summary keeps the main claim, the strongest evidence, and the conclusion, in that order.", "prompt": "please summarize a long article briefly"}
+{"completion": "A brief summary keeps the main claim, the strongest evidence, and the conclusion, in that order.", "prompt": "gravion omni summarize a long article briefly"}
+{"completion": "A brief summary keeps the main claim, the strongest evidence, and the conclusion, in that order.", "prompt": "help me summarize a long article briefly"}
+{"completion": "Extractive summarization selects the source's own most important sentences instead of rewriting them.", "prompt": "explain extractive summarization"}
+{"completion": "Extractive summarization selects the source's own most important sentences instead of rewriting them.", "prompt": "please explain extractive summarization"}
+{"completion": "Extractive summarization selects the source's own most important sentences instead of rewriting them.", "prompt": "gravion omni explain extractive summarization"}
+{"completion": "Extractive summarization selects the source's own most important sentences instead of rewriting them.", "prompt": "help me explain extractive summarization"}
+{"completion": "One line: state what happened, why it matters, and what happens next.", "prompt": "make a one line summary of a report"}
+{"completion": "One line: state what happened, why it matters, and what happens next.", "prompt": "please make a one line summary of a report"}
+{"completion": "One line: state what happened, why it matters, and what happens next.", "prompt": "gravion omni make a one line summary of a report"}
+{"completion": "One line: state what happened, why it matters, and what happens next.", "prompt": "help me make a one line summary of a report"}
+{"completion": "Meeting summary: decisions made, owners named, deadlines set, and open questions listed.", "prompt": "summarize a meeting into action points"}
+{"completion": "Meeting summary: decisions made, owners named, deadlines set, and open questions listed.", "prompt": "please summarize a meeting into action points"}
+{"completion": "Meeting summary: decisions made, owners named, deadlines set, and open questions listed.", "prompt": "gravion omni summarize a meeting into action points"}
+{"completion": "Meeting summary: decisions made, owners named, deadlines set, and open questions listed.", "prompt": "help me summarize a meeting into action points"}
+{"completion": "Key sentences carry the thesis, repeated central terms, numbers, and conclusions.", "prompt": "explain how to choose key sentences"}
+{"completion": "Key sentences carry the thesis, repeated central terms, numbers, and conclusions.", "prompt": "please explain how to choose key sentences"}
+{"completion": "Key sentences carry the thesis, repeated central terms, numbers, and conclusions.", "prompt": "gravion omni explain how to choose key sentences"}
+{"completion": "Key sentences carry the thesis, repeated central terms, numbers, and conclusions.", "prompt": "help me explain how to choose key sentences"}
+{"completion": "Cut examples and repetition first; keep definitions, claims, and the final point.", "prompt": "shorten a paragraph without losing meaning"}
+{"completion": "Cut examples and repetition first; keep definitions, claims, and the final point.", "prompt": "please shorten a paragraph without losing meaning"}
+{"completion": "Cut examples and repetition first; keep definitions, claims, and the final point.", "prompt": "gravion omni shorten a paragraph without losing meaning"}
+{"completion": "Cut examples and repetition first; keep definitions, claims, and the final point.", "prompt": "help me shorten a paragraph without losing meaning"}
+{"completion": "A fair summary reports who, what, when, where, and why, without adding opinion.", "prompt": "summarize a news story fairly"}
+{"completion": "A fair summary reports who, what, when, where, and why, without adding opinion.", "prompt": "please summarize a news story fairly"}
+{"completion": "A fair summary reports who, what, when, where, and why, without adding opinion.", "prompt": "gravion omni summarize a news story fairly"}
+{"completion": "A fair summary reports who, what, when, where, and why, without adding opinion.", "prompt": "help me summarize a news story fairly"}
+{"completion": "Turn each main idea into one short bullet, ordered as the text presents them.", "prompt": "make bullet points from a long text"}
+{"completion": "Turn each main idea into one short bullet, ordered as the text presents them.", "prompt": "please make bullet points from a long text"}
+{"completion": "Turn each main idea into one short bullet, ordered as the text presents them.", "prompt": "gravion omni make bullet points from a long text"}
+{"completion": "Turn each main idea into one short bullet, ordered as the text presents them.", "prompt": "help me make bullet points from a long text"}
+{"completion": "A summary condenses the whole text; a paraphrase rewrites a passage at similar length.", "prompt": "explain the difference between summary and paraphrase"}
+{"completion": "A summary condenses the whole text; a paraphrase rewrites a passage at similar length.", "prompt": "please explain the difference between summary and paraphrase"}
+{"completion": "A summary condenses the whole text; a paraphrase rewrites a passage at similar length.", "prompt": "gravion omni explain the difference between summary and paraphrase"}
+{"completion": "A summary condenses the whole text; a paraphrase rewrites a passage at similar length.", "prompt": "help me explain the difference between summary and paraphrase"}
+{"completion": "Revision summary: key terms, main arguments, one example each, and likely exam points.", "prompt": "summarize a chapter for revision"}
+{"completion": "Revision summary: key terms, main arguments, one example each, and likely exam points.", "prompt": "please summarize a chapter for revision"}
+{"completion": "Revision summary: key terms, main arguments, one example each, and likely exam points.", "prompt": "gravion omni summarize a chapter for revision"}
+{"completion": "Revision summary: key terms, main arguments, one example each, and likely exam points.", "prompt": "help me summarize a chapter for revision"}
+{"completion": "Executive summary: purpose, findings, risks, recommendation, and next step.", "prompt": "create an executive summary outline"}
+{"completion": "Executive summary: purpose, findings, risks, recommendation, and next step.", "prompt": "please create an executive summary outline"}
+{"completion": "Executive summary: purpose, findings, risks, recommendation, and next step.", "prompt": "gravion omni create an executive summary outline"}
+{"completion": "Executive summary: purpose, findings, risks, recommendation, and next step.", "prompt": "help me create an executive summary outline"}
+{"completion": "Pros and cons summary: strongest benefit, strongest cost, and who each side suits.", "prompt": "summarize pros and cons of a choice"}
+{"completion": "Pros and cons summary: strongest benefit, strongest cost, and who each side suits.", "prompt": "please summarize pros and cons of a choice"}
+{"completion": "Pros and cons summary: strongest benefit, strongest cost, and who each side suits.", "prompt": "gravion omni summarize pros and cons of a choice"}
+{"completion": "Pros and cons summary: strongest benefit, strongest cost, and who each side suits.", "prompt": "help me summarize pros and cons of a choice"}
+{"completion": "A summary must not add claims the source never made; faithfulness keeps trust.", "prompt": "explain why summaries must stay faithful"}
+{"completion": "A summary must not add claims the source never made; faithfulness keeps trust.", "prompt": "please explain why summaries must stay faithful"}
+{"completion": "A summary must not add claims the source never made; faithfulness keeps trust.", "prompt": "gravion omni explain why summaries must stay faithful"}
+{"completion": "A summary must not add claims the source never made; faithfulness keeps trust.", "prompt": "help me explain why summaries must stay faithful"}
+{"completion": "Abstract style: question, method, result, and implication in four short sentences.", "prompt": "summarize a research paper abstract style"}
+{"completion": "Abstract style: question, method, result, and implication in four short sentences.", "prompt": "please summarize a research paper abstract style"}
+{"completion": "Abstract style: question, method, result, and implication in four short sentences.", "prompt": "gravion omni summarize a research paper abstract style"}
+{"completion": "Abstract style: question, method, result, and implication in four short sentences.", "prompt": "help me summarize a research paper abstract style"}
+{"completion": "For a busy reader: headline point first, three supporting facts, and the decision needed.", "prompt": "make a summary for a busy reader"}
+{"completion": "For a busy reader: headline point first, three supporting facts, and the decision needed.", "prompt": "please make a summary for a busy reader"}
+{"completion": "For a busy reader: headline point first, three supporting facts, and the decision needed.", "prompt": "gravion omni make a summary for a busy reader"}
+{"completion": "For a busy reader: headline point first, three supporting facts, and the decision needed.", "prompt": "help me make a summary for a busy reader"}
+{"completion": "Email thread summary: original request, replies that changed anything, and the current open item.", "prompt": "summarize a long email thread"}
+{"completion": "Email thread summary: original request, replies that changed anything, and the current open item.", "prompt": "please summarize a long email thread"}
+{"completion": "Email thread summary: original request, replies that changed anything, and the current open item.", "prompt": "gravion omni summarize a long email thread"}
+{"completion": "Email thread summary: original request, replies that changed anything, and the current open item.", "prompt": "help me summarize a long email thread"}
+{"completion": "Sentence scoring rates sentences by important terms, position, and length, then keeps the best.", "prompt": "explain sentence scoring in summaries"}
+{"completion": "Sentence scoring rates sentences by important terms, position, and length, then keeps the best.", "prompt": "please explain sentence scoring in summaries"}
+{"completion": "Sentence scoring rates sentences by important terms, position, and length, then keeps the best.", "prompt": "gravion omni explain sentence scoring in summaries"}
+{"completion": "Sentence scoring rates sentences by important terms, position, and length, then keeps the best.", "prompt": "help me explain sentence scoring in summaries"}
+{"completion": "Product summary: what it is, who it serves, key features, and price or availability.", "prompt": "summarize a product description"}
+{"completion": "Product summary: what it is, who it serves, key features, and price or availability.", "prompt": "please summarize a product description"}
+{"completion": "Product summary: what it is, who it serves, key features, and price or availability.", "prompt": "gravion omni summarize a product description"}
+{"completion": "Product summary: what it is, who it serves, key features, and price or availability.", "prompt": "help me summarize a product description"}
+{"completion": "With a word limit, draft long, then cut adjectives and examples until only essentials remain.", "prompt": "create a summary with a word limit"}
+{"completion": "With a word limit, draft long, then cut adjectives and examples until only essentials remain.", "prompt": "please create a summary with a word limit"}
+{"completion": "With a word limit, draft long, then cut adjectives and examples until only essentials remain.", "prompt": "gravion omni create a summary with a word limit"}
+{"completion": "With a word limit, draft long, then cut adjectives and examples until only essentials remain.", "prompt": "help me create a summary with a word limit"}
+{"completion": "Brief history summary: cause, turning point, outcome, and lasting effect.", "prompt": "summarize a historical event briefly"}
+{"completion": "Brief history summary: cause, turning point, outcome, and lasting effect.", "prompt": "please summarize a historical event briefly"}
+{"completion": "Brief history summary: cause, turning point, outcome, and lasting effect.", "prompt": "gravion omni summarize a historical event briefly"}
+{"completion": "Brief history summary: cause, turning point, outcome, and lasting effect.", "prompt": "help me summarize a historical event briefly"}
+{"completion": "Neutral summary uses the source's own claims, attributes opinions, and avoids loaded words.", "prompt": "explain how to summarize without bias"}
+{"completion": "Neutral summary uses the source's own claims, attributes opinions, and avoids loaded words.", "prompt": "please explain how to summarize without bias"}
+{"completion": "Neutral summary uses the source's own claims, attributes opinions, and avoids loaded words.", "prompt": "gravion omni explain how to summarize without bias"}
+{"completion": "Neutral summary uses the source's own claims, attributes opinions, and avoids loaded words.", "prompt": "help me explain how to summarize without bias"}
+{"completion": "Tutorial summary: goal, materials, numbered steps, and the check that proves success.", "prompt": "summarize a tutorial into steps"}
+{"completion": "Tutorial summary: goal, materials, numbered steps, and the check that proves success.", "prompt": "please summarize a tutorial into steps"}
+{"completion": "Tutorial summary: goal, materials, numbered steps, and the check that proves success.", "prompt": "gravion omni summarize a tutorial into steps"}
+{"completion": "Tutorial summary: goal, materials, numbered steps, and the check that proves success.", "prompt": "help me summarize a tutorial into steps"}
+{"completion": "Conversation summary: topics covered, agreements reached, disagreements left, and next meeting.", "prompt": "make a summary of a long conversation"}
+{"completion": "Conversation summary: topics covered, agreements reached, disagreements left, and next meeting.", "prompt": "please make a summary of a long conversation"}
+{"completion": "Conversation summary: topics covered, agreements reached, disagreements left, and next meeting.", "prompt": "gravion omni make a summary of a long conversation"}
+{"completion": "Conversation summary: topics covered, agreements reached, disagreements left, and next meeting.", "prompt": "help me make a summary of a long conversation"}
+{"completion": "Book summary: premise, main conflict or argument, turning point, and ending or conclusion.", "prompt": "summarize a book in one paragraph"}
+{"completion": "Book summary: premise, main conflict or argument, turning point, and ending or conclusion.", "prompt": "please summarize a book in one paragraph"}
+{"completion": "Book summary: premise, main conflict or argument, turning point, and ending or conclusion.", "prompt": "gravion omni summarize a book in one paragraph"}
+{"completion": "Book summary: premise, main conflict or argument, turning point, and ending or conclusion.", "prompt": "help me summarize a book in one paragraph"}
+{"completion": "A lead sentence states the whole point first, so readers grasp the summary instantly.", "prompt": "explain lead sentences in summaries"}
+{"completion": "A lead sentence states the whole point first, so readers grasp the summary instantly.", "prompt": "please explain lead sentences in summaries"}
+{"completion": "A lead sentence states the whole point first, so readers grasp the summary instantly.", "prompt": "gravion omni explain lead sentences in summaries"}
+{"completion": "A lead sentence states the whole point first, so readers grasp the summary instantly.", "prompt": "help me explain lead sentences in summaries"}
+{"completion": "Plain summary of a notice: who must do what, by when, and what happens if they do not.", "prompt": "summarize a legal notice plainly"}
+{"completion": "Plain summary of a notice: who must do what, by when, and what happens if they do not.", "prompt": "please summarize a legal notice plainly"}
+{"completion": "Plain summary of a notice: who must do what, by when, and what happens if they do not.", "prompt": "gravion omni summarize a legal notice plainly"}
+{"completion": "Plain summary of a notice: who must do what, by when, and what happens if they do not.", "prompt": "help me summarize a legal notice plainly"}
+{"completion": "Social summary: one hook line, two facts, and a question or link for detail.", "prompt": "create a summary for social media"}
+{"completion": "Social summary: one hook line, two facts, and a question or link for detail.", "prompt": "please create a summary for social media"}
+{"completion": "Social summary: one hook line, two facts, and a question or link for detail.", "prompt": "gravion omni create a summary for social media"}
+{"completion": "Social summary: one hook line, two facts, and a question or link for detail.", "prompt": "help me create a summary for social media"}
+{"completion": "Careful summary: what was measured, the result size, uncertainty, and limits of the claim.", "prompt": "summarize a scientific result carefully"}
+{"completion": "Careful summary: what was measured, the result size, uncertainty, and limits of the claim.", "prompt": "please summarize a scientific result carefully"}
+{"completion": "Careful summary: what was measured, the result size, uncertainty, and limits of the claim.", "prompt": "gravion omni summarize a scientific result carefully"}
+{"completion": "Careful summary: what was measured, the result size, uncertainty, and limits of the claim.", "prompt": "help me summarize a scientific result carefully"}
+{"completion": "Compression ratio compares summary length to source length; smaller ratios demand stricter selection.", "prompt": "explain compression ratio in summaries"}
+{"completion": "Compression ratio compares summary length to source length; smaller ratios demand stricter selection.", "prompt": "please explain compression ratio in summaries"}
+{"completion": "Compression ratio compares summary length to source length; smaller ratios demand stricter selection.", "prompt": "gravion omni explain compression ratio in summaries"}
+{"completion": "Compression ratio compares summary length to source length; smaller ratios demand stricter selection.", "prompt": "help me explain compression ratio in summaries"}
+{"completion": "Quote summary: pick the lines that carry the argument, keep them exact, and attribute them.", "prompt": "summarize a speech into quotes"}
+{"completion": "Quote summary: pick the lines that carry the argument, keep them exact, and attribute them.", "prompt": "please summarize a speech into quotes"}
+{"completion": "Quote summary: pick the lines that carry the argument, keep them exact, and attribute them.", "prompt": "gravion omni summarize a speech into quotes"}
+{"completion": "Quote summary: pick the lines that carry the argument, keep them exact, and attribute them.", "prompt": "help me summarize a speech into quotes"}
+{"completion": "Summary table: rows for findings, columns for evidence, impact, and owner.", "prompt": "make a summary table from a report"}
+{"completion": "Summary table: rows for findings, columns for evidence, impact, and owner.", "prompt": "please make a summary table from a report"}
+{"completion": "Summary table: rows for findings, columns for evidence, impact, and owner.", "prompt": "gravion omni make a summary table from a report"}
+{"completion": "Summary table: rows for findings, columns for evidence, impact, and owner.", "prompt": "help me make a summary table from a report"}
+{"completion": "Status summary: done, in progress, blocked, and next milestone with its date.", "prompt": "summarize a project status update"}
+{"completion": "Status summary: done, in progress, blocked, and next milestone with its date.", "prompt": "please summarize a project status update"}
+{"completion": "Status summary: done, in progress, blocked, and next milestone with its date.", "prompt": "gravion omni summarize a project status update"}
+{"completion": "Status summary: done, in progress, blocked, and next milestone with its date.", "prompt": "help me summarize a project status update"}
+{"completion": "Keeping the source order preserves cause and effect, so the summary reads logically.", "prompt": "explain why order matters in summaries"}
+{"completion": "Keeping the source order preserves cause and effect, so the summary reads logically.", "prompt": "please explain why order matters in summaries"}
+{"completion": "Keeping the source order preserves cause and effect, so the summary reads logically.", "prompt": "gravion omni explain why order matters in summaries"}
+{"completion": "Keeping the source order preserves cause and effect, so the summary reads logically.", "prompt": "help me explain why order matters in summaries"}
+{"completion": "Debate summary: each side's strongest point, the evidence offered, and where they disagree.", "prompt": "summarize a debate fairly"}
+{"completion": "Debate summary: each side's strongest point, the evidence offered, and where they disagree.", "prompt": "please summarize a debate fairly"}
+{"completion": "Debate summary: each side's strongest point, the evidence offered, and where they disagree.", "prompt": "gravion omni summarize a debate fairly"}
+{"completion": "Debate summary: each side's strongest point, the evidence offered, and where they disagree.", "prompt": "help me summarize a debate fairly"}
+{"completion": "Child-friendly summary: short sentences, familiar words, one idea at a time, and a friendly tone.", "prompt": "create a summary for children"}
+{"completion": "Child-friendly summary: short sentences, familiar words, one idea at a time, and a friendly tone.", "prompt": "please create a summary for children"}
+{"completion": "Child-friendly summary: short sentences, familiar words, one idea at a time, and a friendly tone.", "prompt": "gravion omni create a summary for children"}
+{"completion": "Child-friendly summary: short sentences, familiar words, one idea at a time, and a friendly tone.", "prompt": "help me create a summary for children"}
+{"completion": "Financial summary: revenue direction, profit direction, cash position, and the main risk.", "prompt": "summarize a financial report briefly"}
+{"completion": "Financial summary: revenue direction, profit direction, cash position, and the main risk.", "prompt": "please summarize a financial report briefly"}
+{"completion": "Financial summary: revenue direction, profit direction, cash position, and the main risk.", "prompt": "gravion omni summarize a financial report briefly"}
+{"completion": "Financial summary: revenue direction, profit direction, cash position, and the main risk.", "prompt": "help me summarize a financial report briefly"}
+{"completion": "A summary headline names the actor and the outcome in under ten words.", "prompt": "explain headline writing for summaries"}
+{"completion": "A summary headline names the actor and the outcome in under ten words.", "prompt": "please explain headline writing for summaries"}
+{"completion": "A summary headline names the actor and the outcome in under ten words.", "prompt": "gravion omni explain headline writing for summaries"}
+{"completion": "A summary headline names the actor and the outcome in under ten words.", "prompt": "help me explain headline writing for summaries"}
+{"completion": "Manual summary: purpose, safety notes, main steps, and troubleshooting pointers.", "prompt": "summarize a long instruction manual"}
+{"completion": "Manual summary: purpose, safety notes, main steps, and troubleshooting pointers.", "prompt": "please summarize a long instruction manual"}
+{"completion": "Manual summary: purpose, safety notes, main steps, and troubleshooting pointers.", "prompt": "gravion omni summarize a long instruction manual"}
+{"completion": "Manual summary: purpose, safety notes, main steps, and troubleshooting pointers.", "prompt": "help me summarize a long instruction manual"}
+{"completion": "From bullets: group related points, drop duplicates, and write one sentence per group.", "prompt": "make a summary from bullet notes"}
+{"completion": "From bullets: group related points, drop duplicates, and write one sentence per group.", "prompt": "please make a summary from bullet notes"}
+{"completion": "From bullets: group related points, drop duplicates, and write one sentence per group.", "prompt": "gravion omni make a summary from bullet notes"}
+{"completion": "From bullets: group related points, drop duplicates, and write one sentence per group.", "prompt": "help me make a summary from bullet notes"}
+{"completion": "Biography summary: origin, defining work, major turning point, and legacy.", "prompt": "summarize a biography briefly"}
+{"completion": "Biography summary: origin, defining work, major turning point, and legacy.", "prompt": "please summarize a biography briefly"}
+{"completion": "Biography summary: origin, defining work, major turning point, and legacy.", "prompt": "gravion omni summarize a biography briefly"}
+{"completion": "Biography summary: origin, defining work, major turning point, and legacy.", "prompt": "help me summarize a biography briefly"}
+{"completion": "Leave out repetition, minor examples, side stories, and anything the conclusion does not need.", "prompt": "explain what to leave out of a summary"}
+{"completion": "Leave out repetition, minor examples, side stories, and anything the conclusion does not need.", "prompt": "please explain what to leave out of a summary"}
+{"completion": "Leave out repetition, minor examples, side stories, and anything the conclusion does not need.", "prompt": "gravion omni explain what to leave out of a summary"}
+{"completion": "Leave out repetition, minor examples, side stories, and anything the conclusion does not need.", "prompt": "help me explain what to leave out of a summary"}
+{"completion": "Policy summary: who it covers, what changes, when it starts, and how exceptions work.", "prompt": "summarize a policy document"}
+{"completion": "Policy summary: who it covers, what changes, when it starts, and how exceptions work.", "prompt": "please summarize a policy document"}
+{"completion": "Policy summary: who it covers, what changes, when it starts, and how exceptions work.", "prompt": "gravion omni summarize a policy document"}
+{"completion": "Policy summary: who it covers, what changes, when it starts, and how exceptions work.", "prompt": "help me summarize a policy document"}
+{"completion": "Two sentences: first the main point, second the evidence or consequence.", "prompt": "create a two sentence summary"}
+{"completion": "Two sentences: first the main point, second the evidence or consequence.", "prompt": "please create a two sentence summary"}
+{"completion": "Two sentences: first the main point, second the evidence or consequence.", "prompt": "gravion omni create a two sentence summary"}
+{"completion": "Two sentences: first the main point, second the evidence or consequence.", "prompt": "help me create a two sentence summary"}
+{"completion": "Travel summary: best sights, best season, costs to expect, and one local tip.", "prompt": "summarize a travel guide page"}
+{"completion": "Travel summary: best sights, best season, costs to expect, and one local tip.", "prompt": "please summarize a travel guide page"}
+{"completion": "Travel summary: best sights, best season, costs to expect, and one local tip.", "prompt": "gravion omni summarize a travel guide page"}
+{"completion": "Travel summary: best sights, best season, costs to expect, and one local tip.", "prompt": "help me summarize a travel guide page"}
+{"completion": "Choose length by use: one line for lists, a paragraph for reports, a page for decisions.", "prompt": "explain summary length choices"}
+{"completion": "Choose length by use: one line for lists, a paragraph for reports, a page for decisions.", "prompt": "please explain summary length choices"}
+{"completion": "Choose length by use: one line for lists, a paragraph for reports, a page for decisions.", "prompt": "gravion omni explain summary length choices"}
+{"completion": "Choose length by use: one line for lists, a paragraph for reports, a page for decisions.", "prompt": "help me explain summary length choices"}
+{"completion": "Review summary: common praise, common complaints, average rating, and who the product suits.", "prompt": "summarize a customer review set"}
+{"completion": "Review summary: common praise, common complaints, average rating, and who the product suits.", "prompt": "please summarize a customer review set"}
+{"completion": "Review summary: common praise, common complaints, average rating, and who the product suits.", "prompt": "gravion omni summarize a customer review set"}
+{"completion": "Review summary: common praise, common complaints, average rating, and who the product suits.", "prompt": "help me summarize a customer review set"}
+{"completion": "Keep the numbers that change decisions: totals, percentages, dates, and comparisons.", "prompt": "make a summary that keeps numbers"}
+{"completion": "Keep the numbers that change decisions: totals, percentages, dates, and comparisons.", "prompt": "please make a summary that keeps numbers"}
+{"completion": "Keep the numbers that change decisions: totals, percentages, dates, and comparisons.", "prompt": "gravion omni make a summary that keeps numbers"}
+{"completion": "Keep the numbers that change decisions: totals, percentages, dates, and comparisons.", "prompt": "help me make a summary that keeps numbers"}
+{"completion": "Story summary: hero, goal, obstacle, climax, and resolution in five beats.", "prompt": "summarize a long story briefly"}
+{"completion": "Story summary: hero, goal, obstacle, climax, and resolution in five beats.", "prompt": "please summarize a long story briefly"}
+{"completion": "Story summary: hero, goal, obstacle, climax, and resolution in five beats.", "prompt": "gravion omni summarize a long story briefly"}
+{"completion": "Story summary: hero, goal, obstacle, climax, and resolution in five beats.", "prompt": "help me summarize a long story briefly"}
+{"completion": "Ranking scores each result against the query and orders the best matches first.", "prompt": "explain how search ranking works"}
+{"completion": "Ranking scores each result against the query and orders the best matches first.", "prompt": "please explain how search ranking works"}
+{"completion": "Ranking scores each result against the query and orders the best matches first.", "prompt": "gravion omni explain how search ranking works"}
+{"completion": "Ranking scores each result against the query and orders the best matches first.", "prompt": "help me explain how search ranking works"}
+{"completion": "An embedding turns text into numbers so similar meanings sit close together.", "prompt": "explain embeddings in simple words"}
+{"completion": "An embedding turns text into numbers so similar meanings sit close together.", "prompt": "please explain embeddings in simple words"}
+{"completion": "An embedding turns text into numbers so similar meanings sit close together.", "prompt": "gravion omni explain embeddings in simple words"}
+{"completion": "An embedding turns text into numbers so similar meanings sit close together.", "prompt": "help me explain embeddings in simple words"}
+{"completion": "Cosine similarity measures the angle between two vectors; closer angles mean closer meaning.", "prompt": "explain cosine similarity simply"}
+{"completion": "Cosine similarity measures the angle between two vectors; closer angles mean closer meaning.", "prompt": "please explain cosine similarity simply"}
+{"completion": "Cosine similarity measures the angle between two vectors; closer angles mean closer meaning.", "prompt": "gravion omni explain cosine similarity simply"}
+{"completion": "Cosine similarity measures the angle between two vectors; closer angles mean closer meaning.", "prompt": "help me explain cosine similarity simply"}
+{"completion": "The best passage shares the question's key terms and answers it directly, not just mentions it.", "prompt": "find the best passage for a question"}
+{"completion": "The best passage shares the question's key terms and answers it directly, not just mentions it.", "prompt": "please find the best passage for a question"}
+{"completion": "The best passage shares the question's key terms and answers it directly, not just mentions it.", "prompt": "gravion omni find the best passage for a question"}
+{"completion": "The best passage shares the question's key terms and answers it directly, not just mentions it.", "prompt": "help me find the best passage for a question"}
+{"completion": "Keyword search matches exact words; semantic search matches meaning even with different words.", "prompt": "explain keyword search versus semantic search"}
+{"completion": "Keyword search matches exact words; semantic search matches meaning even with different words.", "prompt": "please explain keyword search versus semantic search"}
+{"completion": "Keyword search matches exact words; semantic search matches meaning even with different words.", "prompt": "gravion omni explain keyword search versus semantic search"}
+{"completion": "Keyword search matches exact words; semantic search matches meaning even with different words.", "prompt": "help me explain keyword search versus semantic search"}
+{"completion": "A good query uses the rarest, most specific terms and drops filler words.", "prompt": "make a good search query"}
+{"completion": "A good query uses the rarest, most specific terms and drops filler words.", "prompt": "please make a good search query"}
+{"completion": "A good query uses the rarest, most specific terms and drops filler words.", "prompt": "gravion omni make a good search query"}
+{"completion": "A good query uses the rarest, most specific terms and drops filler words.", "prompt": "help me make a good search query"}
+{"completion": "N-grams are short word sequences; they help search match phrases, not only single words.", "prompt": "explain n grams in search"}
+{"completion": "N-grams are short word sequences; they help search match phrases, not only single words.", "prompt": "please explain n grams in search"}
+{"completion": "N-grams are short word sequences; they help search match phrases, not only single words.", "prompt": "gravion omni explain n grams in search"}
+{"completion": "N-grams are short word sequences; they help search match phrases, not only single words.", "prompt": "help me explain n grams in search"}
+{"completion": "Relevance ranking weighs term matches, phrase matches, freshness, and source quality.", "prompt": "rank documents by relevance"}
+{"completion": "Relevance ranking weighs term matches, phrase matches, freshness, and source quality.", "prompt": "please rank documents by relevance"}
+{"completion": "Relevance ranking weighs term matches, phrase matches, freshness, and source quality.", "prompt": "gravion omni rank documents by relevance"}
+{"completion": "Relevance ranking weighs term matches, phrase matches, freshness, and source quality.", "prompt": "help me rank documents by relevance"}
+{"completion": "A sparse vector stores only its non-zero entries, which suits text with huge vocabularies.", "prompt": "explain sparse vectors"}
+{"completion": "A sparse vector stores only its non-zero entries, which suits text with huge vocabularies.", "prompt": "please explain sparse vectors"}
+{"completion": "A sparse vector stores only its non-zero entries, which suits text with huge vocabularies.", "prompt": "gravion omni explain sparse vectors"}
+{"completion": "A sparse vector stores only its non-zero entries, which suits text with huge vocabularies.", "prompt": "help me explain sparse vectors"}
+{"completion": "TF-IDF rewards words frequent in a document but rare across the collection.", "prompt": "explain tf idf in simple words"}
+{"completion": "TF-IDF rewards words frequent in a document but rare across the collection.", "prompt": "please explain tf idf in simple words"}
+{"completion": "TF-IDF rewards words frequent in a document but rare across the collection.", "prompt": "gravion omni explain tf idf in simple words"}
+{"completion": "TF-IDF rewards words frequent in a document but rare across the collection.", "prompt": "help me explain tf idf in simple words"}
+{"completion": "Passage search embeds each passage and returns the ones nearest the query.", "prompt": "search passages about a topic"}
+{"completion": "Passage search embeds each passage and returns the ones nearest the query.", "prompt": "please search passages about a topic"}
+{"completion": "Passage search embeds each passage and returns the ones nearest the query.", "prompt": "gravion omni search passages about a topic"}
+{"completion": "Passage search embeds each passage and returns the ones nearest the query.", "prompt": "help me search passages about a topic"}
+{"completion": "Scores show how strong each match is, so weak results can be filtered or explained.", "prompt": "explain why search results need scores"}
+{"completion": "Scores show how strong each match is, so weak results can be filtered or explained.", "prompt": "please explain why search results need scores"}
+{"completion": "Scores show how strong each match is, so weak results can be filtered or explained.", "prompt": "gravion omni explain why search results need scores"}
+{"completion": "Scores show how strong each match is, so weak results can be filtered or explained.", "prompt": "help me explain why search results need scores"}
+{"completion": "Add the specific noun, the place or date, and remove words every document contains.", "prompt": "improve a vague search query"}
+{"completion": "Add the specific noun, the place or date, and remove words every document contains.", "prompt": "please improve a vague search query"}
+{"completion": "Add the specific noun, the place or date, and remove words every document contains.", "prompt": "gravion omni improve a vague search query"}
+{"completion": "Add the specific noun, the place or date, and remove words every document contains.", "prompt": "help me improve a vague search query"}
+{"completion": "Indexing precomputes searchable structures so queries answer in milliseconds.", "prompt": "explain document indexing"}
+{"completion": "Indexing precomputes searchable structures so queries answer in milliseconds.", "prompt": "please explain document indexing"}
+{"completion": "Indexing precomputes searchable structures so queries answer in milliseconds.", "prompt": "gravion omni explain document indexing"}
+{"completion": "Indexing precomputes searchable structures so queries answer in milliseconds.", "prompt": "help me explain document indexing"}
+{"completion": "Exact phrase search requires the words together in order, usually marked with quotes.", "prompt": "find exact phrase matches in text"}
+{"completion": "Exact phrase search requires the words together in order, usually marked with quotes.", "prompt": "please find exact phrase matches in text"}
+{"completion": "Exact phrase search requires the words together in order, usually marked with quotes.", "prompt": "gravion omni find exact phrase matches in text"}
+{"completion": "Exact phrase search requires the words together in order, usually marked with quotes.", "prompt": "help me find exact phrase matches in text"}
+{"completion": "Synonym expansion lets a query match related words, widening recall without losing precision.", "prompt": "explain synonyms in search"}
+{"completion": "Synonym expansion lets a query match related words, widening recall without losing precision.", "prompt": "please explain synonyms in search"}
+{"completion": "Synonym expansion lets a query match related words, widening recall without losing precision.", "prompt": "gravion omni explain synonyms in search"}
+{"completion": "Synonym expansion lets a query match related words, widening recall without losing precision.", "prompt": "help me explain synonyms in search"}
+{"completion": "Stronger evidence answers directly, cites specifics, and comes from reliable sources.", "prompt": "rank answers by evidence strength"}
+{"completion": "Stronger evidence answers directly, cites specifics, and comes from reliable sources.", "prompt": "please rank answers by evidence strength"}
+{"completion": "Stronger evidence answers directly, cites specifics, and comes from reliable sources.", "prompt": "gravion omni rank answers by evidence strength"}
+{"completion": "Stronger evidence answers directly, cites specifics, and comes from reliable sources.", "prompt": "help me rank answers by evidence strength"}
+{"completion": "Stop words like the and of carry little meaning, so search often ignores them.", "prompt": "explain stop words in search"}
+{"completion": "Stop words like the and of carry little meaning, so search often ignores them.", "prompt": "please explain stop words in search"}
+{"completion": "Stop words like the and of carry little meaning, so search often ignores them.", "prompt": "gravion omni explain stop words in search"}
+{"completion": "Stop words like the and of carry little meaning, so search often ignores them.", "prompt": "help me explain stop words in search"}
+{"completion": "Explainable results show matched terms and scores, so users see why each result ranked.", "prompt": "make search results explainable"}
+{"completion": "Explainable results show matched terms and scores, so users see why each result ranked.", "prompt": "please make search results explainable"}
+{"completion": "Explainable results show matched terms and scores, so users see why each result ranked.", "prompt": "gravion omni make search results explainable"}
+{"completion": "Explainable results show matched terms and scores, so users see why each result ranked.", "prompt": "help me make search results explainable"}
+{"completion": "Recall is how much relevant material was found; precision is how much found material is relevant.", "prompt": "explain recall and precision"}
+{"completion": "Recall is how much relevant material was found; precision is how much found material is relevant.", "prompt": "please explain recall and precision"}
+{"completion": "Recall is how much relevant material was found; precision is how much found material is relevant.", "prompt": "gravion omni explain recall and precision"}
+{"completion": "Recall is how much relevant material was found; precision is how much found material is relevant.", "prompt": "help me explain recall and precision"}
+{"completion": "Document search jumps to matching sections and shows context around each hit.", "prompt": "search within a long document"}
+{"completion": "Document search jumps to matching sections and shows context around each hit.", "prompt": "please search within a long document"}
+{"completion": "Document search jumps to matching sections and shows context around each hit.", "prompt": "gravion omni search within a long document"}
+{"completion": "Document search jumps to matching sections and shows context around each hit.", "prompt": "help me search within a long document"}
+{"completion": "A vector database stores embeddings and finds nearest neighbors quickly at scale.", "prompt": "explain vector databases simply"}
+{"completion": "A vector database stores embeddings and finds nearest neighbors quickly at scale.", "prompt": "please explain vector databases simply"}
+{"completion": "A vector database stores embeddings and finds nearest neighbors quickly at scale.", "prompt": "gravion omni explain vector databases simply"}
+{"completion": "A vector database stores embeddings and finds nearest neighbors quickly at scale.", "prompt": "help me explain vector databases simply"}
+{"completion": "Similarity search embeds the text and returns documents with the closest vectors.", "prompt": "find similar documents to a given text"}
+{"completion": "Similarity search embeds the text and returns documents with the closest vectors.", "prompt": "please find similar documents to a given text"}
+{"completion": "Similarity search embeds the text and returns documents with the closest vectors.", "prompt": "gravion omni find similar documents to a given text"}
+{"completion": "Similarity search embeds the text and returns documents with the closest vectors.", "prompt": "help me find similar documents to a given text"}
+{"completion": "Query expansion adds related terms so relevant documents using other words still match.", "prompt": "explain query expansion"}
+{"completion": "Query expansion adds related terms so relevant documents using other words still match.", "prompt": "please explain query expansion"}
+{"completion": "Query expansion adds related terms so relevant documents using other words still match.", "prompt": "gravion omni explain query expansion"}
+{"completion": "Query expansion adds related terms so relevant documents using other words still match.", "prompt": "help me explain query expansion"}
+{"completion": "For support, rank passages that answer the exact problem above general background.", "prompt": "rank passages for a support question"}
+{"completion": "For support, rank passages that answer the exact problem above general background.", "prompt": "please rank passages for a support question"}
+{"completion": "For support, rank passages that answer the exact problem above general background.", "prompt": "gravion omni rank passages for a support question"}
+{"completion": "For support, rank passages that answer the exact problem above general background.", "prompt": "help me rank passages for a support question"}
+{"completion": "Hashing maps each term to a fixed bucket, giving compact vectors without a stored vocabulary.", "prompt": "explain hashing tricks for text features"}
+{"completion": "Hashing maps each term to a fixed bucket, giving compact vectors without a stored vocabulary.", "prompt": "please explain hashing tricks for text features"}
+{"completion": "Hashing maps each term to a fixed bucket, giving compact vectors without a stored vocabulary.", "prompt": "gravion omni explain hashing tricks for text features"}
+{"completion": "Hashing maps each term to a fixed bucket, giving compact vectors without a stored vocabulary.", "prompt": "help me explain hashing tricks for text features"}
+{"completion": "Notes search works best with dates, names, and decision keywords indexed together.", "prompt": "make a search over meeting notes"}
+{"completion": "Notes search works best with dates, names, and decision keywords indexed together.", "prompt": "please make a search over meeting notes"}
+{"completion": "Notes search works best with dates, names, and decision keywords indexed together.", "prompt": "gravion omni make a search over meeting notes"}
+{"completion": "Notes search works best with dates, names, and decision keywords indexed together.", "prompt": "help me make a search over meeting notes"}
+{"completion": "Duplicates waste ranks; deduplication keeps the strongest copy of near-identical results.", "prompt": "explain duplicate results in search"}
+{"completion": "Duplicates waste ranks; deduplication keeps the strongest copy of near-identical results.", "prompt": "please explain duplicate results in search"}
+{"completion": "Duplicates waste ranks; deduplication keeps the strongest copy of near-identical results.", "prompt": "gravion omni explain duplicate results in search"}
+{"completion": "Duplicates waste ranks; deduplication keeps the strongest copy of near-identical results.", "prompt": "help me explain duplicate results in search"}
+{"completion": "Quote search matches the exact phrase first, then checks the earliest reliable source.", "prompt": "find the source of a quote"}
+{"completion": "Quote search matches the exact phrase first, then checks the earliest reliable source.", "prompt": "please find the source of a quote"}
+{"completion": "Quote search matches the exact phrase first, then checks the earliest reliable source.", "prompt": "gravion omni find the source of a quote"}
+{"completion": "Quote search matches the exact phrase first, then checks the earliest reliable source.", "prompt": "help me find the source of a quote"}
+{"completion": "Freshness boosts newer results when the topic changes quickly, like news or prices.", "prompt": "explain freshness in ranking"}
+{"completion": "Freshness boosts newer results when the topic changes quickly, like news or prices.", "prompt": "please explain freshness in ranking"}
+{"completion": "Freshness boosts newer results when the topic changes quickly, like news or prices.", "prompt": "gravion omni explain freshness in ranking"}
+{"completion": "Freshness boosts newer results when the topic changes quickly, like news or prices.", "prompt": "help me explain freshness in ranking"}
+{"completion": "Code search matches identifiers exactly and ranks definitions above usages.", "prompt": "search code for a function name"}
+{"completion": "Code search matches identifiers exactly and ranks definitions above usages.", "prompt": "please search code for a function name"}
+{"completion": "Code search matches identifiers exactly and ranks definitions above usages.", "prompt": "gravion omni search code for a function name"}
+{"completion": "Code search matches identifiers exactly and ranks definitions above usages.", "prompt": "help me search code for a function name"}
+{"completion": "Facets filter results by category, date, or type while keeping counts visible.", "prompt": "explain faceted search filters"}
+{"completion": "Facets filter results by category, date, or type while keeping counts visible.", "prompt": "please explain faceted search filters"}
+{"completion": "Facets filter results by category, date, or type while keeping counts visible.", "prompt": "gravion omni explain faceted search filters"}
+{"completion": "Facets filter results by category, date, or type while keeping counts visible.", "prompt": "help me explain faceted search filters"}
+{"completion": "Beginner ranking favors clear explanations, worked examples, and trusted educational sources.", "prompt": "rank web pages for a beginner question"}
+{"completion": "Beginner ranking favors clear explanations, worked examples, and trusted educational sources.", "prompt": "please rank web pages for a beginner question"}
+{"completion": "Beginner ranking favors clear explanations, worked examples, and trusted educational sources.", "prompt": "gravion omni rank web pages for a beginner question"}
+{"completion": "Beginner ranking favors clear explanations, worked examples, and trusted educational sources.", "prompt": "help me rank web pages for a beginner question"}
+{"completion": "Stemming reduces words to a root form so running and runs can match.", "prompt": "explain stemming in search"}
+{"completion": "Stemming reduces words to a root form so running and runs can match.", "prompt": "please explain stemming in search"}
+{"completion": "Stemming reduces words to a root form so running and runs can match.", "prompt": "gravion omni explain stemming in search"}
+{"completion": "Stemming reduces words to a root form so running and runs can match.", "prompt": "help me explain stemming in search"}
+{"completion": "Date search normalizes formats first, then matches the exact day, month, or year asked.", "prompt": "find passages mentioning a date"}
+{"completion": "Date search normalizes formats first, then matches the exact day, month, or year asked.", "prompt": "please find passages mentioning a date"}
+{"completion": "Date search normalizes formats first, then matches the exact day, month, or year asked.", "prompt": "gravion omni find passages mentioning a date"}
+{"completion": "Date search normalizes formats first, then matches the exact day, month, or year asked.", "prompt": "help me find passages mentioning a date"}
+{"completion": "Zero results mean the query terms never co-occur; broaden terms or drop the rarest one.", "prompt": "explain zero result searches"}
+{"completion": "Zero results mean the query terms never co-occur; broaden terms or drop the rarest one.", "prompt": "please explain zero result searches"}
+{"completion": "Zero results mean the query terms never co-occur; broaden terms or drop the rarest one.", "prompt": "gravion omni explain zero result searches"}
+{"completion": "Zero results mean the query terms never co-occur; broaden terms or drop the rarest one.", "prompt": "help me explain zero result searches"}
+{"completion": "Typo tolerance uses edit distance to match near-spellings of query terms.", "prompt": "make search tolerant of typos"}
+{"completion": "Typo tolerance uses edit distance to match near-spellings of query terms.", "prompt": "please make search tolerant of typos"}
+{"completion": "Typo tolerance uses edit distance to match near-spellings of query terms.", "prompt": "gravion omni make search tolerant of typos"}
+{"completion": "Typo tolerance uses edit distance to match near-spellings of query terms.", "prompt": "help me make search tolerant of typos"}
+{"completion": "Snippets show the matching context so users can judge a result before opening it.", "prompt": "explain result snippets"}
+{"completion": "Snippets show the matching context so users can judge a result before opening it.", "prompt": "please explain result snippets"}
+{"completion": "Snippets show the matching context so users can judge a result before opening it.", "prompt": "gravion omni explain result snippets"}
+{"completion": "Snippets show the matching context so users can judge a result before opening it.", "prompt": "help me explain result snippets"}
+{"completion": "Legal ranking favors exact defined terms and the governing clause over mentions.", "prompt": "rank legal clauses by relevance"}
+{"completion": "Legal ranking favors exact defined terms and the governing clause over mentions.", "prompt": "please rank legal clauses by relevance"}
+{"completion": "Legal ranking favors exact defined terms and the governing clause over mentions.", "prompt": "gravion omni rank legal clauses by relevance"}
+{"completion": "Legal ranking favors exact defined terms and the governing clause over mentions.", "prompt": "help me rank legal clauses by relevance"}
+{"completion": "Personalization reorders results using history and location, which can help or bias.", "prompt": "explain personalization in search"}
+{"completion": "Personalization reorders results using history and location, which can help or bias.", "prompt": "please explain personalization in search"}
+{"completion": "Personalization reorders results using history and location, which can help or bias.", "prompt": "gravion omni explain personalization in search"}
+{"completion": "Personalization reorders results using history and location, which can help or bias.", "prompt": "help me explain personalization in search"}
+{"completion": "Knowledge search works when articles use the words users actually type.", "prompt": "search a knowledge base effectively"}
+{"completion": "Knowledge search works when articles use the words users actually type.", "prompt": "please search a knowledge base effectively"}
+{"completion": "Knowledge search works when articles use the words users actually type.", "prompt": "gravion omni search a knowledge base effectively"}
+{"completion": "Knowledge search works when articles use the words users actually type.", "prompt": "help me search a knowledge base effectively"}
+{"completion": "BM25 scores term frequency with saturation and document length normalization.", "prompt": "explain bm25 ranking simply"}
+{"completion": "BM25 scores term frequency with saturation and document length normalization.", "prompt": "please explain bm25 ranking simply"}
+{"completion": "BM25 scores term frequency with saturation and document length normalization.", "prompt": "gravion omni explain bm25 ranking simply"}
+{"completion": "BM25 scores term frequency with saturation and document length normalization.", "prompt": "help me explain bm25 ranking simply"}
+{"completion": "Contradiction search pairs passages on the same claim with opposing statements.", "prompt": "find contradictions between passages"}
+{"completion": "Contradiction search pairs passages on the same claim with opposing statements.", "prompt": "please find contradictions between passages"}
+{"completion": "Contradiction search pairs passages on the same claim with opposing statements.", "prompt": "gravion omni find contradictions between passages"}
+{"completion": "Contradiction search pairs passages on the same claim with opposing statements.", "prompt": "help me find contradictions between passages"}
+{"completion": "Chunking splits documents into passages so search can return the exact relevant part.", "prompt": "explain chunking documents for search"}
+{"completion": "Chunking splits documents into passages so search can return the exact relevant part.", "prompt": "please explain chunking documents for search"}
+{"completion": "Chunking splits documents into passages so search can return the exact relevant part.", "prompt": "gravion omni explain chunking documents for search"}
+{"completion": "Chunking splits documents into passages so search can return the exact relevant part.", "prompt": "help me explain chunking documents for search"}
+{"completion": "Difficulty ranking uses prerequisites, jargon density, and assumed prior knowledge.", "prompt": "rank tutorials by difficulty"}
+{"completion": "Difficulty ranking uses prerequisites, jargon density, and assumed prior knowledge.", "prompt": "please rank tutorials by difficulty"}
+{"completion": "Difficulty ranking uses prerequisites, jargon density, and assumed prior knowledge.", "prompt": "gravion omni rank tutorials by difficulty"}
+{"completion": "Difficulty ranking uses prerequisites, jargon density, and assumed prior knowledge.", "prompt": "help me rank tutorials by difficulty"}
+{"completion": "Metrics like precision at k measure how many top results were actually relevant.", "prompt": "explain search evaluation metrics"}
+{"completion": "Metrics like precision at k measure how many top results were actually relevant.", "prompt": "please explain search evaluation metrics"}
+{"completion": "Metrics like precision at k measure how many top results were actually relevant.", "prompt": "gravion omni explain search evaluation metrics"}
+{"completion": "Metrics like precision at k measure how many top results were actually relevant.", "prompt": "help me explain search evaluation metrics"}
+{"completion": "Multilingual search indexes each language, detects query language, and ranks within it first.", "prompt": "make a multilingual search plan"}
+{"completion": "Multilingual search indexes each language, detects query language, and ranks within it first.", "prompt": "please make a multilingual search plan"}
+{"completion": "Multilingual search indexes each language, detects query language, and ranks within it first.", "prompt": "gravion omni make a multilingual search plan"}
+{"completion": "Multilingual search indexes each language, detects query language, and ranks within it first.", "prompt": "help me make a multilingual search plan"}
+{"completion": "Top results optimize matching signals, not truth; verify claims against sources.", "prompt": "explain why the top result can be wrong"}
+{"completion": "Top results optimize matching signals, not truth; verify claims against sources.", "prompt": "please explain why the top result can be wrong"}
+{"completion": "Top results optimize matching signals, not truth; verify claims against sources.", "prompt": "gravion omni explain why the top result can be wrong"}
+{"completion": "Top results optimize matching signals, not truth; verify claims against sources.", "prompt": "help me explain why the top result can be wrong"}
+{"completion": "Mean is the average, median is the middle value, and mode is the most frequent value.", "prompt": "explain mean median and mode"}
+{"completion": "Mean is the average, median is the middle value, and mode is the most frequent value.", "prompt": "please explain mean median and mode"}
+{"completion": "Mean is the average, median is the middle value, and mode is the most frequent value.", "prompt": "gravion omni explain mean median and mode"}
+{"completion": "Mean is the average, median is the middle value, and mode is the most frequent value.", "prompt": "help me explain mean median and mode"}
+{"completion": "Add all values, divide by how many there are, and report the count beside the average.", "prompt": "calculate an average from numbers"}
+{"completion": "Add all values, divide by how many there are, and report the count beside the average.", "prompt": "please calculate an average from numbers"}
+{"completion": "Add all values, divide by how many there are, and report the count beside the average.", "prompt": "gravion omni calculate an average from numbers"}
+{"completion": "Add all values, divide by how many there are, and report the count beside the average.", "prompt": "help me calculate an average from numbers"}
+{"completion": "Standard deviation measures typical distance from the mean; larger means more spread.", "prompt": "explain standard deviation simply"}
+{"completion": "Standard deviation measures typical distance from the mean; larger means more spread.", "prompt": "please explain standard deviation simply"}
+{"completion": "Standard deviation measures typical distance from the mean; larger means more spread.", "prompt": "gravion omni explain standard deviation simply"}
+{"completion": "Standard deviation measures typical distance from the mean; larger means more spread.", "prompt": "help me explain standard deviation simply"}
+{"completion": "Compare early and late averages, check direction, and note any single month that breaks the pattern.", "prompt": "find a trend in monthly numbers"}
+{"completion": "Compare early and late averages, check direction, and note any single month that breaks the pattern.", "prompt": "please find a trend in monthly numbers"}
+{"completion": "Compare early and late averages, check direction, and note any single month that breaks the pattern.", "prompt": "gravion omni find a trend in monthly numbers"}
+{"completion": "Compare early and late averages, check direction, and note any single month that breaks the pattern.", "prompt": "help me find a trend in monthly numbers"}
+{"completion": "Outliers are values far from the rest; verify them before deciding whether they are errors or signals.", "prompt": "explain outliers in data"}
+{"completion": "Outliers are values far from the rest; verify them before deciding whether they are errors or signals.", "prompt": "please explain outliers in data"}
+{"completion": "Outliers are values far from the rest; verify them before deciding whether they are errors or signals.", "prompt": "gravion omni explain outliers in data"}
+{"completion": "Outliers are values far from the rest; verify them before deciding whether they are errors or signals.", "prompt": "help me explain outliers in data"}
+{"completion": "Dataset summary: count, center, spread, extremes, and the one pattern that matters.", "prompt": "summarize a dataset in words"}
+{"completion": "Dataset summary: count, center, spread, extremes, and the one pattern that matters.", "prompt": "please summarize a dataset in words"}
+{"completion": "Dataset summary: count, center, spread, extremes, and the one pattern that matters.", "prompt": "gravion omni summarize a dataset in words"}
+{"completion": "Dataset summary: count, center, spread, extremes, and the one pattern that matters.", "prompt": "help me summarize a dataset in words"}
+{"completion": "Compare centers, spreads, and sample sizes; a difference matters only beyond natural variation.", "prompt": "compare two groups of numbers"}
+{"completion": "Compare centers, spreads, and sample sizes; a difference matters only beyond natural variation.", "prompt": "please compare two groups of numbers"}
+{"completion": "Compare centers, spreads, and sample sizes; a difference matters only beyond natural variation.", "prompt": "gravion omni compare two groups of numbers"}
+{"completion": "Compare centers, spreads, and sample sizes; a difference matters only beyond natural variation.", "prompt": "help me compare two groups of numbers"}
+{"completion": "A percentage is a part per hundred; always name the base it is a percentage of.", "prompt": "explain percentages clearly"}
+{"completion": "A percentage is a part per hundred; always name the base it is a percentage of.", "prompt": "please explain percentages clearly"}
+{"completion": "A percentage is a part per hundred; always name the base it is a percentage of.", "prompt": "gravion omni explain percentages clearly"}
+{"completion": "A percentage is a part per hundred; always name the base it is a percentage of.", "prompt": "help me explain percentages clearly"}
+{"completion": "Bars compare categories, lines show change over time, and scatter plots show relationships.", "prompt": "make a simple chart choice"}
+{"completion": "Bars compare categories, lines show change over time, and scatter plots show relationships.", "prompt": "please make a simple chart choice"}
+{"completion": "Bars compare categories, lines show change over time, and scatter plots show relationships.", "prompt": "gravion omni make a simple chart choice"}
+{"completion": "Bars compare categories, lines show change over time, and scatter plots show relationships.", "prompt": "help me make a simple chart choice"}
+{"completion": "Correlation means values move together; causation needs a mechanism and controlled evidence.", "prompt": "explain correlation versus causation"}
+{"completion": "Correlation means values move together; causation needs a mechanism and controlled evidence.", "prompt": "please explain correlation versus causation"}
+{"completion": "Correlation means values move together; causation needs a mechanism and controlled evidence.", "prompt": "gravion omni explain correlation versus causation"}
+{"completion": "Correlation means values move together; causation needs a mechanism and controlled evidence.", "prompt": "help me explain correlation versus causation"}
+{"completion": "Cleaning: fix formats, remove duplicates, flag missing values, and document every change.", "prompt": "clean messy numeric data"}
+{"completion": "Cleaning: fix formats, remove duplicates, flag missing values, and document every change.", "prompt": "please clean messy numeric data"}
+{"completion": "Cleaning: fix formats, remove duplicates, flag missing values, and document every change.", "prompt": "gravion omni clean messy numeric data"}
+{"completion": "Cleaning: fix formats, remove duplicates, flag missing values, and document every change.", "prompt": "help me clean messy numeric data"}
+{"completion": "Larger samples give steadier estimates; tiny samples swing wildly with one new value.", "prompt": "explain sample size importance"}
+{"completion": "Larger samples give steadier estimates; tiny samples swing wildly with one new value.", "prompt": "please explain sample size importance"}
+{"completion": "Larger samples give steadier estimates; tiny samples swing wildly with one new value.", "prompt": "gravion omni explain sample size importance"}
+{"completion": "Larger samples give steadier estimates; tiny samples swing wildly with one new value.", "prompt": "help me explain sample size importance"}
+{"completion": "Growth rate is change divided by the starting value, expressed as a percentage.", "prompt": "calculate growth rate between periods"}
+{"completion": "Growth rate is change divided by the starting value, expressed as a percentage.", "prompt": "please calculate growth rate between periods"}
+{"completion": "Growth rate is change divided by the starting value, expressed as a percentage.", "prompt": "gravion omni calculate growth rate between periods"}
+{"completion": "Growth rate is change divided by the starting value, expressed as a percentage.", "prompt": "help me calculate growth rate between periods"}
+{"completion": "Use the median when outliers skew the mean, such as incomes or house prices.", "prompt": "explain median versus mean choice"}
+{"completion": "Use the median when outliers skew the mean, such as incomes or house prices.", "prompt": "please explain median versus mean choice"}
+{"completion": "Use the median when outliers skew the mean, such as incomes or house prices.", "prompt": "gravion omni explain median versus mean choice"}
+{"completion": "Use the median when outliers skew the mean, such as incomes or house prices.", "prompt": "help me explain median versus mean choice"}
+{"completion": "Range is maximum minus minimum; it shows total spread in one number.", "prompt": "find the range of a dataset"}
+{"completion": "Range is maximum minus minimum; it shows total spread in one number.", "prompt": "please find the range of a dataset"}
+{"completion": "Range is maximum minus minimum; it shows total spread in one number.", "prompt": "gravion omni find the range of a dataset"}
+{"completion": "Range is maximum minus minimum; it shows total spread in one number.", "prompt": "help me find the range of a dataset"}
+{"completion": "Quartiles split sorted data into four equal parts, showing where the middle half lies.", "prompt": "explain quartiles simply"}
+{"completion": "Quartiles split sorted data into four equal parts, showing where the middle half lies.", "prompt": "please explain quartiles simply"}
+{"completion": "Quartiles split sorted data into four equal parts, showing where the middle half lies.", "prompt": "gravion omni explain quartiles simply"}
+{"completion": "Quartiles split sorted data into four equal parts, showing where the middle half lies.", "prompt": "help me explain quartiles simply"}
+{"completion": "Count blanks per column, check patterns in what is missing, and decide fill or drop rules.", "prompt": "detect missing values in data"}
+{"completion": "Count blanks per column, check patterns in what is missing, and decide fill or drop rules.", "prompt": "please detect missing values in data"}
+{"completion": "Count blanks per column, check patterns in what is missing, and decide fill or drop rules.", "prompt": "gravion omni detect missing values in data"}
+{"completion": "Count blanks per column, check patterns in what is missing, and decide fill or drop rules.", "prompt": "help me detect missing values in data"}
+{"completion": "A histogram groups values into bins and shows how many fall in each bin.", "prompt": "explain a histogram"}
+{"completion": "A histogram groups values into bins and shows how many fall in each bin.", "prompt": "please explain a histogram"}
+{"completion": "A histogram groups values into bins and shows how many fall in each bin.", "prompt": "gravion omni explain a histogram"}
+{"completion": "A histogram groups values into bins and shows how many fall in each bin.", "prompt": "help me explain a histogram"}
+{"completion": "Compare totals, averages, and the change in percentage, then look for the cause.", "prompt": "compare this month with last month"}
+{"completion": "Compare totals, averages, and the change in percentage, then look for the cause.", "prompt": "please compare this month with last month"}
+{"completion": "Compare totals, averages, and the change in percentage, then look for the cause.", "prompt": "gravion omni compare this month with last month"}
+{"completion": "Compare totals, averages, and the change in percentage, then look for the cause.", "prompt": "help me compare this month with last month"}
+{"completion": "Significance asks whether a difference is larger than chance alone would plausibly produce.", "prompt": "explain statistical significance plainly"}
+{"completion": "Significance asks whether a difference is larger than chance alone would plausibly produce.", "prompt": "please explain statistical significance plainly"}
+{"completion": "Significance asks whether a difference is larger than chance alone would plausibly produce.", "prompt": "gravion omni explain statistical significance plainly"}
+{"completion": "Significance asks whether a difference is larger than chance alone would plausibly produce.", "prompt": "help me explain statistical significance plainly"}
+{"completion": "Readable tables align numbers, label units, sort meaningfully, and highlight key rows.", "prompt": "make a data table readable"}
+{"completion": "Readable tables align numbers, label units, sort meaningfully, and highlight key rows.", "prompt": "please make a data table readable"}
+{"completion": "Readable tables align numbers, label units, sort meaningfully, and highlight key rows.", "prompt": "gravion omni make a data table readable"}
+{"completion": "Readable tables align numbers, label units, sort meaningfully, and highlight key rows.", "prompt": "help me make a data table readable"}
+{"completion": "A moving average smooths noise by averaging a sliding window of recent values.", "prompt": "explain moving averages"}
+{"completion": "A moving average smooths noise by averaging a sliding window of recent values.", "prompt": "please explain moving averages"}
+{"completion": "A moving average smooths noise by averaging a sliding window of recent values.", "prompt": "gravion omni explain moving averages"}
+{"completion": "A moving average smooths noise by averaging a sliding window of recent values.", "prompt": "help me explain moving averages"}
+{"completion": "The mode is the most common value; report how often it appears beside it.", "prompt": "find the most common value"}
+{"completion": "The mode is the most common value; report how often it appears beside it.", "prompt": "please find the most common value"}
+{"completion": "The mode is the most common value; report how often it appears beside it.", "prompt": "gravion omni find the most common value"}
+{"completion": "The mode is the most common value; report how often it appears beside it.", "prompt": "help me find the most common value"}
+{"completion": "Quality checks cover completeness, consistency, valid ranges, and duplicate records.", "prompt": "explain data quality checks"}
+{"completion": "Quality checks cover completeness, consistency, valid ranges, and duplicate records.", "prompt": "please explain data quality checks"}
+{"completion": "Quality checks cover completeness, consistency, valid ranges, and duplicate records.", "prompt": "gravion omni explain data quality checks"}
+{"completion": "Quality checks cover completeness, consistency, valid ranges, and duplicate records.", "prompt": "help me explain data quality checks"}
+{"completion": "Percentage change is new minus old, divided by old, times one hundred.", "prompt": "calculate a percentage change"}
+{"completion": "Percentage change is new minus old, divided by old, times one hundred.", "prompt": "please calculate a percentage change"}
+{"completion": "Percentage change is new minus old, divided by old, times one hundred.", "prompt": "gravion omni calculate a percentage change"}
+{"completion": "Percentage change is new minus old, divided by old, times one hundred.", "prompt": "help me calculate a percentage change"}
+{"completion": "Skew means one tail is longer; the mean gets pulled toward the long tail.", "prompt": "explain skewed distributions"}
+{"completion": "Skew means one tail is longer; the mean gets pulled toward the long tail.", "prompt": "please explain skewed distributions"}
+{"completion": "Skew means one tail is longer; the mean gets pulled toward the long tail.", "prompt": "gravion omni explain skewed distributions"}
+{"completion": "Skew means one tail is longer; the mean gets pulled toward the long tail.", "prompt": "help me explain skewed distributions"}
+{"completion": "Survey summary: response count, top answers with percentages, and who was surveyed.", "prompt": "summarize survey results"}
+{"completion": "Survey summary: response count, top answers with percentages, and who was surveyed.", "prompt": "please summarize survey results"}
+{"completion": "Survey summary: response count, top answers with percentages, and who was surveyed.", "prompt": "gravion omni summarize survey results"}
+{"completion": "Survey summary: response count, top answers with percentages, and who was surveyed.", "prompt": "help me summarize survey results"}
+{"completion": "A confidence interval gives a plausible range for the true value, not a single guess.", "prompt": "explain confidence intervals simply"}
+{"completion": "A confidence interval gives a plausible range for the true value, not a single guess.", "prompt": "please explain confidence intervals simply"}
+{"completion": "A confidence interval gives a plausible range for the true value, not a single guess.", "prompt": "gravion omni explain confidence intervals simply"}
+{"completion": "A confidence interval gives a plausible range for the true value, not a single guess.", "prompt": "help me explain confidence intervals simply"}
+{"completion": "Misleading charts truncate axes, cherry-pick ranges, or hide sample sizes.", "prompt": "spot misleading charts"}
+{"completion": "Misleading charts truncate axes, cherry-pick ranges, or hide sample sizes.", "prompt": "please spot misleading charts"}
+{"completion": "Misleading charts truncate axes, cherry-pick ranges, or hide sample sizes.", "prompt": "gravion omni spot misleading charts"}
+{"completion": "Misleading charts truncate axes, cherry-pick ranges, or hide sample sizes.", "prompt": "help me spot misleading charts"}
+{"completion": "Regression fits a line or curve that best predicts one value from others.", "prompt": "explain regression in simple words"}
+{"completion": "Regression fits a line or curve that best predicts one value from others.", "prompt": "please explain regression in simple words"}
+{"completion": "Regression fits a line or curve that best predicts one value from others.", "prompt": "gravion omni explain regression in simple words"}
+{"completion": "Regression fits a line or curve that best predicts one value from others.", "prompt": "help me explain regression in simple words"}
+{"completion": "Share of total is each part divided by the sum, shown as a percentage.", "prompt": "calculate total and share of total"}
+{"completion": "Share of total is each part divided by the sum, shown as a percentage.", "prompt": "please calculate total and share of total"}
+{"completion": "Share of total is each part divided by the sum, shown as a percentage.", "prompt": "gravion omni calculate total and share of total"}
+{"completion": "Share of total is each part divided by the sum, shown as a percentage.", "prompt": "help me calculate total and share of total"}
+{"completion": "Time series data is ordered by time; look for trend, seasonality, and sudden shifts.", "prompt": "explain time series basics"}
+{"completion": "Time series data is ordered by time; look for trend, seasonality, and sudden shifts.", "prompt": "please explain time series basics"}
+{"completion": "Time series data is ordered by time; look for trend, seasonality, and sudden shifts.", "prompt": "gravion omni explain time series basics"}
+{"completion": "Time series data is ordered by time; look for trend, seasonality, and sudden shifts.", "prompt": "help me explain time series basics"}
+{"completion": "Weight averages by their counts before combining, or the small group distorts the result.", "prompt": "compare averages with different counts"}
+{"completion": "Weight averages by their counts before combining, or the small group distorts the result.", "prompt": "please compare averages with different counts"}
+{"completion": "Weight averages by their counts before combining, or the small group distorts the result.", "prompt": "gravion omni compare averages with different counts"}
+{"completion": "Weight averages by their counts before combining, or the small group distorts the result.", "prompt": "help me compare averages with different counts"}
+{"completion": "Variance is the average squared distance from the mean; its square root is standard deviation.", "prompt": "explain variance simply"}
+{"completion": "Variance is the average squared distance from the mean; its square root is standard deviation.", "prompt": "please explain variance simply"}
+{"completion": "Variance is the average squared distance from the mean; its square root is standard deviation.", "prompt": "gravion omni explain variance simply"}
+{"completion": "Variance is the average squared distance from the mean; its square root is standard deviation.", "prompt": "help me explain variance simply"}
+{"completion": "Weekly patterns repeat by weekday; compare same weekdays across weeks before judging.", "prompt": "find patterns in weekly sales"}
+{"completion": "Weekly patterns repeat by weekday; compare same weekdays across weeks before judging.", "prompt": "please find patterns in weekly sales"}
+{"completion": "Weekly patterns repeat by weekday; compare same weekdays across weeks before judging.", "prompt": "gravion omni find patterns in weekly sales"}
+{"completion": "Weekly patterns repeat by weekday; compare same weekdays across weeks before judging.", "prompt": "help me find patterns in weekly sales"}
+{"completion": "Sampling picks a subset to represent the whole; random sampling reduces selection bias.", "prompt": "explain data sampling methods"}
+{"completion": "Sampling picks a subset to represent the whole; random sampling reduces selection bias.", "prompt": "please explain data sampling methods"}
+{"completion": "Sampling picks a subset to represent the whole; random sampling reduces selection bias.", "prompt": "gravion omni explain data sampling methods"}
+{"completion": "Sampling picks a subset to represent the whole; random sampling reduces selection bias.", "prompt": "help me explain data sampling methods"}
+{"completion": "A simple forecast extends the recent trend and states its uncertainty honestly.", "prompt": "make a forecast from past numbers"}
+{"completion": "A simple forecast extends the recent trend and states its uncertainty honestly.", "prompt": "please make a forecast from past numbers"}
+{"completion": "A simple forecast extends the recent trend and states its uncertainty honestly.", "prompt": "gravion omni make a forecast from past numbers"}
+{"completion": "A simple forecast extends the recent trend and states its uncertainty honestly.", "prompt": "help me make a forecast from past numbers"}
+{"completion": "Normalization rescales values to a common range so different units can be compared.", "prompt": "explain normalization of data"}
+{"completion": "Normalization rescales values to a common range so different units can be compared.", "prompt": "please explain normalization of data"}
+{"completion": "Normalization rescales values to a common range so different units can be compared.", "prompt": "gravion omni explain normalization of data"}
+{"completion": "Normalization rescales values to a common range so different units can be compared.", "prompt": "help me explain normalization of data"}
+{"completion": "Multiply each value by its weight, sum the products, and divide by total weight.", "prompt": "calculate a weighted average"}
+{"completion": "Multiply each value by its weight, sum the products, and divide by total weight.", "prompt": "please calculate a weighted average"}
+{"completion": "Multiply each value by its weight, sum the products, and divide by total weight.", "prompt": "gravion omni calculate a weighted average"}
+{"completion": "Multiply each value by its weight, sum the products, and divide by total weight.", "prompt": "help me calculate a weighted average"}
+{"completion": "A pivot table regroups rows by categories and summarizes values per group.", "prompt": "explain pivot tables simply"}
+{"completion": "A pivot table regroups rows by categories and summarizes values per group.", "prompt": "please explain pivot tables simply"}
+{"completion": "A pivot table regroups rows by categories and summarizes values per group.", "prompt": "gravion omni explain pivot tables simply"}
+{"completion": "A pivot table regroups rows by categories and summarizes values per group.", "prompt": "help me explain pivot tables simply"}
+{"completion": "Check formulas cell by cell, trace precedents, and test totals against raw sums.", "prompt": "find errors in a spreadsheet"}
+{"completion": "Check formulas cell by cell, trace precedents, and test totals against raw sums.", "prompt": "please find errors in a spreadsheet"}
+{"completion": "Check formulas cell by cell, trace precedents, and test totals against raw sums.", "prompt": "gravion omni find errors in a spreadsheet"}
+{"completion": "Check formulas cell by cell, trace precedents, and test totals against raw sums.", "prompt": "help me find errors in a spreadsheet"}
+{"completion": "A/B testing compares two variants on real users and judges the difference statistically.", "prompt": "explain a b testing basics"}
+{"completion": "A/B testing compares two variants on real users and judges the difference statistically.", "prompt": "please explain a b testing basics"}
+{"completion": "A/B testing compares two variants on real users and judges the difference statistically.", "prompt": "gravion omni explain a b testing basics"}
+{"completion": "A/B testing compares two variants on real users and judges the difference statistically.", "prompt": "help me explain a b testing basics"}
+{"completion": "Experiment summary: groups, sample sizes, effect size, and whether it clears significance.", "prompt": "summarize experiment results"}
+{"completion": "Experiment summary: groups, sample sizes, effect size, and whether it clears significance.", "prompt": "please summarize experiment results"}
+{"completion": "Experiment summary: groups, sample sizes, effect size, and whether it clears significance.", "prompt": "gravion omni summarize experiment results"}
+{"completion": "Experiment summary: groups, sample sizes, effect size, and whether it clears significance.", "prompt": "help me summarize experiment results"}
+{"completion": "Honest charts show full axes, label sources, and never hide inconvenient points.", "prompt": "explain data visualization ethics"}
+{"completion": "Honest charts show full axes, label sources, and never hide inconvenient points.", "prompt": "please explain data visualization ethics"}
+{"completion": "Honest charts show full axes, label sources, and never hide inconvenient points.", "prompt": "gravion omni explain data visualization ethics"}
+{"completion": "Honest charts show full axes, label sources, and never hide inconvenient points.", "prompt": "help me explain data visualization ethics"}
+{"completion": "Compound growth applies each period's growth to the new total, not the original.", "prompt": "calculate compound growth"}
+{"completion": "Compound growth applies each period's growth to the new total, not the original.", "prompt": "please calculate compound growth"}
+{"completion": "Compound growth applies each period's growth to the new total, not the original.", "prompt": "gravion omni calculate compound growth"}
+{"completion": "Compound growth applies each period's growth to the new total, not the original.", "prompt": "help me calculate compound growth"}
+{"completion": "Cohort analysis groups users by start time and tracks each group separately.", "prompt": "explain cohort analysis"}
+{"completion": "Cohort analysis groups users by start time and tracks each group separately.", "prompt": "please explain cohort analysis"}
+{"completion": "Cohort analysis groups users by start time and tracks each group separately.", "prompt": "gravion omni explain cohort analysis"}
+{"completion": "Cohort analysis groups users by start time and tracks each group separately.", "prompt": "help me explain cohort analysis"}
+{"completion": "Seasonality repeats on a calendar cycle; compare matching seasons across years.", "prompt": "find seasonal patterns in data"}
+{"completion": "Seasonality repeats on a calendar cycle; compare matching seasons across years.", "prompt": "please find seasonal patterns in data"}
+{"completion": "Seasonality repeats on a calendar cycle; compare matching seasons across years.", "prompt": "gravion omni find seasonal patterns in data"}
+{"completion": "Seasonality repeats on a calendar cycle; compare matching seasons across years.", "prompt": "help me find seasonal patterns in data"}
+{"completion": "KPIs are the few numbers tied directly to a goal, reviewed on a fixed cadence.", "prompt": "explain key performance indicators"}
+{"completion": "KPIs are the few numbers tied directly to a goal, reviewed on a fixed cadence.", "prompt": "please explain key performance indicators"}
+{"completion": "KPIs are the few numbers tied directly to a goal, reviewed on a fixed cadence.", "prompt": "gravion omni explain key performance indicators"}
+{"completion": "KPIs are the few numbers tied directly to a goal, reviewed on a fixed cadence.", "prompt": "help me explain key performance indicators"}
+{"completion": "Answer from the document only: find the matching sentence and quote it as evidence.", "prompt": "answer a question from a document"}
+{"completion": "Answer from the document only: find the matching sentence and quote it as evidence.", "prompt": "please answer a question from a document"}
+{"completion": "Answer from the document only: find the matching sentence and quote it as evidence.", "prompt": "gravion omni answer a question from a document"}
+{"completion": "Answer from the document only: find the matching sentence and quote it as evidence.", "prompt": "help me answer a question from a document"}
+{"completion": "Extractive QA lifts the answer span directly from the source text instead of generating one.", "prompt": "explain extractive question answering"}
+{"completion": "Extractive QA lifts the answer span directly from the source text instead of generating one.", "prompt": "please explain extractive question answering"}
+{"completion": "Extractive QA lifts the answer span directly from the source text instead of generating one.", "prompt": "gravion omni explain extractive question answering"}
+{"completion": "Extractive QA lifts the answer span directly from the source text instead of generating one.", "prompt": "help me explain extractive question answering"}
+{"completion": "Search the document for date patterns near the event words in the question.", "prompt": "find a date mentioned in a document"}
+{"completion": "Search the document for date patterns near the event words in the question.", "prompt": "please find a date mentioned in a document"}
+{"completion": "Search the document for date patterns near the event words in the question.", "prompt": "gravion omni find a date mentioned in a document"}
+{"completion": "Search the document for date patterns near the event words in the question.", "prompt": "help me find a date mentioned in a document"}
+{"completion": "Grounded answers point to the exact sentence that supports them.", "prompt": "explain grounding answers in evidence"}
+{"completion": "Grounded answers point to the exact sentence that supports them.", "prompt": "please explain grounding answers in evidence"}
+{"completion": "Grounded answers point to the exact sentence that supports them.", "prompt": "gravion omni explain grounding answers in evidence"}
+{"completion": "Grounded answers point to the exact sentence that supports them.", "prompt": "help me explain grounding answers in evidence"}
+{"completion": "Look for author lines, bylines, or signature blocks near the title or end.", "prompt": "answer who wrote a document"}
+{"completion": "Look for author lines, bylines, or signature blocks near the title or end.", "prompt": "please answer who wrote a document"}
+{"completion": "Look for author lines, bylines, or signature blocks near the title or end.", "prompt": "gravion omni answer who wrote a document"}
+{"completion": "Look for author lines, bylines, or signature blocks near the title or end.", "prompt": "help me answer who wrote a document"}
+{"completion": "Definitions usually follow the term with is or means; quote that sentence.", "prompt": "find a definition inside a document"}
+{"completion": "Definitions usually follow the term with is or means; quote that sentence.", "prompt": "please find a definition inside a document"}
+{"completion": "Definitions usually follow the term with is or means; quote that sentence.", "prompt": "gravion omni find a definition inside a document"}
+{"completion": "Definitions usually follow the term with is or means; quote that sentence.", "prompt": "help me find a definition inside a document"}
+{"completion": "Say the document does not contain the answer rather than guessing from outside knowledge.", "prompt": "explain what to do when a document lacks an answer"}
+{"completion": "Say the document does not contain the answer rather than guessing from outside knowledge.", "prompt": "please explain what to do when a document lacks an answer"}
+{"completion": "Say the document does not contain the answer rather than guessing from outside knowledge.", "prompt": "gravion omni explain what to do when a document lacks an answer"}
+{"completion": "Say the document does not contain the answer rather than guessing from outside knowledge.", "prompt": "help me explain what to do when a document lacks an answer"}
+{"completion": "Policy answers cite the rule sentence and any exception sentence that applies.", "prompt": "answer a question about a policy document"}
+{"completion": "Policy answers cite the rule sentence and any exception sentence that applies.", "prompt": "please answer a question about a policy document"}
+{"completion": "Policy answers cite the rule sentence and any exception sentence that applies.", "prompt": "gravion omni answer a question about a policy document"}
+{"completion": "Policy answers cite the rule sentence and any exception sentence that applies.", "prompt": "help me answer a question about a policy document"}
+{"completion": "Match the question's measure words to the sentence carrying the figure.", "prompt": "find a number stated in a report"}
+{"completion": "Match the question's measure words to the sentence carrying the figure.", "prompt": "please find a number stated in a report"}
+{"completion": "Match the question's measure words to the sentence carrying the figure.", "prompt": "gravion omni find a number stated in a report"}
+{"completion": "Match the question's measure words to the sentence carrying the figure.", "prompt": "help me find a number stated in a report"}
+{"completion": "A citation names the document and quotes the supporting sentence verbatim.", "prompt": "explain citation of document answers"}
+{"completion": "A citation names the document and quotes the supporting sentence verbatim.", "prompt": "please explain citation of document answers"}
+{"completion": "A citation names the document and quotes the supporting sentence verbatim.", "prompt": "gravion omni explain citation of document answers"}
+{"completion": "A citation names the document and quotes the supporting sentence verbatim.", "prompt": "help me explain citation of document answers"}
+{"completion": "Place answers come from sentences pairing the event with a location phrase.", "prompt": "answer where an event happened from text"}
+{"completion": "Place answers come from sentences pairing the event with a location phrase.", "prompt": "please answer where an event happened from text"}
+{"completion": "Place answers come from sentences pairing the event with a location phrase.", "prompt": "gravion omni answer where an event happened from text"}
+{"completion": "Place answers come from sentences pairing the event with a location phrase.", "prompt": "help me answer where an event happened from text"}
+{"completion": "The main requirement is the sentence with must, shall, or required language.", "prompt": "find the main requirement in a notice"}
+{"completion": "The main requirement is the sentence with must, shall, or required language.", "prompt": "please find the main requirement in a notice"}
+{"completion": "The main requirement is the sentence with must, shall, or required language.", "prompt": "gravion omni find the main requirement in a notice"}
+{"completion": "The main requirement is the sentence with must, shall, or required language.", "prompt": "help me find the main requirement in a notice"}
+{"completion": "Chunking splits long documents so the answering passage can be found precisely.", "prompt": "explain document chunking for qa"}
+{"completion": "Chunking splits long documents so the answering passage can be found precisely.", "prompt": "please explain document chunking for qa"}
+{"completion": "Chunking splits long documents so the answering passage can be found precisely.", "prompt": "gravion omni explain document chunking for qa"}
+{"completion": "Chunking splits long documents so the answering passage can be found precisely.", "prompt": "help me explain document chunking for qa"}
+{"completion": "Yes or no answers still need the sentence that settles the question.", "prompt": "answer a yes or no question from text"}
+{"completion": "Yes or no answers still need the sentence that settles the question.", "prompt": "please answer a yes or no question from text"}
+{"completion": "Yes or no answers still need the sentence that settles the question.", "prompt": "gravion omni answer a yes or no question from text"}
+{"completion": "Yes or no answers still need the sentence that settles the question.", "prompt": "help me answer a yes or no question from text"}
+{"completion": "Contact details sit near headings like contact, support, or signature blocks.", "prompt": "find contact details in a document"}
+{"completion": "Contact details sit near headings like contact, support, or signature blocks.", "prompt": "please find contact details in a document"}
+{"completion": "Contact details sit near headings like contact, support, or signature blocks.", "prompt": "gravion omni find contact details in a document"}
+{"completion": "Contact details sit near headings like contact, support, or signature blocks.", "prompt": "help me find contact details in a document"}
+{"completion": "Ambiguous questions match several sentences; list them and ask which is meant.", "prompt": "explain ambiguity in document questions"}
+{"completion": "Ambiguous questions match several sentences; list them and ask which is meant.", "prompt": "please explain ambiguity in document questions"}
+{"completion": "Ambiguous questions match several sentences; list them and ask which is meant.", "prompt": "gravion omni explain ambiguity in document questions"}
+{"completion": "Ambiguous questions match several sentences; list them and ask which is meant.", "prompt": "help me explain ambiguity in document questions"}
+{"completion": "Deadline answers quote the sentence with the date and the action it binds.", "prompt": "answer when a deadline falls from a notice"}
+{"completion": "Deadline answers quote the sentence with the date and the action it binds.", "prompt": "please answer when a deadline falls from a notice"}
+{"completion": "Deadline answers quote the sentence with the date and the action it binds.", "prompt": "gravion omni answer when a deadline falls from a notice"}
+{"completion": "Deadline answers quote the sentence with the date and the action it binds.", "prompt": "help me answer when a deadline falls from a notice"}
+{"completion": "Eligibility rules list conditions; quote each condition the question asks about.", "prompt": "find eligibility rules in a document"}
+{"completion": "Eligibility rules list conditions; quote each condition the question asks about.", "prompt": "please find eligibility rules in a document"}
+{"completion": "Eligibility rules list conditions; quote each condition the question asks about.", "prompt": "gravion omni find eligibility rules in a document"}
+{"completion": "Eligibility rules list conditions; quote each condition the question asks about.", "prompt": "help me find eligibility rules in a document"}
+{"completion": "Multi-hop questions chain facts from two sentences before answering.", "prompt": "explain multi hop document questions"}
+{"completion": "Multi-hop questions chain facts from two sentences before answering.", "prompt": "please explain multi hop document questions"}
+{"completion": "Multi-hop questions chain facts from two sentences before answering.", "prompt": "gravion omni explain multi hop document questions"}
+{"completion": "Multi-hop questions chain facts from two sentences before answering.", "prompt": "help me explain multi hop document questions"}
+{"completion": "Clause answers quote the operative sentence and note defined terms it uses.", "prompt": "answer a question about a contract clause"}
+{"completion": "Clause answers quote the operative sentence and note defined terms it uses.", "prompt": "please answer a question about a contract clause"}
+{"completion": "Clause answers quote the operative sentence and note defined terms it uses.", "prompt": "gravion omni answer a question about a contract clause"}
+{"completion": "Clause answers quote the operative sentence and note defined terms it uses.", "prompt": "help me answer a question about a contract clause"}
+{"completion": "Price answers pair the amount with the item or plan it belongs to.", "prompt": "find the price stated in a document"}
+{"completion": "Price answers pair the amount with the item or plan it belongs to.", "prompt": "please find the price stated in a document"}
+{"completion": "Price answers pair the amount with the item or plan it belongs to.", "prompt": "gravion omni find the price stated in a document"}
+{"completion": "Price answers pair the amount with the item or plan it belongs to.", "prompt": "help me find the price stated in a document"}
+{"completion": "Table answers read the row and column headers together before quoting the cell.", "prompt": "explain table questions in documents"}
+{"completion": "Table answers read the row and column headers together before quoting the cell.", "prompt": "please explain table questions in documents"}
+{"completion": "Table answers read the row and column headers together before quoting the cell.", "prompt": "gravion omni explain table questions in documents"}
+{"completion": "Table answers read the row and column headers together before quoting the cell.", "prompt": "help me explain table questions in documents"}
+{"completion": "Process answers list the manual's steps in order, quoted or tightly paraphrased.", "prompt": "answer how a process works from a manual"}
+{"completion": "Process answers list the manual's steps in order, quoted or tightly paraphrased.", "prompt": "please answer how a process works from a manual"}
+{"completion": "Process answers list the manual's steps in order, quoted or tightly paraphrased.", "prompt": "gravion omni answer how a process works from a manual"}
+{"completion": "Process answers list the manual's steps in order, quoted or tightly paraphrased.", "prompt": "help me answer how a process works from a manual"}
+{"completion": "Exceptions hide after words like except, unless, and however; quote them with the rule.", "prompt": "find exceptions in a policy text"}
+{"completion": "Exceptions hide after words like except, unless, and however; quote them with the rule.", "prompt": "please find exceptions in a policy text"}
+{"completion": "Exceptions hide after words like except, unless, and however; quote them with the rule.", "prompt": "gravion omni find exceptions in a policy text"}
+{"completion": "Exceptions hide after words like except, unless, and however; quote them with the rule.", "prompt": "help me find exceptions in a policy text"}
+{"completion": "Confidence rises with term overlap and falls when several sentences compete.", "prompt": "explain answer confidence in doc qa"}
+{"completion": "Confidence rises with term overlap and falls when several sentences compete.", "prompt": "please explain answer confidence in doc qa"}
+{"completion": "Confidence rises with term overlap and falls when several sentences compete.", "prompt": "gravion omni explain answer confidence in doc qa"}
+{"completion": "Confidence rises with term overlap and falls when several sentences compete.", "prompt": "help me explain answer confidence in doc qa"}
+{"completion": "Minutes answers cite the decision line and who owned the action.", "prompt": "answer a question about meeting minutes"}
+{"completion": "Minutes answers cite the decision line and who owned the action.", "prompt": "please answer a question about meeting minutes"}
+{"completion": "Minutes answers cite the decision line and who owned the action.", "prompt": "gravion omni answer a question about meeting minutes"}
+{"completion": "Minutes answers cite the decision line and who owned the action.", "prompt": "help me answer a question about meeting minutes"}
+{"completion": "Name answers match the role words in the question to the sentence carrying the name.", "prompt": "find a name mentioned in a document"}
+{"completion": "Name answers match the role words in the question to the sentence carrying the name.", "prompt": "please find a name mentioned in a document"}
+{"completion": "Name answers match the role words in the question to the sentence carrying the name.", "prompt": "gravion omni find a name mentioned in a document"}
+{"completion": "Name answers match the role words in the question to the sentence carrying the name.", "prompt": "help me find a name mentioned in a document"}
+{"completion": "Doc QA is scored on exact answer match and whether evidence supports it.", "prompt": "explain document qa evaluation"}
+{"completion": "Doc QA is scored on exact answer match and whether evidence supports it.", "prompt": "please explain document qa evaluation"}
+{"completion": "Doc QA is scored on exact answer match and whether evidence supports it.", "prompt": "gravion omni explain document qa evaluation"}
+{"completion": "Doc QA is scored on exact answer match and whether evidence supports it.", "prompt": "help me explain document qa evaluation"}
+{"completion": "Changelog answers quote the entry under the version or date asked.", "prompt": "answer what changed in a changelog"}
+{"completion": "Changelog answers quote the entry under the version or date asked.", "prompt": "please answer what changed in a changelog"}
+{"completion": "Changelog answers quote the entry under the version or date asked.", "prompt": "gravion omni answer what changed in a changelog"}
+{"completion": "Changelog answers quote the entry under the version or date asked.", "prompt": "help me answer what changed in a changelog"}
+{"completion": "Warranty answers quote coverage length, covered faults, and claim steps.", "prompt": "find warranty terms in a document"}
+{"completion": "Warranty answers quote coverage length, covered faults, and claim steps.", "prompt": "please find warranty terms in a document"}
+{"completion": "Warranty answers quote coverage length, covered faults, and claim steps.", "prompt": "gravion omni find warranty terms in a document"}
+{"completion": "Warranty answers quote coverage length, covered faults, and claim steps.", "prompt": "help me find warranty terms in a document"}
+{"completion": "Long documents are searched by section so answers stay fast and precise.", "prompt": "explain handling long documents"}
+{"completion": "Long documents are searched by section so answers stay fast and precise.", "prompt": "please explain handling long documents"}
+{"completion": "Long documents are searched by section so answers stay fast and precise.", "prompt": "gravion omni explain handling long documents"}
+{"completion": "Long documents are searched by section so answers stay fast and precise.", "prompt": "help me explain handling long documents"}
+{"completion": "Resume answers quote the role, dates, and achievement lines that match.", "prompt": "answer a question from a resume"}
+{"completion": "Resume answers quote the role, dates, and achievement lines that match.", "prompt": "please answer a question from a resume"}
+{"completion": "Resume answers quote the role, dates, and achievement lines that match.", "prompt": "gravion omni answer a question from a resume"}
+{"completion": "Resume answers quote the role, dates, and achievement lines that match.", "prompt": "help me answer a question from a resume"}
+{"completion": "Instruction answers reproduce the numbered steps without adding new ones.", "prompt": "find instructions inside a document"}
+{"completion": "Instruction answers reproduce the numbered steps without adding new ones.", "prompt": "please find instructions inside a document"}
+{"completion": "Instruction answers reproduce the numbered steps without adding new ones.", "prompt": "gravion omni find instructions inside a document"}
+{"completion": "Instruction answers reproduce the numbered steps without adding new ones.", "prompt": "help me find instructions inside a document"}
+{"completion": "Attribution tells the reader which document and sentence the answer came from.", "prompt": "explain source attribution in answers"}
+{"completion": "Attribution tells the reader which document and sentence the answer came from.", "prompt": "please explain source attribution in answers"}
+{"completion": "Attribution tells the reader which document and sentence the answer came from.", "prompt": "gravion omni explain source attribution in answers"}
+{"completion": "Attribution tells the reader which document and sentence the answer came from.", "prompt": "help me explain source attribution in answers"}
+{"completion": "Paper answers quote the result sentence and the method limit beside it.", "prompt": "answer a question about a research paper"}
+{"completion": "Paper answers quote the result sentence and the method limit beside it.", "prompt": "please answer a question about a research paper"}
+{"completion": "Paper answers quote the result sentence and the method limit beside it.", "prompt": "gravion omni answer a question about a research paper"}
+{"completion": "Paper answers quote the result sentence and the method limit beside it.", "prompt": "help me answer a question about a research paper"}
+{"completion": "List answers return the items under the heading the question names.", "prompt": "find a list inside a document"}
+{"completion": "List answers return the items under the heading the question names.", "prompt": "please find a list inside a document"}
+{"completion": "List answers return the items under the heading the question names.", "prompt": "gravion omni find a list inside a document"}
+{"completion": "List answers return the items under the heading the question names.", "prompt": "help me find a list inside a document"}
+{"completion": "Negation flips meaning; check for not, never, and no before answering.", "prompt": "explain negation in document questions"}
+{"completion": "Negation flips meaning; check for not, never, and no before answering.", "prompt": "please explain negation in document questions"}
+{"completion": "Negation flips meaning; check for not, never, and no before answering.", "prompt": "gravion omni explain negation in document questions"}
+{"completion": "Negation flips meaning; check for not, never, and no before answering.", "prompt": "help me explain negation in document questions"}
+{"completion": "Responsibility answers quote the sentence assigning the duty to a person or team.", "prompt": "answer who is responsible from a document"}
+{"completion": "Responsibility answers quote the sentence assigning the duty to a person or team.", "prompt": "please answer who is responsible from a document"}
+{"completion": "Responsibility answers quote the sentence assigning the duty to a person or team.", "prompt": "gravion omni answer who is responsible from a document"}
+{"completion": "Responsibility answers quote the sentence assigning the duty to a person or team.", "prompt": "help me answer who is responsible from a document"}
+{"completion": "Hours answers quote the line pairing days with times.", "prompt": "find opening hours in a document"}
+{"completion": "Hours answers quote the line pairing days with times.", "prompt": "please find opening hours in a document"}
+{"completion": "Hours answers quote the line pairing days with times.", "prompt": "gravion omni find opening hours in a document"}
+{"completion": "Hours answers quote the line pairing days with times.", "prompt": "help me find opening hours in a document"}
+{"completion": "Document QA is confined to the given text; chat may use broader knowledge.", "prompt": "explain document qa versus chat"}
+{"completion": "Document QA is confined to the given text; chat may use broader knowledge.", "prompt": "please explain document qa versus chat"}
+{"completion": "Document QA is confined to the given text; chat may use broader knowledge.", "prompt": "gravion omni explain document qa versus chat"}
+{"completion": "Document QA is confined to the given text; chat may use broader knowledge.", "prompt": "help me explain document qa versus chat"}
+{"completion": "Terms answers quote the clause and state its plain meaning.", "prompt": "answer a question from terms and conditions"}
+{"completion": "Terms answers quote the clause and state its plain meaning.", "prompt": "please answer a question from terms and conditions"}
+{"completion": "Terms answers quote the clause and state its plain meaning.", "prompt": "gravion omni answer a question from terms and conditions"}
+{"completion": "Terms answers quote the clause and state its plain meaning.", "prompt": "help me answer a question from terms and conditions"}
+{"completion": "Summary statements sit in introductions and conclusions; quote the clearest one.", "prompt": "find a summary statement in a document"}
+{"completion": "Summary statements sit in introductions and conclusions; quote the clearest one.", "prompt": "please find a summary statement in a document"}
+{"completion": "Summary statements sit in introductions and conclusions; quote the clearest one.", "prompt": "gravion omni find a summary statement in a document"}
+{"completion": "Summary statements sit in introductions and conclusions; quote the clearest one.", "prompt": "help me find a summary statement in a document"}
+{"completion": "Verification re-reads the quoted sentence and checks it truly answers the question.", "prompt": "explain verifying an answer against text"}
+{"completion": "Verification re-reads the quoted sentence and checks it truly answers the question.", "prompt": "please explain verifying an answer against text"}
+{"completion": "Verification re-reads the quoted sentence and checks it truly answers the question.", "prompt": "gravion omni explain verifying an answer against text"}
+{"completion": "Verification re-reads the quoted sentence and checks it truly answers the question.", "prompt": "help me explain verifying an answer against text"}
+{"completion": "Manual answers quote the setup or safety step the question targets.", "prompt": "answer a question about a product manual"}
+{"completion": "Manual answers quote the setup or safety step the question targets.", "prompt": "please answer a question about a product manual"}
+{"completion": "Manual answers quote the setup or safety step the question targets.", "prompt": "gravion omni answer a question about a product manual"}
+{"completion": "Manual answers quote the setup or safety step the question targets.", "prompt": "help me answer a question about a product manual"}
+{"completion": "Risk answers collect sentences with risk, warning, or caution language.", "prompt": "find risks listed in a document"}
+{"completion": "Risk answers collect sentences with risk, warning, or caution language.", "prompt": "please find risks listed in a document"}
+{"completion": "Risk answers collect sentences with risk, warning, or caution language.", "prompt": "gravion omni find risks listed in a document"}
+{"completion": "Risk answers collect sentences with risk, warning, or caution language.", "prompt": "help me find risks listed in a document"}
+{"completion": "Give the document text and the question; the answer quotes matching sentences.", "prompt": "explain document qa input format"}
+{"completion": "Give the document text and the question; the answer quotes matching sentences.", "prompt": "please explain document qa input format"}
+{"completion": "Give the document text and the question; the answer quotes matching sentences.", "prompt": "gravion omni explain document qa input format"}
+{"completion": "Give the document text and the question; the answer quotes matching sentences.", "prompt": "help me explain document qa input format"}
+{"completion": "Invoice answers quote the line items, totals, and due date as printed.", "prompt": "answer a question from an invoice"}
+{"completion": "Invoice answers quote the line items, totals, and due date as printed.", "prompt": "please answer a question from an invoice"}
+{"completion": "Invoice answers quote the line items, totals, and due date as printed.", "prompt": "gravion omni answer a question from an invoice"}
+{"completion": "Invoice answers quote the line items, totals, and due date as printed.", "prompt": "help me answer a question from an invoice"}
+{"completion": "Conclusions restate the main finding; quote the final section's key sentence.", "prompt": "find the conclusion of a document"}
+{"completion": "Conclusions restate the main finding; quote the final section's key sentence.", "prompt": "please find the conclusion of a document"}
+{"completion": "Conclusions restate the main finding; quote the final section's key sentence.", "prompt": "gravion omni find the conclusion of a document"}
+{"completion": "Conclusions restate the main finding; quote the final section's key sentence.", "prompt": "help me find the conclusion of a document"}

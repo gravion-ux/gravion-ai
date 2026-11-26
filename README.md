@@ -140,6 +140,13 @@ and **Gravion Omni** (*available since Piece 8*), the all-in-one flagship at the
 **Gravion Support** (dedicated customer-support specialist) and
 **Gravion Review** (code-review specialist) join the registry with
 included local weights trained from their own Gravion-owned seed corpora.
+**Gravion Translate** (Hindi/English/Hinglish phrasebook translation),
+**Gravion Summary** (extractive summarization), **Gravion Search**
+(sparse-embedding passage retrieval), **Gravion Analyst** (descriptive
+statistics from supplied numbers) and **Gravion DocQA** (extractive
+document Q&A) extend the catalog to text-understanding types, each
+with its own module, included local weights and deterministic local
+engine.
 Deployments can register private variants by dropping their own
 `models.json` into the deployment home — same schema, same validation.
 
@@ -211,11 +218,6 @@ Gravion Core. Edit `policy.md` in the deployment home
 company policy, injected into every module's system context.
 
 ## Licensing — the short version
-
-The source code in this repository is MIT licensed (see
-[LICENSE](LICENSE)). Running Gravion AI as a production
-deployment is additionally governed by the commercial
-agreement described below.
 
 Gravion AI is built to be a commercial platform, and its licensing is
 designed in two separate layers (full detail: [docs/LICENSING.md](docs/LICENSING.md)):

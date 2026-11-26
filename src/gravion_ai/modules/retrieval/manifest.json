@@ -1,0 +1,14 @@
+{
+  "payload": {
+    "name": "retrieval",
+    "type": "retrieval",
+    "version": "0.1.0",
+    "entrypoint": "gravion_ai.modules.retrieval.module:RetrievalModule",
+    "files": {
+      "__init__.py": "fd8ad6d025d344e0379f87c330a173c3dad58c6796e1cf86b93f70e8fb8248bf",
+      "module.py": "f5cc337b504fac9e78086da547b6340c7cb5a391b34c70032bb9389bc97bdd80"
+    }
+  },
+  "signature": "",
+  "note": "Unsigned in the repo: the issuer private key is (correctly) not distributed. The project owner signs this manifest with `gravion license sign-module` before a production deployment; production mode refuses unsigned or tampered modules."
+}
