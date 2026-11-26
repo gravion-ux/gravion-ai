@@ -114,9 +114,49 @@ def build_brief(prompt: str) -> str:
     )
 
 
+def resolve_size(prompt: str, width: int | None = None,
+                 height: int | None = None) -> tuple[int, int]:
+    """Resolve output dimensions for a local generation.
+
+    Explicit width/height win; otherwise an explicit pixel size in
+    the prompt is used, then a named shape's aspect at a 1024px
+    long edge, then the 1024x1024 default.
+    """
+    if width is not None and height is not None:
+        return width, height
+    aspect = parse_aspect(prompt)
+    if aspect and "x" in aspect:
+        w, h = aspect.split("x", 1)
+        return int(w), int(h)
+    if aspect and ":" in aspect:
+        rw, rh = (int(part) for part in aspect.split(":", 1))
+        long_edge = 1024
+        if rw >= rh:
+            return long_edge, max(int(long_edge * rh / rw), 64)
+        return max(int(long_edge * rw / rh), 64), long_edge
+    return (width or 1024), (height or 1024)
+
+
 class ImageModule:
     def __init__(self, manifest: ModuleManifest):
         self.manifest = manifest
+
+    def generate_local(self, prompt: str, width: int | None = None,
+                       height: int | None = None, quality: str = "high",
+                       seed: int | None = None, output_path=None):
+        """Generate an HQ image locally (no provider call).
+
+        Returns the GeneratedImage; when output_path is given the
+        PNG is also written there. Sizes follow resolve_size.
+        """
+        from .generator import generate_image
+
+        w, h = resolve_size(prompt, width, height)
+        result = generate_image(prompt, width=w, height=h,
+                                quality=quality, seed=seed)
+        if output_path is not None:
+            result.save(output_path)
+        return result
 
     def run(self, ctx: ModuleContext, prompt: str) -> str:
         guidance = MODE_GUIDANCE[detect_mode(prompt)]
