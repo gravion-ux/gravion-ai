@@ -138,3 +138,65 @@ def test_train_cli_runs_gravion_core_job(tmp_path, capsys):
     assert "training complete" in out
     assert "parameters:" in out
     assert (home / "data" / "models" / "gravion-core-weights.json").exists()
+
+
+def test_training_rejects_tokenless_prompts_and_completions():
+    # Regression: a punctuation-only prompt tokenizes to nothing, so
+    # it used to train an exact-match entry for the empty normalized
+    # prompt — after which "", "!!!" and "???" all predicted that
+    # completion at confidence 1.0.
+    with pytest.raises(TrainingError, match="at least one word or number"):
+        train_local_core(
+            [("!!!", "Punctuation answer."), *_examples()], source="tokenless"
+        )
+    with pytest.raises(TrainingError, match="at least one word or number"):
+        train_local_core(
+            [("gravion local status", "!!!")], source="tokenless-completion"
+        )
+
+
+def test_training_rejects_conflicting_normalized_prompts():
+    # Regression: "Hello!" and "hello" normalize to the same prompt,
+    # so two different completions for them are contradictory data.
+    # Training used to accept both and silently keep the last one.
+    with pytest.raises(TrainingError, match="conflicting completions"):
+        train_local_core(
+            [
+                ("Hello!", "Answer A."),
+                ("hello", "Answer B."),
+                *_examples(),
+            ],
+            source="conflicting",
+        )
+    # The same normalized prompt with the same completion is a
+    # duplicate, not a conflict: it trains once, not twice.
+    model = train_local_core(
+        [
+            ("Hello!", "Answer A."),
+            ("hello", "Answer A."),
+            *_examples(),
+        ],
+        source="duplicate-normalized",
+    )
+    assert model.artifact["trained_from"]["examples"] == len(_examples()) + 1
+    assert model.predict("HELLO") == "Answer A."
+
+
+def test_empty_prompt_is_never_a_confident_match(tmp_path):
+    model = train_local_core(_examples(), source="empty-prompt")
+    assert model.predict("") is None
+    assert model.predict("!!!") is None
+    assert model.score("???") == (None, 0.0)
+    with pytest.raises(TypeError, match="text must be a string"):
+        model.predict(None)
+
+    # An artifact carrying an empty exact-prompt key is invalid:
+    # it would make every empty prompt a confident match.
+    path = tmp_path / "gravion-core-weights.json"
+    save_weights(model, path)
+    artifact = json.loads(path.read_text(encoding="utf-8"))
+    artifact["exact_prompts"][""] = 0
+    bad_path = tmp_path / "empty-exact-weights.json"
+    bad_path.write_text(json.dumps(artifact), encoding="utf-8")
+    with pytest.raises(TrainingError, match="exact prompt map is invalid"):
+        load_weights(bad_path)

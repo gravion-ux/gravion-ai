@@ -63,7 +63,6 @@ DEFAULT_SEED_FILENAME = "gravion-core-seed.jsonl"
 DEFAULT_CORPUS_FILENAME = "gravion-core-corpus.jsonl"
 DEFAULT_MATCH_THRESHOLD = 0.30
 
-DEFAULT_BUCKETS = 10496
 DEFAULT_DIM = 16
 DEFAULT_EPOCHS = 128
 DEFAULT_NEGATIVES = 32
@@ -82,6 +81,8 @@ _END = "</s>"
 def tokenize(text: str) -> list[str]:
     """Tokenize text for the local Gravion Core model."""
 
+    if not isinstance(text, str):
+        raise TypeError(f"text must be a string, got {type(text).__name__}")
     return _TOKEN_RE.findall(text.lower())
 
 
@@ -314,6 +315,25 @@ def _validate_transitions(artifact: Mapping[str, object], source: str) -> None:
         raise TrainingError(f"{source}: unigram weights are invalid")
 
 
+def _validate_exact_prompts(
+    artifact: dict[str, object], classes: list, source: str
+) -> None:
+    # Exact-prompt keys are looked up by normalized prompt text, so a
+    # key must be a non-empty normalized prompt: an empty key would
+    # make every empty or punctuation-only prompt a confident match,
+    # and an unnormalized key could never be reached.
+    exact = artifact.get("exact_prompts", {})
+    if not isinstance(exact, dict) or not all(
+        isinstance(k, str)
+        and k
+        and k == _normalized_text(k)
+        and isinstance(v, int)
+        and 0 <= v < len(classes)
+        for k, v in exact.items()
+    ):
+        raise TrainingError(f"{source}: exact prompt map is invalid")
+
+
 def _validate_common(artifact: dict[str, object], source: str) -> None:
     expected_count = count_parameters(artifact)
     if artifact.get("parameter_count") != expected_count:
@@ -350,12 +370,7 @@ def _validate_v3(artifact: dict[str, object], source: str) -> dict[str, object]:
         _is_number(v) for v in bias
     ):
         raise TrainingError(f"{source}: classifier bias is invalid")
-    exact = artifact.get("exact_prompts", {})
-    if not isinstance(exact, dict) or not all(
-        isinstance(k, str) and isinstance(v, int) and 0 <= v < len(classes)
-        for k, v in exact.items()
-    ):
-        raise TrainingError(f"{source}: exact prompt map is invalid")
+    _validate_exact_prompts(artifact, classes, source)
     vocabulary = artifact.get("vocabulary")
     if not isinstance(vocabulary, list) or not vocabulary or not all(
         isinstance(v, str) for v in vocabulary
@@ -390,12 +405,7 @@ def _validate_v2(artifact: dict[str, object], source: str) -> dict[str, object]:
         _is_number(v) for v in bias
     ):
         raise TrainingError(f"{source}: classifier bias is invalid")
-    exact = artifact.get("exact_prompts", {})
-    if not isinstance(exact, dict) or not all(
-        isinstance(k, str) and isinstance(v, int) and 0 <= v < len(classes)
-        for k, v in exact.items()
-    ):
-        raise TrainingError(f"{source}: exact prompt map is invalid")
+    _validate_exact_prompts(artifact, classes, source)
     vocabulary = artifact.get("vocabulary")
     if not isinstance(vocabulary, list) or not vocabulary or not all(
         isinstance(v, str) for v in vocabulary
@@ -419,7 +429,10 @@ def _validate_v1(artifact: dict[str, object], source: str) -> dict[str, object]:
     for index, example in enumerate(examples):
         if not isinstance(example, dict):
             raise TrainingError(f"{source}: example {index} must be an object")
-        if not isinstance(example.get("prompt"), str) or not example["prompt"].strip():
+        if (
+            not isinstance(example.get("prompt"), str)
+            or not tokenize(example["prompt"])
+        ):
             raise TrainingError(f"{source}: example {index} has no prompt")
         if not isinstance(example.get("completion"), str) or not example["completion"].strip():
             raise TrainingError(f"{source}: example {index} has no completion")
@@ -527,7 +540,11 @@ class GravionCoreLocalModel:
         assert isinstance(classes, list)
         exact = self.artifact.get("exact_prompts", {})
         assert isinstance(exact, dict)
-        hit = exact.get(_normalized_text(prompt))
+        normalized_prompt = _normalized_text(prompt)
+        # An empty normalized prompt (empty or punctuation-only text)
+        # is never a confident match, even if an in-memory artifact
+        # was built without validation and carries an empty key.
+        hit = exact.get(normalized_prompt) if normalized_prompt else None
         if isinstance(hit, int):
             return str(classes[hit]), 1.0
 
@@ -631,7 +648,8 @@ class GravionCoreLocalModel:
         assert isinstance(classes, list)
         exact = self.artifact.get("exact_prompts", {})
         assert isinstance(exact, dict)
-        hit = exact.get(_normalized_text(prompt))
+        normalized_prompt = _normalized_text(prompt)
+        hit = exact.get(normalized_prompt) if normalized_prompt else None
         if isinstance(hit, int):
             return str(classes[hit]), 1.0
 
@@ -684,6 +702,8 @@ class GravionCoreLocalModel:
 
     def _v1_score(self, prompt: str) -> tuple[str | None, float]:
         normalized = _normalized_text(prompt)
+        if not normalized:
+            return None, 0.0
         examples = self.artifact["examples"]
         assert isinstance(examples, list)
         for example in examples:
@@ -761,16 +781,39 @@ class GravionCoreLocalModel:
 
 def _clean_examples(examples: Iterable[tuple[str, str]]) -> list[tuple[str, str]]:
     cleaned: list[tuple[str, str]] = []
-    seen: set[tuple[str, str]] = set()
+    # Prompts are matched by their normalized text (lowercase word
+    # tokens), so duplicates and conflicts are judged on that form:
+    # "Hello!" and "hello" are the same prompt to the model. The
+    # same normalized prompt with two different completions is
+    # contradictory training data — reject it instead of silently
+    # keeping whichever completion came last. A prompt or completion
+    # with no word tokens at all ("!!!") can never be learned or
+    # matched honestly, so it is rejected here with a clear error
+    # rather than failing later inside artifact validation.
+    by_normalized: dict[str, str] = {}
     for prompt, completion in examples:
-        if not isinstance(prompt, str) or not prompt.strip():
-            raise TrainingError("local Gravion Core training requires non-empty prompts")
-        if not isinstance(completion, str) or not completion.strip():
-            raise TrainingError("local Gravion Core training requires non-empty completions")
+        if not isinstance(prompt, str) or not tokenize(prompt):
+            raise TrainingError(
+                "local Gravion Core training requires prompts with "
+                "at least one word or number"
+            )
+        if not isinstance(completion, str) or not tokenize(completion):
+            raise TrainingError(
+                "local Gravion Core training requires completions with "
+                "at least one word or number"
+            )
         pair = (prompt.strip(), completion.strip())
-        if pair not in seen:
-            seen.add(pair)
-            cleaned.append(pair)
+        normalized = _normalized_text(pair[0])
+        previous = by_normalized.get(normalized)
+        if previous is not None:
+            if previous != pair[1]:
+                raise TrainingError(
+                    "local Gravion Core training has conflicting "
+                    f"completions for the same prompt {normalized!r}"
+                )
+            continue
+        by_normalized[normalized] = pair[1]
+        cleaned.append(pair)
     if not cleaned:
         raise TrainingError("local Gravion Core training requires at least one example")
     return cleaned
