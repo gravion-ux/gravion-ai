@@ -1,0 +1,3557 @@
+{
+  "architecture": "sparse n-gram embedding + direct linear softmax classifier",
+  "bias": [
+    -1.14507949,
+    2.1609962,
+    -0.16649827,
+    0.58389205,
+    1.25178313,
+    -1.24869442,
+    0.4905017,
+    -1.24475217,
+    1.16641736,
+    0.60880309,
+    0.19708899,
+    -0.09444245,
+    0.27499965,
+    -0.2270828,
+    -0.27454558,
+    -1.5028137,
+    0.18100932,
+    -0.20911671,
+    -0.89396834,
+    0.93384439,
+    0.47249508,
+    1.22897983,
+    0.6488272,
+    -0.5974232,
+    0.50946844,
+    0.03141601,
+    -0.41391501,
+    -0.11458152,
+    -0.17789939,
+    0.25675464,
+    1.3250922,
+    -2.58078551,
+    -0.0941665,
+    -1.27252376,
+    -0.02804748,
+    0.39916444,
+    -0.59851593,
+    -0.27398878,
+    -1.27365196,
+    1.87917781,
+    -1.66091764,
+    -0.00039053,
+    -0.78522122,
+    0.40374491,
+    0.61865491,
+    0.81138748,
+    0.3963109,
+    0.04890466
+  ],
+  "classes": [
+    "A gentle reminder: please review this when you have a moment, and let me know if anything is unclear.",
+    "A goal is the outcome you want; a task is one concrete step that moves you toward that outcome.",
+    "A good apology names the harm, accepts responsibility, explains the fix, and does not demand instant forgiveness.",
+    "A weekly review lists wins, open loops, lessons, and the next three priorities for the coming week.",
+    "Action items: name the owner, the task, and the deadline for each note, then remove anything already done.",
+    "Active listening means hearing the words, checking the meaning, and responding to what was actually said.",
+    "Ask one clear question at a time, include the context, and say what kind of answer would help.",
+    "Backups protect work from device failure, accidental deletion, and corruption; test restores so the backup is real.",
+    "Being stuck is a signal to shrink the next step. Pick one small action you can finish today and build from there.",
+    "Choose a book by the question you want answered, the length you can finish, and reviews from readers you trust.",
+    "Clear writing saves time because readers understand the point, the evidence, and the requested action without guessing.",
+    "Compare both options by cost, time, risk, and fit with your goal; choose the one that wins on the criteria that matter most.",
+    "Compare the full delivered price, quality, warranty, return terms, and running cost, not only the headline price.",
+    "Compound growth means gains build on earlier gains, so small consistent progress can become large over time.",
+    "Could you share feedback on clarity, usefulness, and anything missing? Specific examples will help me improve it.",
+    "Decision checklist: define the problem, list options, score risks, check constraints, then choose and record why.",
+    "Dim the lights, put devices away, prepare tomorrow's first task, and end with a short relaxing routine.",
+    "Following up on my last message: I wanted to check whether you need anything else from me.",
+    "Habits form when a cue triggers a small repeated action and the result feels rewarding enough to repeat.",
+    "Hello and welcome. Tell me what you would like to work on, and I will help step by step.",
+    "Here is a brief summary: keep the main point, the key reason, and the next action.",
+    "How are you feeling today? Share as much or as little as you like.",
+    "Let us break the idea into small parts, define each part in plain words, then connect the parts with one example.",
+    "List income, fixed costs, variable costs, savings, and a small buffer; then adjust the flexible items first.",
+    "Name what happened, find the cause, change one process, and check whether the change worked.",
+    "Pack documents, chargers, clothes for the weather, toiletries, medicines, and one spare outfit in hand luggage.",
+    "Pick one outcome, silence distractions, work in timed blocks, and record the result before taking a break.",
+    "Plan protein, grains, vegetables, and fruit across the week, repeat simple meals, and keep one flexible day.",
+    "Please welcome our speaker, whose work focuses on practical ideas, clear examples, and honest answers.",
+    "Prepare questions about the goal, constraints, owners, deadlines, and what decision must be made before the meeting ends.",
+    "Prepare stories about your work, practice clear answers, research the role, and bring thoughtful questions.",
+    "Progress counts even when it is small. Do the next honest step and let momentum build.",
+    "Regular exercise supports heart health, strength, mood, sleep, and energy when it is consistent and safe.",
+    "Sleep supports memory, mood, focus, and physical recovery, so a regular schedule usually improves daytime performance.",
+    "Sorry for the late reply. I have read your message now and will answer the open points in order.",
+    "Sort items into keep, move, recycle, and discard piles, then give every kept item one home.",
+    "Start with water and light movement, review the top three priorities, then work on the hardest task first.",
+    "Status: completed work is listed first, current blockers are named plainly, and the next milestone has a date.",
+    "Study in short focused blocks, test yourself after each block, and review mistakes the next day.",
+    "Thank you for the feedback. I will check the specific points, fix what is valid, and explain anything that needs context.",
+    "Thank you for thinking of me. I cannot take this on right now, but I wish you well with it.",
+    "Thank you for your time and help. I appreciate it, and I will follow up with the next update soon.",
+    "Thanks for the conversation. I will send the agreed next steps and check in after the first milestone.",
+    "Today's priorities should be few, clear, and ordered by impact and deadline.",
+    "Try a nature walk, a cooking experiment, a museum visit, a board game, or a small home project.",
+    "Try short names that hint at the purpose: clear, easy to spell, and memorable after one hearing.",
+    "Welcome to the team. Your first week will cover introductions, tools, current priorities, and a buddy for questions.",
+    "You are warmly invited to join us. Please let me know if you can come, and tell me about any needs I should plan for."
+  ],
+  "classifier": {
+    "data": "2ruY3s708hgerPAROfzz7sLT6jzz57bkHxj8+9zZJvkOzygQLwkjxOsVBgxJa/UW6d/8KVH7IsQG6GHX9CLy/TchDh477xbkFQWZEAEKOPYpJV8Q1xjvKw4aIuGn4TW4PytX/TXv808bMikT9Bgl/C0b6SQqzQ1LOzUlx7vVIrMoMNcXPjaqCvYI66v7/u0GxO8KHARoQRv9Dx3fMiLt7z761zbaHgD/PBfIwZ0OJ+zpIQ5XM00vB9Y9/BoZAEfu9SHWJvopG0DaOgwGGpYZ3C3cO2TuGdHw5xfQ/6XaMRrPFuTZ6QI+xhsFEwcgUutaxsnzAN/uKQ9R1qPsKzf0zuMSYLnl9+XpGeZBQdfh99EDB6rJRN7cD97kBylQwiQ2GhI6QEUwzCDk+QketzFT3wrT6v+44cvG8+zsyzHiDr0Y2tgX764EBN3VKuk+KcEbJ2jsFvYCuyPtDwQKNgNCHAurHAvtxfoo4vgXOcTzPNz6+Mnl2vdKeBPb3A4f4uO/+VQtK1gNCAMUGS3NCT0RPLO39gsa/xTHNiPWDewlytQEEH8E98oUwtPu8uMaC8LXxik19vgMN98G9FPE/9vAuiMHKbz7F8bjzSq2CfjmymQ09xepx9sA0Dzr+B3MN+v/7t4Pv9EbJixECvj09OolOu/LzgAk/afeqfPPITzOuEfxLMTp8+bSV04lHhCbBwEHDwTVbhUg3UAvQSosrwgV9Qr+J/XY4CUqDNa3F8glrUTfykgU2vUW+vLy+ABd1j8TsiFYx9r9GqYGJPwPEjQY9Nb4BKkQCgq5mtMbGPYE5xDcFRzP3fU/DfS5/hojOMuZ0Sn22Sf10SM5CTL9++nCzvTFjMn07+C07+AUFCzXyf4F9iDnMSiZ1agiDPcxvOjpROKuwvHo8dng/AAAztnTaTk//fe0My478BX7ES/nHzM6OgouE+kh+7qxBeXvAy3SQxPn/6zrUe3f1/7fz9/mFRvXoxAP6woBNw7cC+sw4m+1A9DpJikeBQD8+CZoByow",
+    "encoding": "int8-base64",
+    "scale": 0.03596463165883943
+  },
+  "dim": 16,
+  "direct": {
+    "data": "EQkvHdLc1tzUF9TP1dIYJQwH2R0b0ikT0SwYCgIbExPZ2xsfFxkQFRQLAc7UEQMe9uv69vgD8v35KfM0SPT0+/bx/Pf37/j18/z58/L4NPr4/fc69fn38/n19Db98vM79R/08updKz7r8inv7Sf09fH0RvL07D/06vPz8/Tz8vQsQPLx8/T17/Tz8/Ht8fPz8fLw8vP39ff08vT08/RJ8vLt9vHt8fPy8/Hz8jlFP+z29kHw8uzy8u3sMUr0Ny7u9Pb19fb6+Pr39vf4+Pfs9fXx+fTx+Pb2+PT29TxKRu74+Ub19vD19fDwNfT3PDf0S/f19ff5+fn49vn4+Prv8fY6+fJM9/jy+Pb29uTz80n5+fL19+z09kTiNfj49Drx8vf29/j5+fr39/n4+fn09/c1+fPx+Pn3+Pf49yv09Tj6+vX29kb390EyM/f59uzy8vf29/j5+fr39/n4+fn09/c1+fPx+Pn3+Pf49yv09Tj6+vX29kb390EyM/f59uzy9vn29vn6+fv69/r5+vr38z35+vf4+fnq+vZFPPn2+Pr6+vf2RvhU8vn5+fn5+Pn5+/j6+fbzQPX1+fb2+PX7/Pr7YPv7Rvj8P/v7+/v7+vz39fr7+/v8+fv7+/b4+vv6Rvv6+vv7+vv7+fv7+/v4Vfn6+/f3+vpA+/b4+Pv4+fr6+/j5+flA+vf6+vr7+fn4Rvv6+vv7+vv7+fv7+/v4Vfn6+/f3+vpA+/b4+Pv4+fr6+/j5+flA+vf6+vr7+fn4+vv49/v8+/z7+fv7+/v5+j/6+/n6+/r6+/lIPvv4+fv8+/n4SPr39Pv7+/v6+fr6+/n59/n5S/n4Tfr0+fn6+/b78/r79/n7Qfn69/v7+fz6+fr5+vv7Tfv7+/n6+vv4/Pz8/Pz9/f39/f38/f37/Pzx/fv6/f38/fz9/T77/E/9/fz8/PX8/PFC8P39/Pr7+/tlUfr8+Pz69vv6+/z4/Pr7+vv5+vv7Q/n6+fv7+vz8/Pv6+vr8+vz7+/v7+/v5+vv4+vz9/P38+fz7/P1V+/v3/fr5/Pz7+/r7/Pr59/v9/fj5+/n8+/r79Pv8+kRY+vv4+vz9/P38+fz7/P1V+/v3/fr5/Pz7+/r7/Pr59/v9/fj5+/n8+/r79Pv8+kRY/TX9/Pr4+fn7/EX8/EP9/fz9+Pz9+/f9+/39/f39/P35+P38/f3++/39/fz7/Pz9/Pj9/Pry9FX6/PL8+vb8/Pz89fz9+vn7+vz7/Pz8/PtBWPz8/Pz8+/z8/Pz7/P38/Pz8/Pz9/f39/f38/f37/Pzx/fv6/f38/fz9/T77/E/9/fz8/PX8/PFC8P39/Pr7/TX9/Pr4+fn7/EX8/EP9/fz9+Pz9+/f9+/39/f39/P35+P38/f3++/39/fz7/Pz9/Pj9/Pry9FX6/PL8+vb8/Pz89fz9+vn7+vz7/Pz8/PtBWPz8/Pz8+/z8/Pz7/P38/Pz8/Pz9/f39/f38/f37/Pzx/fv6/f38/fz9/T77/E/9/fz8/PX8/PFC8P39/Pr7/f39/P7+/f79/P79/f39/U39/vz+/f39/fz59v38/P39/v38+Pz8Tv7+/v39/f39/P37/f7+/v79+/39/f76/f1O/vz8/f79/f39/fv9/Pf+/v37/Pr9/fb5+/3+/vtaVf39/f3+/v7+/f7+/v78+Pz2/vv5/f35/f39/fr9/Pb9/vz8/fr7/V36+v7+/Pz89v79/v3+/f7+/P79/v398P39/vz9/f5R/vz8/P38/f3+/vz9/f1M/P39/f3+/fz9/vz+/fv7UPv6/fz7/Pv+/v3+9v7+TPz++f3+/v7+/f78+/39/v7+/f7+/vr8/f79/j79/fz9/P39+PpZ+fn+/v7+/P3+/Pv+/P3+/v79/f79/f39/v3+/P79/vz9/f79/fz9/Pv9/P38/fz9/P38/fz9/f38/Pz9/f39/Pz6+/38/fr9/f39/f39+/tfS/z8/f39/P7+/f79/P79/f39/U39/vz+/f39/fz59v38/P39/v38+Pz8Tv7+/v39/f399Pv7+/39/f39+/z8/f37Zvv8/fv7/fzy/WT7/P37/P39/Pz8+/31/Pz9/Pz9/Pv8/fz8+/z+/f39TP1U+P39/f39/f39+/39+/z9/P39/P3+/f37/f39/P39/fv9/f36/PxnU/z9/f39+P38/f35/fz8/fz7/f38+vr7+vz8/Pz9/f37+/v8+/38/Pz9/Pz7/fv+/fv1SPj7/fn8/Pn+/v3+ZP7++vr++f39/v39/f76+P39/f3+/f3+/fz8/f79/P37/f7+/v79+/39/f76/f1O/vz8/f79/f39/fv9/Pf+/v37/Pr9/fb5+/3+/vta/fz8+/z+/f39TP1U+P39/f39/f39+/39+/z9/P39/P3+/f37/f39/P39/fv9/f36/v39/Pz7T/v7/fz8/fv+/v3+9f7++vz+Rf3+/f7+/f79+/39/v7+/P7+/v39/f79/vT9/fz6+/v8/fT9/U3+/v39+v39/VX+/f3+/f39/f77+/39/f7+/f39/v38/f399v79/v3+/f7+/P79/v398P39/vz9/f5R/vz8/P38/f3+/vz9/f1M/P39/f3+/fz9/f79/f7//v/+/v7+/v75/v77/v37/v7+/v7+/vf8+/v+/vr+/vz+/fr7R/7+/Eb9/f79/f7//v/+/v7+/v75/v77/v37/v7+/v7+/vf8+/v+/vr+/vz+/fr7R/7+/Eb9/vb+/fz6+/r8/Un9/Uf+/v7++v7+/fv+/f7+/v7+/v76+f79/v7+/f7+/v39/f3++P79/P3+/v7+/P79/v399fn9/vz9/f5g/fz3T/79/P3+/vz8+/3t+/3+/f7+/f39Vf39/f3+/v7+/f7+/v78+Pz2/vv5/f35/f39/fr9/Pb9/vz8/fr7/V36+v7+/Pz8/Pz8/f3+/f79/P39/v36/Pz9/vz7/fz8/vz8/PxaU/7+/vb8+/z8/P39+/v9+Pr8/f38/fz7Uvv9/fz9/vv8/f3+9/39/Pv9+v39/f1e+f79/Pj+/P38/P3+/P39+vv99v79/v3+/f7+/P79/v398P39/vz9/f5R/vz8/P38/f3+/vz9/f1M/P39/f3+/fz9/vz+/fv9+/1R/Pz7/Pz9/f39/P39Sv3++v39/v39/P78/P79/f3+/P39/fn8/f39/fv9/fv9+/36/Pz6+v39/v39/f39Sf39+/39/f39+/79/f38/f7+/f39/VP8+/38/P33Wf3+/f39+v79/f38/fj9/v38/f39+/z3Tv39/f3+/v38+vz8+v39/f39/P38/v/+/f///////v///////vr///7+//////75Uf///v////7+/P/9/P///////v/+/v/+/f///////v///////vr///7+//////75Uf///v////7+/P/9/P///////v/+/v79/f//////U//6/v/+//7///7+/v/+/v7+/v7//v/////9/v///v/+//7///78/v79/f//////U//6/v/+//7///7+/v/+/v7+/v7//v/////9/v///v/+//7///78///+/v///////v///////1L///7///7///77+v/+/v////7++v7+/P///////v///v7//v///v/+/v/+/v7+/vv///7//v7//v7+/P/+/v/+//7+/v7+Uv////7//v/+///////////////////+///9///+//////////n+/v3///7///3///z9Tv///vn////////////////////+///9///+//////////n+/v3///7///3///z9Tv///vn//v/+/v///////v/////+/v/8//7+//////7+/vv+/vv///7+/l3//vv7/P7//v7+/v/+/v///////v/////+/v/8//7+//////7+/vv+/vv///7+/l3//vv7/P7//v7+///////////////////+///9///+//////////n+/v3///7///3///z9Tv///vn/9/7+/v/+/v/+/v7+///+bP7+//7+//71//z+/v/+/v/+/v7+/v74//7//v7//v7+9/7+/v/+/v/+/v7+///+bP7+//7+//71//z+/v/+/v/+/v7+/v74//7//v7//v7+//r+/v7+/f7+/v7+/vz///7+/f7//lj///7+/v7//v/+/v7+/////v7///7+//7+//r+/v7+/f7+/v7+/vz///7+/f7//lj///7+/v7//v/+/v7+/////v7///7+//7+//7+/v7//////v/////+//r+//7+//7+//5d+P/9/v////7+9/7+/v7////+/v7///7+/v7//////v/////+//r+//7+//7+//5d+P/9/v////7+9/7+/v7////+/v7//v/+///////////////+//9T//7+//////////3+/vn////+//z///j7/f////78/v79/v///////P7+/v/8/v78//7+/v7+/v7+/v7+/f7////8/v7+/v7+/v7///1e/z////7//v////z///z//////v7///z//////////v/+/////////v///////////z////7//v////z///z//////v7///z//////////v/+/////////v///////////v5v9/7+/v/+/P7+///8/v7+/v79/v7+/f39/v79/f7+//79/f3+/f7+/v7+/v79/v5v9/7+/v/+/P7+///8/v7+/v79/v7+/f39/v79/f7+//79/f3+/f7+/v7+/v79/v7+///////+/v7//v/9/v7+//7+/v7+//7+/v77Wf////z9/v7+/v7+/v3//f3+/v7+///////+/v7//v/9/v7+//7+/v7+//7+/v77Wf////z9/v7+/v7+/v3//f3+/v7+/v7////+///////9/v7+///+/v///v7+/v76/P/+/1z+/v7+/v7+/v7++/z+/v7+/v7////+///////9/v7+///+/v///v7+/v76/P/+/1z+/v7+/v7+/v7++/z+/f/9/f/////+/v/////+/v7+//1c/v7+//7+/v7+/v3///7+/v3+/v3+/f/+/v3+/f/9/f/////+/v/////+/v7+//1c/v7+//7+/v7+/v3///7+/v3+/v3+/f/+/v3+/v/+/v7//v////////79/v7+//7+//7+//7+/v5f+v////r//v7+/v7//f7/+/3+/v7+/v/////+/f/+/v/9/v7+//3+/v7+/v7+/v7+/f7///5b/f7+/v///v7//v79/v7+/v/////+/f/+/v/9/v7+//3+/v7+/v7+/v7+/f7///5b/f7+/v///v7//v79/fz+/v7////+/v/////+/v7+/1v9/v7+//7+/v7+/v7///79/v7+/v3+/v7+/f7+/fz+/v7////+/v/////+/v7+/1v9/v7+//7+/v7+/v7///79/v7+/v3+/v7+/f7+/f39/f7////+/f7+/v79+v3+//3+/v79/mj9/v79/v7//v79/f79/f7+/v/+/v3+/f39/f7////+/f7+/v79+v3+//3+/v79/mj9/v79/v7//v79/f79/f7+/v/+/v3+/P/+/////////v/////+/v74//39///+/////vz//vf////+//z//mH8+////v3+Wf/+//7//////v/////++f7+//79///7/v7+/v7+/v7+//7+/v/8//v+/v///v7+/v/+/v///////v/////+/vn///7+/v7+//73+//+/v////7+XP7+/v7///7//v7+/v/+/v///////v/////+/vn///7+/v7+//73+//+/v////7+XP7+/v7///7//v7+/v78/v///////v///v9e/v7+//79//7+/v7+/v79/P7///3+/v3//v7+/v7//vn8/v78/v///////v///v9e/v7+//79//7+/v7+/v79/P7///3+/v3//v7+/v7//vn8///////////////////+///9//7//////////03+//n///7///z///36+P////7//v7//v7////////////+///4//7+//////////j//2L///////z+//nz+/////7+///////////////////+///8//7+//////////n+//T////+//z///xV/f////7++v///////////v/////+9//+//7+/v9h//7+/v/+/v7///7+//7v/v///////v7+/P////7//v///v////7++f7///7//v/w//7+/v/+//////7+/v5d/v///////v7//////v7///////////7+/v////7+///+//7+/v78/f////z///7+/v///f7+Tv3//////v7///////////7+/v////7+///+//7+/v78/f////z///7+/v///f7+Tv3////////////////////+///9//7//////////03+//n///7///z///36+P////7//z////7//v////z///z//////v7///z//////////v/+/////////v///////////v///v/////////////7///+///+//////////7+/f7///z///7///7++P///k7+/v75XP7//v7//P/+/v/9/v7+//7+/v7+/f3+/f///v/////+/v7+/v////7+/v7+/v75XP7//v7//P/+/v/9/v7+//7+/v7+/f3+/f///v/////+/v7+/v////7+/v7+/v///v/////////////7///+///+//////////7+/f7///z///7///7++P///k7+/v///v/////////////7///+///+//////////7+/f7///z///7///7++P///k7+/v3+/lj+/v7+/v39/v7+///+/v7+/f3//f/+///+/v/+/v/+//7//v///v79/v7+/v3+/lj+/v7+/v39/v7+///+/v7+/f3//f/+///+/v/+/v/+//7//v///v79/v7+//3//v5/+Pn+/vv9/fr//v7++P7+/v3+/f7+/v/+/v76+v7+/v7//v7+/v79/v7+//3//v5/+Pn+/vv9/fr//v7++P7+/v3+/f7+/v/+/v76+v7+/v7//v7+/v79/v7+/v7+/v3+/f7+/v3+/f7+//7+/v7+/f7+/v7+/v7+/v79/v7+/v/+/v7//v5h/f7+/v7+/v3+/f7+/v3+/f7+//7+/v7+/f7+/v7+/v7+/v79/v7+/v/+/v7//v5h/f7+/z////7//v////z///z//////v7///z//////////v/+/////////v///////////z////7//v////z///z//////v7///z//////////v/+/////////v///////////z////7//v////z///z//////v7///z//////////v/+/////////v///////////v7+/v7////+///////9/v7+///+/v///v7+/v76/P/+/1z+/v7+/v7+/v7++/z+/v7+/v7////+///////9/v7+///+/v///v7+/v76/P/+/1z+/v7+/v7+/v7++/z+/v7+/v7////+///////9/v7+///+/v///v7+/v76/P/+/1z+/v7+/v7+/v7++/z+/v5v9/7+/v/+/P7+///8/v7+/v79/v7+/f39/v79/f7+//79/f3+/f7+/v7+/v79//7///78U/3+//7+//3/////+P///f3//P/////////+/f///////v////7+/v////7///78U/3+//7+//3/////+P///f3//P/////////+/f///////v////7+/v////7//v3//f78/v79/v7////+/v//T////f///////v/+/////////v////v+/v////7//v3//f78/v79/v7////+/v//T////f///////v/+/////////v////v+/v////3///77+27+//v//vz+/////f///v7//v/+//7///7z8/7+///+/v7///7+//////3///77+27+//v//vz+/////f///v7//v/+//7///7z8/7+///+/v7///7+/////v/+/f///////v///////vr///7+//////75Uf///v////7+/P/9/P///////v/+/v/+/f///////v///////vr///7+//////75Uf///v////7+/P/9/P///////v/+/v/+/f///////v///////vr///7+//////75Uf///v////7+/P/9/P///////v/+//7///78U/3+//7+//3/////+P///f3//P/////////+/f///////v////7+/v////7///78U/3+//7+//3/////+P///f3//P/////////+/f///////v////7+/v///z////7//v////z///z//////v7///z//////////v/+/////////v///////////z////7//v////z///z//////v7///z//////////v/+/////////v////////////7+/v3+/v/++f5a+v7+/////v///f7//f7+/v/+/v///v7+//7//v/+//3+///+//7+/v3+/v/++f5a+v7+/////v///f7//f7+/v/+/v///v7+//7//v/+//3+///+/v79/f//////U//6/v/+//7///7+/v/+/v7+/v7//v/////9/v///v/+//7///78/v79/f//////U//6/v/+//7///7+/v/+/v7+/v7//v/////9/v///v/+//7///78/v79/f//////U//6/v/+//7///7+/v/+/v7+/v7//v/////9/v///v/+//7///78/////v7///////////7+/v////7+///+//7+/v78/f////z///7+/v///f7+Tv3//////v7///////////7+/v////7+///+//7+/v78/f////z///7+/v///f7+Tv3//v7+/v3+/f7+/v3+/f7+//7+/v7+/f7+/v7+/v7+/v79/v7+/v/+/v7//v5h/f7+/v7+/v3+/f7+/v3+/f7+//7+/v7+/f7+/v7+/v7+/v79/v7+/v/+/v7//v5h/f7+/f/9/f/////+/v/////+/v7+//1c/v7+//7+/v7+/v3///7+/v3+/v3+/f/+/v3++v///////////v/////+9//+//7+/v9h//7+/v/+/v7///7+//7v/v///////v7++v///////////v/////+9//+//7+/v9h//7+/v/+/v7///7+//7v/v///////v7+///+/v///////v///////1L///7///7///77+v/+/v////7++v7+/P///////v/////+/v///////v///////1L///7///7///77+v/+/v////7++v7+/P///////v///v7//v///v/+/v/+/v7+/vv///7//v7//v7+/P/+/v/+//7+/v7+Uv////7//v/+/v7//v///v/+/v/+/v7+/vv///7//v7//v7+/P/+/v/+//7+/v7+Uv////7//v/+/v79/f//////U//6/v/+//7///7+/v/+/v7+/v7//v/////9/v///v/+//7///78/v79/f//////U//6/v/+//7///7+/v/+/v7+/v7//v/////9/v///v/+//7///78//7+/v3+/v/++f5a+v7+/////v///f7//f7+/v/+/v///v7+//7//v/+//3+///+//7+/v3+/v/++f5a+v7+/////v///f7//f7+/v/+/v///v7+//7//v/+//3+///+//v///79/f3+/1P+/vX//////f///v7////////////9/P/////////////+//////v///79/f3+/1P+/vX//////f///v7////////////9/P/////////////+///////////////////////+///9///+//////////n+/v3///7///3///z9Tv///vn////////////////////+///9///+//////////n+/v3///7///3///z9Tv///vn////////////////////+///9///+//////////n+/v3///7///3///z9Tv///vn//v7//v7+/v79/P34aP7+/v7//v7+/f7//v7//v7+/v7+/v7+/v7+/v7+/vv+/v/+/v7//v7+/v79/P34aP7+/v7//v7+/f7//v7//v7+/v7+/v7+/v7+/v7+/vv+/v/+/v7//v7+/v79/P34aP7+/v7//v7+/f7//v7//v7+/v7+/v7+/v7+/v7+/vv+/v/+//r///79/v3+//b//1L//////P///v3//v/////////9/f/////////////+/v7///r///79/v3+//b//1L//////P///v3//v/////////9/f/////////////+/v7//v/+/v///////v/////+/v/8//7+//////7+/vv+/vv///7+/l3//vv7/P7//v7+/v/+/v///////v/////+/v/8//7+//////7+/vv+/vv///7+/l3//vv7/P7//v7+/v/+/v///////v/////+/v/8//7+//////7+/vv+/vv///7+/l3//vv7/P7//v7+///////////////////+///9///+//////////n+/v3///7///3///z9Tv///vn//f39/f7////+/f7+/v79+v3+//3+/v79/mj9/v79/v7//v79/f79/f7+/v/+/v3+/f39/f7////+/f7+/v79+v3+//3+/v79/mj9/v79/v7//v79/f79/f7+/v/+/v3+/f39/f7////+/f7+/v79+v3+//3+/v79/mj9/v79/v7//v79/f79/f7+/v/+/v3+/v7//v///v/+/v/+/v7+/vv///7//v7//v7+/P/+/v/+//7+/v7+Uv////7//v/+9/7+/v/+/v/+/v7+///+bP7+//7+//71//z+/v/+/v/+/v7+/v74//7//v7//v7+9/7+/v/+/v/+/v7+///+bP7+//7+//71//z+/v/+/v/+/v7+/v74//7//v7//v7+/P/+/////////v/////+/v74//39///+/////vz//vf////+//z//mH8+////v3+/P/+/////////v/////+/v74//39///+/////vz//vf////+//z//mH8+////v3+/v5v9/7+/v/+/P7+///8/v7+/v79/v7+/f39/v79/f7+//79/f3+/f7+/v7+/v79/v75XP7//v7//P/+/v/9/v7+//7+/v7+/f3+/f///v/////+/v7+/v////7+/v7+//7+/f7/+//9/v7+/v7//////f/+/f//Sf///v///////////////v/////+//////7+/f7/+//9/v7+/v7//////f/+/f//Sf///v///////////////v/////+/////v7+/v/////+/f/+/v/9/v7+//3+/v7+/v7+/v7+/f7///5b/f7+/v///v7//v79/z////7//v////z///z//////v7///z//////////v/+/////////v///////////z////7//v////z///z//////v7///z//////////v/+/////////v///////////z////7//v////z///z//////v7///z//////////v/+/////////v////////////r+/v7+/f7+/v7+/vz///7+/f7//lj///7+/v7//v/+/v7+/////v7///7+//7+//r+/v7+/f7+/v7+/vz///7+/f7//lj///7+/v7//v/+/v7+/////v7///7+//7+//r+/v7+/f7+/v7+/vz///7+/f7//lj///7+/v7//v/+/v7+/////v7///7+//7+///+/v///////v///////1L///7///7///77+v/+/v////7++v7+/P///////v///v79/v///////P7+/v/8/v78//7+/v7+/v7+/v7+/f7////8/v7+/v7+/v7///1e/v78/v///////v///v9e/v7+//79//7+/v7+/v79/P7///3+/v3//v7+/v7//vn8/v///v/////////////7///+///+//////////7+/f7///z///7///7++P///k7+//7//v3+/v9V/v7+/v7///7//v7/+/7//f7///7//v/+/v///////v7+/v7+/v7+//7//v3+/v9V/v7+/v7///7//v7/+/7//f7///7//v/+/v///////v7+/v7+/v7+//7//v3+/v9V/v7+/v7///7//v7/+/7//f7///7//v/+/v///////v7+/v7+/v7+///+/v///////v///////1L///7///7///77+v/+/v////7++v7+/P///////v/////+/v///////v///////1L///7///7///77+v/+/v////7++v7+/P///////v/////+/v///////v///////1L///7///7///77+v/+/v////7++v7+/P///////v////7///78/fT+//3+/v7//////f///v7//v/+//////9e9P///////v/////+//////7///78/fT+//3+/v7//////f///v7//v/+//////9e9P///////v/////+//////r+/v7+/f7+/v7+/vz///7+/f7//lj///7+/v7//v/+/v7+/////v7///7+//7+//r+/v7+/f7+/v7+/vz///7+/f7//lj///7+/v7//v/+/v7+/////v7///7+//7+//3//v5/+Pn+/vv9/fr//v7++P7+/v3+/f7+/v/+/v76+v7+/v7//v7+/v79/v7+//3//v5/+Pn+/vv9/fr//v7++P7+/v3+/f7+/v/+/v76+v7+/v7//v7+/v79/v7+//3///359fz9//z9/vz///7/bP7//f3//f/+/v7+/v/8+/7//v7//v///v7+/v////7///78U/3+//7+//3/////+P///f3//P/////////+/f///////v////7+/v///z////7//v////z///z//////v7///z//////////v/+/////////v////////////r///79/v3+//b//1L//////P///v3//v/////////9/f/////////////+/v7///v///79/f3+/1P+/vX//////f///v7////////////9/P/////////////+//////3///77+27+//v//vz+/////f///v7//v/+//7///7z8/7+///+/v7///7+//////7///78/fT+//3+/v7//////f///v7//v/+//////9e9P///////v/////+/////v3//v77/PT+/vv//v3/////+////v7+/v7+/v////7wcf7+///+/v///v/+/////v7//v7+/v79/P34aP7+/v7//v7+/f7//v7//v7+/v7+/v7+/v7+/v7+/vv+/v/+/v78/v///////v///v9e/v7+//79//7+/v7+/v79/P7///3+/v3//v7+/v7//vn8//7//v3//f78/v79/v7////+/v//T////f///////v/+/////////v////v+/v////7//v3//f78/v79/v7////+/v//T////f///////v/+/////////v////v+/v////7//v3+/v9V/v7+/v7///7//v7/+/7//f7///7//v/+/v///////v7+/v7+/v7+//7//v3+/v9V/v7+/v7///7//v7/+/7//f7///7//v/+/v///////v7+/v7+/v7+//7+/v7//////v/////+//r+//7+//7+//5d+P/9/v////7+9/7+/v7////+/v7///7+/v7//////v/////+//r+//7+//7+//5d+P/9/v////7+9/7+/v7////+/v7///7+/v7//////v/////+//r+//7+//7+//5d+P/9/v////7+9/7+/v7////+/v7//v/+///////////////+//9T//7+//////////3+/vn////+//z///j7/f////78/v/+///////////////+//9T//7+//////////3+/vn////+//z///j7/f////78/v/+///////////////+//9T//7+//////////3+/vn////+//z///j7/f////78///////////////////+///9///+//////////n+/v3///7///3///z9Tv///vn//v7+///////+/v7//v/9/v7+//7+/v7+//7+/v77Wf////z9/v7+/v7+/v3//f3+/v7+/v7////+///////9/v7+///+/v///v7+/v76/P/+/1z+/v7+/v7+/v7++/z+/v/+/v7//v////////79/v7+//7+//7+//7+/v5f+v////r//v7+/v7//f7/+/3+/////v7///////////7+/v////7+///+//7+/v78/f////z///7+/v///f7+Tv3////////////////////+///9//7//////////03+//n///7///z///36+P////7//v///v/////////////7///+///+//////////7+/f7///z///7///7++P///k7+/v78/v///////v///v9e/v7+//79//7+/v7+/v79/P7///3+/v3//v7+/v7//vn8/v7+//7//v/+/v79/P7+///////++v/+/v/////+/f////79/v/+/////lj+/f7+//3///359fz9//z9/vz///7/bP7//f3//f/+/v7+/v/8+/7//v7//v///v7+/v///v/+///////////////+//9T//7+//////////3+/vn////+//z///j7/f////78/v/+///////////////+//9T//7+//////////3+/vn////+//z///j7/f////78/v79/v///////P7+/v/8/v78//7+/v7+/v7+/v7+/f7////8/v7+/v7+/v7///1e//7+/f7/+//9/v7+/v7//////f/+/f//Sf///v///////////////v/////+//////7+/f7/+//9/v7+/v7//////f/+/f//Sf///v///////////////v/////+/////v7//v///v/+/v/+/v7+/vv///7//v7//v7+/P/+/v/+//7+/v7+Uv////7//v/+/v7//v///v/+/v/+/v7+/vv///7//v7//v7+/P/+/v/+//7+/v7+Uv////7//v/+/v7//v///v/+/v/+/v7+/vv///7//v7//v7+/P/+/v/+//7+/v7+Uv////7//v/+/z////7//v////z///z//////v7///z//////////v/+/////////v///////////z////7//v////z///z//////v7///z//////////v/+/////////v///////////z////7//v////z///z//////v7///z//////////v/+/////////v///////////v5v9/7+/v/+/P7+///8/v7+/v79/v7+/f39/v79/f7+//79/f3+/f7+/v7+/v79/v5v9/7+/v/+/P7+///8/v7+/v79/v7+/f39/v79/f7+//79/f3+/f7+/v7+/v79/fz+/v7////+/v/////+/v7+/1v9/v7+//7+/v7+/v7///79/v7+/v3+/v7+/f7+/fz+/v7////+/v/////+/v7+/1v9/v7+//7+/v7+/v7///79/v7+/v3+/v7+/f7+/fz+/v7////+/v/////+/v7+/1v9/v7+//7+/v7+/v7///79/v7+/v3+/v7+/f7+//r///79/v3+//b//1L//////P///v3//v/////////9/f/////////////+/v7//v75XP7//v7//P/+/v/9/v7+//7+/v7+/f3+/f///v/////+/v7+/v////7+/v7+//3///359fz9//z9/vz///7/bP7//f3//f/+/v7+/v/8+/7//v7//v///v7+/v////3///359fz9//z9/vz///7/bP7//f3//f/+/v7+/v/8+/7//v7//v///v7+/v///v79/f//////U//6/v/+//7///7+/v/+/v7+/v7//v/////9/v///v/+//7///78//7+/v3+/v/++f5a+v7+/////v///f7//f7+/v/+/v///v7+//7//v/+//3+///+/v7//v7+/v79/P34aP7+/v7//v7+/f7//v7//v7+/v7+/v7+/v7+/v7+/vv+/v/+/v7//v7+/v79/P34aP7+/v7//v7+/f7//v7//v7+/v7+/v7+/v7+/v7+/vv+/v/+/v79/v///////P7+/v/8/v78//7+/v7+/v7+/v7+/f7////8/v7+/v7+/v7///1e/v79/v///////P7+/v/8/v78//7+/v7+/v7+/v7+/f7////8/v7+/v7+/v7///1e/v7+//7//v/+/v79/P7+///////++v/+/v/////+/f////79/v/+/////lj+/f7+/v7+//7//v/+/v79/P7+///////++v/+/v/////+/f////79/v/+/////lj+/f7+/v7+/v/////+/f/+/v/9/v7+//3+/v7+/v7+/v7+/f7///5b/f7+/v///v7//v79/v7+/v/////+/f/+/v/9/v7+//3+/v7+/v7+/v7+/f7///5b/f7+/v///v7//v79/v7+///////+/v7//v/9/v7+//7+/v7+//7+/v77Wf////z9/v7+/v7+/v3//f3+/v7+///////+/v7//v/9/v7+//7+/v7+//7+/v77Wf////z9/v7+/v7+/v3//f3+//7///78/fT+//3+/v7//////f///v7//v/+//////9e9P///////v/////+//////3///359fz9//z9/vz///7/bP7//f3//f/+/v7+/v/8+/7//v7//v///v7+/v////3///359fz9//z9/vz///7/bP7//f3//f/+/v7+/v/8+/7//v7//v///v7+/v////7//v3//f78/v79/v7////+/v//T////f///////v/+/////////v////v+/v////7//v3//f78/v79/v7////+/v//T////f///////v/+/////////v////v+/v////7///78U/3+//7+//3/////+P///f3//P/////////+/f///////v////7+/v////7+/f7/+//9/v7+/v7//////f/+/f//Sf///v///////////////v/////+//////r///79/v3+//b//1L//////P///v3//v/////////9/f/////////////+/v7///r///79/v3+//b//1L//////P///v3//v/////////9/f/////////////+/v7///r+/v7+/f7+/v7+/vz///7+/f7//lj///7+/v7//v/+/v7+/////v7///7+//7+/v7+/v3+/f7+/v3+/f7+//7+/v7+/f7+/v7+/v7+/v79/v7+/v/+/v7//v5h/f7+/v7+///////+/v7//v/9/v7+//7+/v7+//7+/v77Wf////z9/v7+/v7+/v3//f3+/v3+/lj+/v7+/v39/v7+///+/v7+/f3//f/+///+/v/+/v/+//7//v///v79/v7+/v3+/lj+/v7+/v39/v7+///+/v7+/f3//f/+///+/v/+/v/+//7//v///v79/v7+/v3+/lj+/v7+/v39/v7+///+/v7+/f3//f/+///+/v/+/v/+//7//v///v79/v7+///////////////////+///9//7//////////03+//n///7///z///36+P////7////////////////////+///9//7//////////03+//n///7///z///36+P////7////////////////////+///9//7//////////03+//n///7///z///36+P////7//v79/v///////P7+/v/8/v78//7+/v7+/v7+/v7+/f7////8/v7+/v7+/v7///1e//7//v3//f78/v79/v7////+/v//T////f///////v/+/////////v////v+/v////7//v3//f78/v79/v7////+/v//T////f///////v/+/////////v////v+/v////7//v3//f78/v79/v7////+/v//T////f///////v/+/////////v////v+/v///v3+/lj+/v7+/v39/v7+///+/v7+/f3//f/+///+/v/+/v/+//7//v///v79/v7+/v7+///////+/v7//v/9/v7+//7+/v7+//7+/v77Wf////z9/v7+/v7+/v3//f3+/v7+///////+/v7//v/9/v7+//7+/v7+//7+/v77Wf////z9/v7+/v7+/v3//f3+/v7+/v7////+///////9/v7+///+/v///v7+/v76/P/+/1z+/v7+/v7+/v7++/z+/v7+/v7////+///////9/v7+///+/v///v7+/v76/P/+/1z+/v7+/v7+/v7++/z+//7+/f7/+//9/v7+/v7//////f/+/f//Sf///v///////////////v/////+//////7+/f7/+//9/v7+/v7//////f/+/f//Sf///v///////////////v/////+//////7+/f7/+//9/v7+/v7//////f/+/f//Sf///v///////////////v/////+//////3//v5/+Pn+/vv9/fr//v7++P7+/v3+/f7+/v/+/v76+v7+/v7//v7+/v79/v7+/f/9/f/////+/v/////+/v7+//1c/v7+//7+/v7+/v3///7+/v3+/v3+/f/+/v3+/f/9/f/////+/v/////+/v7+//1c/v7+//7+/v7+/v3///7+/v3+/v3+/f/+/v3+/f/9/f/////+/v/////+/v7+//1c/v7+//7+/v7+/v3///7+/v3+/v3+/f/+/v3+9/7+/v/+/v/+/v7+///+bP7+//7+//71//z+/v/+/v/+/v7+/v74//7//v7//v7+Wf/+//7//////v/////++f7+//79///7/v7+/v7+/v7+//7+/v/8//v+/v///v7+//3///77+27+//v//vz+/////f///v7//v/+//7///7z8/7+///+/v7///7+/////v3//v77/PT+/vv//v3/////+////v7+/v7+/v////7wcf7+///+/v///v/+/////v/+/f///////v///////vr///7+//////75Uf///v////7+/P/9/P///////v/+/v/+/f///////v///////vr///7+//////75Uf///v////7+/P/9/P///////v/+/v/+/v7//v////////79/v7+//7+//7+//7+/v5f+v////r//v7+/v7//f7/+/3+/f/9/f/////+/v/////+/v7+//1c/v7+//7+/v7+/v3///7+/v3+/v3+/f/+/v3+/v7+/v/////+/f/+/v/9/v7+//3+/v7+/v7+/v7+/f7///5b/f7+/v///v7//v79/v7+/v/////+/f/+/v/9/v7+//3+/v7+/v7+/v7+/f7///5b/f7+/v///v7//v79//7+/f7/+//9/v7+/v7//////f/+/f//Sf///v///////////////v/////+/////v/+/v///////v/////+/vn///7+/v7+//73+//+/v////7+XP7+/v7///7//v7+/v/+/v///////v/////+/vn///7+/v7+//73+//+/v////7+XP7+/v7///7//v7+/v7//v7////////////+///4//7+//////////j//2L///////z+//nz+/////7+/v7//v7////////////+///4//7+//////////j//2L///////z+//nz+/////7+/v7+//7//v/+/v79/P7+///////++v/+/v/////+/f////79/v/+/////lj+/f7+/v7+//7//v/+/v79/P7+///////++v/+/v/////+/f////79/v/+/////lj+/f7+/v7+//7//v/+/v79/P7+///////++v/+/v/////+/f////79/v/+/////lj+/f7+/////v7///////////7+/v////7+///+//7+/v78/f////z///7+/v///f7+Tv3//////v7///////////7+/v////7+///+//7+/v78/f////z///7+/v///f7+Tv3//////v7///////////7+/v////7+///+//7+/v78/f////z///7+/v///f7+Tv3//fz+/v7////+/v/////+/v7+/1v9/v7+//7+/v7+/v7///79/v7+/v3+/v7+/f7+/fz+/v7////+/v/////+/v7+/1v9/v7+//7+/v7+/v7///79/v7+/v3+/v7+/f7+/fz+/v7////+/v/////+/v7+/1v9/v7+//7+/v7+/v7///79/v7+/v3+/v7+/f7+///////////////////+///8//7+//////////n+//T////+//z///xV/f////7+/v3+/lj+/v7+/v39/v7+///+/v7+/f3//f/+///+/v/+/v/+//7//v///v79/v7+/v3+/lj+/v7+/v39/v7+///+/v7+/f3//f/+///+/v/+/v/+//7//v///v79/v7+/v3+/lj+/v7+/v39/v7+///+/v7+/f3//f/+///+/v/+/v/+//7//v///v79/v7+//v///79/f3+/1P+/vX//////f///v7////////////9/P/////////////+//////v///79/f3+/1P+/vX//////f///v7////////////9/P/////////////+//////r///79/v3+//b//1L//////P///v3//v/////////9/f/////////////+/v7///r///79/v3+//b//1L//////P///v3//v/////////9/f/////////////+/v7///7+/v3+/v/++f5a+v7+/////v///f7//f7+/v/+/v///v7+//7//v/+//3+///+/v7+/v/////+/f/+/v/9/v7+//3+/v7+/v7+/v7+/f7///5b/f7+/v///v7//v79/v7+/v/////+/f/+/v/9/v7+//3+/v7+/v7+/v7+/f7///5b/f7+/v///v7//v79/v7+/v/////+/f/+/v/9/v7+//3+/v7+/v7+/v7+/f7///5b/f7+/v///v7//v79/f39/f7////+/f7+/v79+v3+//3+/v79/mj9/v79/v7//v79/f79/f7+/v/+/v3+/f39/f7////+/f7+/v79+v3+//3+/v79/mj9/v79/v7//v79/f79/f7+/v/+/v3+/v/+/f///////v///////vr///7+//////75Uf///v////7+/P/9/P///////v/+///+/v///////v///////1L///7///7///77+v/+/v////7++v7+/P///////v////7+/v7//////v/////+//r+//7+//7+//5d+P/9/v////7+9/7+/v7////+/v7//v/+/v///////v/////+/vn///7+/v7+//73+//+/v////7+XP7+/v7///7//v7+/P/+/////////v/////+/v74//39///+/////vz//vf////+//z//mH8+////v3+/P/+/////////v/////+/v74//39///+/////vz//vf////+//z//mH8+////v3+Wf/+//7//////v/////++f7+//79///7/v7+/v7+/v7+//7+/v/8//v+/v///v7+Wf/+//7//////v/////++f7+//79///7/v7+/v7+/v7+//7+/v/8//v+/v///v7+/v7+///////+/v7//v/9/v7+//7+/v7+//7+/v77Wf////z9/v7+/v7+/v3//f3+/v7+///////+/v7//v/9/v7+//7+/v7+//7+/v77Wf////z9/v7+/v7+/v3//f3+/v/+/v7//v////////79/v7+//7+//7+//7+/v5f+v////r//v7+/v7//f7/+/3+/v/+/v7//v////////79/v7+//7+//7+//7+/v5f+v////r//v7+/v7//f7/+/3+/v7//v7+/v79/P34aP7+/v7//v7+/f7//v7//v7+/v7+/v7+/v7+/v7+/vv+/v/+/v7//v7+/v79/P34aP7+/v7//v7+/f7//v7//v7+/v7+/v7+/v7+/v7+/vv+/v/+/v7+//7//v/+/v79/P7+///////++v/+/v/////+/f////79/v/+/////lj+/f7+/v7+//7//v/+/v79/P7+///////++v/+/v/////+/f////79/v/+/////lj+/f7+/v7+//7//v/+/v79/P7+///////++v/+/v/////+/f////79/v/+/////lj+/f7+/v/+/v///////v/////+/vn///7+/v7+//73+//+/v////7+XP7+/v7///7//v7+/v/+/v///////v/////+/vn///7+/v7+//73+//+/v////7+XP7+/v7///7//v7+/v/+/v///////v/////+/vn///7+/v7+//73+//+/v////7+XP7+/v7///7//v7+/////v7///////////7+/v////7+///+//7+/v78/f////z///7+/v///f7+Tv3//v/+/v7//v////////79/v7+//7+//7+//7+/v5f+v////r//v7+/v7//f7/+/3+/v/+/v7//v////////79/v7+//7+//7+//7+/v5f+v////r//v7+/v7//f7/+/3+/v79/f//////U//6/v/+//7///7+/v/+/v7+/v7//v/////9/v///v/+//7///78//7///78/fT+//3+/v7//////f///v7//v/+//////9e9P///////v/////+//////7///78/fT+//3+/v7//////f///v7//v/+//////9e9P///////v/////+//////7///78/fT+//3+/v7//////f///v7//v/+//////9e9P///////v/////+////Wf/+//7//////v/////++f7+//79///7/v7+/v7+/v7+//7+/v/8//v+/v///v7+Wf/+//7//////v/////++f7+//79///7/v7+/v7+/v7+//7+/v/8//v+/v///v7+/v7+/v7////+///////9/v7+///+/v///v7+/v76/P/+/1z+/v7+/v7+/v7++/z+/v78/v///////v///v9e/v7+//79//7+/v7+/v79/P7///3+/v3//v7+/v7//vn8/v78/v///////v///v9e/v7+//79//7+/v7+/v79/P7///3+/v3//v7+/v7//vn8/v78/v///////v///v9e/v7+//79//7+/v7+/v79/P7///3+/v3//v7+/v7//vn8/v7//v///v/+/v/+/v7+/vv///7//v7//v7+/P/+/v/+//7+/v7+Uv////7//v/+/v7//v///v/+/v/+/v7+/vv///7//v7//v7+/P/+/v/+//7+/v7+Uv////7//v/+/v7//v///v/+/v/+/v7+/vv///7//v7//v7+/P/+/v/+//7+/v7+Uv////7//v/+/v75XP7//v7//P/+/v/9/v7+//7+/v7+/f3+/f///v/////+/v7+/v////7+/v7+/v75XP7//v7//P/+/v/9/v7+//7+/v7+/f3+/f///v/////+/v7+/v////7+/v7+/v/+/v///////v/////+/vn///7+/v7+//73+//+/v////7+XP7+/v7///7//v7+//7+/v7//////v/////+//r+//7+//7+//5d+P/9/v////7+9/7+/v7////+/v7////////////////////+///9//7//////////03+//n///7///z///36+P////7////////////////////+///9//7//////////03+//n///7///z///36+P////7//v7//v7////////////+///4//7+//////////j//2L///////z+//nz+/////7+/v7//v7////////////+///4//7+//////////j//2L///////z+//nz+/////7+///////////////////+///8//7+//////////n+//T////+//z///xV/f////7+///////////////////+///8//7+//////////n+//T////+//z///xV/f////7++v///////////v/////+9//+//7+/v9h//7+/v/+/v7///7+//7v/v///////v7++v///////////v/////+9//+//7+/v9h//7+/v/+/v7///7+//7v/v///////v7+/P////7//v///v////7++f7///7//v/w//7+/v/+//////7+/v5d/v///////v7//P////7//v///v////7++f7///7//v/w//7+/v/+//////7+/v5d/v///////v7///r+/v7+/f7+/v7+/vz///7+/f7//lj///7+/v7//v/+/v7+/////v7///7+//7+/v3//v77/PT+/vv//v3/////+////v7+/v7+/v////7wcf7+///+/v///v/+/////v3//v77/PT+/vv//v3/////+////v7+/v7+/v////7wcf7+///+/v///v/+/////////v7///////////7+/v////7+///+//7+/v78/f////z///7+/v///f7+Tv3//////v7///////////7+/v////7+///+//7+/v78/f////z///7+/v///f7+Tv3///7//v3//f78/v79/v7////+/v//T////f///////v/+/////////v////v+/v////7//v3//f78/v79/v7////+/v//T////f///////v/+/////////v////v+/v////7//v3+/v9V/v7+/v7///7//v7/+/7//f7///7//v/+/v///////v7+/v7+/v7+//7//v3+/v9V/v7+/v7///7//v7/+/7//f7///7//v/+/v///////v7+/v7+/v7+///////////////////+///9//7//////////03+//n///7///z///36+P////7//v/+/v///////v/////+/v/8//7+//////7+/vv+/vv///7+/l3//vv7/P7//v7+/v/+/v///////v/////+/v/8//7+//////7+/vv+/vv///7+/l3//vv7/P7//v7+//7//v3+/v9V/v7+/v7///7//v7/+/7//f7///7//v/+/v///////v7+/v7+/v7+/P////7//v///v////7++f7///7//v/w//7+/v/+//////7+/v5d/v///////v7//P////7//v///v////7++f7///7//v/w//7+/v/+//////7+/v5d/v///////v7//f/9/f/////+/v/////+/v7+//1c/v7+//7+/v7+/v3///7+/v3+/v3+/f/+/v3+/f/9/f/////+/v/////+/v7+//1c/v7+//7+/v7+/v3///7+/v3+/v3+/f/+/v3+/f/9/f/////+/v/////+/v7+//1c/v7+//7+/v7+/v3///7+/v3+/v3+/f/+/v3+/z////7//v////z///z//////v7///z//////////v/+/////////v///////////v///v/////////////7///+///+//////////7+/f7///z///7///7++P///k7+///////////////////+///8//7+//////////n+//T////+//z///xV/f////7+///////////////////+///8//7+//////////n+//T////+//z///xV/f////7+///////////////////+///8//7+//////////n+//T////+//z///xV/f////7+/z////7//v////z///z//////v7///z//////////v/+/////////v///////////z////7//v////z///z//////v7///z//////////v/+/////////v////////////r///79/v3+//b//1L//////P///v3//v/////////9/f/////////////+/v7///r///79/v3+//b//1L//////P///v3//v/////////9/f/////////////+/v7///v///79/f3+/1P+/vX//////f///v7////////////9/P/////////////+//////v///79/f3+/1P+/vX//////f///v7////////////9/P/////////////+//////7///78U/3+//7+//3/////+P///f3//P/////////+/f///////v////7+/v////7///78U/3+//7+//3/////+P///f3//P/////////+/f///////v////7+/v///v7//v///v/+/v/+/v7+/vv///7//v7//v7+/P/+/v/+//7+/v7+Uv////7//v/+//7+/f7/+//9/v7+/v7//////f/+/f//Sf///v///////////////v/////+//////7+/f7/+//9/v7+/v7//////f/+/f//Sf///v///////////////v/////+/////v79/f//////U//6/v/+//7///7+/v/+/v7+/v7//v/////9/v///v/+//7///78/v3+/lj+/v7+/v39/v7+///+/v7+/f3//f/+///+/v/+/v/+//7//v///v79/v7+/v3+/lj+/v7+/v39/v7+///+/v7+/f3//f/+///+/v/+/v/+//7//v///v79/v7+/v3+/lj+/v7+/v39/v7+///+/v7+/f3//f/+///+/v/+/v/+//7//v///v79/v7+//7+/v3+/v/++f5a+v7+/////v///f7//f7+/v/+/v///v7+//7//v/+//3+///+//7+/v3+/v/++f5a+v7+/////v///f7//f7+/v/+/v///v7+//7//v/+//3+///+/v/+///////////////+//9T//7+//////////3+/vn////+//z///j7/f////78/v/+///////////////+//9T//7+//////////3+/vn////+//z///j7/f////78/v/+/v///////v/////+/v/8//7+//////7+/vv+/vv///7+/l3//vv7/P7//v7+/fz+/v7////+/v/////+/v7+/1v9/v7+//7+/v7+/v7///79/v7+/v3+/v7+/f7+/fz+/v7////+/v/////+/v7+/1v9/v7+//7+/v7+/v7///79/v7+/v3+/v7+/f7+//v///79/f3+/1P+/vX//////f///v7////////////9/P/////////////+//////v///79/f3+/1P+/vX//////f///v7////////////9/P/////////////+//////v///79/f3+/1P+/vX//////f///v7////////////9/P/////////////+/////fz+/v7////+/v/////+/v7+/1v9/v7+//7+/v7+/v7///79/v7+/v3+/v7+/f7+/v7+/v3+/f7+/v3+/f7+//7+/v7+/f7+/v7+/v7+/v79/v7+/v/+/v7//v5h/f7+/v7+/v3+/f7+/v3+/f7+//7+/v7+/f7+/v7+/v7+/v79/v7+/v/+/v7//v5h/f7+/v7+/v3+/f7+/v3+/f7+//7+/v7+/f7+/v7+/v7+/v79/v7+/v/+/v7//v5h/f7+/v/+/f///////v///////vr///7+//////75Uf///v////7+/P/9/P///////v/+/v/+/f///////v///////vr///7+//////75Uf///v////7+/P/9/P///////v/+/v75XP7//v7//P/+/v/9/v7+//7+/v7+/f3+/f///v/////+/v7+/v////7+/v7+/v75XP7//v7//P/+/v/9/v7+//7+/v7+/f3+/f///v/////+/v7+/v////7+/v7+/v///v/////////////7///+///+//////////7+/f7///z///7///7++P///k7+/v///v/////////////7///+///+//////////7+/f7///z///7///7++P///k7+/v///v/////////////7///+///+//////////7+/f7///z///7///7++P///k7+//7//v3+/v9V/v7+/v7///7//v7/+/7//f7///7//v/+/v///////v7+/v7+/v7+//7//v3+/v9V/v7+/v7///7//v7/+/7//f7///7//v/+/v///////v7+/v7+/v7+//7//v3+/v9V/v7+/v7///7//v7/+/7//f7///7//v/+/v///////v7+/v7+/v7+//3///77+27+//v//vz+/////f///v7//v/+//7///7z8/7+///+/v7///7+//////3///77+27+//v//vz+/////f///v7//v/+//7///7z8/7+///+/v7///7+//////7///78/fT+//3+/v7//////f///v7//v/+//////9e9P///////v/////+//////7///78/fT+//3+/v7//////f///v7//v/+//////9e9P///////v/////+/////v3//v77/PT+/vv//v3/////+////v7+/v7+/v////7wcf7+///+/v///v/+/////v3//v77/PT+/vv//v3/////+////v7+/v7+/v////7wcf7+///+/v///v/+///////+/v///////v///////1L///7///7///77+v/+/v////7++v7+/P///////v/////+/v///////v///////1L///7///7///77+v/+/v////7++v7+/P///////v////7+/v7//////v/////+//r+//7+//7+//5d+P/9/v////7+9/7+/v7////+/v7///7+/v7//////v/////+//r+//7+//7+//5d+P/9/v////7+9/7+/v7////+/v7////////////////////+///9///+//////////n+/v3///7///3///z9Tv///vn//v/+/v///////v/////+/v/8//7+//////7+/vv+/vv///7+/l3//vv7/P7//v7+/v/+///////////////+//9T//7+//////////3+/vn////+//z///j7/f////78/P/+/////////v/////+/v74//39///+/////vz//vf////+//z//mH8+////v3+//v///79/f3+/1P+/vX//////f///v7////////////9/P/////////////+///////////////////////+///8//7+//////////n+//T////+//z///xV/f////7+///////////////////+///8//7+//////////n+//T////+//z///xV/f////7+APcEAQAJ/AIB/vwABvwBBP3/BAEA/QAA/gUA/fwB/gABBAECAQEA/gD9+wEE//wCAPcEAQAJ/AIB/vwABvwBBP3/BAEA/QAA/gUA/fwB/gABBAECAQEA/gD9+wEE//wCAPcEAQAJ/AIB/vwABvwBBP3/BAEA/QAA/gUA/fwB/gABBAECAQEA/gD9+wEE//wC//UFAQIK+gQD+/wABfwBBP78BAEB/QD+/gYD/fsD/AL/BAIBAAH//gL+/f8G/fwA//UFAQIK+gQD+/wABfwBBP78BAEB/QD+/gYD/fsD/AL/BAIBAAH//gL+/f8G/fwAAPgHAAIL/AQB/v0BBf0AA/39BQIB/gH//QYA/fsA///+AwEC/wH+/wD8+gEG/fsB/Qf9/fsTCg37/Qn8/Aj+/f39D/39+w79+/39/f39/f0LDv39/f3+/P3+/f38/f39/Qf9/fsTCg37/Qn8/Aj+/f39D/39+w79+/39/f39/f0LDv39/f3+/P3+/f38/f39/gf+/fsUCQ78/Qn8/Aj+/f39D/39+w/9+/3+/f39/f0KDv39/f39/P39/vz8/P39/gf+/fsUCQ78/Qn8/Aj+/f39D/39+w/9+/3+/f39/f0KDv39/f39/P39/vz8/P39/Qj9/foXCxD7/Qr8+wr9/fz9Ev39+xD9+v39/f39/f0LEP39/f38/P39/Pz7/P39/fz9/f3+/f79Df0OE/78/f39/v39+/39/f3+/f38Ef7+/v0R/f7+/f3+/RD+/f0S/f7+/v7////+/v/+/v79/v4M/v38/v7+/v7+/gr9/g3+//7+/hD+/g8KDP7+/vv9/f7+/v7////+/v/+/v79/v4M/v38/v7+/v7+/gr9/g3+//7+/hD+/g8KDP7+/vv9/fz9/f3+/f79Df0OE/78/f39/v39+/39/f3+/f38Ef7+/v0R/f7+/f3+/RD+/f0S/f7+/v7////+/v/+/v79/v4M/v38/v7+/v7+/gr9/g3+//7+/hD+/g8KDP7+/vv9/fz9/f3+/f79Dv0QFP38/f39/vz9/P39/f3+/f39Ef7+/v0S/f39/f3+/RD9/PwS/f79/v7+/v7+/v7+/v79/v4L//z8/v7+//7+/gn9/Q3///7+/hD+/hALDf7//fv8/fz9/f3+/f79Dv0QFP38/f39/vz9/P39/f3+/f39Ef7+/v0S/f39/f3+/RD9/PwS/f79/v7+/v7+/v7+/v79/v4L//z8/v7+//7+/gn9/Q3///7+/hD+/hALDf7//fv8/f79/v7+/v7+/v7+/v79/v4L//z8/v7+//7+/gn9/Q3///7+/hD+/hALDf7//fv8/f39/f3+/f79D/0RFf38/f78/vz9+/39/P39/f38E/3+/vwS/P39/P39/RL9/P0T/P7+/v7+/v79/v/+/v79/v4P/v38/v7+/v7+/Qv9/Q7//v39/hH+/RAMDf7+/fv9/P7+/v7+/v79/v/+/v79/v4P/v38/v7+/v7+/Qv9/Q7//v39/hH+/RAMDf7+/fv9EP////7//////v/////+E/7///3+//8O//3+/v/+/v////7+/v8O//7//////v7+EP////7//////v/////+E/7///3+//8O//3+/v/+/v////7+/v8O//7//////v7+///+/v/////////////+/w7///7+//////4QDv/+/v////7+Ef7+/f/////+///////+/v/////////////+/w7///7+//////4QDv/+/v////7+Ef7+/f/////+////EP////7//////v/////+E/7///3+//8O//3+/v/+/v////7+/v8O//7//////v7+///+/v/////////////+/w7///7+//////4QDv/+/v////7+Ef7+/f/////+////D////v///////v7////+FP/+//7+//8N//3+/v/+/v////7+/v8P/v7+/v7//v/+//7+/v///////v///////w////7///////4RDv/+/v/////+EP7+/f///////v/+D////v///////v7////+FP/+//7+//8N//3+/v/+/v////7+/v8P/v7+/v7//v/+D////v///////v7////+FP/+//7+//8N//3+/v/+/v////7+/v8P/v7+/v7//v/+//7+/v///////v///////w////7///////4RDv/+/v/////+EP7+/f///////v/+//7+/v///////v///////w////7///////4RDv/+/v/////+EP7+/f///////v/+Ev/+/////////v/////+FP7+//7+//8Q//7+/v/+/v7///7+/v4R/v7//////v7+Ev/+/////////v/////+FP7+//7+//8Q//7+/v/+/v7///7+/v4R/v7//////v7+/v7+/v///////v/+/v/+/xD+///+///+//4SEP/+/v/+//7+Ev/+/f////////7//v7+/v///////v/+/v/+/xD+///+///+//4SEP/+/v/+//7+Ev/+/f////////7///8XEv/////+/v/+///+///////+/v//D/7//v/////////+/////////////////w3///7+/v7//xD//w///////v////7////////////+/v////8A//////////////7////8/RL///z//v7//////f////7///////////8QFP///////v////////////8XEv/////+/v/+///+///////+/v//D/7//v/////////+//////////////////8WE////v///f/+///+/////v/+/v//EP/+/v///v/////+///////////////+//8WE////v///f/+///+/////v/+/v//EP/+/v///v/////+///////////////+/wz///7+/v7//xD//xD//////v////7///8A///////+/v////////////////////7////9/RP///3///0A/////f////////////////8PFP////////////////////8aFP///v///v///v/+//7////+/v//Ef7+/////////////v7//v////7//v/+/w3////+/v7//xL//xH///8A/v////7////////////+/v////////////////////7///79/Rb+//z//v7//////f////7//v////////8QFv////////////////////////////////////////////////////////////////7///////////8VEf////8XE/8A/wD//v/////+/////////////v7///////8A//////////////////////////8AAAAA//8A/wAV////AP///////////////v8A/////////////v///xD///////8AAAAA//8A/wAV////AP///////////////v8A/////////////v///xD/////AP/9Ef7///7///4A////F/8A/v7//v/////////+/v///wAA////////////////////////Ef8T/v////8A/////////////////wAA/wD///////8A////AAD+//////////////////////////////////////////////7///////////8VEf////////8AAAAA//8A/wAV////AP///////////////v8A/////////////v///xD/////////////////////AP///////////////////////////////wD///8WEf////////8A/////wD///8V////////////AP///////v8AAP7//////////v///xH+////////////////////AP///////////////////////////////wD///8WEf////8XFP///wD//v/////+/////////////v////////////////////////////////////8A/////wD///8V////////////AP///////v8AAP7//////////v///xH+//////8A/////wD///8V////////////AP///////v8AAP7//////////v///xH+AP/////9EP7///7///7///8AFwAA//8A/wD/AP///wD//v///////////////wD///////8A////Ev8U/v////8A/////////////////wD///////8A///////////+//////////////////////////////////////////////7///////////8XE/////8aFP///////v///////////////////v////////////////7///////////////////8A/////////wAW////////////////////////AP////8A/////v8A/xH+//////8A/////////wAW////////////////////////AP////8A/////v8A/xH+//////79Ev7///////7///8AGQD///4A/v////8A/wD//v8A//////8A////////////////////E/8U/v//AP/////////////////////////////////////////+/wAAAAAAAP8AAAAAAAD/AAAAAAD/AAAAAAAAAAD//wD/ABUAAAD/AAAAAAAA//8A/wAAAAAAAP8AAAAAAAD/AAAAAAD/AAAAAAAAAAD//wD/ABUAAAD/AAAAAAAA//8AAAAAAP8A/wD/AAD/AAAAAAAA/wAAEgAA/wAAAAAAAAAAAAAAAAAAAAAAAP//AAAAAAAAAP8A/wD/AAD/AAAAAAAA/wAAEgAA/wAAAAAAAAAAAAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAAAAAD/AAAAAAAAAAAAAAAAAAD//wAAAP8AAAAAAAAA/wAAEgAAAAAAAP///wD/AP8A/wAAAAAAAP8A//8AAAAAAAAAAAAA//8AAAAA/wAAAP8W/wD//////wAAAAD//wD/AP8A/v8AAP//AAD/ABj//wD//wAAAAD///8A/wD/AP8AAP8A/////wAAAAD//wD/AP8A/v8AAP//AAD/ABj//wD//wAAAAD///8A/wD/AP8AAP8AAAAA/wAA////AAD/AAAAAAAA/wAA/wAAEQAA/wAAAAAAAAAAAAAAAAAAAAD/AAAAAP8AAAAA/wAT////AP8AAAAAAAAA/wAA/wAAAAAAAAD/AAAAAAAAAP//AP///wAAAP8AAAAA/wAT////AP8AAAAAAAAA/wAA/wAAAAAAAAD/AAAAAAAAAP//AP///wAAAP4AAAD//wAAAAAAAP8AAP8A//8A/xQAAAAAAAAAAAD/AAAAAAAAAAAAAAAAAAAAAP8A//8d/v4AAP4A//4AAAAA/gAAAP8A/wAAAAAAAAD//gAAAAAAAAD/AAD/AP8AAP8A/wAAAAAA/wAA/wAAAP8AAAAAAAAAAP8A/wAA/wAAAAAAAAAAEwAAAAAAAAAAAP8A/wAAAAAA/wAA/wAAAP8AAAAAAAAAAP8A/wAA/wAAAAAAAAAAEwAAAAAAAAAA//8AAAAAAAAAAAAAAAAAAAAAABX///8AAAD/AAAA/wAAAP8A/wD/////AP8A//8A//8AAAAAAAAAAAAAAAAAAAAAABX///8AAAD/AAAA/wAAAP8A/wD/////AP8A//8AAP8AAP8A/wD//wD9GP8AAAAAAAD///8AAAAA/wAAAAAA/wD/AAAAAP8AAP8AAAAA/wD/AAAAAAAA/wAAAAD/AAD/AP///wAAAP8AAP8A/wAAAAD//wAAAP8AAAAAAAAWAP8AAP8AAAAAAP///wAAAAAAAAAA/wAA/wAAAAAA/wAAAP//AAAAAAAAABQA////AP///wAAAAAA/wD//wD/AAAAAP8AAAAAAAAAAP8A/wAAAAAV/wAA/wAAAP8A/wD/AP8AAAAAAAAA/wAAAAD//wAAAAAAAAAAAAAAAAD/FQAAAP//AAAA/wAAAP8A////AAD/AAAAAAAAAAAAAP//AAAAAAAAAP8AAP8AAAAW/wAAAP8A//8A//8A/wAA//8AAAD/AAAAAAAAAAAAAP//AAAAAAAAAP8AAP8AAAAW/wAAAP8A//8A//8A/wAA//8A/wD//wAAAAAAAAAAAAAA////AP8V/wAAAAAAAP///wAAAAAAAP8A//8A/wAA/////wD//wAAAAAAAAAAAAAA////AP8V/wAAAAAAAP///wAAAAAAAP8A//8A/wAA////AP8AABT/AAD/AP//AP8AAAAAAAAA//8A/wAAAAD/AAAAAAAAAAAAAAAAAP//AAAAAP8AABT/AAD/AP//AP8AAAAAAAAA//8A/wAAAAD/AAAAAAAAAAAAAAAAAP//AAAA/wAAAAAAAP8AAAAAAAD/AAAAAAD/AAAAAAAAAAD//wD/ABUAAAD/AAAAAAAA//8AAAAAAP8A/wD/AAD/AAAAAAAA/wAAEgAA/wAAAAAAAAAAAAAAAAAAAAAAAP//AAAA/////wAAAAD//wD/AP8A/v8AAP//AAD/ABj//wD//wAAAAD///8A/wD/AP8AAP8AAP8AAAAA/wAT////AP8AAAAAAAAA/wAA/wAAAAAAAAD/AAAAAAAAAP//AP///wAAAP8A/wAAAAAA/wAA/wAAAP8AAAAAAAAAAP8A/wAA/wAAAAAAAAAAEwAAAAAAAAAA//8AAAAAAAAAAAAAAAAAAAAAABX///8AAAD/AAAA/wAAAP8A/wD/////AP8A//8AAAD/AAAAAAAAAAAAAP//AAAAAAAAAP8AAP8AAAAW/wAAAP8A//8A//8A/wAA//8A/wD//wAAAAAAAAAAAAAA////AP8V/wAAAAAAAP///wAAAAAAAP8A//8A/wAA////AP8AABT/AAD/AP//AP8AAAAAAAAA//8A/wAAAAD/AAAAAAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAAAAAD/AAAAAAD/AAAAAAAA/////wAAABYAAAD/AAAA/wAA//8AAAAAAP8A/wD//wD//wAAAAAAAAAAEgAA/wAAAAAAAAAAAAAAAAAAAAAAAP8AAAAA//////8AAAD//wAAAP///wAAAP8AAP//ABgA/////wAAAAAA/wD/AAAAAAAAAP8AAAAAAP8A/wAU////AP8AAAAAAP8A/gAA/wAAAAAAAAD/AAAAAAAA/wAAAP8AAAAAAP8A/wAA/wD//wAAAAAAAP8AAP8AAAAA/wAA/wAA/wAAAAAAAAAAFAAAAAAAAAAA//8AAAAAAAAA/wAAAAD/////ABX/AAAAAP8A/wD//wAAAAD/AAAA/wAAAAAA/wD/AAD/AAAA/wAAAAAAAAD/AP8AAAAAAP8AAAAAAP8X/gAAAP4A/////wAA/wAA//8A/wD//wAAAAAAAAAAAAD/AAAAAP8VAP//AAD/AP8AAP8AAP//AP8AAP///wAA//8AAP//ABUA/////////wAAAAAA/wAA//8A/wAAAAAAAAAAAAD/AAAAAAAAAP//AAAAAAAAAAAAAAAAAAAAAAD/AAAAAAD/AAAAAAAA/////wAAABYAAAD/AAAA/wAA//8AAAAAAAAAAAAAAAAAAAD/AAAAAAD/AAAAAAAA/////wAAABYAAAD/AAAA/wAA//8AAAAAAP8A/wD//wD//wAAAAAAAAAAEgAA/wAAAAAAAAAAAAAAAAAAAAAAAP8AAAAAAAAAAP8A/wD//wD//wAAAAAAAAAAEgAA/wAAAAAAAAAAAAAAAAAAAAAAAP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wD//wAAAP8AAAAAAAAA////Ev8AAP8AAP8A/wD/AP//////AAAA/wAA/wAA/wAA/wAAAAD/AAAA/wAAAAAAAP8W/wAA//////8AAAD//wAAAP///wAAAP8AAP//ABgA/////wAAAAAA/wD/AAAAAAAAAP8A//////8AAAD//wAAAP///wAAAP8AAP//ABgA/////wAAAAAA/wD/AAAAAAAAAP8AAAD//wAA/wD/AAD/AAAAAAAA/wAA/wAAEQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP8A/wAU////AP8AAAAAAP8A/gAA/wAAAAAAAAD/AAAAAAAA/wAAAP8AAAAAAAAAAP8A/wAU////AP8AAAAAAP8A/gAA/wAAAAAAAAD/AAAAAAAA/wAAAP8AAAAAAP4A/wAA/wAA//8AAP8AAAAA/wAAABQAAAAAAAAAAAAA/wAAAAAA/wAAAP//AAAAAP8AAP8d/v8AAP8A//4AAAAA/v8A//8A/wAAAP8AAAD//wAAAAAAAAAAAP//AAAAAP8A/wAA/wD//wAAAAAAAP8AAP8AAAAA/wAA/wAA/wAAAAAAAAAAFAAAAAAAAAAAAP8A/wAA/wD//wAAAAAAAP8AAP8AAAAA/wAA/wAA/wAAAAAAAAAAFAAAAAAAAAAA//8AAAAAAAAA/wAAAAD/////ABX/AAAAAP8A/wD//wAAAAD/AAAA/wAAAAAA/wD///8AAAAAAAAA/wAAAAD/////ABX/AAAAAP8A/wD//wAAAAD/AAAA/wAAAAAA/wD/AP8AAAAA/wD////+GP8AAP8A//8A//8AAAAAAAAAAAAAAAD/AAAA//8AAP//AAD//wD//wAAAAAA/wD/AAD/AAD/AAAAAAAAAAAAAAAA/wAAAAD/AP8AAAAAAP8AAP8WAP8AAP8AAAAAAAD//wAAAAAAAP8A/wAAAAAAAAAA/wAAAAD/AAAAAAAAABQA////////AAAAAAAA/wAAAAD/AAAAAP///wAAAP8AAAAA/wAAAAAW/wD//wAAAP8AAP//AP8AAAAAAAAA/wAAAAD/AP8AAAD/AAD/AP8AAAD/FQAAAP///wAA/wAA//8A//8AAAD/AAAA/wAAAAAAAAD/AP8AAAAAAP8AAAAAAP8X/gAAAP4A/////wAA/wAA//8AAAD/AAAA/wAAAAAAAAD/AP8AAAAAAP8AAAAAAP8X/gAAAP4A/////wAA/wAA//8A/wD//wAAAAAAAAAAAAD/AAAAAP8VAP//AAD/AP8AAP8AAP//AP8AAP///wAA//8A/wD//wAAAAAAAAAAAAD/AAAAAP8VAP//AAD/AP8AAP8AAP//AP8AAP///wAA//8AAP//ABUA/////////wAAAAAA/wAA//8A/wAAAAAAAAAAAAD/AAAAAAAAAP//AAAAAP//ABUA/////////wAAAAAA/wAA//8A/wAAAAAAAAAAAAD/AAAAAAAAAP//AAAA/wAA/wAAAAAAAAAAAAD///8AAAAAAAAAAP8AAP/+/wAAABcA/wAA/wD//wD///8A/wAA/wAAAAAAAAAAAAD///8AAAAAAAAAAP8AAP/+/wAAABcA/wAA/wD//wD///8AAP8AAP8A/wD/AAD/AAAAAAAAAAAAFAAA/wAAAAAA/wAAAAAAAAAAAAAA//8AAAAAAP8AAP8A/wD/AAD/AAAAAAAAAAAAFAAA/wAAAAAA/wAAAAAAAAAAAAAA//8AAAAAAAAAAAAAAAAAAAAAAP8AAAAAAP8AAAD/AP8AAAD//wAAAP8AAAAAAAAA//8AFP8A/wAA/////wD//////wAAAP8A/wD///8A/wAA/wAAAP//AAD/AAAA/wAAAAAY/wD//////wAAAAAAAP8AAP////8AAAAA////ABr//wD//wAA/////////wAAAAD/AP///////wAAAAAAAP8AAP////8AAAAA////ABr//wD//wAA/////////wAAAAD/AP//AAAA/wAA/wAA/wD//wAAAP8A/wAA/wAAEwAAAAAAAAAAAAAAAAAA/wAAAAAAAAAAAP8AAP8A/wAV/wD//wAAAP8AAAAA/wD//wAAAAAAAAD//wAAAAAA/wAAAP//AAAAAP8AAP8A/wAV/wD//wAAAP8AAAAA/wD//wAAAAAAAAD//wAAAAAA/wAAAP//AAAAAP8AAP//AAAAAAAAAP8AAAAA//8A/xYAAAAAAAAAAAAA//8AAAD//wAAAAAA/wAAAP8AAAAf/v3/AP7///8AAP///gAA////AAD/AAAAAAD//wAA/wAAAAD//////wAA//8AAAAAAAAAAAAAAAD///4AAAAAAP8AAP8A/wD//wD/AAAA/wAAFQAAAP8AAAAA//8AAAAAAAAAAAAAAAD///4AAAAAAP8AAP8A/wD//wD/AAAA/wAAFQAAAP8AAAAA////AAAAAAAA/wAAAAAAAP//ABf/AAAAAP//////AAAAAAD///8AAP8A/wD/////////AAAAAAAA/wAAAAAAAP//ABf/AAAAAP//////AAAAAAD///8AAP8A/wD/////AP8AAP8AAP/////+Gf8AAAAA//8A//8AAAAA/wAAAAAA/////wAA/wD/AP///wD/AAD//wAAAAAA/wAAAAD//wD/AP////8A/wD/AAAA/wAAAAD//wD//wAA//8AAP8XAP8AAAAA/wAA/wD//wAAAAAAAAAA/wAA/wAAAAAA/wAAAP//AAAAAAAAABb///8AAAAA/wAAAAAA/wAA/wD//wD/AP//AP8A/wD//wD//wAAAAAW/////wD/AP8A/wD/AP8AAAAAAAAAAAD//wD/AAAAAP//AP8AAAAAAP//FgAAAP//AAAA/wAA//8A/////wD/AAAAAAAAAAAAAAD//wAAAAD/AAD/AAAA/wAY/wAAAP4A////AAAA/wAA/////wD/AAAAAAAAAAAAAAD//wAAAAD/AAD/AAAA/wAY/wAAAP4A////AAAA/wAA/////wD//wAAAAD/AAAAAAD/AAD/AP8XAAD/AP///wD/AP8AAAAAAP8A/////wAAAP///wD//wAAAAD/AAAAAAD/AAD/AP8XAAD/AP///wD/AP8AAAAAAP8A/////wAAAP//AAD/ABb//wD/AP//AP8AAP//AAD///8A/wD/AP//AAD//wAAAAAAAAAAAAD//wD/AAD/ABb//wD/AP//AP8AAP//AAD///8A/wD/AP//AAD//wAAAAAAAAAAAAD//wD/",
+    "encoding": "int8-base64",
+    "scale": 0.020326293359591265
+  },
+  "embedding": {
+    "data": "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",
+    "encoding": "int8-base64",
+    "scale": 0.03669635141928365
+  },
+  "exact_prompts": {
+    "apologize for a late reply": 34,
+    "ask how someone is feeling today": 21,
+    "brainstorm names for a small project": 45,
+    "brainstorm weekend activity ideas": 44,
+    "create a packing checklist": 25,
+    "describe a good apology": 2,
+    "describe a weekly review habit": 3,
+    "describe how to learn from mistakes": 24,
+    "draft a request for feedback": 14,
+    "draft a welcome message for a team": 46,
+    "encourage someone who feels stuck": 8,
+    "explain a difficult idea simply": 22,
+    "explain active listening": 5,
+    "explain how habits form": 18,
+    "explain how to ask better questions": 6,
+    "explain the difference between a goal and a task": 1,
+    "explain the idea of compound growth": 13,
+    "explain the value of clear writing": 10,
+    "explain why backups matter": 7,
+    "explain why regular exercise helps": 32,
+    "explain why sleep matters": 33,
+    "give a calm response to criticism": 39,
+    "gravion chat apologize for a late reply": 34,
+    "gravion chat ask how someone is feeling today": 21,
+    "gravion chat brainstorm names for a small project": 45,
+    "gravion chat brainstorm weekend activity ideas": 44,
+    "gravion chat create a packing checklist": 25,
+    "gravion chat describe a good apology": 2,
+    "gravion chat describe a weekly review habit": 3,
+    "gravion chat describe how to learn from mistakes": 24,
+    "gravion chat draft a request for feedback": 14,
+    "gravion chat draft a welcome message for a team": 46,
+    "gravion chat encourage someone who feels stuck": 8,
+    "gravion chat explain a difficult idea simply": 22,
+    "gravion chat explain active listening": 5,
+    "gravion chat explain how habits form": 18,
+    "gravion chat explain how to ask better questions": 6,
+    "gravion chat explain the difference between a goal and a task": 1,
+    "gravion chat explain the idea of compound growth": 13,
+    "gravion chat explain the value of clear writing": 10,
+    "gravion chat explain why backups matter": 7,
+    "gravion chat explain why regular exercise helps": 32,
+    "gravion chat explain why sleep matters": 33,
+    "gravion chat give a calm response to criticism": 39,
+    "gravion chat greet a new user warmly": 19,
+    "gravion chat help choose a book to read": 9,
+    "gravion chat help choose between two options": 11,
+    "gravion chat help compare prices fairly": 12,
+    "gravion chat help draft a friendly invitation": 47,
+    "gravion chat help name priorities for today": 43,
+    "gravion chat help organize a messy desk": 35,
+    "gravion chat help prepare for a job interview": 30,
+    "gravion chat make a decision checklist": 15,
+    "gravion chat make a polite reminder message": 0,
+    "gravion chat make a simple budget outline": 23,
+    "gravion chat make a simple study plan": 38,
+    "gravion chat plan a balanced weekly meal outline": 27,
+    "gravion chat plan a calm evening wind down": 16,
+    "gravion chat plan a focused work session": 26,
+    "gravion chat plan a productive morning routine": 36,
+    "gravion chat prepare questions for a meeting": 29,
+    "gravion chat summarize a long message briefly": 20,
+    "gravion chat turn notes into action items": 4,
+    "gravion chat write a closing message for a conversation": 42,
+    "gravion chat write a concise status update": 37,
+    "gravion chat write a friendly follow up message": 17,
+    "gravion chat write a polite decline message": 40,
+    "gravion chat write a short introduction for a speaker": 28,
+    "gravion chat write a short motivational message": 31,
+    "gravion chat write a short thank you note": 41,
+    "greet a new user warmly": 19,
+    "help choose a book to read": 9,
+    "help choose between two options": 11,
+    "help compare prices fairly": 12,
+    "help draft a friendly invitation": 47,
+    "help me apologize for a late reply": 34,
+    "help me ask how someone is feeling today": 21,
+    "help me brainstorm names for a small project": 45,
+    "help me brainstorm weekend activity ideas": 44,
+    "help me create a packing checklist": 25,
+    "help me describe a good apology": 2,
+    "help me describe a weekly review habit": 3,
+    "help me describe how to learn from mistakes": 24,
+    "help me draft a request for feedback": 14,
+    "help me draft a welcome message for a team": 46,
+    "help me encourage someone who feels stuck": 8,
+    "help me explain a difficult idea simply": 22,
+    "help me explain active listening": 5,
+    "help me explain how habits form": 18,
+    "help me explain how to ask better questions": 6,
+    "help me explain the difference between a goal and a task": 1,
+    "help me explain the idea of compound growth": 13,
+    "help me explain the value of clear writing": 10,
+    "help me explain why backups matter": 7,
+    "help me explain why regular exercise helps": 32,
+    "help me explain why sleep matters": 33,
+    "help me give a calm response to criticism": 39,
+    "help me greet a new user warmly": 19,
+    "help me help choose a book to read": 9,
+    "help me help choose between two options": 11,
+    "help me help compare prices fairly": 12,
+    "help me help draft a friendly invitation": 47,
+    "help me help name priorities for today": 43,
+    "help me help organize a messy desk": 35,
+    "help me help prepare for a job interview": 30,
+    "help me make a decision checklist": 15,
+    "help me make a polite reminder message": 0,
+    "help me make a simple budget outline": 23,
+    "help me make a simple study plan": 38,
+    "help me plan a balanced weekly meal outline": 27,
+    "help me plan a calm evening wind down": 16,
+    "help me plan a focused work session": 26,
+    "help me plan a productive morning routine": 36,
+    "help me prepare questions for a meeting": 29,
+    "help me summarize a long message briefly": 20,
+    "help me turn notes into action items": 4,
+    "help me write a closing message for a conversation": 42,
+    "help me write a concise status update": 37,
+    "help me write a friendly follow up message": 17,
+    "help me write a polite decline message": 40,
+    "help me write a short introduction for a speaker": 28,
+    "help me write a short motivational message": 31,
+    "help me write a short thank you note": 41,
+    "help name priorities for today": 43,
+    "help organize a messy desk": 35,
+    "help prepare for a job interview": 30,
+    "make a decision checklist": 15,
+    "make a polite reminder message": 0,
+    "make a simple budget outline": 23,
+    "make a simple study plan": 38,
+    "plan a balanced weekly meal outline": 27,
+    "plan a calm evening wind down": 16,
+    "plan a focused work session": 26,
+    "plan a productive morning routine": 36,
+    "please apologize for a late reply": 34,
+    "please ask how someone is feeling today": 21,
+    "please brainstorm names for a small project": 45,
+    "please brainstorm weekend activity ideas": 44,
+    "please create a packing checklist": 25,
+    "please describe a good apology": 2,
+    "please describe a weekly review habit": 3,
+    "please describe how to learn from mistakes": 24,
+    "please draft a request for feedback": 14,
+    "please draft a welcome message for a team": 46,
+    "please encourage someone who feels stuck": 8,
+    "please explain a difficult idea simply": 22,
+    "please explain active listening": 5,
+    "please explain how habits form": 18,
+    "please explain how to ask better questions": 6,
+    "please explain the difference between a goal and a task": 1,
+    "please explain the idea of compound growth": 13,
+    "please explain the value of clear writing": 10,
+    "please explain why backups matter": 7,
+    "please explain why regular exercise helps": 32,
+    "please explain why sleep matters": 33,
+    "please give a calm response to criticism": 39,
+    "please greet a new user warmly": 19,
+    "please help choose a book to read": 9,
+    "please help choose between two options": 11,
+    "please help compare prices fairly": 12,
+    "please help draft a friendly invitation": 47,
+    "please help name priorities for today": 43,
+    "please help organize a messy desk": 35,
+    "please help prepare for a job interview": 30,
+    "please make a decision checklist": 15,
+    "please make a polite reminder message": 0,
+    "please make a simple budget outline": 23,
+    "please make a simple study plan": 38,
+    "please plan a balanced weekly meal outline": 27,
+    "please plan a calm evening wind down": 16,
+    "please plan a focused work session": 26,
+    "please plan a productive morning routine": 36,
+    "please prepare questions for a meeting": 29,
+    "please summarize a long message briefly": 20,
+    "please turn notes into action items": 4,
+    "please write a closing message for a conversation": 42,
+    "please write a concise status update": 37,
+    "please write a friendly follow up message": 17,
+    "please write a polite decline message": 40,
+    "please write a short introduction for a speaker": 28,
+    "please write a short motivational message": 31,
+    "please write a short thank you note": 41,
+    "prepare questions for a meeting": 29,
+    "summarize a long message briefly": 20,
+    "turn notes into action items": 4,
+    "write a closing message for a conversation": 42,
+    "write a concise status update": 37,
+    "write a friendly follow up message": 17,
+    "write a polite decline message": 40,
+    "write a short introduction for a speaker": 28,
+    "write a short motivational message": 31,
+    "write a short thank you note": 41
+  },
+  "features": [
+    "a",
+    "help",
+    "explain",
+    "for",
+    "for a",
+    "message",
+    "write",
+    "write a",
+    "plan",
+    "how",
+    "make",
+    "make a",
+    "plan a",
+    "to",
+    "a short",
+    "describe",
+    "draft",
+    "draft a",
+    "explain the",
+    "explain why",
+    "short",
+    "the",
+    "why",
+    "write a short",
+    "a calm",
+    "a friendly",
+    "a polite",
+    "a simple",
+    "ask",
+    "between",
+    "brainstorm",
+    "calm",
+    "checklist",
+    "choose",
+    "describe a",
+    "explain how",
+    "friendly",
+    "help choose",
+    "how to",
+    "idea",
+    "make a simple",
+    "message for",
+    "message for a",
+    "of",
+    "outline",
+    "polite",
+    "prepare",
+    "questions",
+    "simple",
+    "someone",
+    "today",
+    "weekly",
+    "a balanced",
+    "a balanced weekly",
+    "a book",
+    "a book to",
+    "a calm evening",
+    "a calm response",
+    "a closing",
+    "a closing message",
+    "a concise",
+    "a concise status",
+    "a conversation",
+    "a decision",
+    "a decision checklist",
+    "a difficult",
+    "a difficult idea",
+    "a focused",
+    "a focused work",
+    "a friendly follow",
+    "a friendly invitation",
+    "a goal",
+    "a goal and",
+    "a good",
+    "a good apology",
+    "a job",
+    "a job interview",
+    "a late",
+    "a late reply",
+    "a long",
+    "a long message",
+    "a meeting",
+    "a messy",
+    "a messy desk",
+    "a new",
+    "a new user",
+    "a packing",
+    "a packing checklist",
+    "a polite decline",
+    "a polite reminder",
+    "a productive",
+    "a productive morning",
+    "a request",
+    "a request for",
+    "a short introduction",
+    "a short motivational",
+    "a short thank",
+    "a simple budget",
+    "a simple study",
+    "a small",
+    "a small project",
+    "a speaker",
+    "a task",
+    "a team",
+    "a weekly",
+    "a weekly review",
+    "a welcome",
+    "a welcome message",
+    "action",
+    "action items",
+    "active",
+    "active listening",
+    "activity",
+    "activity ideas",
+    "and",
+    "and a",
+    "and a task",
+    "apologize",
+    "apologize for",
+    "apologize for a",
+    "apology",
+    "ask better",
+    "ask better questions",
+    "ask how",
+    "ask how someone",
+    "backups",
+    "backups matter",
+    "balanced",
+    "balanced weekly",
+    "balanced weekly meal",
+    "better",
+    "better questions",
+    "between a",
+    "between a goal",
+    "between two",
+    "between two options",
+    "book",
+    "book to",
+    "book to read",
+    "brainstorm names",
+    "brainstorm names for",
+    "brainstorm weekend",
+    "brainstorm weekend activity",
+    "briefly",
+    "budget",
+    "budget outline",
+    "calm evening",
+    "calm evening wind",
+    "calm response",
+    "calm response to",
+    "choose a",
+    "choose a book",
+    "choose between",
+    "choose between two",
+    "clear",
+    "clear writing",
+    "closing",
+    "closing message",
+    "closing message for",
+    "compare",
+    "compare prices",
+    "compare prices fairly",
+    "compound",
+    "compound growth",
+    "concise",
+    "concise status",
+    "concise status update",
+    "conversation",
+    "create",
+    "create a",
+    "create a packing",
+    "criticism",
+    "decision",
+    "decision checklist",
+    "decline",
+    "decline message",
+    "describe a good",
+    "describe a weekly",
+    "describe how",
+    "describe how to",
+    "desk",
+    "difference",
+    "difference between",
+    "difference between a",
+    "difficult",
+    "difficult idea",
+    "difficult idea simply",
+    "down",
+    "draft a friendly",
+    "draft a request",
+    "draft a welcome",
+    "encourage",
+    "encourage someone",
+    "encourage someone who",
+    "evening",
+    "evening wind",
+    "evening wind down",
+    "exercise",
+    "exercise helps",
+    "explain a",
+    "explain a difficult",
+    "explain active",
+    "explain active listening",
+    "explain how habits",
+    "explain how to",
+    "explain the difference",
+    "explain the idea",
+    "explain the value",
+    "explain why backups",
+    "explain why regular",
+    "explain why sleep",
+    "fairly",
+    "feedback",
+    "feeling",
+    "feeling today",
+    "feels",
+    "feels stuck",
+    "focused",
+    "focused work",
+    "focused work session",
+    "follow",
+    "follow up",
+    "follow up message",
+    "for a conversation",
+    "for a job",
+    "for a late",
+    "for a meeting",
+    "for a small",
+    "for a speaker",
+    "for a team",
+    "for feedback",
+    "for today",
+    "form",
+    "friendly follow",
+    "friendly follow up",
+    "friendly invitation",
+    "from",
+    "from mistakes",
+    "give",
+    "give a",
+    "give a calm",
+    "goal",
+    "goal and",
+    "goal and a",
+    "good",
+    "good apology",
+    "greet",
+    "greet a",
+    "greet a new",
+    "growth",
+    "habit",
+    "habits",
+    "habits form",
+    "help choose a",
+    "help choose between",
+    "help compare",
+    "help compare prices",
+    "help draft",
+    "help draft a",
+    "help name",
+    "help name priorities",
+    "help organize",
+    "help organize a",
+    "help prepare",
+    "help prepare for",
+    "helps",
+    "how habits",
+    "how habits form",
+    "how someone",
+    "how someone is",
+    "how to ask",
+    "how to learn",
+    "idea of",
+    "idea of compound",
+    "idea simply",
+    "ideas",
+    "interview",
+    "into",
+    "into action",
+    "into action items",
+    "introduction",
+    "introduction for",
+    "introduction for a",
+    "invitation",
+    "is",
+    "is feeling",
+    "is feeling today",
+    "items",
+    "job",
+    "job interview",
+    "late",
+    "late reply",
+    "learn",
+    "learn from",
+    "learn from mistakes",
+    "listening",
+    "long",
+    "long message",
+    "long message briefly",
+    "make a decision",
+    "make a polite",
+    "matter",
+    "matters",
+    "meal",
+    "meal outline",
+    "meeting",
+    "message briefly",
+    "messy",
+    "messy desk",
+    "mistakes",
+    "morning",
+    "morning routine",
+    "motivational",
+    "motivational message",
+    "name",
+    "name priorities",
+    "name priorities for",
+    "names",
+    "names for",
+    "names for a",
+    "new",
+    "new user",
+    "new user warmly",
+    "note",
+    "notes",
+    "notes into",
+    "notes into action",
+    "of clear",
+    "of clear writing",
+    "of compound",
+    "of compound growth",
+    "options",
+    "organize",
+    "organize a",
+    "organize a messy",
+    "packing",
+    "packing checklist",
+    "plan a balanced",
+    "plan a calm",
+    "plan a focused",
+    "plan a productive",
+    "polite decline",
+    "polite decline message",
+    "polite reminder",
+    "polite reminder message",
+    "prepare for",
+    "prepare for a",
+    "prepare questions",
+    "prepare questions for",
+    "prices",
+    "prices fairly",
+    "priorities",
+    "priorities for",
+    "priorities for today",
+    "productive",
+    "productive morning",
+    "productive morning routine",
+    "project",
+    "questions for",
+    "questions for a",
+    "read",
+    "regular",
+    "regular exercise",
+    "regular exercise helps",
+    "reminder",
+    "reminder message",
+    "reply",
+    "request",
+    "request for",
+    "request for feedback",
+    "response",
+    "response to",
+    "response to criticism",
+    "review",
+    "review habit",
+    "routine",
+    "session",
+    "short introduction",
+    "short introduction for",
+    "short motivational",
+    "short motivational message",
+    "short thank",
+    "short thank you",
+    "simple budget",
+    "simple budget outline",
+    "simple study",
+    "simple study plan",
+    "simply",
+    "sleep",
+    "sleep matters",
+    "small",
+    "small project",
+    "someone is",
+    "someone is feeling",
+    "someone who",
+    "someone who feels",
+    "speaker",
+    "status",
+    "status update",
+    "stuck",
+    "study",
+    "study plan",
+    "summarize",
+    "summarize a",
+    "summarize a long",
+    "task",
+    "team",
+    "thank",
+    "thank you",
+    "thank you note",
+    "the difference",
+    "the difference between",
+    "the idea",
+    "the idea of",
+    "the value",
+    "the value of",
+    "to ask",
+    "to ask better",
+    "to criticism",
+    "to learn",
+    "to learn from",
+    "to read",
+    "turn",
+    "turn notes",
+    "turn notes into",
+    "two",
+    "two options",
+    "up",
+    "up message",
+    "update",
+    "user",
+    "user warmly",
+    "value",
+    "value of",
+    "value of clear",
+    "warmly",
+    "weekend",
+    "weekend activity",
+    "weekend activity ideas",
+    "weekly meal",
+    "weekly meal outline",
+    "weekly review",
+    "weekly review habit",
+    "welcome",
+    "welcome message",
+    "welcome message for",
+    "who",
+    "who feels",
+    "who feels stuck",
+    "why backups",
+    "why backups matter",
+    "why regular",
+    "why regular exercise",
+    "why sleep",
+    "why sleep matters",
+    "wind",
+    "wind down",
+    "work",
+    "work session",
+    "write a closing",
+    "write a concise",
+    "write a friendly",
+    "write a polite",
+    "writing",
+    "you",
+    "you note",
+    "chat",
+    "gravion",
+    "gravion chat",
+    "help me",
+    "me",
+    "please",
+    "chat explain",
+    "gravion chat explain",
+    "help me explain",
+    "me explain",
+    "please explain",
+    "chat help",
+    "chat write",
+    "chat write a",
+    "gravion chat help",
+    "gravion chat write",
+    "help me help",
+    "help me write",
+    "me help",
+    "me write",
+    "me write a",
+    "please help",
+    "please write",
+    "please write a",
+    "chat make",
+    "chat make a",
+    "chat plan",
+    "chat plan a",
+    "gravion chat make",
+    "gravion chat plan",
+    "help me make",
+    "help me plan",
+    "me make",
+    "me make a",
+    "me plan",
+    "me plan a",
+    "please make",
+    "please make a",
+    "please plan",
+    "please plan a",
+    "chat describe",
+    "chat explain the",
+    "chat explain why",
+    "gravion chat describe",
+    "help me describe",
+    "me describe",
+    "me explain the",
+    "me explain why",
+    "please describe",
+    "please explain the",
+    "please explain why",
+    "chat brainstorm",
+    "chat describe a",
+    "chat draft",
+    "chat draft a",
+    "chat explain how",
+    "chat help choose",
+    "gravion chat brainstorm",
+    "gravion chat draft",
+    "help me brainstorm",
+    "help me draft",
+    "me brainstorm",
+    "me describe a",
+    "me draft",
+    "me draft a",
+    "me explain how",
+    "me help choose",
+    "please brainstorm",
+    "please describe a",
+    "please draft",
+    "please draft a",
+    "please explain how",
+    "please help choose",
+    "chat apologize",
+    "chat apologize for",
+    "chat ask",
+    "chat ask how",
+    "chat brainstorm names",
+    "chat brainstorm weekend",
+    "chat create",
+    "chat create a",
+    "chat describe how",
+    "chat encourage",
+    "chat encourage someone",
+    "chat explain a",
+    "chat explain active",
+    "chat give",
+    "chat give a",
+    "chat greet",
+    "chat greet a",
+    "chat help compare",
+    "chat help draft",
+    "chat help name",
+    "chat help organize",
+    "chat help prepare",
+    "chat prepare",
+    "chat prepare questions",
+    "chat summarize",
+    "chat summarize a",
+    "chat turn",
+    "chat turn notes",
+    "gravion chat apologize",
+    "gravion chat ask",
+    "gravion chat create",
+    "gravion chat encourage",
+    "gravion chat give",
+    "gravion chat greet",
+    "gravion chat prepare",
+    "gravion chat summarize",
+    "gravion chat turn",
+    "help me apologize",
+    "help me ask",
+    "help me create",
+    "help me encourage",
+    "help me give",
+    "help me greet",
+    "help me prepare",
+    "help me summarize",
+    "help me turn",
+    "me apologize",
+    "me apologize for",
+    "me ask",
+    "me ask how",
+    "me brainstorm names",
+    "me brainstorm weekend",
+    "me create",
+    "me create a",
+    "me describe how",
+    "me encourage",
+    "me encourage someone",
+    "me explain a",
+    "me explain active",
+    "me give",
+    "me give a",
+    "me greet",
+    "me greet a",
+    "me help compare",
+    "me help draft",
+    "me help name",
+    "me help organize",
+    "me help prepare",
+    "me prepare",
+    "me prepare questions",
+    "me summarize",
+    "me summarize a",
+    "me turn",
+    "me turn notes",
+    "please apologize",
+    "please apologize for",
+    "please ask",
+    "please ask how",
+    "please brainstorm names",
+    "please brainstorm weekend",
+    "please create",
+    "please create a",
+    "please describe how",
+    "please encourage",
+    "please encourage someone",
+    "please explain a",
+    "please explain active",
+    "please give",
+    "please give a",
+    "please greet",
+    "please greet a",
+    "please help compare",
+    "please help draft",
+    "please help name",
+    "please help organize",
+    "please help prepare",
+    "please prepare",
+    "please prepare questions",
+    "please summarize",
+    "please summarize a",
+    "please turn",
+    "please turn notes"
+  ],
+  "format": "gravion-core-local-v3",
+  "model_id": "gravion-chat",
+  "parameter_count": 43096,
+  "trained_from": {
+    "classes": 48,
+    "dataset_sha256": "37b87399f37f7ae2a918b59634b1a49bf9d8531f69860c2300fb6075682c8bb5",
+    "examples": 192,
+    "features": 641,
+    "source": "data/gravion-chat-seed.jsonl"
+  },
+  "transitions": {
+    "<s>": {
+      "a": 0.08333333,
+      "action": 0.02083333,
+      "active": 0.02083333,
+      "ask": 0.02083333,
+      "backups": 0.02083333,
+      "being": 0.02083333,
+      "choose": 0.02083333,
+      "clear": 0.02083333,
+      "compare": 0.04166667,
+      "compound": 0.02083333,
+      "could": 0.02083333,
+      "decision": 0.02083333,
+      "dim": 0.02083333,
+      "following": 0.02083333,
+      "habits": 0.02083333,
+      "hello": 0.02083333,
+      "here": 0.02083333,
+      "how": 0.02083333,
+      "let": 0.02083333,
+      "list": 0.02083333,
+      "name": 0.02083333,
+      "pack": 0.02083333,
+      "pick": 0.02083333,
+      "plan": 0.02083333,
+      "please": 0.02083333,
+      "prepare": 0.04166667,
+      "progress": 0.02083333,
+      "regular": 0.02083333,
+      "sleep": 0.02083333,
+      "sorry": 0.02083333,
+      "sort": 0.02083333,
+      "start": 0.02083333,
+      "status": 0.02083333,
+      "study": 0.02083333,
+      "thank": 0.0625,
+      "thanks": 0.02083333,
+      "today": 0.02083333,
+      "try": 0.04166667,
+      "welcome": 0.02083333,
+      "you": 0.02083333
+    },
+    "a": {
+      "board": 0.04347826,
+      "book": 0.04347826,
+      "break": 0.04347826,
+      "brief": 0.04347826,
+      "buddy": 0.04347826,
+      "cooking": 0.04347826,
+      "cue": 0.04347826,
+      "date": 0.04347826,
+      "gentle": 0.04347826,
+      "goal": 0.04347826,
+      "good": 0.04347826,
+      "moment": 0.04347826,
+      "museum": 0.04347826,
+      "nature": 0.04347826,
+      "regular": 0.04347826,
+      "short": 0.04347826,
+      "signal": 0.04347826,
+      "small": 0.13043478,
+      "task": 0.04347826,
+      "time": 0.04347826,
+      "weekly": 0.04347826
+    },
+    "about": {
+      "any": 0.33333333,
+      "the": 0.33333333,
+      "your": 0.33333333
+    },
+    "accepts": {
+      "responsibility": 1.0
+    },
+    "accidental": {
+      "deletion": 1.0
+    },
+    "across": {
+      "the": 1.0
+    },
+    "action": {
+      "</s>": 0.2,
+      "and": 0.2,
+      "items": 0.2,
+      "without": 0.2,
+      "you": 0.2
+    },
+    "active": {
+      "listening": 1.0
+    },
+    "actually": {
+      "said": 1.0
+    },
+    "adjust": {
+      "the": 1.0
+    },
+    "after": {
+      "each": 0.33333333,
+      "one": 0.33333333,
+      "the": 0.33333333
+    },
+    "agreed": {
+      "next": 1.0
+    },
+    "already": {
+      "done": 1.0
+    },
+    "and": {
+      "a": 0.04347826,
+      "anything": 0.02173913,
+      "bring": 0.02173913,
+      "build": 0.02173913,
+      "check": 0.04347826,
+      "corruption": 0.02173913,
+      "deadline": 0.02173913,
+      "discard": 0.02173913,
+      "does": 0.02173913,
+      "end": 0.02173913,
+      "energy": 0.02173913,
+      "explain": 0.02173913,
+      "fit": 0.02173913,
+      "fruit": 0.02173913,
+      "help": 0.02173913,
+      "honest": 0.02173913,
+      "i": 0.04347826,
+      "keep": 0.02173913,
+      "let": 0.04347826,
+      "light": 0.02173913,
+      "memorable": 0.02173913,
+      "one": 0.02173913,
+      "ordered": 0.02173913,
+      "physical": 0.02173913,
+      "record": 0.04347826,
+      "responding": 0.02173913,
+      "review": 0.02173913,
+      "reviews": 0.02173913,
+      "running": 0.02173913,
+      "safe": 0.02173913,
+      "say": 0.02173913,
+      "tell": 0.02173913,
+      "the": 0.13043478,
+      "welcome": 0.02173913,
+      "what": 0.02173913,
+      "will": 0.02173913
+    },
+    "answer": {
+      "the": 0.5,
+      "would": 0.5
+    },
+    "answered": {
+      "the": 1.0
+    },
+    "answers": {
+      "</s>": 0.5,
+      "research": 0.5
+    },
+    "any": {
+      "needs": 1.0
+    },
+    "anything": {
+      "already": 0.2,
+      "else": 0.2,
+      "is": 0.2,
+      "missing": 0.2,
+      "that": 0.2
+    },
+    "apology": {
+      "names": 1.0
+    },
+    "appreciate": {
+      "it": 1.0
+    },
+    "are": {
+      "named": 0.33333333,
+      "warmly": 0.33333333,
+      "you": 0.33333333
+    },
+    "as": {
+      "little": 0.33333333,
+      "much": 0.33333333,
+      "you": 0.33333333
+    },
+    "ask": {
+      "one": 1.0
+    },
+    "at": {
+      "a": 0.5,
+      "the": 0.5
+    },
+    "away": {
+      "prepare": 1.0
+    },
+    "backup": {
+      "is": 1.0
+    },
+    "backups": {
+      "protect": 1.0
+    },
+    "be": {
+      "few": 0.5,
+      "made": 0.5
+    },
+    "because": {
+      "readers": 1.0
+    },
+    "become": {
+      "large": 1.0
+    },
+    "before": {
+      "taking": 0.5,
+      "the": 0.5
+    },
+    "being": {
+      "stuck": 1.0
+    },
+    "block": {
+      "and": 1.0
+    },
+    "blockers": {
+      "are": 1.0
+    },
+    "blocks": {
+      "and": 0.5,
+      "test": 0.5
+    },
+    "board": {
+      "game": 1.0
+    },
+    "book": {
+      "by": 1.0
+    },
+    "both": {
+      "options": 1.0
+    },
+    "break": {
+      "</s>": 0.5,
+      "the": 0.5
+    },
+    "brief": {
+      "summary": 1.0
+    },
+    "bring": {
+      "thoughtful": 1.0
+    },
+    "buddy": {
+      "for": 1.0
+    },
+    "buffer": {
+      "then": 1.0
+    },
+    "build": {
+      "</s>": 0.33333333,
+      "from": 0.33333333,
+      "on": 0.33333333
+    },
+    "but": {
+      "i": 1.0
+    },
+    "by": {
+      "cost": 0.25,
+      "impact": 0.25,
+      "step": 0.25,
+      "the": 0.25
+    },
+    "can": {
+      "become": 0.25,
+      "come": 0.25,
+      "finish": 0.5
+    },
+    "cannot": {
+      "take": 1.0
+    },
+    "cause": {
+      "change": 1.0
+    },
+    "change": {
+      "one": 0.5,
+      "worked": 0.5
+    },
+    "chargers": {
+      "clothes": 1.0
+    },
+    "check": {
+      "constraints": 0.2,
+      "in": 0.2,
+      "the": 0.2,
+      "whether": 0.4
+    },
+    "checking": {
+      "the": 1.0
+    },
+    "checklist": {
+      "define": 1.0
+    },
+    "choose": {
+      "a": 0.33333333,
+      "and": 0.33333333,
+      "the": 0.33333333
+    },
+    "clarity": {
+      "usefulness": 1.0
+    },
+    "clear": {
+      "and": 0.16666667,
+      "answers": 0.16666667,
+      "easy": 0.16666667,
+      "examples": 0.16666667,
+      "question": 0.16666667,
+      "writing": 0.16666667
+    },
+    "clothes": {
+      "for": 1.0
+    },
+    "come": {
+      "and": 1.0
+    },
+    "coming": {
+      "week": 1.0
+    },
+    "compare": {
+      "both": 0.5,
+      "the": 0.5
+    },
+    "completed": {
+      "work": 1.0
+    },
+    "compound": {
+      "growth": 1.0
+    },
+    "concrete": {
+      "step": 1.0
+    },
+    "connect": {
+      "the": 1.0
+    },
+    "consistent": {
+      "and": 0.5,
+      "progress": 0.5
+    },
+    "constraints": {
+      "owners": 0.5,
+      "then": 0.5
+    },
+    "context": {
+      "</s>": 0.5,
+      "and": 0.5
+    },
+    "conversation": {
+      "i": 1.0
+    },
+    "cooking": {
+      "experiment": 1.0
+    },
+    "corruption": {
+      "test": 1.0
+    },
+    "cost": {
+      "not": 0.5,
+      "time": 0.5
+    },
+    "costs": {
+      "savings": 0.5,
+      "variable": 0.5
+    },
+    "could": {
+      "you": 1.0
+    },
+    "counts": {
+      "even": 1.0
+    },
+    "cover": {
+      "introductions": 1.0
+    },
+    "criteria": {
+      "that": 1.0
+    },
+    "cue": {
+      "triggers": 1.0
+    },
+    "current": {
+      "blockers": 0.5,
+      "priorities": 0.5
+    },
+    "date": {
+      "</s>": 1.0
+    },
+    "day": {
+      "</s>": 1.0
+    },
+    "daytime": {
+      "performance": 1.0
+    },
+    "deadline": {
+      "</s>": 0.5,
+      "for": 0.5
+    },
+    "deadlines": {
+      "and": 1.0
+    },
+    "decision": {
+      "checklist": 0.5,
+      "must": 0.5
+    },
+    "define": {
+      "each": 0.5,
+      "the": 0.5
+    },
+    "deletion": {
+      "and": 1.0
+    },
+    "delivered": {
+      "price": 1.0
+    },
+    "demand": {
+      "instant": 1.0
+    },
+    "device": {
+      "failure": 1.0
+    },
+    "devices": {
+      "away": 1.0
+    },
+    "dim": {
+      "the": 1.0
+    },
+    "discard": {
+      "piles": 1.0
+    },
+    "distractions": {
+      "work": 1.0
+    },
+    "do": {
+      "the": 1.0
+    },
+    "documents": {
+      "chargers": 1.0
+    },
+    "does": {
+      "not": 1.0
+    },
+    "done": {
+      "</s>": 1.0
+    },
+    "each": {
+      "block": 0.33333333,
+      "note": 0.33333333,
+      "part": 0.33333333
+    },
+    "earlier": {
+      "gains": 1.0
+    },
+    "easy": {
+      "to": 1.0
+    },
+    "else": {
+      "from": 1.0
+    },
+    "end": {
+      "with": 1.0
+    },
+    "ends": {
+      "</s>": 1.0
+    },
+    "energy": {
+      "when": 1.0
+    },
+    "enough": {
+      "to": 1.0
+    },
+    "even": {
+      "when": 1.0
+    },
+    "every": {
+      "kept": 1.0
+    },
+    "evidence": {
+      "and": 1.0
+    },
+    "example": {
+      "</s>": 1.0
+    },
+    "examples": {
+      "and": 0.5,
+      "will": 0.5
+    },
+    "exercise": {
+      "supports": 1.0
+    },
+    "experiment": {
+      "a": 1.0
+    },
+    "explain": {
+      "anything": 1.0
+    },
+    "explains": {
+      "the": 1.0
+    },
+    "failure": {
+      "accidental": 1.0
+    },
+    "feedback": {
+      "i": 0.5,
+      "on": 0.5
+    },
+    "feeling": {
+      "today": 1.0
+    },
+    "feels": {
+      "rewarding": 1.0
+    },
+    "few": {
+      "clear": 1.0
+    },
+    "find": {
+      "the": 1.0
+    },
+    "finish": {
+      "and": 0.5,
+      "today": 0.5
+    },
+    "first": {
+      "</s>": 0.33333333,
+      "current": 0.16666667,
+      "milestone": 0.16666667,
+      "task": 0.16666667,
+      "week": 0.16666667
+    },
+    "fit": {
+      "with": 1.0
+    },
+    "fix": {
+      "and": 0.5,
+      "what": 0.5
+    },
+    "fixed": {
+      "costs": 1.0
+    },
+    "flexible": {
+      "day": 0.5,
+      "items": 0.5
+    },
+    "focus": {
+      "and": 1.0
+    },
+    "focused": {
+      "blocks": 1.0
+    },
+    "focuses": {
+      "on": 1.0
+    },
+    "follow": {
+      "up": 1.0
+    },
+    "following": {
+      "up": 1.0
+    },
+    "for": {
+      "</s>": 0.1,
+      "each": 0.1,
+      "questions": 0.1,
+      "the": 0.5,
+      "thinking": 0.1,
+      "your": 0.1
+    },
+    "forgiveness": {
+      "</s>": 1.0
+    },
+    "form": {
+      "when": 1.0
+    },
+    "from": {
+      "device": 0.25,
+      "me": 0.25,
+      "readers": 0.25,
+      "there": 0.25
+    },
+    "fruit": {
+      "across": 1.0
+    },
+    "full": {
+      "delivered": 1.0
+    },
+    "gains": {
+      "build": 0.5,
+      "so": 0.5
+    },
+    "game": {
+      "or": 1.0
+    },
+    "gentle": {
+      "reminder": 1.0
+    },
+    "give": {
+      "every": 1.0
+    },
+    "goal": {
+      "choose": 0.33333333,
+      "constraints": 0.33333333,
+      "is": 0.33333333
+    },
+    "good": {
+      "apology": 1.0
+    },
+    "grains": {
+      "vegetables": 1.0
+    },
+    "growth": {
+      "means": 1.0
+    },
+    "guessing": {
+      "</s>": 1.0
+    },
+    "habits": {
+      "form": 1.0
+    },
+    "hand": {
+      "luggage": 1.0
+    },
+    "happened": {
+      "find": 1.0
+    },
+    "hardest": {
+      "task": 1.0
+    },
+    "harm": {
+      "accepts": 1.0
+    },
+    "has": {
+      "a": 1.0
+    },
+    "have": {
+      "a": 0.5,
+      "read": 0.5
+    },
+    "headline": {
+      "price": 1.0
+    },
+    "health": {
+      "strength": 1.0
+    },
+    "hearing": {
+      "</s>": 0.5,
+      "the": 0.5
+    },
+    "heart": {
+      "health": 1.0
+    },
+    "hello": {
+      "and": 1.0
+    },
+    "help": {
+      "</s>": 0.25,
+      "i": 0.25,
+      "me": 0.25,
+      "step": 0.25
+    },
+    "here": {
+      "is": 1.0
+    },
+    "hint": {
+      "at": 1.0
+    },
+    "home": {
+      "</s>": 0.5,
+      "project": 0.5
+    },
+    "honest": {
+      "answers": 0.5,
+      "step": 0.5
+    },
+    "how": {
+      "are": 1.0
+    },
+    "i": {
+      "appreciate": 0.1,
+      "cannot": 0.1,
+      "have": 0.1,
+      "should": 0.1,
+      "wanted": 0.1,
+      "will": 0.4,
+      "wish": 0.1
+    },
+    "idea": {
+      "into": 1.0
+    },
+    "ideas": {
+      "clear": 1.0
+    },
+    "if": {
+      "anything": 0.5,
+      "you": 0.5
+    },
+    "impact": {
+      "and": 1.0
+    },
+    "improve": {
+      "it": 1.0
+    },
+    "improves": {
+      "daytime": 1.0
+    },
+    "in": {
+      "after": 0.16666667,
+      "hand": 0.16666667,
+      "order": 0.16666667,
+      "plain": 0.16666667,
+      "short": 0.16666667,
+      "timed": 0.16666667
+    },
+    "include": {
+      "the": 1.0
+    },
+    "income": {
+      "fixed": 1.0
+    },
+    "instant": {
+      "forgiveness": 1.0
+    },
+    "into": {
+      "keep": 0.5,
+      "small": 0.5
+    },
+    "introductions": {
+      "tools": 1.0
+    },
+    "invited": {
+      "to": 1.0
+    },
+    "is": {
+      "a": 0.2,
+      "consistent": 0.1,
+      "listed": 0.1,
+      "one": 0.1,
+      "real": 0.1,
+      "small": 0.1,
+      "the": 0.1,
+      "unclear": 0.1,
+      "valid": 0.1
+    },
+    "it": {
+      "</s>": 0.4,
+      "and": 0.2,
+      "is": 0.4
+    },
+    "item": {
+      "one": 1.0
+    },
+    "items": {
+      "first": 0.33333333,
+      "into": 0.33333333,
+      "name": 0.33333333
+    },
+    "join": {
+      "us": 1.0
+    },
+    "keep": {
+      "move": 0.33333333,
+      "one": 0.33333333,
+      "the": 0.33333333
+    },
+    "kept": {
+      "item": 1.0
+    },
+    "key": {
+      "reason": 1.0
+    },
+    "kind": {
+      "of": 1.0
+    },
+    "know": {
+      "if": 1.0
+    },
+    "large": {
+      "over": 1.0
+    },
+    "last": {
+      "message": 1.0
+    },
+    "late": {
+      "reply": 1.0
+    },
+    "length": {
+      "you": 1.0
+    },
+    "lessons": {
+      "and": 1.0
+    },
+    "let": {
+      "me": 0.5,
+      "momentum": 0.25,
+      "us": 0.25
+    },
+    "light": {
+      "movement": 1.0
+    },
+    "lights": {
+      "put": 1.0
+    },
+    "like": {
+      "</s>": 0.5,
+      "to": 0.5
+    },
+    "list": {
+      "income": 0.5,
+      "options": 0.5
+    },
+    "listed": {
+      "first": 1.0
+    },
+    "listening": {
+      "means": 1.0
+    },
+    "lists": {
+      "wins": 1.0
+    },
+    "little": {
+      "as": 1.0
+    },
+    "loops": {
+      "lessons": 1.0
+    },
+    "luggage": {
+      "</s>": 1.0
+    },
+    "made": {
+      "before": 1.0
+    },
+    "main": {
+      "point": 1.0
+    },
+    "matter": {
+      "most": 1.0
+    },
+    "me": {
+      "</s>": 0.14285714,
+      "about": 0.14285714,
+      "i": 0.14285714,
+      "improve": 0.14285714,
+      "know": 0.28571429,
+      "what": 0.14285714
+    },
+    "meals": {
+      "and": 1.0
+    },
+    "meaning": {
+      "and": 1.0
+    },
+    "means": {
+      "gains": 0.5,
+      "hearing": 0.5
+    },
+    "medicines": {
+      "and": 1.0
+    },
+    "meeting": {
+      "ends": 1.0
+    },
+    "memorable": {
+      "after": 1.0
+    },
+    "memory": {
+      "mood": 1.0
+    },
+    "message": {
+      "i": 0.5,
+      "now": 0.5
+    },
+    "milestone": {
+      "</s>": 0.5,
+      "has": 0.5
+    },
+    "missing": {
+      "specific": 1.0
+    },
+    "mistakes": {
+      "the": 1.0
+    },
+    "moment": {
+      "and": 1.0
+    },
+    "momentum": {
+      "build": 1.0
+    },
+    "mood": {
+      "focus": 0.5,
+      "sleep": 0.5
+    },
+    "most": {
+      "</s>": 1.0
+    },
+    "move": {
+      "recycle": 1.0
+    },
+    "movement": {
+      "review": 1.0
+    },
+    "moves": {
+      "you": 1.0
+    },
+    "much": {
+      "or": 1.0
+    },
+    "museum": {
+      "visit": 1.0
+    },
+    "must": {
+      "be": 1.0
+    },
+    "my": {
+      "last": 1.0
+    },
+    "name": {
+      "the": 0.5,
+      "what": 0.5
+    },
+    "named": {
+      "plainly": 1.0
+    },
+    "names": {
+      "that": 0.5,
+      "the": 0.5
+    },
+    "nature": {
+      "walk": 1.0
+    },
+    "need": {
+      "anything": 1.0
+    },
+    "needs": {
+      "context": 0.5,
+      "i": 0.5
+    },
+    "next": {
+      "action": 0.125,
+      "day": 0.125,
+      "honest": 0.125,
+      "milestone": 0.125,
+      "step": 0.125,
+      "steps": 0.125,
+      "three": 0.125,
+      "update": 0.125
+    },
+    "not": {
+      "demand": 0.5,
+      "only": 0.5
+    },
+    "note": {
+      "then": 1.0
+    },
+    "now": {
+      "and": 0.5,
+      "but": 0.5
+    },
+    "of": {
+      "answer": 0.5,
+      "me": 0.5
+    },
+    "on": {
+      "and": 0.125,
+      "clarity": 0.125,
+      "earlier": 0.125,
+      "my": 0.125,
+      "practical": 0.125,
+      "right": 0.125,
+      "the": 0.25
+    },
+    "one": {
+      "clear": 0.09090909,
+      "concrete": 0.09090909,
+      "example": 0.09090909,
+      "flexible": 0.09090909,
+      "hearing": 0.09090909,
+      "home": 0.09090909,
+      "outcome": 0.09090909,
+      "process": 0.09090909,
+      "small": 0.09090909,
+      "spare": 0.09090909,
+      "that": 0.09090909
+    },
+    "only": {
+      "the": 1.0
+    },
+    "open": {
+      "loops": 0.5,
+      "points": 0.5
+    },
+    "options": {
+      "by": 0.5,
+      "score": 0.5
+    },
+    "or": {
+      "a": 0.5,
+      "as": 0.5
+    },
+    "order": {
+      "</s>": 1.0
+    },
+    "ordered": {
+      "by": 1.0
+    },
+    "our": {
+      "speaker": 1.0
+    },
+    "outcome": {
+      "</s>": 0.33333333,
+      "silence": 0.33333333,
+      "you": 0.33333333
+    },
+    "outfit": {
+      "in": 1.0
+    },
+    "over": {
+      "time": 1.0
+    },
+    "owner": {
+      "the": 1.0
+    },
+    "owners": {
+      "deadlines": 1.0
+    },
+    "pack": {
+      "documents": 1.0
+    },
+    "part": {
+      "in": 1.0
+    },
+    "parts": {
+      "define": 0.5,
+      "with": 0.5
+    },
+    "performance": {
+      "</s>": 1.0
+    },
+    "physical": {
+      "recovery": 1.0
+    },
+    "pick": {
+      "one": 1.0
+    },
+    "piles": {
+      "then": 1.0
+    },
+    "plain": {
+      "words": 1.0
+    },
+    "plainly": {
+      "and": 1.0
+    },
+    "plan": {
+      "for": 0.5,
+      "protein": 0.5
+    },
+    "please": {
+      "let": 0.33333333,
+      "review": 0.33333333,
+      "welcome": 0.33333333
+    },
+    "point": {
+      "the": 1.0
+    },
+    "points": {
+      "fix": 0.5,
+      "in": 0.5
+    },
+    "practical": {
+      "ideas": 1.0
+    },
+    "practice": {
+      "clear": 1.0
+    },
+    "prepare": {
+      "questions": 0.33333333,
+      "stories": 0.33333333,
+      "tomorrow": 0.33333333
+    },
+    "price": {
+      "</s>": 0.5,
+      "quality": 0.5
+    },
+    "priorities": {
+      "and": 0.25,
+      "for": 0.25,
+      "should": 0.25,
+      "then": 0.25
+    },
+    "problem": {
+      "list": 1.0
+    },
+    "process": {
+      "and": 1.0
+    },
+    "progress": {
+      "can": 0.5,
+      "counts": 0.5
+    },
+    "project": {
+      "</s>": 1.0
+    },
+    "protect": {
+      "work": 1.0
+    },
+    "protein": {
+      "grains": 1.0
+    },
+    "purpose": {
+      "clear": 1.0
+    },
+    "put": {
+      "devices": 1.0
+    },
+    "quality": {
+      "warranty": 1.0
+    },
+    "question": {
+      "at": 0.5,
+      "you": 0.5
+    },
+    "questions": {
+      "</s>": 0.66666667,
+      "about": 0.33333333
+    },
+    "read": {
+      "your": 1.0
+    },
+    "readers": {
+      "understand": 0.5,
+      "you": 0.5
+    },
+    "real": {
+      "</s>": 1.0
+    },
+    "reason": {
+      "and": 1.0
+    },
+    "record": {
+      "the": 0.5,
+      "why": 0.5
+    },
+    "recovery": {
+      "so": 1.0
+    },
+    "recycle": {
+      "and": 1.0
+    },
+    "regular": {
+      "exercise": 0.5,
+      "schedule": 0.5
+    },
+    "relaxing": {
+      "routine": 1.0
+    },
+    "reminder": {
+      "please": 1.0
+    },
+    "remove": {
+      "anything": 1.0
+    },
+    "repeat": {
+      "</s>": 0.5,
+      "simple": 0.5
+    },
+    "repeated": {
+      "action": 1.0
+    },
+    "reply": {
+      "i": 1.0
+    },
+    "requested": {
+      "action": 1.0
+    },
+    "research": {
+      "the": 1.0
+    },
+    "responding": {
+      "to": 1.0
+    },
+    "responsibility": {
+      "explains": 1.0
+    },
+    "restores": {
+      "so": 1.0
+    },
+    "result": {
+      "before": 0.5,
+      "feels": 0.5
+    },
+    "return": {
+      "terms": 1.0
+    },
+    "review": {
+      "lists": 0.25,
+      "mistakes": 0.25,
+      "the": 0.25,
+      "this": 0.25
+    },
+    "reviews": {
+      "from": 1.0
+    },
+    "rewarding": {
+      "enough": 1.0
+    },
+    "right": {
+      "now": 1.0
+    },
+    "risk": {
+      "and": 1.0
+    },
+    "risks": {
+      "check": 1.0
+    },
+    "role": {
+      "and": 1.0
+    },
+    "routine": {
+      "</s>": 1.0
+    },
+    "running": {
+      "cost": 1.0
+    },
+    "s": {
+      "first": 0.5,
+      "priorities": 0.5
+    },
+    "safe": {
+      "</s>": 1.0
+    },
+    "said": {
+      "</s>": 1.0
+    },
+    "saves": {
+      "time": 1.0
+    },
+    "savings": {
+      "and": 1.0
+    },
+    "say": {
+      "what": 1.0
+    },
+    "schedule": {
+      "usually": 1.0
+    },
+    "score": {
+      "risks": 1.0
+    },
+    "send": {
+      "the": 1.0
+    },
+    "share": {
+      "as": 0.5,
+      "feedback": 0.5
+    },
+    "short": {
+      "focused": 0.33333333,
+      "names": 0.33333333,
+      "relaxing": 0.33333333
+    },
+    "should": {
+      "be": 0.5,
+      "plan": 0.5
+    },
+    "shrink": {
+      "the": 1.0
+    },
+    "signal": {
+      "to": 1.0
+    },
+    "silence": {
+      "distractions": 1.0
+    },
+    "simple": {
+      "meals": 1.0
+    },
+    "sleep": {
+      "and": 0.5,
+      "supports": 0.5
+    },
+    "small": {
+      "action": 0.14285714,
+      "buffer": 0.14285714,
+      "consistent": 0.14285714,
+      "do": 0.14285714,
+      "home": 0.14285714,
+      "parts": 0.14285714,
+      "repeated": 0.14285714
+    },
+    "so": {
+      "a": 0.33333333,
+      "small": 0.33333333,
+      "the": 0.33333333
+    },
+    "soon": {
+      "</s>": 1.0
+    },
+    "sorry": {
+      "for": 1.0
+    },
+    "sort": {
+      "items": 1.0
+    },
+    "spare": {
+      "outfit": 1.0
+    },
+    "speaker": {
+      "whose": 1.0
+    },
+    "specific": {
+      "examples": 0.5,
+      "points": 0.5
+    },
+    "spell": {
+      "and": 1.0
+    },
+    "start": {
+      "with": 1.0
+    },
+    "status": {
+      "completed": 1.0
+    },
+    "step": {
+      "</s>": 0.2,
+      "and": 0.2,
+      "by": 0.2,
+      "pick": 0.2,
+      "that": 0.2
+    },
+    "steps": {
+      "and": 1.0
+    },
+    "stories": {
+      "about": 1.0
+    },
+    "strength": {
+      "mood": 1.0
+    },
+    "stuck": {
+      "is": 1.0
+    },
+    "study": {
+      "in": 1.0
+    },
+    "summary": {
+      "keep": 1.0
+    },
+    "supports": {
+      "heart": 0.5,
+      "memory": 0.5
+    },
+    "take": {
+      "this": 1.0
+    },
+    "taking": {
+      "a": 1.0
+    },
+    "task": {
+      "and": 0.5,
+      "first": 0.25,
+      "is": 0.25
+    },
+    "team": {
+      "your": 1.0
+    },
+    "tell": {
+      "me": 1.0
+    },
+    "terms": {
+      "and": 1.0
+    },
+    "test": {
+      "restores": 0.5,
+      "yourself": 0.5
+    },
+    "thank": {
+      "you": 1.0
+    },
+    "thanks": {
+      "for": 1.0
+    },
+    "that": {
+      "hint": 0.16666667,
+      "matter": 0.16666667,
+      "moves": 0.16666667,
+      "needs": 0.16666667,
+      "outcome": 0.16666667,
+      "wins": 0.16666667
+    },
+    "the": {
+      "agreed": 0.01851852,
+      "backup": 0.01851852,
+      "cause": 0.01851852,
+      "change": 0.01851852,
+      "coming": 0.01851852,
+      "context": 0.01851852,
+      "conversation": 0.01851852,
+      "criteria": 0.01851852,
+      "deadline": 0.01851852,
+      "evidence": 0.01851852,
+      "feedback": 0.01851852,
+      "first": 0.01851852,
+      "fix": 0.01851852,
+      "flexible": 0.01851852,
+      "full": 0.01851852,
+      "goal": 0.01851852,
+      "hardest": 0.01851852,
+      "harm": 0.01851852,
+      "headline": 0.01851852,
+      "idea": 0.01851852,
+      "key": 0.01851852,
+      "late": 0.01851852,
+      "length": 0.01851852,
+      "lights": 0.01851852,
+      "main": 0.01851852,
+      "meaning": 0.01851852,
+      "meeting": 0.01851852,
+      "next": 0.12962963,
+      "one": 0.01851852,
+      "open": 0.01851852,
+      "outcome": 0.01851852,
+      "owner": 0.01851852,
+      "parts": 0.01851852,
+      "point": 0.01851852,
+      "problem": 0.01851852,
+      "purpose": 0.01851852,
+      "question": 0.01851852,
+      "requested": 0.01851852,
+      "result": 0.03703704,
+      "role": 0.01851852,
+      "specific": 0.01851852,
+      "task": 0.01851852,
+      "team": 0.01851852,
+      "top": 0.01851852,
+      "weather": 0.01851852,
+      "week": 0.01851852,
+      "words": 0.01851852
+    },
+    "then": {
+      "adjust": 0.16666667,
+      "choose": 0.16666667,
+      "connect": 0.16666667,
+      "give": 0.16666667,
+      "remove": 0.16666667,
+      "work": 0.16666667
+    },
+    "there": {
+      "</s>": 1.0
+    },
+    "thinking": {
+      "of": 1.0
+    },
+    "this": {
+      "on": 0.5,
+      "when": 0.5
+    },
+    "thoughtful": {
+      "questions": 1.0
+    },
+    "three": {
+      "priorities": 1.0
+    },
+    "time": {
+      "</s>": 0.2,
+      "and": 0.2,
+      "because": 0.2,
+      "include": 0.2,
+      "risk": 0.2
+    },
+    "timed": {
+      "blocks": 1.0
+    },
+    "to": {
+      "check": 0.125,
+      "join": 0.125,
+      "repeat": 0.125,
+      "shrink": 0.125,
+      "spell": 0.125,
+      "the": 0.125,
+      "what": 0.125,
+      "work": 0.125
+    },
+    "today": {
+      "and": 0.33333333,
+      "s": 0.33333333,
+      "share": 0.33333333
+    },
+    "toiletries": {
+      "medicines": 1.0
+    },
+    "tomorrow": {
+      "s": 1.0
+    },
+    "tools": {
+      "current": 1.0
+    },
+    "top": {
+      "three": 1.0
+    },
+    "toward": {
+      "that": 1.0
+    },
+    "triggers": {
+      "a": 1.0
+    },
+    "trust": {
+      "</s>": 1.0
+    },
+    "try": {
+      "a": 0.5,
+      "short": 0.5
+    },
+    "unclear": {
+      "</s>": 1.0
+    },
+    "understand": {
+      "the": 1.0
+    },
+    "up": {
+      "on": 0.5,
+      "with": 0.5
+    },
+    "update": {
+      "soon": 1.0
+    },
+    "us": {
+      "break": 0.5,
+      "please": 0.5
+    },
+    "usefulness": {
+      "and": 1.0
+    },
+    "usually": {
+      "improves": 1.0
+    },
+    "valid": {
+      "and": 1.0
+    },
+    "variable": {
+      "costs": 1.0
+    },
+    "vegetables": {
+      "and": 1.0
+    },
+    "visit": {
+      "a": 1.0
+    },
+    "walk": {
+      "a": 1.0
+    },
+    "want": {
+      "a": 0.5,
+      "answered": 0.5
+    },
+    "wanted": {
+      "to": 1.0
+    },
+    "warmly": {
+      "invited": 1.0
+    },
+    "warranty": {
+      "return": 1.0
+    },
+    "was": {
+      "actually": 1.0
+    },
+    "water": {
+      "and": 1.0
+    },
+    "weather": {
+      "toiletries": 1.0
+    },
+    "week": {
+      "</s>": 0.33333333,
+      "repeat": 0.33333333,
+      "will": 0.33333333
+    },
+    "weekly": {
+      "review": 1.0
+    },
+    "welcome": {
+      "our": 0.33333333,
+      "tell": 0.33333333,
+      "to": 0.33333333
+    },
+    "well": {
+      "with": 1.0
+    },
+    "what": {
+      "decision": 0.16666667,
+      "happened": 0.16666667,
+      "is": 0.16666667,
+      "kind": 0.16666667,
+      "was": 0.16666667,
+      "you": 0.16666667
+    },
+    "when": {
+      "a": 0.25,
+      "it": 0.5,
+      "you": 0.25
+    },
+    "whether": {
+      "the": 0.5,
+      "you": 0.5
+    },
+    "whose": {
+      "work": 1.0
+    },
+    "why": {
+      "</s>": 1.0
+    },
+    "will": {
+      "answer": 0.14285714,
+      "check": 0.14285714,
+      "cover": 0.14285714,
+      "follow": 0.14285714,
+      "help": 0.28571429,
+      "send": 0.14285714
+    },
+    "wins": {
+      "on": 0.5,
+      "open": 0.5
+    },
+    "wish": {
+      "you": 1.0
+    },
+    "with": {
+      "a": 0.16666667,
+      "it": 0.16666667,
+      "one": 0.16666667,
+      "the": 0.16666667,
+      "water": 0.16666667,
+      "your": 0.16666667
+    },
+    "without": {
+      "guessing": 1.0
+    },
+    "words": {
+      "checking": 0.5,
+      "then": 0.5
+    },
+    "work": {
+      "focuses": 0.14285714,
+      "from": 0.14285714,
+      "in": 0.14285714,
+      "is": 0.14285714,
+      "on": 0.28571429,
+      "practice": 0.14285714
+    },
+    "worked": {
+      "</s>": 1.0
+    },
+    "would": {
+      "help": 0.5,
+      "like": 0.5
+    },
+    "writing": {
+      "saves": 1.0
+    },
+    "you": {
+      "are": 0.05555556,
+      "can": 0.16666667,
+      "feeling": 0.05555556,
+      "for": 0.16666667,
+      "have": 0.05555556,
+      "like": 0.05555556,
+      "need": 0.05555556,
+      "share": 0.05555556,
+      "toward": 0.05555556,
+      "trust": 0.05555556,
+      "want": 0.11111111,
+      "well": 0.05555556,
+      "would": 0.05555556
+    },
+    "your": {
+      "first": 0.2,
+      "goal": 0.2,
+      "message": 0.2,
+      "time": 0.2,
+      "work": 0.2
+    },
+    "yourself": {
+      "after": 1.0
+    }
+  },
+  "unigram_weights": {
+    "a": 0.02712264,
+    "about": 0.00353774,
+    "accepts": 0.00117925,
+    "accidental": 0.00117925,
+    "across": 0.00117925,
+    "action": 0.00589623,
+    "active": 0.00117925,
+    "actually": 0.00117925,
+    "adjust": 0.00117925,
+    "after": 0.00353774,
+    "agreed": 0.00117925,
+    "already": 0.00117925,
+    "and": 0.05424528,
+    "answer": 0.00235849,
+    "answered": 0.00117925,
+    "answers": 0.00235849,
+    "any": 0.00117925,
+    "anything": 0.00589623,
+    "apology": 0.00117925,
+    "appreciate": 0.00117925,
+    "are": 0.00353774,
+    "as": 0.00353774,
+    "ask": 0.00117925,
+    "at": 0.00235849,
+    "away": 0.00117925,
+    "backup": 0.00117925,
+    "backups": 0.00117925,
+    "be": 0.00235849,
+    "because": 0.00117925,
+    "become": 0.00117925,
+    "before": 0.00235849,
+    "being": 0.00117925,
+    "block": 0.00117925,
+    "blockers": 0.00117925,
+    "blocks": 0.00235849,
+    "board": 0.00117925,
+    "book": 0.00117925,
+    "both": 0.00117925,
+    "break": 0.00235849,
+    "brief": 0.00117925,
+    "bring": 0.00117925,
+    "buddy": 0.00117925,
+    "buffer": 0.00117925,
+    "build": 0.00353774,
+    "but": 0.00117925,
+    "by": 0.00471698,
+    "can": 0.00471698,
+    "cannot": 0.00117925,
+    "cause": 0.00117925,
+    "change": 0.00235849,
+    "chargers": 0.00117925,
+    "check": 0.00589623,
+    "checking": 0.00117925,
+    "checklist": 0.00117925,
+    "choose": 0.00353774,
+    "clarity": 0.00117925,
+    "clear": 0.00707547,
+    "clothes": 0.00117925,
+    "come": 0.00117925,
+    "coming": 0.00117925,
+    "compare": 0.00235849,
+    "completed": 0.00117925,
+    "compound": 0.00117925,
+    "concrete": 0.00117925,
+    "connect": 0.00117925,
+    "consistent": 0.00235849,
+    "constraints": 0.00235849,
+    "context": 0.00235849,
+    "conversation": 0.00117925,
+    "cooking": 0.00117925,
+    "corruption": 0.00117925,
+    "cost": 0.00235849,
+    "costs": 0.00235849,
+    "could": 0.00117925,
+    "counts": 0.00117925,
+    "cover": 0.00117925,
+    "criteria": 0.00117925,
+    "cue": 0.00117925,
+    "current": 0.00235849,
+    "date": 0.00117925,
+    "day": 0.00235849,
+    "daytime": 0.00117925,
+    "deadline": 0.00235849,
+    "deadlines": 0.00117925,
+    "decision": 0.00235849,
+    "define": 0.00235849,
+    "deletion": 0.00117925,
+    "delivered": 0.00117925,
+    "demand": 0.00117925,
+    "device": 0.00117925,
+    "devices": 0.00117925,
+    "dim": 0.00117925,
+    "discard": 0.00117925,
+    "distractions": 0.00117925,
+    "do": 0.00117925,
+    "documents": 0.00117925,
+    "does": 0.00117925,
+    "done": 0.00117925,
+    "each": 0.00353774,
+    "earlier": 0.00117925,
+    "easy": 0.00117925,
+    "else": 0.00117925,
+    "end": 0.00117925,
+    "ends": 0.00117925,
+    "energy": 0.00117925,
+    "enough": 0.00117925,
+    "even": 0.00117925,
+    "every": 0.00117925,
+    "evidence": 0.00117925,
+    "example": 0.00117925,
+    "examples": 0.00235849,
+    "exercise": 0.00117925,
+    "experiment": 0.00117925,
+    "explain": 0.00117925,
+    "explains": 0.00117925,
+    "failure": 0.00117925,
+    "feedback": 0.00235849,
+    "feeling": 0.00117925,
+    "feels": 0.00117925,
+    "few": 0.00117925,
+    "find": 0.00117925,
+    "finish": 0.00235849,
+    "first": 0.00707547,
+    "fit": 0.00117925,
+    "fix": 0.00235849,
+    "fixed": 0.00117925,
+    "flexible": 0.00235849,
+    "focus": 0.00117925,
+    "focused": 0.00117925,
+    "focuses": 0.00117925,
+    "follow": 0.00117925,
+    "following": 0.00117925,
+    "for": 0.01179245,
+    "forgiveness": 0.00117925,
+    "form": 0.00117925,
+    "from": 0.00471698,
+    "fruit": 0.00117925,
+    "full": 0.00117925,
+    "gains": 0.00235849,
+    "game": 0.00117925,
+    "gentle": 0.00117925,
+    "give": 0.00117925,
+    "goal": 0.00353774,
+    "good": 0.00117925,
+    "grains": 0.00117925,
+    "growth": 0.00117925,
+    "guessing": 0.00117925,
+    "habits": 0.00117925,
+    "hand": 0.00117925,
+    "happened": 0.00117925,
+    "hardest": 0.00117925,
+    "harm": 0.00117925,
+    "has": 0.00117925,
+    "have": 0.00235849,
+    "headline": 0.00117925,
+    "health": 0.00117925,
+    "hearing": 0.00235849,
+    "heart": 0.00117925,
+    "hello": 0.00117925,
+    "help": 0.00471698,
+    "here": 0.00117925,
+    "hint": 0.00117925,
+    "home": 0.00235849,
+    "honest": 0.00235849,
+    "how": 0.00117925,
+    "i": 0.01179245,
+    "idea": 0.00117925,
+    "ideas": 0.00117925,
+    "if": 0.00235849,
+    "impact": 0.00117925,
+    "improve": 0.00117925,
+    "improves": 0.00117925,
+    "in": 0.00707547,
+    "include": 0.00117925,
+    "income": 0.00117925,
+    "instant": 0.00117925,
+    "into": 0.00235849,
+    "introductions": 0.00117925,
+    "invited": 0.00117925,
+    "is": 0.01179245,
+    "it": 0.00589623,
+    "item": 0.00117925,
+    "items": 0.00353774,
+    "join": 0.00117925,
+    "keep": 0.00353774,
+    "kept": 0.00117925,
+    "key": 0.00117925,
+    "kind": 0.00117925,
+    "know": 0.00235849,
+    "large": 0.00117925,
+    "last": 0.00117925,
+    "late": 0.00117925,
+    "length": 0.00117925,
+    "lessons": 0.00117925,
+    "let": 0.00471698,
+    "light": 0.00117925,
+    "lights": 0.00117925,
+    "like": 0.00235849,
+    "list": 0.00235849,
+    "listed": 0.00117925,
+    "listening": 0.00117925,
+    "lists": 0.00117925,
+    "little": 0.00117925,
+    "loops": 0.00117925,
+    "luggage": 0.00117925,
+    "made": 0.00117925,
+    "main": 0.00117925,
+    "matter": 0.00117925,
+    "me": 0.00825472,
+    "meals": 0.00117925,
+    "meaning": 0.00117925,
+    "means": 0.00235849,
+    "medicines": 0.00117925,
+    "meeting": 0.00117925,
+    "memorable": 0.00117925,
+    "memory": 0.00117925,
+    "message": 0.00235849,
+    "milestone": 0.00235849,
+    "missing": 0.00117925,
+    "mistakes": 0.00117925,
+    "moment": 0.00117925,
+    "momentum": 0.00117925,
+    "mood": 0.00235849,
+    "most": 0.00117925,
+    "move": 0.00117925,
+    "movement": 0.00117925,
+    "moves": 0.00117925,
+    "much": 0.00117925,
+    "museum": 0.00117925,
+    "must": 0.00117925,
+    "my": 0.00117925,
+    "name": 0.00235849,
+    "named": 0.00117925,
+    "names": 0.00235849,
+    "nature": 0.00117925,
+    "need": 0.00117925,
+    "needs": 0.00235849,
+    "next": 0.00943396,
+    "not": 0.00235849,
+    "note": 0.00117925,
+    "now": 0.00235849,
+    "of": 0.00235849,
+    "on": 0.00943396,
+    "one": 0.0129717,
+    "only": 0.00117925,
+    "open": 0.00235849,
+    "options": 0.00235849,
+    "or": 0.00235849,
+    "order": 0.00117925,
+    "ordered": 0.00117925,
+    "our": 0.00117925,
+    "outcome": 0.00353774,
+    "outfit": 0.00117925,
+    "over": 0.00117925,
+    "owner": 0.00117925,
+    "owners": 0.00117925,
+    "pack": 0.00117925,
+    "part": 0.00117925,
+    "parts": 0.00235849,
+    "performance": 0.00117925,
+    "physical": 0.00117925,
+    "pick": 0.00235849,
+    "piles": 0.00117925,
+    "plain": 0.00117925,
+    "plainly": 0.00117925,
+    "plan": 0.00235849,
+    "please": 0.00353774,
+    "point": 0.00235849,
+    "points": 0.00235849,
+    "practical": 0.00117925,
+    "practice": 0.00117925,
+    "prepare": 0.00353774,
+    "price": 0.00235849,
+    "priorities": 0.00471698,
+    "problem": 0.00117925,
+    "process": 0.00117925,
+    "progress": 0.00235849,
+    "project": 0.00117925,
+    "protect": 0.00117925,
+    "protein": 0.00117925,
+    "purpose": 0.00117925,
+    "put": 0.00117925,
+    "quality": 0.00117925,
+    "question": 0.00235849,
+    "questions": 0.00353774,
+    "read": 0.00117925,
+    "readers": 0.00235849,
+    "real": 0.00117925,
+    "reason": 0.00117925,
+    "record": 0.00235849,
+    "recovery": 0.00117925,
+    "recycle": 0.00117925,
+    "regular": 0.00235849,
+    "relaxing": 0.00117925,
+    "reminder": 0.00117925,
+    "remove": 0.00117925,
+    "repeat": 0.00235849,
+    "repeated": 0.00117925,
+    "reply": 0.00117925,
+    "requested": 0.00117925,
+    "research": 0.00117925,
+    "responding": 0.00117925,
+    "responsibility": 0.00117925,
+    "restores": 0.00117925,
+    "result": 0.00235849,
+    "return": 0.00117925,
+    "review": 0.00471698,
+    "reviews": 0.00117925,
+    "rewarding": 0.00117925,
+    "right": 0.00117925,
+    "risk": 0.00117925,
+    "risks": 0.00117925,
+    "role": 0.00117925,
+    "routine": 0.00117925,
+    "running": 0.00117925,
+    "s": 0.00235849,
+    "safe": 0.00117925,
+    "said": 0.00117925,
+    "saves": 0.00117925,
+    "savings": 0.00117925,
+    "say": 0.00117925,
+    "schedule": 0.00117925,
+    "score": 0.00117925,
+    "send": 0.00117925,
+    "share": 0.00235849,
+    "short": 0.00353774,
+    "should": 0.00235849,
+    "shrink": 0.00117925,
+    "signal": 0.00117925,
+    "silence": 0.00117925,
+    "simple": 0.00117925,
+    "sleep": 0.00235849,
+    "small": 0.00825472,
+    "so": 0.00353774,
+    "soon": 0.00117925,
+    "sorry": 0.00117925,
+    "sort": 0.00117925,
+    "spare": 0.00117925,
+    "speaker": 0.00117925,
+    "specific": 0.00235849,
+    "spell": 0.00117925,
+    "start": 0.00117925,
+    "status": 0.00117925,
+    "step": 0.00589623,
+    "steps": 0.00117925,
+    "stories": 0.00117925,
+    "strength": 0.00117925,
+    "stuck": 0.00117925,
+    "study": 0.00117925,
+    "summary": 0.00117925,
+    "supports": 0.00235849,
+    "take": 0.00117925,
+    "taking": 0.00117925,
+    "task": 0.00471698,
+    "team": 0.00117925,
+    "tell": 0.00235849,
+    "terms": 0.00117925,
+    "test": 0.00235849,
+    "thank": 0.00353774,
+    "thanks": 0.00117925,
+    "that": 0.00707547,
+    "the": 0.06367925,
+    "then": 0.00707547,
+    "there": 0.00117925,
+    "thinking": 0.00117925,
+    "this": 0.00235849,
+    "thoughtful": 0.00117925,
+    "three": 0.00235849,
+    "time": 0.00589623,
+    "timed": 0.00117925,
+    "to": 0.00943396,
+    "today": 0.00353774,
+    "toiletries": 0.00117925,
+    "tomorrow": 0.00117925,
+    "tools": 0.00117925,
+    "top": 0.00117925,
+    "toward": 0.00117925,
+    "triggers": 0.00117925,
+    "trust": 0.00117925,
+    "try": 0.00235849,
+    "unclear": 0.00117925,
+    "understand": 0.00117925,
+    "up": 0.00235849,
+    "update": 0.00117925,
+    "us": 0.00235849,
+    "usefulness": 0.00117925,
+    "usually": 0.00117925,
+    "valid": 0.00117925,
+    "variable": 0.00117925,
+    "vegetables": 0.00117925,
+    "visit": 0.00117925,
+    "walk": 0.00117925,
+    "want": 0.00235849,
+    "wanted": 0.00117925,
+    "warmly": 0.00117925,
+    "warranty": 0.00117925,
+    "was": 0.00117925,
+    "water": 0.00117925,
+    "weather": 0.00117925,
+    "week": 0.00353774,
+    "weekly": 0.00117925,
+    "welcome": 0.00353774,
+    "well": 0.00117925,
+    "what": 0.00707547,
+    "when": 0.00471698,
+    "whether": 0.00235849,
+    "whose": 0.00117925,
+    "why": 0.00117925,
+    "will": 0.00825472,
+    "wins": 0.00235849,
+    "wish": 0.00117925,
+    "with": 0.00707547,
+    "without": 0.00117925,
+    "words": 0.00235849,
+    "work": 0.00825472,
+    "worked": 0.00117925,
+    "would": 0.00235849,
+    "writing": 0.00117925,
+    "you": 0.02122642,
+    "your": 0.00589623,
+    "yourself": 0.00117925
+  },
+  "vocabulary": [
+    "a",
+    "about",
+    "accepts",
+    "accidental",
+    "across",
+    "action",
+    "active",
+    "activity",
+    "actually",
+    "adjust",
+    "after",
+    "agreed",
+    "already",
+    "and",
+    "answer",
+    "answered",
+    "answers",
+    "any",
+    "anything",
+    "apologize",
+    "apology",
+    "appreciate",
+    "are",
+    "as",
+    "ask",
+    "at",
+    "away",
+    "backup",
+    "backups",
+    "balanced",
+    "be",
+    "because",
+    "become",
+    "before",
+    "being",
+    "better",
+    "between",
+    "block",
+    "blockers",
+    "blocks",
+    "board",
+    "book",
+    "both",
+    "brainstorm",
+    "break",
+    "brief",
+    "briefly",
+    "bring",
+    "buddy",
+    "budget",
+    "buffer",
+    "build",
+    "but",
+    "by",
+    "calm",
+    "can",
+    "cannot",
+    "cause",
+    "change",
+    "chargers",
+    "chat",
+    "check",
+    "checking",
+    "checklist",
+    "choose",
+    "clarity",
+    "clear",
+    "closing",
+    "clothes",
+    "come",
+    "coming",
+    "compare",
+    "completed",
+    "compound",
+    "concise",
+    "concrete",
+    "connect",
+    "consistent",
+    "constraints",
+    "context",
+    "conversation",
+    "cooking",
+    "corruption",
+    "cost",
+    "costs",
+    "could",
+    "counts",
+    "cover",
+    "create",
+    "criteria",
+    "criticism",
+    "cue",
+    "current",
+    "date",
+    "day",
+    "daytime",
+    "deadline",
+    "deadlines",
+    "decision",
+    "decline",
+    "define",
+    "deletion",
+    "delivered",
+    "demand",
+    "describe",
+    "desk",
+    "device",
+    "devices",
+    "difference",
+    "difficult",
+    "dim",
+    "discard",
+    "distractions",
+    "do",
+    "documents",
+    "does",
+    "done",
+    "down",
+    "draft",
+    "each",
+    "earlier",
+    "easy",
+    "else",
+    "encourage",
+    "end",
+    "ends",
+    "energy",
+    "enough",
+    "even",
+    "evening",
+    "every",
+    "evidence",
+    "example",
+    "examples",
+    "exercise",
+    "experiment",
+    "explain",
+    "explains",
+    "failure",
+    "fairly",
+    "feedback",
+    "feeling",
+    "feels",
+    "few",
+    "find",
+    "finish",
+    "first",
+    "fit",
+    "fix",
+    "fixed",
+    "flexible",
+    "focus",
+    "focused",
+    "focuses",
+    "follow",
+    "following",
+    "for",
+    "forgiveness",
+    "form",
+    "friendly",
+    "from",
+    "fruit",
+    "full",
+    "gains",
+    "game",
+    "gentle",
+    "give",
+    "goal",
+    "good",
+    "grains",
+    "gravion",
+    "greet",
+    "growth",
+    "guessing",
+    "habit",
+    "habits",
+    "hand",
+    "happened",
+    "hardest",
+    "harm",
+    "has",
+    "have",
+    "headline",
+    "health",
+    "hearing",
+    "heart",
+    "hello",
+    "help",
+    "helps",
+    "here",
+    "hint",
+    "home",
+    "honest",
+    "how",
+    "i",
+    "idea",
+    "ideas",
+    "if",
+    "impact",
+    "improve",
+    "improves",
+    "in",
+    "include",
+    "income",
+    "instant",
+    "interview",
+    "into",
+    "introduction",
+    "introductions",
+    "invitation",
+    "invited",
+    "is",
+    "it",
+    "item",
+    "items",
+    "job",
+    "join",
+    "keep",
+    "kept",
+    "key",
+    "kind",
+    "know",
+    "large",
+    "last",
+    "late",
+    "learn",
+    "length",
+    "lessons",
+    "let",
+    "light",
+    "lights",
+    "like",
+    "list",
+    "listed",
+    "listening",
+    "lists",
+    "little",
+    "long",
+    "loops",
+    "luggage",
+    "made",
+    "main",
+    "make",
+    "matter",
+    "matters",
+    "me",
+    "meal",
+    "meals",
+    "meaning",
+    "means",
+    "medicines",
+    "meeting",
+    "memorable",
+    "memory",
+    "message",
+    "messy",
+    "milestone",
+    "missing",
+    "mistakes",
+    "moment",
+    "momentum",
+    "mood",
+    "morning",
+    "most",
+    "motivational",
+    "move",
+    "movement",
+    "moves",
+    "much",
+    "museum",
+    "must",
+    "my",
+    "name",
+    "named",
+    "names",
+    "nature",
+    "need",
+    "needs",
+    "new",
+    "next",
+    "not",
+    "note",
+    "notes",
+    "now",
+    "of",
+    "on",
+    "one",
+    "only",
+    "open",
+    "options",
+    "or",
+    "order",
+    "ordered",
+    "organize",
+    "our",
+    "outcome",
+    "outfit",
+    "outline",
+    "over",
+    "owner",
+    "owners",
+    "pack",
+    "packing",
+    "part",
+    "parts",
+    "performance",
+    "physical",
+    "pick",
+    "piles",
+    "plain",
+    "plainly",
+    "plan",
+    "please",
+    "point",
+    "points",
+    "polite",
+    "practical",
+    "practice",
+    "prepare",
+    "price",
+    "prices",
+    "priorities",
+    "problem",
+    "process",
+    "productive",
+    "progress",
+    "project",
+    "protect",
+    "protein",
+    "purpose",
+    "put",
+    "quality",
+    "question",
+    "questions",
+    "read",
+    "readers",
+    "real",
+    "reason",
+    "record",
+    "recovery",
+    "recycle",
+    "regular",
+    "relaxing",
+    "reminder",
+    "remove",
+    "repeat",
+    "repeated",
+    "reply",
+    "request",
+    "requested",
+    "research",
+    "responding",
+    "response",
+    "responsibility",
+    "restores",
+    "result",
+    "return",
+    "review",
+    "reviews",
+    "rewarding",
+    "right",
+    "risk",
+    "risks",
+    "role",
+    "routine",
+    "running",
+    "s",
+    "safe",
+    "said",
+    "saves",
+    "savings",
+    "say",
+    "schedule",
+    "score",
+    "send",
+    "session",
+    "share",
+    "short",
+    "should",
+    "shrink",
+    "signal",
+    "silence",
+    "simple",
+    "simply",
+    "sleep",
+    "small",
+    "so",
+    "someone",
+    "soon",
+    "sorry",
+    "sort",
+    "spare",
+    "speaker",
+    "specific",
+    "spell",
+    "start",
+    "status",
+    "step",
+    "steps",
+    "stories",
+    "strength",
+    "stuck",
+    "study",
+    "summarize",
+    "summary",
+    "supports",
+    "take",
+    "taking",
+    "task",
+    "team",
+    "tell",
+    "terms",
+    "test",
+    "thank",
+    "thanks",
+    "that",
+    "the",
+    "then",
+    "there",
+    "thinking",
+    "this",
+    "thoughtful",
+    "three",
+    "time",
+    "timed",
+    "to",
+    "today",
+    "toiletries",
+    "tomorrow",
+    "tools",
+    "top",
+    "toward",
+    "triggers",
+    "trust",
+    "try",
+    "turn",
+    "two",
+    "unclear",
+    "understand",
+    "up",
+    "update",
+    "us",
+    "usefulness",
+    "user",
+    "usually",
+    "valid",
+    "value",
+    "variable",
+    "vegetables",
+    "visit",
+    "walk",
+    "want",
+    "wanted",
+    "warmly",
+    "warranty",
+    "was",
+    "water",
+    "weather",
+    "week",
+    "weekend",
+    "weekly",
+    "welcome",
+    "well",
+    "what",
+    "when",
+    "whether",
+    "who",
+    "whose",
+    "why",
+    "will",
+    "wind",
+    "wins",
+    "wish",
+    "with",
+    "without",
+    "words",
+    "work",
+    "worked",
+    "would",
+    "write",
+    "writing",
+    "you",
+    "your",
+    "yourself"
+  ],
+  "weights_sha256": "5d55ceb52717876cea649950d38ee173a3f0a76f4c62c7fa43924e90f115eeab"
+}

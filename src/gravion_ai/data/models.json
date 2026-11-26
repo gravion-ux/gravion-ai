@@ -1,5 +1,5 @@
 {
-    "comment": "The Gravion model registry \u2014 Gravion AI's own model entries and variants. Status 'available' means the registry entry and module/bundle packaging path can be resolved; it does not by itself claim trained weights are included. The weights_status field is authoritative for weights: gravion-core includes local trained embedding/linear weights in data/gravion-core-weights.json (included), trained only from the bundled Gravion corpus (5,657 examples, 779 answer classes), with a deterministic fallback; the specialist entries are packaging-ready registry entries with no trained weights included in this repository (packaging_ready_no_weights). Specialist model behaviour requires an operator-supplied endpoint or a future operations-supplied weights bundle. A deployment may register private variants by placing its own models.json in the deployment home; the same schema and validation apply.",
+    "comment": "The Gravion model registry \u2014 Gravion AI's own model entries and variants. Status 'available' means the registry entry and module/bundle packaging path can be resolved. The weights_status field is authoritative for weights: every bundled Gravion entry includes local sparse n-gram classifier weights trained only from its bundled Gravion-owned seed corpus, with a deterministic fallback. A deployment may register private variants by placing its own models.json in the deployment home; the same schema and validation apply.",
     "models": [
         {
             "capabilities": [
@@ -30,7 +30,8 @@
             "context_window": 131072,
             "id": "gravion-chat",
             "name": "Gravion Chat",
-            "notes": "Registry and bundle packaging entry for conversational chat/support work. This repository includes no trained weights for Gravion Chat; model behaviour comes from an operator-supplied endpoint or a future operations-supplied weights bundle.",
+            "notes": "Includes local sparse n-gram classifier weights (43,096 parameters counted from stored quantized weights) trained only from the bundled Gravion-owned Gravion Chat seed corpus (192 examples, 48 answer classes), with deterministic fallback when no confident trained match is available. It runs offline with no network and no API key.",
+            "parameter_count": 43096,
             "status": "available",
             "tiers": [
                 "tier-1-complete",
@@ -38,7 +39,9 @@
                 "tier-3-intermediate",
                 "tier-4-advanced"
             ],
-            "weights_status": "packaging_ready_no_weights"
+            "weights_artifact": "data/gravion-chat-weights.json",
+            "weights_sha256": "5d55ceb52717876cea649950d38ee173a3f0a76f4c62c7fa43924e90f115eeab",
+            "weights_status": "included"
         },
         {
             "capabilities": [
@@ -47,7 +50,8 @@
             "context_window": 131072,
             "id": "gravion-code",
             "name": "Gravion Code",
-            "notes": "Registry and bundle packaging entry for coder-module work. This repository includes no trained weights for Gravion Code; model behaviour comes from an operator-supplied endpoint or a future operations-supplied weights bundle.",
+            "notes": "Includes local sparse n-gram classifier weights (48,653 parameters counted from stored quantized weights) trained only from the bundled Gravion-owned Gravion Code seed corpus (228 examples, 56 answer classes), with deterministic fallback when no confident trained match is available. It runs offline with no network and no API key.",
+            "parameter_count": 48653,
             "status": "available",
             "tiers": [
                 "tier-1-complete",
@@ -55,7 +59,9 @@
                 "tier-3-intermediate",
                 "tier-4-advanced"
             ],
-            "weights_status": "packaging_ready_no_weights"
+            "weights_artifact": "data/gravion-code-weights.json",
+            "weights_sha256": "2a25e0d13bf2d294b099844a0258769c93074c4d2dbdb811d85bc980be9cd29b",
+            "weights_status": "included"
         },
         {
             "capabilities": [
@@ -64,7 +70,8 @@
             "context_window": 131072,
             "id": "gravion-builder",
             "name": "Gravion Builder",
-            "notes": "Registry and bundle packaging entry for website-builder work. The module includes a local static-site builder for development/demo use; this repository includes no trained weights for Gravion Builder.",
+            "notes": "Includes local sparse n-gram classifier weights (32,945 parameters counted from stored quantized weights) trained only from the bundled Gravion-owned Gravion Builder seed corpus (196 examples, 49 answer classes), with deterministic fallback when no confident trained match is available. It runs offline with no network and no API key. The trained local weights guide website briefs; the local static-site builder remains the offline build path.",
+            "parameter_count": 32945,
             "status": "available",
             "tiers": [
                 "tier-1-complete",
@@ -72,7 +79,9 @@
                 "tier-3-intermediate",
                 "tier-4-advanced"
             ],
-            "weights_status": "packaging_ready_no_weights"
+            "weights_artifact": "data/gravion-builder-weights.json",
+            "weights_sha256": "765907cea467495c42205bfebfe8e2c49d5924400f3b80c3cad5028f701136cc",
+            "weights_status": "included"
         },
         {
             "capabilities": [
@@ -81,7 +90,8 @@
             "context_window": null,
             "id": "gravion-vision",
             "name": "Gravion Vision",
-            "notes": "Registry and bundle packaging entry for image-module work. This repository includes no trained weights for Gravion Vision; model behaviour comes from an operator-supplied endpoint or a future operations-supplied weights bundle.",
+            "notes": "Includes local sparse n-gram classifier weights (28,439 parameters counted from stored quantized weights) trained only from the bundled Gravion-owned Gravion Vision seed corpus (192 examples, 48 answer classes), with deterministic fallback when no confident trained match is available. It runs offline with no network and no API key. The trained local weights guide image briefs and prompt interpretation; the local procedural renderer remains the offline image path.",
+            "parameter_count": 28439,
             "status": "available",
             "tiers": [
                 "tier-1-complete",
@@ -89,7 +99,9 @@
                 "tier-3-intermediate",
                 "tier-4-advanced"
             ],
-            "weights_status": "packaging_ready_no_weights"
+            "weights_artifact": "data/gravion-vision-weights.json",
+            "weights_sha256": "a2bba850511f9beb4a784a2c5acf48ae426c5a0802f5fbd46e449401be2ee751",
+            "weights_status": "included"
         },
         {
             "capabilities": [
@@ -98,7 +110,8 @@
             "context_window": null,
             "id": "gravion-video",
             "name": "Gravion Video",
-            "notes": "Registry and bundle packaging entry for video-module work. The module includes a local short-clip development renderer; long-form scene stitching is not implemented in this repository, and no trained weights for Gravion Video are included.",
+            "notes": "Includes local sparse n-gram classifier weights (32,026 parameters counted from stored quantized weights) trained only from the bundled Gravion-owned Gravion Video seed corpus (196 examples, 49 answer classes), with deterministic fallback when no confident trained match is available. It runs offline with no network and no API key. The trained local weights guide video briefs and scene planning; the local development renderer remains the offline clip path.",
+            "parameter_count": 32026,
             "status": "available",
             "tiers": [
                 "tier-1-complete",
@@ -106,7 +119,9 @@
                 "tier-3-intermediate",
                 "tier-4-advanced"
             ],
-            "weights_status": "packaging_ready_no_weights"
+            "weights_artifact": "data/gravion-video-weights.json",
+            "weights_sha256": "c57b9428b93f0540b0867cbd1083820d82e73531c0cc0d0bf5dd6eb48e10312d",
+            "weights_status": "included"
         },
         {
             "capabilities": [
@@ -115,7 +130,8 @@
             "context_window": null,
             "id": "gravion-audio",
             "name": "Gravion Audio",
-            "notes": "Registry and bundle packaging entry for music-module work. This repository includes no trained weights for Gravion Audio; model behaviour comes from an operator-supplied endpoint or a future operations-supplied weights bundle.",
+            "notes": "Includes local sparse n-gram classifier weights (32,615 parameters counted from stored quantized weights) trained only from the bundled Gravion-owned Gravion Audio seed corpus (196 examples, 49 answer classes), with deterministic fallback when no confident trained match is available. It runs offline with no network and no API key. The trained local weights guide music briefs and arrangement planning; the music module's local paths remain available offline.",
+            "parameter_count": 32615,
             "status": "available",
             "tiers": [
                 "tier-1-complete",
@@ -123,7 +139,9 @@
                 "tier-3-intermediate",
                 "tier-4-advanced"
             ],
-            "weights_status": "packaging_ready_no_weights"
+            "weights_artifact": "data/gravion-audio-weights.json",
+            "weights_sha256": "a61959b1bf4decd4fee328fda825e05066d0e6103ea3eb8ee6379e8d728dbbc1",
+            "weights_status": "included"
         },
         {
             "capabilities": [
@@ -132,7 +150,8 @@
             "context_window": 131072,
             "id": "gravion-shield",
             "name": "Gravion Shield",
-            "notes": "Registry and bundle packaging entry for defensive cyber-module work. This repository includes no trained weights for Gravion Shield; model behaviour comes from an operator-supplied endpoint or a future operations-supplied weights bundle.",
+            "notes": "Includes local sparse n-gram classifier weights (45,224 parameters counted from stored quantized weights) trained only from the bundled Gravion-owned Gravion Shield seed corpus (224 examples, 56 answer classes), with deterministic fallback when no confident trained match is available. It runs offline with no network and no API key.",
+            "parameter_count": 45224,
             "status": "available",
             "tiers": [
                 "tier-1-complete",
@@ -140,7 +159,9 @@
                 "tier-3-intermediate",
                 "tier-4-advanced"
             ],
-            "weights_status": "packaging_ready_no_weights"
+            "weights_artifact": "data/gravion-shield-weights.json",
+            "weights_sha256": "1fa1b5cca3afdfb38d3d4d984878b15297e1e7fab1a45d2d79b6b96aea3dfd0c",
+            "weights_status": "included"
         },
         {
             "capabilities": [
@@ -149,7 +170,8 @@
             "context_window": 131072,
             "id": "gravion-agent",
             "name": "Gravion Agent",
-            "notes": "Registry and bundle packaging entry for agentic-module work. The module includes a local plan writer that executes nothing; this repository includes no trained weights for Gravion Agent.",
+            "notes": "Includes local sparse n-gram classifier weights (26,571 parameters counted from stored quantized weights) trained only from the bundled Gravion-owned Gravion Agent seed corpus (196 examples, 49 answer classes), with deterministic fallback when no confident trained match is available. It runs offline with no network and no API key. The trained local weights guide agent briefs and plans; execution remains bounded by deployment policy and approvals.",
+            "parameter_count": 26571,
             "status": "available",
             "tiers": [
                 "tier-1-complete",
@@ -157,7 +179,9 @@
                 "tier-3-intermediate",
                 "tier-4-advanced"
             ],
-            "weights_status": "packaging_ready_no_weights"
+            "weights_artifact": "data/gravion-agent-weights.json",
+            "weights_sha256": "042a93e086b03e252cfd502e9e7827c929b3954e75b1d0746bcce5bf26903fa7",
+            "weights_status": "included"
         },
         {
             "capabilities": [
@@ -174,12 +198,15 @@
             "context_window": 262144,
             "id": "gravion-omni",
             "name": "Gravion Omni",
-            "notes": "All-in-one registry entry covering every capability at the Advanced tier. This repository includes no trained weights for Gravion Omni; the runtime accepts this entry for the all-in-one package, while actual model behaviour comes from an operator-supplied endpoint or a future operations-supplied weights bundle.",
+            "notes": "Includes local sparse n-gram classifier weights (1,832,930 parameters counted from stored quantized weights) trained only from the bundled Gravion-owned Gravion Omni seed corpus (1780 examples, 444 answer classes), with deterministic fallback when no confident trained match is available. It runs offline with no network and no API key.",
+            "parameter_count": 1832930,
             "status": "available",
             "tiers": [
                 "tier-4-advanced"
             ],
-            "weights_status": "packaging_ready_no_weights"
+            "weights_artifact": "data/gravion-omni-weights.json",
+            "weights_sha256": "d650c832016b24e9ad18abaeaf98532e84f24f5b375600444d361f8ddf609da5",
+            "weights_status": "included"
         }
     ],
     "version": 1

@@ -1,0 +1,228 @@
+{"completion": "Define a small function with two numeric inputs, return their sum, and test it with positive, negative, and zero values.", "prompt": "write a function that adds two numbers"}
+{"completion": "Define a small function with two numeric inputs, return their sum, and test it with positive, negative, and zero values.", "prompt": "please write a function that adds two numbers"}
+{"completion": "Define a small function with two numeric inputs, return their sum, and test it with positive, negative, and zero values.", "prompt": "gravion code write a function that adds two numbers"}
+{"completion": "Define a small function with two numeric inputs, return their sum, and test it with positive, negative, and zero values.", "prompt": "help me write a function that adds two numbers"}
+{"completion": "A variable is a named place that stores a value so code can read or update it later.", "prompt": "explain a variable in simple terms"}
+{"completion": "A variable is a named place that stores a value so code can read or update it later.", "prompt": "please explain a variable in simple terms"}
+{"completion": "A variable is a named place that stores a value so code can read or update it later.", "prompt": "gravion code explain a variable in simple terms"}
+{"completion": "A variable is a named place that stores a value so code can read or update it later.", "prompt": "help me explain a variable in simple terms"}
+{"completion": "Reproduce the failure, read the first error, isolate the smallest failing case, fix one cause, then rerun the test.", "prompt": "debug a failing test step by step"}
+{"completion": "Reproduce the failure, read the first error, isolate the smallest failing case, fix one cause, then rerun the test.", "prompt": "please debug a failing test step by step"}
+{"completion": "Reproduce the failure, read the first error, isolate the smallest failing case, fix one cause, then rerun the test.", "prompt": "gravion code debug a failing test step by step"}
+{"completion": "Reproduce the failure, read the first error, isolate the smallest failing case, fix one cause, then rerun the test.", "prompt": "help me debug a failing test step by step"}
+{"completion": "Extract the repeated logic into one helper, keep behavior unchanged, and run the existing tests after each small change.", "prompt": "refactor duplicated code safely"}
+{"completion": "Extract the repeated logic into one helper, keep behavior unchanged, and run the existing tests after each small change.", "prompt": "please refactor duplicated code safely"}
+{"completion": "Extract the repeated logic into one helper, keep behavior unchanged, and run the existing tests after each small change.", "prompt": "gravion code refactor duplicated code safely"}
+{"completion": "Extract the repeated logic into one helper, keep behavior unchanged, and run the existing tests after each small change.", "prompt": "help me refactor duplicated code safely"}
+{"completion": "Iterate over the collection in order and handle one item per pass; avoid changing the collection while looping.", "prompt": "write a loop that prints each item"}
+{"completion": "Iterate over the collection in order and handle one item per pass; avoid changing the collection while looping.", "prompt": "please write a loop that prints each item"}
+{"completion": "Iterate over the collection in order and handle one item per pass; avoid changing the collection while looping.", "prompt": "gravion code write a loop that prints each item"}
+{"completion": "Iterate over the collection in order and handle one item per pass; avoid changing the collection while looping.", "prompt": "help me write a loop that prints each item"}
+{"completion": "Recursion solves a problem by calling the same function on a smaller input until a base case stops the calls.", "prompt": "explain recursion with an example"}
+{"completion": "Recursion solves a problem by calling the same function on a smaller input until a base case stops the calls.", "prompt": "please explain recursion with an example"}
+{"completion": "Recursion solves a problem by calling the same function on a smaller input until a base case stops the calls.", "prompt": "gravion code explain recursion with an example"}
+{"completion": "Recursion solves a problem by calling the same function on a smaller input until a base case stops the calls.", "prompt": "help me explain recursion with an example"}
+{"completion": "Check for an empty list before indexing or averaging, and return a clear default or error message.", "prompt": "handle an empty list safely"}
+{"completion": "Check for an empty list before indexing or averaging, and return a clear default or error message.", "prompt": "please handle an empty list safely"}
+{"completion": "Check for an empty list before indexing or averaging, and return a clear default or error message.", "prompt": "gravion code handle an empty list safely"}
+{"completion": "Check for an empty list before indexing or averaging, and return a clear default or error message.", "prompt": "help me handle an empty list safely"}
+{"completion": "Define the route, inputs, validation, success response, error responses, and tests for each case.", "prompt": "design a small api endpoint"}
+{"completion": "Define the route, inputs, validation, success response, error responses, and tests for each case.", "prompt": "please design a small api endpoint"}
+{"completion": "Define the route, inputs, validation, success response, error responses, and tests for each case.", "prompt": "gravion code design a small api endpoint"}
+{"completion": "Define the route, inputs, validation, success response, error responses, and tests for each case.", "prompt": "help me design a small api endpoint"}
+{"completion": "Object oriented programming groups data and behavior into objects with clear responsibilities and interfaces.", "prompt": "explain object oriented programming"}
+{"completion": "Object oriented programming groups data and behavior into objects with clear responsibilities and interfaces.", "prompt": "please explain object oriented programming"}
+{"completion": "Object oriented programming groups data and behavior into objects with clear responsibilities and interfaces.", "prompt": "gravion code explain object oriented programming"}
+{"completion": "Object oriented programming groups data and behavior into objects with clear responsibilities and interfaces.", "prompt": "help me explain object oriented programming"}
+{"completion": "Test a valid input, an empty input, malformed input, and boundary values; assert both output and error behavior.", "prompt": "write a unit test for a parser"}
+{"completion": "Test a valid input, an empty input, malformed input, and boundary values; assert both output and error behavior.", "prompt": "please write a unit test for a parser"}
+{"completion": "Test a valid input, an empty input, malformed input, and boundary values; assert both output and error behavior.", "prompt": "gravion code write a unit test for a parser"}
+{"completion": "Test a valid input, an empty input, malformed input, and boundary values; assert both output and error behavior.", "prompt": "help me write a unit test for a parser"}
+{"completion": "Profile first, find the hot path, reduce repeated work, choose better data structures, and measure again.", "prompt": "improve slow code performance"}
+{"completion": "Profile first, find the hot path, reduce repeated work, choose better data structures, and measure again.", "prompt": "please improve slow code performance"}
+{"completion": "Profile first, find the hot path, reduce repeated work, choose better data structures, and measure again.", "prompt": "gravion code improve slow code performance"}
+{"completion": "Profile first, find the hot path, reduce repeated work, choose better data structures, and measure again.", "prompt": "help me improve slow code performance"}
+{"completion": "An index is a lookup structure that helps the database find rows faster, at the cost of storage and write time.", "prompt": "explain database indexes"}
+{"completion": "An index is a lookup structure that helps the database find rows faster, at the cost of storage and write time.", "prompt": "please explain database indexes"}
+{"completion": "An index is a lookup structure that helps the database find rows faster, at the cost of storage and write time.", "prompt": "gravion code explain database indexes"}
+{"completion": "An index is a lookup structure that helps the database find rows faster, at the cost of storage and write time.", "prompt": "help me explain database indexes"}
+{"completion": "Check type, length, range, and allowed characters; reject invalid input with a clear message before using it.", "prompt": "validate user input in code"}
+{"completion": "Check type, length, range, and allowed characters; reject invalid input with a clear message before using it.", "prompt": "please validate user input in code"}
+{"completion": "Check type, length, range, and allowed characters; reject invalid input with a clear message before using it.", "prompt": "gravion code validate user input in code"}
+{"completion": "Check type, length, range, and allowed characters; reject invalid input with a clear message before using it.", "prompt": "help me validate user input in code"}
+{"completion": "Open the file safely, handle missing or unreadable files, and close resources even when an error occurs.", "prompt": "write error handling for file reading"}
+{"completion": "Open the file safely, handle missing or unreadable files, and close resources even when an error occurs.", "prompt": "please write error handling for file reading"}
+{"completion": "Open the file safely, handle missing or unreadable files, and close resources even when an error occurs.", "prompt": "gravion code write error handling for file reading"}
+{"completion": "Open the file safely, handle missing or unreadable files, and close resources even when an error occurs.", "prompt": "help me write error handling for file reading"}
+{"completion": "A list keeps order and duplicates; a set keeps unique items and is built for membership checks.", "prompt": "explain the difference between a list and a set"}
+{"completion": "A list keeps order and duplicates; a set keeps unique items and is built for membership checks.", "prompt": "please explain the difference between a list and a set"}
+{"completion": "A list keeps order and duplicates; a set keeps unique items and is built for membership checks.", "prompt": "gravion code explain the difference between a list and a set"}
+{"completion": "A list keeps order and duplicates; a set keeps unique items and is built for membership checks.", "prompt": "help me explain the difference between a list and a set"}
+{"completion": "A task class can store title, status, and due date, with methods to complete, reopen, and describe the task.", "prompt": "create a simple class for a task"}
+{"completion": "A task class can store title, status, and due date, with methods to complete, reopen, and describe the task.", "prompt": "please create a simple class for a task"}
+{"completion": "A task class can store title, status, and due date, with methods to complete, reopen, and describe the task.", "prompt": "gravion code create a simple class for a task"}
+{"completion": "A task class can store title, status, and due date, with methods to complete, reopen, and describe the task.", "prompt": "help me create a simple class for a task"}
+{"completion": "Version control records changes over time so you can review history, collaborate, and restore earlier work.", "prompt": "explain version control basics"}
+{"completion": "Version control records changes over time so you can review history, collaborate, and restore earlier work.", "prompt": "please explain version control basics"}
+{"completion": "Version control records changes over time so you can review history, collaborate, and restore earlier work.", "prompt": "gravion code explain version control basics"}
+{"completion": "Version control records changes over time so you can review history, collaborate, and restore earlier work.", "prompt": "help me explain version control basics"}
+{"completion": "Build the reversed text by reading characters from the end to the start, then test empty and single-character inputs.", "prompt": "write a function to reverse a string"}
+{"completion": "Build the reversed text by reading characters from the end to the start, then test empty and single-character inputs.", "prompt": "please write a function to reverse a string"}
+{"completion": "Build the reversed text by reading characters from the end to the start, then test empty and single-character inputs.", "prompt": "gravion code write a function to reverse a string"}
+{"completion": "Build the reversed text by reading characters from the end to the start, then test empty and single-character inputs.", "prompt": "help me write a function to reverse a string"}
+{"completion": "Asynchronous code starts work without blocking everything else, then handles the result when it is ready.", "prompt": "explain asynchronous code"}
+{"completion": "Asynchronous code starts work without blocking everything else, then handles the result when it is ready.", "prompt": "please explain asynchronous code"}
+{"completion": "Asynchronous code starts work without blocking everything else, then handles the result when it is ready.", "prompt": "gravion code explain asynchronous code"}
+{"completion": "Asynchronous code starts work without blocking everything else, then handles the result when it is ready.", "prompt": "help me explain asynchronous code"}
+{"completion": "Store each value with an expiry time, return fresh values quickly, and refresh or remove stale entries.", "prompt": "design a cache with expiry"}
+{"completion": "Store each value with an expiry time, return fresh values quickly, and refresh or remove stale entries.", "prompt": "please design a cache with expiry"}
+{"completion": "Store each value with an expiry time, return fresh values quickly, and refresh or remove stale entries.", "prompt": "gravion code design a cache with expiry"}
+{"completion": "Store each value with an expiry time, return fresh values quickly, and refresh or remove stale entries.", "prompt": "help me design a cache with expiry"}
+{"completion": "Binary search repeatedly checks the middle of a sorted range and discards half until the target is found or absent.", "prompt": "write a binary search explanation"}
+{"completion": "Binary search repeatedly checks the middle of a sorted range and discards half until the target is found or absent.", "prompt": "please write a binary search explanation"}
+{"completion": "Binary search repeatedly checks the middle of a sorted range and discards half until the target is found or absent.", "prompt": "gravion code write a binary search explanation"}
+{"completion": "Binary search repeatedly checks the middle of a sorted range and discards half until the target is found or absent.", "prompt": "help me write a binary search explanation"}
+{"completion": "A stack removes the newest item first; a queue removes the oldest item first.", "prompt": "explain stack and queue differences"}
+{"completion": "A stack removes the newest item first; a queue removes the oldest item first.", "prompt": "please explain stack and queue differences"}
+{"completion": "A stack removes the newest item first; a queue removes the oldest item first.", "prompt": "gravion code explain stack and queue differences"}
+{"completion": "A stack removes the newest item first; a queue removes the oldest item first.", "prompt": "help me explain stack and queue differences"}
+{"completion": "Use names that state purpose, keep functions small, and remove comments that merely repeat the code.", "prompt": "make code readable with naming"}
+{"completion": "Use names that state purpose, keep functions small, and remove comments that merely repeat the code.", "prompt": "please make code readable with naming"}
+{"completion": "Use names that state purpose, keep functions small, and remove comments that merely repeat the code.", "prompt": "gravion code make code readable with naming"}
+{"completion": "Use names that state purpose, keep functions small, and remove comments that merely repeat the code.", "prompt": "help me make code readable with naming"}
+{"completion": "Test just below, exactly at, and just above each boundary so off-by-one errors are caught.", "prompt": "write a test for boundary values"}
+{"completion": "Test just below, exactly at, and just above each boundary so off-by-one errors are caught.", "prompt": "please write a test for boundary values"}
+{"completion": "Test just below, exactly at, and just above each boundary so off-by-one errors are caught.", "prompt": "gravion code write a test for boundary values"}
+{"completion": "Test just below, exactly at, and just above each boundary so off-by-one errors are caught.", "prompt": "help me write a test for boundary values"}
+{"completion": "Dependency injection passes needed collaborators into code instead of creating them inside, making tests easier.", "prompt": "explain dependency injection"}
+{"completion": "Dependency injection passes needed collaborators into code instead of creating them inside, making tests easier.", "prompt": "please explain dependency injection"}
+{"completion": "Dependency injection passes needed collaborators into code instead of creating them inside, making tests easier.", "prompt": "gravion code explain dependency injection"}
+{"completion": "Dependency injection passes needed collaborators into code instead of creating them inside, making tests easier.", "prompt": "help me explain dependency injection"}
+{"completion": "Decide where null is allowed, check before use, and prefer explicit defaults or errors over silent failure.", "prompt": "handle null values safely"}
+{"completion": "Decide where null is allowed, check before use, and prefer explicit defaults or errors over silent failure.", "prompt": "please handle null values safely"}
+{"completion": "Decide where null is allowed, check before use, and prefer explicit defaults or errors over silent failure.", "prompt": "gravion code handle null values safely"}
+{"completion": "Decide where null is allowed, check before use, and prefer explicit defaults or errors over silent failure.", "prompt": "help me handle null values safely"}
+{"completion": "Compare neighboring values or use a known sorting method, then verify sorted, reversed, and duplicate inputs.", "prompt": "write a sorting function outline"}
+{"completion": "Compare neighboring values or use a known sorting method, then verify sorted, reversed, and duplicate inputs.", "prompt": "please write a sorting function outline"}
+{"completion": "Compare neighboring values or use a known sorting method, then verify sorted, reversed, and duplicate inputs.", "prompt": "gravion code write a sorting function outline"}
+{"completion": "Compare neighboring values or use a known sorting method, then verify sorted, reversed, and duplicate inputs.", "prompt": "help me write a sorting function outline"}
+{"completion": "Time complexity describes how running time grows as input size grows, using the dominant growth term.", "prompt": "explain time complexity simply"}
+{"completion": "Time complexity describes how running time grows as input size grows, using the dominant growth term.", "prompt": "please explain time complexity simply"}
+{"completion": "Time complexity describes how running time grows as input size grows, using the dominant growth term.", "prompt": "gravion code explain time complexity simply"}
+{"completion": "Time complexity describes how running time grows as input size grows, using the dominant growth term.", "prompt": "help me explain time complexity simply"}
+{"completion": "Read settings from a file or environment, validate required keys, apply defaults, and fail with clear messages.", "prompt": "create a configuration loader"}
+{"completion": "Read settings from a file or environment, validate required keys, apply defaults, and fail with clear messages.", "prompt": "please create a configuration loader"}
+{"completion": "Read settings from a file or environment, validate required keys, apply defaults, and fail with clear messages.", "prompt": "gravion code create a configuration loader"}
+{"completion": "Read settings from a file or environment, validate required keys, apply defaults, and fail with clear messages.", "prompt": "help me create a configuration loader"}
+{"completion": "Retry only temporary failures, wait longer between attempts, cap total attempts, and log the final error.", "prompt": "write a retry helper with backoff"}
+{"completion": "Retry only temporary failures, wait longer between attempts, cap total attempts, and log the final error.", "prompt": "please write a retry helper with backoff"}
+{"completion": "Retry only temporary failures, wait longer between attempts, cap total attempts, and log the final error.", "prompt": "gravion code write a retry helper with backoff"}
+{"completion": "Retry only temporary failures, wait longer between attempts, cap total attempts, and log the final error.", "prompt": "help me write a retry helper with backoff"}
+{"completion": "An interface is a contract: callers rely on promised inputs and outputs without knowing internal details.", "prompt": "explain interfaces and contracts"}
+{"completion": "An interface is a contract: callers rely on promised inputs and outputs without knowing internal details.", "prompt": "please explain interfaces and contracts"}
+{"completion": "An interface is a contract: callers rely on promised inputs and outputs without knowing internal details.", "prompt": "gravion code explain interfaces and contracts"}
+{"completion": "An interface is a contract: callers rely on promised inputs and outputs without knowing internal details.", "prompt": "help me explain interfaces and contracts"}
+{"completion": "Log important events with context, avoid secrets, use levels consistently, and make failures searchable.", "prompt": "design a logging approach"}
+{"completion": "Log important events with context, avoid secrets, use levels consistently, and make failures searchable.", "prompt": "please design a logging approach"}
+{"completion": "Log important events with context, avoid secrets, use levels consistently, and make failures searchable.", "prompt": "gravion code design a logging approach"}
+{"completion": "Log important events with context, avoid secrets, use levels consistently, and make failures searchable.", "prompt": "help me design a logging approach"}
+{"completion": "Split text into words, normalize case if needed, count each word, and test punctuation and empty text.", "prompt": "write a function to count word frequency"}
+{"completion": "Split text into words, normalize case if needed, count each word, and test punctuation and empty text.", "prompt": "please write a function to count word frequency"}
+{"completion": "Split text into words, normalize case if needed, count each word, and test punctuation and empty text.", "prompt": "gravion code write a function to count word frequency"}
+{"completion": "Split text into words, normalize case if needed, count each word, and test punctuation and empty text.", "prompt": "help me write a function to count word frequency"}
+{"completion": "A memory leak keeps unused data reachable, so memory grows over time; find retained references and release them.", "prompt": "explain memory leaks"}
+{"completion": "A memory leak keeps unused data reachable, so memory grows over time; find retained references and release them.", "prompt": "please explain memory leaks"}
+{"completion": "A memory leak keeps unused data reachable, so memory grows over time; find retained references and release them.", "prompt": "gravion code explain memory leaks"}
+{"completion": "A memory leak keeps unused data reachable, so memory grows over time; find retained references and release them.", "prompt": "help me explain memory leaks"}
+{"completion": "Parse arguments, validate them, run one clear action, print helpful output, and return a proper exit code.", "prompt": "make a simple command line tool"}
+{"completion": "Parse arguments, validate them, run one clear action, print helpful output, and return a proper exit code.", "prompt": "please make a simple command line tool"}
+{"completion": "Parse arguments, validate them, run one clear action, print helpful output, and return a proper exit code.", "prompt": "gravion code make a simple command line tool"}
+{"completion": "Parse arguments, validate them, run one clear action, print helpful output, and return a proper exit code.", "prompt": "help me make a simple command line tool"}
+{"completion": "Use many fast unit tests, fewer integration tests, and a small number of end-to-end tests for critical paths.", "prompt": "explain testing pyramids"}
+{"completion": "Use many fast unit tests, fewer integration tests, and a small number of end-to-end tests for critical paths.", "prompt": "please explain testing pyramids"}
+{"completion": "Use many fast unit tests, fewer integration tests, and a small number of end-to-end tests for critical paths.", "prompt": "gravion code explain testing pyramids"}
+{"completion": "Use many fast unit tests, fewer integration tests, and a small number of end-to-end tests for critical paths.", "prompt": "help me explain testing pyramids"}
+{"completion": "Walk both lists with pointers, always take the smaller next value, then append the remaining tail.", "prompt": "write a merge of two sorted lists"}
+{"completion": "Walk both lists with pointers, always take the smaller next value, then append the remaining tail.", "prompt": "please write a merge of two sorted lists"}
+{"completion": "Walk both lists with pointers, always take the smaller next value, then append the remaining tail.", "prompt": "gravion code write a merge of two sorted lists"}
+{"completion": "Walk both lists with pointers, always take the smaller next value, then append the remaining tail.", "prompt": "help me write a merge of two sorted lists"}
+{"completion": "Password storage should use a slow salted hash designed for passwords, never a fast general hash or plain text.", "prompt": "explain hashing for passwords"}
+{"completion": "Password storage should use a slow salted hash designed for passwords, never a fast general hash or plain text.", "prompt": "please explain hashing for passwords"}
+{"completion": "Password storage should use a slow salted hash designed for passwords, never a fast general hash or plain text.", "prompt": "gravion code explain hashing for passwords"}
+{"completion": "Password storage should use a slow salted hash designed for passwords, never a fast general hash or plain text.", "prompt": "help me explain hashing for passwords"}
+{"completion": "Return page items, total count, page size, current page, and links or cursors for the next page.", "prompt": "design a pagination response"}
+{"completion": "Return page items, total count, page size, current page, and links or cursors for the next page.", "prompt": "please design a pagination response"}
+{"completion": "Return page items, total count, page size, current page, and links or cursors for the next page.", "prompt": "gravion code design a pagination response"}
+{"completion": "Return page items, total count, page size, current page, and links or cursors for the next page.", "prompt": "help me design a pagination response"}
+{"completion": "Return early when input is invalid so the main path stays flat and readable.", "prompt": "write a guard clause example"}
+{"completion": "Return early when input is invalid so the main path stays flat and readable.", "prompt": "please write a guard clause example"}
+{"completion": "Return early when input is invalid so the main path stays flat and readable.", "prompt": "gravion code write a guard clause example"}
+{"completion": "Return early when input is invalid so the main path stays flat and readable.", "prompt": "help me write a guard clause example"}
+{"completion": "Immutable values do not change after creation, which reduces surprise side effects and simplifies reasoning.", "prompt": "explain immutability benefits"}
+{"completion": "Immutable values do not change after creation, which reduces surprise side effects and simplifies reasoning.", "prompt": "please explain immutability benefits"}
+{"completion": "Immutable values do not change after creation, which reduces surprise side effects and simplifies reasoning.", "prompt": "gravion code explain immutability benefits"}
+{"completion": "Immutable values do not change after creation, which reduces surprise side effects and simplifies reasoning.", "prompt": "help me explain immutability benefits"}
+{"completion": "Define states, allowed transitions, events, and guards; reject transitions that are not listed.", "prompt": "create a simple state machine"}
+{"completion": "Define states, allowed transitions, events, and guards; reject transitions that are not listed.", "prompt": "please create a simple state machine"}
+{"completion": "Define states, allowed transitions, events, and guards; reject transitions that are not listed.", "prompt": "gravion code create a simple state machine"}
+{"completion": "Define states, allowed transitions, events, and guards; reject transitions that are not listed.", "prompt": "help me create a simple state machine"}
+{"completion": "Walk nested lists recursively or with a stack, append leaf values in order, and test empty nesting.", "prompt": "write a function to flatten nested lists"}
+{"completion": "Walk nested lists recursively or with a stack, append leaf values in order, and test empty nesting.", "prompt": "please write a function to flatten nested lists"}
+{"completion": "Walk nested lists recursively or with a stack, append leaf values in order, and test empty nesting.", "prompt": "gravion code write a function to flatten nested lists"}
+{"completion": "Walk nested lists recursively or with a stack, append leaf values in order, and test empty nesting.", "prompt": "help me write a function to flatten nested lists"}
+{"completion": "Code review checks correctness, clarity, tests, security, and maintainability before changes merge.", "prompt": "explain code review goals"}
+{"completion": "Code review checks correctness, clarity, tests, security, and maintainability before changes merge.", "prompt": "please explain code review goals"}
+{"completion": "Code review checks correctness, clarity, tests, security, and maintainability before changes merge.", "prompt": "gravion code explain code review goals"}
+{"completion": "Code review checks correctness, clarity, tests, security, and maintainability before changes merge.", "prompt": "help me explain code review goals"}
+{"completion": "Check size, type, extension, and content; store uploads outside executable paths and scan when required.", "prompt": "design a file upload validation"}
+{"completion": "Check size, type, extension, and content; store uploads outside executable paths and scan when required.", "prompt": "please design a file upload validation"}
+{"completion": "Check size, type, extension, and content; store uploads outside executable paths and scan when required.", "prompt": "gravion code design a file upload validation"}
+{"completion": "Check size, type, extension, and content; store uploads outside executable paths and scan when required.", "prompt": "help me design a file upload validation"}
+{"completion": "Wait for a quiet period after the last call, then run the function once with the latest arguments.", "prompt": "write a debounce helper outline"}
+{"completion": "Wait for a quiet period after the last call, then run the function once with the latest arguments.", "prompt": "please write a debounce helper outline"}
+{"completion": "Wait for a quiet period after the last call, then run the function once with the latest arguments.", "prompt": "gravion code write a debounce helper outline"}
+{"completion": "Wait for a quiet period after the last call, then run the function once with the latest arguments.", "prompt": "help me write a debounce helper outline"}
+{"completion": "Event driven design reacts to named events, keeping producers and consumers loosely coupled.", "prompt": "explain event driven design"}
+{"completion": "Event driven design reacts to named events, keeping producers and consumers loosely coupled.", "prompt": "please explain event driven design"}
+{"completion": "Event driven design reacts to named events, keeping producers and consumers loosely coupled.", "prompt": "gravion code explain event driven design"}
+{"completion": "Event driven design reacts to named events, keeping producers and consumers loosely coupled.", "prompt": "help me explain event driven design"}
+{"completion": "Define required fields, types, ranges, and cross-field rules; report every validation problem clearly.", "prompt": "make a small data validation schema"}
+{"completion": "Define required fields, types, ranges, and cross-field rules; report every validation problem clearly.", "prompt": "please make a small data validation schema"}
+{"completion": "Define required fields, types, ranges, and cross-field rules; report every validation problem clearly.", "prompt": "gravion code make a small data validation schema"}
+{"completion": "Define required fields, types, ranges, and cross-field rules; report every validation problem clearly.", "prompt": "help me make a small data validation schema"}
+{"completion": "Track seen values in a set and collect values that appear again, preserving first duplicate order if needed.", "prompt": "write a function to find duplicates"}
+{"completion": "Track seen values in a set and collect values that appear again, preserving first duplicate order if needed.", "prompt": "please write a function to find duplicates"}
+{"completion": "Track seen values in a set and collect values that appear again, preserving first duplicate order if needed.", "prompt": "gravion code write a function to find duplicates"}
+{"completion": "Track seen values in a set and collect values that appear again, preserving first duplicate order if needed.", "prompt": "help me write a function to find duplicates"}
+{"completion": "A transaction groups changes so they all succeed together or roll back together, keeping data consistent.", "prompt": "explain database transactions"}
+{"completion": "A transaction groups changes so they all succeed together or roll back together, keeping data consistent.", "prompt": "please explain database transactions"}
+{"completion": "A transaction groups changes so they all succeed together or roll back together, keeping data consistent.", "prompt": "gravion code explain database transactions"}
+{"completion": "A transaction groups changes so they all succeed together or roll back together, keeping data consistent.", "prompt": "help me explain database transactions"}
+{"completion": "Return service status, version, and dependency checks quickly, without exposing secrets or heavy work.", "prompt": "create a health check endpoint"}
+{"completion": "Return service status, version, and dependency checks quickly, without exposing secrets or heavy work.", "prompt": "please create a health check endpoint"}
+{"completion": "Return service status, version, and dependency checks quickly, without exposing secrets or heavy work.", "prompt": "gravion code create a health check endpoint"}
+{"completion": "Return service status, version, and dependency checks quickly, without exposing secrets or heavy work.", "prompt": "help me create a health check endpoint"}
+{"completion": "Split each non-empty line on the first separator, trim spaces, validate keys, and report malformed lines.", "prompt": "write a parser for key value lines"}
+{"completion": "Split each non-empty line on the first separator, trim spaces, validate keys, and report malformed lines.", "prompt": "please write a parser for key value lines"}
+{"completion": "Split each non-empty line on the first separator, trim spaces, validate keys, and report malformed lines.", "prompt": "gravion code write a parser for key value lines"}
+{"completion": "Split each non-empty line on the first separator, trim spaces, validate keys, and report malformed lines.", "prompt": "help me write a parser for key value lines"}
+{"completion": "Feature flags switch behavior at runtime so teams can release gradually and disable risky paths quickly.", "prompt": "explain feature flags"}
+{"completion": "Feature flags switch behavior at runtime so teams can release gradually and disable risky paths quickly.", "prompt": "please explain feature flags"}
+{"completion": "Feature flags switch behavior at runtime so teams can release gradually and disable risky paths quickly.", "prompt": "gravion code explain feature flags"}
+{"completion": "Feature flags switch behavior at runtime so teams can release gradually and disable risky paths quickly.", "prompt": "help me explain feature flags"}
+{"completion": "Count requests per key in a time window, allow bursts within limits, and return clear retry guidance.", "prompt": "design a rate limiter"}
+{"completion": "Count requests per key in a time window, allow bursts within limits, and return clear retry guidance.", "prompt": "please design a rate limiter"}
+{"completion": "Count requests per key in a time window, allow bursts within limits, and return clear retry guidance.", "prompt": "gravion code design a rate limiter"}
+{"completion": "Count requests per key in a time window, allow bursts within limits, and return clear retry guidance.", "prompt": "help me design a rate limiter"}
+{"completion": "Trim whitespace, collapse repeated spaces, normalize case when appropriate, and test punctuation handling.", "prompt": "write a function to normalize text"}
+{"completion": "Trim whitespace, collapse repeated spaces, normalize case when appropriate, and test punctuation handling.", "prompt": "please write a function to normalize text"}
+{"completion": "Trim whitespace, collapse repeated spaces, normalize case when appropriate, and test punctuation handling.", "prompt": "gravion code write a function to normalize text"}
+{"completion": "Trim whitespace, collapse repeated spaces, normalize case when appropriate, and test punctuation handling.", "prompt": "help me write a function to normalize text"}
+{"completion": "Define a function that returns a three-line haiku, keep the syllable pattern clear, and test the exact output.", "prompt": "write a haiku function"}
+{"completion": "Define a function that returns a three-line haiku, keep the syllable pattern clear, and test the exact output.", "prompt": "please write a haiku function"}
+{"completion": "Define a function that returns a three-line haiku, keep the syllable pattern clear, and test the exact output.", "prompt": "gravion code write a haiku function"}
+{"completion": "Define a function that returns a three-line haiku, keep the syllable pattern clear, and test the exact output.", "prompt": "help me write a haiku function"}
+{"completion": "Compare neighboring values or use a known sorting method, then verify sorted, reversed, and duplicate inputs.", "prompt": "write a sort function"}
+{"completion": "Compare neighboring values or use a known sorting method, then verify sorted, reversed, and duplicate inputs.", "prompt": "please write a sort function"}
+{"completion": "Compare neighboring values or use a known sorting method, then verify sorted, reversed, and duplicate inputs.", "prompt": "gravion code write a sort function"}
+{"completion": "Compare neighboring values or use a known sorting method, then verify sorted, reversed, and duplicate inputs.", "prompt": "help me write a sort function"}

@@ -66,21 +66,37 @@ def test_load_job_round_trip_and_missing_file(tmp_path):
         load_job(bad)
 
 
-def test_run_training_job_is_honest_about_the_missing_backend():
-    """A valid job still cannot train in this build — and must say
-    so instead of faking weights or progress."""
-    job = validate_job(_job())
-    with pytest.raises(TrainingError, match="no training backend"):
-        run_training_job(job)
+def test_run_training_job_trains_specialist_weights(tmp_path):
+    data = tmp_path / "examples.jsonl"
+    data.write_text(
+        json.dumps({"prompt": "greet a new user", "completion": "Hello and welcome."}) + "\n"
+        + json.dumps({"prompt": "say goodbye politely", "completion": "Goodbye and take care."}) + "\n",
+        encoding="utf-8",
+    )
+    job = validate_job(_job(data=str(data)))
+    out_path = tmp_path / "gravion-chat-weights.json"
+    report = run_training_job(job, out_path=out_path)
+    assert report["model"] == "gravion-chat"
+    assert report["parameter_count"] > 0
+    artifact = json.loads(out_path.read_text(encoding="utf-8"))
+    assert artifact["model_id"] == "gravion-chat"
+    assert artifact["parameter_count"] == report["parameter_count"]
 
 
 def test_train_cli_validate_and_run(capsys, tmp_path):
+    data = tmp_path / "examples.jsonl"
+    data.write_text(
+        json.dumps({"prompt": "greet a new user", "completion": "Hello and welcome."}) + "\n"
+        + json.dumps({"prompt": "say goodbye politely", "completion": "Goodbye and take care."}) + "\n",
+        encoding="utf-8",
+    )
     path = tmp_path / "job.json"
-    path.write_text(json.dumps(_job()), encoding="utf-8")
-    assert main(["train", "validate", "--job", str(path)]) == 0
+    path.write_text(json.dumps(_job(data=str(data))), encoding="utf-8")
+    home = tmp_path / "home"
+    assert main(["--home", str(home), "train", "validate", "--job", str(path)]) == 0
     out = capsys.readouterr().out
     assert "training job valid" in out
-    # Run validates, then refuses honestly: exit 1, nothing trained.
-    assert main(["train", "run", "--job", str(path)]) == 1
-    err = capsys.readouterr().err
-    assert "no training backend" in err
+    assert main(["--home", str(home), "train", "run", "--job", str(path)]) == 0
+    out = capsys.readouterr().out
+    assert "training complete: model gravion-chat" in out
+    assert (home / "data" / "models" / "gravion-chat-weights.json").exists()

@@ -11,12 +11,10 @@ which Gravion model entries can serve it. The registry ships as data
 and module/bundle packaging path are available to resolve; it does
 not by itself claim that trained weights are included. The separate
 ``weights_status`` field states the weights position explicitly:
-Gravion Core includes compact local trained weights (with a
-deterministic fallback), and the specialist entries are
-packaging-ready entries with no trained weights included in this
-repository. Real specialist model behaviour requires an
-operator-supplied endpoint or a future operations-supplied weights
-bundle.
+Every bundled Gravion entry includes compact local trained
+weights (with a deterministic fallback). A deployment-supplied
+registry may still mark an entry as packaging-ready or
+operator-supplied; the field remains authoritative either way.
 
 The registry is data, not code: a deployment can replace it wholesale
 by placing its own `models.json` in the deployment home (same schema,

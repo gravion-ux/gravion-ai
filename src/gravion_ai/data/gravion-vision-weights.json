@@ -1,0 +1,2684 @@
+{
+  "architecture": "sparse n-gram embedding + direct linear softmax classifier",
+  "bias": [
+    0.50548184,
+    -1.33745074,
+    -1.56023788,
+    1.3181684,
+    -0.92768723,
+    0.02796679,
+    0.77608144,
+    -0.27034253,
+    2.03193355,
+    -0.15059595,
+    -0.64404517,
+    -0.81850499,
+    0.08127166,
+    2.13565326,
+    2.32967949,
+    -3.37117815,
+    -0.18943396,
+    -0.53887522,
+    0.03589644,
+    0.02875901,
+    0.89904016,
+    -0.24349633,
+    -2.54718924,
+    0.01539959,
+    0.55757833,
+    0.17952707,
+    -0.24713355,
+    0.21196049,
+    -0.5881902,
+    1.41516554,
+    -0.55476582,
+    0.40328309,
+    -0.6238718,
+    0.01815136,
+    -0.28819427,
+    0.35989988,
+    -0.55629134,
+    -0.10505755,
+    0.57780969,
+    1.1698848,
+    0.90120482,
+    0.86213481,
+    -0.82016098,
+    0.47584125,
+    1.32711637,
+    -1.93138444,
+    1.05691218,
+    -1.38694727
+  ],
+  "classes": [
+    "Action plan: frozen peak moment, sharp subject, blurred background, and space in the direction of motion.",
+    "Architecture plan: strong geometry, clean lines, human scale, and light that reveals texture.",
+    "Composition: product centered, clean background, soft shadow, one prop for scale, and space for text.",
+    "Cover concept: strong central symbol, readable title space, limited palette, and mood matching the story.",
+    "Craft image: hands at work, tools in reach, textured materials, and warm workshop light.",
+    "Desk image: tidy workspace, notebook, cup, soft daylight, and tools arranged by use.",
+    "Editorial plan: bold pose, controlled palette, textured backdrop, and confident styling.",
+    "Food setup: window light, textured surface, steam if hot, garnish last, and a close crop.",
+    "Image brief: armchair, lamp glow, stacked books, blanket, and quiet window light.",
+    "Image brief: bowls of colorful spices, textured cloth, warm light, and rich detail.",
+    "Image brief: cabin in snow, chimney smoke, pine trees, warm windows, and quiet evening.",
+    "Image brief: city lights, wet street reflections, deep blue sky, and one bright sign as focal point.",
+    "Image brief: clean towers, elevated walkways, soft dawn light, and small human figures for scale.",
+    "Image brief: colorful stalls, people in motion, warm light, shallow depth, and a clear focal subject.",
+    "Image brief: fresh blooms, soft rain light, green leaves, and a path leading inward.",
+    "Image brief: glass light, green rows, water droplets, warm air feel, and layered depth.",
+    "Image brief: golden field, long shadows, dew sparkle, distant trees, and hopeful mood.",
+    "Image brief: layered mountain ridges, snow caps, morning haze, pine foreground, and a wide sky.",
+    "Image brief: lighthouse beam, rough sea, dark clouds, spray, and dramatic contrast.",
+    "Image brief: low sun over calm water, warm horizon glow, gentle waves, and a quiet shoreline.",
+    "Image brief: rugged cliff, waves below, seabirds, dramatic clouds, and golden edge light.",
+    "Image brief: shoreline play, soft evening light, natural smiles, and wide open sky.",
+    "Image brief: silky falling water, mossy rocks, mist, lush green, and a balanced long exposure feel.",
+    "Image brief: small houses, falling snow, warm windows, quiet street, and blue evening light.",
+    "Image brief: smooth dune curves, long shadows, warm sand tones, and a small figure for scale.",
+    "Image brief: still lake, low mist, reflected trees, pale sky, and a small boat.",
+    "Image brief: tall shelves, warm lamps, reading table, dust in light beams, and quiet mood.",
+    "Image brief: umbrella, reflective pavement, soft neon glow, and a thoughtful expression.",
+    "Image brief: warm fire glow, starry sky, silhouettes, sparks rising, and cozy contrast.",
+    "Image brief: warm sunset light, calm human portrait, soft background, natural expression, high detail.",
+    "Image brief: winding path, tall trees, filtered light, mist between trunks, and fresh green tones.",
+    "Image brief: worn tools, wooden bench, task light, organized layout, and honest texture.",
+    "Leading lines plan: road or railing guiding toward the subject, balanced horizon, and clear depth.",
+    "Logo concept: simple geometric mark, two colors, readable at small size, and balanced negative space.",
+    "Macro plan: single bloom, dew drops, blurred background, fine petal detail, and gentle backlight.",
+    "Monochrome plan: strong shapes, deep shadows, bright highlights, and a decisive moment.",
+    "Negative space plan: small subject, large calm background, one accent color, and room for text.",
+    "Pet portrait: eye-level camera, soft background, catchlights, favorite toy nearby, and patient timing.",
+    "Photo concept: soft blanket, gentle hands nearby, warm light, and a calm safe setup.",
+    "Portrait plan: subject near window, soft side light, plain background, catchlights in eyes, calm pose.",
+    "Poster image: bold performer silhouette, stage lights, crowd shapes, and clear title space.",
+    "Science image: clear subject, labeled space if needed, accurate colors, and uncluttered background.",
+    "Shadow plan: hard side light, simple shapes, high contrast, and shadow lines guiding the eye.",
+    "Silhouette plan: subject against bright sky, rim light on edges, simple horizon, and warm gradient.",
+    "Still life: arranged fruit, linen cloth, directional light, rich color, and soft shadows.",
+    "Teamwork image: people around a table, shared notes, natural gestures, and bright workspace.",
+    "Travel image: landmark, local life, clear sky, inviting foreground, and space for headline text.",
+    "Wedding composition: couple in soft light, uncluttered background, natural hands, and space around subjects."
+  ],
+  "classifier": {
+    "data": "IBgTNcVSHA7FJQ32ADXOHwBExPck9wQY6ADO3LT5mDr4Rr8/ICsjDeqLMQsZKCEPzQ700SEx4jXF0vTi4zYJ+hUtoxAtAh8N9zuBAwH91+3jLLf11x7H/OoWMiwENOhH+S0LVR4FvOHUw/cO0BnqCQYoGgvQFFBQ4MU/JBD69i/dGz04EwAYIApE//zZ5PC6+fM6Fc8L0Cu2QwTuOPEZuBjKA8EmC8QYQz0xTPEnG/wAqzD259kK5N/dX90jyTwQ8/Qt6iP7AKTWBD8M09JV4QQt3RDv7xgA1jzOElzo9+I73OnVH/0s5y3+GRTQ/ws4MMlH2KrItgwLAv8J3tg24Pf8IKANw+nLIT7n0O8mLNUe2gYVAwaT02cCDxDfFjAjVgMt0wb02dLvzbgG3/0OuA8AE/Ac6xzSIlac/b/nB/axxfzV7eYf//n48djZvwi/76Hz4rUWwvwow/Xp7RHQ8SrJTeGlJCAJBUgI+dwLLK8gwe8jHPjQUCIlMgQq+E7WChjPzqvd0vnOGiAtEQU48AuzWd338uk+BRbbw/754BU3DR7Z7+qxHzkr3iv63LnWDOAvB9/QOSUR6lhFFhgT3jCXKkXsHgQaEihB7uTRCxITwBEouOwGA/sP0zEp68kYIODh7ek31NX2EuoeBLNLqVMV7CzIA8IC++Mc07sNL/v8RwwrQDQv2CJE15jxHO4f5NsL6+UxHPQDxi8MMA5erMcGywwnCwXhx/Er4NT9qkoeGfrM+NEPCObYAyMCYLEesxTRFXfxPOVeJeDn0fkA+vkE7yoZCQhHy//tSh79kgzCFwruAyUgyc7KGCUUPlUE4AoTJzn2fSH05BIGDiLZ69TN+gUU4ysTPNC/yQgFKWc4ORvmJfv4ATHp08tkAyZAAVC8TC7BPfY2Cvm/C/2z3s/4AuzX9/nZ5a3oPA3q1UnVDOorPB8c6gzuYNw7+uIH3UPmJ0vr7uAeFqEKDt/UZOUaqr0I+P8IEfXY1xK1/z/YXAL94wsR/cq8MjVhHP7W",
+    "encoding": "int8-base64",
+    "scale": 0.039302217678760916
+  },
+  "dim": 16,
+  "direct": {
+    "data": "EMoIAcEPEQ0BCAgGCRUAFQoHCcALCBYJCgoHCQb9BgnNBxAQzQ/+AgsLzREDyA0JHCPHDgEaHcEDDAsMEPwFGQsJDA4QDRoOEA4LtAoBCw4AtRodABvEv/r7ARy/D/vI6Ovq5uro5+kPFhUUF+YRIRUTFyQYFiMXGRgWGRMRExjrGuno7Ojn6Ojp7Ofo6+jqHy4WEg0eIRzp6+zr6wzo7ezt6+Hs7O7s6uvs6u3l7OsM6RwfCx0PEQgICyARGwkY6e3r6Ozp6OoSGBcWGegUIxkVGdUbGCUZGxoXGhQTFRntG+rp7uno6err7ujq7errLOghH+0rLify8/Tz8+jx9PT08/Hy8vXz8vLz8fTt8/Lt8Cwr7SwaHurr7S4f7esi8kT08h7y8vT09/f39yH0+PT39j/3+Pj39/f39/f19/gd+O/zHfH08hwbHPHxLBz080b18yDz8/X3+Pj4+SP3+fn5+PD6+fn5+fn5+fn3+fkf+fD0HvL18x4dHvLyLh719dv29Sj19fb5+fn6+Sn4+vr6+fL6+vr6+vr6+vr4+vol+vT1JPT29SIiJPX0NyP39dv29Sj19fb5+fn6+Sn4+vr6+fL6+vr6+vr6+vr4+vol+vT1JPT29SIiJPX0NyP39e/29uv39/T8/Pz8/PL8/Pz9/Pr9/P38/Pz8/P38/PxB/PX2PvT2SfLyPfdJ6fL39fv49/v29vT3+Pr4+fn3+fr5+fv3+Pr4+Pf4VfhS+fn79/b1/Fv3Tfv6+/b0/Pv4/Pj9/PX8/P3+/v7+/vP9/v7+/vz+/v7+/v7+/v7+/v72/vz99fz9/Ts59vz88j39/fL9/e38/f3+/f7+/vb+/v7+/fz+/v7+/v7+/v7+/v5D/vz8Qfz9/PX2QPz86/X9+f31Uf339/j8+/z6+vz7/Pz9/Pz7+/z7+/v8+vz7+/z9V/j3/flM+P39/fj4/fz0/Pj9/PX8/P3+/v7+/vP9/v7+/vz+/v7+/v7+/v7+/v72/vz99fz9/Ts59vz88j39/Pj9/PX8/P3+/v7+/vP9/v7+/vz+/v7+/v7+/v7+/v72/vz99fz9/Ts59vz88j39/Pj9/PX8/P3+/v7+/vP9/v7+/vz+/v7+/v7+/v7+/v72/vz99fz9/Ts59vz88j39/Pj9/PX8/P3+/v7+/vP9/v7+/vz+/v7+/v7+/v7+/v72/vz99fz9/Ts59vz88j39/fL9/e38/f3+/f7+/vb+/v7+/fz+/v7+/v7+/v7+/v5D/vz8Qfz9/PX2QPz86/X9+PxI9fz39/L9/v7+/f39/f3+/f39/f7+/f79/f79/f39/Pj2/PlC9vz8/Pb1/PxI/v7+/v7+/v76+1/6+f73+Ppe+v36+fn1+vn3+vn6+fn+/P7+//7+/v7+/v/+/v7+/fn+/U/9/f3+//7+/0T+/////vz////+///////+///1//3+9/3+/ff49v398/f+/v7//v7+/v76+PpeYP76+Pn6+f33+vn5+fr7+vb7+Pr/+P7+/v/+/v7+//7+/v7+/v7//v7+/v76+PpeYP76+Pn6+f33+vn5+fr7+vb7+Pr/+P7+/v/+/v7+//7+/v7++v1P+v36+vb+/v7+/v7+/v7//v7+/v7+/v7+/v7+/v7+/vv5/fvv+f3+/fr4/f1R/v7+/v7+/v76+1/6+f73+Ppe+v36+fn1+vn3+vn6+fn+/P7+//7+/v7+/v/+/v7+/fn+/U/9/f3+//7+/0T+/////vz////+///////+///1//3+9/3+/ff49v398/f+/v3+/vL9/v76avz8/FD9+/v8/Pz7/Pr6+/v8/Pv7+/z8/f7+/P7+/fr8+/3++vr+/v7+/v7+/v76+1/6+f73+Ppe+v36+fn1+vn3+vn6+fn+/P7+//7+/v7+/v/+/v7+/v7//v7+/v76+Pll8P75+Pr5+v34+vj1+fj6+WX6+Pn++f7+//7+/v7+//7+//7+/fn+/U/9/f3+//7+/0T+/////vz////+///////+///1//3+9/3+/ff49v398/f++v1P+v36+vb+/v7+/v7+/v7//v7+/v7+/v7+/v7+/v7+/vv5/fvv+f3+/fr4/f1R+f38+/76+vv8/P39/fz7/f38/P38+/38/Pv7/PxX/f3+/Pr5/mH8+/79/vn8/v38+v78+v75+vr8/P37/P38/fz9/f38/Pz8/Pz9Wfv7/Pz++vtl/vn7+v3+/vn8/v77/v7+/v3+/v76/Pr7/P37+137+kv6+/v7+/r6/Pv8+vv9/f7+/v7+/v39/f7+/f3++/38+f75+vv8+/39/f37/f39/P38+/38/Pv7/PxX/P3+/fn3/vn7/P3+/mX7/f38///////////9/fz9/f/9/P38/P78ZPz9/fv8/fz8/fz//v/////////////////////////////9/fz9/f/9/P38/P78ZPz9/fv8/fz8/fz//v///////////////////P/9V//7+/z///////7///////////////////////////v7//z7/f////z8//79/P/9V//7+/z///////7///////////////////////////v7//z7/f////z8//79//7//vP//////////1H///////7/AP///wD////////8/////f///vv9/P//+/v///7//vP//////////1H///////7/AP///wD////////8/////f///vv9/P//+/v////////////8/Pz7/P/8/P38/f/8/fv5/fv9/Wv8/Pz//f/////////////////////////////8/Pz7/P/8/P38/f/8/fv5/fv9/Wv8/Pz//f/////////////////////////////8/P39+//9/Pz9/P5s+/z9/Pv9/vz8+/3//P/////////////////////////////8/P39+//9/Pz9/P5s+/z9/Pv9/vz8+/3//P////////////////////////////9X/P3+/f/9/v3+/v38/v3+/vz9/v39/f3//v////////////////////////////9X/P3+/f/9/v3+/v38/v3+/vz9/v39/f3//v/////////////////////////////9+/39/P/9/P38/P79/fz9afz9/f39+/z//P/////////////////////////////9+/39/P/9/P38/P79/fz9afz9/f39+/z//P//////////////////+/78+//6ZPz///////7////////////////////+///+//n7//v8/P7+/vv8//79+/78+//6ZPz///////7////////////////////+///+//n7//v8/P7+/vv8//79/P76/f/9/F7///////7///////////////////////////z8//z7+v7///z8///6/P76/f/9/F7///////7///////////////////////////z8//z7+v7///z8///6///////////9/Pz8/P/9+/z8+v/7/fv9+/38/fz9a/z//P/////////////////////////////9/Pz8/P/9+/z8+v/7/fv9+/38/fz9a/z//P/////////////////////////////9/P3zbP/9/P39/P78/fz8/P39/fz9+/3//P//////////AP/////////////////9/P3zbP/9/P39/P78/fz8/P39/fz9+/3//P//////////AP/////////////////9/vz9/f9b/v38/f79/f79/f39/f39/f3//v/////////////////////////////9/vz9/f9b/v38/f79/f79/f39/f39/f3//v/////////////////////////////++/z8+//9f/z7+v/8/PX8/Pr7/fr9+/z//f///////v/////////////////////++/z8+//9f/z7+v/8/PX8/Pr7/fr9+/z//f///////v/////////////////////9/Pv9/v/9+/z8/P79/Pz8/Pxo/f38/P3//v/////////////////////////////9/Pv9/v/9+/z8/P79/Pz8/Pxo/f38/P3//v////////////////////8A///////9/f39/f/9+/z9aP78/P38/fz7/v39+/v//f////////////////////8A///////9/f39/f/9+/z9aP78/P38/fz7/v39+/v//f//////////////////+/39+/75+v3///////7////+/////////////////////2b7/vv9/P7//vn8/v79+/39+/75+v3///////7////+/////////////////////2b7/vv9/P7//vn8/v79///////////7a/39/f/+/Pz9/f78/Pr7+/v8/fv8+/3//v/////////////////////////////7a/39/f/+/Pz9/f78/Pr7+/v8/fv8+/3//v/////////////////////////////+/f38/P/9/v7+/f79/f39/P3+/P39/f7/Wv//AP/+///////////////////////+/f38/P/9/v7+/f79/f39/P3+/P39/f7/Wv//AP/+///////////////////////9+/38/f/9+/z9/P78+vz8/W/7/fv8/fz//f/////////////////////////////9+/38/f/9+/z9/P78+vz8/W/7/fv8/fz//f//////////////////+v/9+v/5/Pv///////7////////////////////+//////xn/vr9/P7///n9/v78+v/9+v/5/Pv///////7////////////////////+//////xn/vr9/P7///n9/v78///////////9/XP+/P/7/P3u/f/9/P36/fz7/fz9/P3//v/////////////////////////////9/ez8/f/8/P1w/f/9/P37/f38/f3+/Pz//v////////////////////3///3/////AP////z///8AAP/////////////////9//7//P///2Ps/P///Oz///3///3/////AP////z///8AAP/////////////////9//7//P///2Ps/P///Oz//v/5+//9/fz///////////8A/////////////////////v39//1T/f////39///3/v/5+//9/fz///////////8A/////////////////////v39//1T/f////39///3///////////9/P1r9P/9/P39/f/8/fz8/P39/Pr9/f3//P/////////////////////////////9/P1r9P/9/P39/f/8/fz8/P39/Pr9/f3//P//////////////////+v79/P77+/z///////7////////////////////+///+//v6/2L9+//+//v9//79+v79/P77+/z///////7////////////////////+///+//v6/2L9+//+//v9//79/f/9/f/9/fr///////7///////////////////////////z9//v8U//+//35///9/f/9/f/9/fr///////7///////////////////////////z9//v8U//+//35///9/f5h/f/9/fv///////////////////////////////////39//74/P////38///u/f5h/f/9/fv///////////////////////////////////39//74/P////38///u///////////9/f78/f/9/f3+/v/9/v39/f3+Wv38/f3/+//////////////////////////////9/f78/f/9/f3+/v/9/v39/f3+Wv38/f3/+/////////////////////3///z///////////v///////7////////////////9/////f///+1h/f/+++3///3///z///////////v///////7////////////////9/////f///+1h/f/+++3//P79+v/6+/z///////7////////////////////+//////r4/vv8/P7//mf8/v79/P79+v/6+/z///////7////////////////////+//////r4/vv8/P7//mf8/v79/////wD////9+/r8/f/9/P37/f79/fxt/Pz9/fn9+/z//f///////////////////////wD////9+/r8/f/9/P37/f79/fxt/Pz9/fn9+/z//f//////////////////YP79/P77/Pz///////7////////////////////+///+//z6/vr9/P7+//z8///9YP79/P77/Pz///////7////////////////////+///+//z6/vr9/P7+//z8///9/P/8/f/9/Pz///////7///////////////////////////z9/v38+f/+/v1T//78/P/8/f/9/Pz///////7///////////////////////////z9/v38+f/+/v1T//78///////////9/vz9/f/9/WH9/P39/fz9/Pz8/v39/P3//v/////////////////////////////9/vz9/f/9/WH9/P39/fz9/Pz8/v39/P3//v/////////////////////////////9/f7+/v78/v79/v79/P79/fz8/f1Z/f7//v////7///////7////////////////9/f7+/v78/v79/v79/P79/fz8/f1Z/f7//v////7///////7///////3///z/////AP////z/AP//////////AP//AAD//wD9/////P///+vt/f//+2T///3///z/////AP////z/AP//////////AP//AAD//wD9/////P///+vt/f//+2T//////v/////9+vz8/P/99fz7/P78/Hr8+/v8/fv9/Pz//f///////////////////////v/////9+vz8/P/99fz7/P78/Hr8+/v8/fv9/Pz//f///////////////////f/t/f79/fv///////////////////////////////////39//73/f7///38//9j/f/t/f79/fv///////////////////////////////////39//73/f7///38//9j///////////9/f39/P/9+/38/P78/Pz9/Pz9/fz+/Wb//f/////////////////////////////9/f39/P/9+/38/P78/Pz9/Pz9/fz+/Wb//f///////////////////P79+/9m+vz///////7////////////////////////+//j6//v8/f7+/vr8//78/P79+/9m+vz///////7////////////////////////+//j6//v8/f7+/vr8//78YP79/P77/Pz///////7////////////////////+///+//z6/vr9/P7+//z8///9YP79/P77/Pz///////7////////////////////+///+//z6/vr9/P7+//z8///9/mr//vj+/v7///////v////////////////////////6//3++v7//vv7+/7+9/v+/mr//vj+/v7///////v////////////////////////6//3++v7//vv7+/7+9/v+//j+//f///////////z///////7////////////////3//7/9/7///v79///Z/r///7///7////9/v7+/v7+/vz+/k/+/v/+/v7+/v7+/v/+/////v////7+/v///v7///7///7////9/v7+/v7+/vz+/k/+/v/+/v7+/v7+/v/+/////v////7+/v///v7//mr//vj+/v7///////v////////////////////////6//3++v7//vv7+/7+9/v+/mr//vj+/v7///////v////////////////////////6//3++v7//vv7+/7+9/v+//3///z///////////v///////7////////////////9/////f///+1h/f/+++3////////////9/fz9/f/9/P38/P78ZPz9/fv8/fz8/fz//v/////////////////////////////9/fz9/f/9/P38/P78ZPz9/fv8/fz8/fz//v/////////////////////////////9/fz9/f/9/P38/P78ZPz9/fv8/fz8/fz//v///////////////////P/9V//7+/z///////7///////////////////////////v7//z7/f////z8//79/P/9V//7+/z///////7///////////////////////////v7//z7/f////z8//79/P/9V//7+/z///////7///////////////////////////v7//z7/f////z8//79///////////9/f7+/v78/v79/v79/P79/fz8/f1Z/f7//v////7///////7///////7//vP//////////1H///////7/AP///wD////////8/////f///vv9/P//+/v///7//vP//////////1H///////7/AP///wD////////8/////f///vv9/P//+/v////////////9/XP+/P/7/P3u/f/9/P36/fz7/fz9/P3//v/////////////////////////////9/XP+/P/7/P3u/f/9/P36/fz7/fz9/P3//v/////////////////////////////8/Pz7/P/8/P38/f/8/fv5/fv9/Wv8/Pz//f/////////////////////////////8/Pz7/P/8/P38/f/8/fv5/fv9/Wv8/Pz//f/////////////////////////////8/Pz7/P/8/P38/f/8/fv5/fv9/Wv8/Pz//f/////////////////////////////8/P39+//9/Pz9/P5s+/z9/Pv9/vz8+/3//P/////////////////////////////8/P39+//9/Pz9/P5s+/z9/Pv9/vz8+/3//P/////////////////////////////8/P39+//9/Pz9/P5s+/z9/Pv9/vz8+/3//P/////////////////////////////8/P39+//9/Pz9/P5s+/z9/Pv9/vz8+/3//P/////////////////////////////8/P39+//9/Pz9/P5s+/z9/Pv9/vz8+/3//P////////////////////////////9X/P3+/f/9/v3+/v38/v3+/vz9/v39/f3//v////////////////////////////9X/P3+/f/9/v3+/v38/v3+/vz9/v39/f3//v///////////////////P/9V//7+/z///////7///////////////////////////v7//z7/f////z8//79/P/9V//7+/z///////7///////////////////////////v7//z7/f////z8//79/P/9V//7+/z///////7///////////////////////////v7//z7/f////z8//79//////////9X/P3+/f/9/v3+/v38/v3+/vz9/v39/f3//v////////////////////////////9X/P3+/f/9/v3+/v38/v3+/vz9/v39/f3//v////////////////////////////9X/P3+/f/9/v3+/v38/v3+/vz9/v39/f3//v////////////////////z//13///////////P/AP////4A////////////AP/5AP//+v////z8+v//+Pv////////////9/fz9/f/9/P38/P78ZPz9/fv8/fz8/fz//v/////////////////////////////8/Pz7/P/8/P38/f/8/fv5/fv9/Wv8/Pz//f/////////////////////////////8/P39+//9/Pz9/P5s+/z9/Pv9/vz8+/3//P////////////////////////////9X/P3+/f/9/v3+/v38/v3+/vz9/v39/f3//v/////////////////////////////9+/39/P/9/P38/P79/fz9afz9/f39+/z//P/////////////////////////////9/Pz8/P/9+/z8+v/7/fv9+/38/fz9a/z//P/////////////////////////////9/P3zbP/9/P39/P78/fz8/P39/fz9+/3//P//////////AP/////////////////9/vz9/f9b/v38/f79/f79/f39/f39/f3//v/////////////////////////////++/z8+//9f/z7+v/8/PX8/Pr7/fr9+/z//f///////v/////////////////////9/Pv9/v/9+/z8/P79/Pz8/Pxo/f38/P3//v////////////////////8A///////9/f39/f/9+/z9aP78/P38/fz7/v39+/v//f/////////////////////////////7a/39/f/+/Pz9/f78/Pr7+/v8/fv8+/3//v/////////////////////////////+/f38/P/9/v7+/f79/f39/P3+/P39/f7/Wv//AP/+///////////////////////9+/38/f/9+/z9/P78+vz8/W/7/fv8/fz//f/////////////////////////////9/P1r9P/9/P39/f/8/fz8/P39/Pr9/f3//P/////////////////////////////9/f78/f/9/f3+/v/9/v39/f3+Wv38/f3/+////////////////////////wD////9+/r8/f/9/P37/f79/fxt/Pz9/fn9+/z//f/////////////////////////////9/vz9/f/9/WH9/P39/fz9/Pz8/v39/P3//v/////////////////////////////9/f7+/v78/v79/v79/P79/fz8/f1Z/f7//v////7///////7//////////v/////9+vz8/P/99fz7/P78/Hr8+/v8/fv9/Pz//f/////////////////////////////9/f39/P/9+/38/P78/Pz9/Pz9/fz+/Wb//f////////////////////7///7////9/v7+/v7+/vz+/k/+/v/+/v7+/v7+/v/+/////v////7+/v///v7///7///7////9/v7+/v7+/vz+/k/+/v/+/v7+/v7+/v/+/////v////7+/v///v7////////////9+/39/P/9/P38/P79/fz9afz9/f39+/z//P/////////////////////////////9+/39/P/9/P38/P79/fz9afz9/f39+/z//P/////////////////////////////9+/39/P/9/P38/P79/fz9afz9/f39+/z//P///////////////////P79+/9m+vz///////7////////////////////////+//j6//v8/f7+/vr8//78/P79+/9m+vz///////7////////////////////////+//j6//v8/f7+/vr8//78///////////9+/39/P/9/P38/P79/fz9afz9/f39+/z//P/////////////////////////////9+/39/P/9/P38/P79/fz9afz9/f39+/z//P//////////////////+/78+//6ZPz///////7////////////////////+///+//n7//v8/P7+/vv8//79+/78+//6ZPz///////7////////////////////+///+//n7//v8/P7+/vv8//79///////////9/fz9/f/9/P38/P78ZPz9/fv8/fz8/fz//v/////////////////////////////9/fz9/f/9/P38/P78ZPz9/fv8/fz8/fz//v//////////////////+/78+//6ZPz///////7////////////////////+///+//n7//v8/P7+/vv8//79+/78+//6ZPz///////7////////////////////+///+//n7//v8/P7+/vv8//79+/78+//6ZPz///////7////////////////////+///+//n7//v8/P7+/vv8//79///////////9/vz9/f/9/WH9/P39/fz9/Pz8/v39/P3//v/////////////////////////////9/vz9/f/9/WH9/P39/fz9/Pz8/v39/P3//v//////////////////+/39+/75+v3///////7////+/////////////////////2b7/vv9/P7//vn8/v79+/39+/75+v3///////7////+/////////////////////2b7/vv9/P7//vn8/v79/P76/f/9/F7///////7///////////////////////////z8//z7+v7///z8///6/P76/f/9/F7///////7///////////////////////////z8//z7+v7///z8///6/P76/f/9/F7///////7///////////////////////////z8//z7+v7///z8///6//3///3/////AP////z///8AAP/////////////////9//7//P///2Ps/P///Oz///3///z///////////v///////7////////////////9/////f///+1h/f/+++3///3///z/////AP////z/AP//////////AP//AAD//wD9/////P///+vt/f//+2T////////////9/Pz8/P/9+/z8+v/7/fv9+/38/fz9a/z//P/////////////////////////////9/Pz8/P/9+/z8+v/7/fv9+/38/fz9a/z//P/////////////////////////////9/Pz8/P/9+/z8+v/7/fv9+/38/fz9a/z//P///////////////////P/8/f/9/Pz///////7///////////////////////////z9/v38+f/+/v1T//78///////////9/P3zbP/9/P39/P78/fz8/P39/fz9+/3//P//////////AP/////////////////9/P3zbP/9/P39/P78/fz8/P39/fz9+/3//P//////////AP/////////////////9/P3zbP/9/P39/P78/fz8/P39/fz9+/3//P//////////AP/////////////////9/vz9/f9b/v38/f79/f79/f39/f39/f3//v/////////////////////////////9/vz9/f9b/v38/f79/f79/f39/f39/f3//v/////////////////////////////9/vz9/f9b/v38/f79/f79/f39/f39/f3//v/////////////////////////////++/z8+//9f/z7+v/8/PX8/Pr7/fr9+/z//f///////v/////////////////////++/z8+//9f/z7+v/8/PX8/Pr7/fr9+/z//f///////v////////////3///z/////AP////z/AP//////////AP//AAD//wD9/////P///+vt/f//+2T///z//13///////////P/AP////4A////////////AP/5AP//+v////z8+v//+Pv///z//13///////////P/AP////4A////////////AP/5AP//+v////z8+v//+Pv////////////9/f7+/v78/v79/v79/P79/fz8/f1Z/f7//v////7///////7//////P/9V//7+/z///////7///////////////////////////v7//z7/f////z8//79//7//vP//////////1H///////7/AP///wD////////8/////f///vv9/P//+/v///z//13///////////P/AP////4A////////////AP/5AP//+v////z8+v//+Pv///j+//f///////////z///////7////////////////3//7/9/7///v79///Z/r///j+//f///////////z///////7////////////////3//7/9/7///v79///Z/r///z///n///////////3///////7//wD//////wD///9m////7f7//vz97///+fz///v///v//////wD///z////////////////////////vAP7/Zf////z97f//+f3///v///n///////////z///8A///////////////////v////7/////38ZP//+fz////////////9/vz9/f9b/v38/f79/f79/f39/f39/f3//v/////////////////////////////9/vz9/f9b/v38/f79/f79/f39/f39/f3//v/////////////////////////////9/vz9/f9b/v38/f79/f79/f39/f39/f3//v/////////////////////////////9/Pv9/v/9+/z8/P79/Pz8/Pxo/f38/P3//v/////////////////////////////9/Pv9/v/9+/z8/P79/Pz8/Pxo/f38/P3//v/////////////////////////////9+/38/f/9+/z9/P78+vz8/W/7/fv8/fz//f/////////////////////////////9+/38/f/9+/z9/P78+vz8/W/7/fv8/fz//f/////////////////////////////9/ez8/f/8/P1w/f/9/P37/f38/f3+/Pz//v/////////////////////////////9/ez8/f/8/P1w/f/9/P37/f38/f3+/Pz//v////////////////////z///n///////////3///////7//wD//////wD///9m////7f7//vz97///+fz///z///n///////////3///////7//wD//////wD///9m////7f7//vz97///+fz////////////9/Pv9/v/9+/z8/P79/Pz8/Pxo/f38/P3//v/////////////////////////////9/Pv9/v/9+/z8/P79/Pz8/Pxo/f38/P3//v/////////////////////////////9/Pv9/v/9+/z8/P79/Pz8/Pxo/f38/P3//v///////////////////P/8/f/9/Pz///////7///////////////////////////z9/v38+f/+/v1T//78/P/8/f/9/Pz///////7///////////////////////////z9/v38+f/+/v1T//78/P/8/f/9/Pz///////7///////////////////////////z9/v38+f/+/v1T//78/f/9/f/9/fr///////7///////////////////////////z9//v8U//+//35///9//8A///////9/f39/f/9+/z9aP78/P38/fz7/v39+/v//f////////////////////8A///////9/f39/f/9+/z9aP78/P38/fz7/v39+/v//f////////////////////8A///////9/f39/f/9+/z9aP78/P38/fz7/v39+/v//f////////////////////z///n///////////3///////7//wD//////wD///9m////7f7//vz97///+fz////////////+/f38/P/9/v7+/f79/f39/P3+/P39/f7/Wv//AP/+///////////////////////+/f38/P/9/v7+/f79/f39/P3+/P39/f7/Wv//AP/+////////////+/39+/75+v3///////7////+/////////////////////2b7/vv9/P7//vn8/v79+/39+/75+v3///////7////+/////////////////////2b7/vv9/P7//vn8/v79+/39+/75+v3///////7////+/////////////////////2b7/vv9/P7//vn8/v79///////////7a/39/f/+/Pz9/f78/Pr7+/v8/fv8+/3//v/////////////////////////////7a/39/f/+/Pz9/f78/Pr7+/v8/fv8+/3//v/////////////////////////////+/f38/P/9/v7+/f79/f39/P3+/P39/f7/Wv//AP/+///////////////////////+/f38/P/9/v7+/f79/f39/P3+/P39/f7/Wv//AP/+///////////////////////+/f38/P/9/v7+/f79/f39/P3+/P39/f7/Wv//AP/+///////////////////////9+/38/f/9+/z9/P78+vz8/W/7/fv8/fz//f/////////////////////////////9+/38/f/9+/z9/P78+vz8/W/7/fv8/fz//f/////////////////////////////9+/38/f/9+/z9/P78+vz8/W/7/fv8/fz//f//////////////////+v/9+v/5/Pv///////7////////////////////+//////xn/vr9/P7///n9/v78+v/9+v/5/Pv///////7////////////////////+//////xn/vr9/P7///n9/v78+v/9+v/5/Pv///////7////////////////////+//////xn/vr9/P7///n9/v78///////////9/XP+/P/7/P3u/f/9/P36/fz7/fz9/P3//v/////////////////////////////9/XP+/P/7/P3u/f/9/P36/fz7/fz9/P3//v/////////////////////////////9/ez8/f/8/P1w/f/9/P37/f38/f3+/Pz//v/////////////////////////////9/ez8/f/8/P1w/f/9/P37/f38/f3+/Pz//v////////////////////3///3/////AP////z///8AAP/////////////////9//7//P///2Ps/P///Oz///3///3/////AP////z///8AAP/////////////////9//7//P///2Ps/P///Oz///v///v//////wD///z////////////////////////vAP7/Zf////z97f//+f3///v///v//////wD///z////////////////////////vAP7/Zf////z97f//+f3//v/5+//9/fz///////////8A/////////////////////v39//1T/f////39///3/v/5+//9/fz///////////8A/////////////////////v39//1T/f////39///3/v/5+//9/fz///////////8A/////////////////////v39//1T/f////39///3///////////9/P1r9P/9/P39/f/8/fz8/P39/Pr9/f3//P/////////////////////////////9/P1r9P/9/P39/f/8/fz8/P39/Pr9/f3//P/////////////////////////////8/Pz7/P/8/P38/f/8/fv5/fv9/Wv8/Pz//f////////////////////7///7////9/v7+/v7+/vz+/k/+/v/+/v7+/v7+/v/+/////v////7+/v///v7///7///7////9/v7+/v7+/vz+/k/+/v/+/v7+/v7+/v/+/////v////7+/v///v7///7///7////9/v7+/v7+/vz+/k/+/v/+/v7+/v7+/v/+/////v////7+/v///v7///7//vP//////////1H///////7/AP///wD////////8/////f///vv9/P//+/v///7//vP//////////1H///////7/AP///wD////////8/////f///vv9/P//+/v///z//13///////////P/AP////4A////////////AP/5AP//+v////z8+v//+Pv///z//13///////////P/AP////4A////////////AP/5AP//+v////z8+v//+Pv////////////9/Pz8/P/9+/z8+v/7/fv9+/38/fz9a/z//P/////////////////////////////9/Pz8/P/9+/z8+v/7/fv9+/38/fz9a/z//P//////////////////+v79/P77+/z///////7////////////////////+///+//v6/2L9+//+//v9//79+v79/P77+/z///////7////////////////////+///+//v6/2L9+//+//v9//79+v79/P77+/z///////7////////////////////+///+//v6/2L9+//+//v9//79/v/5+//9/fz///////////8A/////////////////////v39//1T/f////39///3/P76/f/9/F7///////7///////////////////////////z8//z7+v7///z8///6/P76/f/9/F7///////7///////////////////////////z8//z7+v7///z8///6/P/9V//7+/z///////7///////////////////////////v7//z7/f////z8//79+/78+//6ZPz///////7////////////////////+///+//n7//v8/P7+/vv8//79/P76/f/9/F7///////7///////////////////////////z8//z7+v7///z8///6+/39+/75+v3///////7////+/////////////////////2b7/vv9/P7//vn8/v79+v/9+v/5/Pv///////7////////////////////+//////xn/vr9/P7///n9/v78/v/5+//9/fz///////////8A/////////////////////v39//1T/f////39///3+v79/P77+/z///////7////////////////////+///+//v6/2L9+//+//v9//79/f/9/f/9/fr///////7///////////////////////////z9//v8U//+//35///9/f5h/f/9/fv///////////////////////////////////39//74/P////38///u/P79+v/6+/z///////7////////////////////+//////r4/vv8/P7//mf8/v79YP79/P77/Pz///////7////////////////////+///+//z6/vr9/P7+//z8///9/P/8/f/9/Pz///////7///////////////////////////z9/v38+f/+/v1T//78/f/t/f79/fv///////////////////////////////////39//73/f7///38//9j/P79+/9m+vz///////7////////////////////////+//j6//v8/f7+/vr8//78/mr//vj+/v7///////v////////////////////////6//3++v7//vv7+/7+9/v+///////////9/f7+/v78/v79/v79/P79/fz8/f1Z/f7//v////7///////7//////f/9/f/9/fr///////7///////////////////////////z9//v8U//+//35///9/f/9/f/9/fr///////7///////////////////////////z9//v8U//+//35///9//3///3/////AP////z///8AAP/////////////////9//7//P///2Ps/P///Oz//f5h/f/9/fv///////////////////////////////////39//74/P////38///u/f5h/f/9/fv///////////////////////////////////39//74/P////38///u/f5h/f/9/fv///////////////////////////////////39//74/P////38///u///////////9/f78/f/9/f3+/v/9/v39/f3+Wv38/f3/+//////////////////////////////9/f78/f/9/f3+/v/9/v39/f3+Wv38/f3/+//////////////////////////////9/f78/f/9/f3+/v/9/v39/f3+Wv38/f3/+/////////////////////////////9X/P3+/f/9/v3+/v38/v3+/vz9/v39/f3//v////////////////////////////9X/P3+/f/9/v3+/v38/v3+/vz9/v39/f3//v////////////////////////////9X/P3+/f/9/v3+/v38/v3+/vz9/v39/f3//v///////////////////v/5+//9/fz///////////8A/////////////////////v39//1T/f////39///3/v/5+//9/fz///////////8A/////////////////////v39//1T/f////39///3/v/5+//9/fz///////////8A/////////////////////v39//1T/f////39///3//3///z///////////v///////7////////////////9/////f///+1h/f/+++3///3///z///////////v///////7////////////////9/////f///+1h/f/+++3//P76/f/9/F7///////7///////////////////////////z8//z7+v7///z8///6//v///n///////////z///8A///////////////////v////7/////38ZP//+fz///j+//f///////////z///////7////////////////3//7/9/7///v79///Z/r///j+//f///////////z///////7////////////////3//7/9/7///v79///Z/r//P79+v/6+/z///////7////////////////////+//////r4/vv8/P7//mf8/v79/P79+v/6+/z///////7////////////////////+//////r4/vv8/P7//mf8/v79/P79+v/6+/z///////7////////////////////+//////r4/vv8/P7//mf8/v79/////wD////9+/r8/f/9/P37/f79/fxt/Pz9/fn9+/z//f///////////////////////wD////9+/r8/f/9/P37/f79/fxt/Pz9/fn9+/z//f///////////////////////wD////9+/r8/f/9/P37/f79/fxt/Pz9/fn9+/z//f////////////////////v///v//////wD///z////////////////////////vAP7/Zf////z97f//+f3////////////7a/39/f/+/Pz9/f78/Pr7+/v8/fv8+/3//v/////////////////////////////7a/39/f/+/Pz9/f78/Pr7+/v8/fv8+/3//v//////////////////YP79/P77/Pz///////7////////////////////+///+//z6/vr9/P7+//z8///9YP79/P77/Pz///////7////////////////////+///+//z6/vr9/P7+//z8///9YP79/P77/Pz///////7////////////////////+///+//z6/vr9/P7+//z8///9///////////9/vz9/f9b/v38/f79/f79/f39/f39/f3//v/////////////////////////////9/vz9/f9b/v38/f79/f79/f39/f39/f3//v///////////////////P/8/f/9/Pz///////7///////////////////////////z9/v38+f/+/v1T//78/P/8/f/9/Pz///////7///////////////////////////z9/v38+f/+/v1T//78/P/8/f/9/Pz///////7///////////////////////////z9/v38+f/+/v1T//78//8A///////9/f39/f/9+/z9aP78/P38/fz7/v39+/v//f////////////////////8A///////9/f39/f/9+/z9aP78/P38/fz7/v39+/v//f//////////////////+v/9+v/5/Pv///////7////////////////////+//////xn/vr9/P7///n9/v78///////////9/f78/f/9/f3+/v/9/v39/f3+Wv38/f3/+/////////////////////v///n///////////z///8A///////////////////v////7/////38ZP//+fz///v///n///////////z///8A///////////////////v////7/////38ZP//+fz////////////9/vz9/f/9/WH9/P39/fz9/Pz8/v39/P3//v/////////////////////////////9/vz9/f/9/WH9/P39/fz9/Pz8/v39/P3//v////////////////////7///7////9/v7+/v7+/vz+/k/+/v/+/v7+/v7+/v/+/////v////7+/v///v7//P79+v/6+/z///////7////////////////////+//////r4/vv8/P7//mf8/v79///////////9/f7+/v78/v79/v79/P79/fz8/f1Z/f7//v////7///////7////////////////9/f7+/v78/v79/v79/P79/fz8/f1Z/f7//v////7///////7///////j+//f///////////z///////7////////////////3//7/9/7///v79///Z/r////////////9/f39/P/9+/38/P78/Pz9/Pz9/fz+/Wb//f/////////////////////////////9/f39/P/9+/38/P78/Pz9/Pz9/fz+/Wb//f////////////////////3///z/////AP////z/AP//////////AP//AAD//wD9/////P///+vt/f//+2T///3///z/////AP////z/AP//////////AP//AAD//wD9/////P///+vt/f//+2T//////wD////9+/r8/f/9/P37/f79/fxt/Pz9/fn9+/z//f///////////////////////wD////9+/r8/f/9/P37/f79/fxt/Pz9/fn9+/z//f///////////////////////v/////9+vz8/P/99fz7/P78/Hr8+/v8/fv9/Pz//f///////////////////////v/////9+vz8/P/99fz7/P78/Hr8+/v8/fv9/Pz//f///////////////////f/t/f79/fv///////////////////////////////////39//73/f7///38//9j/f/t/f79/fv///////////////////////////////////39//73/f7///38//9j/f/t/f79/fv///////////////////////////////////39//73/f7///38//9j/f/9/f/9/fr///////7///////////////////////////z9//v8U//+//35///9/f/9/f/9/fr///////7///////////////////////////z9//v8U//+//35///9/P/8/f/9/Pz///////7///////////////////////////z9/v38+f/+/v1T//78//z///n///////////3///////7//wD//////wD///9m////7f7//vz97///+fz///z///n///////////3///////7//wD//////wD///9m////7f7//vz97///+fz///v///v//////wD///z////////////////////////vAP7/Zf////z97f//+f3///v///v//////wD///z////////////////////////vAP7/Zf////z97f//+f3///v///n///////////z///8A///////////////////v////7/////38ZP//+fz///v///n///////////z///8A///////////////////v////7/////38ZP//+fz//f/9/f/9/fr///////7///////////////////////////z9//v8U//+//35///9/f/9/f/9/fr///////7///////////////////////////z9//v8U//+//35///9///////////9/f39/P/9+/38/P78/Pz9/Pz9/fz+/Wb//f/////////////////////////////9/f39/P/9+/38/P78/Pz9/Pz9/fz+/Wb//f/////////////////////////////9/f39/P/9+/38/P78/Pz9/Pz9/fz+/Wb//f///////////////////P79+/9m+vz///////7////////////////////////+//j6//v8/f7+/vr8//78/P79+/9m+vz///////7////////////////////////+//j6//v8/f7+/vr8//78/P79+/9m+vz///////7////////////////////////+//j6//v8/f7+/vr8//78AQUB/v4AAQD+AP8BAP3+BAD/AQICAAQAAAABAgD+AAD/AAECAAH+/f79/gL/AfsAAQUB/v4AAQD+AP8BAP3+BAD/AQICAAQAAAABAgD+AAD/AAECAAH+/f79/gL/AfsAAgYB/v4CAQH9AAD/APv9BAEAAAECAQT/AgAAAAH+AAH+AQD//wL//v39AAD+Af0BAgYB/v4CAQH9AAD/APv9BAEAAAECAQT/AgAAAAH+AAH+AQD//wL//v39AAD+Af0BAgYB/v4CAQH9AAD/APv9BAEAAAECAQT/AgAAAAH+AAH+AQD//wL//v39AAD+Af0BAgYA/v8BAwH+AAAAAfz/BQAAAAABAQYAAAH/AP/9AQD9AQED/QD9/vz8/QL/Av3/AQUB/v4AAQD+AP8BAP3+BAD/AQICAAQAAAABAgD+AAD/AAECAAH+/f79/gL/AfsA+vz7+vv6+vsEBQQFBfoECQUEBQkGBQgEBQQGBwQEBQX7Bfr7+/r6+vv7/Pr7+/v7BgoGBAMGBwX6+/v7/AP6/Pz7/Pn8+/z8+/v8+/z6/PsD+wcHBAcEAwMCAggEBgAE+/v7+vv7+vsDBQQEBfoDCAUEBQgGBggEBgQFBQUEBAX7Bvv6/Pv7+/v7/Pr7+/v7BwsGBAMIBwb7+/z7+wH6/Pz7+/n8+/z7+/v7+/z6/PwD+wUFAwcEAwMCBAYEBgIG+/v7+vv7+vsDBQQEBfoDCAUEBQgGBggEBgQFBQUEBAX7Bvv6/Pv7+/v7/Pr7+/v7BwsGBAMIBwb7+/z7+wH6/Pz7+/n8+/z7+/v7+/z6/PwD+wUFAwcEAwMCBAYEBgIG+vr7+fv6+voDBgQEBvkGCgUFBQkGBgoGBgYEBgQEBgb7B/r6+/r5+fr6+vr6+/r6CAwGBQMHCQf7+/v7+wP6+/v8+/f7+/z7+vv6+vv5+/sC+gcJAwYEBAIDAggFBwMF+vz7+vv6+vsEBQQFBfoECQUEBQkGBQgEBQQGBwQEBQX7Bfr7+/r6+vv7/Pr7+/v7BgoGBAMGBwX6+/v7/AP6/Pz7/Pn8+/z8+/v8+/z6/PsD+wcHBAcEAwMCAggEBgAE+/z7+vz7+vsEBgQEBfsECAYFBfYHBggFBwUFBgUEBAb8Bvv7/Pv7+/v7/Pr7+/z7+vv7+fz6+/sEBgUFBvoGCgYFBvUHBwsGBgcFBgUEBgb8B/v6+/r5+vv7+/v6+/v6+/z7+vz6+vsFBQUGBfoECQYFBfYHBQgFBQUGBwUFBQX8Bfv7/Pv6+/v7/Pv7/Pv8CvsJBvwLCgn9/f39/fr8/v39/f39/f39/f39/f38/f38/QoI/AoHB/v7+woG/PsIC/oICPsKDAr9/f39/fr8/f39/fz9/f39/P39/P38/f37+wsM/AoHB/r7/AsJ+/sICvsIB/wJCgj8/f39/fr9/f39/v39/f79/f39/f38/f38/QoK+woGBvv7/AsH/PsH/RH9/Qf9/f3+//7+/gf+//7//vz+/v7+/v7+/v/+//8H/vz9B/39/QcHCfz9Cgf+/RL9/Qj8/f3+/v7//gn+/v7+/vz+/v/+/v7+/v7+/v4G/vz9B/z9/QcIB/38DAj+/Q/+/Qj9/f3+/v7+/gj+//7+/vz//v7+/v7+/v/+/v8I//z9Cf3+/QgHB/39CwX9AAAAAAAAAAD//wAAAP//AP8A/xIAAAD/AAAAAAAAAAD/AAAAAAAAAAAAAAAAAAAAAP8AAP8AAAD/AAAAAP//AP///xT/AAAAAAD/////AAAAAAAAAAAAAAD//wAAAP8AAAAAAP8AAAD/AP8AAAD/AP8AABP/AAAAAP//AAAA/wAAAAAAAAAAAAAAAAAA/wAA",
+    "encoding": "int8-base64",
+    "scale": 0.021293516234150083
+  },
+  "embedding": {
+    "data": "AMsv3qgQ6h/ErnArRRQ19Cro6+b66IHu9mmI2JDipDUuqjvh0+jn9ik0CwXY2UesyGvBJy8dKQ/AvgIGGTKjViqpNOPI7dYHIBYxAvDiRa3NMvgg/TMUDpykTToPTb4vADvQBT3lJvAtOI7P8tzmJ/s5yQcz6hUDJRq0ywrl5Cf3I98UL+wb7zokudg15hUS9yPeEzDsG+85JLjYNeYVEt8PADpV/lXpQh4ut/4K6tH95xA2Bt5QOvT/+0ooCK4ABO4C2vr4/Qwd4PDgIO0rL+8a+iUq/yjpMhsQzuoP+ODL9wPYCTII9+TRBvwJLE/ZBO4B2/r4/Q0d4PHfIe0rLwTuAdv6+PwNHeDw4CHtKy8F7gHa+vj9DR3f8N8h7SsuBO0B2/r4/Q0d4PDgIO0rL+8b+iUq/ynqMhsQzuoP+eHlNfQI/xgR6OK8IR0sIjrpDO709iILw/ZHExcn8SMRIBMJ4ATz/woJ4SjVGCD6/Nfr7Rv5F+0XxdflRfUE2zUK6+0b+BfuF8bX5EX1BNo1Cvc26hQADwsD78QfEiwQEuoM7vT2IgvE9kcTFyjyIxIgFAngA/P/CgnhKNUYIPr91vgLFhPcAfQWwjAABEbzCtAM7vT2IgvE9kcTFyjyIxIgDLgbKfj+GAX290rkD9gPJhMJ4APz/woJ4SjVGCD6/db3N+oV/w8KA+/EHxIsEBLqBO34Jvf9BiDqDNswIfK4EBYCDuf1zSMRBekeKgg54gL3EA3RHN0O0xg5yOfkEQ/27uQEBdLxA+b639krGufcMe/b7/biDun+Etn28/sO3ATu2+/24g7p/xLZ9vT7DtsE8P4A6A4Q7xjw9fbu8RAM9vD+AOgOEPAZ8PX37vEQC/YFAwEB6vkD/+wUARAl9gjqBgMBAer5A/7sFAAQJfYI6hPXDCsAEwsPCBEd9/Tt+xMT1wwrABMLDwkSHffz7PsUzfLz8AL1Hf/59fTp8eP56szy8/EC9B7/+fT06vDj+eroGxEfFAIWDgMa+/3z+O/s6BsSIBMCFg4DGvv98/ju7Psf2u3f8PT94QYOFw8JEgX8Htrs3/D0/eEGDhgPCRIEAwwNKQ/82u326/cC5QQD+AMMDSkO/Nvs9ur3AuUEA/gLCRIB5wQhJvrxFgwB9AARCwkSAecEISb78RYMAfQAEQr85vv9H/Lp+APyDwbbH9wK/Ob7/R/y6fgD8g8G2yDb8g0M+x8DCdDpABkI6fAg+PINDPsfAwnQ6f8ZCOnwIfgTAOryGQEe9RL5BgfvBPsmEwDr8hoBH/US+QYI7wT7JhnrJurP3NcIBPv7Be7qGvUa6ybrz9zWCAT7+gXu6hr1FhYG8gL24BEcEukWAfLP9BYWBvIC9uAQHBLpFgHxz/UmEQ3uD/z25/Tf1QLzA/3lJhEN7w/79uf04NYC8wP95ef66QMVAALt7gMS6ej23R7m+ugEFQEC7O4CE+np9t0e8wgWEvII8RjWHAD0If0D5vIIFhLyCPEY1hz/9SH9Aubt+/r8/BkS+gDjDQMYCh3k7vv6/PwZE/oA4w4DGAoc5f3nJfQH+v8h/wbo3gQB4xf95yX0B/r/IQAG6N4EAeMXFwIC3/rjBAH+9vsM/ynkBRcDAt/64wQB/vX6CwAq4wUE8vreHQfzExgeFyn/FwICCPz7GAUE0OMw9AD/8gwQHunTCwj89BIKFejy8fYLGSDp0wsI/fQSChXo8vH2Cxkg7v4J9AAJB+X0+AILABMn/+7+CvQACQbl9PkCCwESJ//54A/9+OsO9u3lLewb6hQS+eAP/vjrDfXu5S3sG+oUEgL5+w8OAv0i7wryIAz11voC+vsPDwL9IvAK8iAL9tb5+voMCBb3LAoCAP38/gf58vr7DAgW9ysLA//9/P4H+fIFFeAgExELBwHSEPsADBMHBRXgHxMRCwcB0xD7AAwTB///DAj76x8PB/QjHggO//3//wwI++sfDwb1JB4JD/79JxYf9QcC8wAP9/7zLwkXCCcWH/UIA/P/D/j+8zAJFwjs8Qjv6vX66f/e8BsF6/oa7PEI7+r1+ukA3vAbBev6Ggnt7Rka/vErEA0YAhwBIPUJ7u0ZGv7xKhANGAEcASD1GQESGN8mDwbuHgP2/xP0BBgBEhneJg8G7R4E9v8U8wT2+/oMFgkB9Q0EIO0V9fj/9fr6DBYIAfUNBCDtFfX5//MOBdMS4f7kDxvu4/wZDPbzDgbTEuH95A8b7+P8GQ31AvP8F+j7Cf76AegQFf3iFwLz/Rbo+wj9+wHoEBX94Rf0Bdje9gH3A/kAAfv72vsG8wXY3fYB9wP5AAH8+9n7BhLtKfPQHCMH/isB+e8NEdUR7SnzzxwjB/4rAvnvDRLV8iIL9uz+//zt8g8WLAUA5PIhCvbt/v/87fIPFiwF/+QkHOke7gTqAvnpC+fhDQ4KIxzqHu0F6wH56Qzn4A0NCvYN3/foC9/8ABUXEwEUABv2DeD36Avg/AAVGBMBFAAbGAESGN8mDwbtHgT2/xPzBBgBEhjeJg4G7R4E9v8T8wQEFuv0A/77E+r1/PTV/9AVBBbr9AP++xPq9fz01f/QFfASAxEY9+vxCgPjEgnv9S0EAQf+CvsQ7gke2QTo9wEABAIH/gr8EO4KHtkE6PcCAAUW6/QE/vsT6/b889X/0BUFFuv0A/77E+v2/PPV/88UJxYf9QcC8/8P+P3zLwkXCe7c7/bjDun+Etn28/sO2wTv2+/24g7p/hLZ9vP7DtsE7tzv9uIO6f8S2fbz+w7bBPD+AOgOEPAY8PX37fEQC/fw/gDoDhDwGPD19+7xEAz28P4A6A4Q8Bjw9fft8RAM9gH0/Bbo+wn++gHpERX84RcFAwIB6vkD/uwUABAl9wjqBgMCAer5A/7sFAAQJfYI6QTx+d4eB/MTFx4XKP8XAgID8fneHQfzExgeFyj/FwECE9cMLAATCg8IEh338+37ExPXDCwAEwoPCRId9/Pt+xMT1wwsABMKDwgSHff07fsTzfPy8AP0Hv/59PTp8eP56szy8/AD9B3/+fT06vDj+erM8vPxA/Qe//n19Onw4/jqzPPz8QL0Hv/59fTp8OP56s3y8/EC9B7/+fX06vDj+eroHBEgEwIVDgMZ+/3y+O/s6BwRHxMBFg4DGvv98/jv7PD+AOgOEPAY8PX37fEQC/bw/gDoDhDwGPD19+7xEAv27/4A6A4Q8Bjw9ffu8RAM9+gbEiATAhYOAxn7/fP57+zoHBIgEwIWDgMa+/3y+O/s6BwSHxQBFg4CGfv98/ju7A4G3gIKBgcK9hTUCPsE9e3u2+/24g7p/hLZ9vP7DtsEE9cMLAATCw8IEh338+37FMzy8/EC9B7/+fX06fDi+eroHBEgFAIWDgIZ+/3y+O/s/B7b7d/w9P3hBg4YDwgSBQr85vv9H/Lo9wPyEAfbINvyDQz7HwMJ0On/GAjo7yH4EwDr8hkBH/UR+QYH8AT7JhrrJurP3NcJBPv7Be7qGvUVFgbxAvbgEBwS6RYB8s/0JhEO7w/89+f039YB8wT95fIHFRLyCPAY1hwA9CH9Aubt+/r8/BkS+gDjDQQXCh3l/ecl9Af6/yEABeffAwHkF/ngD/346w727eUs7BvrFBMAAAwI+uofDwf1JB0JD/79Ce3tGRv+8SsQDRgBHAEg9fMNBtMS4f7kDxvu5PwZDfUC8/0X6PwJ/fsB6BAV/eIXEu0o888cIwf+KwH68A0R1SQc6R7uBOoB+ekM5+ANDgoEAgf+C/wQ7goe2QTo9wIABAIH/gv7EO8KHtoD6PcCAPse2u3f8PT94QYOGA8JEwX8H9vt3/D0/eEGDhcPCBIF/B7b7d/w9P3hBg4YDwgSBfYN3/foC+D8ABQYEwEUABz3Dd/26Avf/AAVFxMBFQAb/B7a7d/w9P3hBg4YDwkTBfwf2+3f8PT84QYOGA8JEgQDDA0pDv3a7fbr9wLlBAP4AwwNKQ792+326/cC5QQD+O7b7/biDun+Etn29PsO2wTu2+/24g7o/hLZ9vT7DtsEAwwNKQ/92u326/cC5QQD+AMNDSkP/drt9uv2AuUEA/gDDA0pD/za7fbr9wLlAwP48w4G0xLh/eQPG+/j/BkN9vMNBtMS4f3kDxvv4/wZDfXn++kEFQAC7e4CE+ro9t0e5vrpAxUBAu3uAhPp6PbdHgsJEQHnAyEm+/EWDAH0ABELCREB5wQhJvvxFg0B9AARCwkRAecEICb78RYMAfQAEenTCwj89BIKFujy8fYKGSAnFh71BwLz/w/4/vMwCRcJ8wXY3vYB9wP5AAH7+9r7Bgr95vv+H/Lp+APyEAfbINsK/Ob7/R/y6fgD8g8H2yDcCvzm+/0f8uj4BPIQB9sg2/b7+gwWCAH1DQQg7RX0+f/yDQz7HwMJ0Or/GAjp8CH48g0M+x8DCdDq/xkI6PAh+PINDPwfAgrQ6f8ZCOnwIfgTAOvzGQEf9RL5BgfwBPslEwDr8xkBHvUR+QYI8AT7JRMA6/IZAR/1EvkGB/AE+yUZ6ibq0NzXCAT8+gXu6hr2Gesm6tDc1wkE+/sF7uoa9fMF2N72AfcE+QEB/Pva+wYOBd8DCQYHCvUU1Aj7A/XtDgbeAwoFBwr1FNQI+wT17QL0/Rfo+wn++gHoEBX94hfw/gDoDhDwGPD09+3xEAv2BQMCAen5A//sFAEQJfcH6g4G3wIKBQcK9hXUCfsD9e3wEgMQGPjr8QoD4xIK7/Ut8BIDEBj36/EJAuMSCu/1LQkSGwoGJQfvABv81/oSBgvb8ff8KfwR+CcJAgfm/RLzCxjpH/veEQIL9xLvCwDh4xMA6/IZAR/1EfkGCO8E+yUTAOvyGQEf9RL5BgfwBPslEwDq8hkBH/UR+QYI8AT7JhYWBvIC9uAQHBLpFgHxz/UWFgbxAvbgEBwS6RYB8c/1/eYl9Ab6/yH/BeffBAHjF/3nJPQH+v8h/wbn3gMB4xcI/fsXBQXR4y/1AP/yDBAdCP37GAUE0eMw9QD/8gwQHggRGwoGJQfwABv81/sSBgsJERsKBiUH8AAb/df6EgcLFRYG8QL24BAcEukWAfHP9RYWBvEC9uAQHRLpFgHxz/UWFgbyAvbgERwS6RYB8s/19vv7DBYIAfUNBSDtFfX5//b7+gwVCAH1DQUg7RX0+P/2+/sMFQgB9Q0EIO0W9Pn/+vsMCBb3LAsDAP38/gb58iYRDu4P/Pbn9N/WAvMD/eUmEQ3vD/z25/Tf1QLzA/3lJhEN7g/89+f04NYC8wP95QgRGwoGJQfwABv81/oSBgvu+/r8/BgT+gDjDQQYCh3k7vv6/PwZEvoA4w0DGAoc5Ob66AQVAAPt7gIT6ej23R7m+ukEFQED7e4DE+no994e5vroBBUBAu3uAxPp6PbdHvMHFhLyCPEX1hwA9CH8AubyCBUS8gjwF9Yc//Qh/QPm7vv6/PwYE/oA4w0DGAod5O77+vz8GRL6/+QNBBgKHeXu+/r8/BkS+gDjDQMYCh3l/ecl8wb6/yEABejeBAHjF/3nJfQG+v8hAAXo3gQB5Bf95yX0B/r/IQAF6N4EAeMXFwIC3/rjBAH+9vsLACrjBRYCAt/64wQB/vb6DP8q5AUXAgLf++MEAf71+gz/KuMFBPH63h4H8xIXHhgp/xcCAgTy+d4dBvMSGB4YKf8XAgII/PsYBQTR4zD1AP/yDBAdCP37FwUE0eQv9AD/8gwQHurTCwn89BIKFejy8fYKGSDq0wsI/PQTChbn8vL2Cxkg2/H3/Cn7EPcmCAIH5f0S89vx9vwp+xD3JwgCB+b9EvPu/wr0AAgG5fT4AgsAEij/7v4J9P8JB+X0+AILABIo/+7+CvT/CQbl9PkCCwESJ//54A/9+OsN9u3lLewb6hQS+eAP/fjrDvbu5S3sG+sUEhPXDCsAEwsPCRId9/Pt+xMEAQf9C/sQ7goe2QTo9wIABAIH/gr7EO4KHtkD6PcCAAQBB/4K+xDuCh7ZA+j3AgAFAwIB6fkD/usTABAl9wjqBQMCAer5A//sFAAQJfcI6g4G3wIJBQcK9RTUCPsD9e0OBt8CCQUHCvYU1Qn8A/XtCv3m+/0f8un4A/IQBtsg2wr85vv9H/Lp+ATyDwbbINsC+vsQDwH+Iu8K8h8M9tb6Avr7EA8B/SLwCvIgDPXW+QL5+w8PAv0j8AryHwz11vnu/gr0/wgH5fT4AgsAEif/CwkRAeYEICb68RYNAfQAEQsJEQHnBCEm+vEWDAH0ARHv/gDoDhDwGPD19+7xEAv2AwwNKQ792u326/cC5QQD+AsJEgHmBCAm+vEWDAH0ABHn+ukDFQAC7e4CE+no9t4eFwMC3/rjBAH+9vsMACrjBe3+CvT/CAbl9PgCCwATJ/8C+fsPDwH9I/AK8iAM9tb5+voMCBb3LAoD//77/gf58gYV4B8TEQsHAdIQ+/8MEwfs8Qjv6vX66QDe8RoF6/oaGAESGN4mDgbtHgT2/xPzBPX6+gwWCQH1DQQg7RX0+P/yIgv27f0A/O3yDxYsBP/k9w3f9+gL3/wAFBgTARUAHAUW7PQD/vsT6/b89NX/0BUC8/0W6PsJ/voB6BAV/eIX+voMCBb3KwsD//77/gf58fr7DAgW9ywLAv/+/P4H+fLp0wsI/PQSChXo8vL2CxggBRbgHxMRCwYB0hD8/wwSBwYV4B8TEQsHAdIQ/AAMEwcFFeAfExILBwHSD/wADBMH/wAMCPvqHxAG9CQeCQ/+/f//DAj66x4QB/QkHgkP/v0AAAwI++ofDwb1Ix0JD/796BwRIBMCFg4DGfv88vjv7OkcEiATARYOAxr7/fP47+zpHBEgEwIWDgMZ+/3z+O/s7f8J9P8JBuX0+QILABMo/+3+CfT/CQbl9PgCCwASJ//u/gr1AAkG5fT4AgsAEif/JxYe9QcC8/8P9/3zLwkXCCcWH/UHAvP/D/f98zAKFwkLCRIB5gQgJvrxFgwB9AARDBjoH/veEQIM9xLvCwDh4vASAxEZ9+vwCgLjEQnw9S3wEgMRGPfr8AkC4xIJ8PUt7fAI7+r1+ukA3vAbBev6Gu3wCO/q9frpAN7wGwXr+xrt8Qjv6vX66QDe8BoE6/oaCe3tGRr98SoQDRgCHAIg9Qju7Rka/vErEA0YAhwBIPUJ7ewZGv7xKhANGAEcAiD12/L3/Cn7EPgmCAII5v0S8vIIFhLzCPAX1hwA9SH9AubyCBYS8wjwGNYcAPUh/APmGAESGd4mDgbtHgT3/xPzBBgBERjeJg8G7R4E9/8T9AQYARIZ3yYOBu0eBPf/E/MEEwDr8hkBH/US+QYH8AX7JhMA6/IZAR/1EvkGB/AE+yX1+voMFggB9Q0FIe0V9fn/9fv6DBYJAfUNBSHtFfT4//X6+gwWCAH1DQQh7Rb0+f8mEQ7vD/z25/Tf1QHzA/3lJhEO7g789+f139UC8wP95RcCAt/74wQB/vb7DP8q4wT/AAwI+uofEAf0JB4IDv79CxfpH/veEQIM9xLwCwDh4gwY6R/73hECDPcS8Av/4OLzDgXTEuH95A8b7+P8GQ328w0F0xLi/eQPG+7k/BkN9QQCB/0K/BDvCR7aBOj3AgDt8Qjv6vX66P/e8BoF6/oZAvP8Fuj7Cf36AegQFf3hFwLz/Bbo/Aj9+wHoEBX94hfwEgMQGffs8QoC4xIJ8PUtJBzpHu0F6gL56gvn4Q0OCyQc6h7uBeoC+ekM5+ANDgrzBdje9gH3A/kAAPz72vwG8wXY3fYB9wP5AQD8/Nr7Bgnt7Rka/vErEA0YARwCIPUI7u0ZG/3xKxANGAEcAiD1Ee0p9M8cIwf+KwL67w0R1RHtKfPQHCMH/isC+fANEtXyIgr17f0A/e3xDxYsBf/j8iIK9ez9APzt8g8XLAT/4/IiCvXt/f/97fEPFiwE/+P5+gwIFvcsCwP//fv+Bvnx+vsNCBX3KwsD//38/gf58vb7+gwWCQH1DQUg7RX0+f8JERsKBiUH8AAb/Nj7EgYLCBEaCQYlB/D/GvzX+hIGC9vy9/0p+xD4JgkCB+b9EvLb8vb8KfsR9yYIAgjm/RLzDBjoH/veEQIM9xLvC//h4gsY6R/83hECDPcS8AsA4OL6+wwJFvcrCgL//fv+B/ny+voMCBb3KwsD//38/gf58SMc6R7uBesC+ekM5+ENDQojHOoe7QXrAfnpC+jgDQ4LJBzpHu4E6gL56gvn4Q0OCvcO3/foC9/8ABUYEwEUABz3Dt/36Avg/AAVGBMBFQAb9g3f9+gL3/wAFBgTARQAHAAEAgH+AAIA//0BA/oD/QAABAIB/gACAP/9AQP6BPwA/wQCAf0AAQD//gED+gP8AP8FAgH9AAIA//0BA/oD/AD/BQIB/gAC///9AQP6BP0A/Qb/AQECBgH5/QEA+wP6AQAFAgH9AAIB//0BA/oD/P8P5RT17/j2/Q0PBAL09RTn8R/uCw8ICwTy7v0BBg7oGQ7kE/Xv+PX8Dg4DAvP2FefwIO4MDwgMBPLv/gIGDugZDuUT9e/49vwNDgQB9PYV5/Ag7wwPCAwE8e/9AgYN5xkK7w359vv9/QkNAAH19w/s8xfzCAsHCQPw7wEABgvqFA/lE/Xv+Pb9DQ8EAvX2FefxIO4MDwgMA/Lu/gEFDucYDeMS9uv68QELBg8B+/kV5wjvCvr1/PkCBwcJAPv5D+0O4xP16/rxAgoGDwD8+BTn8w7/CfwPBQTk5hcSBRXwDPQL/gcBCwQC6usQDAMS8AvzD/4J/A8FBOTlFxEGFfAM/hLwAxP5BwAOCebvAfj4DP8M9AEK/AUBBwXw9AP6+wn9EfADEvkHAA0J5vAA+fgMAQEC/wP+BfsDCfQB+f0BAAEAAv8C/wT8Agf3Afr+AQABAQEABP8F+wII9AH5/QAB",
+    "encoding": "int8-base64",
+    "scale": 0.02606072012833723
+  },
+  "exact_prompts": {
+    "describe a beach family image": 21,
+    "describe a campfire night image": 28,
+    "describe a coastal cliff image": 20,
+    "describe a cozy reading corner image": 8,
+    "describe a desert dune image": 24,
+    "describe a forest path image": 30,
+    "describe a futuristic city image": 12,
+    "describe a garden in spring image": 14,
+    "describe a greenhouse image": 15,
+    "describe a library interior image": 26,
+    "describe a lighthouse storm image": 18,
+    "describe a market spices image": 9,
+    "describe a minimal logo concept": 33,
+    "describe a misty lake image": 25,
+    "describe a mountain cabin image": 10,
+    "describe a mountain landscape image": 17,
+    "describe a night city image": 11,
+    "describe a rainy street portrait": 27,
+    "describe a snow village image": 23,
+    "describe a sunrise field image": 16,
+    "describe a sunset portrait image brief": 29,
+    "describe a waterfall image": 22,
+    "describe a workshop tools image": 31,
+    "describe an ocean sunrise image": 19,
+    "gravion vision describe a beach family image": 21,
+    "gravion vision describe a campfire night image": 28,
+    "gravion vision describe a coastal cliff image": 20,
+    "gravion vision describe a cozy reading corner image": 8,
+    "gravion vision describe a desert dune image": 24,
+    "gravion vision describe a forest path image": 30,
+    "gravion vision describe a futuristic city image": 12,
+    "gravion vision describe a garden in spring image": 14,
+    "gravion vision describe a greenhouse image": 15,
+    "gravion vision describe a library interior image": 26,
+    "gravion vision describe a lighthouse storm image": 18,
+    "gravion vision describe a market spices image": 9,
+    "gravion vision describe a minimal logo concept": 33,
+    "gravion vision describe a misty lake image": 25,
+    "gravion vision describe a mountain cabin image": 10,
+    "gravion vision describe a mountain landscape image": 17,
+    "gravion vision describe a night city image": 11,
+    "gravion vision describe a rainy street portrait": 27,
+    "gravion vision describe a snow village image": 23,
+    "gravion vision describe a sunrise field image": 16,
+    "gravion vision describe a sunset portrait image brief": 29,
+    "gravion vision describe a waterfall image": 22,
+    "gravion vision describe a workshop tools image": 31,
+    "gravion vision describe an ocean sunrise image": 19,
+    "gravion vision plan a book cover image concept": 3,
+    "gravion vision plan a fashion editorial image": 6,
+    "gravion vision plan a food photography setup": 7,
+    "gravion vision plan a macro flower image": 34,
+    "gravion vision plan a monochrome street image": 35,
+    "gravion vision plan a newborn safe photo concept": 38,
+    "gravion vision plan a pet portrait image": 37,
+    "gravion vision plan a portrait with window light": 39,
+    "gravion vision plan a product photo composition": 2,
+    "gravion vision plan a silhouette sunset image": 43,
+    "gravion vision plan a sports action image": 0,
+    "gravion vision plan a still life with fruit": 44,
+    "gravion vision plan a wedding photo composition": 47,
+    "gravion vision plan a workspace desk image": 5,
+    "gravion vision plan an architecture image": 1,
+    "gravion vision plan an image for a music poster": 40,
+    "gravion vision plan an image for a science article": 41,
+    "gravion vision plan an image for a travel guide": 46,
+    "gravion vision plan an image of a busy market": 13,
+    "gravion vision plan an image of hands crafting": 4,
+    "gravion vision plan an image showing teamwork": 45,
+    "gravion vision plan an image with leading lines": 32,
+    "gravion vision plan an image with negative space": 36,
+    "gravion vision plan an image with strong shadows": 42,
+    "help me describe a beach family image": 21,
+    "help me describe a campfire night image": 28,
+    "help me describe a coastal cliff image": 20,
+    "help me describe a cozy reading corner image": 8,
+    "help me describe a desert dune image": 24,
+    "help me describe a forest path image": 30,
+    "help me describe a futuristic city image": 12,
+    "help me describe a garden in spring image": 14,
+    "help me describe a greenhouse image": 15,
+    "help me describe a library interior image": 26,
+    "help me describe a lighthouse storm image": 18,
+    "help me describe a market spices image": 9,
+    "help me describe a minimal logo concept": 33,
+    "help me describe a misty lake image": 25,
+    "help me describe a mountain cabin image": 10,
+    "help me describe a mountain landscape image": 17,
+    "help me describe a night city image": 11,
+    "help me describe a rainy street portrait": 27,
+    "help me describe a snow village image": 23,
+    "help me describe a sunrise field image": 16,
+    "help me describe a sunset portrait image brief": 29,
+    "help me describe a waterfall image": 22,
+    "help me describe a workshop tools image": 31,
+    "help me describe an ocean sunrise image": 19,
+    "help me plan a book cover image concept": 3,
+    "help me plan a fashion editorial image": 6,
+    "help me plan a food photography setup": 7,
+    "help me plan a macro flower image": 34,
+    "help me plan a monochrome street image": 35,
+    "help me plan a newborn safe photo concept": 38,
+    "help me plan a pet portrait image": 37,
+    "help me plan a portrait with window light": 39,
+    "help me plan a product photo composition": 2,
+    "help me plan a silhouette sunset image": 43,
+    "help me plan a sports action image": 0,
+    "help me plan a still life with fruit": 44,
+    "help me plan a wedding photo composition": 47,
+    "help me plan a workspace desk image": 5,
+    "help me plan an architecture image": 1,
+    "help me plan an image for a music poster": 40,
+    "help me plan an image for a science article": 41,
+    "help me plan an image for a travel guide": 46,
+    "help me plan an image of a busy market": 13,
+    "help me plan an image of hands crafting": 4,
+    "help me plan an image showing teamwork": 45,
+    "help me plan an image with leading lines": 32,
+    "help me plan an image with negative space": 36,
+    "help me plan an image with strong shadows": 42,
+    "plan a book cover image concept": 3,
+    "plan a fashion editorial image": 6,
+    "plan a food photography setup": 7,
+    "plan a macro flower image": 34,
+    "plan a monochrome street image": 35,
+    "plan a newborn safe photo concept": 38,
+    "plan a pet portrait image": 37,
+    "plan a portrait with window light": 39,
+    "plan a product photo composition": 2,
+    "plan a silhouette sunset image": 43,
+    "plan a sports action image": 0,
+    "plan a still life with fruit": 44,
+    "plan a wedding photo composition": 47,
+    "plan a workspace desk image": 5,
+    "plan an architecture image": 1,
+    "plan an image for a music poster": 40,
+    "plan an image for a science article": 41,
+    "plan an image for a travel guide": 46,
+    "plan an image of a busy market": 13,
+    "plan an image of hands crafting": 4,
+    "plan an image showing teamwork": 45,
+    "plan an image with leading lines": 32,
+    "plan an image with negative space": 36,
+    "plan an image with strong shadows": 42,
+    "please describe a beach family image": 21,
+    "please describe a campfire night image": 28,
+    "please describe a coastal cliff image": 20,
+    "please describe a cozy reading corner image": 8,
+    "please describe a desert dune image": 24,
+    "please describe a forest path image": 30,
+    "please describe a futuristic city image": 12,
+    "please describe a garden in spring image": 14,
+    "please describe a greenhouse image": 15,
+    "please describe a library interior image": 26,
+    "please describe a lighthouse storm image": 18,
+    "please describe a market spices image": 9,
+    "please describe a minimal logo concept": 33,
+    "please describe a misty lake image": 25,
+    "please describe a mountain cabin image": 10,
+    "please describe a mountain landscape image": 17,
+    "please describe a night city image": 11,
+    "please describe a rainy street portrait": 27,
+    "please describe a snow village image": 23,
+    "please describe a sunrise field image": 16,
+    "please describe a sunset portrait image brief": 29,
+    "please describe a waterfall image": 22,
+    "please describe a workshop tools image": 31,
+    "please describe an ocean sunrise image": 19,
+    "please plan a book cover image concept": 3,
+    "please plan a fashion editorial image": 6,
+    "please plan a food photography setup": 7,
+    "please plan a macro flower image": 34,
+    "please plan a monochrome street image": 35,
+    "please plan a newborn safe photo concept": 38,
+    "please plan a pet portrait image": 37,
+    "please plan a portrait with window light": 39,
+    "please plan a product photo composition": 2,
+    "please plan a silhouette sunset image": 43,
+    "please plan a sports action image": 0,
+    "please plan a still life with fruit": 44,
+    "please plan a wedding photo composition": 47,
+    "please plan a workspace desk image": 5,
+    "please plan an architecture image": 1,
+    "please plan an image for a music poster": 40,
+    "please plan an image for a science article": 41,
+    "please plan an image for a travel guide": 46,
+    "please plan an image of a busy market": 13,
+    "please plan an image of hands crafting": 4,
+    "please plan an image showing teamwork": 45,
+    "please plan an image with leading lines": 32,
+    "please plan an image with negative space": 36,
+    "please plan an image with strong shadows": 42
+  },
+  "features": [
+    "a",
+    "image",
+    "describe",
+    "plan",
+    "describe a",
+    "plan a",
+    "an",
+    "plan an",
+    "an image",
+    "plan an image",
+    "with",
+    "portrait",
+    "an image for",
+    "an image with",
+    "concept",
+    "for",
+    "for a",
+    "image for",
+    "image for a",
+    "image with",
+    "photo",
+    "a mountain",
+    "an image of",
+    "city",
+    "city image",
+    "composition",
+    "describe a mountain",
+    "image of",
+    "market",
+    "mountain",
+    "night",
+    "of",
+    "photo composition",
+    "portrait image",
+    "street",
+    "sunrise",
+    "sunset",
+    "a beach",
+    "a beach family",
+    "a book",
+    "a book cover",
+    "a busy",
+    "a busy market",
+    "a campfire",
+    "a campfire night",
+    "a coastal",
+    "a coastal cliff",
+    "a cozy",
+    "a cozy reading",
+    "a desert",
+    "a desert dune",
+    "a fashion",
+    "a fashion editorial",
+    "a food",
+    "a food photography",
+    "a forest",
+    "a forest path",
+    "a futuristic",
+    "a futuristic city",
+    "a garden",
+    "a garden in",
+    "a greenhouse",
+    "a greenhouse image",
+    "a library",
+    "a library interior",
+    "a lighthouse",
+    "a lighthouse storm",
+    "a macro",
+    "a macro flower",
+    "a market",
+    "a market spices",
+    "a minimal",
+    "a minimal logo",
+    "a misty",
+    "a misty lake",
+    "a monochrome",
+    "a monochrome street",
+    "a mountain cabin",
+    "a mountain landscape",
+    "a music",
+    "a music poster",
+    "a newborn",
+    "a newborn safe",
+    "a night",
+    "a night city",
+    "a pet",
+    "a pet portrait",
+    "a portrait",
+    "a portrait with",
+    "a product",
+    "a product photo",
+    "a rainy",
+    "a rainy street",
+    "a science",
+    "a science article",
+    "a silhouette",
+    "a silhouette sunset",
+    "a snow",
+    "a snow village",
+    "a sports",
+    "a sports action",
+    "a still",
+    "a still life",
+    "a sunrise",
+    "a sunrise field",
+    "a sunset",
+    "a sunset portrait",
+    "a travel",
+    "a travel guide",
+    "a waterfall",
+    "a waterfall image",
+    "a wedding",
+    "a wedding photo",
+    "a workshop",
+    "a workshop tools",
+    "a workspace",
+    "a workspace desk",
+    "action",
+    "action image",
+    "an architecture",
+    "an architecture image",
+    "an image showing",
+    "an ocean",
+    "an ocean sunrise",
+    "architecture",
+    "architecture image",
+    "article",
+    "beach",
+    "beach family",
+    "beach family image",
+    "book",
+    "book cover",
+    "book cover image",
+    "brief",
+    "busy",
+    "busy market",
+    "cabin",
+    "cabin image",
+    "campfire",
+    "campfire night",
+    "campfire night image",
+    "cliff",
+    "cliff image",
+    "coastal",
+    "coastal cliff",
+    "coastal cliff image",
+    "corner",
+    "corner image",
+    "cover",
+    "cover image",
+    "cover image concept",
+    "cozy",
+    "cozy reading",
+    "cozy reading corner",
+    "crafting",
+    "describe a beach",
+    "describe a campfire",
+    "describe a coastal",
+    "describe a cozy",
+    "describe a desert",
+    "describe a forest",
+    "describe a futuristic",
+    "describe a garden",
+    "describe a greenhouse",
+    "describe a library",
+    "describe a lighthouse",
+    "describe a market",
+    "describe a minimal",
+    "describe a misty",
+    "describe a night",
+    "describe a rainy",
+    "describe a snow",
+    "describe a sunrise",
+    "describe a sunset",
+    "describe a waterfall",
+    "describe a workshop",
+    "describe an",
+    "describe an ocean",
+    "desert",
+    "desert dune",
+    "desert dune image",
+    "desk",
+    "desk image",
+    "dune",
+    "dune image",
+    "editorial",
+    "editorial image",
+    "family",
+    "family image",
+    "fashion",
+    "fashion editorial",
+    "fashion editorial image",
+    "field",
+    "field image",
+    "flower",
+    "flower image",
+    "food",
+    "food photography",
+    "food photography setup",
+    "for a music",
+    "for a science",
+    "for a travel",
+    "forest",
+    "forest path",
+    "forest path image",
+    "fruit",
+    "futuristic",
+    "futuristic city",
+    "futuristic city image",
+    "garden",
+    "garden in",
+    "garden in spring",
+    "greenhouse",
+    "greenhouse image",
+    "guide",
+    "hands",
+    "hands crafting",
+    "image brief",
+    "image concept",
+    "image of a",
+    "image of hands",
+    "image showing",
+    "image showing teamwork",
+    "image with leading",
+    "image with negative",
+    "image with strong",
+    "in",
+    "in spring",
+    "in spring image",
+    "interior",
+    "interior image",
+    "lake",
+    "lake image",
+    "landscape",
+    "landscape image",
+    "leading",
+    "leading lines",
+    "library",
+    "library interior",
+    "library interior image",
+    "life",
+    "life with",
+    "life with fruit",
+    "light",
+    "lighthouse",
+    "lighthouse storm",
+    "lighthouse storm image",
+    "lines",
+    "logo",
+    "logo concept",
+    "macro",
+    "macro flower",
+    "macro flower image",
+    "market spices",
+    "market spices image",
+    "minimal",
+    "minimal logo",
+    "minimal logo concept",
+    "misty",
+    "misty lake",
+    "misty lake image",
+    "monochrome",
+    "monochrome street",
+    "monochrome street image",
+    "mountain cabin",
+    "mountain cabin image",
+    "mountain landscape",
+    "mountain landscape image",
+    "music",
+    "music poster",
+    "negative",
+    "negative space",
+    "newborn",
+    "newborn safe",
+    "newborn safe photo",
+    "night city",
+    "night city image",
+    "night image",
+    "ocean",
+    "ocean sunrise",
+    "ocean sunrise image",
+    "of a",
+    "of a busy",
+    "of hands",
+    "of hands crafting",
+    "path",
+    "path image",
+    "pet",
+    "pet portrait",
+    "pet portrait image",
+    "photo concept",
+    "photography",
+    "photography setup",
+    "plan a book",
+    "plan a fashion",
+    "plan a food",
+    "plan a macro",
+    "plan a monochrome",
+    "plan a newborn",
+    "plan a pet",
+    "plan a portrait",
+    "plan a product",
+    "plan a silhouette",
+    "plan a sports",
+    "plan a still",
+    "plan a wedding",
+    "plan a workspace",
+    "plan an architecture",
+    "portrait image brief",
+    "portrait with",
+    "portrait with window",
+    "poster",
+    "product",
+    "product photo",
+    "product photo composition",
+    "rainy",
+    "rainy street",
+    "rainy street portrait",
+    "reading",
+    "reading corner",
+    "reading corner image",
+    "safe",
+    "safe photo",
+    "safe photo concept",
+    "science",
+    "science article",
+    "setup",
+    "shadows",
+    "showing",
+    "showing teamwork",
+    "silhouette",
+    "silhouette sunset",
+    "silhouette sunset image",
+    "snow",
+    "snow village",
+    "snow village image",
+    "space",
+    "spices",
+    "spices image",
+    "sports",
+    "sports action",
+    "sports action image",
+    "spring",
+    "spring image",
+    "still",
+    "still life",
+    "still life with",
+    "storm",
+    "storm image",
+    "street image",
+    "street portrait",
+    "strong",
+    "strong shadows",
+    "sunrise field",
+    "sunrise field image",
+    "sunrise image",
+    "sunset image",
+    "sunset portrait",
+    "sunset portrait image",
+    "teamwork",
+    "tools",
+    "tools image",
+    "travel",
+    "travel guide",
+    "village",
+    "village image",
+    "waterfall",
+    "waterfall image",
+    "wedding",
+    "wedding photo",
+    "wedding photo composition",
+    "window",
+    "window light",
+    "with fruit",
+    "with leading",
+    "with leading lines",
+    "with negative",
+    "with negative space",
+    "with strong",
+    "with strong shadows",
+    "with window",
+    "with window light",
+    "workshop",
+    "workshop tools",
+    "workshop tools image",
+    "workspace",
+    "workspace desk",
+    "workspace desk image",
+    "gravion",
+    "gravion vision",
+    "help",
+    "help me",
+    "me",
+    "please",
+    "vision",
+    "gravion vision describe",
+    "gravion vision plan",
+    "help me describe",
+    "help me plan",
+    "me describe",
+    "me plan",
+    "please describe",
+    "please plan",
+    "vision describe",
+    "vision plan",
+    "me describe a",
+    "please describe a",
+    "vision describe a",
+    "me plan a",
+    "please plan a",
+    "vision plan a",
+    "me plan an",
+    "please plan an",
+    "vision plan an",
+    "me describe an",
+    "please describe an",
+    "vision describe an"
+  ],
+  "format": "gravion-core-local-v3",
+  "model_id": "gravion-vision",
+  "parameter_count": 28439,
+  "trained_from": {
+    "classes": 48,
+    "dataset_sha256": "145e02bcab6e003f4e7adcb44d239c8326f5fabcd897f2d2a3e1b5faee5b7878",
+    "examples": 192,
+    "features": 417,
+    "source": "data/gravion-vision-seed.jsonl"
+  },
+  "transitions": {
+    "<s>": {
+      "action": 0.02083333,
+      "architecture": 0.02083333,
+      "composition": 0.02083333,
+      "cover": 0.02083333,
+      "craft": 0.02083333,
+      "desk": 0.02083333,
+      "editorial": 0.02083333,
+      "food": 0.02083333,
+      "image": 0.5,
+      "leading": 0.02083333,
+      "logo": 0.02083333,
+      "macro": 0.02083333,
+      "monochrome": 0.02083333,
+      "negative": 0.02083333,
+      "pet": 0.02083333,
+      "photo": 0.02083333,
+      "portrait": 0.02083333,
+      "poster": 0.02083333,
+      "science": 0.02083333,
+      "shadow": 0.02083333,
+      "silhouette": 0.02083333,
+      "still": 0.02083333,
+      "teamwork": 0.02083333,
+      "travel": 0.02083333,
+      "wedding": 0.02083333
+    },
+    "a": {
+      "balanced": 0.08333333,
+      "calm": 0.08333333,
+      "clear": 0.08333333,
+      "close": 0.08333333,
+      "decisive": 0.08333333,
+      "path": 0.08333333,
+      "quiet": 0.08333333,
+      "small": 0.16666667,
+      "table": 0.08333333,
+      "thoughtful": 0.08333333,
+      "wide": 0.08333333
+    },
+    "accent": {
+      "color": 1.0
+    },
+    "accurate": {
+      "colors": 1.0
+    },
+    "action": {
+      "plan": 1.0
+    },
+    "against": {
+      "bright": 1.0
+    },
+    "air": {
+      "feel": 1.0
+    },
+    "and": {
+      "a": 0.23913043,
+      "balanced": 0.02173913,
+      "blue": 0.02173913,
+      "bright": 0.02173913,
+      "clear": 0.04347826,
+      "confident": 0.02173913,
+      "cozy": 0.02173913,
+      "dramatic": 0.02173913,
+      "fresh": 0.02173913,
+      "gentle": 0.02173913,
+      "golden": 0.02173913,
+      "honest": 0.02173913,
+      "hopeful": 0.02173913,
+      "layered": 0.02173913,
+      "light": 0.02173913,
+      "mood": 0.02173913,
+      "one": 0.02173913,
+      "patient": 0.02173913,
+      "quiet": 0.06521739,
+      "rich": 0.02173913,
+      "room": 0.02173913,
+      "shadow": 0.02173913,
+      "small": 0.02173913,
+      "soft": 0.02173913,
+      "space": 0.08695652,
+      "tools": 0.02173913,
+      "uncluttered": 0.02173913,
+      "warm": 0.04347826,
+      "wide": 0.02173913
+    },
+    "architecture": {
+      "plan": 1.0
+    },
+    "armchair": {
+      "lamp": 1.0
+    },
+    "around": {
+      "a": 0.5,
+      "subjects": 0.5
+    },
+    "arranged": {
+      "by": 0.5,
+      "fruit": 0.5
+    },
+    "as": {
+      "focal": 1.0
+    },
+    "at": {
+      "small": 0.5,
+      "work": 0.5
+    },
+    "backdrop": {
+      "and": 1.0
+    },
+    "background": {
+      "</s>": 0.11111111,
+      "and": 0.11111111,
+      "catchlights": 0.22222222,
+      "fine": 0.11111111,
+      "natural": 0.22222222,
+      "one": 0.11111111,
+      "soft": 0.11111111
+    },
+    "backlight": {
+      "</s>": 1.0
+    },
+    "balanced": {
+      "horizon": 0.33333333,
+      "long": 0.33333333,
+      "negative": 0.33333333
+    },
+    "beam": {
+      "rough": 1.0
+    },
+    "beams": {
+      "and": 1.0
+    },
+    "below": {
+      "seabirds": 1.0
+    },
+    "bench": {
+      "task": 1.0
+    },
+    "between": {
+      "trunks": 1.0
+    },
+    "blanket": {
+      "and": 0.5,
+      "gentle": 0.5
+    },
+    "bloom": {
+      "dew": 1.0
+    },
+    "blooms": {
+      "soft": 1.0
+    },
+    "blue": {
+      "evening": 0.5,
+      "sky": 0.5
+    },
+    "blurred": {
+      "background": 1.0
+    },
+    "boat": {
+      "</s>": 1.0
+    },
+    "bold": {
+      "performer": 0.5,
+      "pose": 0.5
+    },
+    "books": {
+      "blanket": 1.0
+    },
+    "bowls": {
+      "of": 1.0
+    },
+    "brief": {
+      "armchair": 0.04166667,
+      "bowls": 0.04166667,
+      "cabin": 0.04166667,
+      "city": 0.04166667,
+      "clean": 0.04166667,
+      "colorful": 0.04166667,
+      "fresh": 0.04166667,
+      "glass": 0.04166667,
+      "golden": 0.04166667,
+      "layered": 0.04166667,
+      "lighthouse": 0.04166667,
+      "low": 0.04166667,
+      "rugged": 0.04166667,
+      "shoreline": 0.04166667,
+      "silky": 0.04166667,
+      "small": 0.04166667,
+      "smooth": 0.04166667,
+      "still": 0.04166667,
+      "tall": 0.04166667,
+      "umbrella": 0.04166667,
+      "warm": 0.08333333,
+      "winding": 0.04166667,
+      "worn": 0.04166667
+    },
+    "bright": {
+      "highlights": 0.25,
+      "sign": 0.25,
+      "sky": 0.25,
+      "workspace": 0.25
+    },
+    "by": {
+      "use": 1.0
+    },
+    "cabin": {
+      "in": 1.0
+    },
+    "calm": {
+      "background": 0.2,
+      "human": 0.2,
+      "pose": 0.2,
+      "safe": 0.2,
+      "water": 0.2
+    },
+    "camera": {
+      "soft": 1.0
+    },
+    "caps": {
+      "morning": 1.0
+    },
+    "catchlights": {
+      "favorite": 0.5,
+      "in": 0.5
+    },
+    "centered": {
+      "clean": 1.0
+    },
+    "central": {
+      "symbol": 1.0
+    },
+    "chimney": {
+      "smoke": 1.0
+    },
+    "city": {
+      "lights": 1.0
+    },
+    "clean": {
+      "background": 0.33333333,
+      "lines": 0.33333333,
+      "towers": 0.33333333
+    },
+    "clear": {
+      "depth": 0.2,
+      "focal": 0.2,
+      "sky": 0.2,
+      "subject": 0.2,
+      "title": 0.2
+    },
+    "cliff": {
+      "waves": 1.0
+    },
+    "close": {
+      "crop": 1.0
+    },
+    "cloth": {
+      "directional": 0.5,
+      "warm": 0.5
+    },
+    "clouds": {
+      "and": 0.5,
+      "spray": 0.5
+    },
+    "color": {
+      "and": 1.0
+    },
+    "colorful": {
+      "spices": 0.5,
+      "stalls": 0.5
+    },
+    "colors": {
+      "and": 0.5,
+      "readable": 0.5
+    },
+    "composition": {
+      "couple": 0.5,
+      "product": 0.5
+    },
+    "concept": {
+      "simple": 0.33333333,
+      "soft": 0.33333333,
+      "strong": 0.33333333
+    },
+    "confident": {
+      "styling": 1.0
+    },
+    "contrast": {
+      "</s>": 0.66666667,
+      "and": 0.33333333
+    },
+    "controlled": {
+      "palette": 1.0
+    },
+    "couple": {
+      "in": 1.0
+    },
+    "cover": {
+      "concept": 1.0
+    },
+    "cozy": {
+      "contrast": 1.0
+    },
+    "craft": {
+      "image": 1.0
+    },
+    "crop": {
+      "</s>": 1.0
+    },
+    "crowd": {
+      "shapes": 1.0
+    },
+    "cup": {
+      "soft": 1.0
+    },
+    "curves": {
+      "long": 1.0
+    },
+    "dark": {
+      "clouds": 1.0
+    },
+    "dawn": {
+      "light": 1.0
+    },
+    "daylight": {
+      "and": 1.0
+    },
+    "decisive": {
+      "moment": 1.0
+    },
+    "deep": {
+      "blue": 0.5,
+      "shadows": 0.5
+    },
+    "depth": {
+      "</s>": 0.66666667,
+      "and": 0.33333333
+    },
+    "desk": {
+      "image": 1.0
+    },
+    "detail": {
+      "</s>": 0.66666667,
+      "and": 0.33333333
+    },
+    "dew": {
+      "drops": 0.5,
+      "sparkle": 0.5
+    },
+    "direction": {
+      "of": 1.0
+    },
+    "directional": {
+      "light": 1.0
+    },
+    "distant": {
+      "trees": 1.0
+    },
+    "dramatic": {
+      "clouds": 0.5,
+      "contrast": 0.5
+    },
+    "droplets": {
+      "warm": 1.0
+    },
+    "drops": {
+      "blurred": 1.0
+    },
+    "dune": {
+      "curves": 1.0
+    },
+    "dust": {
+      "in": 1.0
+    },
+    "edge": {
+      "light": 1.0
+    },
+    "edges": {
+      "simple": 1.0
+    },
+    "editorial": {
+      "plan": 1.0
+    },
+    "elevated": {
+      "walkways": 1.0
+    },
+    "evening": {
+      "</s>": 0.33333333,
+      "light": 0.66666667
+    },
+    "exposure": {
+      "feel": 1.0
+    },
+    "expression": {
+      "</s>": 0.5,
+      "high": 0.5
+    },
+    "eye": {
+      "</s>": 0.5,
+      "level": 0.5
+    },
+    "eyes": {
+      "calm": 1.0
+    },
+    "falling": {
+      "snow": 0.5,
+      "water": 0.5
+    },
+    "favorite": {
+      "toy": 1.0
+    },
+    "feel": {
+      "</s>": 0.5,
+      "and": 0.5
+    },
+    "field": {
+      "long": 1.0
+    },
+    "figure": {
+      "for": 1.0
+    },
+    "figures": {
+      "for": 1.0
+    },
+    "filtered": {
+      "light": 1.0
+    },
+    "fine": {
+      "petal": 1.0
+    },
+    "fire": {
+      "glow": 1.0
+    },
+    "focal": {
+      "point": 0.5,
+      "subject": 0.5
+    },
+    "food": {
+      "setup": 1.0
+    },
+    "for": {
+      "headline": 0.16666667,
+      "scale": 0.5,
+      "text": 0.33333333
+    },
+    "foreground": {
+      "and": 1.0
+    },
+    "fresh": {
+      "blooms": 0.5,
+      "green": 0.5
+    },
+    "frozen": {
+      "peak": 1.0
+    },
+    "fruit": {
+      "linen": 1.0
+    },
+    "garnish": {
+      "last": 1.0
+    },
+    "gentle": {
+      "backlight": 0.33333333,
+      "hands": 0.33333333,
+      "waves": 0.33333333
+    },
+    "geometric": {
+      "mark": 1.0
+    },
+    "geometry": {
+      "clean": 1.0
+    },
+    "gestures": {
+      "and": 1.0
+    },
+    "glass": {
+      "light": 1.0
+    },
+    "glow": {
+      "and": 0.25,
+      "gentle": 0.25,
+      "stacked": 0.25,
+      "starry": 0.25
+    },
+    "golden": {
+      "edge": 0.5,
+      "field": 0.5
+    },
+    "gradient": {
+      "</s>": 1.0
+    },
+    "green": {
+      "and": 0.25,
+      "leaves": 0.25,
+      "rows": 0.25,
+      "tones": 0.25
+    },
+    "guiding": {
+      "the": 0.5,
+      "toward": 0.5
+    },
+    "hands": {
+      "and": 0.33333333,
+      "at": 0.33333333,
+      "nearby": 0.33333333
+    },
+    "hard": {
+      "side": 1.0
+    },
+    "haze": {
+      "pine": 1.0
+    },
+    "headline": {
+      "text": 1.0
+    },
+    "high": {
+      "contrast": 0.5,
+      "detail": 0.5
+    },
+    "highlights": {
+      "and": 1.0
+    },
+    "honest": {
+      "texture": 1.0
+    },
+    "hopeful": {
+      "mood": 1.0
+    },
+    "horizon": {
+      "and": 0.66666667,
+      "glow": 0.33333333
+    },
+    "hot": {
+      "garnish": 1.0
+    },
+    "houses": {
+      "falling": 1.0
+    },
+    "human": {
+      "figures": 0.33333333,
+      "portrait": 0.33333333,
+      "scale": 0.33333333
+    },
+    "if": {
+      "hot": 0.5,
+      "needed": 0.5
+    },
+    "image": {
+      "bold": 0.03333333,
+      "brief": 0.8,
+      "clear": 0.03333333,
+      "hands": 0.03333333,
+      "landmark": 0.03333333,
+      "people": 0.03333333,
+      "tidy": 0.03333333
+    },
+    "in": {
+      "eyes": 0.14285714,
+      "light": 0.14285714,
+      "motion": 0.14285714,
+      "reach": 0.14285714,
+      "snow": 0.14285714,
+      "soft": 0.14285714,
+      "the": 0.14285714
+    },
+    "inviting": {
+      "foreground": 1.0
+    },
+    "inward": {
+      "</s>": 1.0
+    },
+    "labeled": {
+      "space": 1.0
+    },
+    "lake": {
+      "low": 1.0
+    },
+    "lamp": {
+      "glow": 1.0
+    },
+    "lamps": {
+      "reading": 1.0
+    },
+    "landmark": {
+      "local": 1.0
+    },
+    "large": {
+      "calm": 1.0
+    },
+    "last": {
+      "and": 1.0
+    },
+    "layered": {
+      "depth": 0.5,
+      "mountain": 0.5
+    },
+    "layout": {
+      "and": 1.0
+    },
+    "leading": {
+      "inward": 0.5,
+      "lines": 0.5
+    },
+    "leaves": {
+      "and": 1.0
+    },
+    "level": {
+      "camera": 1.0
+    },
+    "life": {
+      "arranged": 0.5,
+      "clear": 0.5
+    },
+    "light": {
+      "</s>": 0.18181818,
+      "and": 0.13636364,
+      "beams": 0.04545455,
+      "calm": 0.04545455,
+      "green": 0.09090909,
+      "mist": 0.04545455,
+      "natural": 0.04545455,
+      "on": 0.04545455,
+      "organized": 0.04545455,
+      "plain": 0.04545455,
+      "rich": 0.04545455,
+      "shallow": 0.04545455,
+      "simple": 0.04545455,
+      "textured": 0.04545455,
+      "that": 0.04545455,
+      "uncluttered": 0.04545455
+    },
+    "lighthouse": {
+      "beam": 1.0
+    },
+    "lights": {
+      "crowd": 0.5,
+      "wet": 0.5
+    },
+    "limited": {
+      "palette": 1.0
+    },
+    "linen": {
+      "cloth": 1.0
+    },
+    "lines": {
+      "guiding": 0.33333333,
+      "human": 0.33333333,
+      "plan": 0.33333333
+    },
+    "local": {
+      "life": 1.0
+    },
+    "logo": {
+      "concept": 1.0
+    },
+    "long": {
+      "exposure": 0.33333333,
+      "shadows": 0.66666667
+    },
+    "low": {
+      "mist": 0.5,
+      "sun": 0.5
+    },
+    "lush": {
+      "green": 1.0
+    },
+    "macro": {
+      "plan": 1.0
+    },
+    "mark": {
+      "two": 1.0
+    },
+    "matching": {
+      "the": 1.0
+    },
+    "materials": {
+      "and": 1.0
+    },
+    "mist": {
+      "between": 0.33333333,
+      "lush": 0.33333333,
+      "reflected": 0.33333333
+    },
+    "moment": {
+      "</s>": 0.5,
+      "sharp": 0.5
+    },
+    "monochrome": {
+      "plan": 1.0
+    },
+    "mood": {
+      "</s>": 0.66666667,
+      "matching": 0.33333333
+    },
+    "morning": {
+      "haze": 1.0
+    },
+    "mossy": {
+      "rocks": 1.0
+    },
+    "motion": {
+      "</s>": 0.5,
+      "warm": 0.5
+    },
+    "mountain": {
+      "ridges": 1.0
+    },
+    "natural": {
+      "expression": 0.25,
+      "gestures": 0.25,
+      "hands": 0.25,
+      "smiles": 0.25
+    },
+    "near": {
+      "window": 1.0
+    },
+    "nearby": {
+      "and": 0.5,
+      "warm": 0.5
+    },
+    "needed": {
+      "accurate": 1.0
+    },
+    "negative": {
+      "space": 1.0
+    },
+    "neon": {
+      "glow": 1.0
+    },
+    "notebook": {
+      "cup": 1.0
+    },
+    "notes": {
+      "natural": 1.0
+    },
+    "of": {
+      "colorful": 0.5,
+      "motion": 0.5
+    },
+    "on": {
+      "edges": 1.0
+    },
+    "one": {
+      "accent": 0.33333333,
+      "bright": 0.33333333,
+      "prop": 0.33333333
+    },
+    "open": {
+      "sky": 1.0
+    },
+    "or": {
+      "railing": 1.0
+    },
+    "organized": {
+      "layout": 1.0
+    },
+    "over": {
+      "calm": 1.0
+    },
+    "pale": {
+      "sky": 1.0
+    },
+    "palette": {
+      "and": 0.5,
+      "textured": 0.5
+    },
+    "path": {
+      "leading": 0.5,
+      "tall": 0.5
+    },
+    "patient": {
+      "timing": 1.0
+    },
+    "pavement": {
+      "soft": 1.0
+    },
+    "peak": {
+      "moment": 1.0
+    },
+    "people": {
+      "around": 0.5,
+      "in": 0.5
+    },
+    "performer": {
+      "silhouette": 1.0
+    },
+    "pet": {
+      "portrait": 1.0
+    },
+    "petal": {
+      "detail": 1.0
+    },
+    "photo": {
+      "concept": 1.0
+    },
+    "pine": {
+      "foreground": 0.5,
+      "trees": 0.5
+    },
+    "plain": {
+      "background": 1.0
+    },
+    "plan": {
+      "bold": 0.1,
+      "frozen": 0.1,
+      "hard": 0.1,
+      "road": 0.1,
+      "single": 0.1,
+      "small": 0.1,
+      "strong": 0.2,
+      "subject": 0.2
+    },
+    "play": {
+      "soft": 1.0
+    },
+    "point": {
+      "</s>": 1.0
+    },
+    "portrait": {
+      "eye": 0.33333333,
+      "plan": 0.33333333,
+      "soft": 0.33333333
+    },
+    "pose": {
+      "</s>": 0.5,
+      "controlled": 0.5
+    },
+    "poster": {
+      "image": 1.0
+    },
+    "product": {
+      "centered": 1.0
+    },
+    "prop": {
+      "for": 1.0
+    },
+    "quiet": {
+      "evening": 0.2,
+      "mood": 0.2,
+      "shoreline": 0.2,
+      "street": 0.2,
+      "window": 0.2
+    },
+    "railing": {
+      "guiding": 1.0
+    },
+    "rain": {
+      "light": 1.0
+    },
+    "reach": {
+      "textured": 1.0
+    },
+    "readable": {
+      "at": 0.5,
+      "title": 0.5
+    },
+    "reading": {
+      "table": 1.0
+    },
+    "reflected": {
+      "trees": 1.0
+    },
+    "reflections": {
+      "deep": 1.0
+    },
+    "reflective": {
+      "pavement": 1.0
+    },
+    "reveals": {
+      "texture": 1.0
+    },
+    "rich": {
+      "color": 0.5,
+      "detail": 0.5
+    },
+    "ridges": {
+      "snow": 1.0
+    },
+    "rim": {
+      "light": 1.0
+    },
+    "rising": {
+      "and": 1.0
+    },
+    "road": {
+      "or": 1.0
+    },
+    "rocks": {
+      "mist": 1.0
+    },
+    "room": {
+      "for": 1.0
+    },
+    "rough": {
+      "sea": 1.0
+    },
+    "rows": {
+      "water": 1.0
+    },
+    "rugged": {
+      "cliff": 1.0
+    },
+    "safe": {
+      "setup": 1.0
+    },
+    "sand": {
+      "tones": 1.0
+    },
+    "scale": {
+      "</s>": 0.5,
+      "and": 0.5
+    },
+    "science": {
+      "image": 1.0
+    },
+    "sea": {
+      "dark": 1.0
+    },
+    "seabirds": {
+      "dramatic": 1.0
+    },
+    "setup": {
+      "</s>": 0.5,
+      "window": 0.5
+    },
+    "shadow": {
+      "lines": 0.33333333,
+      "one": 0.33333333,
+      "plan": 0.33333333
+    },
+    "shadows": {
+      "</s>": 0.25,
+      "bright": 0.25,
+      "dew": 0.25,
+      "warm": 0.25
+    },
+    "shallow": {
+      "depth": 1.0
+    },
+    "shapes": {
+      "and": 0.33333333,
+      "deep": 0.33333333,
+      "high": 0.33333333
+    },
+    "shared": {
+      "notes": 1.0
+    },
+    "sharp": {
+      "subject": 1.0
+    },
+    "shelves": {
+      "warm": 1.0
+    },
+    "shoreline": {
+      "</s>": 0.5,
+      "play": 0.5
+    },
+    "side": {
+      "light": 1.0
+    },
+    "sign": {
+      "as": 1.0
+    },
+    "silhouette": {
+      "plan": 0.5,
+      "stage": 0.5
+    },
+    "silhouettes": {
+      "sparks": 1.0
+    },
+    "silky": {
+      "falling": 1.0
+    },
+    "simple": {
+      "geometric": 0.33333333,
+      "horizon": 0.33333333,
+      "shapes": 0.33333333
+    },
+    "single": {
+      "bloom": 1.0
+    },
+    "size": {
+      "and": 1.0
+    },
+    "sky": {
+      "</s>": 0.28571429,
+      "and": 0.28571429,
+      "inviting": 0.14285714,
+      "rim": 0.14285714,
+      "silhouettes": 0.14285714
+    },
+    "small": {
+      "boat": 0.16666667,
+      "figure": 0.16666667,
+      "houses": 0.16666667,
+      "human": 0.16666667,
+      "size": 0.16666667,
+      "subject": 0.16666667
+    },
+    "smiles": {
+      "and": 1.0
+    },
+    "smoke": {
+      "pine": 1.0
+    },
+    "smooth": {
+      "dune": 1.0
+    },
+    "snow": {
+      "caps": 0.33333333,
+      "chimney": 0.33333333,
+      "warm": 0.33333333
+    },
+    "soft": {
+      "background": 0.16666667,
+      "blanket": 0.08333333,
+      "dawn": 0.08333333,
+      "daylight": 0.08333333,
+      "evening": 0.08333333,
+      "light": 0.08333333,
+      "neon": 0.08333333,
+      "rain": 0.08333333,
+      "shadow": 0.08333333,
+      "shadows": 0.08333333,
+      "side": 0.08333333
+    },
+    "space": {
+      "</s>": 0.22222222,
+      "around": 0.11111111,
+      "for": 0.22222222,
+      "if": 0.11111111,
+      "in": 0.11111111,
+      "limited": 0.11111111,
+      "plan": 0.11111111
+    },
+    "sparkle": {
+      "distant": 1.0
+    },
+    "sparks": {
+      "rising": 1.0
+    },
+    "spices": {
+      "textured": 1.0
+    },
+    "spray": {
+      "and": 1.0
+    },
+    "stacked": {
+      "books": 1.0
+    },
+    "stage": {
+      "lights": 1.0
+    },
+    "stalls": {
+      "people": 1.0
+    },
+    "starry": {
+      "sky": 1.0
+    },
+    "steam": {
+      "if": 1.0
+    },
+    "still": {
+      "lake": 0.5,
+      "life": 0.5
+    },
+    "story": {
+      "</s>": 1.0
+    },
+    "street": {
+      "and": 0.5,
+      "reflections": 0.5
+    },
+    "strong": {
+      "central": 0.33333333,
+      "geometry": 0.33333333,
+      "shapes": 0.33333333
+    },
+    "styling": {
+      "</s>": 1.0
+    },
+    "subject": {
+      "</s>": 0.14285714,
+      "against": 0.14285714,
+      "balanced": 0.14285714,
+      "blurred": 0.14285714,
+      "labeled": 0.14285714,
+      "large": 0.14285714,
+      "near": 0.14285714
+    },
+    "subjects": {
+      "</s>": 1.0
+    },
+    "sun": {
+      "over": 1.0
+    },
+    "sunset": {
+      "light": 1.0
+    },
+    "surface": {
+      "steam": 1.0
+    },
+    "symbol": {
+      "readable": 1.0
+    },
+    "table": {
+      "dust": 0.5,
+      "shared": 0.5
+    },
+    "tall": {
+      "shelves": 0.5,
+      "trees": 0.5
+    },
+    "task": {
+      "light": 1.0
+    },
+    "teamwork": {
+      "image": 1.0
+    },
+    "text": {
+      "</s>": 1.0
+    },
+    "texture": {
+      "</s>": 1.0
+    },
+    "textured": {
+      "backdrop": 0.25,
+      "cloth": 0.25,
+      "materials": 0.25,
+      "surface": 0.25
+    },
+    "that": {
+      "reveals": 1.0
+    },
+    "the": {
+      "direction": 0.25,
+      "eye": 0.25,
+      "story": 0.25,
+      "subject": 0.25
+    },
+    "thoughtful": {
+      "expression": 1.0
+    },
+    "tidy": {
+      "workspace": 1.0
+    },
+    "timing": {
+      "</s>": 1.0
+    },
+    "title": {
+      "space": 1.0
+    },
+    "tones": {
+      "</s>": 0.5,
+      "and": 0.5
+    },
+    "tools": {
+      "arranged": 0.33333333,
+      "in": 0.33333333,
+      "wooden": 0.33333333
+    },
+    "toward": {
+      "the": 1.0
+    },
+    "towers": {
+      "elevated": 1.0
+    },
+    "toy": {
+      "nearby": 1.0
+    },
+    "travel": {
+      "image": 1.0
+    },
+    "trees": {
+      "and": 0.25,
+      "filtered": 0.25,
+      "pale": 0.25,
+      "warm": 0.25
+    },
+    "trunks": {
+      "and": 1.0
+    },
+    "two": {
+      "colors": 1.0
+    },
+    "umbrella": {
+      "reflective": 1.0
+    },
+    "uncluttered": {
+      "background": 1.0
+    },
+    "use": {
+      "</s>": 1.0
+    },
+    "walkways": {
+      "soft": 1.0
+    },
+    "warm": {
+      "air": 0.07692308,
+      "fire": 0.07692308,
+      "gradient": 0.07692308,
+      "horizon": 0.07692308,
+      "lamps": 0.07692308,
+      "light": 0.23076923,
+      "sand": 0.07692308,
+      "sunset": 0.07692308,
+      "windows": 0.15384615,
+      "workshop": 0.07692308
+    },
+    "water": {
+      "droplets": 0.33333333,
+      "mossy": 0.33333333,
+      "warm": 0.33333333
+    },
+    "waves": {
+      "and": 0.5,
+      "below": 0.5
+    },
+    "wedding": {
+      "composition": 1.0
+    },
+    "wet": {
+      "street": 1.0
+    },
+    "wide": {
+      "open": 0.5,
+      "sky": 0.5
+    },
+    "winding": {
+      "path": 1.0
+    },
+    "window": {
+      "light": 0.66666667,
+      "soft": 0.33333333
+    },
+    "windows": {
+      "and": 0.5,
+      "quiet": 0.5
+    },
+    "wooden": {
+      "bench": 1.0
+    },
+    "work": {
+      "tools": 1.0
+    },
+    "workshop": {
+      "light": 1.0
+    },
+    "workspace": {
+      "</s>": 0.5,
+      "notebook": 0.5
+    },
+    "worn": {
+      "tools": 1.0
+    }
+  },
+  "unigram_weights": {
+    "a": 0.01777778,
+    "accent": 0.00148148,
+    "accurate": 0.00148148,
+    "action": 0.00148148,
+    "against": 0.00148148,
+    "air": 0.00148148,
+    "and": 0.06814815,
+    "architecture": 0.00148148,
+    "armchair": 0.00148148,
+    "around": 0.00296296,
+    "arranged": 0.00296296,
+    "as": 0.00148148,
+    "at": 0.00296296,
+    "backdrop": 0.00148148,
+    "background": 0.01333333,
+    "backlight": 0.00148148,
+    "balanced": 0.00444444,
+    "beam": 0.00148148,
+    "beams": 0.00148148,
+    "below": 0.00148148,
+    "bench": 0.00148148,
+    "between": 0.00148148,
+    "blanket": 0.00296296,
+    "bloom": 0.00148148,
+    "blooms": 0.00148148,
+    "blue": 0.00296296,
+    "blurred": 0.00296296,
+    "boat": 0.00148148,
+    "bold": 0.00296296,
+    "books": 0.00148148,
+    "bowls": 0.00148148,
+    "brief": 0.03555556,
+    "bright": 0.00592593,
+    "by": 0.00148148,
+    "cabin": 0.00148148,
+    "calm": 0.00740741,
+    "camera": 0.00148148,
+    "caps": 0.00148148,
+    "catchlights": 0.00296296,
+    "centered": 0.00148148,
+    "central": 0.00148148,
+    "chimney": 0.00148148,
+    "city": 0.00148148,
+    "clean": 0.00444444,
+    "clear": 0.00740741,
+    "cliff": 0.00148148,
+    "close": 0.00148148,
+    "cloth": 0.00296296,
+    "clouds": 0.00296296,
+    "color": 0.00296296,
+    "colorful": 0.00296296,
+    "colors": 0.00296296,
+    "composition": 0.00296296,
+    "concept": 0.00444444,
+    "confident": 0.00148148,
+    "contrast": 0.00444444,
+    "controlled": 0.00148148,
+    "couple": 0.00148148,
+    "cover": 0.00148148,
+    "cozy": 0.00148148,
+    "craft": 0.00148148,
+    "crop": 0.00148148,
+    "crowd": 0.00148148,
+    "cup": 0.00148148,
+    "curves": 0.00148148,
+    "dark": 0.00148148,
+    "dawn": 0.00148148,
+    "daylight": 0.00148148,
+    "decisive": 0.00148148,
+    "deep": 0.00296296,
+    "depth": 0.00444444,
+    "desk": 0.00148148,
+    "detail": 0.00444444,
+    "dew": 0.00296296,
+    "direction": 0.00148148,
+    "directional": 0.00148148,
+    "distant": 0.00148148,
+    "dramatic": 0.00296296,
+    "droplets": 0.00148148,
+    "drops": 0.00148148,
+    "dune": 0.00148148,
+    "dust": 0.00148148,
+    "edge": 0.00148148,
+    "edges": 0.00148148,
+    "editorial": 0.00148148,
+    "elevated": 0.00148148,
+    "evening": 0.00444444,
+    "exposure": 0.00148148,
+    "expression": 0.00296296,
+    "eye": 0.00296296,
+    "eyes": 0.00148148,
+    "falling": 0.00296296,
+    "favorite": 0.00148148,
+    "feel": 0.00296296,
+    "field": 0.00148148,
+    "figure": 0.00148148,
+    "figures": 0.00148148,
+    "filtered": 0.00148148,
+    "fine": 0.00148148,
+    "fire": 0.00148148,
+    "focal": 0.00296296,
+    "food": 0.00148148,
+    "for": 0.00888889,
+    "foreground": 0.00296296,
+    "fresh": 0.00296296,
+    "frozen": 0.00148148,
+    "fruit": 0.00148148,
+    "garnish": 0.00148148,
+    "gentle": 0.00444444,
+    "geometric": 0.00148148,
+    "geometry": 0.00148148,
+    "gestures": 0.00148148,
+    "glass": 0.00148148,
+    "glow": 0.00592593,
+    "golden": 0.00296296,
+    "gradient": 0.00148148,
+    "green": 0.00592593,
+    "guiding": 0.00296296,
+    "hands": 0.00444444,
+    "hard": 0.00148148,
+    "haze": 0.00148148,
+    "headline": 0.00148148,
+    "high": 0.00296296,
+    "highlights": 0.00148148,
+    "honest": 0.00148148,
+    "hopeful": 0.00148148,
+    "horizon": 0.00444444,
+    "hot": 0.00148148,
+    "houses": 0.00148148,
+    "human": 0.00444444,
+    "if": 0.00296296,
+    "image": 0.04444444,
+    "in": 0.01037037,
+    "inviting": 0.00148148,
+    "inward": 0.00148148,
+    "labeled": 0.00148148,
+    "lake": 0.00148148,
+    "lamp": 0.00148148,
+    "lamps": 0.00148148,
+    "landmark": 0.00148148,
+    "large": 0.00148148,
+    "last": 0.00148148,
+    "layered": 0.00296296,
+    "layout": 0.00148148,
+    "leading": 0.00296296,
+    "leaves": 0.00148148,
+    "level": 0.00148148,
+    "life": 0.00296296,
+    "light": 0.03259259,
+    "lighthouse": 0.00148148,
+    "lights": 0.00296296,
+    "limited": 0.00148148,
+    "linen": 0.00148148,
+    "lines": 0.00444444,
+    "local": 0.00148148,
+    "logo": 0.00148148,
+    "long": 0.00444444,
+    "low": 0.00296296,
+    "lush": 0.00148148,
+    "macro": 0.00148148,
+    "mark": 0.00148148,
+    "matching": 0.00148148,
+    "materials": 0.00148148,
+    "mist": 0.00444444,
+    "moment": 0.00296296,
+    "monochrome": 0.00148148,
+    "mood": 0.00444444,
+    "morning": 0.00148148,
+    "mossy": 0.00148148,
+    "motion": 0.00296296,
+    "mountain": 0.00148148,
+    "natural": 0.00592593,
+    "near": 0.00148148,
+    "nearby": 0.00296296,
+    "needed": 0.00148148,
+    "negative": 0.00296296,
+    "neon": 0.00148148,
+    "notebook": 0.00148148,
+    "notes": 0.00148148,
+    "of": 0.00296296,
+    "on": 0.00148148,
+    "one": 0.00444444,
+    "open": 0.00148148,
+    "or": 0.00148148,
+    "organized": 0.00148148,
+    "over": 0.00148148,
+    "pale": 0.00148148,
+    "palette": 0.00296296,
+    "path": 0.00296296,
+    "patient": 0.00148148,
+    "pavement": 0.00148148,
+    "peak": 0.00148148,
+    "people": 0.00296296,
+    "performer": 0.00148148,
+    "pet": 0.00148148,
+    "petal": 0.00148148,
+    "photo": 0.00148148,
+    "pine": 0.00296296,
+    "plain": 0.00148148,
+    "plan": 0.01481481,
+    "play": 0.00148148,
+    "point": 0.00148148,
+    "portrait": 0.00444444,
+    "pose": 0.00296296,
+    "poster": 0.00148148,
+    "product": 0.00148148,
+    "prop": 0.00148148,
+    "quiet": 0.00740741,
+    "railing": 0.00148148,
+    "rain": 0.00148148,
+    "reach": 0.00148148,
+    "readable": 0.00296296,
+    "reading": 0.00148148,
+    "reflected": 0.00148148,
+    "reflections": 0.00148148,
+    "reflective": 0.00148148,
+    "reveals": 0.00148148,
+    "rich": 0.00296296,
+    "ridges": 0.00148148,
+    "rim": 0.00148148,
+    "rising": 0.00148148,
+    "road": 0.00148148,
+    "rocks": 0.00148148,
+    "room": 0.00148148,
+    "rough": 0.00148148,
+    "rows": 0.00148148,
+    "rugged": 0.00148148,
+    "safe": 0.00148148,
+    "sand": 0.00148148,
+    "scale": 0.00592593,
+    "science": 0.00148148,
+    "sea": 0.00148148,
+    "seabirds": 0.00148148,
+    "setup": 0.00296296,
+    "shadow": 0.00444444,
+    "shadows": 0.00592593,
+    "shallow": 0.00148148,
+    "shapes": 0.00444444,
+    "shared": 0.00148148,
+    "sharp": 0.00148148,
+    "shelves": 0.00148148,
+    "shoreline": 0.00296296,
+    "side": 0.00296296,
+    "sign": 0.00148148,
+    "silhouette": 0.00296296,
+    "silhouettes": 0.00148148,
+    "silky": 0.00148148,
+    "simple": 0.00444444,
+    "single": 0.00148148,
+    "size": 0.00148148,
+    "sky": 0.01037037,
+    "small": 0.00888889,
+    "smiles": 0.00148148,
+    "smoke": 0.00148148,
+    "smooth": 0.00148148,
+    "snow": 0.00444444,
+    "soft": 0.01777778,
+    "space": 0.01333333,
+    "sparkle": 0.00148148,
+    "sparks": 0.00148148,
+    "spices": 0.00148148,
+    "spray": 0.00148148,
+    "stacked": 0.00148148,
+    "stage": 0.00148148,
+    "stalls": 0.00148148,
+    "starry": 0.00148148,
+    "steam": 0.00148148,
+    "still": 0.00296296,
+    "story": 0.00148148,
+    "street": 0.00296296,
+    "strong": 0.00444444,
+    "styling": 0.00148148,
+    "subject": 0.01037037,
+    "subjects": 0.00148148,
+    "sun": 0.00148148,
+    "sunset": 0.00148148,
+    "surface": 0.00148148,
+    "symbol": 0.00148148,
+    "table": 0.00296296,
+    "tall": 0.00296296,
+    "task": 0.00148148,
+    "teamwork": 0.00148148,
+    "text": 0.00444444,
+    "texture": 0.00296296,
+    "textured": 0.00592593,
+    "that": 0.00148148,
+    "the": 0.00592593,
+    "thoughtful": 0.00148148,
+    "tidy": 0.00148148,
+    "timing": 0.00148148,
+    "title": 0.00296296,
+    "tones": 0.00296296,
+    "tools": 0.00444444,
+    "toward": 0.00148148,
+    "towers": 0.00148148,
+    "toy": 0.00148148,
+    "travel": 0.00148148,
+    "trees": 0.00592593,
+    "trunks": 0.00148148,
+    "two": 0.00148148,
+    "umbrella": 0.00148148,
+    "uncluttered": 0.00296296,
+    "use": 0.00148148,
+    "walkways": 0.00148148,
+    "warm": 0.01925926,
+    "water": 0.00444444,
+    "waves": 0.00296296,
+    "wedding": 0.00148148,
+    "wet": 0.00148148,
+    "wide": 0.00296296,
+    "winding": 0.00148148,
+    "window": 0.00444444,
+    "windows": 0.00296296,
+    "wooden": 0.00148148,
+    "work": 0.00148148,
+    "workshop": 0.00148148,
+    "workspace": 0.00296296,
+    "worn": 0.00148148
+  },
+  "vocabulary": [
+    "a",
+    "accent",
+    "accurate",
+    "action",
+    "against",
+    "air",
+    "an",
+    "and",
+    "architecture",
+    "armchair",
+    "around",
+    "arranged",
+    "article",
+    "as",
+    "at",
+    "backdrop",
+    "background",
+    "backlight",
+    "balanced",
+    "beach",
+    "beam",
+    "beams",
+    "below",
+    "bench",
+    "between",
+    "blanket",
+    "bloom",
+    "blooms",
+    "blue",
+    "blurred",
+    "boat",
+    "bold",
+    "book",
+    "books",
+    "bowls",
+    "brief",
+    "bright",
+    "busy",
+    "by",
+    "cabin",
+    "calm",
+    "camera",
+    "campfire",
+    "caps",
+    "catchlights",
+    "centered",
+    "central",
+    "chimney",
+    "city",
+    "clean",
+    "clear",
+    "cliff",
+    "close",
+    "cloth",
+    "clouds",
+    "coastal",
+    "color",
+    "colorful",
+    "colors",
+    "composition",
+    "concept",
+    "confident",
+    "contrast",
+    "controlled",
+    "corner",
+    "couple",
+    "cover",
+    "cozy",
+    "craft",
+    "crafting",
+    "crop",
+    "crowd",
+    "cup",
+    "curves",
+    "dark",
+    "dawn",
+    "daylight",
+    "decisive",
+    "deep",
+    "depth",
+    "describe",
+    "desert",
+    "desk",
+    "detail",
+    "dew",
+    "direction",
+    "directional",
+    "distant",
+    "dramatic",
+    "droplets",
+    "drops",
+    "dune",
+    "dust",
+    "edge",
+    "edges",
+    "editorial",
+    "elevated",
+    "evening",
+    "exposure",
+    "expression",
+    "eye",
+    "eyes",
+    "falling",
+    "family",
+    "fashion",
+    "favorite",
+    "feel",
+    "field",
+    "figure",
+    "figures",
+    "filtered",
+    "fine",
+    "fire",
+    "flower",
+    "focal",
+    "food",
+    "for",
+    "foreground",
+    "forest",
+    "fresh",
+    "frozen",
+    "fruit",
+    "futuristic",
+    "garden",
+    "garnish",
+    "gentle",
+    "geometric",
+    "geometry",
+    "gestures",
+    "glass",
+    "glow",
+    "golden",
+    "gradient",
+    "gravion",
+    "green",
+    "greenhouse",
+    "guide",
+    "guiding",
+    "hands",
+    "hard",
+    "haze",
+    "headline",
+    "help",
+    "high",
+    "highlights",
+    "honest",
+    "hopeful",
+    "horizon",
+    "hot",
+    "houses",
+    "human",
+    "if",
+    "image",
+    "in",
+    "interior",
+    "inviting",
+    "inward",
+    "labeled",
+    "lake",
+    "lamp",
+    "lamps",
+    "landmark",
+    "landscape",
+    "large",
+    "last",
+    "layered",
+    "layout",
+    "leading",
+    "leaves",
+    "level",
+    "library",
+    "life",
+    "light",
+    "lighthouse",
+    "lights",
+    "limited",
+    "linen",
+    "lines",
+    "local",
+    "logo",
+    "long",
+    "low",
+    "lush",
+    "macro",
+    "mark",
+    "market",
+    "matching",
+    "materials",
+    "me",
+    "minimal",
+    "mist",
+    "misty",
+    "moment",
+    "monochrome",
+    "mood",
+    "morning",
+    "mossy",
+    "motion",
+    "mountain",
+    "music",
+    "natural",
+    "near",
+    "nearby",
+    "needed",
+    "negative",
+    "neon",
+    "newborn",
+    "night",
+    "notebook",
+    "notes",
+    "ocean",
+    "of",
+    "on",
+    "one",
+    "open",
+    "or",
+    "organized",
+    "over",
+    "pale",
+    "palette",
+    "path",
+    "patient",
+    "pavement",
+    "peak",
+    "people",
+    "performer",
+    "pet",
+    "petal",
+    "photo",
+    "photography",
+    "pine",
+    "plain",
+    "plan",
+    "play",
+    "please",
+    "point",
+    "portrait",
+    "pose",
+    "poster",
+    "product",
+    "prop",
+    "quiet",
+    "railing",
+    "rain",
+    "rainy",
+    "reach",
+    "readable",
+    "reading",
+    "reflected",
+    "reflections",
+    "reflective",
+    "reveals",
+    "rich",
+    "ridges",
+    "rim",
+    "rising",
+    "road",
+    "rocks",
+    "room",
+    "rough",
+    "rows",
+    "rugged",
+    "safe",
+    "sand",
+    "scale",
+    "science",
+    "sea",
+    "seabirds",
+    "setup",
+    "shadow",
+    "shadows",
+    "shallow",
+    "shapes",
+    "shared",
+    "sharp",
+    "shelves",
+    "shoreline",
+    "showing",
+    "side",
+    "sign",
+    "silhouette",
+    "silhouettes",
+    "silky",
+    "simple",
+    "single",
+    "size",
+    "sky",
+    "small",
+    "smiles",
+    "smoke",
+    "smooth",
+    "snow",
+    "soft",
+    "space",
+    "sparkle",
+    "sparks",
+    "spices",
+    "sports",
+    "spray",
+    "spring",
+    "stacked",
+    "stage",
+    "stalls",
+    "starry",
+    "steam",
+    "still",
+    "storm",
+    "story",
+    "street",
+    "strong",
+    "styling",
+    "subject",
+    "subjects",
+    "sun",
+    "sunrise",
+    "sunset",
+    "surface",
+    "symbol",
+    "table",
+    "tall",
+    "task",
+    "teamwork",
+    "text",
+    "texture",
+    "textured",
+    "that",
+    "the",
+    "thoughtful",
+    "tidy",
+    "timing",
+    "title",
+    "tones",
+    "tools",
+    "toward",
+    "towers",
+    "toy",
+    "travel",
+    "trees",
+    "trunks",
+    "two",
+    "umbrella",
+    "uncluttered",
+    "use",
+    "village",
+    "vision",
+    "walkways",
+    "warm",
+    "water",
+    "waterfall",
+    "waves",
+    "wedding",
+    "wet",
+    "wide",
+    "winding",
+    "window",
+    "windows",
+    "with",
+    "wooden",
+    "work",
+    "workshop",
+    "workspace",
+    "worn"
+  ],
+  "weights_sha256": "a2bba850511f9beb4a784a2c5acf48ae426c5a0802f5fbd46e449401be2ee751"
+}

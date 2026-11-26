@@ -44,7 +44,7 @@ def _ctx(provider, model="gravion-code"):
 def test_coder_instantiates_and_answers():
     module = default_registry().instantiate("coder")
     out = module.run(_ctx(GravionCoreProvider()), "write a sort function")
-    assert "write a sort function" in out
+    assert "sorting method" in out
 
 
 @pytest.mark.parametrize(
@@ -91,7 +91,7 @@ def test_coder_runtime_dev_end_to_end_with_gravion_code(make_config):
     runtime = GravionRuntime(make_config(mode="development", model="gravion-code"))
     assert runtime.resolve_model("coder") == "gravion-code"
     out = runtime.coder("write a debounce helper")
-    assert "write a debounce helper" in out
+    assert "quiet period" in out
 
 
 def test_coder_runtime_rejects_model_without_coder_capability(make_config):
@@ -155,4 +155,4 @@ def test_coder_production_runs_with_license_and_signed_module(
         registry=registry,
     )
     out = runtime.coder("write a retry helper")
-    assert "write a retry helper" in out
+    assert "Retry only temporary failures" in out

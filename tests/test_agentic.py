@@ -48,7 +48,8 @@ def _ctx(provider, model="gravion-agent"):
 def test_agentic_instantiates_and_answers():
     module = default_registry().instantiate("agentic")
     out = module.run(_ctx(GravionCoreProvider()), "plan an agent that files our reports")
-    assert "plan an agent that files our reports" in out
+    assert "Agent plan:" in out
+    assert "reports" in out
 
 
 @pytest.mark.parametrize(
@@ -133,7 +134,8 @@ def test_agentic_runtime_dev_end_to_end_with_gravion_agent(make_config):
     runtime = GravionRuntime(make_config(mode="development", model="gravion-agent"))
     assert runtime.resolve_model("agentic") == "gravion-agent"
     out = runtime.agentic("plan an agent that files our reports")
-    assert "plan an agent that files our reports" in out
+    assert "Agent plan:" in out
+    assert "reports" in out
 
 
 def test_agentic_runtime_rejects_model_without_agentic_capability(make_config):

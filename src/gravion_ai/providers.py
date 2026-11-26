@@ -21,6 +21,8 @@ from typing import Protocol, Sequence
 
 from .config import ProviderConfig
 from .core_model import (
+    CORE_MODEL_ID,
+    SPECIALIST_MODEL_IDS,
     GravionCoreLocalModel,
     deployment_weights_path,
     load_bundled_model,
@@ -77,12 +79,17 @@ class GravionCoreProvider:
         model: GravionCoreLocalModel | None = None,
         *,
         weights_path=None,
+        home=None,
+        specialist_models: dict[str, GravionCoreLocalModel] | None = None,
     ):
+        self._home = home
+        self._specialist_models = dict(specialist_models or {})
+        self._specialist_load_attempted = set(self._specialist_models)
         self._model = model
         if self._model is None:
             if weights_path is not None:
                 try:
-                    self._model = load_weights(weights_path)
+                    self._model = load_weights(weights_path, model_id=CORE_MODEL_ID)
                 except Exception:
                     self._model = None
             else:
@@ -93,9 +100,40 @@ class GravionCoreProvider:
 
     @property
     def parameter_count(self) -> int:
-        """Parameters in the loaded local weights, or 0 on fallback."""
+        """Parameters in the loaded Gravion Core weights, or 0 on fallback."""
 
         return self._model.parameter_count if self._model is not None else 0
+
+    def _specialist_model(self, model_id: str) -> GravionCoreLocalModel | None:
+        if model_id not in SPECIALIST_MODEL_IDS:
+            return None
+        if model_id in self._specialist_load_attempted:
+            return self._specialist_models.get(model_id)
+        self._specialist_load_attempted.add(model_id)
+        loaded = None
+        if self._home is not None:
+            deployment_path = deployment_weights_path(self._home, model_id)
+            if deployment_path.exists():
+                try:
+                    loaded = load_weights(deployment_path, model_id=model_id)
+                except Exception:
+                    loaded = None
+        if loaded is None:
+            try:
+                loaded = load_bundled_model(model_id)
+            except Exception:
+                loaded = None
+        if loaded is not None:
+            self._specialist_models[model_id] = loaded
+        return loaded
+
+    def parameter_count_for(self, model_id: str | None = None) -> int:
+        """Parameters in the local weights for ``model_id``, or 0."""
+
+        if model_id in (None, CORE_MODEL_ID):
+            return self.parameter_count
+        specialist = self._specialist_model(model_id)
+        return specialist.parameter_count if specialist is not None else 0
 
     def complete(self, messages: Sequence[Message], model: str | None = None) -> str:
         validated = _validate_messages(messages)
@@ -103,7 +141,16 @@ class GravionCoreProvider:
             (m["content"] for m in reversed(validated) if m["role"] == "user"),
             "",
         )
-        if self._model is not None and model in (None, "gravion-core", "gravion-chat", "gravion-omni"):
+        selected = CORE_MODEL_ID if model is None else model
+        specialist = self._specialist_model(selected)
+        if specialist is not None:
+            prediction = specialist.predict(user)
+            if prediction is not None:
+                return prediction
+        # Routing: a specialist with no confident match falls through to
+        # Gravion Core (whose own gate only answers Gravion doc-style
+        # questions) before the echo fallback, instead of giving up.
+        if self._model is not None:
             prediction = self._model.predict(user)
             if prediction is not None:
                 return prediction
@@ -303,7 +350,8 @@ def build_provider(config: ProviderConfig, home=None) -> ChatProvider:
         if home is not None:
             weights_path = deployment_weights_path(home)
             if weights_path.exists():
-                return GravionCoreProvider(weights_path=weights_path)
+                return GravionCoreProvider(weights_path=weights_path, home=home)
+            return GravionCoreProvider(home=home)
         return GravionCoreProvider()
     if config.type == "endpoint":
         return EndpointProvider(config)

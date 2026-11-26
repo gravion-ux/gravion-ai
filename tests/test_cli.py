@@ -46,7 +46,7 @@ def test_coder_command_flow(home, capsys):
     capsys.readouterr()
     assert main(["coder", "write", "a", "sort", "function"]) == 0
     out = capsys.readouterr().out
-    assert "write a sort function" in out
+    assert "sorting method" in out
 
 
 def test_image_command_flow(home, capsys):
@@ -114,7 +114,8 @@ def test_omni_command_flow(home, capsys):
     capsys.readouterr()
     assert main(["omni", "coder:", "write", "a", "haiku", "function"]) == 0
     out = capsys.readouterr().out
-    assert "write a haiku function" in out
+    assert "haiku" in out.lower()
+    assert "function" in out.lower()
 
 
 def test_modules_list(home, capsys):

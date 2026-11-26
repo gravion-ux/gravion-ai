@@ -16,12 +16,10 @@ must belong to implemented modules, the target tier must be one
 the model is offered in or can be trained toward, and a dataset
 path must be named. Every problem found is reported together.
 
-`run_training_job` runs the local Gravion Core training path for
-`gravion-core`: it reads local prompt/completion dataset files,
-trains the local embedding/linear weights, and saves a verifiable
-weights artifact. Specialist Gravion models still have no local
-training backend in this build; a valid specialist job raises
-`TrainingError` saying exactly that instead of faking weights.
+`run_training_job` runs the local Gravion training path for every
+bundled local model: it reads local prompt/completion dataset
+files, trains sparse n-gram embedding/linear weights for the
+requested model id, and saves a verifiable weights artifact.
 """
 
 from __future__ import annotations
@@ -33,7 +31,6 @@ from pathlib import Path
 from ..catalog import ModelCatalog
 from ..config import default_home
 from ..core_model import (
-    CORE_MODEL_ID,
     deployment_weights_path,
     save_weights,
     train_local_core,
@@ -128,27 +125,20 @@ def run_training_job(
 ) -> dict[str, object]:
     """Run a validated training job.
 
-    Gravion Core jobs train locally from the named dataset files and
-    save weights under the deployment data/models path unless
-    ``out_path`` is given. Specialist jobs remain honest: this build
-    contains no training backend for them, so they raise instead of
-    inventing weights or progress.
+    Jobs train locally from the named dataset files and save weights
+    under the deployment data/models path unless ``out_path`` is
+    given. The artifact records the requested model id and its
+    parameter count is computed from the stored weights.
     """
 
-    if job.model != CORE_MODEL_ID:
-        raise TrainingError(
-            f"training job for {job.model!r} is valid, but this build "
-            "contains no training backend for specialist Gravion "
-            "models: local training currently supports gravion-core "
-            "only. No weights were produced."
-        )
-
     examples = read_examples(job.data)
-    model = train_local_core(examples, source=job.data)
+    model = train_local_core(examples, model_id=job.model, source=job.data)
     destination = (
         Path(out_path)
         if out_path is not None
-        else deployment_weights_path(Path(home) if home is not None else default_home())
+        else deployment_weights_path(
+            Path(home) if home is not None else default_home(), job.model
+        )
     )
     report = save_weights(model, destination)
     report.update(

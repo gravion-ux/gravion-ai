@@ -25,9 +25,9 @@ Open `http://127.0.0.1:8791`.
 
 The dashboard separates current capability from roadmap targets.
 Roadmap items are labelled as roadmap work, not shipped features.
-Gravion Core parameter counts are shown only from the model catalog
-when the catalog marks the weights as included; specialist entries
-remain labelled according to their catalog weights status.
+Parameter counts are shown only from the model catalog when the
+catalog marks the weights as included; every entry remains labelled
+according to its catalog weights status.
 
 ## API
 

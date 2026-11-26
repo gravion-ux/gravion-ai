@@ -71,8 +71,11 @@ chain, and running `gravion doctor` on the restored copy.
   parameters counted from stored quantized weights) trained only
   from the bundled Gravion corpus (5,657 examples, 779 answer
   classes), with a deterministic offline fallback. Held-out eval:
-  1,238/1,530 paraphrased prompts answered correctly (80.9%). The specialist registry entries still describe Gravion
-  model bundles and packaging without included trained weights. If
+  1,238/1,530 paraphrased prompts answered correctly (80.9%). Each
+  specialist registry entry also includes local sparse n-gram
+  classifier weights trained only from its bundled Gravion-owned
+  seed corpus, with counts and hashes computed from the stored
+  artifacts and a deterministic offline fallback. If
   a deployment connects an endpoint, the parameter count belongs
   to that connected model, not to Gravion.
 - **Hosting:** the licensing authority service and web UI are code;
@@ -82,5 +85,5 @@ chain, and running `gravion doctor` on the restored copy.
   needs lawyer review, and payment/equity administration is outside
   this codebase.
 - **Training execution:** dataset preparation, job validation, and
-  Gravion Core local training are local; specialist weights still
-  need an operations-supplied bundle or endpoint.
+  Gravion Core and specialist local training are local; larger
+  operations training remains bundle or endpoint work.

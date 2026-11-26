@@ -1,0 +1,3021 @@
+{
+  "architecture": "sparse n-gram embedding + direct linear softmax classifier",
+  "bias": [
+    -0.32987079,
+    -2.65792418,
+    1.52746749,
+    -0.85010815,
+    0.42607683,
+    -0.28654659,
+    -0.16495761,
+    0.70768183,
+    1.52233493,
+    1.41451657,
+    -1.14918494,
+    -0.35530415,
+    0.77724785,
+    2.2778008,
+    -0.03685121,
+    1.50546575,
+    -0.6328494,
+    -0.19764346,
+    1.37326097,
+    0.49655345,
+    -0.84751534,
+    0.20403332,
+    1.30821109,
+    2.43763256,
+    -0.14210139,
+    -0.48581254,
+    -0.08296521,
+    -1.16953444,
+    -0.58290619,
+    0.99515396,
+    0.65677869,
+    1.15994942,
+    -0.88689274,
+    -1.51212215,
+    -0.93659073,
+    1.98244548,
+    -0.54454201,
+    0.89985943,
+    -1.24418509,
+    0.37681326,
+    -0.19511697,
+    -0.55705231,
+    -0.84529579,
+    -1.27275968,
+    1.61213601,
+    -0.59418184,
+    -1.49296665,
+    -2.06470156,
+    -1.54186881
+  ],
+  "classes": [
+    "About page: mission, story, values, team or founder note, milestones, and contact invitation.",
+    "Bakery site: menu, daily specials, story, hours, location, gallery, and an order or contact action.",
+    "Blog layout: narrow text column, clear headings, generous spacing, author line, and related reading links.",
+    "Booking flow: choose service, pick time, enter details, confirm, and show cancellation terms clearly.",
+    "Case study: problem, constraints, approach, result, evidence, and lessons learned.",
+    "Category page: filters, sort, product cards, stock state, and clear prices.",
+    "Changelog: date, version, changes grouped by type, and links to related guides.",
+    "Checkout flow: cart summary, details, payment step, review, confirmation, and clear error recovery.",
+    "Comparison page: shared criteria, honest trade-offs, best-for notes, and a recommendation by use case.",
+    "Contact page: short form, direct email, response time, location if relevant, and privacy note.",
+    "Course site: outcomes, curriculum, instructor, schedule, pricing, sample lesson, and enrollment action.",
+    "Dashboard overview: key metrics first, recent activity, alerts, charts, and shortcuts to common actions.",
+    "Documentation navigation: start guide, concepts, tutorials, reference, search, and version notes.",
+    "Empty state: say nothing matched, suggest spelling or filters to change, and offer a reset action.",
+    "Error state: explain what failed, keep entered data, highlight the field, and offer a safe retry.",
+    "Event page: date, venue, agenda, speakers, tickets, travel notes, and updates section.",
+    "FAQ page: group questions by topic, keep answers short, and link to contact help when needed.",
+    "Feature grid: six focused features, short descriptions, consistent icons, and links to deeper pages.",
+    "Footer: contact, key pages, legal links, social links, and a short site summary.",
+    "Forum homepage: categories, active discussions, rules, search, and a clear new topic action.",
+    "Gallery layout: consistent image sizes, captions, filters, and a lightbox that works with keyboard controls.",
+    "Help center: search first, popular topics, guides by task, status link, and contact support action.",
+    "Hero section: one promise, one supporting sentence, one primary action, and visual proof.",
+    "Landing page plan: clear hero, proof of work, services, process, testimonial space, and one contact action.",
+    "Lesson page: objective, video or text, practice task, recap, and next lesson link.",
+    "Local business site: services, service area, reviews, hours, photos, and call action.",
+    "Location section: address, map, transit notes, parking notes, and opening hours.",
+    "Login page: email and password fields, recovery link, error message area, and secure submit action.",
+    "Membership flow: benefits, plans, signup, member area, renewal reminders, and cancellation path.",
+    "Mobile first: primary action near the top, readable type, large touch targets, and content in priority order.",
+    "Multi-language structure: language switcher, translated navigation, locale-aware dates, and fallback text rules.",
+    "Newsletter section: clear benefit, one email field, privacy note, and a success message after signup.",
+    "Nonprofit homepage: mission, impact numbers, stories, ways to help, transparency links, and donation action.",
+    "Podcast site: latest episode, episode archive, about the show, host bio, and subscribe links.",
+    "Portfolio home: strong intro, selected projects, skills, short biography, and a simple contact section.",
+    "Pricing table: align features by row, highlight the recommended plan, and state limits without fine print.",
+    "Privacy page: data collected, purpose, retention, sharing, user rights, and contact method.",
+    "Product page: benefit headline, feature list, pricing choices, comparison notes, and a clear purchase action.",
+    "Profile page: identity header, about text, activity, settings shortcut, and privacy controls.",
+    "Progress indicator: thin bar tied to scroll position, visible but not distracting, with reduced-motion respect.",
+    "Restaurant site: menu, story, hours, location, gallery, reservations, and contact details.",
+    "Resume site: summary, experience, projects, skills, education, and downloadable resume link.",
+    "Search results: query summary, filters, result cards, empty state, and sort controls.",
+    "Settings page: group related controls, label every field, show save state, and confirm destructive actions.",
+    "Signup form: ask only essentials, explain why each field is needed, and validate kindly.",
+    "Sticky navigation: keep key links visible, avoid covering content, and collapse cleanly on small screens.",
+    "Terms page: service scope, user duties, payments, limits, changes, and contact method.",
+    "Testimonial section: short quotes, names or roles, star context if used, and no invented claims.",
+    "Wedding site: story, schedule, venue, travel, registry, and RSVP form."
+  ],
+  "classifier": {
+    "data": "/ErXyicFOi4ozPna8erQ4k/B59v7AtAa9yzrpg5W6/z33BgV6gWxEckg/y4fHj0I6h8WNBEGRRDlx/7oSLEO//MpDvQgPB76SMPf5Rsv4Cft3zHrKP82Egvz+RrQDo4L2Bf+ucgnLeJQBtUW+vLl1hXrGxnrPhgl6uvswjrsLebLLecEOiD2LSU6/RDHFN3tDeoJHCgGVDUNI7wU9/rwDGHswMffJ+/SAtnz6gP5JbbF6hFc/wHbBrcJKSj6vQD6KQH99icV1zgIBQLxGGwpCug00+AS5wcBEB1i6/AHEQn31xEx0SryGhILXeEK1TYd+RbvuAXf5gcG3wzD7QXIweQ4+t7q8+MMQP23YSTz9dwQ1C04N/4a/ctZBwna3e4fIijuBAMS6czv88VhEPn6FE70KQsBCyrxrRU17icl9/Gf3gr/ODj/C9cIyx70FsQZPQAsLtXaMxTUHv37zCs7/Arc8AABE+LOwj4FRfj42zfaLfn0Ae8HOBIs4cMgHhbs9g3x8PY0L/gwmwny/boU8BPuIO7y3LL0B+H7tL8/J9rS+SEMGNkErtYVMN3yvDwNjtlD+/ouEQkGzSMVAAr7PETs/TXy+9XOvubhyScQKuAI9u8k7ZvgGfvgNDL+2Cz2C9firtK3wwbnG+IN6eoc1CUZIuQV0hC9J/zlEysG+z8xufgk2P/5zPtTLdHiPh74Su3kBMwFpvYQPSAkDzMTrr8qDe3gwQ0sNr4lLjTiCRgAwgEnQQ7b9//6OhvHF/H2Ng4T3PkdKzcP2MS/AjXu1QfrDAkXJ/cYNtIkTiPC7SCNKvkFSQIl9hTr4xrXyP0u7xbrKsjcGv4IBPPzzrotSC8RwcPg7dy7OgrPJvcP6+E2E+v8FcXT5skdKYz9AvDhrT78//fmMDA97jXg1Mrp/YES5yvtGQMV1ubcMTTs9R0MFwQLz/jIv+rXOgcv/A4xIrv9CyQT9xvdO+zpzlXOGx4cG+sH9UEXNsqqJgzxthH1+BJCEgU23ef1TjMlzDFGOA7Ez9n5897wWbrs7TQCwg==",
+    "encoding": "int8-base64",
+    "scale": 0.04166185949731061
+  },
+  "dim": 16,
+  "direct": {
+    "data": "rxb0BwEOCw/28wUHDrIKsgkO/wwKC/TzCgcKAwf8+BEFAwX2DPsFDAoHCQPyCQ4bAyno4TAbMy4/Hx7n2N/Y2z0w3dnjL+PdIDHk2ynk1+XY5+kv2zUoLNbc5i4r2d4n1+fmMRrt6OjrMeXkIu0t6e436+HoKukp4xbuIu7wI+wV6SEf7uAv7e7t3SHu7uo96+8f6fHsKOnq6+3o6PIp8CIq7uzs6vDn8OrsLPAqJfEg8erx8Sbp8B8nLe/xKCQY7+s48ew1H/Dr7O026uol7zPt8Nnu6usv7y7pHvEn8PEn7xnsJSPw6DTv8O/gJvHw7eHu8SPr8u0p6uzs7urq8yrx3C3w7e3s8ujx6+4u8Swm8iLy7PLyKOvwICkw8PIrJhrw7DryAAP6APwC///8+f8A/vwBAQED/vkBU/v4AP3+Afv++gL5/gH7/vz/AQH9///6AAEE/vFJ5vTy8vDl8vIx9drz9Urv8e3W9Nny5fU59fU/9CfxPi718uf19fVDN/b19O3z9S4/9/X2LfI69fLy9Pf28/bxN/Q09/P19PLz9/b19vX1RPf29fXw9fb2Qvf09vT1OPf19ffx9vRC9fUtLPj18/P29fRC8/Q99ivy9/f39ff19/T1+Pct9PX19vX39/b1QvP3+PX38fb0QvX1LSz49fPz9vX0QvP0PfYr8vf39/X39ff09fj3LfT19fb19/f29ULz9/jj+Pb3N/Q99vX09fn39ff0OvU2+PX39fT1+Pf29/b2Rvj29vbz9vf3RPj29/b2Qfn28+fz+O33TPT290f48fj480r37fH48ff0+Or5+Or5PfLsSPj48vj4+EXt+Pn49u36SPj5RO748Pj48/P6WPj18Pj49vj4Vfj1+O358Ez48Pn4+Pnr9fnvTu/6+exK8vf37Pn4+/j19vb3+vXz++359u759Vft+vT5Pfj1+lj2+vL7Wvr79e358/Xx9/v39vDy92z6+un2+/n69/f6+kr68/v79vb59vP78/r3++37++37QPnuS/v69vv7+07v/Pv7+fr7Svr7Q/b5+fj5+Pf79vn29vn38k75+flF+PT69vb59frx+vr18/pY9/f2+vj3Rff59vtJ+/r7P/jw9/n4+vz5+vz28fr3+/n6+/X6+vv7+vv69fv7+/pU+/v7+fr5+/v6TPv7+vz78vry+vv29vzz/Pn3/Pr5+vxY/Pn78fz3UPz3/Pr8/O/5/PJS9fz88E/4+vn0/En7+vs/+PD3+fj6/Pn6/Pbx+vf7+fr79fr6+/v6+/r1+/v7+lT7+/v5+vn7+/pM+/tW/fv88/v6+vr7/Pz7Qftb+vz7+/v8/Pb7+vv8/Pv7+vz9/Pv4+/z7+/v6/fv89Pv8/PX4Y/z8/Fz8+/f89/v7+vz7/PT89/z39ff6+m77+Pz2+fn89/j6+vvz+fn6+/z6+Pv9+/38+Pz5Sff9/flC+/j8+/z8+fz7Rvz8/P39+/z7/P39+fn8/Pv9/Pv9+/v9/f398fb9/Pz99vz89v3z/P36/fv9Xf1Y/Pj98f397v32/F/0/fv5/P39/PL9/fz5/f30/fz7+/39/mH9/fz4+/xj/P39/vv9+/35+/36/Pv6/P39/fv9+fv9+v39/P35/f74/f35/ff9/f39/v1t+/39/Pz9/v38/vz+/Wr7/fv5/Pf+/PT4/vz3+vz8+/j8/P79/PH9/Pv7/f3+Yf39/Pj7/GP8/f3++/37/fn7/fr8+/r8/f39+/35+/36/f38/fn9/vj9/fn99/39/f3+/W37/f38/P3+/fz+/P79avv9+/n89/789Pj+/Pf6/Pz7+Pz8/v388f7+/vb9/f3+/f3++P76+f7+/v3+/v79/vj++fj+VP79/v5n/f72+vj+/vP59/79+f799/j9/fz++/v7+/1p/f77/vj9+fv6+vj++f7++v77/vn7/vf7/f7+/fv+/v5b/v78/fz7Zf39/WH9/fz9+/38/P39/fv9+/759v37+vr8/P39/fr9+fn7+/38+vr7/f37/f3+/P79+f37S/j+//r8/vv9/P79+v38SP79/v79/v39/f7++/r+/v7+/f7+/vz+/v75/v3+9P1V/fz9/f7+/f39VP33/v39/f39/v39/f39+f79/f79/f799v79/v398/7+/f79+v77/v77+/77/vz8/v75/f78/vn++f78+v78/v3+/vlO/l76/P7+/Pv7+v77/vz+/vr9/f3+/f3+/P5D+/3+/v3+/v79/Pf++vr++/79/v/0/f76+fr+/mT6+/7++/78/vz9+/37/v39/vv9+/r9+v3z/v3+/P38/vr9/vr+X/7+/P3++/37+/78/Uz9+/z+/f79+/79/v39/f74/kRi/f79/v79/v38+/75/P75/v3+/vv8/vr8+P7++v34/v73/v9//v/////9//77//r///7//v78//v+/v/3///5/vv/+Pr///3////+9v////7///n/f/7//////f/++//6///+//7+/P/7/v7/9///+f77//j6///9/////vb////+///5//5K//////7//v7//f///v/+//3//f7+//7///3//v/+/v/+///////9///+/v///v/+Sv/////+//7+//3///7//v/9//3+/v/+///9//7//v7//v///////f///v7///7///9m///+/v/+//3//v3///////7////4//37//3/////+///+vz8///7+/3//vz/////Zv///v7//v/9//79///////+////+P/9+//9//////v///r8/P//+/v9//78//j///9e/vv///7///////78//3///////7////////9///+//3////+//7////u///4////Xv77///+///////+/P/9///////+/////////f///v/9/////v/+////7v///P////r+bf7+/v////7//uj//P/+//7+/////v////z///7//v///vv///////n///z////6/m3+/v7////+//7o//z//v/+/v////7////8///+//7///77///////5///////8/////v/+//n//WX///////7//v/9//v9//v//////f7//P77///9/vv///n//v39/v/+/2P+/v3//P7+/f7+//z//P/6//7///z//f7+/v/++v////7+///+/v///v/8/P/////8//79//z///7//v9v//X+/f/8///6//3/+P3//v3+///++/////7///3//Pz//////P/+/f/8///+//7/b//1/v3//P//+v/9//j9//79/v///vv////+///9/v/+///7//9N+v////7////+///7//39//////////7////9//////////7//f////7//v//+///Tfr////+/////v//+//9/f/////////+/////f/////////+//3//////////vf+//pQ//////////z///v//f7//////////v////3+///////////9/v////////73/v/6UP/////////8///7//3+//////////7////9/v///////////f7///7///j+//////7//P/+/f/+/////////2v//fz//f/////5///4+/z///n8/v/+/f//+v7//////v//b/79///+/////f/9//7//P//+v/3//z1///+/////fz////////y///+/f///v/+//9n//76//////////7//f/6/f/6//////3+//38+////fv8///5/////v3///7//v//Z//++v/////////+//3/+v3/+v/////9/v/9/Pv///37/P//+f/++fv//////P///f9s///9/////P/8/vr/+////P/9//v9//79/////vz////9///9/vn7//////z///3/bP///f////z//P76//v///z//f/7/f/+/f////78/////f///f3////6/+f+/v7////+//5s//v//v///v7////////8///+///////7//7////6///9////+v/n/v7+/////v/+bP/7//7///7+/////////P///v//////+//+////+v/////+/v/8/v/9/P/+/v7//v5l/v/8//X+/////v7+//7+///4/v////7////++f7//////v7//P7//fz//v7+//7+Zf7//P/1/v////7+/v/+/v//+P7////+/////vn+///+//7//f78/v7+///////++/5V/////v7/////////9v////7+/v//+/////7//f///v/+//3+/P7+/v///////vv+Vf////7+//////////b////+/v7///v////+//3////////+9/7++vr//v/+//7+/P7/Xv/9//////3//v/+///+/f7+/v7+//7+/v3+/////////vf+/vr6//7//v/+/vz+/17//f/////9//7//v///v3+/v7+/v/+/v79/v////z9//////z///3//P///v////X/a/7+//z///v//P74/f/+/f/////8///+/f///P/8/f/////8///9//z///7////1/2v+/v/8///7//z++P3//v3//////P///v3///z///3///7///39//////////j+/v3/Tf7///////////////r////////////8///////9///+///9/f/////////4/v79/03+///////////////6/////////////P/////+/v/////8/v7///z+//z////+//7/S//+///+//7//v7//vv//////v///////////v7//////P7+///8/v/8/////v/+/0v//v///v/+//7+//77//////7///////////j+//////3///z/+////f////z//P/9/23///j/+//5+////f///v75/////v///P/4/v/////9///8//v///3////8//z//f9t///4//v/+fv///3///7++f////7///z////8//7///7///z//v3///////7////7//1y//3//v//+v///PL+///87/7///z//////P/+///+///8//79///////+////+//9cv/9//7///r///zy/v///O/+///8//////z//////v7/+f/9+f///////v////3/aP3//P/+///9/v/9/fv///79+///9v/////8//////7+//n//fn///////7////9/2j9//z//v///f7//f37///+/fv///b///j8//////z///v//P7//v///vn//P/+//r//3P//P/5+////v8A//72/////v//+//4/P/////8///7//z+//7///75//z//v/6//9z//z/+fv///7/AP/+9v////7///v///7+//////////v//fz//////////v/+//z+/1j//////P///P77///9/vr///z////+/v/////////7//38//////////7//v/8/v9Y//////z///z++////f76///8///8/v/////+///3//3///7//v/+//3//v/7///8/2L//fb///7////9/f////////X//P7//////v//9//9///+//7//v/9//7/+////P9i//32///+/////f3////////1/f/+//z+/f/+/v///v7+/vv+9P/+/v7+/v/////+/2H///7+//7//vz////+/vz///3//v/8/v3//v7///7+/v77/vT//v7+/v7//////v9h///+/v/+//78/////v78////+f3//////v///P/8///+////+f/5//7/+v//+f/9/276//7+//////v////+///7//n9//////7///z//P///v////n/+f/+//r///n//f9u+v/+/v/////7/////v//+//5/f/////9//78//z///3////7//z//f/4///3//z++vv///7////+bP////7///z/+f3//////f/+/P/8///9////+//8//3/+P//9//8/vr7///+/////mz////+///8//r+//////////X//f///v////3//f/+//z///v/9v/7cv///v////38/////v//8P/6/v/////////1//3///7////9//3//v/8///7//b/+3L///7////9/P////7///D////5/v////////3//f3////+/////v/7//36//z/////a/7/+fz9///3+/3///3/////+f7////////9//39/////v////7/+//9+v/8/////2v+//n8/f//9/v9///9/////v///P///P3//v/+////+v7//f/6////////////////T////////////vv///////7///z///z9//7//v////r+//3/+v///////////////0////////////77/////f7+//3+/vv+/v7//P///P///v7//v75//3///7//f7+/v/+Xf////79/////v3//v3+/v/9/v77/v7+//z///z///7+//7++f/9///+//3+/v7//l3////+/f////79//7////7//////7+//3//f7////////////5//77//3/////+v//X/z9///9/P3///z/////+//////+/v/9//3+////////////+f/++//9//////r//1/8/f///fz9///8//7///v+/////////P/+/f///////v////v//vP//v/////7///8c/z///rv/v///f/+///7/v////////z//v3///////7////7//7z//7/////+////HP8///67/7///3//v///P/////+///7//76///+//////7+/f/5/f/6//////z///38Zv///f37///7//7///z//////v//+//++v///v/////+/v3/+f3/+v/////8///9/Gb///39+///+//+/////v/7/v///P/+/v/++v77/v/+//7//v/////9/f7+///+////Wv7//////v/8/v////7/+/7///z//v7//vr++/7//v/+//7//////f3+/v///v///1r+//////7//P7///v+/v////7//f/9/f/////////+//n//fv//f/////2///8+/3//2f7/f///f/+///7/v7////+//3//f3//////////v/5//37//3/////9v///Pv9//9n+/3///3/////+/7+/v/////8//79//7+///+/////P/97f/+//////z///zw/f///HP+//79//////v+/v7//////P/+/f/+/v///v////z//e3//v/////8///88P3///xz/v/+/f////7+//////////3//fz////+/////v/+//z+//v//v///v///f79///+/k7///3////+/v/////////9//38/////v////7//v/8/v/7//7///7///3+/f///v5O///9///+/v/////8/v7///z+//z////+//7/S//+///+//7//v7//vv//////v///////////v7//////P7+///8/v/8/////v/+/0v//v///v/+//7+//77//////7//////////v79//79//78/P7//f///v/5/v78/vz+//////7//v/+/v/5/v////7+////Xv////7+/f/+/f/+/Pz+//3///7/+f7+/P78/v/////+//7//v7/+f7////+/v///17////+/////mb+/vn2/////v///v3+//b//P7+///+//7//v////z+/v7+///////8/f///v////5m/v759v////7///79/v/2//z+/v///v/+//7////8/v7+/v///////P3///j////u/vn//v7////+//76/v3//v///v7///7//v/9/////v7//v/+//////9p///4////7v75//7+/////v/++v79//7///7+///+//7//f////7+//7//v//////af///////P7////+/v/4//75//7+/v/+/v7//P/1/P/7//7///z///v8+/7//Pz6//96//////z+/////v7/+P/++f/+/v7//v7+//z/9fz/+//+///8///7/Pv+//z8+v//ev//+v7//////v//8//9///+/////f/9////+////P/0//zw///+/////Pv///////93//r+//////7///P//f///v////3//f////v///z/9P/88P///v////z7////////d1z////2/v3//v7////+//39//7//v///v7////////+/////v3//v/+//7////3/v9c////9v79//7+/////v/9/f/+//7///7+/////////v////79//7//v/+////9/7/XP////b+/f/+/v////7//f3//v/+///+/v////////7////+/f/+//7//v////f+/1z////2/v3//v7////+//39//7//v///v7////////+/////v3//v/+//7////3/v9c////9v79//7+/////v/9/f/+//7///7+/////////v////79//7//v/+////9/7//v/////////+///+/0b9/v/////////+/v/+///+//7///7+//7+/f///f/+///+//7//////////v///v9G/f7//////////v7//v///v/+///+/v/+/v3///3//v///v/8/v3+/v7+/f7+/v/9/f9f/v7+/f7+/vr//P///v/9/v7+//78/////v3///7//v/+/P79/v7+/v3+/v7//f3/X/7+/v3+/v76//z///7//f7+/v/+/P////79///+//7//v9//v/////9//77//r///7//v78//v+/v/3///5/vv/+Pr///3////+9v////7///n/f/7//////f/++//6///+//7+/P/7/v7/9///+f77//j6///9/////vb////+///5//5K//////7//v7//f///v/+//3//f7+//7///3//v/+/v/+///////9///+/v///v/+Sv/////+//7+//3///7//v/9//3+/v/+///9//7//v7//v///////f///v7///7//kr//////v/+/v/9///+//7//f/9/v7//v///f/+//7+//7///////3///7+///+////Zv///v7//v/9//79///////+////+P/9+//9//////v///r8/P//+/v9//78/////2b///7+//7//f/+/f///////v////j//fv//f/////7///6/Pz///v7/f/+/P////9m///+/v/+//3//v3///////7////4//37//3/////+///+vz8///7+/3//vz///////73/v/6UP/////////8///7//3+//////////7////9/v///////////f7////////+9/7/+lD//////////P//+//9/v/////////+/////f7///////////3+////+P7//////f///P/7///9/////P/8//3/bf//+P/7//n7///9///+/vn////+///8//j+//////3///z/+////f////z//P/9/23///j/+//5+////f///v75/////v///Pj///9e/vv///7///////78//3///////7////////9///+//3////+//7////u///4////Xv77///+///////+/P/9///////+/////////f///v/9/////v/+////7v//+P///17++////v///////vz//f///////v////////3///7//f////7//v///+7///7////+Zv7++fb////+///+/f7/9v/8/v7///7//v/+/////P7+/v7///////z9///+/////mb+/vn2/////v///v3+//b//P7+///+//7//v////z+/v7+///////8/f////z9//////z///3//P///v////X/a/7+//z///v//P74/f/+/f/////8///+/f///P/8/f/////8///9//z///7////1/2v+/v/8///7//z++P3//v3//////P///v3///z8////+v5t/v7+/////v/+6P/8//7//v7////+/////P///v/+///++///////+f///P////r+bf7+/v////7//uj//P/+//7+/////v////z///7//v///vv///////n///z////6/m3+/v7////+//7o//z//v/+/v////7////8///+//7///77///////5///////8/////v/+//n//WX///////7//v/9//v9//v//////f7//P77///9/vv///n//////P////7//v/5//1l///////+//7//f/7/f/7//////3+//z++////f77///5//79/f7//v9j/v79//z+/v3+/v/8//z/+v/+///8//3+/v7//vr////+/v///v7///7+/f3+//7/Y/7+/f/8/v79/v7//P/8//r//v///P/9/v7+//76/////v7///7+///+//z8//////z//v3//P///v/+/2//9f79//z///r//f/4/f/+/f7///77/////v///f/8/P/////8//79//z///7//v9v//X+/f/8///6//3/+P3//v3+///++/////7///3//Pz//////P/+/f/8///+//7/b//1/v3//P//+v/9//j9//79/v///vv////+///9///+///8///8/f/+//7////6/v/9//r///////////////9P///////////++/////7//v//+///Tfr////+/////v//+//9/f/////////+/////f/////////+//3////+//7///v//036/////v////7///v//f3//////////v////3//////////v/9/////v/+///7//9N+v////7////+///7//39//////////7////9//////////7//f/////////+9/7/+lD//////////P//+//9/v/////////+/////f7///////////3+/////////vf+//pQ//////////z///v//f7//////////v////3+///////////9/v////////73/v/6UP/////////8///7//3+//////////7////9/v///////////f7///7///j+//////7//P/+/f/+/////////2v//fz//f/////5///4+/z///n8/v/+/f/+///4/v/////+//z//v3//v////////9r//38//3/////+f//+Pv8///5/P7//v3///r+//////7//2/+/f///v////3//f/+//z///r/9//89f///v////38////////8v/6/v/////+//9v/v3///7////9//3//v/8///6//f//PX///7////9/P////////L4////Xv77///+///////+/P/9///////+/////////f///v/9/////v/+////7v///P////r+bf7+/v////7//uj//P/+//7+/////v////z///7//v///vv///////n///3////6/+f+/v7////+//5s//v//v///v7////////8///+///////7//7////6///+//7//f78/v7+///////++/5V/////v7/////////9v////7+/v//+/////7//f///f/+//z+/f/+/v///v7+/vv+9P/+/v7+/v/////+/2H///7+//7//vz////+/vz///7////+//v+///8//7+//76/vv+//7//v/+//////39/v7///7///9a/v/////+//z4////7v75//7+/////v/++v79//7///7+///+//7//f////7+//7//v//////af//XP////b+/f/+/v////7//f3//v/+///+/v////////7////+/f/+//7//v////f+/1z////2/v3//v7////+//39//7//v///v7////////+/////v3//v/+//7////3/v////79///+//7//2f//vr//////////v/9//r9//r//////f7//fz7///9+/z///n////+/f///v/+//9n//76//////////7//f/6/f/6//////3+//38+////fv8///5/////v3///7//v//Z//++v/////////+//3/+v3/+v/////9/v/9/Pv///37/P//+f////9m///+/v/+//3//v3///////7////4//37//3/////+///+vz8///7+/3//vz//////P////7//v/5//1l///////+//7//f/7/f/7//////3+//z++////f77///5//7///j+//////7//P/+/f/+/////////2v//fz//f/////5///4+/z///n8/v/+/f////79///+//7//2f//vr//////////v/9//r9//r//////f7//fz7///9+/z///n//////P/+///+///8//79///////+////+//9cv/9//7///r///zy/v///O/+///8//////z//////v7/+f/9+f///////v////3/aP3//P/+///9/v/9/fv///79+///9v////7+//////////v//fz//////////v/+//z+/1j//////P///P77///9/vr///z/////+f7////////9//39/////v////7/+//9+v/8/////2v+//n8/f//9/v9///9//////v//////v7//f/9/v////////////n//vv//f/////6//9f/P3///38/f///P/+///7/v////////z//v3///////7////7//7z//7/////+////HP8///67/7///3//v///P/////+///7//76///+//////7+/f/5/f/6//////z///38Zv///f37///7//7///v+/v////7//f/9/f/////////+//n//fv//f/////2///8+/3//2f7/f///f/////7/v7+//////z//v3//v7///7////8//3t//7//////P///PD9///8c/7//v3////+/v/////////9//38/////v////7//v/8/v/7//7///7///3+/f///v5O///9//////z+/////v7/+P/++f/+/v7//v7+//z/9fz/+//+///8///7/Pv+//z8+v//ev/+//////////7///7/Rv3+//////////7+//7///7//v///v7//v79///9//7///7//v/////////+///+/0b9/v/////////+/v/+///+//7///7+//7+/f///f/+///+//75+//////8///9/2z///3////8//z++v/7///8//3/+/3//v3////+/P////3///3++fv//////P///f9s///9/////P/8/vr/+////P/9//v9//79/////vz////9///9/vn7//////z///3/bP///f////z//P76//v///z//f/7/f/+/f////78/////f///f///v///P///P3//v/+////+v7//f/6////////////////T////////////vv///////7///z///z9//7//v////r+//3/+v///////////////0////////////77///////+///8///8/f/+//7////6/v/9//r///////////////9P///////////++/////7//////////v///v9G/f7//////////v7//v///v/+///+/v/+/v3///3//v///v/+//////////7///7/Rv3+//////////7+//7///7//v///v7//v79///9//7///7//v/////////+///+/0b9/v/////////+/v/+///+//7///7+//7+/f///f/+///+//////z////+//7/+f/9Zf///////v/+//3/+/3/+//////9/v/8/vv///3++///+f/////8/////v/+//n//WX///////7//v/9//v9//v//////f7//P77///9/vv///n//P79/v7+/v3+/v7//f3/X/7+/v3+/v76//z///7//f7+/v/+/P////79///+//7//vz+/f7+/v79/v7+//39/1/+/v79/v7++v/8///+//3+/v7//vz////+/f///v/+//78/v3+/v7+/f7+/v/9/f9f/v7+/f7+/vr//P///v/9/v7+//78/////v3///7//v/+/f////r/5/7+/v////7//mz/+//+///+/v////////z///7///////v//v////r///3////6/+f+/v7////+//5s//v//v///v7////////8///+///////7//7////6///9////+v/n/v7+/////v/+bP/7//7///7+/////////P///v//////+//+////+v/////+/v/8/v/9/P/+/v7//v5l/v/8//X+/////v7+//7+///4/v////7////++f7//////v7//P7//fz//v7+//7+Zf7//P/1/v////7+/v/+/v//+P7////+/////vn+//////7+//z+//38//7+/v/+/mX+//z/9f7////+/v7//v7///j+/////v////75/v/////+/v/////////9//38/////v////7//v/8/v/7//7///7///3+/f///v5O///9/////v7//////////f/9/P////7////+//7//P7/+//+///+///9/v3///7+Tv///f////7+//////////3//fz////+/////v/+//z+//v//v///v///f79///+/k7///3////+/v/////////7//38//////////7//v/8/v9Y//////z///z++////f76///8/////v7/////////+//9/P/////////+//7//P7/WP/////8///8/vv///3++v///P////7+//////////v//fz//////////v/+//z+/1j//////P///P77///9/vr///z//v/+//3+/P7+/v///////vv+Vf////7+//////////b////+/v7///v////+//3///7//v/9/vz+/v7///////77/lX////+/v/////////2/////v7+///7/////v/9///+//7//f78/v7+///////++/5V/////v7/////////9v////7+/v//+/////7//f////7+//////z+/v///P7//P////7//v9L//7///7//v/+/v/++//////+///////////+/v/////8/v7///z+//z////+//7/S//+///+//7//v7//vv//////v/////////+//////////7///7/Rv3+//////////7+//7///7//v///v7//v79///9//7///7//v/////////+///+/0b9/v/////////+/v/+///+//7///7+//7+/f///f/+///+//7//v//+///Tfr////+/////v//+//9/f/////////+/////f/////////+//3////+//7///v//036/////v////7///v//f3//////////v////3//////////v/9///////+/v/////////9//38/////v////7//v/8/v/7//7///7///3+/f///v5O///9/////v7//////////f/9/P////7////+//7//P7/+//+///+///9/v3///7+Tv///f////7+//////////3//fz////+/////v/+//z+//v//v///v///f79///+/k7///3///z8//////z//v3//P///v/+/2//9f79//z///r//f/4/f/+/f7///77/////v///f/8/P/////8//79//z///7//v9v//X+/f/8///6//3/+P3//v3+///++/////7///3//////vf+/vr6//7//v/+/vz+/17//f/////9//7//v///v3+/v7+/v/+/v79/v////////73/v76+v/+//7//v78/v9e//3//////f/+//7///79/v7+/v7//v7+/f7////////+9/7++vr//v/+//7+/P7/Xv/9//////3//v/+///+/f7+/v7+//7+/v3+//////7+//z+//38//7+/v/+/mX+//z/9f7////+/v7//v7///j+/////v////75/v/////+/v/8/v/9/P/+/v7//v5l/v/8//X+/////v7+//7+///4/v////7////++f7////8/f/////8///9//z///7////1/2v+/v/8///7//z++P3//v3//////P///v3///z//P3//////P///f/8///+////9f9r/v7//P//+//8/vj9//79//////z///79///8///9///+///9/f/////////4/v79/03+///////////////6/////////////P///////f///v///f3/////////+P7+/f9N/v//////////////+v////////////z///////3///7///39//////////j+/v3/Tf7///////////////r////////////8////////+f7////////9//39/////v////7/+//9+v/8/////2v+//n8/f//9/v9///9/////v7/////////+//9/P/////////+//7//P7/WP/////8///8/vv///3++v///P/+///8//////7///v//vr///7//////v79//n9//r//////P///fxm///9/fv///v///7+//////z+/v///P7//P////7//v9L//7///7//v/+/v/++//////+///////////+/v/////8/v7///z+//z////+//7/S//+///+//7//v7//vv//////v///////////v7//////P7+///8/v/8/////v/+/0v//v///v/+//7+//77//////7///////////z+//////7///f//f///v/+//7//f/+//v///z/Yv/99v///v////39////////9f/8/v/////+///3//3///7//v/+//3//v/7///8/2L//fb///7////9/f////////X//P7//////v//9//9///+//7//v/9//7/+////P9i//32///+/////f3////////1//5K//////7//v7//f///v/+//3//f7+//7///3//v/+/v/+///////9///+/v///v/+Sv/////+//7+//3///7//v/9//3+/v/+///9//7//v7//v///////f///v7///7+///4/v/////+//z//v3//v////////9r//38//3/////+f//+Pv8///5/P7//v3//v//+P7//////v/8//79//7/////////a//9/P/9//////n///j7/P//+fz+//79//7//v/9/vz+/v7///////77/lX////+/v/////////2/////v7+///7/////v/9////+P7//////f///P/7///9/////P/8//3/bf//+P/7//n7///9///+/vn////+///8//j+//////3///z/+////f////z//P/9/23///j/+//5+////f///v75/////v///P/4/v/////9///8//v///3////8//z//f9t///4//v/+fv///3///7++f////7///z////8//////7+//n//fn///////7////9/2j9//z//v///f7//f37///+/fv///b//////P/////+/v/5//35///////+/////f9o/f/8//7///3+//39+////v37///2//////z//v///v///P/+/f///////v////v//XL//f/+///6///88v7///zv/v///P/////8//7///7///z//v3///////7////7//1y//3//v//+v///PL+///87/7///z//////P/+///+///8//79///////+////+//9cv/9//7///r///zy/v///O/+///8//7//v//+///Tfr////+/////v//+//9/f/////////+/////f/////////+//3//////////vf+//pQ//////////z///v//f7//////////v////3+///////////9/v/////+/v/8/v/9/P/+/v7//v5l/v/8//X+/////v7+//7+///4/v////7////++f7////////+9/7++vr//v/+//7+/P7/Xv/9//////3//v/+///+/f7+/v7+//7+/v3+//////3///7///39//////////j+/v3/Tf7///////////////r////////////8///////+///8///8/f/+//7////6/v/9//r///////////////9P///////////++/////7+/f/+/f/+/Pz+//3///7/+f7+/P78/v/////+//7//v7/+f7////+/v///17////+/////mb+/vn2/////v///v3+//b//P7+///+//7//v////z+/v7+///////8/f///////P/////+/v/5//35///////+/////f9o/f/8//7///3+//39+////v37///2//////z//////v7/+f/9+f///////v////3/aP3//P/+///9/v/9/fv///79+///9v/////8//////7+//n//fn///////7////9/2j9//z//v///f7//f37///+/fv///b///j8//////z///v//P7//v///vn//P/+//r//3P//P/5+////v8A//72/////v//+//4/P/////8///7//z+//7///75//z//v/6//9z//z/+fv///7/AP/+9v////7///v/+Pz//////P//+//8/v/+///++f/8//7/+v//c//8//n7///+/wD//vb////+///7///9///+///9/f/////////4/v79/03+///////////////6/////////////P///////v7/////////+//9/P/////////+//7//P7/WP/////8///8/vv///3++v///P////7+//////////v//fz//////////v/+//z+/1j//////P///P77///9/vr///z////+/v/////////7//38//////////7//v/8/v9Y//////z///z++////f76///8///8/v/////+///3//3///7//v/+//3//v/7///8/2L//fb///7////9/f////////X//P7//////v//9//9///+//7//v/9//7/+////P9i//32///+/////f3////////1//z+//////7///f//f///v/+//7//f/+//v///z/Yv/99v///v////39////////9f7+/f/+/f/+/Pz+//3///7/+f7+/P78/v/////+//7//v7/+f7////+/v///17////9//7//P79//7+///+/v7++/70//7+/v7+//////7/Yf///v7//v/+/P////7+/P///f/+//z+/f/+/v///v7+/vv+9P/+/v7+/v/////+/2H///7+//7//vz////+/vz///3//v/8/v3//v7///7+/v77/vT//v7+/v7//////v9h///+/v/+//78/////v78///+//////////7///7/Rv3+//////////7+//7///7//v///v7//v79///9//7///7//v/////////+///+/0b9/v/////////+/v/+///+//7///7+//7+/f///f/+///+///5/f/////+///8//z///7////5//n//v/6///5//3/bvr//v7/////+/////7///v/+f3//////v///P/8///+////+f/5//7/+v//+f/9/276//7+//////v////+///7//n9//////7///z//P///v////n/+f/+//r///n//f9u+v/+/v/////7/////v//+////f///v///f3/////////+P7+/f9N/v//////////////+v////////////z///////3///7///39//////////j+/v3/Tf7///////////////r////////////8///////+/f///v/+//9n//76//////////7//f/6/f/6//////3+//38+////fv8///5/////v3///7//v//Z//++v/////////+//3/+v3/+v/////9/v/9/Pv///37/P//+f///v7//////P7+///8/v/8/////v/+/0v//v///v/+//7+//77//////7//////////v/+///7//9N+v////7////+///7//39//////////7////9//////////7//f/////////+9/7/+lD//////////P//+//9/v/////////+/////f7///////////3+/////////vf+//pQ//////////z///v//f7//////////v////3+///////////9/v//////+//////+/v/9//3+////////////+f/++//9//////r//1/8/f///fz9///8//////v//////v7//f/9/v////////////n//vv//f/////6//9f/P3///38/f///P//+f3//////f/+/P/8///9////+//8//3/+P//9//8/vr7///+/////mz////+///8//n9//////3//vz//P///f////v//P/9//j///f//P76+////v////5s/////v///P/5/f/////9//78//z///3////7//z//f/4///3//z++vv///7////+bP////7///z/f/7//////f/++//6///+//7+/P/7/v7/9///+f77//j6///9/////vb////+///5//5K//////7//v7//f///v/+//3//f7+//7///3//v/+/v/+///////9///+/v///v79/f7//v9j/v79//z+/v3+/v/8//z/+v/+///8//3+/v7//vr////+/v///v7///7//Pz//////P/+/f/8///+//7/b//1/v3//P//+v/9//j9//79/v///vv////+///9//r+//////7//2/+/f///v////3//f/+//z///r/9//89f///v////38////////8v75+//////8///9/2z///3////8//z++v/7///8//3/+/3//v3////+/P////3///3//P3//////P///f/8///+////9f9r/v7//P//+//8/vj9//79//////z///79///8//7+//////z+/v///P7//P////7//v9L//7///7//v/+/v/++//////+///////////4/v/////9///8//v///3////8//z//f9t///4//v/+fv///3///7++f////7///z/+Pz//////P//+//8/v/+///++f/8//7/+v//c//8//n7///+/wD//vb////+///7//z+//////7///f//f///v/+//7//f/+//v///z/Yv/99v///v////39////////9f/5/f/////+///8//z///7////5//n//v/6///5//3/bvr//v7/////+/////7///v/+f3//////f/+/P/8///9////+//8//3/+P//9//8/vr7///+/////mz////+///8//r+//////////X//f///v////3//f/+//z///v/9v/7cv///v////38/////v//8P3+/v/9/v77/v7+//z///z///7+//7++f/9///+//3+/v7//l3////+/f////79//7/+v7//////v//8//9///+/////f/9////+////P/0//zw///+/////Pv///////93/P79/v7+/v3+/v7//f3/X/7+/v3+/v76//z///7//f7+/v/+/P////79///+//7//vz+/f7+/v79/v7+//39/1/+/v79/v7++v/8///+//3+/v7//vz////+/f///v/+//7+//7///v//036/////v////7///v//f3//////////v////3//////////v/9//////r+//////////X//f///v////3//f/+//z///v/9v/7cv///v////38/////v//8P/6/v/////////1//3///7////9//3//v/8///7//b/+3L///7////9/P////7///D/+v7/////////9f/9///+/////f/9//7//P//+//2//ty///+/////fz////+///w////+f7////////9//39/////v////7/+//9+v/8/////2v+//n8/f//9/v9///9//////n+/////////f/9/f////7////+//v//fr//P////9r/v/5/P3///f7/f///f/////5/v////////3//f3////+/////v/7//36//z/////a/7/+fz9///3+/3///3////+///8///8/f/+//7////6/v/9//r///////////////9P///////////++////////v///P///P3//v/+////+v7//f/6////////////////T////////////vv////9/v7//f7++/7+/v/8///8///+/v/+/vn//f///v/9/v7+//5d/////v3////+/f/+/f7+//3+/vv+/v7//P///P///v7//v75//3///7//f7+/v/+Xf////79/////v3//v3+/v/9/v77/v7+//z///z///7+//7++f/9///+//3+/v7//l3////+/f////79//7////7//////7+//3//f7////////////5//77//3/////+v//X/z9///9/P3///z/////+//////+/v/9//3+////////////+f/++//9//////r//1/8/f///fz9///8//////v//////v7//f/9/v////////////n//vv//f/////6//9f/P3///38/f///P/+///7/v////////z//v3///////7////7//7z//7/////+////HP8///67/7///3//v//+/7////////8//79///////+////+//+8//+//////v///xz/P//+u/+///9//7///v+/////////P/+/f///////v////v//vP//v/////7///8c/z///rv/v///f/+///8//////7///v//vr///7//////v79//n9//r//////P///fxm///9/fv///v//v///P/////+///7//76///+//////7+/f/5/f/6//////z///38Zv///f37///7///+Sv/////+//7+//3///7//v/9//3+/v/+///9//7//v7//v///////f///v7///7//kr//////v/+/v/9///+//7//f/9/v7//v///f/+//7+//7///////3///7+///+/v///P/////+///7//76///+//////7+/f/5/f/6//////z///38Zv///f37///7//7///z//////v//+//++v///v/////+/v3/+f3/+v/////8///9/Gb///39+///+//+///8//////7///v//vr///7//////v79//n9//r//////P///fxm///9/fv///v//v////7/+/7///z//v7//vr++/7//v/+//7//////f3+/v///v///1r+//////7//P7////+//v+///8//7+//76/vv+//7//v/+//////39/v7///7///9a/v/////+//z+/////v/7/v///P/+/v/++v77/v/+//7//v/////9/f7+///+////Wv7//////v/8/v//+/7+/////v/9//39//////////7/+f/9+//9//////b///z7/f//Z/v9///9///5/f/////9//78//z///3////7//z//f/4///3//z++vv///7////+bP////7///z/+f3//////f/+/P/8///9////+//8//3/+P//9//8/vr7///+/////mz////+///8///+/v/////////7//38//////////7//v/8/v9Y//////z///z++////f76///8//7///v+/v////7//f/9/f/////////+//n//fv//f/////2///8+/3//2f7/f///f/+///7/v7////+//3//f3//////////v/5//37//3/////9v///Pv9//9n+/3///3//v//+/7+/////v/9//39//////////7/+f/9+//9//////b///z7/f//Z/v9///9/////f///v///f3/////////+P7+/f9N/v//////////////+v////////////z///////3///7///39//////////j+/v3/Tf7///////////////r////////////8////////+/7+/v/////8//79//7+///+/////P/97f/+//////z///zw/f///HP+//79//////v+/v7//////P/+/f/+/v///v////z//e3//v/////8///88P3///xz/v/+/f/////7/v7+//////z//v3//v7///7////8//3t//7//////P///PD9///8c/7//v3////+/v/////////9//38/////v////7//v/8/v/7//7///7///3+/f///v5O///9/////v7//////////f/9/P////7////+//7//P7/+//+///+///9/v3///7+Tv///f/9//7//P79//7+///+/v7++/70//7+/v7+//////7/Yf///v7//v/+/P////7+/P///vn7//////z///3/bP///f////z//P76//v///z//f/7/f/+/f////78/////f///f75+//////8///9/2z///3////8//z++v/7///8//3/+/3//v3////+/P////3///3//v7//////P7+///8/v/8/////v/+/0v//v///v/+//7+//77//////7///////////7+//////z+/v///P7//P////7//v9L//7///7//v/+/v/++//////+//////////7//////////v///v9G/f7//////////v7//v///v/+///+/v/+/v3///3//v///v/+//////////7///7/Rv3+//////////7+//7///7//v///v7//v79///9//7///7//v79//79//78/P7//f///v/5/v78/vz+//////7//v/+/v/5/v////7+////Xv////7+/f/+/f/+/Pz+//3///7/+f7+/P78/v/////+//7//v7/+f7////+/v///17////+/v3//v3//vz8/v/9///+//n+/vz+/P7//////v/+//7+//n+/////v7///9e/////v////5m/v759v////7///79/v/2//z+/v///v/+//7////8/v7+/v///////P3///7////+Zv7++fb////+///+/f7/9v/8/v7///7//v/+/////P7+/v7///////z9///+/////mb+/vn2/////v///v3+//b//P7+///+//7//v////z+/v7+///////8/f////7+//////z+/v///P7//P////7//v9L//7///7//v/+/v/++//////+//////////j///9e/vv///7///////78//3///////7////////9///+//3////+//7////u///4////Xv77///+///////+/P/9///////+/////////f///v/9/////v/+////7v//+P///17++////v///////vz//f///////v////////3///7//f////7//v///+7//////v///P///P3//v/+////+v7//f/6////////////////T////////////vv///////7///z///z9//7//v////r+//3/+v///////////////0////////////77///////+///8///8/f/+//7////6/v/9//r///////////////9P///////////++/////j////u/vn//v7////+//76/v3//v///v7///7//v/9/////v7//v/+//////9p///4////7v75//7+/////v/++v79//7///7+///+//7//f////7+//7//v//////af//+P///+7++f/+/v////7//vr+/f/+///+/v///v/+//3////+/v/+//7//////2n///////z+/////v7/+P/++f/+/v7//v7+//z/9fz/+//+///8///7/Pv+//z8+v//ev/////8/v////7+//j//vn//v7+//7+/v/8//X8//v//v///P//+/z7/v/8/Pr//3r///5K//////7//v7//f///v/+//3//f7+//7///3//v/+/v/+///////9///+/v///v/////+9/7/+lD//////////P//+//9/v/////////+/////f7///////////3+/////////vf+//pQ//////////z///v//f7//////////v////3+///////////9/v////////73/v/6UP/////////8///7//3+//////////7////9/v///////////f7//////v///P///P3//v/+////+v7//f/6////////////////T////////////vv///////7///z///z9//7//v////r+//3/+v///////////////0////////////77//////////73/v/6UP/////////8///7//3+//////////7////9/v///////////f7///7//v//+///Tfr////+/////v//+//9/f/////////+/////f/////////+//3////+//7///v//036/////v////7///v//f3//////////v////3//////////v/9/////v/+//3+/P7+/v///////vv+Vf////7+//////////b////+/v7///v////+//3///7//v/9/vz+/v7///////77/lX////+/v/////////2/////v7+///7/////v/9////+Pz//////P//+//8/v/+///++f/8//7/+v//c//8//n7///+/wD//vb////+///7//n9//////7///z//P///v////n/+f/+//r///n//f9u+v/+/v/////7/////v//+/z+/f7+/v79/v7+//39/1/+/v79/v7++v/8///+//3+/v7//vz////+/f///v/+//7/+v7//////v//8//9///+/////f/9////+////P/0//zw///+/////Pv///////93//r+//////7///P//f///v////3//f////v///z/9P/88P///v////z7////////d//6/v/////+///z//3///7////9//3////7///8//T//PD///7////8+////////3f///7+//////////3//fz////+/////v/+//z+//v//v///v///f79///+/k7///3////+/v/////////9//38/////v////7//v/8/v/7//7///7///3+/f///v5O///9/////f///v///f3/////////+P7+/f9N/v//////////////+v////////////z///////3///7///39//////////j+/v3/Tf7///////////////r////////////8////////+//////+/v/9//3+////////////+f/++//9//////r//1/8/f///fz9///8///+Sv/////+//7+//3///7//v/9//3+/v/+///9//7//v7//v///////f///v7///7//kr//////v/+/v/9///+//7//f/9/v7//v///f/+//7+//7///////3///7+///+/v/+//3+/P7+/v///////vv+Vf////7+//////////b////+/v7///v////+//3///7//v/9/vz+/v7///////77/lX////+/v/////////2/////v7+///7/////v/9//8CBfsB/wICAvv8/wEC/gABAAL+AQIC/PkBAAEBAP7+AgEBAfwC/f8CAQABAPsBAAb/AgX7Af8CAgL7/P8BAv4AAQAC/gECAvz5AQABAQD+/gIBAQH8Av3/AgEAAQD7AQAG/wIF+wH/AgIC+/z/AQL+AAEAAv4BAgL8+QEAAQEA/v4CAQEB/AL9/wIBAAEA+wEABv8BBv0A/AMAAv36AQEB/QIDAQP/AAIB/PkAAP8C///8A/8AAvwA/AACAgAAAPsCAgUBAQb9APwDAAL9+gEBAf0CAwED/wACAfz5AAD/Av///AP/AAL8APwAAgIAAAD7AgIFAQAE/AD9AgIC/f0CAgP8AgMBAf4DAgL7+QICAv8A/fsDAP4A/QH+AQABAAEB/AEBBgD7DQf8/Pz8DPr7B/wK+/wM+/v6CvsK+wT8CPz8CPwF+wgJ/PoM/Pz8+Aj8/Pv4+/0H+w0H/Pz8/Az6+wf8Cvv8DPv7+gr7CvsE/Aj8/Aj8BfsICfz6DPz8/PgI/Pz7+Pv9B/oNB/z7+/sL+/oJ/Ar7/A38+/sJ/Ar6BfwI/f0H/AX7Bwj8+gr8/Pz4CPz8+/n8/Qj6DQf8+/v7C/v6CfwK+/wN/Pv7CfwK+gX8CP39B/wF+wcI/PoK/Pz8+Aj8/Pv5/P0I+g0H/Pr6+wz6+gr8Dfr8Dvv6+gv8C/kG/Ar8/Ar7BPoJBvz6DPz8+/cI/Pz7+Pv8Cfv8+wr7+/v7+/v9Cf0ICfv7+/v8+v37+wr8Cgr9B/37/f0K+v0GBwr8/AkJBvz7Df38DQf8/Pz8Dfv8CPwL/Pz2/Pv7CvwK+wX8Cfz9CP0G+wkJ/PoN/Pz8+Qn8/Pz5/P0I+/z7Cvv7+/v7+/0J/QgJ+/v7+/z6/fv7CvwKCv0H/fv9/Qr6/QYHCvz8CQkG/PsN/fv9+wn7/Pv8+/v9CfwHCvz8/Pv9+v37+wn9Bwr8CPz7/P0K+/0GCQr9/QkJBfz7DP37/fsJ+/z7/Pv7/Qn8Bwr8/Pz7/fr9+/sJ/QcK/Aj8+/z9Cvv9BgkK/f0JCQX8+wz9+w0I/Pv8/Az7+wn8C/z89/37/An8CvsG/An9/Qj8BfwICP37C/z8/fkI/Pz7+fz9Cfv8+wn6+vr7+vr9C/wIC/v7+/v9+vz6+wz8Cwj8B/z7/PwJ+vwICwr7/AoJB/v7Dvz7DQj8+/v7Dfr6CvwN+/z3/Pv7DPwL+Qf8C/z9CvsF+woH/PoO/Pz8+An8/Pz4+/wK+/38Cvv8/Pv7+/0K/fcJ/Pz7+/z7/fv8C/0KCv0I/fv9/Qr7/QYIC/z9CgkH/PwN/fv9/An7/Pv8+/v9Cvz3C/38/Pv9+/37/An9CAv8CP37/P0K+/0GCQr9/QkKBvz7Df37/PsJ+vv7+/v7/Qv89wz8+/v7/fv8+/wM/QwI/Aj8+/z8Cvv8CQsL/PwLCgf8+w/8D/79/Qv8Df39/f3+/v3+/Az9DP79/v39/f7+/v79/Q/+/v39/P7+/g/+/f79/Qz+/f3+/P79D/3+CQn+/f39/v79D/3+D/4J/f7+/v3+/v79/v7+Cv3+/v7+/v7+/RD9/v79/vz+/Q/9/gkJ/v39/f7+/Q/9/g/+Cf3+/v79/v7+/f7+/gr9/v7+/v7+/v0Q/f7+D/79/Qv8Df39/f3+/v3+/Az9DP79/v39/f7+/v79/Q/+/v39/P7+/g/+/f79/Qz+/f3+/P79D/3+CQn+/f39/v79D/3+D/4J/f7+/v3+/v79/v7+Cv3+/v7+/v7+/RD9/v4P/v7+Cv0M/f38/f7+/f78DP4L/v3+/v39/v39/v3+EP7+/f78/f7+EP79/f39Dv79/v79/v0P/v4KCf79/f3+/f4P/f0P/Qn9/v7+/v7+/v3+/v4K/f79/v7+/v7+D/3+/w/+/v4K/Qz9/fz9/v79/vwM/gv+/f7+/f3+/f3+/f4Q/v79/vz9/v4Q/v39/f0O/v3+/v3+/Q/+/goJ/v39/f79/g/9/Q/9Cf3+/v7+/v7+/f7+/gr9/v3+/v7+/v4P/f7//v79/v0P/v4KCf79/f3+/f4P/f0P/Qn9/v7+/v7+/v3+/v4K/f79/v7+/v7+D/3+/w/+/f0M/RD9/f39/v39/fwN/Q3+/f39/P3+/f79/v0R/v79/fz9/f0R/v3+/f0O/v39/vz+/RD9/Q0M/v39/f39/RD9/Q/9C/z9/v79/f3+/f7+/gz9/f39/f7+/v4Q/f7+/f78/v0Q/f0NDP79/f39/f0Q/f0P/Qv8/f7+/f39/v3+/v4M/f39/f3+/v7+EP3+/vn+/f4N/Q7+/v39//7+/v0N/g3+/v79/f7+/v7+/f4Q/v7+/v3+/v4P/v7+/f4O//35//7+Df0N/v79/v7+/v79Df4L/v7+/v39/v7+/v7+EP7+/v79/v7+EP7+/v3+EP7++P7+/g79EP39/f3+/v3+/Q79Df79/v38/f7+/v7+/RL+/v39/P3+/hL+/f79/hD+/RYAAAD9//8A//8AAAAAAP//AAAA/wAAAP8AAAAAAAD/AAAAAP8AAAD/AP8AAAD+AAAAAAAAAAAAAP8AAAAAEf//AAD/AAAAAP8AAP8AAAAAAAAAAAAA/wD/AAD/AP8AAAAA/wD/AAAAAP8AAP8A//8AFgAAAP8AAAD+AP8AAP8A/wD/AAAA/wAAAAD/AAAAAAAA/xYAAAD9AP8A//8AAAD/AP//AAAAAAAAAP8AAAAAAAD/AAAAAP8A/wAAAP8AAAD+AAAAAAAAAAAAAAAAAAAAEP//AAAAAAAAAP8AAP8AAP8AAAAAAP8AAAAAAAD/AP8AAAAA/wD/AAAAAP8AAAAA//8AFgAAAP8A/wD+AP8AAP8A/wAAAAAA/wAAAP//AAAAAAAA/xcAAAD+AP8A/wAAAAD/AP//AP8AAAD//wAAAAAAAAD/AAAA//8AAAAAAP8AAAD+/wD/AAAAAAAAAP8AAAAAEv//AAAAAAAAAP8AAP8AAP8AAAAAAAAAAAD/AAD/AP8AAAAA/wAAAAAAAP8AAAAA//8AGP8AAP8AAAD+AP8AAP8A/wD//wAA/wAAAP//AAAAAAAA/w==",
+    "encoding": "int8-base64",
+    "scale": 0.019003002662358322
+  },
+  "embedding": {
+    "data": "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",
+    "encoding": "int8-base64",
+    "scale": 0.035696619138942925
+  },
+  "exact_prompts": {
+    "create a case study page outline": 4,
+    "create a changelog page structure": 6,
+    "create a faq page structure": 16,
+    "create a footer with useful links": 18,
+    "create a newsletter signup section": 31,
+    "create a restaurant website structure": 40,
+    "create a terms page outline": 46,
+    "create an about page outline": 0,
+    "design a booking page flow": 3,
+    "design a checkout error state": 14,
+    "design a course lesson page": 24,
+    "design a dashboard overview layout": 11,
+    "design a login page layout": 27,
+    "design a map location section": 26,
+    "design a mobile first home screen": 29,
+    "design a portfolio home page": 34,
+    "design a product page with pricing": 37,
+    "design a profile page layout": 38,
+    "design a reading progress indicator": 39,
+    "design a search results page": 42,
+    "design a settings page layout": 43,
+    "design a signup form with few fields": 44,
+    "design a testimonial section": 47,
+    "design an empty state for no results": 13,
+    "gravion builder create a case study page outline": 4,
+    "gravion builder create a changelog page structure": 6,
+    "gravion builder create a faq page structure": 16,
+    "gravion builder create a footer with useful links": 18,
+    "gravion builder create a newsletter signup section": 31,
+    "gravion builder create a restaurant website structure": 40,
+    "gravion builder create a terms page outline": 46,
+    "gravion builder create an about page outline": 0,
+    "gravion builder design a booking page flow": 3,
+    "gravion builder design a checkout error state": 14,
+    "gravion builder design a course lesson page": 24,
+    "gravion builder design a dashboard overview layout": 11,
+    "gravion builder design a login page layout": 27,
+    "gravion builder design a map location section": 26,
+    "gravion builder design a mobile first home screen": 29,
+    "gravion builder design a portfolio home page": 34,
+    "gravion builder design a product page with pricing": 37,
+    "gravion builder design a profile page layout": 38,
+    "gravion builder design a reading progress indicator": 39,
+    "gravion builder design a search results page": 42,
+    "gravion builder design a settings page layout": 43,
+    "gravion builder design a signup form with few fields": 44,
+    "gravion builder design a testimonial section": 47,
+    "gravion builder design an empty state for no results": 13,
+    "gravion builder make a comparison page for two plans": 8,
+    "gravion builder make a contact page that builds trust": 9,
+    "gravion builder make a feature grid section": 17,
+    "gravion builder make a gallery page layout": 20,
+    "gravion builder make a hero section with one message": 22,
+    "gravion builder make a pricing table easy to compare": 35,
+    "gravion builder make a sticky navigation plan": 45,
+    "gravion builder make a store category page": 5,
+    "gravion builder plan a bakery website": 1,
+    "gravion builder plan a blog layout with readable text": 2,
+    "gravion builder plan a checkout page flow": 7,
+    "gravion builder plan a community forum homepage": 19,
+    "gravion builder plan a course website structure": 10,
+    "gravion builder plan a documentation site navigation": 12,
+    "gravion builder plan a help center homepage": 21,
+    "gravion builder plan a landing page for a small studio": 23,
+    "gravion builder plan a local business website": 25,
+    "gravion builder plan a membership website flow": 28,
+    "gravion builder plan a multi language website structure": 30,
+    "gravion builder plan a nonprofit website homepage": 32,
+    "gravion builder plan a personal resume website": 41,
+    "gravion builder plan a podcast website structure": 33,
+    "gravion builder plan a privacy page outline": 36,
+    "gravion builder plan a wedding website structure": 48,
+    "gravion builder plan an event website page": 15,
+    "help me create a case study page outline": 4,
+    "help me create a changelog page structure": 6,
+    "help me create a faq page structure": 16,
+    "help me create a footer with useful links": 18,
+    "help me create a newsletter signup section": 31,
+    "help me create a restaurant website structure": 40,
+    "help me create a terms page outline": 46,
+    "help me create an about page outline": 0,
+    "help me design a booking page flow": 3,
+    "help me design a checkout error state": 14,
+    "help me design a course lesson page": 24,
+    "help me design a dashboard overview layout": 11,
+    "help me design a login page layout": 27,
+    "help me design a map location section": 26,
+    "help me design a mobile first home screen": 29,
+    "help me design a portfolio home page": 34,
+    "help me design a product page with pricing": 37,
+    "help me design a profile page layout": 38,
+    "help me design a reading progress indicator": 39,
+    "help me design a search results page": 42,
+    "help me design a settings page layout": 43,
+    "help me design a signup form with few fields": 44,
+    "help me design a testimonial section": 47,
+    "help me design an empty state for no results": 13,
+    "help me make a comparison page for two plans": 8,
+    "help me make a contact page that builds trust": 9,
+    "help me make a feature grid section": 17,
+    "help me make a gallery page layout": 20,
+    "help me make a hero section with one message": 22,
+    "help me make a pricing table easy to compare": 35,
+    "help me make a sticky navigation plan": 45,
+    "help me make a store category page": 5,
+    "help me plan a bakery website": 1,
+    "help me plan a blog layout with readable text": 2,
+    "help me plan a checkout page flow": 7,
+    "help me plan a community forum homepage": 19,
+    "help me plan a course website structure": 10,
+    "help me plan a documentation site navigation": 12,
+    "help me plan a help center homepage": 21,
+    "help me plan a landing page for a small studio": 23,
+    "help me plan a local business website": 25,
+    "help me plan a membership website flow": 28,
+    "help me plan a multi language website structure": 30,
+    "help me plan a nonprofit website homepage": 32,
+    "help me plan a personal resume website": 41,
+    "help me plan a podcast website structure": 33,
+    "help me plan a privacy page outline": 36,
+    "help me plan a wedding website structure": 48,
+    "help me plan an event website page": 15,
+    "make a comparison page for two plans": 8,
+    "make a contact page that builds trust": 9,
+    "make a feature grid section": 17,
+    "make a gallery page layout": 20,
+    "make a hero section with one message": 22,
+    "make a pricing table easy to compare": 35,
+    "make a sticky navigation plan": 45,
+    "make a store category page": 5,
+    "plan a bakery website": 1,
+    "plan a blog layout with readable text": 2,
+    "plan a checkout page flow": 7,
+    "plan a community forum homepage": 19,
+    "plan a course website structure": 10,
+    "plan a documentation site navigation": 12,
+    "plan a help center homepage": 21,
+    "plan a landing page for a small studio": 23,
+    "plan a local business website": 25,
+    "plan a membership website flow": 28,
+    "plan a multi language website structure": 30,
+    "plan a nonprofit website homepage": 32,
+    "plan a personal resume website": 41,
+    "plan a podcast website structure": 33,
+    "plan a privacy page outline": 36,
+    "plan a wedding website structure": 48,
+    "plan an event website page": 15,
+    "please create a case study page outline": 4,
+    "please create a changelog page structure": 6,
+    "please create a faq page structure": 16,
+    "please create a footer with useful links": 18,
+    "please create a newsletter signup section": 31,
+    "please create a restaurant website structure": 40,
+    "please create a terms page outline": 46,
+    "please create an about page outline": 0,
+    "please design a booking page flow": 3,
+    "please design a checkout error state": 14,
+    "please design a course lesson page": 24,
+    "please design a dashboard overview layout": 11,
+    "please design a login page layout": 27,
+    "please design a map location section": 26,
+    "please design a mobile first home screen": 29,
+    "please design a portfolio home page": 34,
+    "please design a product page with pricing": 37,
+    "please design a profile page layout": 38,
+    "please design a reading progress indicator": 39,
+    "please design a search results page": 42,
+    "please design a settings page layout": 43,
+    "please design a signup form with few fields": 44,
+    "please design a testimonial section": 47,
+    "please design an empty state for no results": 13,
+    "please make a comparison page for two plans": 8,
+    "please make a contact page that builds trust": 9,
+    "please make a feature grid section": 17,
+    "please make a gallery page layout": 20,
+    "please make a hero section with one message": 22,
+    "please make a pricing table easy to compare": 35,
+    "please make a sticky navigation plan": 45,
+    "please make a store category page": 5,
+    "please plan a bakery website": 1,
+    "please plan a blog layout with readable text": 2,
+    "please plan a checkout page flow": 7,
+    "please plan a community forum homepage": 19,
+    "please plan a course website structure": 10,
+    "please plan a documentation site navigation": 12,
+    "please plan a help center homepage": 21,
+    "please plan a landing page for a small studio": 23,
+    "please plan a local business website": 25,
+    "please plan a membership website flow": 28,
+    "please plan a multi language website structure": 30,
+    "please plan a nonprofit website homepage": 32,
+    "please plan a personal resume website": 41,
+    "please plan a podcast website structure": 33,
+    "please plan a privacy page outline": 36,
+    "please plan a wedding website structure": 48,
+    "please plan an event website page": 15
+  },
+  "features": [
+    "a",
+    "page",
+    "plan",
+    "design",
+    "plan a",
+    "design a",
+    "help",
+    "website",
+    "create",
+    "make",
+    "make a",
+    "create a",
+    "structure",
+    "layout",
+    "section",
+    "website structure",
+    "with",
+    "outline",
+    "page layout",
+    "page outline",
+    "an",
+    "flow",
+    "for",
+    "homepage",
+    "a checkout",
+    "a course",
+    "checkout",
+    "course",
+    "home",
+    "navigation",
+    "page flow",
+    "page for",
+    "page structure",
+    "pricing",
+    "results",
+    "signup",
+    "state",
+    "a bakery",
+    "a bakery website",
+    "a blog",
+    "a blog layout",
+    "a booking",
+    "a booking page",
+    "a case",
+    "a case study",
+    "a changelog",
+    "a changelog page",
+    "a checkout error",
+    "a checkout page",
+    "a community",
+    "a community forum",
+    "a comparison",
+    "a comparison page",
+    "a contact",
+    "a contact page",
+    "a course lesson",
+    "a course website",
+    "a dashboard",
+    "a dashboard overview",
+    "a documentation",
+    "a documentation site",
+    "a faq",
+    "a faq page",
+    "a feature",
+    "a feature grid",
+    "a footer",
+    "a footer with",
+    "a gallery",
+    "a gallery page",
+    "a help",
+    "a help center",
+    "a hero",
+    "a hero section",
+    "a landing",
+    "a landing page",
+    "a local",
+    "a local business",
+    "a login",
+    "a login page",
+    "a map",
+    "a map location",
+    "a membership",
+    "a membership website",
+    "a mobile",
+    "a mobile first",
+    "a multi",
+    "a multi language",
+    "a newsletter",
+    "a newsletter signup",
+    "a nonprofit",
+    "a nonprofit website",
+    "a personal",
+    "a personal resume",
+    "a podcast",
+    "a podcast website",
+    "a portfolio",
+    "a portfolio home",
+    "a pricing",
+    "a pricing table",
+    "a privacy",
+    "a privacy page",
+    "a product",
+    "a product page",
+    "a profile",
+    "a profile page",
+    "a reading",
+    "a reading progress",
+    "a restaurant",
+    "a restaurant website",
+    "a search",
+    "a search results",
+    "a settings",
+    "a settings page",
+    "a signup",
+    "a signup form",
+    "a small",
+    "a small studio",
+    "a sticky",
+    "a sticky navigation",
+    "a store",
+    "a store category",
+    "a terms",
+    "a terms page",
+    "a testimonial",
+    "a testimonial section",
+    "a wedding",
+    "a wedding website",
+    "about",
+    "about page",
+    "about page outline",
+    "an about",
+    "an about page",
+    "an empty",
+    "an empty state",
+    "an event",
+    "an event website",
+    "bakery",
+    "bakery website",
+    "blog",
+    "blog layout",
+    "blog layout with",
+    "booking",
+    "booking page",
+    "booking page flow",
+    "builds",
+    "builds trust",
+    "business",
+    "business website",
+    "case",
+    "case study",
+    "case study page",
+    "category",
+    "category page",
+    "center",
+    "center homepage",
+    "changelog",
+    "changelog page",
+    "changelog page structure",
+    "checkout error",
+    "checkout error state",
+    "checkout page",
+    "checkout page flow",
+    "community",
+    "community forum",
+    "community forum homepage",
+    "compare",
+    "comparison",
+    "comparison page",
+    "comparison page for",
+    "contact",
+    "contact page",
+    "contact page that",
+    "course lesson",
+    "course lesson page",
+    "course website",
+    "course website structure",
+    "create a case",
+    "create a changelog",
+    "create a faq",
+    "create a footer",
+    "create a newsletter",
+    "create a restaurant",
+    "create a terms",
+    "create an",
+    "create an about",
+    "dashboard",
+    "dashboard overview",
+    "dashboard overview layout",
+    "design a booking",
+    "design a checkout",
+    "design a course",
+    "design a dashboard",
+    "design a login",
+    "design a map",
+    "design a mobile",
+    "design a portfolio",
+    "design a product",
+    "design a profile",
+    "design a reading",
+    "design a search",
+    "design a settings",
+    "design a signup",
+    "design a testimonial",
+    "design an",
+    "design an empty",
+    "documentation",
+    "documentation site",
+    "documentation site navigation",
+    "easy",
+    "easy to",
+    "easy to compare",
+    "empty",
+    "empty state",
+    "empty state for",
+    "error",
+    "error state",
+    "event",
+    "event website",
+    "event website page",
+    "faq",
+    "faq page",
+    "faq page structure",
+    "feature",
+    "feature grid",
+    "feature grid section",
+    "few",
+    "few fields",
+    "fields",
+    "first",
+    "first home",
+    "first home screen",
+    "footer",
+    "footer with",
+    "footer with useful",
+    "for a",
+    "for a small",
+    "for no",
+    "for no results",
+    "for two",
+    "for two plans",
+    "form",
+    "form with",
+    "form with few",
+    "forum",
+    "forum homepage",
+    "gallery",
+    "gallery page",
+    "gallery page layout",
+    "grid",
+    "grid section",
+    "help center",
+    "help center homepage",
+    "hero",
+    "hero section",
+    "hero section with",
+    "home page",
+    "home screen",
+    "indicator",
+    "landing",
+    "landing page",
+    "landing page for",
+    "language",
+    "language website",
+    "language website structure",
+    "layout with",
+    "layout with readable",
+    "lesson",
+    "lesson page",
+    "links",
+    "local",
+    "local business",
+    "local business website",
+    "location",
+    "location section",
+    "login",
+    "login page",
+    "login page layout",
+    "make a comparison",
+    "make a contact",
+    "make a feature",
+    "make a gallery",
+    "make a hero",
+    "make a pricing",
+    "make a sticky",
+    "make a store",
+    "map",
+    "map location",
+    "map location section",
+    "membership",
+    "membership website",
+    "membership website flow",
+    "message",
+    "mobile",
+    "mobile first",
+    "mobile first home",
+    "multi",
+    "multi language",
+    "multi language website",
+    "navigation plan",
+    "newsletter",
+    "newsletter signup",
+    "newsletter signup section",
+    "no",
+    "no results",
+    "nonprofit",
+    "nonprofit website",
+    "nonprofit website homepage",
+    "one",
+    "one message",
+    "overview",
+    "overview layout",
+    "page for a",
+    "page for two",
+    "page that",
+    "page that builds",
+    "page with",
+    "page with pricing",
+    "personal",
+    "personal resume",
+    "personal resume website",
+    "plan a bakery",
+    "plan a blog",
+    "plan a checkout",
+    "plan a community",
+    "plan a course",
+    "plan a documentation",
+    "plan a help",
+    "plan a landing",
+    "plan a local",
+    "plan a membership",
+    "plan a multi",
+    "plan a nonprofit",
+    "plan a personal",
+    "plan a podcast",
+    "plan a privacy",
+    "plan a wedding",
+    "plan an",
+    "plan an event",
+    "plans",
+    "podcast",
+    "podcast website",
+    "podcast website structure",
+    "portfolio",
+    "portfolio home",
+    "portfolio home page",
+    "pricing table",
+    "pricing table easy",
+    "privacy",
+    "privacy page",
+    "privacy page outline",
+    "product",
+    "product page",
+    "product page with",
+    "profile",
+    "profile page",
+    "profile page layout",
+    "progress",
+    "progress indicator",
+    "readable",
+    "readable text",
+    "reading",
+    "reading progress",
+    "reading progress indicator",
+    "restaurant",
+    "restaurant website",
+    "restaurant website structure",
+    "results page",
+    "resume",
+    "resume website",
+    "screen",
+    "search",
+    "search results",
+    "search results page",
+    "section with",
+    "section with one",
+    "settings",
+    "settings page",
+    "settings page layout",
+    "signup form",
+    "signup form with",
+    "signup section",
+    "site",
+    "site navigation",
+    "small",
+    "small studio",
+    "state for",
+    "state for no",
+    "sticky",
+    "sticky navigation",
+    "sticky navigation plan",
+    "store",
+    "store category",
+    "store category page",
+    "studio",
+    "study",
+    "study page",
+    "study page outline",
+    "table",
+    "table easy",
+    "table easy to",
+    "terms",
+    "terms page",
+    "terms page outline",
+    "testimonial",
+    "testimonial section",
+    "text",
+    "that",
+    "that builds",
+    "that builds trust",
+    "to",
+    "to compare",
+    "trust",
+    "two",
+    "two plans",
+    "useful",
+    "useful links",
+    "website flow",
+    "website homepage",
+    "website page",
+    "wedding",
+    "wedding website",
+    "wedding website structure",
+    "with few",
+    "with few fields",
+    "with one",
+    "with one message",
+    "with pricing",
+    "with readable",
+    "with readable text",
+    "with useful",
+    "with useful links",
+    "builder",
+    "gravion",
+    "gravion builder",
+    "help me",
+    "me",
+    "please",
+    "builder plan",
+    "gravion builder plan",
+    "help me plan",
+    "me plan",
+    "please plan",
+    "builder design",
+    "builder plan a",
+    "gravion builder design",
+    "help me design",
+    "me design",
+    "me plan a",
+    "please design",
+    "please plan a",
+    "builder design a",
+    "me design a",
+    "please design a",
+    "builder create",
+    "builder make",
+    "builder make a",
+    "gravion builder create",
+    "gravion builder make",
+    "help me create",
+    "help me make",
+    "me create",
+    "me make",
+    "me make a",
+    "please create",
+    "please make",
+    "please make a",
+    "builder create a",
+    "me create a",
+    "please create a",
+    "builder create an",
+    "builder design an",
+    "builder plan an",
+    "me create an",
+    "me design an",
+    "me plan an",
+    "please create an",
+    "please design an",
+    "please plan an"
+  ],
+  "format": "gravion-core-local-v3",
+  "model_id": "gravion-builder",
+  "parameter_count": 32945,
+  "trained_from": {
+    "classes": 49,
+    "dataset_sha256": "b6724d548278c64a83fd68bb2f3dc6b3cd920317a282451c0d1cacc123e5a953",
+    "examples": 196,
+    "features": 478,
+    "source": "data/gravion-builder-seed.jsonl"
+  },
+  "transitions": {
+    "<s>": {
+      "about": 0.02040816,
+      "bakery": 0.02040816,
+      "blog": 0.02040816,
+      "booking": 0.02040816,
+      "case": 0.02040816,
+      "category": 0.02040816,
+      "changelog": 0.02040816,
+      "checkout": 0.02040816,
+      "comparison": 0.02040816,
+      "contact": 0.02040816,
+      "course": 0.02040816,
+      "dashboard": 0.02040816,
+      "documentation": 0.02040816,
+      "empty": 0.02040816,
+      "error": 0.02040816,
+      "event": 0.02040816,
+      "faq": 0.02040816,
+      "feature": 0.02040816,
+      "footer": 0.02040816,
+      "forum": 0.02040816,
+      "gallery": 0.02040816,
+      "help": 0.02040816,
+      "hero": 0.02040816,
+      "landing": 0.02040816,
+      "lesson": 0.02040816,
+      "local": 0.02040816,
+      "location": 0.02040816,
+      "login": 0.02040816,
+      "membership": 0.02040816,
+      "mobile": 0.02040816,
+      "multi": 0.02040816,
+      "newsletter": 0.02040816,
+      "nonprofit": 0.02040816,
+      "podcast": 0.02040816,
+      "portfolio": 0.02040816,
+      "pricing": 0.02040816,
+      "privacy": 0.02040816,
+      "product": 0.02040816,
+      "profile": 0.02040816,
+      "progress": 0.02040816,
+      "restaurant": 0.02040816,
+      "resume": 0.02040816,
+      "search": 0.02040816,
+      "settings": 0.02040816,
+      "signup": 0.02040816,
+      "sticky": 0.02040816,
+      "terms": 0.02040816,
+      "testimonial": 0.02040816,
+      "wedding": 0.02040816
+    },
+    "a": {
+      "clear": 0.22222222,
+      "lightbox": 0.11111111,
+      "recommendation": 0.11111111,
+      "reset": 0.11111111,
+      "safe": 0.11111111,
+      "short": 0.11111111,
+      "simple": 0.11111111,
+      "success": 0.11111111
+    },
+    "about": {
+      "page": 0.33333333,
+      "text": 0.33333333,
+      "the": 0.33333333
+    },
+    "action": {
+      "</s>": 0.83333333,
+      "and": 0.08333333,
+      "near": 0.08333333
+    },
+    "actions": {
+      "</s>": 1.0
+    },
+    "active": {
+      "discussions": 1.0
+    },
+    "activity": {
+      "alerts": 0.5,
+      "settings": 0.5
+    },
+    "address": {
+      "map": 1.0
+    },
+    "after": {
+      "signup": 1.0
+    },
+    "agenda": {
+      "speakers": 1.0
+    },
+    "alerts": {
+      "charts": 1.0
+    },
+    "align": {
+      "features": 1.0
+    },
+    "an": {
+      "order": 1.0
+    },
+    "and": {
+      "a": 0.14285714,
+      "an": 0.02040816,
+      "call": 0.02040816,
+      "cancellation": 0.02040816,
+      "clear": 0.04081633,
+      "collapse": 0.02040816,
+      "confirm": 0.02040816,
+      "contact": 0.10204082,
+      "content": 0.02040816,
+      "donation": 0.02040816,
+      "downloadable": 0.02040816,
+      "enrollment": 0.02040816,
+      "fallback": 0.02040816,
+      "lessons": 0.02040816,
+      "link": 0.02040816,
+      "links": 0.04081633,
+      "next": 0.02040816,
+      "no": 0.02040816,
+      "offer": 0.04081633,
+      "one": 0.02040816,
+      "opening": 0.02040816,
+      "password": 0.02040816,
+      "privacy": 0.04081633,
+      "related": 0.02040816,
+      "rsvp": 0.02040816,
+      "secure": 0.02040816,
+      "shortcuts": 0.02040816,
+      "show": 0.02040816,
+      "sort": 0.02040816,
+      "state": 0.02040816,
+      "subscribe": 0.02040816,
+      "updates": 0.02040816,
+      "validate": 0.02040816,
+      "version": 0.02040816,
+      "visual": 0.02040816
+    },
+    "answers": {
+      "short": 1.0
+    },
+    "approach": {
+      "result": 1.0
+    },
+    "archive": {
+      "about": 1.0
+    },
+    "area": {
+      "and": 0.33333333,
+      "renewal": 0.33333333,
+      "reviews": 0.33333333
+    },
+    "ask": {
+      "only": 1.0
+    },
+    "author": {
+      "line": 1.0
+    },
+    "avoid": {
+      "covering": 1.0
+    },
+    "aware": {
+      "dates": 1.0
+    },
+    "bakery": {
+      "site": 1.0
+    },
+    "bar": {
+      "tied": 1.0
+    },
+    "benefit": {
+      "headline": 0.5,
+      "one": 0.5
+    },
+    "benefits": {
+      "plans": 1.0
+    },
+    "best": {
+      "for": 1.0
+    },
+    "bio": {
+      "and": 1.0
+    },
+    "biography": {
+      "and": 1.0
+    },
+    "blog": {
+      "layout": 1.0
+    },
+    "booking": {
+      "flow": 1.0
+    },
+    "business": {
+      "site": 1.0
+    },
+    "but": {
+      "not": 1.0
+    },
+    "by": {
+      "row": 0.2,
+      "task": 0.2,
+      "topic": 0.2,
+      "type": 0.2,
+      "use": 0.2
+    },
+    "call": {
+      "action": 1.0
+    },
+    "cancellation": {
+      "path": 0.5,
+      "terms": 0.5
+    },
+    "captions": {
+      "filters": 1.0
+    },
+    "cards": {
+      "empty": 0.5,
+      "stock": 0.5
+    },
+    "cart": {
+      "summary": 1.0
+    },
+    "case": {
+      "</s>": 0.5,
+      "study": 0.5
+    },
+    "categories": {
+      "active": 1.0
+    },
+    "category": {
+      "page": 1.0
+    },
+    "center": {
+      "search": 1.0
+    },
+    "change": {
+      "and": 1.0
+    },
+    "changelog": {
+      "date": 1.0
+    },
+    "changes": {
+      "and": 0.5,
+      "grouped": 0.5
+    },
+    "charts": {
+      "and": 1.0
+    },
+    "checkout": {
+      "flow": 1.0
+    },
+    "choices": {
+      "comparison": 1.0
+    },
+    "choose": {
+      "service": 1.0
+    },
+    "claims": {
+      "</s>": 1.0
+    },
+    "cleanly": {
+      "on": 1.0
+    },
+    "clear": {
+      "benefit": 0.14285714,
+      "error": 0.14285714,
+      "headings": 0.14285714,
+      "hero": 0.14285714,
+      "new": 0.14285714,
+      "prices": 0.14285714,
+      "purchase": 0.14285714
+    },
+    "clearly": {
+      "</s>": 1.0
+    },
+    "collapse": {
+      "cleanly": 1.0
+    },
+    "collected": {
+      "purpose": 1.0
+    },
+    "column": {
+      "clear": 1.0
+    },
+    "common": {
+      "actions": 1.0
+    },
+    "comparison": {
+      "notes": 0.5,
+      "page": 0.5
+    },
+    "concepts": {
+      "tutorials": 1.0
+    },
+    "confirm": {
+      "and": 0.5,
+      "destructive": 0.5
+    },
+    "confirmation": {
+      "and": 1.0
+    },
+    "consistent": {
+      "icons": 0.5,
+      "image": 0.5
+    },
+    "constraints": {
+      "approach": 1.0
+    },
+    "contact": {
+      "action": 0.18181818,
+      "details": 0.09090909,
+      "help": 0.09090909,
+      "invitation": 0.09090909,
+      "key": 0.09090909,
+      "method": 0.18181818,
+      "page": 0.09090909,
+      "section": 0.09090909,
+      "support": 0.09090909
+    },
+    "content": {
+      "and": 0.5,
+      "in": 0.5
+    },
+    "context": {
+      "if": 1.0
+    },
+    "controls": {
+      "</s>": 0.75,
+      "label": 0.25
+    },
+    "course": {
+      "site": 1.0
+    },
+    "covering": {
+      "content": 1.0
+    },
+    "criteria": {
+      "honest": 1.0
+    },
+    "curriculum": {
+      "instructor": 1.0
+    },
+    "daily": {
+      "specials": 1.0
+    },
+    "dashboard": {
+      "overview": 1.0
+    },
+    "data": {
+      "collected": 0.5,
+      "highlight": 0.5
+    },
+    "date": {
+      "venue": 0.5,
+      "version": 0.5
+    },
+    "dates": {
+      "and": 1.0
+    },
+    "deeper": {
+      "pages": 1.0
+    },
+    "descriptions": {
+      "consistent": 1.0
+    },
+    "destructive": {
+      "actions": 1.0
+    },
+    "details": {
+      "</s>": 0.33333333,
+      "confirm": 0.33333333,
+      "payment": 0.33333333
+    },
+    "direct": {
+      "email": 1.0
+    },
+    "discussions": {
+      "rules": 1.0
+    },
+    "distracting": {
+      "with": 1.0
+    },
+    "documentation": {
+      "navigation": 1.0
+    },
+    "donation": {
+      "action": 1.0
+    },
+    "downloadable": {
+      "resume": 1.0
+    },
+    "duties": {
+      "payments": 1.0
+    },
+    "each": {
+      "field": 1.0
+    },
+    "education": {
+      "and": 1.0
+    },
+    "email": {
+      "and": 0.33333333,
+      "field": 0.33333333,
+      "response": 0.33333333
+    },
+    "empty": {
+      "state": 1.0
+    },
+    "enrollment": {
+      "action": 1.0
+    },
+    "enter": {
+      "details": 1.0
+    },
+    "entered": {
+      "data": 1.0
+    },
+    "episode": {
+      "archive": 0.5,
+      "episode": 0.5
+    },
+    "error": {
+      "message": 0.33333333,
+      "recovery": 0.33333333,
+      "state": 0.33333333
+    },
+    "essentials": {
+      "explain": 1.0
+    },
+    "event": {
+      "page": 1.0
+    },
+    "every": {
+      "field": 1.0
+    },
+    "evidence": {
+      "and": 1.0
+    },
+    "experience": {
+      "projects": 1.0
+    },
+    "explain": {
+      "what": 0.5,
+      "why": 0.5
+    },
+    "failed": {
+      "keep": 1.0
+    },
+    "fallback": {
+      "text": 1.0
+    },
+    "faq": {
+      "page": 1.0
+    },
+    "feature": {
+      "grid": 0.5,
+      "list": 0.5
+    },
+    "features": {
+      "by": 0.5,
+      "short": 0.5
+    },
+    "field": {
+      "and": 0.25,
+      "is": 0.25,
+      "privacy": 0.25,
+      "show": 0.25
+    },
+    "fields": {
+      "recovery": 1.0
+    },
+    "filters": {
+      "and": 0.25,
+      "result": 0.25,
+      "sort": 0.25,
+      "to": 0.25
+    },
+    "fine": {
+      "print": 1.0
+    },
+    "first": {
+      "popular": 0.33333333,
+      "primary": 0.33333333,
+      "recent": 0.33333333
+    },
+    "flow": {
+      "benefits": 0.33333333,
+      "cart": 0.33333333,
+      "choose": 0.33333333
+    },
+    "focused": {
+      "features": 1.0
+    },
+    "footer": {
+      "contact": 1.0
+    },
+    "for": {
+      "notes": 1.0
+    },
+    "form": {
+      "</s>": 0.33333333,
+      "ask": 0.33333333,
+      "direct": 0.33333333
+    },
+    "forum": {
+      "homepage": 1.0
+    },
+    "founder": {
+      "note": 1.0
+    },
+    "gallery": {
+      "and": 0.33333333,
+      "layout": 0.33333333,
+      "reservations": 0.33333333
+    },
+    "generous": {
+      "spacing": 1.0
+    },
+    "grid": {
+      "six": 1.0
+    },
+    "group": {
+      "questions": 0.5,
+      "related": 0.5
+    },
+    "grouped": {
+      "by": 1.0
+    },
+    "guide": {
+      "concepts": 1.0
+    },
+    "guides": {
+      "</s>": 0.5,
+      "by": 0.5
+    },
+    "header": {
+      "about": 1.0
+    },
+    "headings": {
+      "generous": 1.0
+    },
+    "headline": {
+      "feature": 1.0
+    },
+    "help": {
+      "center": 0.33333333,
+      "transparency": 0.33333333,
+      "when": 0.33333333
+    },
+    "hero": {
+      "proof": 0.5,
+      "section": 0.5
+    },
+    "highlight": {
+      "the": 1.0
+    },
+    "home": {
+      "strong": 1.0
+    },
+    "homepage": {
+      "categories": 0.5,
+      "mission": 0.5
+    },
+    "honest": {
+      "trade": 1.0
+    },
+    "host": {
+      "bio": 1.0
+    },
+    "hours": {
+      "</s>": 0.25,
+      "location": 0.5,
+      "photos": 0.25
+    },
+    "icons": {
+      "and": 1.0
+    },
+    "identity": {
+      "header": 1.0
+    },
+    "if": {
+      "relevant": 0.5,
+      "used": 0.5
+    },
+    "image": {
+      "sizes": 1.0
+    },
+    "impact": {
+      "numbers": 1.0
+    },
+    "in": {
+      "priority": 1.0
+    },
+    "indicator": {
+      "thin": 1.0
+    },
+    "instructor": {
+      "schedule": 1.0
+    },
+    "intro": {
+      "selected": 1.0
+    },
+    "invented": {
+      "claims": 1.0
+    },
+    "invitation": {
+      "</s>": 1.0
+    },
+    "is": {
+      "needed": 1.0
+    },
+    "keep": {
+      "answers": 0.33333333,
+      "entered": 0.33333333,
+      "key": 0.33333333
+    },
+    "key": {
+      "links": 0.33333333,
+      "metrics": 0.33333333,
+      "pages": 0.33333333
+    },
+    "keyboard": {
+      "controls": 1.0
+    },
+    "kindly": {
+      "</s>": 1.0
+    },
+    "label": {
+      "every": 1.0
+    },
+    "landing": {
+      "page": 1.0
+    },
+    "language": {
+      "structure": 0.5,
+      "switcher": 0.5
+    },
+    "large": {
+      "touch": 1.0
+    },
+    "latest": {
+      "episode": 1.0
+    },
+    "layout": {
+      "consistent": 0.5,
+      "narrow": 0.5
+    },
+    "learned": {
+      "</s>": 1.0
+    },
+    "legal": {
+      "links": 1.0
+    },
+    "lesson": {
+      "and": 0.33333333,
+      "link": 0.33333333,
+      "page": 0.33333333
+    },
+    "lessons": {
+      "learned": 1.0
+    },
+    "lightbox": {
+      "that": 1.0
+    },
+    "limits": {
+      "changes": 0.5,
+      "without": 0.5
+    },
+    "line": {
+      "and": 1.0
+    },
+    "link": {
+      "</s>": 0.4,
+      "and": 0.2,
+      "error": 0.2,
+      "to": 0.2
+    },
+    "links": {
+      "</s>": 0.25,
+      "and": 0.25,
+      "social": 0.125,
+      "to": 0.25,
+      "visible": 0.125
+    },
+    "list": {
+      "pricing": 1.0
+    },
+    "local": {
+      "business": 1.0
+    },
+    "locale": {
+      "aware": 1.0
+    },
+    "location": {
+      "gallery": 0.5,
+      "if": 0.25,
+      "section": 0.25
+    },
+    "login": {
+      "page": 1.0
+    },
+    "map": {
+      "transit": 1.0
+    },
+    "matched": {
+      "suggest": 1.0
+    },
+    "member": {
+      "area": 1.0
+    },
+    "membership": {
+      "flow": 1.0
+    },
+    "menu": {
+      "daily": 0.5,
+      "story": 0.5
+    },
+    "message": {
+      "after": 0.5,
+      "area": 0.5
+    },
+    "method": {
+      "</s>": 1.0
+    },
+    "metrics": {
+      "first": 1.0
+    },
+    "milestones": {
+      "and": 1.0
+    },
+    "mission": {
+      "impact": 0.5,
+      "story": 0.5
+    },
+    "mobile": {
+      "first": 1.0
+    },
+    "motion": {
+      "respect": 1.0
+    },
+    "multi": {
+      "language": 1.0
+    },
+    "names": {
+      "or": 1.0
+    },
+    "narrow": {
+      "text": 1.0
+    },
+    "navigation": {
+      "keep": 0.33333333,
+      "locale": 0.33333333,
+      "start": 0.33333333
+    },
+    "near": {
+      "the": 1.0
+    },
+    "needed": {
+      "</s>": 0.5,
+      "and": 0.5
+    },
+    "new": {
+      "topic": 1.0
+    },
+    "newsletter": {
+      "section": 1.0
+    },
+    "next": {
+      "lesson": 1.0
+    },
+    "no": {
+      "invented": 1.0
+    },
+    "nonprofit": {
+      "homepage": 1.0
+    },
+    "not": {
+      "distracting": 1.0
+    },
+    "note": {
+      "</s>": 0.33333333,
+      "and": 0.33333333,
+      "milestones": 0.33333333
+    },
+    "notes": {
+      "</s>": 0.16666667,
+      "and": 0.66666667,
+      "parking": 0.16666667
+    },
+    "nothing": {
+      "matched": 1.0
+    },
+    "numbers": {
+      "stories": 1.0
+    },
+    "objective": {
+      "video": 1.0
+    },
+    "of": {
+      "work": 1.0
+    },
+    "offer": {
+      "a": 1.0
+    },
+    "offs": {
+      "best": 1.0
+    },
+    "on": {
+      "small": 1.0
+    },
+    "one": {
+      "contact": 0.2,
+      "email": 0.2,
+      "primary": 0.2,
+      "promise": 0.2,
+      "supporting": 0.2
+    },
+    "only": {
+      "essentials": 1.0
+    },
+    "opening": {
+      "hours": 1.0
+    },
+    "or": {
+      "contact": 0.2,
+      "filters": 0.2,
+      "founder": 0.2,
+      "roles": 0.2,
+      "text": 0.2
+    },
+    "order": {
+      "</s>": 0.5,
+      "or": 0.5
+    },
+    "outcomes": {
+      "curriculum": 1.0
+    },
+    "overview": {
+      "key": 1.0
+    },
+    "page": {
+      "benefit": 0.07142857,
+      "data": 0.07142857,
+      "date": 0.07142857,
+      "email": 0.07142857,
+      "filters": 0.07142857,
+      "group": 0.14285714,
+      "identity": 0.07142857,
+      "mission": 0.07142857,
+      "objective": 0.07142857,
+      "plan": 0.07142857,
+      "service": 0.07142857,
+      "shared": 0.07142857,
+      "short": 0.07142857
+    },
+    "pages": {
+      "</s>": 0.5,
+      "legal": 0.5
+    },
+    "parking": {
+      "notes": 1.0
+    },
+    "password": {
+      "fields": 1.0
+    },
+    "path": {
+      "</s>": 1.0
+    },
+    "payment": {
+      "step": 1.0
+    },
+    "payments": {
+      "limits": 1.0
+    },
+    "photos": {
+      "and": 1.0
+    },
+    "pick": {
+      "time": 1.0
+    },
+    "plan": {
+      "and": 0.5,
+      "clear": 0.5
+    },
+    "plans": {
+      "signup": 1.0
+    },
+    "podcast": {
+      "site": 1.0
+    },
+    "popular": {
+      "topics": 1.0
+    },
+    "portfolio": {
+      "home": 1.0
+    },
+    "position": {
+      "visible": 1.0
+    },
+    "practice": {
+      "task": 1.0
+    },
+    "prices": {
+      "</s>": 1.0
+    },
+    "pricing": {
+      "choices": 0.33333333,
+      "sample": 0.33333333,
+      "table": 0.33333333
+    },
+    "primary": {
+      "action": 1.0
+    },
+    "print": {
+      "</s>": 1.0
+    },
+    "priority": {
+      "order": 1.0
+    },
+    "privacy": {
+      "controls": 0.25,
+      "note": 0.5,
+      "page": 0.25
+    },
+    "problem": {
+      "constraints": 1.0
+    },
+    "process": {
+      "testimonial": 1.0
+    },
+    "product": {
+      "cards": 0.5,
+      "page": 0.5
+    },
+    "profile": {
+      "page": 1.0
+    },
+    "progress": {
+      "indicator": 1.0
+    },
+    "projects": {
+      "skills": 1.0
+    },
+    "promise": {
+      "one": 1.0
+    },
+    "proof": {
+      "</s>": 0.5,
+      "of": 0.5
+    },
+    "purchase": {
+      "action": 1.0
+    },
+    "purpose": {
+      "retention": 1.0
+    },
+    "query": {
+      "summary": 1.0
+    },
+    "questions": {
+      "by": 1.0
+    },
+    "quotes": {
+      "names": 1.0
+    },
+    "readable": {
+      "type": 1.0
+    },
+    "reading": {
+      "links": 1.0
+    },
+    "recap": {
+      "and": 1.0
+    },
+    "recent": {
+      "activity": 1.0
+    },
+    "recommendation": {
+      "by": 1.0
+    },
+    "recommended": {
+      "plan": 1.0
+    },
+    "recovery": {
+      "</s>": 0.5,
+      "link": 0.5
+    },
+    "reduced": {
+      "motion": 1.0
+    },
+    "reference": {
+      "search": 1.0
+    },
+    "registry": {
+      "and": 1.0
+    },
+    "related": {
+      "controls": 0.33333333,
+      "guides": 0.33333333,
+      "reading": 0.33333333
+    },
+    "relevant": {
+      "and": 1.0
+    },
+    "reminders": {
+      "and": 1.0
+    },
+    "renewal": {
+      "reminders": 1.0
+    },
+    "reservations": {
+      "and": 1.0
+    },
+    "reset": {
+      "action": 1.0
+    },
+    "respect": {
+      "</s>": 1.0
+    },
+    "response": {
+      "time": 1.0
+    },
+    "restaurant": {
+      "site": 1.0
+    },
+    "result": {
+      "cards": 0.5,
+      "evidence": 0.5
+    },
+    "results": {
+      "query": 1.0
+    },
+    "resume": {
+      "link": 0.5,
+      "site": 0.5
+    },
+    "retention": {
+      "sharing": 1.0
+    },
+    "retry": {
+      "</s>": 1.0
+    },
+    "review": {
+      "confirmation": 1.0
+    },
+    "reviews": {
+      "hours": 1.0
+    },
+    "rights": {
+      "and": 1.0
+    },
+    "roles": {
+      "star": 1.0
+    },
+    "row": {
+      "highlight": 1.0
+    },
+    "rsvp": {
+      "form": 1.0
+    },
+    "rules": {
+      "</s>": 0.5,
+      "search": 0.5
+    },
+    "safe": {
+      "retry": 1.0
+    },
+    "sample": {
+      "lesson": 1.0
+    },
+    "save": {
+      "state": 1.0
+    },
+    "say": {
+      "nothing": 1.0
+    },
+    "schedule": {
+      "pricing": 0.5,
+      "venue": 0.5
+    },
+    "scope": {
+      "user": 1.0
+    },
+    "screens": {
+      "</s>": 1.0
+    },
+    "scroll": {
+      "position": 1.0
+    },
+    "search": {
+      "and": 0.5,
+      "first": 0.25,
+      "results": 0.25
+    },
+    "section": {
+      "</s>": 0.33333333,
+      "address": 0.16666667,
+      "clear": 0.16666667,
+      "one": 0.16666667,
+      "short": 0.16666667
+    },
+    "secure": {
+      "submit": 1.0
+    },
+    "selected": {
+      "projects": 1.0
+    },
+    "sentence": {
+      "one": 1.0
+    },
+    "service": {
+      "area": 0.33333333,
+      "pick": 0.33333333,
+      "scope": 0.33333333
+    },
+    "services": {
+      "process": 0.5,
+      "service": 0.5
+    },
+    "settings": {
+      "page": 0.5,
+      "shortcut": 0.5
+    },
+    "shared": {
+      "criteria": 1.0
+    },
+    "sharing": {
+      "user": 1.0
+    },
+    "short": {
+      "and": 0.16666667,
+      "biography": 0.16666667,
+      "descriptions": 0.16666667,
+      "form": 0.16666667,
+      "quotes": 0.16666667,
+      "site": 0.16666667
+    },
+    "shortcut": {
+      "and": 1.0
+    },
+    "shortcuts": {
+      "to": 1.0
+    },
+    "show": {
+      "cancellation": 0.33333333,
+      "host": 0.33333333,
+      "save": 0.33333333
+    },
+    "signup": {
+      "</s>": 0.33333333,
+      "form": 0.33333333,
+      "member": 0.33333333
+    },
+    "simple": {
+      "contact": 1.0
+    },
+    "site": {
+      "latest": 0.125,
+      "menu": 0.25,
+      "outcomes": 0.125,
+      "services": 0.125,
+      "story": 0.125,
+      "summary": 0.25
+    },
+    "six": {
+      "focused": 1.0
+    },
+    "sizes": {
+      "captions": 1.0
+    },
+    "skills": {
+      "education": 0.5,
+      "short": 0.5
+    },
+    "small": {
+      "screens": 1.0
+    },
+    "social": {
+      "links": 1.0
+    },
+    "sort": {
+      "controls": 0.5,
+      "product": 0.5
+    },
+    "space": {
+      "and": 1.0
+    },
+    "spacing": {
+      "author": 1.0
+    },
+    "speakers": {
+      "tickets": 1.0
+    },
+    "specials": {
+      "story": 1.0
+    },
+    "spelling": {
+      "or": 1.0
+    },
+    "star": {
+      "context": 1.0
+    },
+    "start": {
+      "guide": 1.0
+    },
+    "state": {
+      "and": 0.5,
+      "explain": 0.16666667,
+      "limits": 0.16666667,
+      "say": 0.16666667
+    },
+    "status": {
+      "link": 1.0
+    },
+    "step": {
+      "review": 1.0
+    },
+    "sticky": {
+      "navigation": 1.0
+    },
+    "stock": {
+      "state": 1.0
+    },
+    "stories": {
+      "ways": 1.0
+    },
+    "story": {
+      "hours": 0.5,
+      "schedule": 0.25,
+      "values": 0.25
+    },
+    "strong": {
+      "intro": 1.0
+    },
+    "structure": {
+      "language": 1.0
+    },
+    "study": {
+      "problem": 1.0
+    },
+    "submit": {
+      "action": 1.0
+    },
+    "subscribe": {
+      "links": 1.0
+    },
+    "success": {
+      "message": 1.0
+    },
+    "suggest": {
+      "spelling": 1.0
+    },
+    "summary": {
+      "</s>": 0.25,
+      "details": 0.25,
+      "experience": 0.25,
+      "filters": 0.25
+    },
+    "support": {
+      "action": 1.0
+    },
+    "supporting": {
+      "sentence": 1.0
+    },
+    "switcher": {
+      "translated": 1.0
+    },
+    "table": {
+      "align": 1.0
+    },
+    "targets": {
+      "and": 1.0
+    },
+    "task": {
+      "recap": 0.5,
+      "status": 0.5
+    },
+    "team": {
+      "or": 1.0
+    },
+    "terms": {
+      "clearly": 0.5,
+      "page": 0.5
+    },
+    "testimonial": {
+      "section": 0.5,
+      "space": 0.5
+    },
+    "text": {
+      "activity": 0.25,
+      "column": 0.25,
+      "practice": 0.25,
+      "rules": 0.25
+    },
+    "that": {
+      "works": 1.0
+    },
+    "the": {
+      "field": 0.25,
+      "recommended": 0.25,
+      "show": 0.25,
+      "top": 0.25
+    },
+    "thin": {
+      "bar": 1.0
+    },
+    "tickets": {
+      "travel": 1.0
+    },
+    "tied": {
+      "to": 1.0
+    },
+    "time": {
+      "enter": 0.5,
+      "location": 0.5
+    },
+    "to": {
+      "change": 0.14285714,
+      "common": 0.14285714,
+      "contact": 0.14285714,
+      "deeper": 0.14285714,
+      "help": 0.14285714,
+      "related": 0.14285714,
+      "scroll": 0.14285714
+    },
+    "top": {
+      "readable": 1.0
+    },
+    "topic": {
+      "action": 0.5,
+      "keep": 0.5
+    },
+    "topics": {
+      "guides": 1.0
+    },
+    "touch": {
+      "targets": 1.0
+    },
+    "trade": {
+      "offs": 1.0
+    },
+    "transit": {
+      "notes": 1.0
+    },
+    "translated": {
+      "navigation": 1.0
+    },
+    "transparency": {
+      "links": 1.0
+    },
+    "travel": {
+      "notes": 0.5,
+      "registry": 0.5
+    },
+    "tutorials": {
+      "reference": 1.0
+    },
+    "type": {
+      "and": 0.5,
+      "large": 0.5
+    },
+    "updates": {
+      "section": 1.0
+    },
+    "use": {
+      "case": 1.0
+    },
+    "used": {
+      "and": 1.0
+    },
+    "user": {
+      "duties": 0.5,
+      "rights": 0.5
+    },
+    "validate": {
+      "kindly": 1.0
+    },
+    "values": {
+      "team": 1.0
+    },
+    "venue": {
+      "agenda": 0.5,
+      "travel": 0.5
+    },
+    "version": {
+      "changes": 0.5,
+      "notes": 0.5
+    },
+    "video": {
+      "or": 1.0
+    },
+    "visible": {
+      "avoid": 0.5,
+      "but": 0.5
+    },
+    "visual": {
+      "proof": 1.0
+    },
+    "ways": {
+      "to": 1.0
+    },
+    "wedding": {
+      "site": 1.0
+    },
+    "what": {
+      "failed": 1.0
+    },
+    "when": {
+      "needed": 1.0
+    },
+    "why": {
+      "each": 1.0
+    },
+    "with": {
+      "keyboard": 0.5,
+      "reduced": 0.5
+    },
+    "without": {
+      "fine": 1.0
+    },
+    "work": {
+      "services": 1.0
+    },
+    "works": {
+      "with": 1.0
+    }
+  },
+  "unigram_weights": {
+    "a": 0.01351351,
+    "about": 0.0045045,
+    "action": 0.01801802,
+    "actions": 0.003003,
+    "active": 0.0015015,
+    "activity": 0.003003,
+    "address": 0.0015015,
+    "after": 0.0015015,
+    "agenda": 0.0015015,
+    "alerts": 0.0015015,
+    "align": 0.0015015,
+    "an": 0.0015015,
+    "and": 0.07357357,
+    "answers": 0.0015015,
+    "approach": 0.0015015,
+    "archive": 0.0015015,
+    "area": 0.0045045,
+    "ask": 0.0015015,
+    "author": 0.0015015,
+    "avoid": 0.0015015,
+    "aware": 0.0015015,
+    "bakery": 0.0015015,
+    "bar": 0.0015015,
+    "benefit": 0.003003,
+    "benefits": 0.0015015,
+    "best": 0.0015015,
+    "bio": 0.0015015,
+    "biography": 0.0015015,
+    "blog": 0.0015015,
+    "booking": 0.0015015,
+    "business": 0.0015015,
+    "but": 0.0015015,
+    "by": 0.00750751,
+    "call": 0.0015015,
+    "cancellation": 0.003003,
+    "captions": 0.0015015,
+    "cards": 0.003003,
+    "cart": 0.0015015,
+    "case": 0.003003,
+    "categories": 0.0015015,
+    "category": 0.0015015,
+    "center": 0.0015015,
+    "change": 0.0015015,
+    "changelog": 0.0015015,
+    "changes": 0.003003,
+    "charts": 0.0015015,
+    "checkout": 0.0015015,
+    "choices": 0.0015015,
+    "choose": 0.0015015,
+    "claims": 0.0015015,
+    "cleanly": 0.0015015,
+    "clear": 0.01051051,
+    "clearly": 0.0015015,
+    "collapse": 0.0015015,
+    "collected": 0.0015015,
+    "column": 0.0015015,
+    "common": 0.0015015,
+    "comparison": 0.003003,
+    "concepts": 0.0015015,
+    "confirm": 0.003003,
+    "confirmation": 0.0015015,
+    "consistent": 0.003003,
+    "constraints": 0.0015015,
+    "contact": 0.01651652,
+    "content": 0.003003,
+    "context": 0.0015015,
+    "controls": 0.00600601,
+    "course": 0.0015015,
+    "covering": 0.0015015,
+    "criteria": 0.0015015,
+    "curriculum": 0.0015015,
+    "daily": 0.0015015,
+    "dashboard": 0.0015015,
+    "data": 0.003003,
+    "date": 0.003003,
+    "dates": 0.0015015,
+    "deeper": 0.0015015,
+    "descriptions": 0.0015015,
+    "destructive": 0.0015015,
+    "details": 0.0045045,
+    "direct": 0.0015015,
+    "discussions": 0.0015015,
+    "distracting": 0.0015015,
+    "documentation": 0.0015015,
+    "donation": 0.0015015,
+    "downloadable": 0.0015015,
+    "duties": 0.0015015,
+    "each": 0.0015015,
+    "education": 0.0015015,
+    "email": 0.0045045,
+    "empty": 0.003003,
+    "enrollment": 0.0015015,
+    "enter": 0.0015015,
+    "entered": 0.0015015,
+    "episode": 0.003003,
+    "error": 0.0045045,
+    "essentials": 0.0015015,
+    "event": 0.0015015,
+    "every": 0.0015015,
+    "evidence": 0.0015015,
+    "experience": 0.0015015,
+    "explain": 0.003003,
+    "failed": 0.0015015,
+    "fallback": 0.0015015,
+    "faq": 0.0015015,
+    "feature": 0.003003,
+    "features": 0.003003,
+    "field": 0.00600601,
+    "fields": 0.0015015,
+    "filters": 0.00600601,
+    "fine": 0.0015015,
+    "first": 0.0045045,
+    "flow": 0.0045045,
+    "focused": 0.0015015,
+    "footer": 0.0015015,
+    "for": 0.0015015,
+    "form": 0.0045045,
+    "forum": 0.0015015,
+    "founder": 0.0015015,
+    "gallery": 0.0045045,
+    "generous": 0.0015015,
+    "grid": 0.0015015,
+    "group": 0.003003,
+    "grouped": 0.0015015,
+    "guide": 0.0015015,
+    "guides": 0.003003,
+    "header": 0.0015015,
+    "headings": 0.0015015,
+    "headline": 0.0015015,
+    "help": 0.0045045,
+    "hero": 0.003003,
+    "highlight": 0.003003,
+    "home": 0.0015015,
+    "homepage": 0.003003,
+    "honest": 0.0015015,
+    "host": 0.0015015,
+    "hours": 0.00600601,
+    "icons": 0.0015015,
+    "identity": 0.0015015,
+    "if": 0.003003,
+    "image": 0.0015015,
+    "impact": 0.0015015,
+    "in": 0.0015015,
+    "indicator": 0.0015015,
+    "instructor": 0.0015015,
+    "intro": 0.0015015,
+    "invented": 0.0015015,
+    "invitation": 0.0015015,
+    "is": 0.0015015,
+    "keep": 0.0045045,
+    "key": 0.0045045,
+    "keyboard": 0.0015015,
+    "kindly": 0.0015015,
+    "label": 0.0015015,
+    "landing": 0.0015015,
+    "language": 0.003003,
+    "large": 0.0015015,
+    "latest": 0.0015015,
+    "layout": 0.003003,
+    "learned": 0.0015015,
+    "legal": 0.0015015,
+    "lesson": 0.0045045,
+    "lessons": 0.0015015,
+    "lightbox": 0.0015015,
+    "limits": 0.003003,
+    "line": 0.0015015,
+    "link": 0.00750751,
+    "links": 0.01201201,
+    "list": 0.0015015,
+    "local": 0.0015015,
+    "locale": 0.0015015,
+    "location": 0.00600601,
+    "login": 0.0015015,
+    "map": 0.0015015,
+    "matched": 0.0015015,
+    "member": 0.0015015,
+    "membership": 0.0015015,
+    "menu": 0.003003,
+    "message": 0.003003,
+    "method": 0.003003,
+    "metrics": 0.0015015,
+    "milestones": 0.0015015,
+    "mission": 0.003003,
+    "mobile": 0.0015015,
+    "motion": 0.0015015,
+    "multi": 0.0015015,
+    "names": 0.0015015,
+    "narrow": 0.0015015,
+    "navigation": 0.0045045,
+    "near": 0.0015015,
+    "needed": 0.003003,
+    "new": 0.0015015,
+    "newsletter": 0.0015015,
+    "next": 0.0015015,
+    "no": 0.0015015,
+    "nonprofit": 0.0015015,
+    "not": 0.0015015,
+    "note": 0.0045045,
+    "notes": 0.00900901,
+    "nothing": 0.0015015,
+    "numbers": 0.0015015,
+    "objective": 0.0015015,
+    "of": 0.0015015,
+    "offer": 0.003003,
+    "offs": 0.0015015,
+    "on": 0.0015015,
+    "one": 0.00750751,
+    "only": 0.0015015,
+    "opening": 0.0015015,
+    "or": 0.00750751,
+    "order": 0.003003,
+    "outcomes": 0.0015015,
+    "overview": 0.0015015,
+    "page": 0.02102102,
+    "pages": 0.003003,
+    "parking": 0.0015015,
+    "password": 0.0015015,
+    "path": 0.0015015,
+    "payment": 0.0015015,
+    "payments": 0.0015015,
+    "photos": 0.0015015,
+    "pick": 0.0015015,
+    "plan": 0.003003,
+    "plans": 0.0015015,
+    "podcast": 0.0015015,
+    "popular": 0.0015015,
+    "portfolio": 0.0015015,
+    "position": 0.0015015,
+    "practice": 0.0015015,
+    "prices": 0.0015015,
+    "pricing": 0.0045045,
+    "primary": 0.003003,
+    "print": 0.0015015,
+    "priority": 0.0015015,
+    "privacy": 0.00600601,
+    "problem": 0.0015015,
+    "process": 0.0015015,
+    "product": 0.003003,
+    "profile": 0.0015015,
+    "progress": 0.0015015,
+    "projects": 0.003003,
+    "promise": 0.0015015,
+    "proof": 0.003003,
+    "purchase": 0.0015015,
+    "purpose": 0.0015015,
+    "query": 0.0015015,
+    "questions": 0.0015015,
+    "quotes": 0.0015015,
+    "readable": 0.0015015,
+    "reading": 0.0015015,
+    "recap": 0.0015015,
+    "recent": 0.0015015,
+    "recommendation": 0.0015015,
+    "recommended": 0.0015015,
+    "recovery": 0.003003,
+    "reduced": 0.0015015,
+    "reference": 0.0015015,
+    "registry": 0.0015015,
+    "related": 0.0045045,
+    "relevant": 0.0015015,
+    "reminders": 0.0015015,
+    "renewal": 0.0015015,
+    "reservations": 0.0015015,
+    "reset": 0.0015015,
+    "respect": 0.0015015,
+    "response": 0.0015015,
+    "restaurant": 0.0015015,
+    "result": 0.003003,
+    "results": 0.0015015,
+    "resume": 0.003003,
+    "retention": 0.0015015,
+    "retry": 0.0015015,
+    "review": 0.0015015,
+    "reviews": 0.0015015,
+    "rights": 0.0015015,
+    "roles": 0.0015015,
+    "row": 0.0015015,
+    "rsvp": 0.0015015,
+    "rules": 0.003003,
+    "safe": 0.0015015,
+    "sample": 0.0015015,
+    "save": 0.0015015,
+    "say": 0.0015015,
+    "schedule": 0.003003,
+    "scope": 0.0015015,
+    "screens": 0.0015015,
+    "scroll": 0.0015015,
+    "search": 0.00600601,
+    "section": 0.00900901,
+    "secure": 0.0015015,
+    "selected": 0.0015015,
+    "sentence": 0.0015015,
+    "service": 0.0045045,
+    "services": 0.003003,
+    "settings": 0.003003,
+    "shared": 0.0015015,
+    "sharing": 0.0015015,
+    "short": 0.00900901,
+    "shortcut": 0.0015015,
+    "shortcuts": 0.0015015,
+    "show": 0.0045045,
+    "signup": 0.0045045,
+    "simple": 0.0015015,
+    "site": 0.01201201,
+    "six": 0.0015015,
+    "sizes": 0.0015015,
+    "skills": 0.003003,
+    "small": 0.0015015,
+    "social": 0.0015015,
+    "sort": 0.003003,
+    "space": 0.0015015,
+    "spacing": 0.0015015,
+    "speakers": 0.0015015,
+    "specials": 0.0015015,
+    "spelling": 0.0015015,
+    "star": 0.0015015,
+    "start": 0.0015015,
+    "state": 0.00900901,
+    "status": 0.0015015,
+    "step": 0.0015015,
+    "sticky": 0.0015015,
+    "stock": 0.0015015,
+    "stories": 0.0015015,
+    "story": 0.00600601,
+    "strong": 0.0015015,
+    "structure": 0.0015015,
+    "study": 0.0015015,
+    "submit": 0.0015015,
+    "subscribe": 0.0015015,
+    "success": 0.0015015,
+    "suggest": 0.0015015,
+    "summary": 0.00600601,
+    "support": 0.0015015,
+    "supporting": 0.0015015,
+    "switcher": 0.0015015,
+    "table": 0.0015015,
+    "targets": 0.0015015,
+    "task": 0.003003,
+    "team": 0.0015015,
+    "terms": 0.003003,
+    "testimonial": 0.003003,
+    "text": 0.00600601,
+    "that": 0.0015015,
+    "the": 0.00600601,
+    "thin": 0.0015015,
+    "tickets": 0.0015015,
+    "tied": 0.0015015,
+    "time": 0.003003,
+    "to": 0.01051051,
+    "top": 0.0015015,
+    "topic": 0.003003,
+    "topics": 0.0015015,
+    "touch": 0.0015015,
+    "trade": 0.0015015,
+    "transit": 0.0015015,
+    "translated": 0.0015015,
+    "transparency": 0.0015015,
+    "travel": 0.003003,
+    "tutorials": 0.0015015,
+    "type": 0.003003,
+    "updates": 0.0015015,
+    "use": 0.0015015,
+    "used": 0.0015015,
+    "user": 0.003003,
+    "validate": 0.0015015,
+    "values": 0.0015015,
+    "venue": 0.003003,
+    "version": 0.003003,
+    "video": 0.0015015,
+    "visible": 0.003003,
+    "visual": 0.0015015,
+    "ways": 0.0015015,
+    "wedding": 0.0015015,
+    "what": 0.0015015,
+    "when": 0.0015015,
+    "why": 0.0015015,
+    "with": 0.003003,
+    "without": 0.0015015,
+    "work": 0.0015015,
+    "works": 0.0015015
+  },
+  "vocabulary": [
+    "a",
+    "about",
+    "action",
+    "actions",
+    "active",
+    "activity",
+    "address",
+    "after",
+    "agenda",
+    "alerts",
+    "align",
+    "an",
+    "and",
+    "answers",
+    "approach",
+    "archive",
+    "area",
+    "ask",
+    "author",
+    "avoid",
+    "aware",
+    "bakery",
+    "bar",
+    "benefit",
+    "benefits",
+    "best",
+    "bio",
+    "biography",
+    "blog",
+    "booking",
+    "builder",
+    "builds",
+    "business",
+    "but",
+    "by",
+    "call",
+    "cancellation",
+    "captions",
+    "cards",
+    "cart",
+    "case",
+    "categories",
+    "category",
+    "center",
+    "change",
+    "changelog",
+    "changes",
+    "charts",
+    "checkout",
+    "choices",
+    "choose",
+    "claims",
+    "cleanly",
+    "clear",
+    "clearly",
+    "collapse",
+    "collected",
+    "column",
+    "common",
+    "community",
+    "compare",
+    "comparison",
+    "concepts",
+    "confirm",
+    "confirmation",
+    "consistent",
+    "constraints",
+    "contact",
+    "content",
+    "context",
+    "controls",
+    "course",
+    "covering",
+    "create",
+    "criteria",
+    "curriculum",
+    "daily",
+    "dashboard",
+    "data",
+    "date",
+    "dates",
+    "deeper",
+    "descriptions",
+    "design",
+    "destructive",
+    "details",
+    "direct",
+    "discussions",
+    "distracting",
+    "documentation",
+    "donation",
+    "downloadable",
+    "duties",
+    "each",
+    "easy",
+    "education",
+    "email",
+    "empty",
+    "enrollment",
+    "enter",
+    "entered",
+    "episode",
+    "error",
+    "essentials",
+    "event",
+    "every",
+    "evidence",
+    "experience",
+    "explain",
+    "failed",
+    "fallback",
+    "faq",
+    "feature",
+    "features",
+    "few",
+    "field",
+    "fields",
+    "filters",
+    "fine",
+    "first",
+    "flow",
+    "focused",
+    "footer",
+    "for",
+    "form",
+    "forum",
+    "founder",
+    "gallery",
+    "generous",
+    "gravion",
+    "grid",
+    "group",
+    "grouped",
+    "guide",
+    "guides",
+    "header",
+    "headings",
+    "headline",
+    "help",
+    "hero",
+    "highlight",
+    "home",
+    "homepage",
+    "honest",
+    "host",
+    "hours",
+    "icons",
+    "identity",
+    "if",
+    "image",
+    "impact",
+    "in",
+    "indicator",
+    "instructor",
+    "intro",
+    "invented",
+    "invitation",
+    "is",
+    "keep",
+    "key",
+    "keyboard",
+    "kindly",
+    "label",
+    "landing",
+    "language",
+    "large",
+    "latest",
+    "layout",
+    "learned",
+    "legal",
+    "lesson",
+    "lessons",
+    "lightbox",
+    "limits",
+    "line",
+    "link",
+    "links",
+    "list",
+    "local",
+    "locale",
+    "location",
+    "login",
+    "make",
+    "map",
+    "matched",
+    "me",
+    "member",
+    "membership",
+    "menu",
+    "message",
+    "method",
+    "metrics",
+    "milestones",
+    "mission",
+    "mobile",
+    "motion",
+    "multi",
+    "names",
+    "narrow",
+    "navigation",
+    "near",
+    "needed",
+    "new",
+    "newsletter",
+    "next",
+    "no",
+    "nonprofit",
+    "not",
+    "note",
+    "notes",
+    "nothing",
+    "numbers",
+    "objective",
+    "of",
+    "offer",
+    "offs",
+    "on",
+    "one",
+    "only",
+    "opening",
+    "or",
+    "order",
+    "outcomes",
+    "outline",
+    "overview",
+    "page",
+    "pages",
+    "parking",
+    "password",
+    "path",
+    "payment",
+    "payments",
+    "personal",
+    "photos",
+    "pick",
+    "plan",
+    "plans",
+    "please",
+    "podcast",
+    "popular",
+    "portfolio",
+    "position",
+    "practice",
+    "prices",
+    "pricing",
+    "primary",
+    "print",
+    "priority",
+    "privacy",
+    "problem",
+    "process",
+    "product",
+    "profile",
+    "progress",
+    "projects",
+    "promise",
+    "proof",
+    "purchase",
+    "purpose",
+    "query",
+    "questions",
+    "quotes",
+    "readable",
+    "reading",
+    "recap",
+    "recent",
+    "recommendation",
+    "recommended",
+    "recovery",
+    "reduced",
+    "reference",
+    "registry",
+    "related",
+    "relevant",
+    "reminders",
+    "renewal",
+    "reservations",
+    "reset",
+    "respect",
+    "response",
+    "restaurant",
+    "result",
+    "results",
+    "resume",
+    "retention",
+    "retry",
+    "review",
+    "reviews",
+    "rights",
+    "roles",
+    "row",
+    "rsvp",
+    "rules",
+    "safe",
+    "sample",
+    "save",
+    "say",
+    "schedule",
+    "scope",
+    "screen",
+    "screens",
+    "scroll",
+    "search",
+    "section",
+    "secure",
+    "selected",
+    "sentence",
+    "service",
+    "services",
+    "settings",
+    "shared",
+    "sharing",
+    "short",
+    "shortcut",
+    "shortcuts",
+    "show",
+    "signup",
+    "simple",
+    "site",
+    "six",
+    "sizes",
+    "skills",
+    "small",
+    "social",
+    "sort",
+    "space",
+    "spacing",
+    "speakers",
+    "specials",
+    "spelling",
+    "star",
+    "start",
+    "state",
+    "status",
+    "step",
+    "sticky",
+    "stock",
+    "store",
+    "stories",
+    "story",
+    "strong",
+    "structure",
+    "studio",
+    "study",
+    "submit",
+    "subscribe",
+    "success",
+    "suggest",
+    "summary",
+    "support",
+    "supporting",
+    "switcher",
+    "table",
+    "targets",
+    "task",
+    "team",
+    "terms",
+    "testimonial",
+    "text",
+    "that",
+    "the",
+    "thin",
+    "tickets",
+    "tied",
+    "time",
+    "to",
+    "top",
+    "topic",
+    "topics",
+    "touch",
+    "trade",
+    "transit",
+    "translated",
+    "transparency",
+    "travel",
+    "trust",
+    "tutorials",
+    "two",
+    "type",
+    "updates",
+    "use",
+    "used",
+    "useful",
+    "user",
+    "validate",
+    "values",
+    "venue",
+    "version",
+    "video",
+    "visible",
+    "visual",
+    "ways",
+    "website",
+    "wedding",
+    "what",
+    "when",
+    "why",
+    "with",
+    "without",
+    "work",
+    "works"
+  ],
+  "weights_sha256": "765907cea467495c42205bfebfe8e2c49d5924400f3b80c3cad5028f701136cc"
+}

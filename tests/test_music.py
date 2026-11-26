@@ -39,7 +39,7 @@ def _ctx(provider, model="gravion-audio"):
 def test_music_instantiates_and_answers():
     module = default_registry().instantiate("music")
     out = module.run(_ctx(GravionCoreProvider()), "an upbeat track for our launch video")
-    assert "an upbeat track for our launch video" in out
+    assert "Track:" in out
 
 
 @pytest.mark.parametrize(

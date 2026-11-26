@@ -42,6 +42,18 @@ from typing import Iterable, Mapping, Sequence
 from .errors import TrainingError
 
 CORE_MODEL_ID = "gravion-core"
+SPECIALIST_MODEL_IDS = (
+    "gravion-chat",
+    "gravion-code",
+    "gravion-builder",
+    "gravion-vision",
+    "gravion-video",
+    "gravion-audio",
+    "gravion-shield",
+    "gravion-agent",
+    "gravion-omni",
+)
+LOCAL_MODEL_IDS = (CORE_MODEL_ID, *SPECIALIST_MODEL_IDS)
 CORE_MODEL_FORMAT = "gravion-core-local-v3"
 LEGACY_V2_MODEL_FORMAT = "gravion-core-local-v2"
 LEGACY_MODEL_FORMAT = "gravion-core-local-v1"
@@ -422,15 +434,17 @@ def _validate_v1(artifact: dict[str, object], source: str) -> dict[str, object]:
 def _validate_artifact(artifact: object, source: str) -> dict[str, object]:
     if not isinstance(artifact, dict):
         raise TrainingError(f"{source}: Gravion Core weights must be a JSON object")
-    if artifact.get("model_id") != CORE_MODEL_ID:
-        raise TrainingError(f"{source}: weights are not for {CORE_MODEL_ID!r}")
+    if artifact.get("model_id") not in LOCAL_MODEL_IDS:
+        raise TrainingError(
+            f"{source}: weights are not for a bundled local Gravion model"
+        )
     if artifact.get("format") == CORE_MODEL_FORMAT:
         return _validate_v3(artifact, source)
     if artifact.get("format") == LEGACY_V2_MODEL_FORMAT:
         return _validate_v2(artifact, source)
     if artifact.get("format") == LEGACY_MODEL_FORMAT:
         return _validate_v1(artifact, source)
-    raise TrainingError(f"{source}: unsupported Gravion Core weights format")
+    raise TrainingError(f"{source}: unsupported Gravion local weights format")
 
 
 # ---------------------------------------------------------------------------
@@ -445,6 +459,10 @@ class GravionCoreLocalModel:
     artifact: dict[str, object]
     source: str = "<memory>"
     _weights_cache: object | None = field(default=None, repr=False, compare=False)
+
+    @property
+    def model_id(self) -> str:
+        return str(self.artifact["model_id"])
 
     @property
     def parameter_count(self) -> int:
@@ -517,30 +535,38 @@ class GravionCoreLocalModel:
         vocabulary = self.artifact.get("vocabulary", [])
         assert isinstance(vocabulary, list)
         normalized = _normalized_text(prompt)
-        doc_question = normalized.startswith(
-            (
-                "what is",
-                "explain",
-                "gravion",
-                "what does gravion say about",
-                "how does",
-                "tell me about",
-                "what should i know about",
-            )
-        ) or "gravion" in tokens
-        if len(tokens) < 3 or not set(tokens).intersection(vocabulary) or not doc_question:
+        if self.model_id == CORE_MODEL_ID:
+            doc_question = normalized.startswith(
+                (
+                    "what is",
+                    "explain",
+                    "gravion",
+                    "what does gravion say about",
+                    "how does",
+                    "tell me about",
+                    "what should i know about",
+                )
+            ) or "gravion" in tokens
+            if len(tokens) < 3 or not set(tokens).intersection(vocabulary) or not doc_question:
+                return None, 0.0
+        elif len(tokens) < 2 or not set(tokens).intersection(vocabulary):
             return None, 0.0
 
         direct, embedding, classifier, bias, feature_index, dim, num_classes = (
             self._v3_weights()
         )
+        terms = _feature_terms(prompt)
         feature_ids = [
-            feature_index[term]
-            for term in _feature_terms(prompt)
-            if term in feature_index
+            feature_index[term] for term in terms if term in feature_index
         ]
         if not feature_ids:
             return None, 0.0
+        # Evidence coverage: the share of the prompt's n-gram terms the
+        # model actually knows. Margin alone overstates confidence when
+        # only a couple of terms fire (e.g. "a website for our bakery"
+        # matched a resume answer at 0.79 on 3 of 12 terms), so the
+        # returned confidence is scaled by coverage below.
+        coverage = len(feature_ids) / len(terms)
 
         hidden = [0.0] * dim
         for feature_id in feature_ids:
@@ -573,7 +599,7 @@ class GravionCoreLocalModel:
             default=0.0,
         )
         margin = max(0.0, top - second)
-        return str(classes[best]), margin / (1.0 + margin)
+        return str(classes[best]), (margin / (1.0 + margin)) * coverage
 
     # -- v2 inference ----------------------------------------------------
 
@@ -779,6 +805,7 @@ def _transition_weights(
 def train_local_core(
     examples: Iterable[tuple[str, str]],
     *,
+    model_id: str = CORE_MODEL_ID,
     source: str = "<dataset>",
     buckets: int | None = None,
     dim: int = DEFAULT_DIM,
@@ -797,6 +824,8 @@ def train_local_core(
     cap for callers of the earlier hashed model.
     """
 
+    if model_id not in LOCAL_MODEL_IDS:
+        raise TrainingError(f"local Gravion training does not support {model_id!r}")
     if dim <= 0:
         raise TrainingError("local Gravion Core training requires dim > 0")
     if epochs <= 0:
@@ -934,7 +963,7 @@ def train_local_core(
 
     artifact: dict[str, object] = {
         "format": CORE_MODEL_FORMAT,
-        "model_id": CORE_MODEL_ID,
+        "model_id": model_id,
         "architecture": CORE_ARCHITECTURE,
         "trained_from": {
             "source": source,
@@ -962,6 +991,18 @@ def train_local_core(
     return GravionCoreLocalModel(_validate_artifact(artifact, source), source=source)
 
 
+def train_local_model(
+    examples: Iterable[tuple[str, str]],
+    *,
+    model_id: str,
+    source: str = "<dataset>",
+    **kwargs,
+) -> GravionCoreLocalModel:
+    """Train any bundled local Gravion model with the v3 pipeline."""
+
+    return train_local_core(examples, model_id=model_id, source=source, **kwargs)
+
+
 # ---------------------------------------------------------------------------
 # Persistence
 # ---------------------------------------------------------------------------
@@ -985,7 +1026,7 @@ def save_weights(model: GravionCoreLocalModel, path: Path | str) -> dict[str, ob
         examples = len(artifact["examples"])  # type: ignore[arg-type]
         vocabulary_size = len(artifact["vocabulary"])  # type: ignore[arg-type]
     return {
-        "model": CORE_MODEL_ID,
+        "model": model.model_id,
         "weights_path": str(destination),
         "parameter_count": model.parameter_count,
         "weights_sha256": model.weights_sha256,
@@ -995,8 +1036,10 @@ def save_weights(model: GravionCoreLocalModel, path: Path | str) -> dict[str, ob
     }
 
 
-def load_weights(path: Path | str) -> GravionCoreLocalModel:
-    """Load and validate a Gravion Core weights artifact."""
+def load_weights(
+    path: Path | str, *, model_id: str | None = None
+) -> GravionCoreLocalModel:
+    """Load and validate a Gravion local weights artifact."""
 
     source = Path(path)
     try:
@@ -1005,36 +1048,68 @@ def load_weights(path: Path | str) -> GravionCoreLocalModel:
         raise TrainingError(f"Gravion Core weights not found: {source}") from exc
     except (OSError, json.JSONDecodeError) as exc:
         raise TrainingError(f"Gravion Core weights are not valid JSON: {exc}") from exc
-    return GravionCoreLocalModel(_validate_artifact(artifact, str(source)), source=str(source))
+    model = GravionCoreLocalModel(
+        _validate_artifact(artifact, str(source)), source=str(source)
+    )
+    if model_id is not None and model.model_id != model_id:
+        raise TrainingError(
+            f"{source}: weights are for {model.model_id!r}, expected {model_id!r}"
+        )
+    return model
 
 
-def bundled_seed_path() -> Path:
-    return Path(str(resources.files("gravion_ai").joinpath("data", DEFAULT_SEED_FILENAME)))
+def weights_filename(model_id: str = CORE_MODEL_ID) -> str:
+    if model_id not in LOCAL_MODEL_IDS:
+        raise TrainingError(f"unknown bundled local Gravion model {model_id!r}")
+    return f"{model_id}-weights.json"
+
+
+def seed_filename(model_id: str = CORE_MODEL_ID) -> str:
+    if model_id not in LOCAL_MODEL_IDS:
+        raise TrainingError(f"unknown bundled local Gravion model {model_id!r}")
+    return f"{model_id}-seed.jsonl"
+
+
+def bundled_seed_path(model_id: str = CORE_MODEL_ID) -> Path:
+    return Path(
+        str(resources.files("gravion_ai").joinpath("data", seed_filename(model_id)))
+    )
 
 
 def bundled_corpus_path() -> Path:
     return Path(str(resources.files("gravion_ai").joinpath("data", DEFAULT_CORPUS_FILENAME)))
 
 
-def bundled_weights_path() -> Path:
-    return Path(str(resources.files("gravion_ai").joinpath("data", DEFAULT_WEIGHTS_FILENAME)))
-
-
-def load_bundled_model() -> GravionCoreLocalModel:
-    """Load the bundled Gravion Core weights artifact."""
-
-    resource = resources.files("gravion_ai").joinpath("data", DEFAULT_WEIGHTS_FILENAME)
-    try:
-        artifact = json.loads(resource.read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError) as exc:
-        raise TrainingError(f"bundled Gravion Core weights are unavailable: {exc}") from exc
-    return GravionCoreLocalModel(
-        _validate_artifact(artifact, "bundled Gravion Core weights"),
-        source="bundled Gravion Core weights",
+def bundled_weights_path(model_id: str = CORE_MODEL_ID) -> Path:
+    return Path(
+        str(resources.files("gravion_ai").joinpath("data", weights_filename(model_id)))
     )
 
 
-def deployment_weights_path(home: Path | str) -> Path:
-    """The deployment-local Gravion Core weights path under data/models."""
+def load_bundled_model(model_id: str = CORE_MODEL_ID) -> GravionCoreLocalModel:
+    """Load a bundled Gravion local weights artifact."""
 
-    return Path(home) / "data" / "models" / DEFAULT_WEIGHTS_FILENAME
+    resource = resources.files("gravion_ai").joinpath(
+        "data", weights_filename(model_id)
+    )
+    try:
+        artifact = json.loads(resource.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise TrainingError(f"bundled {model_id} weights are unavailable: {exc}") from exc
+    model = GravionCoreLocalModel(
+        _validate_artifact(artifact, f"bundled {model_id} weights"),
+        source=f"bundled {model_id} weights",
+    )
+    if model.model_id != model_id:
+        raise TrainingError(
+            f"bundled weights are for {model.model_id!r}, expected {model_id!r}"
+        )
+    return model
+
+
+def deployment_weights_path(
+    home: Path | str, model_id: str = CORE_MODEL_ID
+) -> Path:
+    """The deployment-local Gravion weights path under data/models."""
+
+    return Path(home) / "data" / "models" / weights_filename(model_id)

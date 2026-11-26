@@ -1,0 +1,599 @@
+"""Train bundled local weights for every Gravion specialist.
+
+All seed examples in this file were written for Gravion AI.  The
+script writes one seed corpus and one v3 weights artifact per
+specialist under ``src/gravion_ai/data`` and refreshes the model
+registry from the stored artifacts.  Parameter counts and hashes
+are computed from the artifacts, never entered by hand.
+"""
+
+from __future__ import annotations
+
+import json
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT / "src"))
+
+from gravion_ai.core_model import save_weights, train_local_core  # noqa: E402
+
+DATA = ROOT / "src" / "gravion_ai" / "data"
+
+# Each topic is (prompt phrase, completion).  Four deterministic
+# prompt variants are generated per topic so the sparse classifier
+# learns the domain terms rather than one exact wording.
+TOPICS: dict[str, list[tuple[str, str]]] = {
+    "gravion-chat": [
+        ("greet a new user warmly", "Hello and welcome. Tell me what you would like to work on, and I will help step by step."),
+        ("ask how someone is feeling today", "How are you feeling today? Share as much or as little as you like."),
+        ("summarize a long message briefly", "Here is a brief summary: keep the main point, the key reason, and the next action."),
+        ("explain a difficult idea simply", "Let us break the idea into small parts, define each part in plain words, then connect the parts with one example."),
+        ("make a polite reminder message", "A gentle reminder: please review this when you have a moment, and let me know if anything is unclear."),
+        ("apologize for a late reply", "Sorry for the late reply. I have read your message now and will answer the open points in order."),
+        ("plan a productive morning routine", "Start with water and light movement, review the top three priorities, then work on the hardest task first."),
+        ("help choose between two options", "Compare both options by cost, time, risk, and fit with your goal; choose the one that wins on the criteria that matter most."),
+        ("write a short thank you note", "Thank you for your time and help. I appreciate it, and I will follow up with the next update soon."),
+        ("brainstorm names for a small project", "Try short names that hint at the purpose: clear, easy to spell, and memorable after one hearing."),
+        ("turn notes into action items", "Action items: name the owner, the task, and the deadline for each note, then remove anything already done."),
+        ("prepare questions for a meeting", "Prepare questions about the goal, constraints, owners, deadlines, and what decision must be made before the meeting ends."),
+        ("explain why sleep matters", "Sleep supports memory, mood, focus, and physical recovery, so a regular schedule usually improves daytime performance."),
+        ("give a calm response to criticism", "Thank you for the feedback. I will check the specific points, fix what is valid, and explain anything that needs context."),
+        ("describe a weekly review habit", "A weekly review lists wins, open loops, lessons, and the next three priorities for the coming week."),
+        ("help draft a friendly invitation", "You are warmly invited to join us. Please let me know if you can come, and tell me about any needs I should plan for."),
+        ("explain the difference between a goal and a task", "A goal is the outcome you want; a task is one concrete step that moves you toward that outcome."),
+        ("make a simple study plan", "Study in short focused blocks, test yourself after each block, and review mistakes the next day."),
+        ("write a concise status update", "Status: completed work is listed first, current blockers are named plainly, and the next milestone has a date."),
+        ("encourage someone who feels stuck", "Being stuck is a signal to shrink the next step. Pick one small action you can finish today and build from there."),
+        ("explain active listening", "Active listening means hearing the words, checking the meaning, and responding to what was actually said."),
+        ("create a packing checklist", "Pack documents, chargers, clothes for the weather, toiletries, medicines, and one spare outfit in hand luggage."),
+        ("help compare prices fairly", "Compare the full delivered price, quality, warranty, return terms, and running cost, not only the headline price."),
+        ("write a short introduction for a speaker", "Please welcome our speaker, whose work focuses on practical ideas, clear examples, and honest answers."),
+        ("plan a calm evening wind down", "Dim the lights, put devices away, prepare tomorrow's first task, and end with a short relaxing routine."),
+        ("explain how habits form", "Habits form when a cue triggers a small repeated action and the result feels rewarding enough to repeat."),
+        ("draft a request for feedback", "Could you share feedback on clarity, usefulness, and anything missing? Specific examples will help me improve it."),
+        ("make a decision checklist", "Decision checklist: define the problem, list options, score risks, check constraints, then choose and record why."),
+        ("explain why backups matter", "Backups protect work from device failure, accidental deletion, and corruption; test restores so the backup is real."),
+        ("write a friendly follow up message", "Following up on my last message: I wanted to check whether you need anything else from me."),
+        ("help organize a messy desk", "Sort items into keep, move, recycle, and discard piles, then give every kept item one home."),
+        ("describe a good apology", "A good apology names the harm, accepts responsibility, explains the fix, and does not demand instant forgiveness."),
+        ("plan a balanced weekly meal outline", "Plan protein, grains, vegetables, and fruit across the week, repeat simple meals, and keep one flexible day."),
+        ("explain the value of clear writing", "Clear writing saves time because readers understand the point, the evidence, and the requested action without guessing."),
+        ("brainstorm weekend activity ideas", "Try a nature walk, a cooking experiment, a museum visit, a board game, or a small home project."),
+        ("help prepare for a job interview", "Prepare stories about your work, practice clear answers, research the role, and bring thoughtful questions."),
+        ("write a short motivational message", "Progress counts even when it is small. Do the next honest step and let momentum build."),
+        ("explain how to ask better questions", "Ask one clear question at a time, include the context, and say what kind of answer would help."),
+        ("make a simple budget outline", "List income, fixed costs, variable costs, savings, and a small buffer; then adjust the flexible items first."),
+        ("describe how to learn from mistakes", "Name what happened, find the cause, change one process, and check whether the change worked."),
+        ("draft a welcome message for a team", "Welcome to the team. Your first week will cover introductions, tools, current priorities, and a buddy for questions."),
+        ("help choose a book to read", "Choose a book by the question you want answered, the length you can finish, and reviews from readers you trust."),
+        ("explain why regular exercise helps", "Regular exercise supports heart health, strength, mood, sleep, and energy when it is consistent and safe."),
+        ("write a polite decline message", "Thank you for thinking of me. I cannot take this on right now, but I wish you well with it."),
+        ("plan a focused work session", "Pick one outcome, silence distractions, work in timed blocks, and record the result before taking a break."),
+        ("explain the idea of compound growth", "Compound growth means gains build on earlier gains, so small consistent progress can become large over time."),
+        ("help name priorities for today", "Today's priorities should be few, clear, and ordered by impact and deadline."),
+        ("write a closing message for a conversation", "Thanks for the conversation. I will send the agreed next steps and check in after the first milestone."),
+    ],
+    "gravion-code": [
+        ("write a function that adds two numbers", "Define a small function with two numeric inputs, return their sum, and test it with positive, negative, and zero values."),
+        ("explain a variable in simple terms", "A variable is a named place that stores a value so code can read or update it later."),
+        ("debug a failing test step by step", "Reproduce the failure, read the first error, isolate the smallest failing case, fix one cause, then rerun the test."),
+        ("refactor duplicated code safely", "Extract the repeated logic into one helper, keep behavior unchanged, and run the existing tests after each small change."),
+        ("write a loop that prints each item", "Iterate over the collection in order and handle one item per pass; avoid changing the collection while looping."),
+        ("explain recursion with an example", "Recursion solves a problem by calling the same function on a smaller input until a base case stops the calls."),
+        ("handle an empty list safely", "Check for an empty list before indexing or averaging, and return a clear default or error message."),
+        ("design a small api endpoint", "Define the route, inputs, validation, success response, error responses, and tests for each case."),
+        ("explain object oriented programming", "Object oriented programming groups data and behavior into objects with clear responsibilities and interfaces."),
+        ("write a unit test for a parser", "Test a valid input, an empty input, malformed input, and boundary values; assert both output and error behavior."),
+        ("improve slow code performance", "Profile first, find the hot path, reduce repeated work, choose better data structures, and measure again."),
+        ("explain database indexes", "An index is a lookup structure that helps the database find rows faster, at the cost of storage and write time."),
+        ("validate user input in code", "Check type, length, range, and allowed characters; reject invalid input with a clear message before using it."),
+        ("write error handling for file reading", "Open the file safely, handle missing or unreadable files, and close resources even when an error occurs."),
+        ("explain the difference between a list and a set", "A list keeps order and duplicates; a set keeps unique items and is built for membership checks."),
+        ("create a simple class for a task", "A task class can store title, status, and due date, with methods to complete, reopen, and describe the task."),
+        ("explain version control basics", "Version control records changes over time so you can review history, collaborate, and restore earlier work."),
+        ("write a function to reverse a string", "Build the reversed text by reading characters from the end to the start, then test empty and single-character inputs."),
+        ("explain asynchronous code", "Asynchronous code starts work without blocking everything else, then handles the result when it is ready."),
+        ("design a cache with expiry", "Store each value with an expiry time, return fresh values quickly, and refresh or remove stale entries."),
+        ("write a binary search explanation", "Binary search repeatedly checks the middle of a sorted range and discards half until the target is found or absent."),
+        ("explain stack and queue differences", "A stack removes the newest item first; a queue removes the oldest item first."),
+        ("make code readable with naming", "Use names that state purpose, keep functions small, and remove comments that merely repeat the code."),
+        ("write a test for boundary values", "Test just below, exactly at, and just above each boundary so off-by-one errors are caught."),
+        ("explain dependency injection", "Dependency injection passes needed collaborators into code instead of creating them inside, making tests easier."),
+        ("handle null values safely", "Decide where null is allowed, check before use, and prefer explicit defaults or errors over silent failure."),
+        ("write a sorting function outline", "Compare neighboring values or use a known sorting method, then verify sorted, reversed, and duplicate inputs."),
+        ("explain time complexity simply", "Time complexity describes how running time grows as input size grows, using the dominant growth term."),
+        ("create a configuration loader", "Read settings from a file or environment, validate required keys, apply defaults, and fail with clear messages."),
+        ("write a retry helper with backoff", "Retry only temporary failures, wait longer between attempts, cap total attempts, and log the final error."),
+        ("explain interfaces and contracts", "An interface is a contract: callers rely on promised inputs and outputs without knowing internal details."),
+        ("design a logging approach", "Log important events with context, avoid secrets, use levels consistently, and make failures searchable."),
+        ("write a function to count word frequency", "Split text into words, normalize case if needed, count each word, and test punctuation and empty text."),
+        ("explain memory leaks", "A memory leak keeps unused data reachable, so memory grows over time; find retained references and release them."),
+        ("make a simple command line tool", "Parse arguments, validate them, run one clear action, print helpful output, and return a proper exit code."),
+        ("explain testing pyramids", "Use many fast unit tests, fewer integration tests, and a small number of end-to-end tests for critical paths."),
+        ("write a merge of two sorted lists", "Walk both lists with pointers, always take the smaller next value, then append the remaining tail."),
+        ("explain hashing for passwords", "Password storage should use a slow salted hash designed for passwords, never a fast general hash or plain text."),
+        ("design a pagination response", "Return page items, total count, page size, current page, and links or cursors for the next page."),
+        ("write a guard clause example", "Return early when input is invalid so the main path stays flat and readable."),
+        ("explain immutability benefits", "Immutable values do not change after creation, which reduces surprise side effects and simplifies reasoning."),
+        ("create a simple state machine", "Define states, allowed transitions, events, and guards; reject transitions that are not listed."),
+        ("write a function to flatten nested lists", "Walk nested lists recursively or with a stack, append leaf values in order, and test empty nesting."),
+        ("explain code review goals", "Code review checks correctness, clarity, tests, security, and maintainability before changes merge."),
+        ("design a file upload validation", "Check size, type, extension, and content; store uploads outside executable paths and scan when required."),
+        ("write a debounce helper outline", "Wait for a quiet period after the last call, then run the function once with the latest arguments."),
+        ("explain event driven design", "Event driven design reacts to named events, keeping producers and consumers loosely coupled."),
+        ("make a small data validation schema", "Define required fields, types, ranges, and cross-field rules; report every validation problem clearly."),
+        ("write a function to find duplicates", "Track seen values in a set and collect values that appear again, preserving first duplicate order if needed."),
+        ("explain database transactions", "A transaction groups changes so they all succeed together or roll back together, keeping data consistent."),
+        ("create a health check endpoint", "Return service status, version, and dependency checks quickly, without exposing secrets or heavy work."),
+        ("write a parser for key value lines", "Split each non-empty line on the first separator, trim spaces, validate keys, and report malformed lines."),
+        ("explain feature flags", "Feature flags switch behavior at runtime so teams can release gradually and disable risky paths quickly."),
+        ("design a rate limiter", "Count requests per key in a time window, allow bursts within limits, and return clear retry guidance."),
+        ("write a function to normalize text", "Trim whitespace, collapse repeated spaces, normalize case when appropriate, and test punctuation handling."),
+        ("write a haiku function", "Define a function that returns a three-line haiku, keep the syllable pattern clear, and test the exact output."),
+        ("write a sort function", "Compare neighboring values or use a known sorting method, then verify sorted, reversed, and duplicate inputs."),
+    ],
+    "gravion-builder": [
+        ("plan a landing page for a small studio", "Landing page plan: clear hero, proof of work, services, process, testimonial space, and one contact action."),
+        ("design a portfolio home page", "Portfolio home: strong intro, selected projects, skills, short biography, and a simple contact section."),
+        ("create a restaurant website structure", "Restaurant site: menu, story, hours, location, gallery, reservations, and contact details."),
+        ("plan a blog layout with readable text", "Blog layout: narrow text column, clear headings, generous spacing, author line, and related reading links."),
+        ("design a product page with pricing", "Product page: benefit headline, feature list, pricing choices, comparison notes, and a clear purchase action."),
+        ("make a contact page that builds trust", "Contact page: short form, direct email, response time, location if relevant, and privacy note."),
+        ("plan a documentation site navigation", "Documentation navigation: start guide, concepts, tutorials, reference, search, and version notes."),
+        ("design a mobile first home screen", "Mobile first: primary action near the top, readable type, large touch targets, and content in priority order."),
+        ("create an about page outline", "About page: mission, story, values, team or founder note, milestones, and contact invitation."),
+        ("plan a checkout page flow", "Checkout flow: cart summary, details, payment step, review, confirmation, and clear error recovery."),
+        ("design a dashboard overview layout", "Dashboard overview: key metrics first, recent activity, alerts, charts, and shortcuts to common actions."),
+        ("make a pricing table easy to compare", "Pricing table: align features by row, highlight the recommended plan, and state limits without fine print."),
+        ("plan a course website structure", "Course site: outcomes, curriculum, instructor, schedule, pricing, sample lesson, and enrollment action."),
+        ("design a search results page", "Search results: query summary, filters, result cards, empty state, and sort controls."),
+        ("create a faq page structure", "FAQ page: group questions by topic, keep answers short, and link to contact help when needed."),
+        ("plan a nonprofit website homepage", "Nonprofit homepage: mission, impact numbers, stories, ways to help, transparency links, and donation action."),
+        ("design a booking page flow", "Booking flow: choose service, pick time, enter details, confirm, and show cancellation terms clearly."),
+        ("make a gallery page layout", "Gallery layout: consistent image sizes, captions, filters, and a lightbox that works with keyboard controls."),
+        ("plan a personal resume website", "Resume site: summary, experience, projects, skills, education, and downloadable resume link."),
+        ("design a settings page layout", "Settings page: group related controls, label every field, show save state, and confirm destructive actions."),
+        ("create a newsletter signup section", "Newsletter section: clear benefit, one email field, privacy note, and a success message after signup."),
+        ("plan a community forum homepage", "Forum homepage: categories, active discussions, rules, search, and a clear new topic action."),
+        ("design a checkout error state", "Error state: explain what failed, keep entered data, highlight the field, and offer a safe retry."),
+        ("make a hero section with one message", "Hero section: one promise, one supporting sentence, one primary action, and visual proof."),
+        ("plan a multi language website structure", "Multi-language structure: language switcher, translated navigation, locale-aware dates, and fallback text rules."),
+        ("design a testimonial section", "Testimonial section: short quotes, names or roles, star context if used, and no invented claims."),
+        ("create a footer with useful links", "Footer: contact, key pages, legal links, social links, and a short site summary."),
+        ("plan an event website page", "Event page: date, venue, agenda, speakers, tickets, travel notes, and updates section."),
+        ("design a profile page layout", "Profile page: identity header, about text, activity, settings shortcut, and privacy controls."),
+        ("make a comparison page for two plans", "Comparison page: shared criteria, honest trade-offs, best-for notes, and a recommendation by use case."),
+        ("plan a help center homepage", "Help center: search first, popular topics, guides by task, status link, and contact support action."),
+        ("design a signup form with few fields", "Signup form: ask only essentials, explain why each field is needed, and validate kindly."),
+        ("create a case study page outline", "Case study: problem, constraints, approach, result, evidence, and lessons learned."),
+        ("plan a podcast website structure", "Podcast site: latest episode, episode archive, about the show, host bio, and subscribe links."),
+        ("design a map location section", "Location section: address, map, transit notes, parking notes, and opening hours."),
+        ("make a feature grid section", "Feature grid: six focused features, short descriptions, consistent icons, and links to deeper pages."),
+        ("plan a membership website flow", "Membership flow: benefits, plans, signup, member area, renewal reminders, and cancellation path."),
+        ("design an empty state for no results", "Empty state: say nothing matched, suggest spelling or filters to change, and offer a reset action."),
+        ("create a terms page outline", "Terms page: service scope, user duties, payments, limits, changes, and contact method."),
+        ("plan a privacy page outline", "Privacy page: data collected, purpose, retention, sharing, user rights, and contact method."),
+        ("design a course lesson page", "Lesson page: objective, video or text, practice task, recap, and next lesson link."),
+        ("make a store category page", "Category page: filters, sort, product cards, stock state, and clear prices."),
+        ("plan a wedding website structure", "Wedding site: story, schedule, venue, travel, registry, and RSVP form."),
+        ("design a login page layout", "Login page: email and password fields, recovery link, error message area, and secure submit action."),
+        ("create a changelog page structure", "Changelog: date, version, changes grouped by type, and links to related guides."),
+        ("plan a local business website", "Local business site: services, service area, reviews, hours, photos, and call action."),
+        ("design a reading progress indicator", "Progress indicator: thin bar tied to scroll position, visible but not distracting, with reduced-motion respect."),
+        ("make a sticky navigation plan", "Sticky navigation: keep key links visible, avoid covering content, and collapse cleanly on small screens."),
+        ("plan a bakery website", "Bakery site: menu, daily specials, story, hours, location, gallery, and an order or contact action."),
+    ],
+    "gravion-vision": [
+        ("describe a sunset portrait image brief", "Image brief: warm sunset light, calm human portrait, soft background, natural expression, high detail."),
+        ("plan a product photo composition", "Composition: product centered, clean background, soft shadow, one prop for scale, and space for text."),
+        ("describe a mountain landscape image", "Image brief: layered mountain ridges, snow caps, morning haze, pine foreground, and a wide sky."),
+        ("plan an image of a busy market", "Image brief: colorful stalls, people in motion, warm light, shallow depth, and a clear focal subject."),
+        ("describe a minimal logo concept", "Logo concept: simple geometric mark, two colors, readable at small size, and balanced negative space."),
+        ("plan a food photography setup", "Food setup: window light, textured surface, steam if hot, garnish last, and a close crop."),
+        ("describe a night city image", "Image brief: city lights, wet street reflections, deep blue sky, and one bright sign as focal point."),
+        ("plan a portrait with window light", "Portrait plan: subject near window, soft side light, plain background, catchlights in eyes, calm pose."),
+        ("describe an ocean sunrise image", "Image brief: low sun over calm water, warm horizon glow, gentle waves, and a quiet shoreline."),
+        ("plan a book cover image concept", "Cover concept: strong central symbol, readable title space, limited palette, and mood matching the story."),
+        ("describe a forest path image", "Image brief: winding path, tall trees, filtered light, mist between trunks, and fresh green tones."),
+        ("plan a workspace desk image", "Desk image: tidy workspace, notebook, cup, soft daylight, and tools arranged by use."),
+        ("describe a desert dune image", "Image brief: smooth dune curves, long shadows, warm sand tones, and a small figure for scale."),
+        ("plan an image with strong shadows", "Shadow plan: hard side light, simple shapes, high contrast, and shadow lines guiding the eye."),
+        ("describe a rainy street portrait", "Image brief: umbrella, reflective pavement, soft neon glow, and a thoughtful expression."),
+        ("plan a macro flower image", "Macro plan: single bloom, dew drops, blurred background, fine petal detail, and gentle backlight."),
+        ("describe a snow village image", "Image brief: small houses, falling snow, warm windows, quiet street, and blue evening light."),
+        ("plan a sports action image", "Action plan: frozen peak moment, sharp subject, blurred background, and space in the direction of motion."),
+        ("describe a library interior image", "Image brief: tall shelves, warm lamps, reading table, dust in light beams, and quiet mood."),
+        ("plan an image for a music poster", "Poster image: bold performer silhouette, stage lights, crowd shapes, and clear title space."),
+        ("describe a coastal cliff image", "Image brief: rugged cliff, waves below, seabirds, dramatic clouds, and golden edge light."),
+        ("plan a still life with fruit", "Still life: arranged fruit, linen cloth, directional light, rich color, and soft shadows."),
+        ("describe a futuristic city image", "Image brief: clean towers, elevated walkways, soft dawn light, and small human figures for scale."),
+        ("plan a wedding photo composition", "Wedding composition: couple in soft light, uncluttered background, natural hands, and space around subjects."),
+        ("describe a campfire night image", "Image brief: warm fire glow, starry sky, silhouettes, sparks rising, and cozy contrast."),
+        ("plan an image of hands crafting", "Craft image: hands at work, tools in reach, textured materials, and warm workshop light."),
+        ("describe a misty lake image", "Image brief: still lake, low mist, reflected trees, pale sky, and a small boat."),
+        ("plan a fashion editorial image", "Editorial plan: bold pose, controlled palette, textured backdrop, and confident styling."),
+        ("describe a garden in spring image", "Image brief: fresh blooms, soft rain light, green leaves, and a path leading inward."),
+        ("plan an image with leading lines", "Leading lines plan: road or railing guiding toward the subject, balanced horizon, and clear depth."),
+        ("describe a lighthouse storm image", "Image brief: lighthouse beam, rough sea, dark clouds, spray, and dramatic contrast."),
+        ("plan a pet portrait image", "Pet portrait: eye-level camera, soft background, catchlights, favorite toy nearby, and patient timing."),
+        ("describe a sunrise field image", "Image brief: golden field, long shadows, dew sparkle, distant trees, and hopeful mood."),
+        ("plan an architecture image", "Architecture plan: strong geometry, clean lines, human scale, and light that reveals texture."),
+        ("describe a cozy reading corner image", "Image brief: armchair, lamp glow, stacked books, blanket, and quiet window light."),
+        ("plan an image for a travel guide", "Travel image: landmark, local life, clear sky, inviting foreground, and space for headline text."),
+        ("describe a waterfall image", "Image brief: silky falling water, mossy rocks, mist, lush green, and a balanced long exposure feel."),
+        ("plan a silhouette sunset image", "Silhouette plan: subject against bright sky, rim light on edges, simple horizon, and warm gradient."),
+        ("describe a workshop tools image", "Image brief: worn tools, wooden bench, task light, organized layout, and honest texture."),
+        ("plan an image with negative space", "Negative space plan: small subject, large calm background, one accent color, and room for text."),
+        ("describe a market spices image", "Image brief: bowls of colorful spices, textured cloth, warm light, and rich detail."),
+        ("plan a newborn safe photo concept", "Photo concept: soft blanket, gentle hands nearby, warm light, and a calm safe setup."),
+        ("describe a mountain cabin image", "Image brief: cabin in snow, chimney smoke, pine trees, warm windows, and quiet evening."),
+        ("plan an image for a science article", "Science image: clear subject, labeled space if needed, accurate colors, and uncluttered background."),
+        ("describe a beach family image", "Image brief: shoreline play, soft evening light, natural smiles, and wide open sky."),
+        ("plan a monochrome street image", "Monochrome plan: strong shapes, deep shadows, bright highlights, and a decisive moment."),
+        ("describe a greenhouse image", "Image brief: glass light, green rows, water droplets, warm air feel, and layered depth."),
+        ("plan an image showing teamwork", "Teamwork image: people around a table, shared notes, natural gestures, and bright workspace."),
+    ],
+    "gravion-video": [
+        ("plan a thirty second product video", "Video plan: hook in three seconds, problem, product in use, proof point, and clear closing action."),
+        ("outline a travel vlog opening", "Opening: place name, best view first, today's plan, and one question the video will answer."),
+        ("plan a tutorial video structure", "Tutorial structure: goal, materials, steps in order, common mistakes, recap, and practice prompt."),
+        ("describe a cinematic sunset scene", "Scene: slow camera move, warm backlight, subject silhouette, gentle wind, and quiet closing frame."),
+        ("plan a short cooking video", "Cooking video: finished dish first, ingredients, key steps, close-ups, timing notes, and final taste shot."),
+        ("outline a music video concept", "Music video: performance shots, story fragments, color theme, beat-matched cuts, and memorable final image."),
+        ("plan a fitness follow along video", "Fitness video: warm-up, clear demonstrations, timer overlays, modifications, and cool-down."),
+        ("describe a drone landscape sequence", "Sequence: wide reveal, slow push forward, orbit over landmark, descent, and calm end frame."),
+        ("plan a product unboxing video", "Unboxing: package, first look, contents, setup, first use, and honest closing impression."),
+        ("outline a short documentary segment", "Documentary segment: subject introduction, context, interview beats, evidence visuals, and reflective close."),
+        ("plan a wedding highlight video", "Highlight: preparations, vows, celebration moments, family reactions, and a gentle final shot."),
+        ("describe a rainy city video scene", "Scene: wet reflections, umbrella movement, traffic sounds, soft lights, and a reflective pause."),
+        ("plan a how it works explainer video", "Explainer: problem, simple diagram, step-by-step mechanism, example, and summary."),
+        ("outline a comedy sketch video", "Sketch: setup, escalation, visual gag, callback, and a clean ending beat."),
+        ("plan a nature timelapse video", "Timelapse: fixed frame, changing light, clouds moving, shadows shifting, and a calm final frame."),
+        ("describe a sports highlight sequence", "Sequence: build-up, key play, reaction, replay angle, and score context."),
+        ("plan a classroom lesson video", "Lesson video: objective, example, guided practice, check for understanding, and homework prompt."),
+        ("outline a brand story video", "Brand story: origin, problem faced, craft shown, customer result, and invitation."),
+        ("plan a screen recording tutorial", "Screen tutorial: state the task, zoom key areas, narrate each click, and end with verification."),
+        ("describe a night market video scene", "Scene: lights, steam, crowd movement, close-up food, and ambient sound."),
+        ("plan a short animation storyboard", "Storyboard: opening image, character goal, obstacle, turning point, resolution, and final frame."),
+        ("outline a podcast video format", "Podcast video: host intro, topic segments, guest close-ups, chapter markers, and closing summary."),
+        ("plan a home tour video", "Home tour: entry, main rooms, light and storage notes, outdoor space, and summary."),
+        ("describe a mountain hike video", "Hike video: trail start, climb effort, viewpoint reward, descent, and reflection."),
+        ("plan a safety training video", "Safety video: hazard, correct procedure, demonstration, common error, and check questions."),
+        ("outline a fashion lookbook video", "Lookbook: opening look, movement shots, detail close-ups, palette changes, and final lineup."),
+        ("plan a charity appeal video", "Appeal video: real need, human story, clear help method, impact proof, and respectful close."),
+        ("describe a workshop process video", "Process video: raw material, tools, key steps, quality check, and finished piece."),
+        ("plan a kids story video", "Story video: friendly narrator, simple scenes, repetition, gentle humor, and a kind ending."),
+        ("outline a news style report video", "Report: headline, context, voices, evidence, what happens next, and sign-off."),
+        ("plan a real estate walkthrough", "Walkthrough: exterior, entry, living spaces, kitchen, bedrooms, outdoor area, and summary."),
+        ("describe an ocean wave slow motion scene", "Scene: wave rising, crest detail, spray, slow fall, and foam patterns."),
+        ("plan a language learning video", "Language video: target phrases, listening practice, speaking pauses, recap, and homework."),
+        ("outline a game trailer video", "Trailer: world glimpse, core action, progression, challenge, title, and release note."),
+        ("plan a behind the scenes video", "Behind the scenes: setup, team roles, problem solved, final result, and credits."),
+        ("describe a forest morning video", "Scene: mist, birdsong, light through trees, path walk, and peaceful close."),
+        ("plan a financial basics explainer", "Explainer: one concept, everyday example, simple chart, caution note, and action step."),
+        ("outline a short interview video", "Interview: introduction, three focused questions, follow-ups, closing thought, and thanks."),
+        ("plan a festival recap video", "Recap: arrival, performances, crowd moments, food and craft, fireworks or finale."),
+        ("describe a city sunrise timelapse", "Timelapse: dark skyline, first light, traffic building, shadows moving, and full morning."),
+        ("plan a repair guide video", "Repair guide: problem, tools, safety, steps, test result, and maintenance tip."),
+        ("outline a motivational short video", "Short video: honest struggle, small step, progress montage, and encouraging close."),
+        ("plan a science experiment video", "Experiment video: question, prediction, setup, observation, explanation, and safety note."),
+        ("describe a snow day video scene", "Scene: falling snow, quiet streets, warm window, footprints, and soft sound."),
+        ("plan a book review video", "Review: book premise, strengths, weaknesses, who should read it, and final verdict."),
+        ("outline a community event video", "Event video: purpose, people, activities, highlights, thanks, and next event note."),
+        ("plan a vertical social video hook", "Hook: bold first frame, one promise, fast proof, captions, and a clear ending."),
+        ("describe a campfire storytelling scene", "Scene: firelight faces, story pause, sparks, night sounds, and reflective ending."),
+        ("plan an app launch teaser video", "Teaser: problem hook, quick product glimpse, key benefit, launch date, and a clear call to action."),
+    ],
+    "gravion-audio": [
+        ("plan a calm piano melody", "Melody plan: slow tempo, gentle chords, simple repeating motif, soft dynamics, and a peaceful ending."),
+        ("describe a cheerful pop song structure", "Song structure: bright intro, verse, pre-chorus lift, catchy chorus, bridge, and final chorus."),
+        ("plan a podcast intro sound", "Intro sound: short warm motif, clear voice entry, low background music, and clean fade."),
+        ("describe a relaxing rain soundscape", "Soundscape: steady rain, distant thunder, soft roof patter, and no sudden loud peaks."),
+        ("plan a folk guitar song outline", "Folk outline: fingerpicked intro, story verse, singalong chorus, harmonica break, and quiet close."),
+        ("describe an energetic workout track", "Track: strong beat, rising synths, short vocal chops, drops for effort peaks, and steady energy."),
+        ("plan a lullaby melody", "Lullaby: slow rocking rhythm, soft tone, simple descending phrases, and a gentle final note."),
+        ("describe a jazz trio arrangement", "Arrangement: piano chords, walking bass, brushed drums, traded solos, and a relaxed swing feel."),
+        ("plan a meditation audio session", "Session: breathing cues, soft drone, long pauses, gentle bells, and a slow return to awareness."),
+        ("describe a cinematic trailer music cue", "Cue: low pulse, rising strings, impact hits, silence before title, and a final resolved chord."),
+        ("plan a children's song structure", "Children's song: simple words, repeated chorus, clapping rhythm, call and response, and happy ending."),
+        ("describe a lofi study beat", "Beat: dusty chords, soft drums, vinyl warmth, mellow bass, and loops that stay unobtrusive."),
+        ("plan a choir harmony outline", "Harmony outline: melody in soprano, warm alto support, tenor movement, bass foundation, and balanced blend."),
+        ("describe a nature dawn soundscape", "Soundscape: birdsong layers, light breeze, distant water, and gradual morning brightness."),
+        ("plan a rock song arrangement", "Arrangement: guitar riff intro, driving verse, big chorus, solo break, and final chorus lift."),
+        ("describe a soothing string quartet piece", "Piece: gentle violin theme, viola warmth, cello grounding, and soft dynamic swells."),
+        ("plan a radio jingle concept", "Jingle: three-note hook, clear brand phrase, bright rhythm, and a memorable ending tag."),
+        ("describe an electronic dance track build", "Build: filtered intro, rising tension, beat drop, breakdown, second drop, and clean outro."),
+        ("plan a spoken word audio piece", "Spoken word: clear voice, sparse music bed, pauses for emphasis, and a reflective closing line."),
+        ("describe a blues guitar progression", "Progression: twelve-bar form, call-and-response licks, shuffle rhythm, and expressive bends."),
+        ("plan a wedding ceremony music list", "Music list: gentle prelude, processional, signing music, recessional, and reception background set."),
+        ("describe a suspense film score cue", "Cue: low strings, sparse piano notes, rising tension, sudden silence, and unresolved ending."),
+        ("plan a folk storytelling song", "Story song: character verse, journey chorus, turning point, moral verse, and soft final refrain."),
+        ("describe a bright ukulele tune", "Tune: sunny strumming, simple melody, light percussion, and a carefree bridge."),
+        ("plan a focus music session", "Focus session: steady ambient tones, no lyrics, slow chord changes, and consistent volume."),
+        ("describe a marching band arrangement", "Arrangement: bold brass melody, snare drive, woodwind runs, dynamic accents, and a strong finish."),
+        ("plan a holiday song outline", "Holiday outline: cozy intro, family verse, warm chorus, bell accents, and grateful closing."),
+        ("describe a solo cello meditation", "Meditation: slow bowed phrases, deep resonance, pauses, and a calm final harmonic."),
+        ("plan a podcast outro music", "Outro: recap motif, soft fade under credits, final tag, and clean silence."),
+        ("describe a funk groove track", "Groove: tight bassline, rhythmic guitar, horn stabs, pocket drums, and call-and-response breaks."),
+        ("plan a beginner piano practice piece", "Practice piece: five-finger patterns, simple rhythm, left-hand support, and short repeatable sections."),
+        ("describe a peaceful harp arpeggio", "Arpeggio: flowing notes, soft glissando, warm resonance, and gentle melodic peaks."),
+        ("plan a trailer voiceover script", "Voiceover: short lines, rising stakes, pauses before key words, and a strong final title line."),
+        ("describe a reggae rhythm track", "Track: offbeat chords, deep bass, relaxed drums, organ bubbles, and sunny melody."),
+        ("plan a sound logo concept", "Sound logo: two-note motif, warm timbre, quick recognition, and versions for short and long use."),
+        ("describe a dramatic orchestral opening", "Opening: low strings, brass swell, timpani pulse, rising theme, and a powerful first climax."),
+        ("plan a sleep story audio outline", "Sleep story: slow narration, soft background, simple imagery, long pauses, and fading ending."),
+        ("describe a playful cartoon music cue", "Cue: pizzicato strings, woodwind hops, comic pauses, and a cheerful ending sting."),
+        ("plan a vocal warm up routine", "Warm-up: breathing, humming, lip trills, scale patterns, and gentle range expansion."),
+        ("describe a desert wind soundscape", "Soundscape: soft wind, sand movement, distant birds, and wide open silence."),
+        ("plan a string orchestra rehearsal piece", "Rehearsal piece: clear sections, marked bowings, dynamic contrasts, and a confident finale."),
+        ("describe a synthwave night drive track", "Track: pulsing bass, bright arpeggios, gated drums, neon mood, and a soaring lead."),
+        ("plan a family singalong song", "Singalong: familiar structure, easy chorus, clapping breaks, and verses everyone can join."),
+        ("describe a quiet library ambience", "Ambience: page turns, soft footsteps, distant whispers, and calm room tone."),
+        ("plan a motivational speech audio", "Speech audio: clear voice, supportive music under key lines, pauses, and an uplifting close."),
+        ("describe a bamboo flute melody", "Melody: breathy tone, ornamented phrases, nature imagery, and a peaceful cadence."),
+        ("plan a short audio drama scene", "Audio drama: setting sounds, two voices, rising conflict, resolution, and closing ambience."),
+        ("describe a joyful brass fanfare", "Fanfare: bright trumpet calls, full brass answer, rhythmic drive, and a triumphant final chord."),
+        ("plan an upbeat launch video track", "Track: bright beat, rising synths, short hook, energy peaks for reveals, and a clean ending."),
+    ],
+    "gravion-shield": [
+        ("explain strong password habits", "Use long unique passwords, store them in a password manager, and enable multi-factor authentication where available."),
+        ("plan a phishing awareness lesson", "Lesson: show sender checks, link inspection, urgency traps, reporting steps, and practice examples."),
+        ("describe how to secure a home router", "Change default admin credentials, update firmware, use strong wireless encryption, and disable unused remote access."),
+        ("explain multi factor authentication benefits", "Multi-factor authentication adds a second proof, so a stolen password alone is usually not enough to sign in."),
+        ("plan a backup routine for a small team", "Back up important data on a schedule, keep an offline copy, encrypt sensitive backups, and test restores."),
+        ("describe safe software update habits", "Install updates from trusted sources, restart when required, and remove software that no longer receives fixes."),
+        ("explain least privilege access", "Least privilege gives each account only the access needed for its job, reducing damage if it is misused."),
+        ("plan an incident response checklist", "Checklist: contain, preserve evidence, assess impact, remove the cause, recover safely, and record lessons."),
+        ("describe how to spot a suspicious email", "Check sender address, unexpected attachments, urgent pressure, spelling patterns, and verify requests through another channel."),
+        ("explain encryption in simple terms", "Encryption scrambles readable data with a key so only authorized holders of the key can read it."),
+        ("plan a secure onboarding process", "Onboarding: verify identity, issue least-privilege accounts, enable multi-factor authentication, and train on reporting."),
+        ("describe password manager benefits", "A password manager creates unique passwords, stores them encrypted, and reduces reuse across accounts."),
+        ("explain why public wireless needs care", "Public wireless can expose traffic on poorly protected networks; prefer trusted networks and encrypted connections."),
+        ("plan a vulnerability management routine", "Inventory assets, scan regularly, prioritize by risk, patch in windows, verify fixes, and track exceptions."),
+        ("describe safe file sharing practices", "Share with named people, set expiry when possible, avoid public links for sensitive files, and review access."),
+        ("explain access reviews for teams", "Access reviews confirm who still needs each permission and remove stale or excessive access."),
+        ("plan a security awareness calendar", "Calendar: monthly topics, short exercises, phishing practice, policy reminders, and measurable completion."),
+        ("describe how to protect backups", "Protect backups with encryption, separate credentials, offline copies, and restore tests."),
+        ("explain secure coding input validation", "Validate input type, length, and range on the server, and encode output for its context."),
+        ("plan a device hardening checklist", "Hardening: update system, remove unused apps, enable disk encryption, set screen lock, and review permissions."),
+        ("describe social engineering warning signs", "Warning signs include secrecy, urgency, authority pressure, unusual requests, and bypassing normal process."),
+        ("explain why logs matter for security", "Logs show who did what and when, helping detection, investigation, and accountability."),
+        ("plan a secure offboarding process", "Offboarding: disable accounts promptly, revoke tokens, recover devices, transfer ownership, and review shared secrets."),
+        ("describe safe browsing habits", "Keep the browser updated, check site addresses, avoid suspicious downloads, and use unique passwords."),
+        ("explain the value of security testing", "Security testing finds weaknesses before attackers do and verifies that fixes actually work."),
+        ("plan a data classification scheme", "Classify data by sensitivity, label handling rules, limit access, and review classifications as use changes."),
+        ("describe how to handle a lost phone", "Lock the device remotely, change important passwords, revoke sessions, notify the provider, and monitor accounts."),
+        ("explain secure session management", "Use unpredictable session ids, expire idle sessions, protect cookies, and invalidate sessions after logout."),
+        ("plan a patch communication message", "Message: affected systems, maintenance window, expected impact, rollback plan, and support contact."),
+        ("describe defense in depth", "Defense in depth layers controls so one failure does not expose everything."),
+        ("explain why secrets must not be in code", "Secrets in code can leak through repositories and logs; store them in a managed secret store with rotation."),
+        ("plan a secure remote work setup", "Remote setup: updated device, encrypted disk, strong authentication, private network use, and screen privacy."),
+        ("describe account recovery safety", "Use strong recovery options, protect recovery email, review sessions, and alert on recovery changes."),
+        ("explain risk assessment basics", "Risk assessment identifies assets, threats, likelihood, impact, existing controls, and treatment choices."),
+        ("plan a security metrics dashboard", "Dashboard: patch age, incident count, training completion, backup success, and overdue access reviews."),
+        ("describe safe attachment handling", "Verify unexpected attachments with the sender, scan files, and open risky documents in protected viewers."),
+        ("explain network segmentation benefits", "Segmentation limits movement between systems, so one compromised area cannot reach everything."),
+        ("plan a tabletop exercise scenario", "Exercise: present a realistic incident, assign roles, walk decisions, note gaps, and assign follow-up actions."),
+        ("describe secure API key handling", "Keep API keys server-side, scope them narrowly, rotate them, monitor use, and revoke leaked keys immediately."),
+        ("explain why default credentials are risky", "Default credentials are widely known, so attackers try them first; change them during setup."),
+        ("plan a privacy review for an app", "Privacy review: data collected, purpose, retention, sharing, user controls, and deletion path."),
+        ("describe endpoint protection basics", "Endpoint protection combines updates, anti-malware, disk encryption, firewall rules, and device management."),
+        ("explain secure error messages", "Error messages should help users without revealing internal paths, queries, or sensitive system details."),
+        ("plan a security champion program", "Champions promote secure practices in teams, review designs early, and share lessons from incidents."),
+        ("describe how to verify a payment request", "Verify payment changes through a known contact, check bank details independently, and require dual approval."),
+        ("explain asset inventory importance", "You cannot protect what you do not know exists; inventory hardware, software, accounts, and owners."),
+        ("plan a secure software release checklist", "Release checklist: tests pass, dependencies reviewed, secrets absent, backups ready, monitoring enabled, rollback planned."),
+        ("describe threat modeling steps", "Threat modeling maps assets and data flows, lists threats, rates risk, and chooses mitigations."),
+        ("explain why training needs practice", "Practice turns knowledge into habits, so short exercises beat long lectures for security behavior."),
+        ("plan a secure data deletion process", "Deletion: identify copies, delete securely, verify removal, log completion, and handle backups by policy."),
+        ("describe monitoring alert triage", "Triage: confirm the alert, scope affected assets, contain risk, investigate cause, and document outcome."),
+        ("explain configuration drift risks", "Configuration drift creates inconsistent security settings; use baselines and automated checks to detect it."),
+        ("plan a supplier security review", "Supplier review: data access, security controls, incident process, contract terms, and exit plan."),
+        ("describe secure meeting practices", "Use verified meeting links, control screen sharing, avoid sensitive details in chat, and confirm participants."),
+        ("explain why encryption keys need rotation", "Rotation limits exposure if a key leaks and supports retiring old keys safely."),
+        ("plan a security incident communication", "Communication: state facts, impact, actions taken, what users should do, and when the next update arrives."),
+    ],
+    "gravion-agent": [
+        ("plan an agent that summarizes email", "Agent plan: read approved messages, group by topic, draft summaries, flag urgent items, and ask before sending anything."),
+        ("design an agent for meeting notes", "Agent design: capture notes, extract decisions and owners, draft follow-ups, and store the approved summary."),
+        ("plan an agent that tracks tasks", "Agent plan: collect tasks, sort by deadline, remind owners, detect blockers, and report progress."),
+        ("describe guardrails for tool using agents", "Guardrails: allowed tools, approval points, spending limits, data boundaries, logging, and stop conditions."),
+        ("plan an agent for research briefs", "Agent plan: define the question, gather sources, compare claims, cite evidence, and produce a brief."),
+        ("design an agent that drafts replies", "Agent design: read context, draft in the right tone, check facts, and wait for human approval before sending."),
+        ("plan an agent for calendar scheduling", "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely."),
+        ("describe how agents should handle errors", "On error, an agent should stop risky actions, record what happened, try safe recovery, and ask for help when unsure."),
+        ("plan an agent that monitors prices", "Agent plan: watch approved items, record changes, alert on thresholds, and avoid purchases without approval."),
+        ("design an agent for document filing", "Agent design: classify documents, name them consistently, store in the right folder, and log every move."),
+        ("plan an agent that prepares reports", "Agent plan: gather data, validate totals, draft charts, write findings, and flag missing inputs."),
+        ("describe agent approval checkpoints", "Approval checkpoints pause the agent before external messages, payments, deletions, or irreversible changes."),
+        ("plan an agent for customer support triage", "Agent plan: classify requests, suggest answers, escalate sensitive cases, and track resolution quality."),
+        ("design an agent that reviews code changes", "Agent design: read the diff, run checks, comment on risks, verify tests, and summarize findings."),
+        ("plan an agent for travel planning", "Agent plan: collect preferences, compare routes and stays, check constraints, and present options before booking."),
+        ("describe agent memory boundaries", "Agent memory should store only approved facts, expire stale items, and let users review or delete entries."),
+        ("plan an agent that organizes files", "Agent plan: inventory files, propose folders, move only after approval, and keep an undo log."),
+        ("design an agent for learning plans", "Agent design: assess level, set goals, schedule practice, quiz progress, and adjust difficulty."),
+        ("plan an agent that checks website uptime", "Agent plan: probe approved pages, record status, alert on failures, and summarize incidents."),
+        ("describe safe agent tool permissions", "Tool permissions should be narrow, time-limited when possible, logged, and separated by task."),
+        ("plan an agent for invoice processing", "Agent plan: extract invoice fields, match orders, flag mismatches, and route approvals before payment."),
+        ("design an agent that writes summaries", "Agent design: identify audience, extract key points, preserve numbers, and keep uncertainty visible."),
+        ("plan an agent for social media drafts", "Agent plan: draft posts from approved topics, check tone, schedule only after approval, and track results."),
+        ("describe agent evaluation methods", "Evaluate agents with task success, error rate, approval quality, cost, latency, and user satisfaction."),
+        ("plan an agent that manages reminders", "Agent plan: capture commitments, set reminders, snooze respectfully, and confirm completion."),
+        ("design an agent for data cleanup", "Agent design: profile data, propose fixes, preview changes, apply approved edits, and keep backups."),
+        ("plan an agent that compares products", "Agent plan: define criteria, gather specs, normalize prices, highlight trade-offs, and recommend by use case."),
+        ("describe agent stop conditions", "Stop conditions include missing data, policy conflict, repeated failure, budget limit, and user cancellation."),
+        ("plan an agent for onboarding checklists", "Agent plan: create accounts checklist, schedule training, assign buddy tasks, and track completion."),
+        ("design an agent that monitors news topics", "Agent design: follow approved topics, deduplicate stories, summarize changes, and cite sources."),
+        ("plan an agent for form filling help", "Agent plan: gather required fields, validate entries, show a review screen, and submit only after approval."),
+        ("describe agent logging practices", "Log goals, tool calls, decisions, approvals, errors, and outcomes without storing secrets."),
+        ("plan an agent that prepares presentations", "Agent plan: outline story, draft slides, add evidence, check readability, and export after review."),
+        ("design an agent for inventory alerts", "Agent design: track stock levels, forecast shortages, alert owners, and suggest reorder quantities."),
+        ("plan an agent that translates messages", "Agent plan: detect language, translate meaning, preserve tone, and flag uncertain phrases."),
+        ("describe multi agent coordination", "Coordination needs clear roles, shared state, handoff rules, conflict resolution, and one accountable owner."),
+        ("plan an agent for bug report triage", "Agent plan: reproduce steps, classify severity, find duplicates, assign owners, and track fixes."),
+        ("design an agent that plans workouts", "Agent design: ask goals and limits, schedule sessions, track progress, and adjust for recovery."),
+        ("plan an agent for expense tracking", "Agent plan: capture receipts, categorize spending, flag unusual items, and summarize monthly totals."),
+        ("describe agent privacy controls", "Privacy controls limit data access, mask sensitive fields, set retention, and record every disclosure."),
+        ("plan an agent that drafts job applications", "Agent plan: match experience to the role, draft honestly, tailor keywords, and ask before submitting."),
+        ("design an agent for study flashcards", "Agent design: extract concepts, write clear cards, schedule reviews, and retire mastered cards."),
+        ("plan an agent that checks accessibility", "Agent plan: scan pages, report contrast and labels, suggest fixes, and verify after changes."),
+        ("describe agent cost controls", "Cost controls set budgets, cache repeated work, choose smaller tools first, and report spend."),
+        ("plan an agent for event coordination", "Agent plan: track venue, speakers, schedule, registrations, reminders, and day-of checklist."),
+        ("design an agent that audits spreadsheets", "Agent design: check formulas, totals, duplicates, outliers, and produce a findings list."),
+        ("plan an agent for knowledge base updates", "Agent plan: find outdated pages, draft updates, route approvals, publish, and record changes."),
+        ("describe agent handoff to humans", "Handoff should include goal, progress, evidence, blockers, and the exact decision needed."),
+        ("plan an agent that files reports", "Agent plan: collect reports, validate them, file by date and topic, log each location, and flag missing reports."),
+    ],
+    "gravion-omni": [
+        ("route a coding request to the right module", "Route coding requests to the coder module with the goal, constraints, and test expectations preserved."),
+        ("route an image request to the right module", "Route image requests to the image module with subject, style, size, and quality details preserved."),
+        ("route a security question to the right module", "Route security questions to the cyber module with assets, context, and defensive goal preserved."),
+        ("combine chat and support in one answer", "Answer conversationally first, then give the support steps, escalation path, and a clear next action."),
+        ("plan a website with copy and images", "Plan the site structure, draft page copy, define image briefs, and keep one consistent visual style."),
+        ("create a video with music direction", "Plan the video scenes, pacing, narration, music mood, and sound cues as one production brief."),
+        ("turn a research brief into an agent plan", "Convert findings into agent steps with tools, checks, approvals, and a measurable outcome."),
+        ("coordinate code and security review", "Build the code change, then review it for input validation, secrets, access control, and tests."),
+        ("plan a product launch across modules", "Launch plan: website, visuals, video, support answers, agent checklist, and security review."),
+        ("summarize then create a presentation", "Summarize the source, choose three key points, draft slides, and add speaker notes."),
+        ("write support answers with a friendly tone", "Use a warm tone, answer the exact question, give steps, and offer human help when needed."),
+        ("design a brand kit with logo and site", "Brand kit: logo direction, colors, typography, site layout, and image style rules."),
+        ("plan a course with video and quizzes", "Course plan: lessons, video outlines, practice tasks, quizzes, and a final project."),
+        ("audit a website for content and safety", "Audit content clarity, accessibility, broken links, privacy notes, and security headers."),
+        ("create a social campaign package", "Campaign package: message, visuals, short video script, posting plan, and response templates."),
+        ("turn meeting notes into tasks and code issues", "Extract decisions, create tasks with owners, and draft code issues with reproduction steps."),
+        ("plan a customer onboarding journey", "Journey: welcome message, setup guide, first success task, support path, and feedback check."),
+        ("combine data report with executive summary", "Report: headline result, evidence chart, risks, recommendation, and appendix details."),
+        ("design an app concept with agent features", "Concept: user goal, core screens, agent actions, guardrails, and success metrics."),
+        ("prepare a multilingual support pack", "Support pack: translated answers, tone notes, escalation phrases, and review checklist."),
+        ("plan a podcast with visuals and clips", "Podcast plan: episode outline, cover image brief, short clip moments, and show notes."),
+        ("review a project across quality dimensions", "Review correctness, clarity, security, accessibility, performance, and documentation."),
+        ("create a training plan with media", "Training plan: objectives, lessons, visuals, practice, assessment, and feedback loop."),
+        ("coordinate a research and writing workflow", "Workflow: question, sources, outline, draft, fact check, revision, and final summary."),
+        ("plan a safe automation rollout", "Rollout: pilot scope, approvals, monitoring, rollback plan, training, and gradual expansion."),
+        ("design a dashboard with alerts", "Dashboard: key metrics, alert rules, drill-down views, and ownership for each signal."),
+        ("turn a support ticket into a knowledge article", "Article: symptom, cause, solution steps, prevention, and related links."),
+        ("plan a creative campaign with video", "Campaign: audience, message, hero visual, video script, channels, and measurement."),
+        ("combine code generation with documentation", "Generate the code, add usage examples, document limits, and include tests."),
+        ("prepare a security aware website launch", "Launch: content ready, forms validated, privacy page, backups, monitoring, and rollback plan."),
+        ("create an agent workflow for reports", "Workflow: collect data, validate, draft report, route approval, publish, and archive evidence."),
+        ("plan a product demo across formats", "Demo: script, visuals, short video, live walkthrough notes, and follow-up material."),
+        ("design a learning app with chat support", "Learning app: lessons, practice, chat help, progress tracking, and teacher view."),
+        ("coordinate image and video consistency", "Keep palette, typography, subject styling, and pacing consistent across image and video outputs."),
+        ("turn user feedback into product tasks", "Group feedback by theme, estimate impact, draft tasks, and prioritize by user value."),
+        ("plan a complete small business toolkit", "Toolkit: website, booking, support answers, social content, invoicing checklist, and security basics."),
+        ("create a research dashboard brief", "Brief: questions, data sources, charts, filters, update cadence, and decision use."),
+        ("combine music and video mood direction", "Match tempo, color, pacing, and emotional arc so music and visuals reinforce each other."),
+        ("prepare an incident response communication pack", "Pack: status update, user guidance, internal checklist, evidence log, and follow-up report."),
+        ("design a personal productivity system", "System: capture inbox, priorities, calendar blocks, review ritual, and agent reminders."),
+    ],
+}
+
+MODEL_NAMES = {
+    "gravion-chat": "Gravion Chat",
+    "gravion-code": "Gravion Code",
+    "gravion-builder": "Gravion Builder",
+    "gravion-vision": "Gravion Vision",
+    "gravion-video": "Gravion Video",
+    "gravion-audio": "Gravion Audio",
+    "gravion-shield": "Gravion Shield",
+    "gravion-agent": "Gravion Agent",
+    "gravion-omni": "Gravion Omni",
+}
+
+MEDIA_NOTES = {
+    "gravion-vision": " The trained local weights guide image briefs and prompt interpretation; the local procedural renderer remains the offline image path.",
+    "gravion-video": " The trained local weights guide video briefs and scene planning; the local development renderer remains the offline clip path.",
+    "gravion-audio": " The trained local weights guide music briefs and arrangement planning; the music module's local paths remain available offline.",
+    "gravion-builder": " The trained local weights guide website briefs; the local static-site builder remains the offline build path.",
+    "gravion-agent": " The trained local weights guide agent briefs and plans; execution remains bounded by deployment policy and approvals.",
+}
+
+
+def build_examples(model_id: str) -> list[tuple[str, str]]:
+    topics = list(TOPICS[model_id])
+    if model_id == "gravion-omni":
+        for other, other_topics in TOPICS.items():
+            if other != "gravion-omni":
+                topics.extend(other_topics)
+    examples: list[tuple[str, str]] = []
+    seen: set[tuple[str, str]] = set()
+    name = MODEL_NAMES[model_id]
+    for phrase, completion in topics:
+        prompts = (
+            phrase,
+            f"please {phrase}",
+            f"{name.lower()} {phrase}",
+            f"help me {phrase}",
+        )
+        for prompt in prompts:
+            pair = (prompt, completion)
+            if pair not in seen:
+                seen.add(pair)
+                examples.append(pair)
+    return examples
+
+
+def main() -> None:
+    catalog_path = DATA / "models.json"
+    catalog = json.loads(catalog_path.read_text(encoding="utf-8"))
+    entries = {entry["id"]: entry for entry in catalog["models"]}
+
+    for model_id in MODEL_NAMES:
+        examples = build_examples(model_id)
+        seed_path = DATA / f"{model_id}-seed.jsonl"
+        seed_path.write_text(
+            "".join(
+                json.dumps({"prompt": p, "completion": c}, sort_keys=True) + "\n"
+                for p, c in examples
+            ),
+            encoding="utf-8",
+        )
+        epochs = 96 if model_id == "gravion-omni" else 160
+        model = train_local_core(
+            examples,
+            model_id=model_id,
+            source=f"data/{model_id}-seed.jsonl",
+            epochs=epochs,
+        )
+        weights_path = DATA / f"{model_id}-weights.json"
+        report = save_weights(model, weights_path)
+        classes = len({completion for _, completion in examples})
+        entry = entries[model_id]
+        entry["weights_status"] = "included"
+        entry["parameter_count"] = int(report["parameter_count"])
+        entry["weights_artifact"] = f"data/{model_id}-weights.json"
+        entry["weights_sha256"] = str(report["weights_sha256"])
+        entry["notes"] = (
+            f"Includes local sparse n-gram classifier weights "
+            f"({int(report['parameter_count']):,} parameters counted from stored "
+            f"quantized weights) trained only from the bundled Gravion-owned "
+            f"{MODEL_NAMES[model_id]} seed corpus ({len(examples)} examples, "
+            f"{classes} answer classes), with deterministic fallback when no "
+            f"confident trained match is available. It runs offline with no "
+            f"network and no API key."
+            + MEDIA_NOTES.get(model_id, "")
+        )
+        print(
+            f"{model_id}: examples={len(examples)} classes={classes} "
+            f"parameters={report['parameter_count']}"
+        )
+
+    catalog["comment"] = (
+        "The Gravion model registry — Gravion AI's own model entries and "
+        "variants. Status 'available' means the registry entry and "
+        "module/bundle packaging path can be resolved. The weights_status "
+        "field is authoritative for weights: every bundled Gravion entry "
+        "includes local sparse n-gram classifier weights trained only from "
+        "its bundled Gravion-owned seed corpus, with a deterministic "
+        "fallback. A deployment may register private variants by placing "
+        "its own models.json in the deployment home; the same schema and "
+        "validation apply."
+    )
+    catalog_path.write_text(
+        json.dumps(catalog, indent=4, sort_keys=True) + "\n", encoding="utf-8"
+    )
+
+
+if __name__ == "__main__":
+    main()

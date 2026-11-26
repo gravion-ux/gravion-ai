@@ -1,0 +1,2865 @@
+{
+  "architecture": "sparse n-gram embedding + direct linear softmax classifier",
+  "bias": [
+    -0.25227088,
+    0.26589656,
+    -0.1704662,
+    -0.21050744,
+    -0.77963442,
+    1.80299544,
+    -0.12659135,
+    0.87981838,
+    1.1890707,
+    0.36173061,
+    1.19148993,
+    0.61499918,
+    -0.78861535,
+    -0.42658398,
+    -0.33058289,
+    -1.33544564,
+    -0.33488736,
+    -1.60376143,
+    -0.58811903,
+    -0.06971511,
+    -2.53121901,
+    0.29485932,
+    -0.35402706,
+    -0.1883328,
+    0.61795253,
+    -0.3621414,
+    -0.82003319,
+    1.2457875,
+    1.20579982,
+    -0.19796158,
+    0.8774699,
+    -0.6664114,
+    -0.88088059,
+    0.93067253,
+    1.47134471,
+    -0.42155558,
+    -0.44018686,
+    -1.3069005,
+    -1.01377678,
+    -0.4225803,
+    0.86044961,
+    -1.69240761,
+    1.40087497,
+    -0.67878664,
+    1.32035708,
+    -0.10126184,
+    -0.0491576,
+    0.44537011,
+    2.16851354
+  ],
+  "classes": [
+    "Ambience: page turns, soft footsteps, distant whispers, and calm room tone.",
+    "Arpeggio: flowing notes, soft glissando, warm resonance, and gentle melodic peaks.",
+    "Arrangement: bold brass melody, snare drive, woodwind runs, dynamic accents, and a strong finish.",
+    "Arrangement: guitar riff intro, driving verse, big chorus, solo break, and final chorus lift.",
+    "Arrangement: piano chords, walking bass, brushed drums, traded solos, and a relaxed swing feel.",
+    "Audio drama: setting sounds, two voices, rising conflict, resolution, and closing ambience.",
+    "Beat: dusty chords, soft drums, vinyl warmth, mellow bass, and loops that stay unobtrusive.",
+    "Build: filtered intro, rising tension, beat drop, breakdown, second drop, and clean outro.",
+    "Children's song: simple words, repeated chorus, clapping rhythm, call and response, and happy ending.",
+    "Cue: low pulse, rising strings, impact hits, silence before title, and a final resolved chord.",
+    "Cue: low strings, sparse piano notes, rising tension, sudden silence, and unresolved ending.",
+    "Cue: pizzicato strings, woodwind hops, comic pauses, and a cheerful ending sting.",
+    "Fanfare: bright trumpet calls, full brass answer, rhythmic drive, and a triumphant final chord.",
+    "Focus session: steady ambient tones, no lyrics, slow chord changes, and consistent volume.",
+    "Folk outline: fingerpicked intro, story verse, singalong chorus, harmonica break, and quiet close.",
+    "Groove: tight bassline, rhythmic guitar, horn stabs, pocket drums, and call-and-response breaks.",
+    "Harmony outline: melody in soprano, warm alto support, tenor movement, bass foundation, and balanced blend.",
+    "Holiday outline: cozy intro, family verse, warm chorus, bell accents, and grateful closing.",
+    "Intro sound: short warm motif, clear voice entry, low background music, and clean fade.",
+    "Jingle: three-note hook, clear brand phrase, bright rhythm, and a memorable ending tag.",
+    "Lullaby: slow rocking rhythm, soft tone, simple descending phrases, and a gentle final note.",
+    "Meditation: slow bowed phrases, deep resonance, pauses, and a calm final harmonic.",
+    "Melody plan: slow tempo, gentle chords, simple repeating motif, soft dynamics, and a peaceful ending.",
+    "Melody: breathy tone, ornamented phrases, nature imagery, and a peaceful cadence.",
+    "Music list: gentle prelude, processional, signing music, recessional, and reception background set.",
+    "Opening: low strings, brass swell, timpani pulse, rising theme, and a powerful first climax.",
+    "Outro: recap motif, soft fade under credits, final tag, and clean silence.",
+    "Piece: gentle violin theme, viola warmth, cello grounding, and soft dynamic swells.",
+    "Practice piece: five-finger patterns, simple rhythm, left-hand support, and short repeatable sections.",
+    "Progression: twelve-bar form, call-and-response licks, shuffle rhythm, and expressive bends.",
+    "Rehearsal piece: clear sections, marked bowings, dynamic contrasts, and a confident finale.",
+    "Session: breathing cues, soft drone, long pauses, gentle bells, and a slow return to awareness.",
+    "Singalong: familiar structure, easy chorus, clapping breaks, and verses everyone can join.",
+    "Sleep story: slow narration, soft background, simple imagery, long pauses, and fading ending.",
+    "Song structure: bright intro, verse, pre-chorus lift, catchy chorus, bridge, and final chorus.",
+    "Sound logo: two-note motif, warm timbre, quick recognition, and versions for short and long use.",
+    "Soundscape: birdsong layers, light breeze, distant water, and gradual morning brightness.",
+    "Soundscape: soft wind, sand movement, distant birds, and wide open silence.",
+    "Soundscape: steady rain, distant thunder, soft roof patter, and no sudden loud peaks.",
+    "Speech audio: clear voice, supportive music under key lines, pauses, and an uplifting close.",
+    "Spoken word: clear voice, sparse music bed, pauses for emphasis, and a reflective closing line.",
+    "Story song: character verse, journey chorus, turning point, moral verse, and soft final refrain.",
+    "Track: bright beat, rising synths, short hook, energy peaks for reveals, and a clean ending.",
+    "Track: offbeat chords, deep bass, relaxed drums, organ bubbles, and sunny melody.",
+    "Track: pulsing bass, bright arpeggios, gated drums, neon mood, and a soaring lead.",
+    "Track: strong beat, rising synths, short vocal chops, drops for effort peaks, and steady energy.",
+    "Tune: sunny strumming, simple melody, light percussion, and a carefree bridge.",
+    "Voiceover: short lines, rising stakes, pauses before key words, and a strong final title line.",
+    "Warm-up: breathing, humming, lip trills, scale patterns, and gentle range expansion."
+  ],
+  "classifier": {
+    "data": "xcfV9cgO3hYnLWD+yQ791gIksdvHEwsfPMwbtNzuI/cJ4CvlIOgHEmkR6/+r51QEDzTx/RQgINVGLLQuGKf5Ik8G5RsZBSc8Vz/b5OTmIMsqz+YiGSEF8Cjl/MJADf8z8+sU/+nP0GHd1DP1L00m6NsVDy3vy0EjzfMaxfKr8y0ZQz/1KBE5xwcFOAEyxxoFANHaNvG8NNr93gPu4U/bvfYAIQHZHzcPJ/8LAwYp8owmuAkDL8Il0u04/OvZSybk8T8O/LcZD0f4GiLmzVxEBOHDuNcRAyXO1SnKVg0o5f0nCZMGVSM9yPHb8iAN3DsGN///TAWxwzbdQSrI4OHn0tUR4c1nDxjsFvf0CkowyczdNtjfcwxFufEGBS8NE/FS4Bcr6+RW0b8WByI4Dy/vQuH/SrPM8CvEBcbsECbLAxoSCR3KDDbixtkh1S51/LT1EsALCbcB5A2pNx/9uRId+T4J8cQNY9cN39vSDRHxud9Y7NTV2+rFKdgp5/IMJN27Kcog0N7q5b3O/NbbGD/O9EHjJEPE2QgSAMb+DMPMIsDV0wHV9PTtwPoPKkYJdcIHIxA/whEG0AcSFw6yzQnh2PnyURcoSw0ODMztAr3P1v426fYMvSXvMffcxALPFl3wqPQ6wQMZztrjIQAD3dLi1sKdEgDnIQIAGgXURiQLDU7kQAgrEG0ruckA4wL259c18+TrI2re3g/739szR/cXAjwn9xMkEAf4+txJCvLMPb4ILx3dJQ/FyeHA4f0g0xdgDxP5FbizLOI4OSfMFBdL8BUBBVTI8f1OMRFsDwsKQAn6FBzoqIjSKDbXK/nzASP+reEaAyfh3/HMz9TUIRPUV9UIM94ORCs46CO6zCTx/hAI+9ryFH8MvQHLKUUXuBAOwDHyIVXF9wTEE/US8tDuCgMTHDrwtAN0OBLj2/HI9v4s5dVP4Oj5KeVL4x3z+dAl/CXYJSq840YEIT3jEsLnT+1G4wwo48tHHgD916xAE+3AAAEs0foc9QPOtjEzC8Xq9CW/5cn74dbl0yf//xz0NQ==",
+    "encoding": "int8-base64",
+    "scale": 0.038183760455274204
+  },
+  "dim": 16,
+  "direct": {
+    "data": "CQwKCgj/C7T7+vv8CAjzCAkECAsZDAYK+QoF/f0J/AgH//8KCQUGDP0Frw3/tgsN/ufo5x7nFefeEuTk5egcBegcFxweK+ga5xLoGuIT5hIcGhHhHejo6CASFyXo5eDoIRcdHh7oG+UeGuUREhIb6OoZ6ero6eog6B7jHecV5R7l6OnnGOkcGBnn5urWGxInHufj6OnpIOgY6OMU5eXn6R4H6h4YHiAt6RzoE+kc4xbnFR4cFeIf6enpIxQZzunn5ekjGSAjIuof6CPQ5xQWFR/q7B/r7Orr7CTrIuUh6RrnIufq6+oc6yAcHeno7OEjGNAi6eb+/v71/ED8+fP7+/j88/L+8vbz8/v+9/7x/vb68P7yTfQ8+/D8/f5NPvf2/Pn8/fDw9/b4Vfjs+PdM+Pb49+08+OlS7Ovs9+348Pbv9+z37+9a7Vfn9/f38O5P8vj4+Pfu7vTx8Pnu+PE6+fTy8vH5+Vj5+vr5+u758Pnw+fD38fj5+ffy+PHv8fn4+UdeTkjw+Pj3+Pj2+PP3+fVS81P4Z/f48/Xp9PT29PZU+GT29vn18Pb0+Pb4+fjz9ff4+Pf5+PLy/Pz98P3x/Pzy/Pz8/PFY/GNd9fX0/PT99fz0/PX89vTwWvvy/P389PXh9v38/Pzz9fr7+vb69fr69fr5+vr3+Pr2+Pbz9vr1+fb6+F1V+lT29fb59/v7+vVZ+Pj8+vv59fb8+vv8+/v6Q/z7+/v6/fz5/Pz8/P37/Pv8+/z6+/v7/Pz5+vv7+/v7+/xM9/dS+/z7+fZjbGb6+vr5+fj6+Pv6+Pv5+/r7+Pv5+/b79/r2+/v5+/j69/f4+/v5+/b4+/f7/Pb49/32/ff6/VBdU/f9/fj9/f79/fX+9vv3/Pb9+P3+/v33/vf59/39/vz4+Pv3/f37+/v5+/n6+/n6+vr7+Pn59vf3+HL4ZGn3+vf4+Pn5+Pf4+vj6+vv39/j7+/n9+vj48/P2/fb98Pn99vX48v3+9f79/f398/33/fP99/z0/f39/ff9ZmRl/f39/PL3+fT9/P7+/vf++v7++P7+/v76V/758fr7+v76/vv++/77/vv79fr++f7+/vv7Zf3+//7++/r+/v77/vn+/fn9/v7+8/r++ftu+fj++f73/mn++v759vr5/vj//v75+fr8/v7+/vn1/v/++f34/v73/v7+/vr5/vn59235/vj++f76/vn++Pj4+P5y/v7+9vn5/P7+/f74+P38/P78/ftJ/v38/Pz+/vr+/v7+/vz9/P78/vz9/P7+/v38/vz8/P79/vX4+Vf8/v7+/v73/vr+/vj+/v7++lf++fH6+/r++v77/vv++/77+/X6/vn+/v77+2X9/v/+/vv6+/r7+vv8/P37/Pv8+fxp/Pz1/f39+fv7/ff8/P14/P37/Pz9/Pz7/fzt/fz8/fr9/Pn7+/38+/r9/Pv7+vn4/Pv8/Pr7/Hr8+fv6+vv8+fxy+/v8/Pv7+/r7+/37+v38+fr6+/r++v36/P5W91f7/v77/v7+/v75/vn9+/76/vv+//7++/76+/v+/v79+/r8+v7+/v7++v76/v76/v7+/vv6/vr6+vjy/mz++f77/V7+9/r4+v36/v7++vf6/P7+/v75+v7+/vf++v7++P7+/v76V/758fr7+v76/vv++/77/vv79fr++f7+/vv7Zf3+//7++/r+/v77/vn+/fn9/v7+8/r++ftu+fj++f73/mn++v759vr5/vj//v75+fr8/v7+/vn1/v7++/75/v35/f7+/vP6/vn7bvn4/vn+9/5p/vr++fb6+f74//7++fn6/P7+/v759f7+/vv++f7++v7+/v5v+v74+fb5+P76/vf+8v77/vpt+fn++f7+/vf5+f3+/f7+9vn+/v73//v+/vn+/v/++V/+92f7+/r++v/7/vv++/77+/f6/vn+//77++j8//7+/vv7/Pv8+vz8/f1i/fv8/P37/fz7/Pv8/Pz9/Pv9/Pv8/P37/F37/Pz8/fz7/Pz8/fz8/P7+/vn9+P79+P7+/v75+f75+Xb2+P74/vn+8f75/vj39/n+c/7+/vb5+fz+/v7++fb8/Pz8/Pz8/fz8+/z8/Pz8/P38+/z8/Pv7/P1h+fte/Pz8+/38/fz8+v38/fz9+/z7/Pv8+vz8/f1i/fv8/P37/fz7/Pv8/Pz9/Pv9/Pv8/P37/F37/Pz8/fz7/Pz8/fz8/Pz8/Pz8+/z9+2X67vz6/P37/Pv7/Pv7+/v8+/z8/fz5/Pv8+/z9/Pv7/P38/f38dfr9/f3//f/8/v/9/Pz9///7///////7/2z+/P/7//z//////f/8/fz//////fv+/f///f39//3//P7//fz8/f//+///////+/9s/vz/+//8//////3//P38//////37/v3///////3//f///f/////+/f/+/f38/v/7//3//v5i//v9/f3//v////36/v7//////f3////9//3///3//////v3//v39/P7/+//9//7+Yv/7/f39//7////9+v7+//////39/Pv8//v//P7//Pz8+v///P//////+v/7//f//f95//////z//f38//////38/vv///z7/P/7//z+//z8/Pr///z///////r/+//3//3/ef/////8//39/P/////9/P77///8+/z//P/7/v/9/f35///8///////8//z//P/7//v//////f/8/Pv/////+/3+df///Pv8//z/+/7//f39+f///P///////P/8//z/+//7//////3//Pz7//////v9/nX///////3//f///f/////9/f/8/f399P9w//z//f/8//z9/P3//f////38/P7//////f3////9//3///3//////f3//P39/fT/cP/8//3//P/8/fz9//3////9/Pz+//////39/f39//3//f79/vz9/f///f///////f/+//v//f/9/////2D//f39/////v3+/v3///39/f/9//3+/f78/f3///3///////3//v/7//3//f////9g//39/f////79/v79///////7//3//2b//////vz//fz9+/3//f/+//7//P/9/vz9/fz////+/fz+//////39////+//9//9m//////78//38/fv9//3//v/+//z//f78/f38/////v38/v/////9/f////3//P///P/////7/P9y+f39/P/9//z//P/8//78/Pr//f////39/f7/////+/3////9//z///z/////+/z/cvn9/fz//f/8//z//P/+/Pz6//3////9/f3+//////v9/f39//3//f7/Zvvv/v///v///////P/8/v3//f/+//////3//f79//////39/v3///39/f/9//3+/2b77/7///7///////z//P79//3//v/////9//3+/f/////9/f79///7/P3//P/6/f/9/P37///8///////8//3//P/9//z//////f/4dfn/////+/3+/P//+/z9//z/+v3//fz9+////P///////P/9//z//f/8//////3/+HX5//////v9/vz///z8/P/7//z+//z7/Pz///z///////r//f94//z/+P/////7//z7/P////78/f79///8/Pz/+//8/v/8+/z8///8///////6//3/eP/8//j/////+//8+/z////+/P3+/f//////+v/9///7//////36//36/P39//z//f/9//z//f10/f/7/////fz5/v/////9/P////r//f//+//////9+v/9+vz9/f/8//3//f/8//39dP3/+/////38+f7//////fz////+//3///3/////dv3/+/z7/fz//f/7//f//f/9+vz8//3////8/f3+//7///v9/////v/9///9/////3b9//v8+/38//3/+//3//3//fr8/P/9/////P39/v/+///7/f////z//f///P/////9av/99/7+/f/9//7//f/+//7+/P3//v////797v7//////v3////8//3///v//////ez//Pv9/f3//f/9//7//f/9/fn9//v////9/nf+//////79/f38//z//f3//v39/f//cP///////P/8//z//f/9//////3//f39//////b4/f3///39/P/8//39//79/f3//3D///////z//P/8//3//f/////9//39/f/////2+P39///////7//3///z//////PX/+nD9/fz//f/9//3//f/+/vv9//z////9/vr+//////39////+//9///8//////z1//pw/f38//3//f/9//3//v77/f/8/////f76/v/////9/f389v9x//7+//37/fz///z///////z//f/8//z//P/////9//z8/P7///77/f78///9/Pb/cf/+/v/9+/38///8///////8//3//P/8//z//////f/8/Pz+///++/3+/P//+/v9//z/+v7//fz9dv///f///////P/8//z//f/6//7///3/+/v7//////39/vj///v7/f/8//r+//38/Xb///3///////z//P/8//3/+v/+///9//v7+//////9/f74///8/P3//f9z/v/9+/z6///8///////8//z//f/9//z//////f/7+/n//////Pz+/P///Pz9//3/c/7//fv8+v///P///////P/8//3//f/8//////3/+/v5//////z8/vz///////z//f///f/////8/f/6/Pz8f//1/v3++//9/v38/Pz//P////v8/P7//////f3////8//3///3//////P3/+vz8/H//9f79/vv//f79/Pz8//z////7/Pz+//////39/ftu//b//f7//f39/f///f///////f/9//v//f/8//////3//Pz9//////z9/vz///37bv/2//3+//39/f3///3///////3//f/7//3//P/////9//z8/f/////8/f78///////9//z///3/////+f3//f36/Pz//f/8//v//f/9c/z8//3////7/P3+//////r8/////f/8///9//////n9//39+vz8//3//P/7//3//XP8/P/9////+/z9/v/////6/P////0A+////f/////8/f/9/fz8/f/9//v//P/8//z7/Pv/+v///3X8/f7//v//+/z////9APv///3//////P3//f38/P3//f/7//z//P/8+/z7//r///91/P3+//7///v8/Pv8//3//P7//Pz9/P///P///////P/9//z//f/8//////3/dvf5//////z9/vz///z7/P/9//z+//z8/fz///z///////z//f/8//3//P/////9/3b3+f/////8/f78///7c/z//P/8/f/9/P38///9///////9//3//P/9//v//////P/7/Pv//////P3++///+3P8//z//P3//fz9/P///f///////f/9//z//f/7//////z/+/z7//////z9/vv///39/f/9//3+/+/7aP3///3///////3//f79//3//v/////9//39/f/////9/f79///9/f3//f/9/v/v+2j9///9///////9//3+/f/9//7//////f/9/f3//////f3+/f///////f/8//79//////v8//z+ev38//z//P/0//3//Pv8/f/7/////Pz9/v/////8+v////3//f///f/////3/v/8/fT9/f/9//r/dv/9//37/v3//f////z9/f7//////Ptu+/3//f/8/v/8/Pz8///9///////6//3//P/9//z//////v/7+/z////+/f7+/P//bvv9//3//P7//Pz8/P///f//////+v/9//z//f/8//////7/+/v8/////v3+/vz///////3//P///P/////9/P/9/vx0/P/8//z//f/8//z8/P3/+v////z8/f7///7/+/z////9//z///z//////fz//f78dPz//P/8//3//P/8/Pz9//r////8/P3+///+//v8/f39//r//Pz//f39/P7/9////////P/9//z//f/9//////7//Pv7/////nb6/Pz///39/f/6//z8//39/fz+//f///////z//f/8//3//f/////+//z7+/////52+vz8///8/Pz//f/5/v/9/f77///9///////8//3/+//9//z//////f/4+XP/////+/3++////Pz8//3/+f7//f3++////f///////P/9//v//f/8//////3/+Plz//////v9/vv//////27//P//+//////9+//9+/78/P/9//7//f/8//39+v3//P////78+/7//////f7///9u//z///v//////fv//fv+/Pz//f/+//3//P/9/fr9//z////+/Pv+//////3+/////f9r///9//////39//z9/f39//3//P/9//3//fz9+v78/////fz9/v///v/9+/////3/a////f/////9/f/8/f39/f/9//z//f/9//38/fr+/P////38/f7///7//fv////9//v///3//////f3/+v39/f7//f/9//3//f/9/f5n//z////7/fz8//////39/////f/7///9//////39//r9/f3+//3//f/9//3//f3+Z//8////+/38/P/////9/fn8/f/9//v+//z8+/r///z//////3v/+//7//z/+v/////8//z8/P/////8+/79//75/P3//f/7/v/8/Pv6///8//////97//v/+//8//r//////P/8/Pz//////Pv+/f/+/P39//3//f7//f39/f///f///////f/8/vz/Y/79/v////z//f79/////v79//z//vz9/f/9//3+//39/f3///3///////3//P78/2P+/f7////8//3+/f////7+/f/8//7////8//z///z//////fz//fv7+vz//P/9//3//P/8/Pv8/3j////6/Pz+//////38/////P/8///8//////38//37+/r8//z//f/9//z//Pz7/P94////+vz8/v/////9/P////3//P///f/////9/v/8/f38/f/+//3//v76//v9/P3//f////xl/f3//////P7////9//z///3//////f7//P39/P3//v/9//7++v/7/fz9//3////8Zf39//////z+/////f/+///9//////39//3+/f39//3//f/+/vv/YP39/f/9/////fv+/v/////9/f////3//v///f/////9/f/9/v39/f/9//3//v77/2D9/f3//f////37/v7//////f38/f3//P/9/v/6Zvz8///9///////9//3+/f/8//3//////P/8/f3//wD+/f3+/P///P39//z//f7/+mb8/P///f///////f/9/v3//P/9//////z//P39//8A/v39/vz///79/f/9//39//39/f3///n///////v//P/8//3//f/////+//39/f////77ZP39///+/f3//f/9/f/9/f39///5///////7//z//P/9//3//////v/9/f3////++2T9/f///////f/8///8///+//v9//z9/Pz8//z//f/8//3//fr9/P/8////+/v9/v////92/P////3//P///P///v/7/f/8/fz8/P/8//3//P/9//36/fz//P////v7/f7/////dvz////9//z///z//////f3//f37/P7//f/7//z//v/8/f39/vv//wD8/f3+//////xq/////f/8///8//////39//39+/z+//3/+//8//7//P39/f77//8A/P39/v/////8av////7//P///f///v/8/v/+/vz8/f/8/2L/+v79//z9/f7//f////39/v7//////fz////+//z///3///7//P7//v78/P3//P9i//r+/f/8/f3+//3////9/f7+//////38bvv9//3//P7//Pz8/P///f//////+v/9//z//f/8//////7/+/v8/////v3+/vz////+/v/+//5Z//7+/v7///3///////7//v/+//7//v/////+//7+/v////r9/fL+/////v7//v/+Wf/+/v7+///9///////+//7//v/+//7//////v/+/v7////6/f3y/v///v7+//7//vD//v7+/v///f///////v/+//7//v/+/////v7//v7+////+vv8Zf7///7+/v/+//7w//7+/v7///3///////7//v/+//7//v////7+//7+/v////r7/GX+///////+//7/+v7///7//v7//v7+/v///v/+//7//f/9//78/v7////9/v5X//77//7+/////v/+//r+///+//7+//7+/v7///7//v/+//3//f/+/P7+/////f7+V//++//+/vtz/P/8//z9//38/fz///3///////3//f/8//3/+//////8//v8+//////8/f77///////9/2v///3//////f3//P39/f3//f/8//3//f/9/P36/vz////9/P3+///+//37/////f9r///9//////39//z9/f39//3//P/9//3//fz9+v78/////fz9/v///v/9+/////3/+////f/////9/f/6/f39/v/9//3//f/9//39/mf//P////v9/Pz//////f3////9//z///3//////f7//P39/P3//v/9//7++v/7/fz9//3////8Zf39//////z+/////f/8///9//////n9//39+vz8//3//P/7//3//XP8/P/9////+/z9/v/////6/P39/f/9//z+//38/P3///v///////v/bP78//v//P/////9//z9/P/////9+/79///9/f3//f/8/v/9/Pz9///7///////7/2z+/P/7//z//////f/8/fz//////fv+/f///f39//3//P7//fz8/f//+///////+/9s/vz/+//8//////3//P38//////37/v3///37bv/2//3+//39/f3///3///////3//f/7//3//P/////9//z8/f/////8/f78///9+27/9v/9/v/9/f39///9///////9//3/+//9//z//////f/8/P3//////P3+/P///Pz9//3/c/7//fv8+v///P///////P/8//3//f/8//////3/+/v5//////z8/vz///////3//f///f/////+/f/+/f38/v/7//3//v5i//v9/f3//v////36/v7//////f3////9//3///3//////v3//v39/P7/+//9//7+Yv/7/f39//7////9+v7+//////39/////f/9///9//////79//79/fz+//v//f/+/mL/+/39/f/+/////fr+/v/////9/fz7/P/7//z+//z8/Pr///z///////r/+//3//3/ef/////8//39/P/////9/P77///8+/z/+//8/v/8/Pz6///8///////6//v/9//9/3n//////P/9/fz//////fz++////Pv8//v//P7//Pz8+v///P//////+v/7//f//f95//////z//f38//////38/vv///v7/f/8//r+//38/Xb///3///////z//P/8//3/+v/+///9//v7+//////9/f74///7+/3//P/6/v/9/P12///9///////8//z//P/9//r//v///f/7+/v//////f3++P///Pv8//z/+/7//f39+f///P///////P/8//z/+//7//////3//Pz7//////v9/nX///z7/P/8//v+//39/fn///z///////z//P/8//v/+//////9//z8+//////7/f51///8+/z//P/7/v/9/f35///8///////8//z//P/7//v//////f/8/Pv/////+/3+df////7+//7//ln//v7+/v///f///////v/+//7//v/+//////7//v7+////+v398v7///////3//f///f/////9/f/8/f399P9w//z//f/8//z9/P3//f////38/P7//////f3////9//3///3//////f3//P39/fT/cP/8//3//P/8/fz9//3////9/Pz+//////39/////f/9///9//////39//z9/f30/3D//P/9//z//P38/f/9/////fz8/v/////9/f39/f/9//3+/+/7aP3///3///////3//f79//3//v/////9//39/f/////9/f79///9/f3//f/9/v/v+2j9///9///////9//3+/f/9//7//////f/9/f3//////f3+/f///f39//3//f7/7/to/f///f///////f/9/v3//f/+//////3//f39//////39/v3///n8/f/9//v+//z8+/r///z//////3v/+//7//z/+v/////8//z8/P/////8+/79//75/P3//f/7/v/8/Pv6///8//////97//v/+//8//r//////P/8/Pz//////Pv+/f/+/////v/8///9///+//z+//7+/Pz9//z/Yv/6/v3//P39/v/9/////f3+/v/////9/P////7//P///f///v/8/v/+/vz8/f/8/2L/+v79//z9/f7//f////39/v7//////fz////+//z///3///7//P7//v78/P3//P9i//r+/f/8/f3+//3////9/f7+//////38/f39//3//f79/vz9/f///f///////f/+//v//f/9/////2D//f39/////v3+/v3///39/f/9//3+/f78/f3///3///////3//v/7//3//f////9g//39/f////79/v79///9/f3//f/9/v3+/P39///9///////9//7/+//9//3/////YP/9/f3////+/f7+/f//////+//9//9m//////78//38/fv9//3//v/+//z//f78/f38/////v38/v/////9/f////v//f//Zv/////+/P/9/P37/f/9//7//v/8//3+/P39/P////79/P7//////f3////7//3//2b//////vz//fz9+/3//f/+//7//P/9/vz9/fz////+/fz+//////39/////f/8///8//////v8/3L5/f38//3//P/8//z//vz8+v/9/////f39/v/////7/f////3//P///P/////7/P9y+f39/P/9//z//P/8//78/Pr//f////39/f7/////+/3////9//z///z/////+/z/cvn9/fz//f/8//z//P/+/Pz6//3////9/f3+//////v9/f39//3//f7/Zvvv/v///v///////P/8/v3//f/+//////3//f79//////39/v3///39/f/9//3+/2b77/7///7///////z//P79//3//v/////9//3+/f/////9/f79///9/f3//f/9/v9m++/+///+///////8//z+/f/9//7//////f/9/v3//////f3+/f////7+//7//ln//v7+/v///f///////v/+//7//v/+//////7//v7+////+v398v7////+/v/+//5Z//7+/v7///3///////7//v/+//7//v/////+//7+/v////r9/fL+/////v7//v/+Wf/+/v7+///9///////+//7//v/+//7//////v/+/v7////6/f3y/v///Pv8//3//P7//Pz9/P///P///////P/9//z//f/8//////3/dvf5//////z9/vz///z7/P/9//z+//z8/fz///z///////z//f/8//3//P/////9/3b3+f/////8/f78///9/f3//f/8/v/9/Pz9///7///////7/2z+/P/7//z//////f/8/fz//////fv+/f///Pv8//v//P7//Pz8+v///P//////+v/7//f//f95//////z//f38//////38/vv///z7/P/8//v+//39/fn///z///////z//P/8//v/+//////9//z8+//////7/f51///9/f3//f/9/v3+/P39///9///////9//7/+//9//3/////YP/9/f3////+/f7+/f///f39//3//f7/Zvvv/v///v///////P/8/v3//f/+//////3//f79//////39/v3///v8/f/8//r9//38/fv///z///////z//f/8//3//P/////9//h1+f/////7/f78///8/Pz/+//8/v/8+/z8///8///////6//3/eP/8//j/////+//8+/z////+/P3+/f///f38//z//f3//v39/f//cP///////P/8//z//f/9//////3//f39//////b4/f3///389v9x//7+//37/fz///z///////z//f/8//z//P/////9//z8/P7///77/f78///7+/3//P/6/v/9/P12///9///////8//z//P/9//r//v///f/7+/v//////f3++P///Pz9//3/c/7//fv8+v///P///////P/8//3//f/8//////3/+/v5//////z8/vz///37bv/2//3+//39/f3///3///////3//f/7//3//P/////9//z8/f/////8/f78///8+/z//f/8/v/8/P38///8///////8//3//P/9//z//////f929/n//////P3+/P//+3P8//z//P3//fz9/P///f///////f/9//z//f/7//////z/+/z7//////z9/vv///39/f/9//3+/+/7aP3///3///////3//f79//3//v/////9//39/f/////9/f79//9u+/3//f/8/v/8/Pz8///9///////6//3//P/9//z//////v/7+/z////+/f7+/P///f39//r//Pz//f39/P7/9////////P/9//z//f/9//////7//Pv7/////nb6/Pz///z8/P/9//n+//39/vv///3///////z//f/7//3//P/////9//j5c//////7/f77///5/P3//f/7/v/8/Pv6///8//////97//v/+//8//r//////P/8/Pz//////Pv+/f/+/P39//3//f7//f39/f///f///////f/8/vz/Y/79/v////z//f79/////v79//z//vz9/f/8//3+//pm/Pz///3///////3//f79//z//f/////8//z9/f//AP79/f78///+/f3//f/9/f/9/f39///5///////7//z//P/9//3//////v/9/f3////++2T9/f////7+//7//ln//v7+/v///f///////v/+//7//v/+//////7//v7+////+v398v7///7+/v/+//7w//7+/v7///3///////7//v/+//7//v////7+//7+/v////r7/GX+///7/P3//P/6/f/9/P37///8///////8//3//P/9//z//////f/4dfn/////+/3+/P//+/z9//z/+v3//fz9+////P///////P/9//z//f/8//////3/+HX5//////v9/vz///v8/f/8//r9//38/fv///z///////z//f/8//3//P/////9//h1+f/////7/f78///////9/2v///3//////f3//P39/f3//f/8//3//f/9/P36/vz////9/P3+///+//37/////f9r///9//////39//z9/f39//3//P/9//3//fz9+v78/////fz9/v///v/9+/z8/P/7//z+//z7/Pz///z///////r//f94//z/+P/////7//z7/P////78/f79///8/Pz/+//8/v/8+/z8///8///////6//3/eP/8//j/////+//8+/z////+/P3+/f///Pz8//v//P7//Pv8/P///P//////+v/9/3j//P/4//////v//Pv8/////vz9/v3///79/f/9//39//39/f3///n///////v//P/8//3//f/////+//39/f////77ZP39///+/f3//f/9/f/9/f39///5///////7//z//P/9//3//////v/9/f3////++2T9/f////7+//7//ln//v7+/v///f///////v/+//7//v/+//////7//v7+////+v398v7////+/v/+//5Z//7+/v7///3///////7//v/+//7//v/////+//7+/v////r9/fL+/////v7//v/+Wf/+/v7+///9///////+//7//v/+//7//////v/+/v7////6/f3y/v///v7+//7//vD//v7+/v///f///////v/+//7//v/+/////v7//v7+////+vv8Zf7///7+/v/+//7w//7+/v7///3///////7//v/+//7//v////7+//7+/v////r7/GX+///+/v7//v/+8P/+/v7+///9///////+//7//v/+//7////+/v/+/v7////6+/xl/v//////+v/9///7//////36//36/P39//z//f/9//z//f10/f/7/////fz5/v/////9/P////r//f//+//////9+v/9+vz9/f/8//3//f/8//39dP3/+/////38+f7//////fz////6//3///v//////fr//fr8/f3//P/9//3//P/9/XT9//v////9/Pn+//////38+/v9//z/+v7//fz9dv///f///////P/8//z//f/6//7///3/+/v7//////39/vj///z9/f/8//3+//pm/Pz///3///////3//f79//z//f/////8//z9/f//AP79/f78///8/f3//P/9/v/6Zvz8///9///////9//3+/f/8//3//////P/8/f3//wD+/f3+/P///P39//z//f7/+mb8/P///f///////f/9/v3//P/9//////z//P39//8A/v39/vz///39/f/9//z+//38/P3///v///////v/bP78//v//P/////9//z9/P/////9+/79///9/f3//f/8/v/9/Pz9///7///////7/2z+/P/7//z//////f/8/fz//////fv+/f///////v/9///9/////3b9//v8+/38//3/+//3//3//fr8/P/9/////P39/v/+///7/f////7//f///f////92/f/7/Pv9/P/9//v/9//9//36/Pz//f////z9/f7//v//+/3////+//3///3/////dv3/+/z7/fz//f/7//f//f/9+vz8//3////8/f3+//7///v9/////P/9///8//////1q//33/v79//3//v/9//7//v78/f/+/////v3u/v/////+/f////z//f///P/////9av/99/7+/f/9//7//f/+//7+/P3//v////797v7//////v3////8//3///v//////ez//Pv9/f3//f/9//7//f/9/fn9//v////9/nf+//////79/////P/9///7//////3s//z7/f39//3//f/+//3//f35/f/7/////f53/v/////+/f39/P/8//39//79/f3//3D///////z//P/8//3//f/////9//39/f/////2+P39///9/fz//P/9/f/+/f39//9w///////8//z//P/9//3//////f/9/f3/////9vj9/f///f38//z//f3//v39/f//cP///////P/8//z//f/9//////3//f39//////b4/f3///39/P/8//39//79/f3//3D///////z//P/8//3//f/////9//39/f/////2+P39///9/fz//P/9/f/+/f39//9w///////8//z//P/9//3//////f/9/f3/////9vj9/f///Pv8//v//P7//Pz8+v///P//////+v/7//f//f95//////z//f38//////38/vv///////z//f///P/////9av/99/7+/f/9//7//f/+//7+/P3//v////797v7//////v3////8//3///z//////Wr//ff+/v3//f/+//3//v/+/vz9//7////+/e7+//////79/////f/8///8//////v8/3L5/f38//3//P/8//z//vz8+v/9/////f39/v/////7/f////3//P///P/////7/P9y+f39/P/9//z//P/8//78/Pr//f////39/f7/////+/37c/z//P/8/f/9/P38///9///////9//3//P/9//v//////P/7/Pv//////P3++///+3P8//z//P3//fz9/P///f///////f/9//z//f/7//////z/+/z7//////z9/vv///////v//f///P/////89f/6cP39/P/9//3//f/9//7++/3//P////3++v7//////f3////7//3///z//////PX/+nD9/fz//f/9//3//f/+/vv9//z////9/vr+//////39////+//9///8//////z1//pw/f38//3//f/9//3//v77/f/8/////f76/v/////9/f////3//P/+/f/////7/P/8/nr9/P/8//z/9P/9//z7/P3/+/////z8/f7//////Pr////9//z//v3/////+/z//P56/fz//P/8//T//f/8+/z9//v////8/P3+//////z6/fz2/3H//v7//fv9/P///P///////P/9//z//P/8//////3//Pz8/v///vv9/vz///389v9x//7+//37/fz///z///////z//f/8//z//P/////9//z8/P7///77/f78///9/Pb/cf/+/v/9+/38///8///////8//3//P/8//z//////f/8/Pz+///++/3+/P///////f/8///8//////38//3+/HT8//z//P/9//z//Pz8/f/6/////Pz9/v///v/7/P////3//P///P/////9/P/9/vx0/P/8//z//f/8//z8/P3/+v////z8/f7///7/+/z7+/3//P/6/v/9/P12///9///////8//z//P/9//r//v///f/7+/v//////f3++P//+/v9//z/+v7//fz9dv///f///////P/8//z//f/6//7///3/+/v7//////39/vj///v7/f/8//r+//38/Xb///3///////z//P/8//3/+v/+///9//v7+//////9/f74///////+//7/+v7///7//v7//v7+/v///v/+//7//f/9//78/v7////9/v5X//77//7+/////v/+//r+///+//7+//7+/v7///7//v/+//3//f/+/P7+/////f7+V//++//+/v////7//v/6/v///v/+/v/+/v7+///+//7//v/9//3//vz+/v////3+/lf//vv//v5u+/3//f/8/v/8/Pz8///9///////6//3//P/9//z//////v/7+/z////+/f7+/P//bvv9//3//P7//Pz8/P///f//////+v/9//z//f/8//////7/+/v8/////v3+/vz///////7//P///f///v/8/v/+/vz8/f/8/2L/+v79//z9/f7//f////39/v7//////fz8/P3//f9z/v/9+/z6///8///////8//z//f/9//z//////f/7+/n//////Pz+/P///Pz9//3/c/7//fv8+v///P///////P/8//3//f/8//////3/+/v5//////z8/vz///z8/f/9/3P+//37/Pr///z///////z//P/9//3//P/////9//v7+f/////8/P78///////8//z///z//////fz//fv7+vz//P/9//3//P/8/Pv8/3j////6/Pz+//////38/////P/8///8//////38//37+/r8//z//f/9//z//Pz7/P94////+vz8/v/////9/P////z//f///f/////8/f/6/Pz8f//1/v3++//9/v38/Pz//P////v8/P7//////f3////8//3///3//////P3/+vz8/H//9f79/vv//f79/Pz8//z////7/Pz+//////39/ftu//b//f7//f39/f///f///////f/9//v//f/8//////3//Pz9//////z9/vz///37bv/2//3+//39/f3///3///////3//f/7//3//P/////9//z8/f/////8/f78///9+27/9v/9/v/9/f39///9///////9//3/+//9//z//////f/8/P3//////P3+/P///////f/8///9//////n9//39+vz8//3//P/7//3//XP8/P/9////+/z9/v/////6/P////3//P///f/////5/f/9/fr8/P/9//z/+//9//1z/Pz//f////v8/f7/////+vz////9APv///3//////P3//f38/P3//f/7//z//P/8+/z7//r///91/P3+//7///v8/////QD7///9//////z9//39/Pz9//3/+//8//z//Pv8+//6////dfz9/v/+///7/P////0A+////f/////8/f/9/fz8/f/9//v//P/8//z7/Pv/+v///3X8/f7//v//+/z////+//z///3///7//P7//v78/P3//P9i//r+/f/8/f3+//3////9/f7+//////38/////v/9///9/////3b9//v8+/38//3/+//3//3//fr8/P/9/////P39/v/+///7/fz7/P/9//z+//z8/fz///z///////z//f/8//3//P/////9/3b3+f/////8/f78///8+/z//f/8/v/8/P38///8///////8//3//P/9//z//////f929/n//////P3+/P///Pv8//3//P7//Pz9/P///P///////P/9//z//f/8//////3/dvf5//////z9/vz///79/f/9//39//39/f3///n///////v//P/8//3//f/////+//39/f////77ZP39///+/f3//f/9/f/9/f39///5///////7//z//P/9//3//////v/9/f3////++2T9/f///v39//3//f3//f39/f//+f//////+//8//z//f/9//////7//f39/////vtk/f3///z8/P/7//z+//z7/Pz///z///////r//f94//z/+P/////7//z7/P////78/f79///////9//7///3//////f3//f79/f3//f/9//7++/9g/f39//3////9+/7+//////39/////f/+///9//////39//3+/f39//3//f/+/vv/YP39/f/9/////fv+/v/////9/f////3//v///f/////9/f/9/v39/f/9//3//v77/2D9/f3//f////37/v7//////f38/Pz/+//8/v/8+/z8///8///////6//3/eP/8//j/////+//8+/z////+/P3+/f///Pz8//v//P7//Pv8/P///P//////+v/9/3j//P/4//////v//Pv8/////vz9/v3///////3//f///f/////3/v/8/fT9/f/9//r/dv/9//37/v3//f////z9/f7//////Pv////9//3///3/////9/7//P30/f3//f/6/3b//f/9+/79//3////8/f3+//////z7+3P8//z//P3//fz9/P///f///////f/9//z//f/7//////z/+/z7//////z9/vv///tz/P/8//z9//38/fz///3///////3//f/8//3/+//////8//v8+//////8/f77///7c/z//P/8/f/9/P38///9///////9//3//P/9//v//////P/7/Pv//////P3++////////f/9///9//////39//z9/f30/3D//P/9//z//P38/f/9/////fz8/v/////9/f////3//f///f/////+/f/+/f38/v/7//3//v5i//v9/f3//v////36/v7//////f3////9//3///3//////v3//v39/P7/+//9//7+Yv/7/f39//7////9+v7+//////39/////f/9///9//////79//79/fz+//v//f/+/mL/+/39/f/+/////fr+/v/////9/f////3//f///f/////9/f/8/f399P9w//z//f/8//z9/P3//f////38/P7//////f3////7//3//2b//////vz//fz9+/3//f/+//7//P/9/vz9/fz////+/fz+//////39/////f/8///8//////v8/3L5/f38//3//P/8//z//vz8+v/9/////f39/v/////7/f////r//f//+//////9+v/9+vz9/f/8//3//f/8//39dP3/+/////38+f7//////fz////+//3///3/////dv3/+/z7/fz//f/7//f//f/9+vz8//3////8/f3+//7///v9////+//9///8//////z1//pw/f38//3//f/9//3//v77/f/8/////f76/v/////9/f////z//f///f/////8/f/6/Pz8f//1/v3++//9/v38/Pz//P////v8/P7//////f3////9//z///3/////+f3//f36/Pz//f/8//v//f/9c/z8//3////7/P3+//////r8/////QD7///9//////z9//39/Pz9//3/+//8//z//Pv8+//6////dfz9/v/+///7/P////3//P///P/////9/P/9/vx0/P/8//z//f/8//z8/P3/+v////z8/f7///7/+/z///9u//z///v//////fv//fv+/Pz//f/+//3//P/9/fr9//z////+/Pv+//////3+/////f9r///9//////39//z9/f39//3//P/9//3//fz9+v78/////fz9/v///v/9+/////3/+////f/////9/f/6/f39/v/9//3//f/9//39/mf//P////v9/Pz//////f3////8//z///z//////fz//fv7+vz//P/9//3//P/8/Pv8/3j////6/Pz+//////38/////f/8///9//////3+//z9/fz9//7//f/+/vr/+/38/f/9/////GX9/f/////8/v////3//v///f/////9/f/9/v39/f/9//3//v77/2D9/f3//f////37/v7//////f3////9//z///z///7/+/3//P38/Pz//P/9//z//f/9+v38//z////7+/3+/////3b8/////f/8///8//////39//39+/z+//3/+//8//7//P39/f77//8A/P39/v/////8av////7//P///f///v/8/v/+/vz8/f/8/2L/+v79//z9/f7//f////39/v7//////fz////+//7/+v7///7//v7//v7+/v///v/+//7//f/9//78/v7////9/v5X//77//7+/////v/+//r+///+//7+//7+/v7///7//v/+//3//f/+/P7+/////f7+V//++//+/v39/f/9//3+/+/7aP3///3///////3//f79//3//v/////9//39/f/////9/f79///9/f3//f/9/v/v+2j9///9///////9//3+/f/9//7//////f/9/f3//////f3+/f///f39//3//f7/7/to/f///f///////f/9/v3//f/+//////3//f39//////39/v3///////3//P/+/f/////7/P/8/nr9/P/8//z/9P/9//z7/P3/+/////z8/f7//////Pr////9//z//v3/////+/z//P56/fz//P/8//T//f/8+/z9//v////8/P3+//////z6/////f/9///9//////f+//z99P39//3/+v92//3//fv+/f/9/////P39/v/////8+/////3//f///f/////3/v/8/fT9/f/9//r/dv/9//37/v3//f////z9/f7//////Pv9/f3//f/9/v3+/P39///9///////9//7/+//9//3/////YP/9/f3////+/f7+/f///f39//3//f79/vz9/f///f///////f/+//v//f/9/////2D//f39/////v3+/v3///39/f/9//3+/f78/f3///3///////3//v/7//3//f////9g//39/f////79/v79///////9//3///3//////v3//v39/P7/+//9//7+Yv/7/f39//7////9+v7+//////39/////f/9///9//////79//79/fz+//v//f/+/mL/+/39/f/+/////fr+/v/////9/fz7/P/7//z+//z8/Pr///z///////r/+//3//3/ef/////8//39/P/////9/P77///8/f3//f/9/v/9/f39///9///////9//z+/P9j/v3+/////P/9/v3////+/v3//P/+/P39//3//f7//f39/f///f///////f/8/vz/Y/79/v////z//f79/////v79//z//m77/f/9//z+//z8/Pz///3///////r//f/8//3//P/////+//v7/P////79/v78//9u+/3//f/8/v/8/Pz8///9///////6//3//P/9//z//////v/7+/z////+/f7+/P//bvv9//3//P7//Pz8/P///f//////+v/9//z//f/8//////7/+/v8/////v3+/vz///////3//P///P/////9/P/9/vx0/P/8//z//f/8//z8/P3/+v////z8/f7///7/+/z////9//z///z//////fz//f78dPz//P/8//3//P/8/Pz9//r////8/P3+///+//v8/////f/8///8//////38//3+/HT8//z//P/9//z//Pz8/f/6/////Pz9/v///v/7/Pz8/P/9//n+//39/vv///3///////z//f/7//3//P/////9//j5c//////7/f77///8/Pz//f/5/v/9/f77///9///////8//3/+//9//z//////f/4+XP/////+/3++////f39//r//Pz//f39/P7/9////////P/9//z//f/9//////7//Pv7/////nb6/Pz///39/f/6//z8//39/fz+//f///////z//f/8//3//f/////+//z7+/////52+vz8///9/f3/+v/8/P/9/f38/v/3///////8//3//P/9//3//////v/8+/v////+dvr8/P///////f/+///9//////39//3+/f39//3//f/+/vv/YP39/f/9/////fv+/v/////9/f////3//v///f/////9/f/9/v39/f/9//3//v77/2D9/f3//f////37/v7//////f38/Pz//f/5/v/9/f77///9///////8//3/+//9//z//////f/4+XP/////+/3++////Pz8//3/+f7//f3++////f///////P/9//v//f/8//////3/+Plz//////v9/vv///z8/P/9//n+//39/vv///3///////z//f/7//3//P/////9//j5c//////7/f77///9/f3/+v/8/P/9/f38/v/3///////8//3//P/9//3//////v/8+/v////+dvr8/P///f39//r//Pz//f39/P7/9////////P/9//z//f/9//////7//Pv7/////nb6/Pz//////27//P//+//////9+//9+/78/P/9//7//f/8//39+v3//P////78+/7//////f7///9u//z///v//////fv//fv+/Pz//f/+//3//P/9/fr9//z////+/Pv+//////3+////bv/8///7//////37//37/vz8//3//v/9//z//f36/f/8/////vz7/v/////9/v////3//P///P/////9/f/9/fv8/v/9//v//P/+//z9/f3++///APz9/f7//////Gr////7//3//2b//////vz//fz9+/3//f/+//7//P/9/vz9/fz////+/fz+//////39////+//9//9m//////78//38/fv9//3//v/+//z//f78/f38/////v38/v/////9/f////v//f//Zv/////+/P/9/P37/f/9//7//v/8//3+/P39/P////79/P7//////f3////9/2v///3//////f3//P39/f3//f/8//3//f/9/P36/vz////9/P3+///+//37/P39//z//f7/+mb8/P///f///////f/9/v3//P/9//////z//P39//8A/v39/vz///z9/f/8//3+//pm/Pz///3///////3//f79//z//f/////8//z9/f//AP79/f78///////9//z///z///7/+/3//P38/Pz//P/9//z//f/9+v38//z////7+/3+/////3b8/////f9r///9//////39//z9/f39//3//P/9//3//fz9+v78/////fz9/v///v/9+/////3/a////f/////9/f/8/f39/f/9//z//f/9//38/fr+/P////38/f7///7//fv////9/2v///3//////f3//P39/f3//f/8//3//f/9/P36/vz////9/P3+///+//37////+v/9///7//////36//36/P39//z//f/9//z//f10/f/7/////fz5/v/////9/P////r//f//+//////9+v/9+vz9/f/8//3//f/8//39dP3/+/////38+f7//////fz////9//v///3//////f3/+v39/f7//f/9//3//f/9/f5n//z////7/fz8//////39/////f/7///9//////39//r9/f3+//3//f/9//3//f3+Z//8////+/38/P/////9/f////3/+////f/////9/f/6/f39/v/9//3//f/9//39/mf//P////v9/Pz//////f35/P3//f/7/v/8/Pv6///8//////97//v/+//8//r//////P/8/Pz//////Pv+/f/++fz9//3/+/7//Pz7+v///P//////e//7//v//P/6//////z//Pz8//////z7/v3//vn8/f/9//v+//z8+/r///z//////3v/+//7//z/+v/////8//z8/P/////8+/79//7///9u//z///v//////fv//fv+/Pz//f/+//3//P/9/fr9//z////+/Pv+//////3+/P39//3//f7//f39/f///f///////f/8/vz/Y/79/v////z//f79/////v79//z//vz9/f/9//3+//39/f3///3///////3//P78/2P+/f7////8//3+/f////7+/f/8//78/f3//f/9/v/9/f39///9///////9//z+/P9j/v3+/////P/9/v3////+/v3//P/+/////P/8///8//////38//37+/r8//z//f/9//z//Pz7/P94////+vz8/v/////9/P////z//P///P/////9/P/9+/v6/P/8//3//f/8//z8+/z/eP////r8/P7//////fz////9APv///3//////P3//f38/P3//f/7//z//P/8+/z7//r///91/P3+//7///v8/////QD7///9//////z9//39/Pz9//3/+//8//z//Pv8+//6////dfz9/v/+///7/P////3//P///f/////9/v/8/f38/f/+//3//v76//v9/P3//f////xl/f3//////P7////9//z///3//////f7//P39/P3//v/9//7++v/7/fz9//3////8Zf39//////z+/////f/8///9//////3+//z9/fz9//7//f/+/vr/+/38/f/9/////GX9/f/////8/v////3/+////f/////9/f/6/f39/v/9//3//f/9//39/mf//P////v9/Pz//////f3////9//v///3//////f3/+v39/f7//f/9//3//f/9/f5n//z////7/fz8//////39/////f/7///9//////39//r9/f3+//3//f/9//3//f3+Z//8////+/38/P/////9/f////z//f//+//////97P/8+/39/f/9//3//v/9//39+f3/+/////3+d/7//////v3////8//3///v//////ez//Pv9/f3//f/9//7//f/9/fn9//v////9/nf+//////79/////f/+///9//////39//3+/f39//3//f/+/vv/YP39/f/9/////fv+/v/////9/f////3//v///f/////9/f/9/v39/f/9//3//v77/2D9/f3//f////37/v7//////f38/f3//f/9/v/9/f39///9///////9//z+/P9j/v3+/////P/9/v3////+/v3//P/+/P39//3//f7//f39/f///f///////f/8/vz/Y/79/v////z//f79/////v79//z//vz8/f/9/3P+//37/Pr///z///////z//P/9//3//P/////9//v7+f/////8/P78///8/P3//f9z/v/9+/z6///8///////8//z//f/9//z//////f/7+/n//////Pz+/P///P39//z//f7/+mb8/P///f///////f/9/v3//P/9//////z//P39//8A/v39/vz///z9/f/8//3+//pm/Pz///3///////3//f79//z//f/////8//z9/f//AP79/f78///8/f3//P/9/v/6Zvz8///9///////9//3+/f/8//3//////P/8/f3//wD+/f3+/P///v39//3//f3//f39/f//+f//////+//8//z//f/9//////7//f39/////vtk/f3///79/f/9//39//39/f3///n///////v//P/8//3//f/////+//39/f////77ZP39///+/f3//f/9/f/9/f39///5///////7//z//P/9//3//////v/9/f3////++2T9/f////7+//7//ln//v7+/v///f///////v/+//7//v/+//////7//v7+////+v398v7///39/f/9//3+/2b77/7///7///////z//P79//3//v/////9//3+/f/////9/f79///9/f3//f/9/v9m++/+///+///////8//z+/f/9//7//////f/9/v3//////f3+/f///////f/8///8///+//v9//z9/Pz8//z//f/8//3//fr9/P/8////+/v9/v////92/P////3//P///P///v/7/f/8/fz8/P/8//3//P/9//36/fz//P////v7/f7/////dvz9/Pb/cf/+/v/9+/38///8///////8//3//P/8//z//////f/8/Pz+///++/3+/P///fz2/3H//v7//fv9/P///P///////P/9//z//P/8//////3//Pz8/v///vv9/vz///z7/P/8//v+//39/fn///z///////z//P/8//v/+//////9//z8+//////7/f51///8+/z//P/7/v/9/f35///8///////8//z//P/7//v//////f/8/Pv/////+/3+df///Pv8//z/+/7//f39+f///P///////P/8//z/+//7//////3//Pz7//////v9/nX///////3//P///P/////9/f/9/fv8/v/9//v//P/+//z9/f3++///APz9/f7//////Gr////9//z///z//////f3//f37/P7//f/7//z//v/8/f39/vv//wD8/f3+//////xq/////v/+//r+///+//7+//7+/v7///7//v/+//3//f/+/P7+/////f7+V//++//+/v////7//v/6/v///v/+/v/+/v7+///+//7//v/9//3//vz+/v////3+/lf//vv//v7////+//7/+v7///7//v7//v7+/v///v/+//7//f/9//78/v7////9/v5X//77//7+/////v/+//r+///+//7+//7+/v7///7//v/+//3//f/+/P7+/////f7+V//++//+/v////7//v/6/v///v/+/v/+/v7+///+//7//v/9//3//vz+/v////3+/lf//vv//v7////9//z///z//////f3//f37/P7//f/7//z//v/8/f39/vv//wD8/f3+//////xq/////f/8///8//////39//39+/z+//3/+//8//7//P39/f77//8A/P39/v/////8av////3//P///P/////9/f/9/fv8/v/9//v//P/+//z9/f3++///APz9/f7//////Gr////9//z///z///7/+/3//P38/Pz//P/9//z//f/9+v38//z////7+/3+/////3b8/////f/8///8///+//v9//z9/Pz8//z//f/8//3//fr9/P/8////+/v9/v////92/P////3//P///P/////9/f/9/fv8/v/9//v//P/+//z9/f3++///APz9/f7//////Gr////9//z///z//////f3//f37/P7//f/7//z//v/8/f39/vv//wD8/f3+//////xq/////f/8///8//////39//39+/z+//3/+//8//7//P39/f77//8A/P39/v/////8av////7//P///f///v/8/v/+/vz8/f/8/2L/+v79//z9/f7//f////39/v7//////fz////+//z///3///7//P7//v78/P3//P9i//r+/f/8/f3+//3////9/f7+//////38/////v/8///9///+//z+//7+/Pz9//z/Yv/6/v3//P39/v/9/////f3+/v/////9/Pv8/f/8//r9//38/fv///z///////z//f/8//3//P/////9//h1+f/////7/f78///7/P3//P/6/f/9/P37///8///////8//3//P/9//z//////f/4dfn/////+/3+/P///////f/8///9//////3+//z9/fz9//7//f/+/vr/+/38/f/9/////GX9/f/////8/v////3//P///f/////9/v/8/f38/f/+//3//v76//v9/P3//f////xl/f3//////P7////9//z///3//////f7//P39/P3//v/9//7++v/7/fz9//3////8Zf39//////z+/v7+//7//vD//v7+/v///f///////v/+//7//v/+/////v7//v7+////+vv8Zf7///7+/v/+//7w//7+/v7///3///////7//v/+//7//v////7+//7+/v////r7/GX+//8BAgEBAP0A/v7///0AAf0BAAEBAQUCAgH9AgP+/gL/AgH8/wAAAAEB/QP///4BAAH9AQIBAQD9AP7+///9AAH9AQABAQEFAgIB/QID/v4C/wIB/P8AAAABAf0D///+AQAB/QEBAQEC/wH+/v78/QEA/gACAAACBQABAv8AAv3+Av4D//39AQIAAQH9Af4B/QICAf4BAQEBAv8B/v7+/P0BAP4AAgAAAgUAAQL/AAL9/gL+A//9/QECAAEB/QH+Af0CAgH+AQEBAQL/Af7+/vz9AQD+AAIAAAIFAAEC/wAC/f4C/gP//f0BAgABAf0B/gH9AgIB/gACAgIAAAP9/fv+/gAC+gABAQECBAMCAv0BAv7+AP0AAQD/AAAB/wH///4C/QIAAv/7+voH+gT6+AT6+vr6BwL7BQYFBgn7BvoE+wj5BPsEBwcC+AX7+vsHBAcJ+/r4+wcE+/r6B/oE+vgE+vr6+gcC+wUGBQYJ+wb6BPsI+QT7BAcHAvgF+/r7BwQHCfv6+PsHBPv6+gf6Bfr4BPr6+vsGAvoGBQYHCvsG+gX6BvkF+gMIBQP5Bvv7+wcDBgj7+vn7BwX7+voH+gX6+AT6+vr7BgL6BgUGBwr7BvoF+gb5BfoDCAUD+Qb7+/sHAwYI+/r5+wcF+vr6CPkH+vcE+fr5+gkA+gcGBwcJ+gj6BPoI+QX6BAUGB/gH+fr6CAUFCPr5+PoJBgcIB/oF+QUG+gUFAwb6+wb7+/v7/Af7B/oH+wb6B/v6+/oG+wYGBvv5+/YFBAkG+/n7+/sI+wT7+QX6+vr6BwP7BgYGBwr7B/oE+wj5BfsFCAcD+Qb7+/wHBAj0+/v6+wcFBwgH+gX5BQb6BQUDBvr7Bvv7+/v8B/sH+gf7BvoH+/r7+gb7BgYG+/n79gUECQb7+QcHBvoI+gcG+gQDAwb7+wb7+/r7+wX7CPoG+wT5B/r7+vsE+wcFBvr6+/YGBAkH+/kHBwb6CPoHBvoEAwMG+/sG+/v6+/sF+wj6BvsE+Qf6+/r7BPsHBQb6+vv2BgQJB/v5+/v7B/sF+vkF+vr6+wYD+wcGBggK+wf7BvoH+QX7BAgFBPkG+/v7CAQH9Pz6+vsHBgYICPoH+QkG+QIEBgb6+gb6+vr6+gn7CPkI+gX5B/n7+/oH+gcGBfr6+vUIBAoG+fn6+/sJ+Qf6+QX5+vn6CQH6CAYICAr6CPoF+gn5BvoFBgYH+Qf6+voIBQXy+vn5+goGBwkH+wb6B/X6BwYEBvr8CPv8/Pv8CPwI+gj7B/sI+/v7+gf7BwYH+/r8+QcG9Qf7+ggIB/sJ+wj1+wUEBAf7/Af8+/v7/Af7CfoH/AX6CPv8+/sF/AgGB/v7+/kIBfUI+/oHCQn7CPoK9foDBQcH+vsI+/v7+/sK+wn5CfoG+gj6+/v6CPoIBwb6+vr4Cgb0B/r6////AP///xEA/////wD//v8AAAAA//////8A////AAD/AP//////AP8A/f7+FP///////wD///8R//////8AAP8AAAD///8A/wD///////8A////////////AP3+/xT///////8A////Ev/////////+////AAD/AP8A/wD/////AAD//wD///8A///9/v4W/wD/AAAA/wAAAP//AAAAAAD/AAAAAP8AAAAAAAAAAP8A/wAA/wD/AAAA/wAAFQD//wD//wAAAP8A/wD/AAAAAAAA/wAA/wAAAAAAAP8AAAAAAP8AAP8AAAAAAP8A/xQA//8AAP8AAAD/AP8A//8AAAAAAAAA/wAA/wAAAAD/AP8A/wD/AAD/AAAAAAD//wAWAP//AP8A",
+    "encoding": "int8-base64",
+    "scale": 0.01803286432281254
+  },
+  "embedding": {
+    "data": "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",
+    "encoding": "int8-base64",
+    "scale": 0.029503754743440882
+  },
+  "exact_prompts": {
+    "describe a bamboo flute melody": 23,
+    "describe a blues guitar progression": 29,
+    "describe a bright ukulele tune": 46,
+    "describe a cheerful pop song structure": 34,
+    "describe a cinematic trailer music cue": 9,
+    "describe a desert wind soundscape": 37,
+    "describe a dramatic orchestral opening": 25,
+    "describe a funk groove track": 15,
+    "describe a jazz trio arrangement": 4,
+    "describe a joyful brass fanfare": 12,
+    "describe a lofi study beat": 6,
+    "describe a marching band arrangement": 2,
+    "describe a nature dawn soundscape": 36,
+    "describe a peaceful harp arpeggio": 1,
+    "describe a playful cartoon music cue": 11,
+    "describe a quiet library ambience": 0,
+    "describe a reggae rhythm track": 43,
+    "describe a relaxing rain soundscape": 38,
+    "describe a solo cello meditation": 21,
+    "describe a soothing string quartet piece": 27,
+    "describe a suspense film score cue": 10,
+    "describe a synthwave night drive track": 44,
+    "describe an electronic dance track build": 7,
+    "describe an energetic workout track": 45,
+    "gravion audio describe a bamboo flute melody": 23,
+    "gravion audio describe a blues guitar progression": 29,
+    "gravion audio describe a bright ukulele tune": 46,
+    "gravion audio describe a cheerful pop song structure": 34,
+    "gravion audio describe a cinematic trailer music cue": 9,
+    "gravion audio describe a desert wind soundscape": 37,
+    "gravion audio describe a dramatic orchestral opening": 25,
+    "gravion audio describe a funk groove track": 15,
+    "gravion audio describe a jazz trio arrangement": 4,
+    "gravion audio describe a joyful brass fanfare": 12,
+    "gravion audio describe a lofi study beat": 6,
+    "gravion audio describe a marching band arrangement": 2,
+    "gravion audio describe a nature dawn soundscape": 36,
+    "gravion audio describe a peaceful harp arpeggio": 1,
+    "gravion audio describe a playful cartoon music cue": 11,
+    "gravion audio describe a quiet library ambience": 0,
+    "gravion audio describe a reggae rhythm track": 43,
+    "gravion audio describe a relaxing rain soundscape": 38,
+    "gravion audio describe a solo cello meditation": 21,
+    "gravion audio describe a soothing string quartet piece": 27,
+    "gravion audio describe a suspense film score cue": 10,
+    "gravion audio describe a synthwave night drive track": 44,
+    "gravion audio describe an electronic dance track build": 7,
+    "gravion audio describe an energetic workout track": 45,
+    "gravion audio plan a beginner piano practice piece": 28,
+    "gravion audio plan a calm piano melody": 22,
+    "gravion audio plan a children s song structure": 8,
+    "gravion audio plan a choir harmony outline": 16,
+    "gravion audio plan a family singalong song": 32,
+    "gravion audio plan a focus music session": 13,
+    "gravion audio plan a folk guitar song outline": 14,
+    "gravion audio plan a folk storytelling song": 41,
+    "gravion audio plan a holiday song outline": 17,
+    "gravion audio plan a lullaby melody": 20,
+    "gravion audio plan a meditation audio session": 31,
+    "gravion audio plan a motivational speech audio": 39,
+    "gravion audio plan a podcast intro sound": 18,
+    "gravion audio plan a podcast outro music": 26,
+    "gravion audio plan a radio jingle concept": 19,
+    "gravion audio plan a rock song arrangement": 3,
+    "gravion audio plan a short audio drama scene": 5,
+    "gravion audio plan a sleep story audio outline": 33,
+    "gravion audio plan a sound logo concept": 35,
+    "gravion audio plan a spoken word audio piece": 40,
+    "gravion audio plan a string orchestra rehearsal piece": 30,
+    "gravion audio plan a trailer voiceover script": 47,
+    "gravion audio plan a vocal warm up routine": 48,
+    "gravion audio plan a wedding ceremony music list": 24,
+    "gravion audio plan an upbeat launch video track": 42,
+    "help me describe a bamboo flute melody": 23,
+    "help me describe a blues guitar progression": 29,
+    "help me describe a bright ukulele tune": 46,
+    "help me describe a cheerful pop song structure": 34,
+    "help me describe a cinematic trailer music cue": 9,
+    "help me describe a desert wind soundscape": 37,
+    "help me describe a dramatic orchestral opening": 25,
+    "help me describe a funk groove track": 15,
+    "help me describe a jazz trio arrangement": 4,
+    "help me describe a joyful brass fanfare": 12,
+    "help me describe a lofi study beat": 6,
+    "help me describe a marching band arrangement": 2,
+    "help me describe a nature dawn soundscape": 36,
+    "help me describe a peaceful harp arpeggio": 1,
+    "help me describe a playful cartoon music cue": 11,
+    "help me describe a quiet library ambience": 0,
+    "help me describe a reggae rhythm track": 43,
+    "help me describe a relaxing rain soundscape": 38,
+    "help me describe a solo cello meditation": 21,
+    "help me describe a soothing string quartet piece": 27,
+    "help me describe a suspense film score cue": 10,
+    "help me describe a synthwave night drive track": 44,
+    "help me describe an electronic dance track build": 7,
+    "help me describe an energetic workout track": 45,
+    "help me plan a beginner piano practice piece": 28,
+    "help me plan a calm piano melody": 22,
+    "help me plan a children s song structure": 8,
+    "help me plan a choir harmony outline": 16,
+    "help me plan a family singalong song": 32,
+    "help me plan a focus music session": 13,
+    "help me plan a folk guitar song outline": 14,
+    "help me plan a folk storytelling song": 41,
+    "help me plan a holiday song outline": 17,
+    "help me plan a lullaby melody": 20,
+    "help me plan a meditation audio session": 31,
+    "help me plan a motivational speech audio": 39,
+    "help me plan a podcast intro sound": 18,
+    "help me plan a podcast outro music": 26,
+    "help me plan a radio jingle concept": 19,
+    "help me plan a rock song arrangement": 3,
+    "help me plan a short audio drama scene": 5,
+    "help me plan a sleep story audio outline": 33,
+    "help me plan a sound logo concept": 35,
+    "help me plan a spoken word audio piece": 40,
+    "help me plan a string orchestra rehearsal piece": 30,
+    "help me plan a trailer voiceover script": 47,
+    "help me plan a vocal warm up routine": 48,
+    "help me plan a wedding ceremony music list": 24,
+    "help me plan an upbeat launch video track": 42,
+    "plan a beginner piano practice piece": 28,
+    "plan a calm piano melody": 22,
+    "plan a children s song structure": 8,
+    "plan a choir harmony outline": 16,
+    "plan a family singalong song": 32,
+    "plan a focus music session": 13,
+    "plan a folk guitar song outline": 14,
+    "plan a folk storytelling song": 41,
+    "plan a holiday song outline": 17,
+    "plan a lullaby melody": 20,
+    "plan a meditation audio session": 31,
+    "plan a motivational speech audio": 39,
+    "plan a podcast intro sound": 18,
+    "plan a podcast outro music": 26,
+    "plan a radio jingle concept": 19,
+    "plan a rock song arrangement": 3,
+    "plan a short audio drama scene": 5,
+    "plan a sleep story audio outline": 33,
+    "plan a sound logo concept": 35,
+    "plan a spoken word audio piece": 40,
+    "plan a string orchestra rehearsal piece": 30,
+    "plan a trailer voiceover script": 47,
+    "plan a vocal warm up routine": 48,
+    "plan a wedding ceremony music list": 24,
+    "plan an upbeat launch video track": 42,
+    "please describe a bamboo flute melody": 23,
+    "please describe a blues guitar progression": 29,
+    "please describe a bright ukulele tune": 46,
+    "please describe a cheerful pop song structure": 34,
+    "please describe a cinematic trailer music cue": 9,
+    "please describe a desert wind soundscape": 37,
+    "please describe a dramatic orchestral opening": 25,
+    "please describe a funk groove track": 15,
+    "please describe a jazz trio arrangement": 4,
+    "please describe a joyful brass fanfare": 12,
+    "please describe a lofi study beat": 6,
+    "please describe a marching band arrangement": 2,
+    "please describe a nature dawn soundscape": 36,
+    "please describe a peaceful harp arpeggio": 1,
+    "please describe a playful cartoon music cue": 11,
+    "please describe a quiet library ambience": 0,
+    "please describe a reggae rhythm track": 43,
+    "please describe a relaxing rain soundscape": 38,
+    "please describe a solo cello meditation": 21,
+    "please describe a soothing string quartet piece": 27,
+    "please describe a suspense film score cue": 10,
+    "please describe a synthwave night drive track": 44,
+    "please describe an electronic dance track build": 7,
+    "please describe an energetic workout track": 45,
+    "please plan a beginner piano practice piece": 28,
+    "please plan a calm piano melody": 22,
+    "please plan a children s song structure": 8,
+    "please plan a choir harmony outline": 16,
+    "please plan a family singalong song": 32,
+    "please plan a focus music session": 13,
+    "please plan a folk guitar song outline": 14,
+    "please plan a folk storytelling song": 41,
+    "please plan a holiday song outline": 17,
+    "please plan a lullaby melody": 20,
+    "please plan a meditation audio session": 31,
+    "please plan a motivational speech audio": 39,
+    "please plan a podcast intro sound": 18,
+    "please plan a podcast outro music": 26,
+    "please plan a radio jingle concept": 19,
+    "please plan a rock song arrangement": 3,
+    "please plan a short audio drama scene": 5,
+    "please plan a sleep story audio outline": 33,
+    "please plan a sound logo concept": 35,
+    "please plan a spoken word audio piece": 40,
+    "please plan a string orchestra rehearsal piece": 30,
+    "please plan a trailer voiceover script": 47,
+    "please plan a vocal warm up routine": 48,
+    "please plan a wedding ceremony music list": 24,
+    "please plan an upbeat launch video track": 42
+  },
+  "features": [
+    "a",
+    "plan",
+    "describe",
+    "plan a",
+    "describe a",
+    "audio",
+    "song",
+    "track",
+    "music",
+    "outline",
+    "piece",
+    "an",
+    "arrangement",
+    "cue",
+    "melody",
+    "soundscape",
+    "a folk",
+    "a podcast",
+    "concept",
+    "describe an",
+    "folk",
+    "guitar",
+    "meditation",
+    "music cue",
+    "piano",
+    "plan a folk",
+    "plan a podcast",
+    "podcast",
+    "session",
+    "song outline",
+    "song structure",
+    "sound",
+    "string",
+    "structure",
+    "trailer",
+    "a bamboo",
+    "a bamboo flute",
+    "a beginner",
+    "a beginner piano",
+    "a blues",
+    "a blues guitar",
+    "a bright",
+    "a bright ukulele",
+    "a calm",
+    "a calm piano",
+    "a cheerful",
+    "a cheerful pop",
+    "a children",
+    "a children s",
+    "a choir",
+    "a choir harmony",
+    "a cinematic",
+    "a cinematic trailer",
+    "a desert",
+    "a desert wind",
+    "a dramatic",
+    "a dramatic orchestral",
+    "a family",
+    "a family singalong",
+    "a focus",
+    "a focus music",
+    "a folk guitar",
+    "a folk storytelling",
+    "a funk",
+    "a funk groove",
+    "a holiday",
+    "a holiday song",
+    "a jazz",
+    "a jazz trio",
+    "a joyful",
+    "a joyful brass",
+    "a lofi",
+    "a lofi study",
+    "a lullaby",
+    "a lullaby melody",
+    "a marching",
+    "a marching band",
+    "a meditation",
+    "a meditation audio",
+    "a motivational",
+    "a motivational speech",
+    "a nature",
+    "a nature dawn",
+    "a peaceful",
+    "a peaceful harp",
+    "a playful",
+    "a playful cartoon",
+    "a podcast intro",
+    "a podcast outro",
+    "a quiet",
+    "a quiet library",
+    "a radio",
+    "a radio jingle",
+    "a reggae",
+    "a reggae rhythm",
+    "a relaxing",
+    "a relaxing rain",
+    "a rock",
+    "a rock song",
+    "a short",
+    "a short audio",
+    "a sleep",
+    "a sleep story",
+    "a solo",
+    "a solo cello",
+    "a soothing",
+    "a soothing string",
+    "a sound",
+    "a sound logo",
+    "a spoken",
+    "a spoken word",
+    "a string",
+    "a string orchestra",
+    "a suspense",
+    "a suspense film",
+    "a synthwave",
+    "a synthwave night",
+    "a trailer",
+    "a trailer voiceover",
+    "a vocal",
+    "a vocal warm",
+    "a wedding",
+    "a wedding ceremony",
+    "ambience",
+    "an electronic",
+    "an electronic dance",
+    "an energetic",
+    "an energetic workout",
+    "an upbeat",
+    "an upbeat launch",
+    "arpeggio",
+    "audio drama",
+    "audio drama scene",
+    "audio outline",
+    "audio piece",
+    "audio session",
+    "bamboo",
+    "bamboo flute",
+    "bamboo flute melody",
+    "band",
+    "band arrangement",
+    "beat",
+    "beginner",
+    "beginner piano",
+    "beginner piano practice",
+    "blues",
+    "blues guitar",
+    "blues guitar progression",
+    "brass",
+    "brass fanfare",
+    "bright",
+    "bright ukulele",
+    "bright ukulele tune",
+    "build",
+    "calm",
+    "calm piano",
+    "calm piano melody",
+    "cartoon",
+    "cartoon music",
+    "cartoon music cue",
+    "cello",
+    "cello meditation",
+    "ceremony",
+    "ceremony music",
+    "ceremony music list",
+    "cheerful",
+    "cheerful pop",
+    "cheerful pop song",
+    "children",
+    "children s",
+    "children s song",
+    "choir",
+    "choir harmony",
+    "choir harmony outline",
+    "cinematic",
+    "cinematic trailer",
+    "cinematic trailer music",
+    "dance",
+    "dance track",
+    "dance track build",
+    "dawn",
+    "dawn soundscape",
+    "describe a bamboo",
+    "describe a blues",
+    "describe a bright",
+    "describe a cheerful",
+    "describe a cinematic",
+    "describe a desert",
+    "describe a dramatic",
+    "describe a funk",
+    "describe a jazz",
+    "describe a joyful",
+    "describe a lofi",
+    "describe a marching",
+    "describe a nature",
+    "describe a peaceful",
+    "describe a playful",
+    "describe a quiet",
+    "describe a reggae",
+    "describe a relaxing",
+    "describe a solo",
+    "describe a soothing",
+    "describe a suspense",
+    "describe a synthwave",
+    "describe an electronic",
+    "describe an energetic",
+    "desert",
+    "desert wind",
+    "desert wind soundscape",
+    "drama",
+    "drama scene",
+    "dramatic",
+    "dramatic orchestral",
+    "dramatic orchestral opening",
+    "drive",
+    "drive track",
+    "electronic",
+    "electronic dance",
+    "electronic dance track",
+    "energetic",
+    "energetic workout",
+    "energetic workout track",
+    "family",
+    "family singalong",
+    "family singalong song",
+    "fanfare",
+    "film",
+    "film score",
+    "film score cue",
+    "flute",
+    "flute melody",
+    "focus",
+    "focus music",
+    "focus music session",
+    "folk guitar",
+    "folk guitar song",
+    "folk storytelling",
+    "folk storytelling song",
+    "funk",
+    "funk groove",
+    "funk groove track",
+    "groove",
+    "groove track",
+    "guitar progression",
+    "guitar song",
+    "guitar song outline",
+    "harmony",
+    "harmony outline",
+    "harp",
+    "harp arpeggio",
+    "holiday",
+    "holiday song",
+    "holiday song outline",
+    "intro",
+    "intro sound",
+    "jazz",
+    "jazz trio",
+    "jazz trio arrangement",
+    "jingle",
+    "jingle concept",
+    "joyful",
+    "joyful brass",
+    "joyful brass fanfare",
+    "launch",
+    "launch video",
+    "launch video track",
+    "library",
+    "library ambience",
+    "list",
+    "lofi",
+    "lofi study",
+    "lofi study beat",
+    "logo",
+    "logo concept",
+    "lullaby",
+    "lullaby melody",
+    "marching",
+    "marching band",
+    "marching band arrangement",
+    "meditation audio",
+    "meditation audio session",
+    "motivational",
+    "motivational speech",
+    "motivational speech audio",
+    "music list",
+    "music session",
+    "nature",
+    "nature dawn",
+    "nature dawn soundscape",
+    "night",
+    "night drive",
+    "night drive track",
+    "opening",
+    "orchestra",
+    "orchestra rehearsal",
+    "orchestra rehearsal piece",
+    "orchestral",
+    "orchestral opening",
+    "outro",
+    "outro music",
+    "peaceful",
+    "peaceful harp",
+    "peaceful harp arpeggio",
+    "piano melody",
+    "piano practice",
+    "piano practice piece",
+    "plan a beginner",
+    "plan a calm",
+    "plan a children",
+    "plan a choir",
+    "plan a family",
+    "plan a focus",
+    "plan a holiday",
+    "plan a lullaby",
+    "plan a meditation",
+    "plan a motivational",
+    "plan a radio",
+    "plan a rock",
+    "plan a short",
+    "plan a sleep",
+    "plan a sound",
+    "plan a spoken",
+    "plan a string",
+    "plan a trailer",
+    "plan a vocal",
+    "plan a wedding",
+    "plan an",
+    "plan an upbeat",
+    "playful",
+    "playful cartoon",
+    "playful cartoon music",
+    "podcast intro",
+    "podcast intro sound",
+    "podcast outro",
+    "podcast outro music",
+    "pop",
+    "pop song",
+    "pop song structure",
+    "practice",
+    "practice piece",
+    "progression",
+    "quartet",
+    "quartet piece",
+    "quiet",
+    "quiet library",
+    "quiet library ambience",
+    "radio",
+    "radio jingle",
+    "radio jingle concept",
+    "rain",
+    "rain soundscape",
+    "reggae",
+    "reggae rhythm",
+    "reggae rhythm track",
+    "rehearsal",
+    "rehearsal piece",
+    "relaxing",
+    "relaxing rain",
+    "relaxing rain soundscape",
+    "rhythm",
+    "rhythm track",
+    "rock",
+    "rock song",
+    "rock song arrangement",
+    "routine",
+    "s",
+    "s song",
+    "s song structure",
+    "scene",
+    "score",
+    "score cue",
+    "script",
+    "short",
+    "short audio",
+    "short audio drama",
+    "singalong",
+    "singalong song",
+    "sleep",
+    "sleep story",
+    "sleep story audio",
+    "solo",
+    "solo cello",
+    "solo cello meditation",
+    "song arrangement",
+    "soothing",
+    "soothing string",
+    "soothing string quartet",
+    "sound logo",
+    "sound logo concept",
+    "speech",
+    "speech audio",
+    "spoken",
+    "spoken word",
+    "spoken word audio",
+    "story",
+    "story audio",
+    "story audio outline",
+    "storytelling",
+    "storytelling song",
+    "string orchestra",
+    "string orchestra rehearsal",
+    "string quartet",
+    "string quartet piece",
+    "study",
+    "study beat",
+    "suspense",
+    "suspense film",
+    "suspense film score",
+    "synthwave",
+    "synthwave night",
+    "synthwave night drive",
+    "track build",
+    "trailer music",
+    "trailer music cue",
+    "trailer voiceover",
+    "trailer voiceover script",
+    "trio",
+    "trio arrangement",
+    "tune",
+    "ukulele",
+    "ukulele tune",
+    "up",
+    "up routine",
+    "upbeat",
+    "upbeat launch",
+    "upbeat launch video",
+    "video",
+    "video track",
+    "vocal",
+    "vocal warm",
+    "vocal warm up",
+    "voiceover",
+    "voiceover script",
+    "warm",
+    "warm up",
+    "warm up routine",
+    "wedding",
+    "wedding ceremony",
+    "wedding ceremony music",
+    "wind",
+    "wind soundscape",
+    "word",
+    "word audio",
+    "word audio piece",
+    "workout",
+    "workout track",
+    "gravion",
+    "gravion audio",
+    "help",
+    "help me",
+    "me",
+    "please",
+    "audio plan",
+    "gravion audio plan",
+    "help me plan",
+    "me plan",
+    "please plan",
+    "audio describe",
+    "audio plan a",
+    "gravion audio describe",
+    "help me describe",
+    "me describe",
+    "me plan a",
+    "please describe",
+    "please plan a",
+    "audio describe a",
+    "me describe a",
+    "please describe a",
+    "audio describe an",
+    "me describe an",
+    "please describe an",
+    "audio plan an",
+    "me plan an",
+    "please plan an"
+  ],
+  "format": "gravion-core-local-v3",
+  "model_id": "gravion-audio",
+  "parameter_count": 32615,
+  "trained_from": {
+    "classes": 49,
+    "dataset_sha256": "dc739e0551b80bfaf70f3a7fa14d07c029494ae1d6ba9b8d50d9d1342924d0dd",
+    "examples": 196,
+    "features": 474,
+    "source": "data/gravion-audio-seed.jsonl"
+  },
+  "transitions": {
+    "<s>": {
+      "ambience": 0.02040816,
+      "arpeggio": 0.02040816,
+      "arrangement": 0.06122449,
+      "audio": 0.02040816,
+      "beat": 0.02040816,
+      "build": 0.02040816,
+      "children": 0.02040816,
+      "cue": 0.06122449,
+      "fanfare": 0.02040816,
+      "focus": 0.02040816,
+      "folk": 0.02040816,
+      "groove": 0.02040816,
+      "harmony": 0.02040816,
+      "holiday": 0.02040816,
+      "intro": 0.02040816,
+      "jingle": 0.02040816,
+      "lullaby": 0.02040816,
+      "meditation": 0.02040816,
+      "melody": 0.04081633,
+      "music": 0.02040816,
+      "opening": 0.02040816,
+      "outro": 0.02040816,
+      "piece": 0.02040816,
+      "practice": 0.02040816,
+      "progression": 0.02040816,
+      "rehearsal": 0.02040816,
+      "session": 0.02040816,
+      "singalong": 0.02040816,
+      "sleep": 0.02040816,
+      "song": 0.02040816,
+      "sound": 0.02040816,
+      "soundscape": 0.06122449,
+      "speech": 0.02040816,
+      "spoken": 0.02040816,
+      "story": 0.02040816,
+      "track": 0.08163265,
+      "tune": 0.02040816,
+      "voiceover": 0.02040816,
+      "warm": 0.02040816
+    },
+    "a": {
+      "calm": 0.05555556,
+      "carefree": 0.05555556,
+      "cheerful": 0.05555556,
+      "clean": 0.05555556,
+      "confident": 0.05555556,
+      "final": 0.05555556,
+      "gentle": 0.05555556,
+      "memorable": 0.05555556,
+      "peaceful": 0.11111111,
+      "powerful": 0.05555556,
+      "reflective": 0.05555556,
+      "relaxed": 0.05555556,
+      "slow": 0.05555556,
+      "soaring": 0.05555556,
+      "strong": 0.11111111,
+      "triumphant": 0.05555556
+    },
+    "accents": {
+      "and": 1.0
+    },
+    "alto": {
+      "support": 1.0
+    },
+    "ambience": {
+      "</s>": 0.5,
+      "page": 0.5
+    },
+    "ambient": {
+      "tones": 1.0
+    },
+    "an": {
+      "uplifting": 1.0
+    },
+    "and": {
+      "a": 0.33962264,
+      "an": 0.01886792,
+      "balanced": 0.01886792,
+      "call": 0.01886792,
+      "calm": 0.01886792,
+      "clean": 0.05660377,
+      "closing": 0.01886792,
+      "consistent": 0.01886792,
+      "expressive": 0.01886792,
+      "fading": 0.01886792,
+      "final": 0.03773585,
+      "gentle": 0.03773585,
+      "gradual": 0.01886792,
+      "grateful": 0.01886792,
+      "happy": 0.01886792,
+      "long": 0.01886792,
+      "loops": 0.01886792,
+      "no": 0.01886792,
+      "quiet": 0.01886792,
+      "reception": 0.01886792,
+      "response": 0.05660377,
+      "short": 0.01886792,
+      "soft": 0.03773585,
+      "steady": 0.01886792,
+      "sunny": 0.01886792,
+      "unresolved": 0.01886792,
+      "verses": 0.01886792,
+      "versions": 0.01886792,
+      "wide": 0.01886792
+    },
+    "answer": {
+      "rhythmic": 1.0
+    },
+    "arpeggio": {
+      "flowing": 1.0
+    },
+    "arpeggios": {
+      "gated": 1.0
+    },
+    "arrangement": {
+      "bold": 0.33333333,
+      "guitar": 0.33333333,
+      "piano": 0.33333333
+    },
+    "audio": {
+      "clear": 0.5,
+      "drama": 0.5
+    },
+    "awareness": {
+      "</s>": 1.0
+    },
+    "background": {
+      "music": 0.33333333,
+      "set": 0.33333333,
+      "simple": 0.33333333
+    },
+    "balanced": {
+      "blend": 1.0
+    },
+    "bar": {
+      "form": 1.0
+    },
+    "bass": {
+      "and": 0.2,
+      "bright": 0.2,
+      "brushed": 0.2,
+      "foundation": 0.2,
+      "relaxed": 0.2
+    },
+    "bassline": {
+      "rhythmic": 1.0
+    },
+    "beat": {
+      "drop": 0.25,
+      "dusty": 0.25,
+      "rising": 0.5
+    },
+    "bed": {
+      "pauses": 1.0
+    },
+    "before": {
+      "key": 0.5,
+      "title": 0.5
+    },
+    "bell": {
+      "accents": 1.0
+    },
+    "bells": {
+      "and": 1.0
+    },
+    "bends": {
+      "</s>": 1.0
+    },
+    "big": {
+      "chorus": 1.0
+    },
+    "birds": {
+      "and": 1.0
+    },
+    "birdsong": {
+      "layers": 1.0
+    },
+    "blend": {
+      "</s>": 1.0
+    },
+    "bold": {
+      "brass": 1.0
+    },
+    "bowed": {
+      "phrases": 1.0
+    },
+    "bowings": {
+      "dynamic": 1.0
+    },
+    "brand": {
+      "phrase": 1.0
+    },
+    "brass": {
+      "answer": 0.33333333,
+      "melody": 0.33333333,
+      "swell": 0.33333333
+    },
+    "break": {
+      "and": 1.0
+    },
+    "breakdown": {
+      "second": 1.0
+    },
+    "breaks": {
+      "</s>": 0.5,
+      "and": 0.5
+    },
+    "breathing": {
+      "cues": 0.5,
+      "humming": 0.5
+    },
+    "breathy": {
+      "tone": 1.0
+    },
+    "breeze": {
+      "distant": 1.0
+    },
+    "bridge": {
+      "</s>": 0.5,
+      "and": 0.5
+    },
+    "bright": {
+      "arpeggios": 0.2,
+      "beat": 0.2,
+      "intro": 0.2,
+      "rhythm": 0.2,
+      "trumpet": 0.2
+    },
+    "brightness": {
+      "</s>": 1.0
+    },
+    "brushed": {
+      "drums": 1.0
+    },
+    "bubbles": {
+      "and": 1.0
+    },
+    "build": {
+      "filtered": 1.0
+    },
+    "cadence": {
+      "</s>": 1.0
+    },
+    "call": {
+      "and": 1.0
+    },
+    "calls": {
+      "full": 1.0
+    },
+    "calm": {
+      "final": 0.5,
+      "room": 0.5
+    },
+    "can": {
+      "join": 1.0
+    },
+    "carefree": {
+      "bridge": 1.0
+    },
+    "catchy": {
+      "chorus": 1.0
+    },
+    "cello": {
+      "grounding": 1.0
+    },
+    "changes": {
+      "and": 1.0
+    },
+    "character": {
+      "verse": 1.0
+    },
+    "cheerful": {
+      "ending": 1.0
+    },
+    "children": {
+      "s": 1.0
+    },
+    "chops": {
+      "drops": 1.0
+    },
+    "chord": {
+      "</s>": 0.66666667,
+      "changes": 0.33333333
+    },
+    "chords": {
+      "deep": 0.25,
+      "simple": 0.25,
+      "soft": 0.25,
+      "walking": 0.25
+    },
+    "chorus": {
+      "</s>": 0.1,
+      "bell": 0.1,
+      "bridge": 0.1,
+      "clapping": 0.2,
+      "harmonica": 0.1,
+      "lift": 0.2,
+      "solo": 0.1,
+      "turning": 0.1
+    },
+    "clapping": {
+      "breaks": 0.5,
+      "rhythm": 0.5
+    },
+    "clean": {
+      "ending": 0.25,
+      "fade": 0.25,
+      "outro": 0.25,
+      "silence": 0.25
+    },
+    "clear": {
+      "brand": 0.2,
+      "sections": 0.2,
+      "voice": 0.6
+    },
+    "climax": {
+      "</s>": 1.0
+    },
+    "close": {
+      "</s>": 1.0
+    },
+    "closing": {
+      "</s>": 0.33333333,
+      "ambience": 0.33333333,
+      "line": 0.33333333
+    },
+    "comic": {
+      "pauses": 1.0
+    },
+    "confident": {
+      "finale": 1.0
+    },
+    "conflict": {
+      "resolution": 1.0
+    },
+    "consistent": {
+      "volume": 1.0
+    },
+    "contrasts": {
+      "and": 1.0
+    },
+    "cozy": {
+      "intro": 1.0
+    },
+    "credits": {
+      "final": 1.0
+    },
+    "cue": {
+      "low": 0.66666667,
+      "pizzicato": 0.33333333
+    },
+    "cues": {
+      "soft": 1.0
+    },
+    "deep": {
+      "bass": 0.5,
+      "resonance": 0.5
+    },
+    "descending": {
+      "phrases": 1.0
+    },
+    "distant": {
+      "birds": 0.25,
+      "thunder": 0.25,
+      "water": 0.25,
+      "whispers": 0.25
+    },
+    "drama": {
+      "setting": 1.0
+    },
+    "drive": {
+      "and": 0.5,
+      "woodwind": 0.5
+    },
+    "driving": {
+      "verse": 1.0
+    },
+    "drone": {
+      "long": 1.0
+    },
+    "drop": {
+      "and": 0.5,
+      "breakdown": 0.5
+    },
+    "drops": {
+      "for": 1.0
+    },
+    "drums": {
+      "and": 0.2,
+      "neon": 0.2,
+      "organ": 0.2,
+      "traded": 0.2,
+      "vinyl": 0.2
+    },
+    "dusty": {
+      "chords": 1.0
+    },
+    "dynamic": {
+      "accents": 0.33333333,
+      "contrasts": 0.33333333,
+      "swells": 0.33333333
+    },
+    "dynamics": {
+      "and": 1.0
+    },
+    "easy": {
+      "chorus": 1.0
+    },
+    "effort": {
+      "peaks": 1.0
+    },
+    "emphasis": {
+      "and": 1.0
+    },
+    "ending": {
+      "</s>": 0.71428571,
+      "sting": 0.14285714,
+      "tag": 0.14285714
+    },
+    "energy": {
+      "</s>": 0.5,
+      "peaks": 0.5
+    },
+    "entry": {
+      "low": 1.0
+    },
+    "everyone": {
+      "can": 1.0
+    },
+    "expansion": {
+      "</s>": 1.0
+    },
+    "expressive": {
+      "bends": 1.0
+    },
+    "fade": {
+      "</s>": 0.5,
+      "under": 0.5
+    },
+    "fading": {
+      "ending": 1.0
+    },
+    "familiar": {
+      "structure": 1.0
+    },
+    "family": {
+      "verse": 1.0
+    },
+    "fanfare": {
+      "bright": 1.0
+    },
+    "feel": {
+      "</s>": 1.0
+    },
+    "filtered": {
+      "intro": 1.0
+    },
+    "final": {
+      "chord": 0.11111111,
+      "chorus": 0.22222222,
+      "harmonic": 0.11111111,
+      "note": 0.11111111,
+      "refrain": 0.11111111,
+      "resolved": 0.11111111,
+      "tag": 0.11111111,
+      "title": 0.11111111
+    },
+    "finale": {
+      "</s>": 1.0
+    },
+    "finger": {
+      "patterns": 1.0
+    },
+    "fingerpicked": {
+      "intro": 1.0
+    },
+    "finish": {
+      "</s>": 1.0
+    },
+    "first": {
+      "climax": 1.0
+    },
+    "five": {
+      "finger": 1.0
+    },
+    "flowing": {
+      "notes": 1.0
+    },
+    "focus": {
+      "session": 1.0
+    },
+    "folk": {
+      "outline": 1.0
+    },
+    "footsteps": {
+      "distant": 1.0
+    },
+    "for": {
+      "effort": 0.25,
+      "emphasis": 0.25,
+      "reveals": 0.25,
+      "short": 0.25
+    },
+    "form": {
+      "call": 1.0
+    },
+    "foundation": {
+      "and": 1.0
+    },
+    "full": {
+      "brass": 1.0
+    },
+    "gated": {
+      "drums": 1.0
+    },
+    "gentle": {
+      "bells": 0.14285714,
+      "chords": 0.14285714,
+      "final": 0.14285714,
+      "melodic": 0.14285714,
+      "prelude": 0.14285714,
+      "range": 0.14285714,
+      "violin": 0.14285714
+    },
+    "glissando": {
+      "warm": 1.0
+    },
+    "gradual": {
+      "morning": 1.0
+    },
+    "grateful": {
+      "closing": 1.0
+    },
+    "groove": {
+      "tight": 1.0
+    },
+    "grounding": {
+      "and": 1.0
+    },
+    "guitar": {
+      "horn": 0.5,
+      "riff": 0.5
+    },
+    "hand": {
+      "support": 1.0
+    },
+    "happy": {
+      "ending": 1.0
+    },
+    "harmonic": {
+      "</s>": 1.0
+    },
+    "harmonica": {
+      "break": 1.0
+    },
+    "harmony": {
+      "outline": 1.0
+    },
+    "hits": {
+      "silence": 1.0
+    },
+    "holiday": {
+      "outline": 1.0
+    },
+    "hook": {
+      "clear": 0.5,
+      "energy": 0.5
+    },
+    "hops": {
+      "comic": 1.0
+    },
+    "horn": {
+      "stabs": 1.0
+    },
+    "humming": {
+      "lip": 1.0
+    },
+    "imagery": {
+      "and": 0.5,
+      "long": 0.5
+    },
+    "impact": {
+      "hits": 1.0
+    },
+    "in": {
+      "soprano": 1.0
+    },
+    "intro": {
+      "driving": 0.16666667,
+      "family": 0.16666667,
+      "rising": 0.16666667,
+      "sound": 0.16666667,
+      "story": 0.16666667,
+      "verse": 0.16666667
+    },
+    "jingle": {
+      "three": 1.0
+    },
+    "join": {
+      "</s>": 1.0
+    },
+    "journey": {
+      "chorus": 1.0
+    },
+    "key": {
+      "lines": 0.5,
+      "words": 0.5
+    },
+    "layers": {
+      "light": 1.0
+    },
+    "lead": {
+      "</s>": 1.0
+    },
+    "left": {
+      "hand": 1.0
+    },
+    "licks": {
+      "shuffle": 1.0
+    },
+    "lift": {
+      "</s>": 0.5,
+      "catchy": 0.5
+    },
+    "light": {
+      "breeze": 0.5,
+      "percussion": 0.5
+    },
+    "line": {
+      "</s>": 1.0
+    },
+    "lines": {
+      "pauses": 0.5,
+      "rising": 0.5
+    },
+    "lip": {
+      "trills": 1.0
+    },
+    "list": {
+      "gentle": 1.0
+    },
+    "logo": {
+      "two": 1.0
+    },
+    "long": {
+      "pauses": 0.66666667,
+      "use": 0.33333333
+    },
+    "loops": {
+      "that": 1.0
+    },
+    "loud": {
+      "peaks": 1.0
+    },
+    "low": {
+      "background": 0.25,
+      "pulse": 0.25,
+      "strings": 0.5
+    },
+    "lullaby": {
+      "slow": 1.0
+    },
+    "lyrics": {
+      "slow": 1.0
+    },
+    "marked": {
+      "bowings": 1.0
+    },
+    "meditation": {
+      "slow": 1.0
+    },
+    "mellow": {
+      "bass": 1.0
+    },
+    "melodic": {
+      "peaks": 1.0
+    },
+    "melody": {
+      "</s>": 0.16666667,
+      "breathy": 0.16666667,
+      "in": 0.16666667,
+      "light": 0.16666667,
+      "plan": 0.16666667,
+      "snare": 0.16666667
+    },
+    "memorable": {
+      "ending": 1.0
+    },
+    "mood": {
+      "and": 1.0
+    },
+    "moral": {
+      "verse": 1.0
+    },
+    "morning": {
+      "brightness": 1.0
+    },
+    "motif": {
+      "clear": 0.25,
+      "soft": 0.5,
+      "warm": 0.25
+    },
+    "movement": {
+      "bass": 0.5,
+      "distant": 0.5
+    },
+    "music": {
+      "and": 0.2,
+      "bed": 0.2,
+      "list": 0.2,
+      "recessional": 0.2,
+      "under": 0.2
+    },
+    "narration": {
+      "soft": 1.0
+    },
+    "nature": {
+      "imagery": 1.0
+    },
+    "neon": {
+      "mood": 1.0
+    },
+    "no": {
+      "lyrics": 0.5,
+      "sudden": 0.5
+    },
+    "note": {
+      "</s>": 0.33333333,
+      "hook": 0.33333333,
+      "motif": 0.33333333
+    },
+    "notes": {
+      "rising": 0.5,
+      "soft": 0.5
+    },
+    "offbeat": {
+      "chords": 1.0
+    },
+    "open": {
+      "silence": 1.0
+    },
+    "opening": {
+      "low": 1.0
+    },
+    "organ": {
+      "bubbles": 1.0
+    },
+    "ornamented": {
+      "phrases": 1.0
+    },
+    "outline": {
+      "cozy": 0.33333333,
+      "fingerpicked": 0.33333333,
+      "melody": 0.33333333
+    },
+    "outro": {
+      "</s>": 0.5,
+      "recap": 0.5
+    },
+    "page": {
+      "turns": 1.0
+    },
+    "patter": {
+      "and": 1.0
+    },
+    "patterns": {
+      "and": 0.5,
+      "simple": 0.5
+    },
+    "pauses": {
+      "and": 0.57142857,
+      "before": 0.14285714,
+      "for": 0.14285714,
+      "gentle": 0.14285714
+    },
+    "peaceful": {
+      "cadence": 0.5,
+      "ending": 0.5
+    },
+    "peaks": {
+      "</s>": 0.5,
+      "and": 0.25,
+      "for": 0.25
+    },
+    "percussion": {
+      "and": 1.0
+    },
+    "phrase": {
+      "bright": 1.0
+    },
+    "phrases": {
+      "and": 0.33333333,
+      "deep": 0.33333333,
+      "nature": 0.33333333
+    },
+    "piano": {
+      "chords": 0.5,
+      "notes": 0.5
+    },
+    "piece": {
+      "clear": 0.33333333,
+      "five": 0.33333333,
+      "gentle": 0.33333333
+    },
+    "pizzicato": {
+      "strings": 1.0
+    },
+    "plan": {
+      "slow": 1.0
+    },
+    "pocket": {
+      "drums": 1.0
+    },
+    "point": {
+      "moral": 1.0
+    },
+    "powerful": {
+      "first": 1.0
+    },
+    "practice": {
+      "piece": 1.0
+    },
+    "pre": {
+      "chorus": 1.0
+    },
+    "prelude": {
+      "processional": 1.0
+    },
+    "processional": {
+      "signing": 1.0
+    },
+    "progression": {
+      "twelve": 1.0
+    },
+    "pulse": {
+      "rising": 1.0
+    },
+    "pulsing": {
+      "bass": 1.0
+    },
+    "quick": {
+      "recognition": 1.0
+    },
+    "quiet": {
+      "close": 1.0
+    },
+    "rain": {
+      "distant": 1.0
+    },
+    "range": {
+      "expansion": 1.0
+    },
+    "recap": {
+      "motif": 1.0
+    },
+    "reception": {
+      "background": 1.0
+    },
+    "recessional": {
+      "and": 1.0
+    },
+    "recognition": {
+      "and": 1.0
+    },
+    "reflective": {
+      "closing": 1.0
+    },
+    "refrain": {
+      "</s>": 1.0
+    },
+    "rehearsal": {
+      "piece": 1.0
+    },
+    "relaxed": {
+      "drums": 0.5,
+      "swing": 0.5
+    },
+    "repeatable": {
+      "sections": 1.0
+    },
+    "repeated": {
+      "chorus": 1.0
+    },
+    "repeating": {
+      "motif": 1.0
+    },
+    "resolution": {
+      "and": 1.0
+    },
+    "resolved": {
+      "chord": 1.0
+    },
+    "resonance": {
+      "and": 0.5,
+      "pauses": 0.5
+    },
+    "response": {
+      "and": 0.33333333,
+      "breaks": 0.33333333,
+      "licks": 0.33333333
+    },
+    "return": {
+      "to": 1.0
+    },
+    "reveals": {
+      "and": 1.0
+    },
+    "rhythm": {
+      "and": 0.4,
+      "call": 0.2,
+      "left": 0.2,
+      "soft": 0.2
+    },
+    "rhythmic": {
+      "drive": 0.5,
+      "guitar": 0.5
+    },
+    "riff": {
+      "intro": 1.0
+    },
+    "rising": {
+      "conflict": 0.125,
+      "stakes": 0.125,
+      "strings": 0.125,
+      "synths": 0.25,
+      "tension": 0.25,
+      "theme": 0.125
+    },
+    "rocking": {
+      "rhythm": 1.0
+    },
+    "roof": {
+      "patter": 1.0
+    },
+    "room": {
+      "tone": 1.0
+    },
+    "runs": {
+      "dynamic": 1.0
+    },
+    "s": {
+      "song": 1.0
+    },
+    "sand": {
+      "movement": 1.0
+    },
+    "scale": {
+      "patterns": 1.0
+    },
+    "second": {
+      "drop": 1.0
+    },
+    "sections": {
+      "</s>": 0.5,
+      "marked": 0.5
+    },
+    "session": {
+      "breathing": 0.5,
+      "steady": 0.5
+    },
+    "set": {
+      "</s>": 1.0
+    },
+    "setting": {
+      "sounds": 1.0
+    },
+    "short": {
+      "and": 0.16666667,
+      "hook": 0.16666667,
+      "lines": 0.16666667,
+      "repeatable": 0.16666667,
+      "vocal": 0.16666667,
+      "warm": 0.16666667
+    },
+    "shuffle": {
+      "rhythm": 1.0
+    },
+    "signing": {
+      "music": 1.0
+    },
+    "silence": {
+      "</s>": 0.5,
+      "and": 0.25,
+      "before": 0.25
+    },
+    "simple": {
+      "descending": 0.16666667,
+      "imagery": 0.16666667,
+      "melody": 0.16666667,
+      "repeating": 0.16666667,
+      "rhythm": 0.16666667,
+      "words": 0.16666667
+    },
+    "singalong": {
+      "chorus": 0.5,
+      "familiar": 0.5
+    },
+    "sleep": {
+      "story": 1.0
+    },
+    "slow": {
+      "bowed": 0.16666667,
+      "chord": 0.16666667,
+      "narration": 0.16666667,
+      "return": 0.16666667,
+      "rocking": 0.16666667,
+      "tempo": 0.16666667
+    },
+    "snare": {
+      "drive": 1.0
+    },
+    "soaring": {
+      "lead": 1.0
+    },
+    "soft": {
+      "background": 0.08333333,
+      "drone": 0.08333333,
+      "drums": 0.08333333,
+      "dynamic": 0.08333333,
+      "dynamics": 0.08333333,
+      "fade": 0.08333333,
+      "final": 0.08333333,
+      "footsteps": 0.08333333,
+      "glissando": 0.08333333,
+      "roof": 0.08333333,
+      "tone": 0.08333333,
+      "wind": 0.08333333
+    },
+    "solo": {
+      "break": 1.0
+    },
+    "solos": {
+      "and": 1.0
+    },
+    "song": {
+      "character": 0.33333333,
+      "simple": 0.33333333,
+      "structure": 0.33333333
+    },
+    "soprano": {
+      "warm": 1.0
+    },
+    "sound": {
+      "logo": 0.5,
+      "short": 0.5
+    },
+    "sounds": {
+      "two": 1.0
+    },
+    "soundscape": {
+      "birdsong": 0.33333333,
+      "soft": 0.33333333,
+      "steady": 0.33333333
+    },
+    "sparse": {
+      "music": 0.5,
+      "piano": 0.5
+    },
+    "speech": {
+      "audio": 1.0
+    },
+    "spoken": {
+      "word": 1.0
+    },
+    "stabs": {
+      "pocket": 1.0
+    },
+    "stakes": {
+      "pauses": 1.0
+    },
+    "stay": {
+      "unobtrusive": 1.0
+    },
+    "steady": {
+      "ambient": 0.33333333,
+      "energy": 0.33333333,
+      "rain": 0.33333333
+    },
+    "sting": {
+      "</s>": 1.0
+    },
+    "story": {
+      "slow": 0.33333333,
+      "song": 0.33333333,
+      "verse": 0.33333333
+    },
+    "strings": {
+      "brass": 0.25,
+      "impact": 0.25,
+      "sparse": 0.25,
+      "woodwind": 0.25
+    },
+    "strong": {
+      "beat": 0.33333333,
+      "final": 0.33333333,
+      "finish": 0.33333333
+    },
+    "structure": {
+      "bright": 0.5,
+      "easy": 0.5
+    },
+    "strumming": {
+      "simple": 1.0
+    },
+    "sudden": {
+      "loud": 0.5,
+      "silence": 0.5
+    },
+    "sunny": {
+      "melody": 0.5,
+      "strumming": 0.5
+    },
+    "support": {
+      "and": 0.5,
+      "tenor": 0.5
+    },
+    "supportive": {
+      "music": 1.0
+    },
+    "swell": {
+      "timpani": 1.0
+    },
+    "swells": {
+      "</s>": 1.0
+    },
+    "swing": {
+      "feel": 1.0
+    },
+    "synths": {
+      "short": 1.0
+    },
+    "tag": {
+      "</s>": 0.5,
+      "and": 0.5
+    },
+    "tempo": {
+      "gentle": 1.0
+    },
+    "tenor": {
+      "movement": 1.0
+    },
+    "tension": {
+      "beat": 0.5,
+      "sudden": 0.5
+    },
+    "that": {
+      "stay": 1.0
+    },
+    "theme": {
+      "and": 0.5,
+      "viola": 0.5
+    },
+    "three": {
+      "note": 1.0
+    },
+    "thunder": {
+      "soft": 1.0
+    },
+    "tight": {
+      "bassline": 1.0
+    },
+    "timbre": {
+      "quick": 1.0
+    },
+    "timpani": {
+      "pulse": 1.0
+    },
+    "title": {
+      "and": 0.5,
+      "line": 0.5
+    },
+    "to": {
+      "awareness": 1.0
+    },
+    "tone": {
+      "</s>": 0.33333333,
+      "ornamented": 0.33333333,
+      "simple": 0.33333333
+    },
+    "tones": {
+      "no": 1.0
+    },
+    "track": {
+      "bright": 0.25,
+      "offbeat": 0.25,
+      "pulsing": 0.25,
+      "strong": 0.25
+    },
+    "traded": {
+      "solos": 1.0
+    },
+    "trills": {
+      "scale": 1.0
+    },
+    "triumphant": {
+      "final": 1.0
+    },
+    "trumpet": {
+      "calls": 1.0
+    },
+    "tune": {
+      "sunny": 1.0
+    },
+    "turning": {
+      "point": 1.0
+    },
+    "turns": {
+      "soft": 1.0
+    },
+    "twelve": {
+      "bar": 1.0
+    },
+    "two": {
+      "note": 0.5,
+      "voices": 0.5
+    },
+    "under": {
+      "credits": 0.5,
+      "key": 0.5
+    },
+    "unobtrusive": {
+      "</s>": 1.0
+    },
+    "unresolved": {
+      "ending": 1.0
+    },
+    "up": {
+      "breathing": 1.0
+    },
+    "uplifting": {
+      "close": 1.0
+    },
+    "use": {
+      "</s>": 1.0
+    },
+    "verse": {
+      "and": 0.16666667,
+      "big": 0.16666667,
+      "journey": 0.16666667,
+      "pre": 0.16666667,
+      "singalong": 0.16666667,
+      "warm": 0.16666667
+    },
+    "verses": {
+      "everyone": 1.0
+    },
+    "versions": {
+      "for": 1.0
+    },
+    "vinyl": {
+      "warmth": 1.0
+    },
+    "viola": {
+      "warmth": 1.0
+    },
+    "violin": {
+      "theme": 1.0
+    },
+    "vocal": {
+      "chops": 1.0
+    },
+    "voice": {
+      "entry": 0.33333333,
+      "sparse": 0.33333333,
+      "supportive": 0.33333333
+    },
+    "voiceover": {
+      "short": 1.0
+    },
+    "voices": {
+      "rising": 1.0
+    },
+    "volume": {
+      "</s>": 1.0
+    },
+    "walking": {
+      "bass": 1.0
+    },
+    "warm": {
+      "alto": 0.16666667,
+      "chorus": 0.16666667,
+      "motif": 0.16666667,
+      "resonance": 0.16666667,
+      "timbre": 0.16666667,
+      "up": 0.16666667
+    },
+    "warmth": {
+      "cello": 0.5,
+      "mellow": 0.5
+    },
+    "water": {
+      "and": 1.0
+    },
+    "whispers": {
+      "and": 1.0
+    },
+    "wide": {
+      "open": 1.0
+    },
+    "wind": {
+      "sand": 1.0
+    },
+    "woodwind": {
+      "hops": 0.5,
+      "runs": 0.5
+    },
+    "word": {
+      "clear": 1.0
+    },
+    "words": {
+      "and": 0.5,
+      "repeated": 0.5
+    }
+  },
+  "unigram_weights": {
+    "a": 0.02769231,
+    "accents": 0.00307692,
+    "alto": 0.00153846,
+    "ambience": 0.00307692,
+    "ambient": 0.00153846,
+    "an": 0.00153846,
+    "and": 0.08153846,
+    "answer": 0.00153846,
+    "arpeggio": 0.00153846,
+    "arpeggios": 0.00153846,
+    "arrangement": 0.00461538,
+    "audio": 0.00307692,
+    "awareness": 0.00153846,
+    "background": 0.00461538,
+    "balanced": 0.00153846,
+    "bar": 0.00153846,
+    "bass": 0.00769231,
+    "bassline": 0.00153846,
+    "beat": 0.00615385,
+    "bed": 0.00153846,
+    "before": 0.00307692,
+    "bell": 0.00153846,
+    "bells": 0.00153846,
+    "bends": 0.00153846,
+    "big": 0.00153846,
+    "birds": 0.00153846,
+    "birdsong": 0.00153846,
+    "blend": 0.00153846,
+    "bold": 0.00153846,
+    "bowed": 0.00153846,
+    "bowings": 0.00153846,
+    "brand": 0.00153846,
+    "brass": 0.00461538,
+    "break": 0.00307692,
+    "breakdown": 0.00153846,
+    "breaks": 0.00307692,
+    "breathing": 0.00307692,
+    "breathy": 0.00153846,
+    "breeze": 0.00153846,
+    "bridge": 0.00307692,
+    "bright": 0.00769231,
+    "brightness": 0.00153846,
+    "brushed": 0.00153846,
+    "bubbles": 0.00153846,
+    "build": 0.00153846,
+    "cadence": 0.00153846,
+    "call": 0.00461538,
+    "calls": 0.00153846,
+    "calm": 0.00307692,
+    "can": 0.00153846,
+    "carefree": 0.00153846,
+    "catchy": 0.00153846,
+    "cello": 0.00153846,
+    "changes": 0.00153846,
+    "character": 0.00153846,
+    "cheerful": 0.00153846,
+    "children": 0.00153846,
+    "chops": 0.00153846,
+    "chord": 0.00461538,
+    "chords": 0.00615385,
+    "chorus": 0.01538462,
+    "clapping": 0.00307692,
+    "clean": 0.00615385,
+    "clear": 0.00769231,
+    "climax": 0.00153846,
+    "close": 0.00307692,
+    "closing": 0.00461538,
+    "comic": 0.00153846,
+    "confident": 0.00153846,
+    "conflict": 0.00153846,
+    "consistent": 0.00153846,
+    "contrasts": 0.00153846,
+    "cozy": 0.00153846,
+    "credits": 0.00153846,
+    "cue": 0.00461538,
+    "cues": 0.00153846,
+    "deep": 0.00307692,
+    "descending": 0.00153846,
+    "distant": 0.00615385,
+    "drama": 0.00153846,
+    "drive": 0.00307692,
+    "driving": 0.00153846,
+    "drone": 0.00153846,
+    "drop": 0.00307692,
+    "drops": 0.00153846,
+    "drums": 0.00769231,
+    "dusty": 0.00153846,
+    "dynamic": 0.00461538,
+    "dynamics": 0.00153846,
+    "easy": 0.00153846,
+    "effort": 0.00153846,
+    "emphasis": 0.00153846,
+    "ending": 0.01076923,
+    "energy": 0.00307692,
+    "entry": 0.00153846,
+    "everyone": 0.00153846,
+    "expansion": 0.00153846,
+    "expressive": 0.00153846,
+    "fade": 0.00307692,
+    "fading": 0.00153846,
+    "familiar": 0.00153846,
+    "family": 0.00153846,
+    "fanfare": 0.00153846,
+    "feel": 0.00153846,
+    "filtered": 0.00153846,
+    "final": 0.01384615,
+    "finale": 0.00153846,
+    "finger": 0.00153846,
+    "fingerpicked": 0.00153846,
+    "finish": 0.00153846,
+    "first": 0.00153846,
+    "five": 0.00153846,
+    "flowing": 0.00153846,
+    "focus": 0.00153846,
+    "folk": 0.00153846,
+    "footsteps": 0.00153846,
+    "for": 0.00615385,
+    "form": 0.00153846,
+    "foundation": 0.00153846,
+    "full": 0.00153846,
+    "gated": 0.00153846,
+    "gentle": 0.01076923,
+    "glissando": 0.00153846,
+    "gradual": 0.00153846,
+    "grateful": 0.00153846,
+    "groove": 0.00153846,
+    "grounding": 0.00153846,
+    "guitar": 0.00307692,
+    "hand": 0.00153846,
+    "happy": 0.00153846,
+    "harmonic": 0.00153846,
+    "harmonica": 0.00153846,
+    "harmony": 0.00153846,
+    "hits": 0.00153846,
+    "holiday": 0.00153846,
+    "hook": 0.00307692,
+    "hops": 0.00153846,
+    "horn": 0.00153846,
+    "humming": 0.00153846,
+    "imagery": 0.00307692,
+    "impact": 0.00153846,
+    "in": 0.00153846,
+    "intro": 0.00923077,
+    "jingle": 0.00153846,
+    "join": 0.00153846,
+    "journey": 0.00153846,
+    "key": 0.00307692,
+    "layers": 0.00153846,
+    "lead": 0.00153846,
+    "left": 0.00153846,
+    "licks": 0.00153846,
+    "lift": 0.00307692,
+    "light": 0.00307692,
+    "line": 0.00307692,
+    "lines": 0.00307692,
+    "lip": 0.00153846,
+    "list": 0.00153846,
+    "logo": 0.00153846,
+    "long": 0.00461538,
+    "loops": 0.00153846,
+    "loud": 0.00153846,
+    "low": 0.00615385,
+    "lullaby": 0.00153846,
+    "lyrics": 0.00153846,
+    "marked": 0.00153846,
+    "meditation": 0.00153846,
+    "mellow": 0.00153846,
+    "melodic": 0.00153846,
+    "melody": 0.00923077,
+    "memorable": 0.00153846,
+    "mood": 0.00153846,
+    "moral": 0.00153846,
+    "morning": 0.00153846,
+    "motif": 0.00615385,
+    "movement": 0.00307692,
+    "music": 0.00769231,
+    "narration": 0.00153846,
+    "nature": 0.00153846,
+    "neon": 0.00153846,
+    "no": 0.00307692,
+    "note": 0.00461538,
+    "notes": 0.00307692,
+    "offbeat": 0.00153846,
+    "open": 0.00153846,
+    "opening": 0.00153846,
+    "organ": 0.00153846,
+    "ornamented": 0.00153846,
+    "outline": 0.00461538,
+    "outro": 0.00307692,
+    "page": 0.00153846,
+    "patter": 0.00153846,
+    "patterns": 0.00307692,
+    "pauses": 0.01076923,
+    "peaceful": 0.00307692,
+    "peaks": 0.00615385,
+    "percussion": 0.00153846,
+    "phrase": 0.00153846,
+    "phrases": 0.00461538,
+    "piano": 0.00307692,
+    "piece": 0.00461538,
+    "pizzicato": 0.00153846,
+    "plan": 0.00153846,
+    "pocket": 0.00153846,
+    "point": 0.00153846,
+    "powerful": 0.00153846,
+    "practice": 0.00153846,
+    "pre": 0.00153846,
+    "prelude": 0.00153846,
+    "processional": 0.00153846,
+    "progression": 0.00153846,
+    "pulse": 0.00307692,
+    "pulsing": 0.00153846,
+    "quick": 0.00153846,
+    "quiet": 0.00153846,
+    "rain": 0.00153846,
+    "range": 0.00153846,
+    "recap": 0.00153846,
+    "reception": 0.00153846,
+    "recessional": 0.00153846,
+    "recognition": 0.00153846,
+    "reflective": 0.00153846,
+    "refrain": 0.00153846,
+    "rehearsal": 0.00153846,
+    "relaxed": 0.00307692,
+    "repeatable": 0.00153846,
+    "repeated": 0.00153846,
+    "repeating": 0.00153846,
+    "resolution": 0.00153846,
+    "resolved": 0.00153846,
+    "resonance": 0.00307692,
+    "response": 0.00461538,
+    "return": 0.00153846,
+    "reveals": 0.00153846,
+    "rhythm": 0.00769231,
+    "rhythmic": 0.00307692,
+    "riff": 0.00153846,
+    "rising": 0.01230769,
+    "rocking": 0.00153846,
+    "roof": 0.00153846,
+    "room": 0.00153846,
+    "runs": 0.00153846,
+    "s": 0.00153846,
+    "sand": 0.00153846,
+    "scale": 0.00153846,
+    "second": 0.00153846,
+    "sections": 0.00307692,
+    "session": 0.00307692,
+    "set": 0.00153846,
+    "setting": 0.00153846,
+    "short": 0.00923077,
+    "shuffle": 0.00153846,
+    "signing": 0.00153846,
+    "silence": 0.00615385,
+    "simple": 0.00923077,
+    "singalong": 0.00307692,
+    "sleep": 0.00153846,
+    "slow": 0.00923077,
+    "snare": 0.00153846,
+    "soaring": 0.00153846,
+    "soft": 0.01846154,
+    "solo": 0.00153846,
+    "solos": 0.00153846,
+    "song": 0.00461538,
+    "soprano": 0.00153846,
+    "sound": 0.00307692,
+    "sounds": 0.00153846,
+    "soundscape": 0.00461538,
+    "sparse": 0.00307692,
+    "speech": 0.00153846,
+    "spoken": 0.00153846,
+    "stabs": 0.00153846,
+    "stakes": 0.00153846,
+    "stay": 0.00153846,
+    "steady": 0.00461538,
+    "sting": 0.00153846,
+    "story": 0.00461538,
+    "strings": 0.00615385,
+    "strong": 0.00461538,
+    "structure": 0.00307692,
+    "strumming": 0.00153846,
+    "sudden": 0.00307692,
+    "sunny": 0.00307692,
+    "support": 0.00307692,
+    "supportive": 0.00153846,
+    "swell": 0.00153846,
+    "swells": 0.00153846,
+    "swing": 0.00153846,
+    "synths": 0.00307692,
+    "tag": 0.00307692,
+    "tempo": 0.00153846,
+    "tenor": 0.00153846,
+    "tension": 0.00307692,
+    "that": 0.00153846,
+    "theme": 0.00307692,
+    "three": 0.00153846,
+    "thunder": 0.00153846,
+    "tight": 0.00153846,
+    "timbre": 0.00153846,
+    "timpani": 0.00153846,
+    "title": 0.00307692,
+    "to": 0.00153846,
+    "tone": 0.00461538,
+    "tones": 0.00153846,
+    "track": 0.00615385,
+    "traded": 0.00153846,
+    "trills": 0.00153846,
+    "triumphant": 0.00153846,
+    "trumpet": 0.00153846,
+    "tune": 0.00153846,
+    "turning": 0.00153846,
+    "turns": 0.00153846,
+    "twelve": 0.00153846,
+    "two": 0.00307692,
+    "under": 0.00307692,
+    "unobtrusive": 0.00153846,
+    "unresolved": 0.00153846,
+    "up": 0.00153846,
+    "uplifting": 0.00153846,
+    "use": 0.00153846,
+    "verse": 0.00923077,
+    "verses": 0.00153846,
+    "versions": 0.00153846,
+    "vinyl": 0.00153846,
+    "viola": 0.00153846,
+    "violin": 0.00153846,
+    "vocal": 0.00153846,
+    "voice": 0.00461538,
+    "voiceover": 0.00153846,
+    "voices": 0.00153846,
+    "volume": 0.00153846,
+    "walking": 0.00153846,
+    "warm": 0.00923077,
+    "warmth": 0.00307692,
+    "water": 0.00153846,
+    "whispers": 0.00153846,
+    "wide": 0.00153846,
+    "wind": 0.00153846,
+    "woodwind": 0.00307692,
+    "word": 0.00153846,
+    "words": 0.00307692
+  },
+  "vocabulary": [
+    "a",
+    "accents",
+    "alto",
+    "ambience",
+    "ambient",
+    "an",
+    "and",
+    "answer",
+    "arpeggio",
+    "arpeggios",
+    "arrangement",
+    "audio",
+    "awareness",
+    "background",
+    "balanced",
+    "bamboo",
+    "band",
+    "bar",
+    "bass",
+    "bassline",
+    "beat",
+    "bed",
+    "before",
+    "beginner",
+    "bell",
+    "bells",
+    "bends",
+    "big",
+    "birds",
+    "birdsong",
+    "blend",
+    "blues",
+    "bold",
+    "bowed",
+    "bowings",
+    "brand",
+    "brass",
+    "break",
+    "breakdown",
+    "breaks",
+    "breathing",
+    "breathy",
+    "breeze",
+    "bridge",
+    "bright",
+    "brightness",
+    "brushed",
+    "bubbles",
+    "build",
+    "cadence",
+    "call",
+    "calls",
+    "calm",
+    "can",
+    "carefree",
+    "cartoon",
+    "catchy",
+    "cello",
+    "ceremony",
+    "changes",
+    "character",
+    "cheerful",
+    "children",
+    "choir",
+    "chops",
+    "chord",
+    "chords",
+    "chorus",
+    "cinematic",
+    "clapping",
+    "clean",
+    "clear",
+    "climax",
+    "close",
+    "closing",
+    "comic",
+    "concept",
+    "confident",
+    "conflict",
+    "consistent",
+    "contrasts",
+    "cozy",
+    "credits",
+    "cue",
+    "cues",
+    "dance",
+    "dawn",
+    "deep",
+    "descending",
+    "describe",
+    "desert",
+    "distant",
+    "drama",
+    "dramatic",
+    "drive",
+    "driving",
+    "drone",
+    "drop",
+    "drops",
+    "drums",
+    "dusty",
+    "dynamic",
+    "dynamics",
+    "easy",
+    "effort",
+    "electronic",
+    "emphasis",
+    "ending",
+    "energetic",
+    "energy",
+    "entry",
+    "everyone",
+    "expansion",
+    "expressive",
+    "fade",
+    "fading",
+    "familiar",
+    "family",
+    "fanfare",
+    "feel",
+    "film",
+    "filtered",
+    "final",
+    "finale",
+    "finger",
+    "fingerpicked",
+    "finish",
+    "first",
+    "five",
+    "flowing",
+    "flute",
+    "focus",
+    "folk",
+    "footsteps",
+    "for",
+    "form",
+    "foundation",
+    "full",
+    "funk",
+    "gated",
+    "gentle",
+    "glissando",
+    "gradual",
+    "grateful",
+    "gravion",
+    "groove",
+    "grounding",
+    "guitar",
+    "hand",
+    "happy",
+    "harmonic",
+    "harmonica",
+    "harmony",
+    "harp",
+    "help",
+    "hits",
+    "holiday",
+    "hook",
+    "hops",
+    "horn",
+    "humming",
+    "imagery",
+    "impact",
+    "in",
+    "intro",
+    "jazz",
+    "jingle",
+    "join",
+    "journey",
+    "joyful",
+    "key",
+    "launch",
+    "layers",
+    "lead",
+    "left",
+    "library",
+    "licks",
+    "lift",
+    "light",
+    "line",
+    "lines",
+    "lip",
+    "list",
+    "lofi",
+    "logo",
+    "long",
+    "loops",
+    "loud",
+    "low",
+    "lullaby",
+    "lyrics",
+    "marching",
+    "marked",
+    "me",
+    "meditation",
+    "mellow",
+    "melodic",
+    "melody",
+    "memorable",
+    "mood",
+    "moral",
+    "morning",
+    "motif",
+    "motivational",
+    "movement",
+    "music",
+    "narration",
+    "nature",
+    "neon",
+    "night",
+    "no",
+    "note",
+    "notes",
+    "offbeat",
+    "open",
+    "opening",
+    "orchestra",
+    "orchestral",
+    "organ",
+    "ornamented",
+    "outline",
+    "outro",
+    "page",
+    "patter",
+    "patterns",
+    "pauses",
+    "peaceful",
+    "peaks",
+    "percussion",
+    "phrase",
+    "phrases",
+    "piano",
+    "piece",
+    "pizzicato",
+    "plan",
+    "playful",
+    "please",
+    "pocket",
+    "podcast",
+    "point",
+    "pop",
+    "powerful",
+    "practice",
+    "pre",
+    "prelude",
+    "processional",
+    "progression",
+    "pulse",
+    "pulsing",
+    "quartet",
+    "quick",
+    "quiet",
+    "radio",
+    "rain",
+    "range",
+    "recap",
+    "reception",
+    "recessional",
+    "recognition",
+    "reflective",
+    "refrain",
+    "reggae",
+    "rehearsal",
+    "relaxed",
+    "relaxing",
+    "repeatable",
+    "repeated",
+    "repeating",
+    "resolution",
+    "resolved",
+    "resonance",
+    "response",
+    "return",
+    "reveals",
+    "rhythm",
+    "rhythmic",
+    "riff",
+    "rising",
+    "rock",
+    "rocking",
+    "roof",
+    "room",
+    "routine",
+    "runs",
+    "s",
+    "sand",
+    "scale",
+    "scene",
+    "score",
+    "script",
+    "second",
+    "sections",
+    "session",
+    "set",
+    "setting",
+    "short",
+    "shuffle",
+    "signing",
+    "silence",
+    "simple",
+    "singalong",
+    "sleep",
+    "slow",
+    "snare",
+    "soaring",
+    "soft",
+    "solo",
+    "solos",
+    "song",
+    "soothing",
+    "soprano",
+    "sound",
+    "sounds",
+    "soundscape",
+    "sparse",
+    "speech",
+    "spoken",
+    "stabs",
+    "stakes",
+    "stay",
+    "steady",
+    "sting",
+    "story",
+    "storytelling",
+    "string",
+    "strings",
+    "strong",
+    "structure",
+    "strumming",
+    "study",
+    "sudden",
+    "sunny",
+    "support",
+    "supportive",
+    "suspense",
+    "swell",
+    "swells",
+    "swing",
+    "synths",
+    "synthwave",
+    "tag",
+    "tempo",
+    "tenor",
+    "tension",
+    "that",
+    "theme",
+    "three",
+    "thunder",
+    "tight",
+    "timbre",
+    "timpani",
+    "title",
+    "to",
+    "tone",
+    "tones",
+    "track",
+    "traded",
+    "trailer",
+    "trills",
+    "trio",
+    "triumphant",
+    "trumpet",
+    "tune",
+    "turning",
+    "turns",
+    "twelve",
+    "two",
+    "ukulele",
+    "under",
+    "unobtrusive",
+    "unresolved",
+    "up",
+    "upbeat",
+    "uplifting",
+    "use",
+    "verse",
+    "verses",
+    "versions",
+    "video",
+    "vinyl",
+    "viola",
+    "violin",
+    "vocal",
+    "voice",
+    "voiceover",
+    "voices",
+    "volume",
+    "walking",
+    "warm",
+    "warmth",
+    "water",
+    "wedding",
+    "whispers",
+    "wide",
+    "wind",
+    "woodwind",
+    "word",
+    "words",
+    "workout"
+  ],
+  "weights_sha256": "a61959b1bf4decd4fee328fda825e05066d0e6103ea3eb8ee6379e8d728dbbc1"
+}

@@ -1,0 +1,2802 @@
+{
+  "architecture": "sparse n-gram embedding + direct linear softmax classifier",
+  "bias": [
+    -1.02472484,
+    -0.39091921,
+    0.72228491,
+    -0.8644743,
+    0.08260161,
+    -0.29626313,
+    0.73061627,
+    -0.61748946,
+    -0.04131286,
+    -1.11428201,
+    1.66518271,
+    -0.12067693,
+    -0.25160161,
+    -0.22725123,
+    -0.88690937,
+    -0.64458847,
+    0.79966563,
+    -1.22705257,
+    -0.80573457,
+    0.44601983,
+    -0.9387033,
+    0.51766658,
+    -1.40207744,
+    0.19847377,
+    1.81790018,
+    -1.40542448,
+    1.85130858,
+    -1.13693333,
+    1.59489179,
+    -0.15548722,
+    1.16558719,
+    -0.66927075,
+    1.44411147,
+    0.45929736,
+    1.50717902,
+    -0.44405887,
+    -0.66352737,
+    -0.24124944,
+    -0.60696054,
+    0.57644475,
+    -1.22093129,
+    -0.57881266,
+    0.71220171,
+    1.26693892,
+    -0.88067746,
+    1.86941063,
+    -0.89509612,
+    -1.05197787,
+    1.37743771
+  ],
+  "classes": [
+    "Agent design: ask goals and limits, schedule sessions, track progress, and adjust for recovery.",
+    "Agent design: assess level, set goals, schedule practice, quiz progress, and adjust difficulty.",
+    "Agent design: capture notes, extract decisions and owners, draft follow-ups, and store the approved summary.",
+    "Agent design: check formulas, totals, duplicates, outliers, and produce a findings list.",
+    "Agent design: classify documents, name them consistently, store in the right folder, and log every move.",
+    "Agent design: extract concepts, write clear cards, schedule reviews, and retire mastered cards.",
+    "Agent design: follow approved topics, deduplicate stories, summarize changes, and cite sources.",
+    "Agent design: identify audience, extract key points, preserve numbers, and keep uncertainty visible.",
+    "Agent design: profile data, propose fixes, preview changes, apply approved edits, and keep backups.",
+    "Agent design: read context, draft in the right tone, check facts, and wait for human approval before sending.",
+    "Agent design: read the diff, run checks, comment on risks, verify tests, and summarize findings.",
+    "Agent design: track stock levels, forecast shortages, alert owners, and suggest reorder quantities.",
+    "Agent memory should store only approved facts, expire stale items, and let users review or delete entries.",
+    "Agent plan: capture commitments, set reminders, snooze respectfully, and confirm completion.",
+    "Agent plan: capture receipts, categorize spending, flag unusual items, and summarize monthly totals.",
+    "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely.",
+    "Agent plan: classify requests, suggest answers, escalate sensitive cases, and track resolution quality.",
+    "Agent plan: collect preferences, compare routes and stays, check constraints, and present options before booking.",
+    "Agent plan: collect reports, validate them, file by date and topic, log each location, and flag missing reports.",
+    "Agent plan: collect tasks, sort by deadline, remind owners, detect blockers, and report progress.",
+    "Agent plan: create accounts checklist, schedule training, assign buddy tasks, and track completion.",
+    "Agent plan: define criteria, gather specs, normalize prices, highlight trade-offs, and recommend by use case.",
+    "Agent plan: define the question, gather sources, compare claims, cite evidence, and produce a brief.",
+    "Agent plan: detect language, translate meaning, preserve tone, and flag uncertain phrases.",
+    "Agent plan: draft posts from approved topics, check tone, schedule only after approval, and track results.",
+    "Agent plan: extract invoice fields, match orders, flag mismatches, and route approvals before payment.",
+    "Agent plan: find outdated pages, draft updates, route approvals, publish, and record changes.",
+    "Agent plan: gather data, validate totals, draft charts, write findings, and flag missing inputs.",
+    "Agent plan: gather required fields, validate entries, show a review screen, and submit only after approval.",
+    "Agent plan: inventory files, propose folders, move only after approval, and keep an undo log.",
+    "Agent plan: match experience to the role, draft honestly, tailor keywords, and ask before submitting.",
+    "Agent plan: outline story, draft slides, add evidence, check readability, and export after review.",
+    "Agent plan: probe approved pages, record status, alert on failures, and summarize incidents.",
+    "Agent plan: read approved messages, group by topic, draft summaries, flag urgent items, and ask before sending anything.",
+    "Agent plan: reproduce steps, classify severity, find duplicates, assign owners, and track fixes.",
+    "Agent plan: scan pages, report contrast and labels, suggest fixes, and verify after changes.",
+    "Agent plan: track venue, speakers, schedule, registrations, reminders, and day-of checklist.",
+    "Agent plan: watch approved items, record changes, alert on thresholds, and avoid purchases without approval.",
+    "Approval checkpoints pause the agent before external messages, payments, deletions, or irreversible changes.",
+    "Coordination needs clear roles, shared state, handoff rules, conflict resolution, and one accountable owner.",
+    "Cost controls set budgets, cache repeated work, choose smaller tools first, and report spend.",
+    "Evaluate agents with task success, error rate, approval quality, cost, latency, and user satisfaction.",
+    "Guardrails: allowed tools, approval points, spending limits, data boundaries, logging, and stop conditions.",
+    "Handoff should include goal, progress, evidence, blockers, and the exact decision needed.",
+    "Log goals, tool calls, decisions, approvals, errors, and outcomes without storing secrets.",
+    "On error, an agent should stop risky actions, record what happened, try safe recovery, and ask for help when unsure.",
+    "Privacy controls limit data access, mask sensitive fields, set retention, and record every disclosure.",
+    "Stop conditions include missing data, policy conflict, repeated failure, budget limit, and user cancellation.",
+    "Tool permissions should be narrow, time-limited when possible, logged, and separated by task."
+  ],
+  "classifier": {
+    "data": "NzG4BR/kFssRB/kYab8ZNQgv7TnrERznSBEdLWwEOSoFAt8J7BnYigD0FA336TRWNTHo/Di/0xgwXufNQ/QMEA/R/zoeEOjjBUtnFUIZFhH4DPUj2WTb1TIa/yruVDMZDDDECRwPBRYGBiSzD/YUezIO/vQl9NHXAUo1IwW2/WMcxUr9zRbO5vkdGNckJmIdHPMQnQMAwif4GRX7TqgzMSYVJMwX1hv1ujjtCSHpHyAVAg8OGi430NUy8jcpN2EEWDP31vUGCy7h9+XYJ1QPJAcV9vjx6yFhbfj0+yQEseDQnwZSECgVnzgAAQng9NbitJolHLzn1d1Bxf3K8vUiDQv5KuDZShD72cz8CaUqIsW7ENFVxO0p4zKwESbg9M7Fw//l3Pa48OnX2iDn85POpiTSHAv6tzQj7wep/Pyv7/Ax4yMPgQLszzbD4x/K7+jfDFEPIuDSBP099Ri3CKT62se46TCLNgoREc8ZShkAGtcV67cS9/EbvRfH+r0JzqjvvbUOydwvxAPg2CAkHvIN2MPU4Vze5uP9QAPWILIqLKvRBzlZ8Cgn9tHrw+oS+g3zwtULC/ig6UL53voVsqu+EhAL5w0oKyz9Txbu8tVJ/b8Av/nNzve4DAbX/Agcz43h8s4ao/0Ny0oH7wH0/Kck9P/57kzM1OZBLO7j/s+yzWsoSgDSOAHp8t/31PDsEcrFyA3f4gSzS/A0NswqFMPe/h0I6Bm7Elrs++Iz+PRN9v0WHQOzHMnrPQvFsRTW7sfwwuVATeQWzxc9BBc071vA//IMpA8A+AMwOd8MmOHO5UxELg0CXS4T8+D79vXCOjj69gci6z3iuiLaDxwZFT7WIkbYF9MuOTzvrSEX4Bcs7dkfJPuzG1HcF8cnAAbYO9gOzP8c/yQG2NLC7gUg41NE7SABOQspEjkvw9kM1xX6OfL4SELiZA//OdVC6gnwA/f1zwznLEzhDyfGDfMl8wgl5v03A94aEUUqwjH0BSM2A6H5EAa3HfVRE80kHu35WBU78SHe1gfd8c+m/Bf3ySnrEg==",
+    "encoding": "int8-base64",
+    "scale": 0.040867719124621296
+  },
+  "dim": 16,
+  "direct": {
+    "data": "//8C/wD/9AEA/vcAFQEBAfgA/gIBAv8B+QD6/fsB9v70AvkCAQAUHRASywcTyhISDgsLDgwMCwENDAsHDeUJCgoCCggNCg0IDAQKBAcFCgEJAwwDDAsJ6OTo59vj5t7o6OELCw4MDAsBDQwLBw3lCQoKAgoIDQoNCAwECgQHBQoBCQMMAwwLCejk6Ofb4+be6Ojh6unp6uno5unp5+jq8BQVFQ4VExcUFxMWEBQQEhEVDxMOFw8XFhfx7vHx6u7x6vHx7erp6erp6Obp6efo6vAUFRUOFRMXFBcTFhAUEBIRFQ8TDhcPFxYX8e7x8eru8erx8e3q6enq6ejm6enn6OrwFBUVDhUTFxQXExYQFBASERUPEw4XDxcWF/Hu8fHq7vHq8fHtG+7vG+/wER3xGRfw8Rrv7+/vGBzvHe8c7fDuF+0bERkTHO8c7xn08fPz8vHy7vT08Bvu7xvv8BEd8RkX8PEa7+/v7xgc7x3vHO3w7hftGxEZExzvHO8Z9PHz8/Lx8u709PDvGx7wHBrv7xrx7xry7xobERrv8BrvGO8VGRXwFu/v7+/vE+8a7/Hw8vIt8PLq8vLsG+7vG+/wER3xGRfw8Rrv7+/vGBzvHe8c7fDuF+0bERkTHO8c7xn08fPz8vHy7vT08PAdH/EdHPDwG/LwHPTvGxwTGvDxG/AZ7xcaFvAY7+/w8PAV8Bvw9PP19Ony9O/09PHwHR/xHRzw8Bvy8Bz07xscExrw8RvwGe8XGhbwGO/v8PDwFfAb8PTz9fTp8vTv9PTxAP3/AP8A/f4AAfv+A//+/fj8///9//7/+/z6/0H//QD6Aff//QEDAwMD/f8D/QMDAfLy8vHy8fLz8vHu8i329vXz9fX09fT29fP09PX09fT08PXz9PX1KTUlKB8fKh4mKCYhIiUjJCMbJCMkHyP19fX19PX19vb19fb09vT19PXy9vX19PX18/b19/fx9fX09/f0ISIlIyQjGyQjJB8j9fX19fT19fb29fX29Pb09fT18vb19fT19fP29ff38fX19Pf39CEiJSMkIxskIyQfI/X19fX09fX29vX19vT29PX09fL29fX09fXz9vX39/H19fT39/T3+Pf39/f29/f29Pc3+fr5+Pn4+Pn4+fn4+Pn4+Pj4+Pb5+Pj5+TfeMTfrLjjmMzXg8/399f79+PL9VfX9/vr6+fn5+vn5+vf6VPr6+vv4TPv6+vn6+vr+/v7+/v3+/f7+/v7///7///7+/v79///z/v7+/vX1/vb+9f7+/vb+9vf3TPX+ZP74//7//v////7///70/v72//758/5W9v7/+/7+/v77+v77/vv+//77/vpO/Pv7/vv++////////v7+//7+9/7+9/7+S/X++Pj+/vv+/v//+vr+9//4/v/++f77+/b7+f77/mH//v///v7//v///v7///7///7+/v7+/v/0/v7+//Lw/vP+9P7+/mT+8/di9/P+9f7y//////////7///7+/f3+/v3+/v3+/f38/v7//f7+//7+///+/v3//f/+//7+/v7+//v6/Pw/+vxB/Pz3/v///v///v7+/v3///P+/v7+9fX+9v71/v7+9v729/dM9f5k/vj//v/+/////v///v7+/v79/v3+/v79/vD+/v7+//7+/v7+/v7+//7+/v3+/f7+/v7+8Phh8Pzy8fpi7/n+/f7+/v3+/v3+/v78/vf4+vj+/vn++P75+Pr++v7+/f3++v5k/vth/Pn7+/n7+/v5/v/+/v7+/v7//v7+//L+/v7+ZfH+8v7v/f7+8f5n9/T39f7y/vb////+/////v////f+/vf+/kv1/vj4/v77/v7///r6/vf/+P7//vn++/v2+/n++/5h//7///7+//7///5hZPTw8fL17/T29vT//v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v/+/v7+/v7+/v7+/v///v///v7+/v7+//T+/v7/8vD+8/70/v7+ZP7z92L38/71/vL//////////v///v7///7///7+//79/v/0/v7+/mnv/vP+8v7+/nf+7fjf9vP+9P71//7////+//7///7+///+///+/v7+/f//8/7+/v719f72/vX+/v72/vb390z1/mT++P/+//7////+///+9P7+9v/++fP+Vvb+//v+/v7++/r++/77/v/++/76Tvz7+/77/vv///////7+/v/+/vf+/vf+/kv1/vj4/v77/v7///r6/vf/+P7//vn++/v2+/n++/5h//7///7+//7///7+///+///+/v7+/v7/9P7+/v/y8P7z/vT+/v5k/vP3Yvfz/vX+8v/////////+///+/f39/v79/v79/v39+//+/v3+//7+/v7+/v7+/v7+/v79/v7+/v75+Pr5Pvr79/v6UP/+/v/+/v///v///v/+9/dS9/7+9f72/vf19f7x/v7+/v5T/vf+//////3+//7///7/////////////////9//////6+f/6//r////5//r7++36/3b/+///////////////////////////////+f////////////////////////////////9t+/j3/Pn3/Pj5/P////////////////n/////////////////////////////////bfv49/z59/z4+fz//v/+//7///7//v/8/////////////////////////v7///////ti/Pr8+/r8+/v6/////////v//////+P/////////////////////////////////3/W73/vn5/fT4/f////////7///////j/////////////////////////////////9/1u9/75+f30+P3////////////////4//////////////////////////7///////f7+HD++vb9+Pf8////////////////+P/////////////////////////+///////3+/hw/vr2/fj3/AD///////8A/wD/////+/v3+///+v/7//z7+v/4//////9d//v/AP////////8A//////////////////////Zr/Pf///f/9//6+fv//P//////+//4/////////////wD/AP/////////////////8/Fv8///6//v/+/r6//r///////b//P////8A/v/////////29P/08///Zv//8/////////////////////////////////////////7/////////8vP/avb///P///L/////////////////////////////////////////////AP/////////////////////4+fv5///6//n/+/n7//v///////v/Zf///wD/////////////////////////////bvf79v//+v/4//v2+v/7///////7//j///////////////////////////////////v8+fv///v/+//8+vv/Wv//////+P/7/////////////wD//vL1//Py///z//9r/////////////////////////////////////////v////////////////8A/////wD/9/j79f//+P/3//xt/P/6///////7//j///8A//////////////////////////8A//v8+vv///z/+//7/Ff/+///////+v/6/////wD/////AP///mf1//Lz///1///1///////////////////////////////////////////////////1aP/08//+9P/+8/////////////////////////////////////////7/////////////////////AP////j4+vf//2v/+P/7+Pv/+///////+v/6///////////////////////////////////49/v1///3/27/+ff6//v///////v/+f8A//8A/////////////////////////wD/+/v6+///+//5/1f7+//8/v7////7//z/////////////////9PT/9Gn///T///H//////v///////////////v/////////////////+////////////////////////AP/2+Ppx///3//X/+/X6//v///////r/+v//AP///////wD////////////////+//r/////////////////////////////////+f35/P1b+/z6+vz//////////////v/6//////////////////////////////////n9+fz9W/v8+vr8/////////v////7/+//////////////////////////+///////6+/j1/fpr/Pf6/P////////7////+//v//////////////////////////v//////+vv49f36a/z3+vz////////////+/v9q///////////////////+//////////////j8+Pf++vr9+ff8/////////////v7/av///////////////////v/////////////4/Pj3/vr6/fn3/P////////////////n//////////////////////////v//////+fvz+f75+P1v9/3////////////////5//////////////////////////7///////n78/n++fj9b/f9////////////////9//////////////////////////////////4/Pf4/fv7/fdr+/////////////////f/////////////////////////////////+Pz3+P37+/33a/vy//9g///39P/39v//////////////////AP/////+/////////////////////////////////v////////n/////+fn/cP/3////+f/5+/n7+f/7//n////////////////////////////////6/////3D4//r/+P////j/8/z6+/r/+v/7////////////AP///////////wD/////bP/////6+P/5//j////6//r8+fr5//r/+v///wD//wD///////////////////////j/////9fn/+f/4////+f9z+/r8+//5//r///////////8A/2L+//H///bx//f3///////////////////////////////////////////////////3///2///49f/3Vv////////////////////////////////////////////////////////////////8A//j/////+fb/+f/6////+v/6+/r8bv/5//v/////////////////////AP//////AP/5//////h4//n/+f////f/+Pv4+vX/+f/7/////////////////////////////wD/+f/////3+P/4/3P////5//f8+vz6//n/+QD/////////////8f/+8///9mj/9PP///////8A/////v/////////////////////////////////////////////////+//3//////////////////////////v///////Pv9+/r8/Pv9/FX//////////////v/9//////////////////////////7///////z7/fv6/Pz7/fxV//////////////7//v/////////////////+///////////////+/P7++vz9Rv79/P/////////////+//7//////////////////v///////////////vz+/vr8/Ub+/fz+8vX/8/L///P//2v////////////////////////////////////////+/////////////////////f7///z//////Pv//P/8/v///P/7Uf38/P/8//wA//////////////////////////////n/////////////////////////////////bfv49/z59/z4+fz////////////////5/////////////////////////////////237+Pf8+ff8+Pn88v//YP//9/T/9/b//////////////////wD//////v////////////////////////L//2D///f0//f2//////////////////8A//////7///////////////////////////////////////8A//v8+vv///z/+//7/Ff/+///////+v/6/////wD/////AP//////////////////AP/7/Pr7///8//v/+/xX//v///////r/+v////8A/////wD///////////////7+/2r///////////////////7/////////////+Pz49/76+v359/z///////////////////j3+/X///f/bv/59/r/+///////+//5/wD//wD/////////AP///////wD/AP/////7+/f7///6//v//Pv6//j//////13/+/8A/////////wD//wD///////8A/wD/////+/v3+///+v/7//z7+v/4//////9d//v/AP////////8A//8A////////AP8A//////v79/v///r/+//8+/r/+P//////Xf/7/wD/////////AP/////////////////////2a/z3///3//f/+vn7//z///////v/+P////////////8A////////////////////9mv89///9//3//r5+//8///////7//j/////////////AP/3///2///49f/3Vv///////////////////////////////////////////////////////////////wD////4+Pr3//9r//j/+/j7//v///////r/+v////////////////////////////////n/////////////////////////////////bfv49/z59/z4+fz/////////////////9//////6+f/6//r////5//r7++36/3b/+/////////////////////////////7/APz/////+/z//P/7/////f/8/Pxg+//t//3////////////////////////////+/wD8//////v8//z/+/////3//Pz8YPv/7f/9////////////////9vT/9PP//2b///P////////////////////////////////////////+////////9///9v//+PX/91b///////////////////////////////////////////////////f///b///j1//dW///////////////////////////////////////////////////////////+////////+f/////5+f9w//f////5//n7+fv5//v/+f///////////////////////v////////n/////+fn/cP/3////+f/5+/n7+f/7//n///////////////////////////////f/////////////////////////////////+Pz3+P37+/33a/v////////+///////4//////////////////////////////////f9bvf++fn99Pj9/////////v//////+P/////////////////////////////////3/W73/vn5/fT4/QD//////////////////Pxb/P//+v/7//v6+v/6///////2//z/////AP7///////8A//////////////////z8W/z///r/+//7+vr/+v//////9v/8/////wD+////////AP/////////////////8/Fv8///6//v/+/r6//r///////b//P////8A/v/////////29P/08///Zv//8/////////////////////////////////////////7/////////9vT/9PP//2b///P////////////////////////////////////////+////////////////////////+f////////////////////////////////9t+/j3/Pn3/Pj5/P////////7///////j/////////////////////////////////9/1u9/75+f30+P3////////////////4//////////////////////////7///////f7+HD++vb9+Pf8//////////////7/+v/////////////////////////////////5/fn8/Vv7/Pr6/P////////7////+//v//////////////////////////v//////+vv49f36a/z3+vz////////////+/v9q///////////////////+//////////////j8+Pf++vr9+ff8////////////////+f/////////////////////////+///////5+/P5/vn4/W/3/f////////////////f/////////////////////////////////+Pz3+P37+/33a/v///7///7///7///7+/////v////////////////////////////39/v5E/v77/v77///+///+///+///+/v////7////////////////////////////9/f7+RP7++/7++//////////////+//7//////////////////v///////////////vz+/vr8/Ub+/fz//////////////v/+//////////////////7///////////////78/v76/P1G/v38//7//v/+///+//7//P////////////////////////7+///////7Yvz6/Pv6/Pv7+v/+//7//v///v/+//z////////////////////////+/v//////+2L8+vz7+vz7+/r//////////////v/9//////////////////////////7///////z7/fv6/Pz7/fxV//////////////7//f/////////////////////////+///////8+/37+vz8+/38Vf/y8/9q9v//8///8v////////////////////////////////////////////8A////8vP/avb///P///L/////////////////////////////////////////////AP///////////////f7///z//////Pv//P/8/v///P/7Uf38/P/8//wA//////////////////////////3+///8//////z7//z//P7///z/+1H9/Pz//P/8AP/////////////1///3///69P9Z9///////////////////AP/////9//////////////////////////////////////8A//j/////+fb/+f/6////+v/6+/r8bv/5//v////////////////////////////+//7//////////////////v///////////////vz+/vr8/Ub+/fz////////////////4//////////////////////////7///////f7+HD++vb9+Pf8////////////////+P/////////////////////////+///////3+/hw/vr2/fj3/P//////////////////+Pn7+f//+v/5//v5+//7///////7/2X///8A//////////////////////////////j5+/n///r/+f/7+fv/+///////+/9l////AP////////////////////////////9u9/v2///6//j/+/b6//v///////v/+P//////////////////////////////////bvf79v//+v/4//v2+v/7///////7//j/////////////////////////////////+v////9w+P/6//j////4//P8+vv6//r/+////////////wD///Lz/2r2///z///y/////////////////////////////////////////////wD/////////////////////+/z5+///+//7//z6+/9a///////4//v/////////////AP////////////////////v8+fv///v/+//8+vv/Wv//////+P/7/////////////wD///T0//Rp///0///x//////7///////////////7//////////////////v///////wD///////8A/wD/////+/v3+///+v/7//z7+v/4//////9d//v/AP////////8A//8A////////AP8A//////v79/v///r/+//8+/r/+P//////Xf/7/wD/////////AP/////////////////////2a/z3///3//f/+vn7//z///////v/+P////////////8A////////////////////9mv89///9//3//r5+//8///////7//j/////////////AP8A//////////////////z8W/z///r/+//7+vr/+v//////9v/8/////wD+////////AP/////////////////8/Fv8///6//v/+/r6//r///////b//P////8A/v/////////29P/08///Zv//8/////////////////////////////////////////7/////////9vT/9PP//2b///P////////////////////////////////////////+//////////Lz/2r2///z///y/////////////////////////////////////////////wD////y8/9q9v//8///8v////////////////////////////////////////////8A//////////////////////j5+/n///r/+f/7+fv/+///////+/9l////AP/////////////////////////////4+fv5///6//n/+/n7//v///////v/Zf///wD/////////////////////////////bvf79v//+v/4//v2+v/7///////7//j//////////////////////////////////273+/b///r/+P/79vr/+///////+//4///////////////////////////////////7/Pn7///7//v//Pr7/1r///////j/+/////////////8A////////////////////+/z5+///+//7//z6+/9a///////4//v/////////////AP/+8vX/8/L///P//2v////////////////////////////////////////+/////////vL1//Py///z//9r/////////////////////////////////////////v////////////////8A/////wD/9/j79f//+P/3//xt/P/6///////7//j///8A////////////////////AP////8A//f4+/X///j/9//8bfz/+v//////+//4////AP//////////////////////////AP/7/Pr7///8//v/+/xX//v///////r/+v////8A/////wD//////////////////wD/+/z6+////P/7//v8V//7///////6//r/////AP////8A///+Z/X/8vP///X///X//////////////////////////////////////////////////mf1//Lz///1///1///////////////////////////////////////////////////1aP/08//+9P/+8/////////////////////////////////////////7/////////9Wj/9PP//vT//vP////////////////////////////////////////+/////////////////////wD////4+Pr3//9r//j/+/j7//v///////r/+v////////////////////////////8A////+Pj69///a//4//v4+//7///////6//r///////////////////////////////////j3+/X///f/bv/59/r/+///////+//5/wD//wD////////////////////////////49/v1///3/27/+ff6//v///////v/+f8A//8A/////////////////////////wD/+/v6+///+//5/1f7+//8/v7////7//z///////////////////////////////8A//v7+vv///v/+f9X+/v//P7+////+//8//////////////////T0//Rp///0///x//////7///////////////7//////////////////v/////////09P/0af//9P//8f/////+///////////////+//////////////////7///////////7///7///7///7+/////v////////////////////////////39/v5E/v77/v77///+///+///+///+/v////7////////////////////////////9/f7+RP7++/7++////////////////wD/9vj6cf//9//1//v1+v/7///////6//r//wD///////8A//////////////////8A//b4+nH///f/9f/79fr/+///////+v/6//8A////////AP/////////////////////7/Pn7///7//v//Pr7/1r///////j/+/////////////8A////////////////////+/z5+///+//7//z6+/9a///////4//v/////////////AP////////////////////v8+fv///v/+//8+vv/Wv//////+P/7/////////////wD////+///+///+///+/v////7////////////////////////////9/f7+RP7++/7++////v///v///v///v7////+/////////////////////////////f3+/kT+/vv+/vv///7///7///7///7+/////v////////////////////////////39/v5E/v77/v77//////////////7//v/////////////////+///////////////+/P7++vz9Rv79/P/////////////+//7//////////////////v///////////////vz+/vr8/Ub+/fz//////////////v/6//////////////////////////////////n9+fz9W/v8+vr8//////////////7/+v/////////////////////////////////5/fn8/Vv7/Pr6/P/////////////+//r/////////////////////////////////+f35/P1b+/z6+vz//////////////v/+//////////////////7///////////////78/v76/P1G/v38//////////////7//v/////////////////+///////////////+/P7++vz9Rv79/P/////////////+//7//////////////////v///////////////vz+/vr8/Ub+/fz//////////////v/6//////////////////////////////////n9+fz9W/v8+vr8/vL1//Py///z//9r/////////////////////////////////////////v////////7y9f/z8v//8///a/////////////////////////////////////////7/////////////////AP////8A//f4+/X///j/9//8bfz/+v//////+//4////AP///////////////////wD/////AP/3+Pv1///4//f//G38//r///////v/+P///wD///////////////////////3+///8//////z7//z//P7///z/+1H9/Pz//P/8AP/////////////////////////9/v///P/////8+//8//z+///8//tR/fz8//z//AD/////////////////////////////AP/7/Pr7///8//v/+/xX//v///////r/+v////8A/////wD//////////////////wD/+/z6+////P/7//v8V//7///////6//r/////AP////8A//////////////////8A//v8+vv///z/+//7/Ff/+///////+v/6/////wD/////AP///mf1//Lz///1///1//////////////////////////////////////////////////5n9f/y8///9f//9f/////////////////////////////////////////////////////////+/////v/7//////////////////////////7///////r7+PX9+mv89/r8/////////v////7/+//////////////////////////+///////6+/j1/fpr/Pf6/P//////////AP////9s//////r4//n/+P////r/+vz5+vn/+v/6////AP//AP///////////////wD/////bP/////6+P/5//j////6//r8+fr5//r/+v///wD//wD/////////////////////AP/7+/r7///7//n/V/v7//z+/v////v//P///////////////////////////////wD/+/v6+///+//5/1f7+//8/v7////7//z/////////////////9Wj/9PP//vT//vP////////////////////////////////////////+//////////Vo//Tz//70//7z/////////////////////////////////////////v////////////////////7+/2r///////////////////7/////////////+Pz49/76+v359/z////////////+/v9q///////////////////+//////////////j8+Pf++vr9+ff8//////////////8A//n/////9/j/+P9z////+f/3/Pr8+v/5//kA//////////////////////////////j//////////////////////////v//////9/v4cP769v349/z4///5//9N9v/5+f///////////////////////////////////f//////////AP//+P//+f//Tfb/+fn///////////////////////////////////3//////////wD///////////3////+///7//////v7//j/+f////r/+/z4/Pv//P9k////////AP8AAP///v/+//7///7//v/8/////////////////////////v7///////ti/Pr8+/r8+/v6//7//v/+///+//7//P////////////////////////7+///////7Yvz6/Pv6/Pv7+v/+//7//v///v/+//z////////////////////////+/v//////+2L8+vz7+vz7+/r4///5//9N9v/5+f///////////////////////////////////f//////////AP//+P//+f//Tfb/+fn///////////////////////////////////3//////////wD////1aP/08//+9P/+8/////////////////////////////////////////7/////////////////////AP////j4+vf//2v/+P/7+Pv/+///////+v/6/////////////////////////////wD////4+Pr3//9r//j/+/j7//v///////r/+v/////////////////////////////////4//////X5//n/+P////n/c/v6/Pv/+f/6////////////AP//////////////////+P/////1+f/5//j////5/3P7+vz7//n/+v///////////wD///////////////7//f/////////////////////////+///////8+/37+vz8+/38Vf///////////////wD/9vj6cf//9//1//v1+v/7///////6//r//wD///////8A//9i/v/x///28f/39////////////////////////////////////////////////////////////v////7/+//////////////////////////+///////6+/j1/fpr/Pf6/P/////////////////6//////n4//r/+f///+X/+vx9/Pr/+v/4/wD//wD///8A////////////////////+v/////49//5//r///9///n85fv5//v/+v//////////AP////////////////////r/////+fj/+v/5////5f/6/H38+v/6//j/AP//AP///wD///////////3////+///7//////v7//j/+f////r/+/z4/Pv//P9k////////AP8AAP/////////////////5//////////////////////////7///////n78/n++fj9b/f9////////////////+f/////////////////////////+///////5+/P5/vn4/W/3/f////////8A/////wD/9/j79f//+P/3//xt/P/6///////7//j///8A///////////////////+////////+f/////5+f9w//f////5//n7+fv5//v/+f////////////////////////8A/////2z/////+vj/+f/4////+v/6/Pn6+f/6//r///8A//8A//////X///f///r0/1n3//////////////////8A//////3///////////////////////8A////////AP8A//////v79/v///r/+//8+/r/+P//////Xf/7/wD/////////AP//AP///////wD/AP/////7+/f7///6//v//Pv6//j//////13/+/8A/////////wD/////////////////////+Pf79f//9/9u//n3+v/7///////7//n/AP//AP////////////////////////////j3+/X///f/bv/59/r/+///////+//5/wD//wD/////////9///9v//+PX/91b///////////////////////////////////////////////////f///b///j1//dW///////////////////////////////////////////////////3///2///49f/3Vv////////////////////////////////////////////////////////////////7//f/////////////////////////+///////8+/37+vz8+/38Vf/////////////+//3//////////////////////////v///////Pv9+/r8/Pv9/FX//////////////v/9//////////////////////////7///////z7/fv6/Pz7/fxV///////////////////2a/z3///3//f/+vn7//z///////v/+P////////////8A///////////////+//7//////////////////v///////////////vz+/vr8/Ub+/fz//////////////v/+//////////////////7///////////////78/v76/P1G/v38//////////////7//v/////////////////+///////////////+/P7++vz9Rv79/P///////////////wD/+/v6+///+//5/1f7+//8/v7////7//z///////////////////////////////8A//v7+vv///v/+f9X+/v//P7+////+//8////////////////////////////////AP/7+/r7///7//n/V/v7//z+/v////v//P////////////////L//2D///f0//f2//////////////////8A//////7////////////////////////////////////////3//////////////////////////////////j89/j9+/v992v7////////////////9//////////////////////////////////4/Pf4/fv7/fdr+//09P/0af//9P//8f/////+///////////////+//////////////////7/////////9PT/9Gn///T///H//////v///////////////v/////////////////+////////8f/+8///9mj/9PP///////8A/////v//////////////////////////////////////////////////AP/4//////n2//n/+v////r/+vv6/G7/+f/7/////////////////////////////wD/+P/////59v/5//r////6//r7+vxu//n/+///////////////AP/////////////////8/Fv8///6//v/+/r6//r///////b//P////8A/v///////wD//////////////////Pxb/P//+v/7//v6+v/6///////2//z/////AP7//////////////wD//////wD/+f/////4eP/5//n////3//j7+Pr1//n/+///////////////8v//YP//9/T/9/b//////////////////wD//////v////////////////////////L//2D///f0//f2//////////////////8A//////7/////////////////////////////////////////9//////6+f/6//r////5//r7++36/3b/+/////////////////////////////7/APz/////+/z//P/7/////f/8/Pxg+//t//3///////////////////////7////////5//////n5/3D/9/////n/+fv5+/n/+//5///////////////////////+////////+f/////5+f9w//f////5//n7+fv5//v/+f///////////////////////////f7///z//////Pv//P/8/v///P/7Uf38/P/8//wA//////////////X///f///r0/1n3//////////////////8A//////3/////////////////////////////////////////+v////9w+P/6//j////4//P8+vv6//r/+////////////wD///////////////////r/////cPj/+v/4////+P/z/Pr7+v/6//v///////////8A////////////AP////9s//////r4//n/+P////r/+vz5+vn/+v/6////AP//AP///////////////wD/////bP/////6+P/5//j////6//r8+fr5//r/+v///wD//wD/////+P//+f//Tfb/+fn///////////////////////////////////3//////////wD///////////3////+///7//////v7//j/+f////r/+/z4/Pv//P9k////////AP8AAP//////////////////+P/////1+f/5//j////5/3P7+vz7//n/+v///////////wD///////////////////j/////9fn/+f/4////+f9z+/r8+//5//r///////////8A/2L+//H///bx//f3//////////////////////////////////////////////////9i/v/x///28f/39/////////////////////////////////////////////////////////////////////r/////+fj/+v/5////5f/6/H38+v/6//j/AP//AP///wD////////////////////6//////j3//n/+v///3//+fzl+/n/+//6//////////8A///3///2///49f/3Vv//////////////////////////////////////////////////9///9v//+PX/91b/////////////////////////////////////////////////////////////////AP/4//////n2//n/+v////r/+vv6/G7/+f/7/////////////////////////////wD/+P/////59v/5//r////6//r7+vxu//n/+/////////////////////8A//////8A//n/////+Hj/+f/5////9//4+/j69f/5//v/////////////////////AP//////AP/5//////h4//n/+f////f/+Pv4+vX/+f/7/////////////////////////////wD/+f/////3+P/4/3P////5//f8+vz6//n/+QD///////////////////////////8A//n/////9/j/+P9z////+f/3/Pr8+v/5//kA//////////////H//vP///Zo//Tz////////AP////7////////////////////////////////////x//7z///2aP/08////////wD////+//////////////////////////////////////////////////7/+v/////////////////////////////////5/fn8/Vv7/Pr6/P/////////////+//r/////////////////////////////////+f35/P1b+/z6+vz//////////////v/9//////////////////////////7///////z7/fv6/Pz7/fxV///+///+///+///+/v////7////////////////////////////9/f7+RP7++/7++////v///v///v///v7////+/////////////////////////////f3+/kT+/vv+/vv4///5//9N9v/5+f///////////////////////////////////f//////////AP////////////////////9u9/v2///6//j/+/b6//v///////v/+P//////////////////////AP//////AP/5//////h4//n/+f////f/+Pv4+vX/+f/7/////////////////////wD//////wD/+f/////4eP/5//n////3//j7+Pr1//n/+/////////////////////////////8A//n/////9/j/+P9z////+f/3/Pr8+v/5//kA////////////////////////////AP/5//////f4//j/c/////n/9/z6/Pr/+f/5AP////////////////////////////8A//b4+nH///f/9f/79fr/+///////+v/6//8A////////AP//////////////////AP/2+Ppx///3//X/+/X6//v///////r/+v//AP///////wD//////////////////wD/+/z6+////P/7//v8V//7///////6//r/////AP////8A/////////////////v8A/P/////7/P/8//v////9//z8/GD7/+3//f/////////////////+///+///+///+/v////7////////////////////////////9/f7+RP7++/7++////v///v///v///v7////+/////////////////////////////f3+/kT+/vv+/vv//////////////v8A/P/////7/P/8//v////9//z8/GD7/+3//f////////////////////////////7/APz/////+/z//P/7/////f/8/Pxg+//t//3//////////////2L+//H///bx//f3///////////////////////////////////////////////////x//7z///2aP/08////////wD////+////////////////////////////////////8f/+8///9mj/9PP///////8A/////v////////////////////////////////////7/AP8AAP4A/wD9AAUAAAD9/wD/AQABAP7//QD///wA/AD9AgEABAUCA/4BA/8CAwH+/wD/AAD+AP8A/QAFAAAA/f8A/wEAAQD+//0A///8APwA/QIBAAQFAgP+AQP/AgMBAf4AAQAB/v4BAvz/BP8CAP3/AP8AAAIA/gH+APwA/QH7Af3/AQEDBAQD/v8D/QQDAQH+AAEAAf7+AQL8/wT/AgD9/wD/AAACAP4B/gD8AP0B+wH9/wEBAwQEA/7/A/0EAwEAAQD+AP/+//8A/P4DAf8B/QAAAQAA/gD+/v///QH9APwA/wL/AAUFBAb+AgP+BAIC+/v7+/r6+vv6+/r7/QUFBQMEBQQGBQYEBAQCBQQEAwUDBQIHBgb9/Pz8+vz8+/z8+/v7+/v6+vr7+vv6+/0FBQUDBAUEBgUGBAQEAgUEBAMFAwUCBwYG/fz8/Pr8/Pv8/Pv7+/v7+vr6+/r7+vv9BQUFAwQFBAYFBgQEBAIFBAQDBQMFAgcGBv38/Pz6/Pz7/Pz7/Pv7+/v7+vv7+/v7/QQHBQMFBQQFBQcEAwUEBAIFAwUDBgMFBQb9/Pz8+/z8+v39+/z7+/v7+/r7+/v7+/0EBwUDBQUEBQUHBAMFBAQCBQMFAwYDBQUG/fz8/Pv8/Pr9/fv8+/v7+/v6+/v7+/v9BAcFAwUFBAUFBwQDBQQEAgUDBQMGAwUFBv38/Pz7/Pz6/f37+/v6+vr6+vr6+vr6/AYEBgMFBQcFBgMFBAQFBAQGBAUDBQUHBQb8/P38+vv8+vz8/Pv7+vr6+vr6+vr6+vwGBAYDBQUHBQYDBQQEBQQEBgQFAwUFBwUG/Pz9/Pr7/Pr8/Pz9/f39/f38/f39+/0K/f7+/f7+/f79/v7+/f39/f39/fz9/f7+/gkMCAkHCAkHCAkIBggJCAkJCAgHCAgI/f39/f3+/f7+/v3+/f79/v3+/P79/f3+/v3+/f7+/f3+/f7+/QYICQgJCQgIBwgICP39/f39/v3+/v79/v3+/f79/vz+/f39/v79/v3+/v39/v3+/v39/f39/f38/f39+/0K/f7+/f7+/f79/v7+/f39/f39/fz9/f7+/gkMCAkHCAkHCAkIBggJCAkJCAgHCAgI/f39/f3+/f7+/v3+/f79/v3+/P79/f3+/v3+/f7+/f3+/f7+/f39/f39/f39/f38/Qr+/v39/f79/v3+/v3+/f79/v7++/79/f7+CQsJCQcGCQYICQkIBgkICAkHBwkKBQj+/v3+/f3+/v7+/f79/v3+/f79/v3+/f3+/f79/v38/f79/v79/f39/f39/f39/fz9Cv7+/f39/v3+/f7+/f79/v3+/v77/v39/v4JCwkJBwYJBggJCQgGCQgICQcHCQoFCP7+/f79/f7+/v79/v3+/f79/v3+/f79/f79/v3+/fz9/v3+/v0IBgkICAkHBwkKBQj+/v3+/f3+/v7+/f79/v3+/f79/v3+/f3+/f79/v38/f79/v79/fz8/P38/f38/fv9Cv79/f39/f39/f79/f39/f39/f38/f39/f0MDAoMCAkJBwsICQkLCggJCAcJCQkHB/3+/f39/f39/f39/f3+/f79/fz9/f79/f39/f3+/vz9/f3+/f0JCwoICQgHCQkJBwf9/v39/f39/f39/f39/v3+/f38/f3+/f39/f39/v78/f39/v39/v7+/v7+/f7+/v3+Df7//v7+/v7+/v7+//7+/v7+/v7+/v7+//4N+AsO+wsN+QoM+P7+/v7+/v7+/v79/gz//v7+/v7+//7//v7////+/v7+/f/+/v/+C/cMDfoKDfoLC/n+/v79/v7+/v7+/f4M/v7+/v7+/v7+//7+/v7+/v7+/v7+/v7+/g/3DA/7DAz5Dgz4AAAAAAAAAAAAAAD/AAAAAP8AAAAAAAAAAAAAAAAAAAAAAAAAAAD/////EAAA/wD//wAAAAAAAAAAAAAAAP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/////////xH///8AAAAAAAAAAAAAAAD/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP8X//7////////+AAAAAAAAAAAAAAAA/wAAAAAAAAAAAAAAAAAAAAAAAAD/AAAAAAD//////v//////FAAAAAAAAAAAAAAAAAAAAAD/AAAAAAAAAAAAAAAAAAAAAAAAAAAA////ABH/AP4AAP8AAAAAAAAAAAAAAAD/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP//AAD+//8RAP//AAAAAAAAAAAAAAAA/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/Fv/+///+/////wAAAAAAAAAAAAAAAP8AAAAAAAAAAAAAAAAAAAAAAAAA/wAAAAAA/////////////xQAAP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/AAAR/wD/AAD/AAAAAAAAAAAAAP8A/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/////////Ev///wD/AP8AAAAA/wAAAP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/xj//////////v4AAAAAAAAAAAAAAAD/AAAAAAAAAAAAAAAAAAAAAAAAAP8AAAAAAP/////+//////8V",
+    "encoding": "int8-base64",
+    "scale": 0.022377235682930534
+  },
+  "embedding": {
+    "data": "LiMV0SsSExLIIAzrCjn1Egj1+xDk//7nKwj8ARbeAQoI9PsQ5P7+5ysI/AIW3gEK0t0BFszxFhguu93zxuazs9PcARbM8hUYLrvc88bns7PT3AEWzfIWGS673fPG5rOzKyvhwimu9ycGFuXaH47MJisq4cIprvcnBxbl2R+OzCbHxyRQxE/1rBToGDTuak7eKyrhwimu9ycHFuXaH47MJt3KGk+7UQjAJfIXKPdQNeTcyhlPu1AIwCXxFyj3UDXlExP38CcLDQoJGP30+h8D+AkuGdBhCgwphhUN/OhsDfw1GPr7GA3pz/1NHw5R905XNRj6+xcN6c/9TSAOUfdOWDUY+vsXDenP/U0fDlH3TlhMMCTEOUdOO8Ai+dcCRRPx6scigf8mszrZ9hwJML04/SU3D8Q3BOsL3OzPEeQ07uP+2iGu+RnQMvn8DP8XyjMC9hW9FQsbCBwV7x2t7AYLV+PnCTfo1+Y2AvT8GMLb5UzV/PwaIPH0++P5+xzyFCTuJTcQxDcE6gvb7NAR5DPu4xPwA+0GHT4A1B8G9yYS77Dg/DMaGfC3JxQUHiYRQcEk4dn60eP5y+LT4SMFFNjIufYVvRUKGwkcFe8dre0GC1cSNM0jAPMr5jDw/iNe4BAV5OgJOOjW5jYC8/wYwtrmTLXoCOsJuvACxuUiDdHC5cYlNxDFNwTqC9zszxHkNO7j/tshrvkZ0DL6/Az/F8kzAvYVvRUKGgkcFe4erewHC1fk6Ak36NbmNQLz+xjC2+ZM3gT19v7q5dHV7wsI3R0KAjAfBNjyIDUDzPAa8+AyEf0ODArTEuvzIwDf1BnoDfP/IBACEycVAu4F8vn92Q4j/iEQARMnFQLuBfL5/dkPIv32+g39E+jTDv0BDw8QD+YVJdYJ8gsdHeviChDtDwbw7SXWCfIKHh3q4QoQ7g8G8OwICfXe/CvdBvUQAAnnD+EMCAn13vsr3Ab0DwEJ5w/hDB4U7/3x/y/98f8d9Agi/RDfzxX67ebi9Rjq/9MF7hkbEgoW3AEhBQbc8f3+2A8V7Q3cLvDj/eQG9QQC2gULIgMF5fwXGvf2Bf4jNwMbAe/76wImHQYI5BkWEw8YATLbD/LSASAjEQ7KFRAB/ffw5v4aGe/yLg4YCRsb9vD1IADtCQYI+xkMK/jcEukZCRch8uj16CgC5uwIGxHlDdgVH9f3FRwcDwwUBdYD4O0V9AoJACLzF/j6Fwkq/gcRNPQGDP0G5/X6/OzM+ef+/Obe/ycz/xTyxPfx6xLn7gvo7PH76uDvCckdBRX67hIqHfgT9eztAtMGDeII4PoRCxrzBfrzC/cM6TLu+x3/8BLfKgH85B7dIvDqG/gR2gsQ9+/f6Qb0GBUDAhYR9uIG7gzoG/kG9BgVAwEWEvbiBu4M6Bv57SIk/S7/9B7+IvIL9+r1++0iJf0t//Qe/iLxC/fq9fsuE/L24fn8FAjx7ekdHQYbLhPy9eH5/BUI8O3pHR0GG+4a+vv7/yIW8hb2CRcM/8PuGvn7+/8iFfIW9gkYDf/D8P383//wKwT2DhT3/CUKKfD+/d//8CsE9g4U9/wlCikQFPgIGd/rFB4r6+IUDv/vCzYTHfD4A/EbAxvZCuQX7NwG8+0A5fvi2vEe8/7V+sYIEAIA+wcXNTwEAQYbI+PuBNMH5eMTz//67wQSFgTO9BIR2QwI+hXeBvH3EinsCQkDAB7sBPYY/9ML8gj5Dgn23gry8gnjM+gUL+glEvkEBBriGw0C5SIK5g/QCAHrDvsQ8tgS/gwTxwHjBt0JAN/5DfsIBAsG6ef/HCAb6uf3JfQI6vT16/fl5fgK++YE8Qn0COv09ev45eX4CvzmBPEI6v/yFxbxBg/zA/oQ+/oL9eoA8hgW8gYP9AL6D/v6C/QJBgj7Ggwq+dsS6hkJFyHy/esR2wYW6hn9AgcA/+4n/yAQAhMoFQPtBfL5/dkOI/4gEAETKBUD7QXy+v3ZDyP9EBT4CBjf6xQeKuviFA3/8BAU+AgZ4OsUHirs4hQO/+/2FhwcDwwUBdYE4O0W9QoK9xYcGw8MEwTWBODtFvQKCS4T8vbh+vwVCPDu6h0dBhvq4O8JyR0FFfnuEioe9xP1HhTv/PH/MP3wABz0CCH8EB4U7/3w/zD98P8c9Aci/BAeFO/88f8v/fAAHfQHIvwQ3s8V++zm4fUY6f/TBe8ZG9/PFfrs5uL0Gen/0wXuGBsDAR7sBPYY/9ML8gj5Dgn1MwAV8sT38usS5+0K6Ozx/CEQARMnFQLuBfL5/dkPIv4ODArTE+rzIv/f1BjnDPP/FysF8SUZ9+jcDfv5/Cf65BgrBvIlGfjo3A37+Pwn+uQN3C/w4/3lBvUEA9oFCyIDAwEe7AP2GP/TC/IJ+Q4J9QMAHewD9hj/0wvyCPkOCfYLNhId8PgD8RoDGtkK5BbsCzYTHfD4A/EaAxvZCuQW7O/9/N//8CsE9g4T+PwlCikl1gryCh0c6uILEO0PBvDsJdYK8gseHerhChDtDgbw7RIKFtwBIQUG3PH+/tgPFe0SChXbASAFBtzx/v/YEBXtEgsV3AEgBQbc8f3/2A8V7Q3cL/Hj/eQG9QQD2gULIQMN3C/x4/3lBvUEAtoFCyECIBACEycWA+4G8vn92Q8j/iXWCvILHRzq4goQ7Q8G7+0ICfXe/CvdBvUQAAnnD+EMBvQYFQMBFhH24gbuDOkb+e0hJP0u//Qe/iLyC/fp9fsuE/L24fn8FQjw7ekdHQYb7hr5+/v/IhbzFfYJFwz/w/D+/N7/8CsE9g4U9/wlCinq/QoCCgDu7PD3AQz2GRn56v0KAgr/7uzw9wEM9xoZ+eoA8hgW8QYQ8wL6EPv6C/TqAPIYFvIGD/MD+g/7+gv19voO/RPo1A79AQ8PEA/mFPX6Df0U6NMO/QAPDhAQ5hX0COr09ev35eX4CvvmBPEJ9Ajq9fXq9+Xl+Qr85gTxCAXl/Bgb+PYF/iM3AxoA7/sF5fwYGvj2BP0jNwIbAPD7/esR2wYX6hn9AgcA/+4n//3qEdsGFuoZ/QIHAP7uJ/8B8BDT8wLnGf36BP4Y3AwD3gry8wnjM+gUL+clEvgEBOoA8hgW8gYQ9AL6D/v6C/UHCfXe/CvcBvUPAQnnEOEMCAn13vsr3Qb1EAAJ5w/hDOsCJh0FCOQZFxMOGAEy2w/rAiYcBgjkGBYTDxgBMtsP8tICISMSDcoVEAH99/Dn/vLSAiEjEg7KFRAB/fjw5v7cBvTtAOX74tryHvT91PrGBeX8GBv39gT9IzcCGwHv/BoZ7vEuDhgJGxr28PUgAOwaGO7xLg4YCRsa9vD0IADs8gr3DOky7/sd//ES3yoA/B4U7/3x/y/98AAd9Ach/RAeFO/88f8v/fAAHPQHIvwQ388V+uzm4fUY6f/TBe4ZG9/PFfrs5uL0GOn/0wXuGRsSCxXcAiEFBtzx/f/YDxXtEgsW2wEgBQbc8f3+2BAV7Q3cLvHj/eUG9QMD2gULIgMN3C/w4/3kBfUDAtoFCyICBeb8GBv49gT9IzcCGwHv+wXl/Bga9/UE/iM4AhsA7/vrAyYcBgjkGBcTDhgBMtwP6wImHAUI4xkXEw4YATLcD/LSAiAjEQ3KFRAB/ffw5v7z0gIgIxEOyhURAf338Ob+Ghjv8S4OGAkbG/bw9B8A7BoZ7/EuDhgIGxv28PQgAOwJBgj7GQwr+NwS6RkJFyHyCQYI+hkMK/jbEukaCRch8uj16CgC5uwIGhHlDdgUH9fo9ekoAubtCBsS5Q3YFR/X9hUcGw8MFAXWBODtFfQKCfYVGxwPDBQE1gPg7RX1CgoAI/QW+PkXCSr+BxE09AYNACL0F/f5Fwkq/gcRNfQGDP0G5vX6++zM+ef+/ObeACj+Bub1+vvszPnn/vzm3/8nMwAU8sT38esS5+4L6ezy+zMAFfPE9/HqEuftC+js8fvq4O8JyRwEFfruEioe9xP16uDuCckcBRX57hIpHvcU9eztAtMGDuII4PoRCxnzBfrs7QLTBg3iB+D6EQsa8wX68wr2C+ky7/od//ES3isA/PML9wvpMu77Hf/wEt8qAPzq/QoCCf/t7PD3AQz2GRn66v0LAgn/7ezw9wEM9xoZ+uQe3iLx6hv4EdoMD/fv3+nkHt4i8eob+BHaDBD379/qGhnv8S4OGAgbG/bw9CAA7RsY7vEuDhgJGxv28PQfAOwaGe7xLg4YCRsb9vD0HwDs6v0KAQkA7e3w9wEM9hkZ+ur9CgIJ/+3s8PcBDPYZGfrq/QoBCf/u7PD3AQz3Ghn66gDyFxbxBg/zAvoP+/oL9OoA8hgW8gYP9AL6EPv6C/QG9BgVAwIWEfbhBu4M6Bv5BfQYFQIBFhH24gbuDOgb+Qb0GBUDARYS9uEG7gzoG/nq//IYFvEGD/QC+hD7+gv06gDyFxbyBg/0AvoP+/oL9eoA8hgW8QYP8wL6EPv6C/UG9BgVAwEWEfbiB+4M6Rv5CQUI+xkMKvjbEekaCRci8gkFCPsZDCv42xLqGQkXIfLo9ekoAubsCBsS5Q3YFB7Y6PXpKALn7QgbEeUN2BQe1/3rEdsFFuoZ/QIHAP7uJ//96xHbBhfqGfwCBwD+7if/9xUbHA8MEwTWA9/sFfUKCfcVHBwPDBQF1gPg7Rb1Cgn3FRwbDwwUBNYD4O0W9QoK/yP0F/f5Fwkq/gcRNPUGDAAi8xf4+RYJKv4HETX0BwztIST9Lf/0Hf4i8gv36fX77SEl/S3/9B7+IfEL9+n2+wgQAgD7CBc0OwQBBhwj4+4IEAIA+wgXNTwEAQYcIuPu7O0C0wYN4gjf+hELGfQF+uztAtMGDeII3/oRCxn0Bfr+Bub1+vvszPnn/vzm3gAn/gbm9fr77Mz46P785t//Jy4T8vbh+fwVCPHt6h0dBhsuE/L14fn8FAjx7eocHQYbEPLYE/4MEscB4wbdCQDe+AcJ9d78K9wG9BAACecP4Qz3DvAKBBAKDP3zDOP2DgEi9w7wCgQQCgz98wzj9g4BIv4HzQsHC/4QGfsRyvf5CjX2+g39E+jUDv0BDw4PEOYV9fsO/RTo0w79AA8PEBDlFfb6Dv0U6NMO/QEPDhAQ5hT3D/AKAw8KDf3zDeP2DgEi9w7wCgQPCgz98w3i9g4BIv0G5vb6++zM+Oj+/Obe/yczABXyxPjx6hLn7Qvp7PL7MwAV8sT38usS5+0L6Ovx/AXTB+TjFND/+e8FERcEzvQE0wfk4xPQ//nwBBEWBM7z9Ajq9PXq+OXl+Qr85gTxCOQd3iLx6hv4EdoMEPfv3+oTEdoNCPoV3gbx9xIq6wkI7SEk/S3/9B3+IvIL9+r1+woG9DngAfIXFgD4/u7s+kzZ4RX+CdX1H+30BBnT7+sACgb0OuAC8RcWAPj+7uz6TP8HzgsHC/8QGPsRyvb4CjXuGvn7+v8hFfMW9gkXDP/D7hr6+/v/IhXzFfYJFwz/w+j16CgC5uwIGhLlDdgUH9cLNhId8PgD8RsDGtkK5BfsCA8C//sHFzQ8BAEGHCLj7QHwENPzAucZ/fsF/hncDAQeFO/98f8v/fD/HPQHIfwQHhTv/PD/L/3wAB30CCL8EOrg7gnIHAUV+u4RKh74FPXq4O8JyRwFFfruEiod+BP1AwAe7AT2GP/TC/IJ+Q4J9QMBHewE9hj/0wvyCfkOCfUDAB7sA/YY/9QL8gj5Dgn19Ajq9PXr9+Xl+Ar85gTxCfQI6vX06/fl5fkK++YE8Qn0COv09er45eX4CvzmBPEI3s8W++3m4fUY6f/TBe8ZG+oA8hcW8QYP9AL6D/v6C/XqAPMYFvEGD/MC+hD7+gv16gDyGBbyBg/zAvoP+/oL9OztAtMGDeII3/oRCxn0Bfrs7QLTBg7iCOD6EQsZ8wT67O0C0wYN4gjg+hELGfQF+hAU+AcZ3+sUHivr4hQN//Dw/f3f//ArBPYPE/j8JQop8P383//wKwT2DxP4/CUKKfIK9wvpMe/6Hf/xEt8rAPzyC/cL6TLv+hz+8RLeKgD8DfsIBAsG6ej/HSAb6uf4Jd4K8vII4jPoFC/oJhL4BATeCvPyCOIy6BQv6CYS+QQEEgsV3AEhBQbc8f7/2A8V7RILFdwBIAUG3PH9/tgPFe0b4hsNAuUjC+UP0AcB6w37EBT4CBnf6xQeKuviFA3/8BAU+AcZ3+sUHirs4hQN/+8ODQrTEurzIgDf1BnoDPP/GCsG8iUZ9+jcDfv5/Cf65As2Ex3w+APxGgMb2QrkF+wKNhMd8PgD8hoDGtkK5Bbs/esR2wYX6Rn9AgcA/u4n/wHwENPzAucZ/foF/hncDAPdBvPsAeX74tryHvP91frG3Qb07QDl+uPa8h7z/tX6xgcQAQD7Bxc0OwQBBhwj4+4HDwH/+wcXNTsEAQYcI+Pt9w7wCgQQCgz98w3j9g4CIv8HzQsHC/4QGfsRyvb4CjUE0wbk4xPQAPnwBREXBM70BdMG5OMT0P/58AURFwTO8xIR2gwJ+hXeBvH4EinrCQkTEdoNCfoV3gbx9xIp6wkJCwb0Ot8B8RcVAPj+7uz6TNnhFv4J1fUf7PQEGdPu6wADAB7sA/YY/9ML8gj5Dgn1AwAd7AT2GP/TC/II+Q4J9d4K8/II4zPoFC/oJhL4BQTeCvLyCOMy6BQv5yYS+QQEGuIbDQLlIgvmD9AIAOoN+xviGw0B5SML5g/QCAHrDvoQ8tgT/g0SxwHjBt0JAN75EPLYEv4MEscB4wbdCgHe+Q36CAQKBunn/x0gHOrn+CYO+wgECwbq5/4dIBvq5/clBfQYFQMBFhH24QfuDOgb+Qb0GBUCARYS9uIG7gzoG/n0COr09ev35eX4CvvmBPEI6v0KAgkA7ezw9wEM9xoZ+ur8CgIJAO3s8PcADPYZGfr3DvAKBBAKDf3zDeP2DgEi8tIBICMRDcoVEAH9+PDn/RviGw0C5SIL5g/QBwHrDvsb4hsNAeUiC+YP0AgA6w76EPLXEv4ME8YC4wbdCQDe+RDy2BP/DBLGAuMG3QkA3vjkHt4i8Oob+BDaDBD37+Dp5B7eIvDqG/gR2gsQ9+/f6vcVHBwPDBQE1gTg7RX1CgkXKwbxJRn36NwN+/j8KPrk6vwKAgn/7ezw9wEM9hoZ+er9CwIJ/+3s8PcBDPcaGfoYKgXyJRn36NwN+/j9KPrkFysG8iUZ9+ncDfv5/Cf65BIR2g0J+hTeBvH3EyrrCQgN+wgECwbp5/4dIRzq5/glDfsIBAoG6ef+HSEc6uf3JQIFAfwMAv8G9ggD/wEQAwMCBQH8DAL/BvUIA/8AEAMDAAED+wUC/AT1BAUAAwkDBv8BA/wEAvwE9QQFAAMJAwYECAL4DwMCBfEGA/7/EAEE8/T+B/D7BAcS7vf78PTr7/P0/gfw+gMGEu73/PH07O709P4H8PsEBhHt9/zw9Ozv7fD+DOf4AgYU6Pf/7u7p7e3w/gzn+AEGFOj3/+7v6O3t8P4N5/gBBhTo9//u7ujt9fYAB/P8BQYO7/j88/ru8PX3/wbz/AQGDu/4/PP57vACCwb0GQMDDOAGBAD7HwT+DQX9AAMF+PQEEwcEFf0UFgwG/gADBPj0BBMIAxX9ExYCCwb0GQMDC+AGAwD7HwT+DQX9AAME+fQEEwgDFf0TFgQNCfAcBQUN3AgF/voiA/8PBP3/AgX18QYUCQQa+RgbBA0J8RwFBQ3bCAX++yID/w8E/f8CBfXyBhQIAxn4GBoOBPz/AQX18QYUCAQZ+BgbAwwF8xcFAwnjBgP/+RoC/wwG/v8FA/v2ARAIAxL9ERUMB/7/BQP79gARBwMT/REUFw8K7REWFhLsDP70ARcF/BcPDO0SFhkT7Az+8wIVBfoRCwjyDRESDfEI//YAEAT8+f4DAgH/+/r9/QEE/gYH/vj/+wgG+wEE/QD+Bf79A/z9/gQABfn0BAAABAQFBPkF/QL6/vz6/fn6/QP/+QD8Avr/AwACAPr6/P0BBP0HCP/6APwHBvwCBP0B/gX//gP9/f4E/wb58wT+AAUEBQb4BvwC+v38+f34+P4D/vgB/AP7AAIAAwD8+/v+AAP+Bgb/+wD9BQX9AQP9Af4D//4D/f7/A/8F+/UD/wADBAMD+gT9Avv9/vv++vn/Av75AvwC",
+    "encoding": "int8-base64",
+    "scale": 0.025250367292269007
+  },
+  "exact_prompts": {
+    "describe agent approval checkpoints": 38,
+    "describe agent cost controls": 40,
+    "describe agent evaluation methods": 41,
+    "describe agent handoff to humans": 43,
+    "describe agent logging practices": 44,
+    "describe agent memory boundaries": 12,
+    "describe agent privacy controls": 46,
+    "describe agent stop conditions": 47,
+    "describe guardrails for tool using agents": 42,
+    "describe how agents should handle errors": 45,
+    "describe multi agent coordination": 39,
+    "describe safe agent tool permissions": 48,
+    "design an agent for data cleanup": 8,
+    "design an agent for document filing": 4,
+    "design an agent for inventory alerts": 11,
+    "design an agent for learning plans": 1,
+    "design an agent for meeting notes": 2,
+    "design an agent for study flashcards": 5,
+    "design an agent that audits spreadsheets": 3,
+    "design an agent that drafts replies": 9,
+    "design an agent that monitors news topics": 6,
+    "design an agent that plans workouts": 0,
+    "design an agent that reviews code changes": 10,
+    "design an agent that writes summaries": 7,
+    "gravion agent describe agent approval checkpoints": 38,
+    "gravion agent describe agent cost controls": 40,
+    "gravion agent describe agent evaluation methods": 41,
+    "gravion agent describe agent handoff to humans": 43,
+    "gravion agent describe agent logging practices": 44,
+    "gravion agent describe agent memory boundaries": 12,
+    "gravion agent describe agent privacy controls": 46,
+    "gravion agent describe agent stop conditions": 47,
+    "gravion agent describe guardrails for tool using agents": 42,
+    "gravion agent describe how agents should handle errors": 45,
+    "gravion agent describe multi agent coordination": 39,
+    "gravion agent describe safe agent tool permissions": 48,
+    "gravion agent design an agent for data cleanup": 8,
+    "gravion agent design an agent for document filing": 4,
+    "gravion agent design an agent for inventory alerts": 11,
+    "gravion agent design an agent for learning plans": 1,
+    "gravion agent design an agent for meeting notes": 2,
+    "gravion agent design an agent for study flashcards": 5,
+    "gravion agent design an agent that audits spreadsheets": 3,
+    "gravion agent design an agent that drafts replies": 9,
+    "gravion agent design an agent that monitors news topics": 6,
+    "gravion agent design an agent that plans workouts": 0,
+    "gravion agent design an agent that reviews code changes": 10,
+    "gravion agent design an agent that writes summaries": 7,
+    "gravion agent plan an agent for bug report triage": 34,
+    "gravion agent plan an agent for calendar scheduling": 15,
+    "gravion agent plan an agent for customer support triage": 16,
+    "gravion agent plan an agent for event coordination": 36,
+    "gravion agent plan an agent for expense tracking": 14,
+    "gravion agent plan an agent for form filling help": 28,
+    "gravion agent plan an agent for invoice processing": 25,
+    "gravion agent plan an agent for knowledge base updates": 26,
+    "gravion agent plan an agent for onboarding checklists": 20,
+    "gravion agent plan an agent for research briefs": 22,
+    "gravion agent plan an agent for social media drafts": 24,
+    "gravion agent plan an agent for travel planning": 17,
+    "gravion agent plan an agent that checks accessibility": 35,
+    "gravion agent plan an agent that checks website uptime": 32,
+    "gravion agent plan an agent that compares products": 21,
+    "gravion agent plan an agent that drafts job applications": 30,
+    "gravion agent plan an agent that files reports": 18,
+    "gravion agent plan an agent that manages reminders": 13,
+    "gravion agent plan an agent that monitors prices": 37,
+    "gravion agent plan an agent that organizes files": 29,
+    "gravion agent plan an agent that prepares presentations": 31,
+    "gravion agent plan an agent that prepares reports": 27,
+    "gravion agent plan an agent that summarizes email": 33,
+    "gravion agent plan an agent that tracks tasks": 19,
+    "gravion agent plan an agent that translates messages": 23,
+    "help me describe agent approval checkpoints": 38,
+    "help me describe agent cost controls": 40,
+    "help me describe agent evaluation methods": 41,
+    "help me describe agent handoff to humans": 43,
+    "help me describe agent logging practices": 44,
+    "help me describe agent memory boundaries": 12,
+    "help me describe agent privacy controls": 46,
+    "help me describe agent stop conditions": 47,
+    "help me describe guardrails for tool using agents": 42,
+    "help me describe how agents should handle errors": 45,
+    "help me describe multi agent coordination": 39,
+    "help me describe safe agent tool permissions": 48,
+    "help me design an agent for data cleanup": 8,
+    "help me design an agent for document filing": 4,
+    "help me design an agent for inventory alerts": 11,
+    "help me design an agent for learning plans": 1,
+    "help me design an agent for meeting notes": 2,
+    "help me design an agent for study flashcards": 5,
+    "help me design an agent that audits spreadsheets": 3,
+    "help me design an agent that drafts replies": 9,
+    "help me design an agent that monitors news topics": 6,
+    "help me design an agent that plans workouts": 0,
+    "help me design an agent that reviews code changes": 10,
+    "help me design an agent that writes summaries": 7,
+    "help me plan an agent for bug report triage": 34,
+    "help me plan an agent for calendar scheduling": 15,
+    "help me plan an agent for customer support triage": 16,
+    "help me plan an agent for event coordination": 36,
+    "help me plan an agent for expense tracking": 14,
+    "help me plan an agent for form filling help": 28,
+    "help me plan an agent for invoice processing": 25,
+    "help me plan an agent for knowledge base updates": 26,
+    "help me plan an agent for onboarding checklists": 20,
+    "help me plan an agent for research briefs": 22,
+    "help me plan an agent for social media drafts": 24,
+    "help me plan an agent for travel planning": 17,
+    "help me plan an agent that checks accessibility": 35,
+    "help me plan an agent that checks website uptime": 32,
+    "help me plan an agent that compares products": 21,
+    "help me plan an agent that drafts job applications": 30,
+    "help me plan an agent that files reports": 18,
+    "help me plan an agent that manages reminders": 13,
+    "help me plan an agent that monitors prices": 37,
+    "help me plan an agent that organizes files": 29,
+    "help me plan an agent that prepares presentations": 31,
+    "help me plan an agent that prepares reports": 27,
+    "help me plan an agent that summarizes email": 33,
+    "help me plan an agent that tracks tasks": 19,
+    "help me plan an agent that translates messages": 23,
+    "plan an agent for bug report triage": 34,
+    "plan an agent for calendar scheduling": 15,
+    "plan an agent for customer support triage": 16,
+    "plan an agent for event coordination": 36,
+    "plan an agent for expense tracking": 14,
+    "plan an agent for form filling help": 28,
+    "plan an agent for invoice processing": 25,
+    "plan an agent for knowledge base updates": 26,
+    "plan an agent for onboarding checklists": 20,
+    "plan an agent for research briefs": 22,
+    "plan an agent for social media drafts": 24,
+    "plan an agent for travel planning": 17,
+    "plan an agent that checks accessibility": 35,
+    "plan an agent that checks website uptime": 32,
+    "plan an agent that compares products": 21,
+    "plan an agent that drafts job applications": 30,
+    "plan an agent that files reports": 18,
+    "plan an agent that manages reminders": 13,
+    "plan an agent that monitors prices": 37,
+    "plan an agent that organizes files": 29,
+    "plan an agent that prepares presentations": 31,
+    "plan an agent that prepares reports": 27,
+    "plan an agent that summarizes email": 33,
+    "plan an agent that tracks tasks": 19,
+    "plan an agent that translates messages": 23,
+    "please describe agent approval checkpoints": 38,
+    "please describe agent cost controls": 40,
+    "please describe agent evaluation methods": 41,
+    "please describe agent handoff to humans": 43,
+    "please describe agent logging practices": 44,
+    "please describe agent memory boundaries": 12,
+    "please describe agent privacy controls": 46,
+    "please describe agent stop conditions": 47,
+    "please describe guardrails for tool using agents": 42,
+    "please describe how agents should handle errors": 45,
+    "please describe multi agent coordination": 39,
+    "please describe safe agent tool permissions": 48,
+    "please design an agent for data cleanup": 8,
+    "please design an agent for document filing": 4,
+    "please design an agent for inventory alerts": 11,
+    "please design an agent for learning plans": 1,
+    "please design an agent for meeting notes": 2,
+    "please design an agent for study flashcards": 5,
+    "please design an agent that audits spreadsheets": 3,
+    "please design an agent that drafts replies": 9,
+    "please design an agent that monitors news topics": 6,
+    "please design an agent that plans workouts": 0,
+    "please design an agent that reviews code changes": 10,
+    "please design an agent that writes summaries": 7,
+    "please plan an agent for bug report triage": 34,
+    "please plan an agent for calendar scheduling": 15,
+    "please plan an agent for customer support triage": 16,
+    "please plan an agent for event coordination": 36,
+    "please plan an agent for expense tracking": 14,
+    "please plan an agent for form filling help": 28,
+    "please plan an agent for invoice processing": 25,
+    "please plan an agent for knowledge base updates": 26,
+    "please plan an agent for onboarding checklists": 20,
+    "please plan an agent for research briefs": 22,
+    "please plan an agent for social media drafts": 24,
+    "please plan an agent for travel planning": 17,
+    "please plan an agent that checks accessibility": 35,
+    "please plan an agent that checks website uptime": 32,
+    "please plan an agent that compares products": 21,
+    "please plan an agent that drafts job applications": 30,
+    "please plan an agent that files reports": 18,
+    "please plan an agent that manages reminders": 13,
+    "please plan an agent that monitors prices": 37,
+    "please plan an agent that organizes files": 29,
+    "please plan an agent that prepares presentations": 31,
+    "please plan an agent that prepares reports": 27,
+    "please plan an agent that summarizes email": 33,
+    "please plan an agent that tracks tasks": 19,
+    "please plan an agent that translates messages": 23
+  },
+  "features": [
+    "agent",
+    "an",
+    "an agent",
+    "plan",
+    "plan an",
+    "plan an agent",
+    "agent that",
+    "an agent that",
+    "for",
+    "that",
+    "agent for",
+    "an agent for",
+    "help",
+    "describe",
+    "design",
+    "design an",
+    "design an agent",
+    "describe agent",
+    "drafts",
+    "agent that checks",
+    "agent that drafts",
+    "agent that monitors",
+    "agent that prepares",
+    "agents",
+    "checks",
+    "controls",
+    "coordination",
+    "files",
+    "monitors",
+    "plans",
+    "prepares",
+    "reports",
+    "that checks",
+    "that drafts",
+    "that monitors",
+    "that prepares",
+    "tool",
+    "triage",
+    "accessibility",
+    "agent approval",
+    "agent approval checkpoints",
+    "agent coordination",
+    "agent cost",
+    "agent cost controls",
+    "agent evaluation",
+    "agent evaluation methods",
+    "agent for bug",
+    "agent for calendar",
+    "agent for customer",
+    "agent for data",
+    "agent for document",
+    "agent for event",
+    "agent for expense",
+    "agent for form",
+    "agent for inventory",
+    "agent for invoice",
+    "agent for knowledge",
+    "agent for learning",
+    "agent for meeting",
+    "agent for onboarding",
+    "agent for research",
+    "agent for social",
+    "agent for study",
+    "agent for travel",
+    "agent handoff",
+    "agent handoff to",
+    "agent logging",
+    "agent logging practices",
+    "agent memory",
+    "agent memory boundaries",
+    "agent privacy",
+    "agent privacy controls",
+    "agent stop",
+    "agent stop conditions",
+    "agent that audits",
+    "agent that compares",
+    "agent that files",
+    "agent that manages",
+    "agent that organizes",
+    "agent that plans",
+    "agent that reviews",
+    "agent that summarizes",
+    "agent that tracks",
+    "agent that translates",
+    "agent that writes",
+    "agent tool",
+    "agent tool permissions",
+    "agents should",
+    "agents should handle",
+    "alerts",
+    "applications",
+    "approval",
+    "approval checkpoints",
+    "audits",
+    "audits spreadsheets",
+    "base",
+    "base updates",
+    "boundaries",
+    "briefs",
+    "bug",
+    "bug report",
+    "bug report triage",
+    "calendar",
+    "calendar scheduling",
+    "changes",
+    "checklists",
+    "checkpoints",
+    "checks accessibility",
+    "checks website",
+    "checks website uptime",
+    "cleanup",
+    "code",
+    "code changes",
+    "compares",
+    "compares products",
+    "conditions",
+    "cost",
+    "cost controls",
+    "customer",
+    "customer support",
+    "customer support triage",
+    "data",
+    "data cleanup",
+    "describe agent approval",
+    "describe agent cost",
+    "describe agent evaluation",
+    "describe agent handoff",
+    "describe agent logging",
+    "describe agent memory",
+    "describe agent privacy",
+    "describe agent stop",
+    "describe guardrails",
+    "describe guardrails for",
+    "describe how",
+    "describe how agents",
+    "describe multi",
+    "describe multi agent",
+    "describe safe",
+    "describe safe agent",
+    "document",
+    "document filing",
+    "drafts job",
+    "drafts job applications",
+    "drafts replies",
+    "email",
+    "errors",
+    "evaluation",
+    "evaluation methods",
+    "event",
+    "event coordination",
+    "expense",
+    "expense tracking",
+    "files reports",
+    "filing",
+    "filling",
+    "filling help",
+    "flashcards",
+    "for bug",
+    "for bug report",
+    "for calendar",
+    "for calendar scheduling",
+    "for customer",
+    "for customer support",
+    "for data",
+    "for data cleanup",
+    "for document",
+    "for document filing",
+    "for event",
+    "for event coordination",
+    "for expense",
+    "for expense tracking",
+    "for form",
+    "for form filling",
+    "for inventory",
+    "for inventory alerts",
+    "for invoice",
+    "for invoice processing",
+    "for knowledge",
+    "for knowledge base",
+    "for learning",
+    "for learning plans",
+    "for meeting",
+    "for meeting notes",
+    "for onboarding",
+    "for onboarding checklists",
+    "for research",
+    "for research briefs",
+    "for social",
+    "for social media",
+    "for study",
+    "for study flashcards",
+    "for tool",
+    "for tool using",
+    "for travel",
+    "for travel planning",
+    "form",
+    "form filling",
+    "form filling help",
+    "guardrails",
+    "guardrails for",
+    "guardrails for tool",
+    "handle",
+    "handle errors",
+    "handoff",
+    "handoff to",
+    "handoff to humans",
+    "how",
+    "how agents",
+    "how agents should",
+    "humans",
+    "inventory",
+    "inventory alerts",
+    "invoice",
+    "invoice processing",
+    "job",
+    "job applications",
+    "knowledge",
+    "knowledge base",
+    "knowledge base updates",
+    "learning",
+    "learning plans",
+    "logging",
+    "logging practices",
+    "manages",
+    "manages reminders",
+    "media",
+    "media drafts",
+    "meeting",
+    "meeting notes",
+    "memory",
+    "memory boundaries",
+    "messages",
+    "methods",
+    "monitors news",
+    "monitors news topics",
+    "monitors prices",
+    "multi",
+    "multi agent",
+    "multi agent coordination",
+    "news",
+    "news topics",
+    "notes",
+    "onboarding",
+    "onboarding checklists",
+    "organizes",
+    "organizes files",
+    "permissions",
+    "planning",
+    "plans workouts",
+    "practices",
+    "prepares presentations",
+    "prepares reports",
+    "presentations",
+    "prices",
+    "privacy",
+    "privacy controls",
+    "processing",
+    "products",
+    "reminders",
+    "replies",
+    "report",
+    "report triage",
+    "research",
+    "research briefs",
+    "reviews",
+    "reviews code",
+    "reviews code changes",
+    "safe",
+    "safe agent",
+    "safe agent tool",
+    "scheduling",
+    "should",
+    "should handle",
+    "should handle errors",
+    "social",
+    "social media",
+    "social media drafts",
+    "spreadsheets",
+    "stop",
+    "stop conditions",
+    "study",
+    "study flashcards",
+    "summaries",
+    "summarizes",
+    "summarizes email",
+    "support",
+    "support triage",
+    "tasks",
+    "that audits",
+    "that audits spreadsheets",
+    "that checks accessibility",
+    "that checks website",
+    "that compares",
+    "that compares products",
+    "that drafts job",
+    "that drafts replies",
+    "that files",
+    "that files reports",
+    "that manages",
+    "that manages reminders",
+    "that monitors news",
+    "that monitors prices",
+    "that organizes",
+    "that organizes files",
+    "that plans",
+    "that plans workouts",
+    "that prepares presentations",
+    "that prepares reports",
+    "that reviews",
+    "that reviews code",
+    "that summarizes",
+    "that summarizes email",
+    "that tracks",
+    "that tracks tasks",
+    "that translates",
+    "that translates messages",
+    "that writes",
+    "that writes summaries",
+    "to",
+    "to humans",
+    "tool permissions",
+    "tool using",
+    "tool using agents",
+    "topics",
+    "tracking",
+    "tracks",
+    "tracks tasks",
+    "translates",
+    "translates messages",
+    "travel",
+    "travel planning",
+    "updates",
+    "uptime",
+    "using",
+    "using agents",
+    "website",
+    "website uptime",
+    "workouts",
+    "writes",
+    "writes summaries",
+    "gravion",
+    "gravion agent",
+    "help me",
+    "me",
+    "please",
+    "agent plan",
+    "agent plan an",
+    "gravion agent plan",
+    "help me plan",
+    "me plan",
+    "me plan an",
+    "please plan",
+    "please plan an",
+    "agent describe",
+    "agent design",
+    "agent design an",
+    "gravion agent describe",
+    "gravion agent design",
+    "help me describe",
+    "help me design",
+    "me describe",
+    "me design",
+    "me design an",
+    "please describe",
+    "please design",
+    "please design an",
+    "agent describe agent",
+    "me describe agent",
+    "please describe agent",
+    "agent describe guardrails",
+    "agent describe how",
+    "agent describe multi",
+    "agent describe safe",
+    "me describe guardrails",
+    "me describe how",
+    "me describe multi",
+    "me describe safe",
+    "please describe guardrails",
+    "please describe how",
+    "please describe multi",
+    "please describe safe"
+  ],
+  "format": "gravion-core-local-v3",
+  "model_id": "gravion-agent",
+  "parameter_count": 26571,
+  "trained_from": {
+    "classes": 49,
+    "dataset_sha256": "71f6b0fac2c7cc11987db9ed82371ec416955757f95b294679be408c222c34d8",
+    "examples": 196,
+    "features": 381,
+    "source": "data/gravion-agent-seed.jsonl"
+  },
+  "transitions": {
+    "<s>": {
+      "agent": 0.7755102,
+      "approval": 0.02040816,
+      "coordination": 0.02040816,
+      "cost": 0.02040816,
+      "evaluate": 0.02040816,
+      "guardrails": 0.02040816,
+      "handoff": 0.02040816,
+      "log": 0.02040816,
+      "on": 0.02040816,
+      "privacy": 0.02040816,
+      "stop": 0.02040816,
+      "tool": 0.02040816
+    },
+    "a": {
+      "brief": 0.33333333,
+      "findings": 0.33333333,
+      "review": 0.33333333
+    },
+    "access": {
+      "mask": 1.0
+    },
+    "accountable": {
+      "owner": 1.0
+    },
+    "accounts": {
+      "checklist": 1.0
+    },
+    "actions": {
+      "record": 1.0
+    },
+    "add": {
+      "evidence": 1.0
+    },
+    "adjust": {
+      "difficulty": 0.5,
+      "for": 0.5
+    },
+    "after": {
+      "approval": 0.6,
+      "changes": 0.2,
+      "review": 0.2
+    },
+    "agent": {
+      "before": 0.025,
+      "design": 0.3,
+      "memory": 0.025,
+      "plan": 0.625,
+      "should": 0.025
+    },
+    "agents": {
+      "with": 1.0
+    },
+    "alert": {
+      "on": 0.66666667,
+      "owners": 0.33333333
+    },
+    "allowed": {
+      "tools": 1.0
+    },
+    "an": {
+      "agent": 0.5,
+      "undo": 0.5
+    },
+    "and": {
+      "adjust": 0.03773585,
+      "ask": 0.05660377,
+      "avoid": 0.01886792,
+      "cite": 0.01886792,
+      "confirm": 0.01886792,
+      "day": 0.01886792,
+      "export": 0.01886792,
+      "flag": 0.05660377,
+      "handle": 0.01886792,
+      "keep": 0.05660377,
+      "labels": 0.01886792,
+      "let": 0.01886792,
+      "limits": 0.01886792,
+      "log": 0.01886792,
+      "one": 0.01886792,
+      "outcomes": 0.01886792,
+      "owners": 0.01886792,
+      "present": 0.01886792,
+      "produce": 0.03773585,
+      "recommend": 0.01886792,
+      "record": 0.03773585,
+      "report": 0.03773585,
+      "retire": 0.01886792,
+      "route": 0.01886792,
+      "separated": 0.01886792,
+      "stays": 0.01886792,
+      "stop": 0.01886792,
+      "store": 0.01886792,
+      "submit": 0.01886792,
+      "suggest": 0.01886792,
+      "summarize": 0.05660377,
+      "the": 0.01886792,
+      "topic": 0.01886792,
+      "track": 0.0754717,
+      "user": 0.03773585,
+      "verify": 0.01886792,
+      "wait": 0.01886792
+    },
+    "answers": {
+      "escalate": 1.0
+    },
+    "anything": {
+      "</s>": 1.0
+    },
+    "apply": {
+      "approved": 1.0
+    },
+    "approval": {
+      "</s>": 0.25,
+      "and": 0.25,
+      "before": 0.125,
+      "checkpoints": 0.125,
+      "points": 0.125,
+      "quality": 0.125
+    },
+    "approvals": {
+      "before": 0.33333333,
+      "errors": 0.33333333,
+      "publish": 0.33333333
+    },
+    "approved": {
+      "edits": 0.125,
+      "facts": 0.125,
+      "items": 0.125,
+      "messages": 0.125,
+      "pages": 0.125,
+      "summary": 0.125,
+      "topics": 0.25
+    },
+    "ask": {
+      "before": 0.5,
+      "for": 0.25,
+      "goals": 0.25
+    },
+    "assess": {
+      "level": 1.0
+    },
+    "assign": {
+      "buddy": 0.5,
+      "owners": 0.5
+    },
+    "audience": {
+      "extract": 1.0
+    },
+    "availability": {
+      "propose": 1.0
+    },
+    "avoid": {
+      "purchases": 1.0
+    },
+    "backups": {
+      "</s>": 1.0
+    },
+    "be": {
+      "narrow": 1.0
+    },
+    "before": {
+      "booking": 0.16666667,
+      "external": 0.16666667,
+      "payment": 0.16666667,
+      "sending": 0.33333333,
+      "submitting": 0.16666667
+    },
+    "blockers": {
+      "and": 1.0
+    },
+    "booking": {
+      "</s>": 1.0
+    },
+    "boundaries": {
+      "logging": 1.0
+    },
+    "brief": {
+      "</s>": 1.0
+    },
+    "buddy": {
+      "tasks": 1.0
+    },
+    "budget": {
+      "limit": 1.0
+    },
+    "budgets": {
+      "cache": 1.0
+    },
+    "by": {
+      "date": 0.2,
+      "deadline": 0.2,
+      "task": 0.2,
+      "topic": 0.2,
+      "use": 0.2
+    },
+    "cache": {
+      "repeated": 1.0
+    },
+    "calls": {
+      "decisions": 1.0
+    },
+    "cancellation": {
+      "</s>": 1.0
+    },
+    "capture": {
+      "commitments": 0.33333333,
+      "notes": 0.33333333,
+      "receipts": 0.33333333
+    },
+    "cards": {
+      "</s>": 0.5,
+      "schedule": 0.5
+    },
+    "case": {
+      "</s>": 1.0
+    },
+    "cases": {
+      "and": 1.0
+    },
+    "categorize": {
+      "spending": 1.0
+    },
+    "changes": {
+      "</s>": 0.42857143,
+      "alert": 0.14285714,
+      "and": 0.14285714,
+      "apply": 0.14285714,
+      "politely": 0.14285714
+    },
+    "charts": {
+      "write": 1.0
+    },
+    "check": {
+      "availability": 0.16666667,
+      "constraints": 0.16666667,
+      "facts": 0.16666667,
+      "formulas": 0.16666667,
+      "readability": 0.16666667,
+      "tone": 0.16666667
+    },
+    "checklist": {
+      "</s>": 0.5,
+      "schedule": 0.5
+    },
+    "checkpoints": {
+      "pause": 1.0
+    },
+    "checks": {
+      "comment": 1.0
+    },
+    "choose": {
+      "smaller": 1.0
+    },
+    "cite": {
+      "evidence": 0.5,
+      "sources": 0.5
+    },
+    "claims": {
+      "cite": 1.0
+    },
+    "classify": {
+      "documents": 0.33333333,
+      "requests": 0.33333333,
+      "severity": 0.33333333
+    },
+    "clear": {
+      "cards": 0.5,
+      "roles": 0.5
+    },
+    "collect": {
+      "preferences": 0.33333333,
+      "reports": 0.33333333,
+      "tasks": 0.33333333
+    },
+    "comment": {
+      "on": 1.0
+    },
+    "commitments": {
+      "set": 1.0
+    },
+    "compare": {
+      "claims": 0.5,
+      "routes": 0.5
+    },
+    "completion": {
+      "</s>": 1.0
+    },
+    "concepts": {
+      "write": 1.0
+    },
+    "conditions": {
+      "</s>": 0.5,
+      "include": 0.5
+    },
+    "confirm": {
+      "completion": 0.5,
+      "participants": 0.5
+    },
+    "conflict": {
+      "repeated": 0.5,
+      "resolution": 0.5
+    },
+    "consistently": {
+      "store": 1.0
+    },
+    "constraints": {
+      "and": 1.0
+    },
+    "context": {
+      "draft": 1.0
+    },
+    "contrast": {
+      "and": 1.0
+    },
+    "controls": {
+      "limit": 0.5,
+      "set": 0.5
+    },
+    "coordination": {
+      "needs": 1.0
+    },
+    "cost": {
+      "controls": 0.5,
+      "latency": 0.5
+    },
+    "create": {
+      "accounts": 1.0
+    },
+    "criteria": {
+      "gather": 1.0
+    },
+    "data": {
+      "access": 0.2,
+      "boundaries": 0.2,
+      "policy": 0.2,
+      "propose": 0.2,
+      "validate": 0.2
+    },
+    "date": {
+      "and": 1.0
+    },
+    "day": {
+      "of": 1.0
+    },
+    "deadline": {
+      "remind": 1.0
+    },
+    "decision": {
+      "needed": 1.0
+    },
+    "decisions": {
+      "and": 0.5,
+      "approvals": 0.5
+    },
+    "deduplicate": {
+      "stories": 1.0
+    },
+    "define": {
+      "criteria": 0.5,
+      "the": 0.5
+    },
+    "delete": {
+      "entries": 1.0
+    },
+    "deletions": {
+      "or": 1.0
+    },
+    "design": {
+      "ask": 0.08333333,
+      "assess": 0.08333333,
+      "capture": 0.08333333,
+      "check": 0.08333333,
+      "classify": 0.08333333,
+      "extract": 0.08333333,
+      "follow": 0.08333333,
+      "identify": 0.08333333,
+      "profile": 0.08333333,
+      "read": 0.16666667,
+      "track": 0.08333333
+    },
+    "detect": {
+      "blockers": 0.5,
+      "language": 0.5
+    },
+    "diff": {
+      "run": 1.0
+    },
+    "difficulty": {
+      "</s>": 1.0
+    },
+    "disclosure": {
+      "</s>": 1.0
+    },
+    "documents": {
+      "name": 1.0
+    },
+    "draft": {
+      "charts": 0.125,
+      "follow": 0.125,
+      "honestly": 0.125,
+      "in": 0.125,
+      "posts": 0.125,
+      "slides": 0.125,
+      "summaries": 0.125,
+      "updates": 0.125
+    },
+    "duplicates": {
+      "assign": 0.5,
+      "outliers": 0.5
+    },
+    "each": {
+      "location": 1.0
+    },
+    "edits": {
+      "and": 1.0
+    },
+    "entries": {
+      "</s>": 0.5,
+      "show": 0.5
+    },
+    "error": {
+      "an": 0.5,
+      "rate": 0.5
+    },
+    "errors": {
+      "and": 1.0
+    },
+    "escalate": {
+      "sensitive": 1.0
+    },
+    "evaluate": {
+      "agents": 1.0
+    },
+    "every": {
+      "disclosure": 0.5,
+      "move": 0.5
+    },
+    "evidence": {
+      "and": 0.33333333,
+      "blockers": 0.33333333,
+      "check": 0.33333333
+    },
+    "exact": {
+      "decision": 1.0
+    },
+    "experience": {
+      "to": 1.0
+    },
+    "expire": {
+      "stale": 1.0
+    },
+    "export": {
+      "after": 1.0
+    },
+    "external": {
+      "messages": 1.0
+    },
+    "extract": {
+      "concepts": 0.25,
+      "decisions": 0.25,
+      "invoice": 0.25,
+      "key": 0.25
+    },
+    "facts": {
+      "and": 0.5,
+      "expire": 0.5
+    },
+    "failure": {
+      "budget": 1.0
+    },
+    "failures": {
+      "and": 1.0
+    },
+    "fields": {
+      "match": 0.33333333,
+      "set": 0.33333333,
+      "validate": 0.33333333
+    },
+    "file": {
+      "by": 1.0
+    },
+    "files": {
+      "propose": 1.0
+    },
+    "find": {
+      "duplicates": 0.5,
+      "outdated": 0.5
+    },
+    "findings": {
+      "</s>": 0.33333333,
+      "and": 0.33333333,
+      "list": 0.33333333
+    },
+    "first": {
+      "and": 1.0
+    },
+    "fixes": {
+      "</s>": 0.33333333,
+      "and": 0.33333333,
+      "preview": 0.33333333
+    },
+    "flag": {
+      "mismatches": 0.16666667,
+      "missing": 0.33333333,
+      "uncertain": 0.16666667,
+      "unusual": 0.16666667,
+      "urgent": 0.16666667
+    },
+    "folder": {
+      "and": 1.0
+    },
+    "folders": {
+      "move": 1.0
+    },
+    "follow": {
+      "approved": 0.5,
+      "ups": 0.5
+    },
+    "for": {
+      "help": 0.33333333,
+      "human": 0.33333333,
+      "recovery": 0.33333333
+    },
+    "forecast": {
+      "shortages": 1.0
+    },
+    "formulas": {
+      "totals": 1.0
+    },
+    "from": {
+      "approved": 1.0
+    },
+    "gather": {
+      "data": 0.25,
+      "required": 0.25,
+      "sources": 0.25,
+      "specs": 0.25
+    },
+    "goal": {
+      "progress": 1.0
+    },
+    "goals": {
+      "and": 0.33333333,
+      "schedule": 0.33333333,
+      "tool": 0.33333333
+    },
+    "group": {
+      "by": 1.0
+    },
+    "guardrails": {
+      "allowed": 1.0
+    },
+    "handle": {
+      "changes": 1.0
+    },
+    "handoff": {
+      "rules": 0.5,
+      "should": 0.5
+    },
+    "happened": {
+      "try": 1.0
+    },
+    "help": {
+      "when": 1.0
+    },
+    "highlight": {
+      "trade": 1.0
+    },
+    "honestly": {
+      "tailor": 1.0
+    },
+    "human": {
+      "approval": 1.0
+    },
+    "identify": {
+      "audience": 1.0
+    },
+    "in": {
+      "the": 1.0
+    },
+    "incidents": {
+      "</s>": 1.0
+    },
+    "include": {
+      "goal": 0.5,
+      "missing": 0.5
+    },
+    "inputs": {
+      "</s>": 1.0
+    },
+    "inventory": {
+      "files": 1.0
+    },
+    "invites": {
+      "and": 1.0
+    },
+    "invoice": {
+      "fields": 1.0
+    },
+    "irreversible": {
+      "changes": 1.0
+    },
+    "items": {
+      "and": 0.75,
+      "record": 0.25
+    },
+    "keep": {
+      "an": 0.33333333,
+      "backups": 0.33333333,
+      "uncertainty": 0.33333333
+    },
+    "key": {
+      "points": 1.0
+    },
+    "keywords": {
+      "and": 1.0
+    },
+    "labels": {
+      "suggest": 1.0
+    },
+    "language": {
+      "translate": 1.0
+    },
+    "latency": {
+      "and": 1.0
+    },
+    "let": {
+      "users": 1.0
+    },
+    "level": {
+      "set": 1.0
+    },
+    "levels": {
+      "forecast": 1.0
+    },
+    "limit": {
+      "and": 0.5,
+      "data": 0.5
+    },
+    "limited": {
+      "when": 1.0
+    },
+    "limits": {
+      "data": 0.5,
+      "schedule": 0.5
+    },
+    "list": {
+      "</s>": 1.0
+    },
+    "location": {
+      "and": 1.0
+    },
+    "log": {
+      "</s>": 0.25,
+      "each": 0.25,
+      "every": 0.25,
+      "goals": 0.25
+    },
+    "logged": {
+      "and": 1.0
+    },
+    "logging": {
+      "and": 1.0
+    },
+    "mask": {
+      "sensitive": 1.0
+    },
+    "mastered": {
+      "cards": 1.0
+    },
+    "match": {
+      "experience": 0.5,
+      "orders": 0.5
+    },
+    "meaning": {
+      "preserve": 1.0
+    },
+    "memory": {
+      "should": 1.0
+    },
+    "messages": {
+      "group": 0.5,
+      "payments": 0.5
+    },
+    "mismatches": {
+      "and": 1.0
+    },
+    "missing": {
+      "data": 0.33333333,
+      "inputs": 0.33333333,
+      "reports": 0.33333333
+    },
+    "monthly": {
+      "totals": 1.0
+    },
+    "move": {
+      "</s>": 0.5,
+      "only": 0.5
+    },
+    "name": {
+      "them": 1.0
+    },
+    "narrow": {
+      "time": 1.0
+    },
+    "needed": {
+      "</s>": 1.0
+    },
+    "needs": {
+      "clear": 1.0
+    },
+    "normalize": {
+      "prices": 1.0
+    },
+    "notes": {
+      "extract": 1.0
+    },
+    "numbers": {
+      "and": 1.0
+    },
+    "of": {
+      "checklist": 1.0
+    },
+    "offs": {
+      "and": 1.0
+    },
+    "on": {
+      "error": 0.25,
+      "failures": 0.25,
+      "risks": 0.25,
+      "thresholds": 0.25
+    },
+    "one": {
+      "accountable": 1.0
+    },
+    "only": {
+      "after": 0.75,
+      "approved": 0.25
+    },
+    "options": {
+      "before": 1.0
+    },
+    "or": {
+      "delete": 0.5,
+      "irreversible": 0.5
+    },
+    "orders": {
+      "flag": 1.0
+    },
+    "outcomes": {
+      "without": 1.0
+    },
+    "outdated": {
+      "pages": 1.0
+    },
+    "outliers": {
+      "and": 1.0
+    },
+    "outline": {
+      "story": 1.0
+    },
+    "owner": {
+      "</s>": 1.0
+    },
+    "owners": {
+      "and": 0.5,
+      "detect": 0.25,
+      "draft": 0.25
+    },
+    "pages": {
+      "draft": 0.33333333,
+      "record": 0.33333333,
+      "report": 0.33333333
+    },
+    "participants": {
+      "send": 1.0
+    },
+    "pause": {
+      "the": 1.0
+    },
+    "payment": {
+      "</s>": 1.0
+    },
+    "payments": {
+      "deletions": 1.0
+    },
+    "permissions": {
+      "should": 1.0
+    },
+    "phrases": {
+      "</s>": 1.0
+    },
+    "plan": {
+      "capture": 0.08,
+      "check": 0.04,
+      "classify": 0.04,
+      "collect": 0.12,
+      "create": 0.04,
+      "define": 0.08,
+      "detect": 0.04,
+      "draft": 0.04,
+      "extract": 0.04,
+      "find": 0.04,
+      "gather": 0.08,
+      "inventory": 0.04,
+      "match": 0.04,
+      "outline": 0.04,
+      "probe": 0.04,
+      "read": 0.04,
+      "reproduce": 0.04,
+      "scan": 0.04,
+      "track": 0.04,
+      "watch": 0.04
+    },
+    "points": {
+      "preserve": 0.5,
+      "spending": 0.5
+    },
+    "policy": {
+      "conflict": 1.0
+    },
+    "politely": {
+      "</s>": 1.0
+    },
+    "possible": {
+      "logged": 1.0
+    },
+    "posts": {
+      "from": 1.0
+    },
+    "practice": {
+      "quiz": 1.0
+    },
+    "preferences": {
+      "compare": 1.0
+    },
+    "present": {
+      "options": 1.0
+    },
+    "preserve": {
+      "numbers": 0.5,
+      "tone": 0.5
+    },
+    "preview": {
+      "changes": 1.0
+    },
+    "prices": {
+      "highlight": 1.0
+    },
+    "privacy": {
+      "controls": 1.0
+    },
+    "probe": {
+      "approved": 1.0
+    },
+    "produce": {
+      "a": 1.0
+    },
+    "profile": {
+      "data": 1.0
+    },
+    "progress": {
+      "</s>": 0.25,
+      "and": 0.5,
+      "evidence": 0.25
+    },
+    "propose": {
+      "fixes": 0.33333333,
+      "folders": 0.33333333,
+      "times": 0.33333333
+    },
+    "publish": {
+      "and": 1.0
+    },
+    "purchases": {
+      "without": 1.0
+    },
+    "quality": {
+      "</s>": 0.5,
+      "cost": 0.5
+    },
+    "quantities": {
+      "</s>": 1.0
+    },
+    "question": {
+      "gather": 1.0
+    },
+    "quiz": {
+      "progress": 1.0
+    },
+    "rate": {
+      "approval": 1.0
+    },
+    "read": {
+      "approved": 0.33333333,
+      "context": 0.33333333,
+      "the": 0.33333333
+    },
+    "readability": {
+      "and": 1.0
+    },
+    "receipts": {
+      "categorize": 1.0
+    },
+    "recommend": {
+      "by": 1.0
+    },
+    "record": {
+      "changes": 0.4,
+      "every": 0.2,
+      "status": 0.2,
+      "what": 0.2
+    },
+    "recovery": {
+      "</s>": 0.5,
+      "and": 0.5
+    },
+    "registrations": {
+      "reminders": 1.0
+    },
+    "remind": {
+      "owners": 1.0
+    },
+    "reminders": {
+      "and": 0.5,
+      "snooze": 0.5
+    },
+    "reorder": {
+      "quantities": 1.0
+    },
+    "repeated": {
+      "failure": 0.5,
+      "work": 0.5
+    },
+    "report": {
+      "contrast": 0.33333333,
+      "progress": 0.33333333,
+      "spend": 0.33333333
+    },
+    "reports": {
+      "</s>": 0.5,
+      "validate": 0.5
+    },
+    "reproduce": {
+      "steps": 1.0
+    },
+    "requests": {
+      "suggest": 1.0
+    },
+    "required": {
+      "fields": 1.0
+    },
+    "resolution": {
+      "and": 0.5,
+      "quality": 0.5
+    },
+    "respectfully": {
+      "and": 1.0
+    },
+    "results": {
+      "</s>": 1.0
+    },
+    "retention": {
+      "and": 1.0
+    },
+    "retire": {
+      "mastered": 1.0
+    },
+    "review": {
+      "</s>": 0.33333333,
+      "or": 0.33333333,
+      "screen": 0.33333333
+    },
+    "reviews": {
+      "and": 1.0
+    },
+    "right": {
+      "folder": 0.5,
+      "tone": 0.5
+    },
+    "risks": {
+      "verify": 1.0
+    },
+    "risky": {
+      "actions": 1.0
+    },
+    "role": {
+      "draft": 1.0
+    },
+    "roles": {
+      "shared": 1.0
+    },
+    "route": {
+      "approvals": 1.0
+    },
+    "routes": {
+      "and": 1.0
+    },
+    "rules": {
+      "conflict": 1.0
+    },
+    "run": {
+      "checks": 1.0
+    },
+    "safe": {
+      "recovery": 1.0
+    },
+    "satisfaction": {
+      "</s>": 1.0
+    },
+    "scan": {
+      "pages": 1.0
+    },
+    "schedule": {
+      "only": 0.16666667,
+      "practice": 0.16666667,
+      "registrations": 0.16666667,
+      "reviews": 0.16666667,
+      "sessions": 0.16666667,
+      "training": 0.16666667
+    },
+    "screen": {
+      "and": 1.0
+    },
+    "secrets": {
+      "</s>": 1.0
+    },
+    "send": {
+      "invites": 1.0
+    },
+    "sending": {
+      "</s>": 0.5,
+      "anything": 0.5
+    },
+    "sensitive": {
+      "cases": 0.5,
+      "fields": 0.5
+    },
+    "separated": {
+      "by": 1.0
+    },
+    "sessions": {
+      "track": 1.0
+    },
+    "set": {
+      "budgets": 0.25,
+      "goals": 0.25,
+      "reminders": 0.25,
+      "retention": 0.25
+    },
+    "severity": {
+      "find": 1.0
+    },
+    "shared": {
+      "state": 1.0
+    },
+    "shortages": {
+      "alert": 1.0
+    },
+    "should": {
+      "be": 0.25,
+      "include": 0.25,
+      "stop": 0.25,
+      "store": 0.25
+    },
+    "show": {
+      "a": 1.0
+    },
+    "slides": {
+      "add": 1.0
+    },
+    "smaller": {
+      "tools": 1.0
+    },
+    "snooze": {
+      "respectfully": 1.0
+    },
+    "sort": {
+      "by": 1.0
+    },
+    "sources": {
+      "</s>": 0.5,
+      "compare": 0.5
+    },
+    "speakers": {
+      "schedule": 1.0
+    },
+    "specs": {
+      "normalize": 1.0
+    },
+    "spend": {
+      "</s>": 1.0
+    },
+    "spending": {
+      "flag": 0.5,
+      "limits": 0.5
+    },
+    "stale": {
+      "items": 1.0
+    },
+    "state": {
+      "handoff": 1.0
+    },
+    "status": {
+      "alert": 1.0
+    },
+    "stays": {
+      "check": 1.0
+    },
+    "steps": {
+      "classify": 1.0
+    },
+    "stock": {
+      "levels": 1.0
+    },
+    "stop": {
+      "conditions": 0.66666667,
+      "risky": 0.33333333
+    },
+    "store": {
+      "in": 0.33333333,
+      "only": 0.33333333,
+      "the": 0.33333333
+    },
+    "stories": {
+      "summarize": 1.0
+    },
+    "storing": {
+      "secrets": 1.0
+    },
+    "story": {
+      "draft": 1.0
+    },
+    "submit": {
+      "only": 1.0
+    },
+    "submitting": {
+      "</s>": 1.0
+    },
+    "success": {
+      "error": 1.0
+    },
+    "suggest": {
+      "answers": 0.33333333,
+      "fixes": 0.33333333,
+      "reorder": 0.33333333
+    },
+    "summaries": {
+      "flag": 1.0
+    },
+    "summarize": {
+      "changes": 0.25,
+      "findings": 0.25,
+      "incidents": 0.25,
+      "monthly": 0.25
+    },
+    "summary": {
+      "</s>": 1.0
+    },
+    "tailor": {
+      "keywords": 1.0
+    },
+    "task": {
+      "</s>": 0.5,
+      "success": 0.5
+    },
+    "tasks": {
+      "and": 0.5,
+      "sort": 0.5
+    },
+    "tests": {
+      "and": 1.0
+    },
+    "the": {
+      "agent": 0.125,
+      "approved": 0.125,
+      "diff": 0.125,
+      "exact": 0.125,
+      "question": 0.125,
+      "right": 0.25,
+      "role": 0.125
+    },
+    "them": {
+      "consistently": 0.5,
+      "file": 0.5
+    },
+    "thresholds": {
+      "and": 1.0
+    },
+    "time": {
+      "limited": 1.0
+    },
+    "times": {
+      "confirm": 1.0
+    },
+    "to": {
+      "the": 1.0
+    },
+    "tone": {
+      "and": 0.33333333,
+      "check": 0.33333333,
+      "schedule": 0.33333333
+    },
+    "tool": {
+      "calls": 0.5,
+      "permissions": 0.5
+    },
+    "tools": {
+      "approval": 0.5,
+      "first": 0.5
+    },
+    "topic": {
+      "draft": 0.5,
+      "log": 0.5
+    },
+    "topics": {
+      "check": 0.5,
+      "deduplicate": 0.5
+    },
+    "totals": {
+      "</s>": 0.33333333,
+      "draft": 0.33333333,
+      "duplicates": 0.33333333
+    },
+    "track": {
+      "completion": 0.14285714,
+      "fixes": 0.14285714,
+      "progress": 0.14285714,
+      "resolution": 0.14285714,
+      "results": 0.14285714,
+      "stock": 0.14285714,
+      "venue": 0.14285714
+    },
+    "trade": {
+      "offs": 1.0
+    },
+    "training": {
+      "assign": 1.0
+    },
+    "translate": {
+      "meaning": 1.0
+    },
+    "try": {
+      "safe": 1.0
+    },
+    "uncertain": {
+      "phrases": 1.0
+    },
+    "uncertainty": {
+      "visible": 1.0
+    },
+    "undo": {
+      "log": 1.0
+    },
+    "unsure": {
+      "</s>": 1.0
+    },
+    "unusual": {
+      "items": 1.0
+    },
+    "updates": {
+      "route": 1.0
+    },
+    "ups": {
+      "and": 1.0
+    },
+    "urgent": {
+      "items": 1.0
+    },
+    "use": {
+      "case": 1.0
+    },
+    "user": {
+      "cancellation": 0.5,
+      "satisfaction": 0.5
+    },
+    "users": {
+      "review": 1.0
+    },
+    "validate": {
+      "entries": 0.33333333,
+      "them": 0.33333333,
+      "totals": 0.33333333
+    },
+    "venue": {
+      "speakers": 1.0
+    },
+    "verify": {
+      "after": 0.5,
+      "tests": 0.5
+    },
+    "visible": {
+      "</s>": 1.0
+    },
+    "wait": {
+      "for": 1.0
+    },
+    "watch": {
+      "approved": 1.0
+    },
+    "what": {
+      "happened": 1.0
+    },
+    "when": {
+      "possible": 0.5,
+      "unsure": 0.5
+    },
+    "with": {
+      "task": 1.0
+    },
+    "without": {
+      "approval": 0.5,
+      "storing": 0.5
+    },
+    "work": {
+      "choose": 1.0
+    },
+    "write": {
+      "clear": 0.5,
+      "findings": 0.5
+    }
+  },
+  "unigram_weights": {
+    "a": 0.00431034,
+    "access": 0.00143678,
+    "accountable": 0.00143678,
+    "accounts": 0.00143678,
+    "actions": 0.00143678,
+    "add": 0.00143678,
+    "adjust": 0.00287356,
+    "after": 0.00718391,
+    "agent": 0.05747126,
+    "agents": 0.00143678,
+    "alert": 0.00431034,
+    "allowed": 0.00143678,
+    "an": 0.00287356,
+    "and": 0.07614943,
+    "answers": 0.00143678,
+    "anything": 0.00143678,
+    "apply": 0.00143678,
+    "approval": 0.01149425,
+    "approvals": 0.00431034,
+    "approved": 0.01149425,
+    "ask": 0.00574713,
+    "assess": 0.00143678,
+    "assign": 0.00287356,
+    "audience": 0.00143678,
+    "availability": 0.00143678,
+    "avoid": 0.00143678,
+    "backups": 0.00143678,
+    "be": 0.00143678,
+    "before": 0.00862069,
+    "blockers": 0.00287356,
+    "booking": 0.00143678,
+    "boundaries": 0.00143678,
+    "brief": 0.00143678,
+    "buddy": 0.00143678,
+    "budget": 0.00143678,
+    "budgets": 0.00143678,
+    "by": 0.00718391,
+    "cache": 0.00143678,
+    "calls": 0.00143678,
+    "cancellation": 0.00143678,
+    "capture": 0.00431034,
+    "cards": 0.00287356,
+    "case": 0.00143678,
+    "cases": 0.00143678,
+    "categorize": 0.00143678,
+    "changes": 0.01005747,
+    "charts": 0.00143678,
+    "check": 0.00862069,
+    "checklist": 0.00287356,
+    "checkpoints": 0.00143678,
+    "checks": 0.00143678,
+    "choose": 0.00143678,
+    "cite": 0.00287356,
+    "claims": 0.00143678,
+    "classify": 0.00431034,
+    "clear": 0.00287356,
+    "collect": 0.00431034,
+    "comment": 0.00143678,
+    "commitments": 0.00143678,
+    "compare": 0.00287356,
+    "completion": 0.00287356,
+    "concepts": 0.00143678,
+    "conditions": 0.00287356,
+    "confirm": 0.00287356,
+    "conflict": 0.00287356,
+    "consistently": 0.00143678,
+    "constraints": 0.00143678,
+    "context": 0.00143678,
+    "contrast": 0.00143678,
+    "controls": 0.00287356,
+    "coordination": 0.00143678,
+    "cost": 0.00287356,
+    "create": 0.00143678,
+    "criteria": 0.00143678,
+    "data": 0.00718391,
+    "date": 0.00143678,
+    "day": 0.00143678,
+    "deadline": 0.00143678,
+    "decision": 0.00143678,
+    "decisions": 0.00287356,
+    "deduplicate": 0.00143678,
+    "define": 0.00287356,
+    "delete": 0.00143678,
+    "deletions": 0.00143678,
+    "design": 0.01724138,
+    "detect": 0.00287356,
+    "diff": 0.00143678,
+    "difficulty": 0.00143678,
+    "disclosure": 0.00143678,
+    "documents": 0.00143678,
+    "draft": 0.01149425,
+    "duplicates": 0.00287356,
+    "each": 0.00143678,
+    "edits": 0.00143678,
+    "entries": 0.00287356,
+    "error": 0.00287356,
+    "errors": 0.00143678,
+    "escalate": 0.00143678,
+    "evaluate": 0.00143678,
+    "every": 0.00287356,
+    "evidence": 0.00431034,
+    "exact": 0.00143678,
+    "experience": 0.00143678,
+    "expire": 0.00143678,
+    "export": 0.00143678,
+    "external": 0.00143678,
+    "extract": 0.00574713,
+    "facts": 0.00287356,
+    "failure": 0.00143678,
+    "failures": 0.00143678,
+    "fields": 0.00431034,
+    "file": 0.00143678,
+    "files": 0.00143678,
+    "find": 0.00287356,
+    "findings": 0.00431034,
+    "first": 0.00143678,
+    "fixes": 0.00431034,
+    "flag": 0.00862069,
+    "folder": 0.00143678,
+    "folders": 0.00143678,
+    "follow": 0.00287356,
+    "for": 0.00431034,
+    "forecast": 0.00143678,
+    "formulas": 0.00143678,
+    "from": 0.00143678,
+    "gather": 0.00574713,
+    "goal": 0.00143678,
+    "goals": 0.00431034,
+    "group": 0.00143678,
+    "guardrails": 0.00143678,
+    "handle": 0.00143678,
+    "handoff": 0.00287356,
+    "happened": 0.00143678,
+    "help": 0.00143678,
+    "highlight": 0.00143678,
+    "honestly": 0.00143678,
+    "human": 0.00143678,
+    "identify": 0.00143678,
+    "in": 0.00287356,
+    "incidents": 0.00143678,
+    "include": 0.00287356,
+    "inputs": 0.00143678,
+    "inventory": 0.00143678,
+    "invites": 0.00143678,
+    "invoice": 0.00143678,
+    "irreversible": 0.00143678,
+    "items": 0.00574713,
+    "keep": 0.00431034,
+    "key": 0.00143678,
+    "keywords": 0.00143678,
+    "labels": 0.00143678,
+    "language": 0.00143678,
+    "latency": 0.00143678,
+    "let": 0.00143678,
+    "level": 0.00143678,
+    "levels": 0.00143678,
+    "limit": 0.00287356,
+    "limited": 0.00143678,
+    "limits": 0.00287356,
+    "list": 0.00143678,
+    "location": 0.00143678,
+    "log": 0.00574713,
+    "logged": 0.00143678,
+    "logging": 0.00143678,
+    "mask": 0.00143678,
+    "mastered": 0.00143678,
+    "match": 0.00287356,
+    "meaning": 0.00143678,
+    "memory": 0.00143678,
+    "messages": 0.00287356,
+    "mismatches": 0.00143678,
+    "missing": 0.00431034,
+    "monthly": 0.00143678,
+    "move": 0.00287356,
+    "name": 0.00143678,
+    "narrow": 0.00143678,
+    "needed": 0.00143678,
+    "needs": 0.00143678,
+    "normalize": 0.00143678,
+    "notes": 0.00143678,
+    "numbers": 0.00143678,
+    "of": 0.00143678,
+    "offs": 0.00143678,
+    "on": 0.00574713,
+    "one": 0.00143678,
+    "only": 0.00574713,
+    "options": 0.00143678,
+    "or": 0.00287356,
+    "orders": 0.00143678,
+    "outcomes": 0.00143678,
+    "outdated": 0.00143678,
+    "outliers": 0.00143678,
+    "outline": 0.00143678,
+    "owner": 0.00143678,
+    "owners": 0.00574713,
+    "pages": 0.00431034,
+    "participants": 0.00143678,
+    "pause": 0.00143678,
+    "payment": 0.00143678,
+    "payments": 0.00143678,
+    "permissions": 0.00143678,
+    "phrases": 0.00143678,
+    "plan": 0.03591954,
+    "points": 0.00287356,
+    "policy": 0.00143678,
+    "politely": 0.00143678,
+    "possible": 0.00143678,
+    "posts": 0.00143678,
+    "practice": 0.00143678,
+    "preferences": 0.00143678,
+    "present": 0.00143678,
+    "preserve": 0.00287356,
+    "preview": 0.00143678,
+    "prices": 0.00143678,
+    "privacy": 0.00143678,
+    "probe": 0.00143678,
+    "produce": 0.00287356,
+    "profile": 0.00143678,
+    "progress": 0.00574713,
+    "propose": 0.00431034,
+    "publish": 0.00143678,
+    "purchases": 0.00143678,
+    "quality": 0.00287356,
+    "quantities": 0.00143678,
+    "question": 0.00143678,
+    "quiz": 0.00143678,
+    "rate": 0.00143678,
+    "read": 0.00431034,
+    "readability": 0.00143678,
+    "receipts": 0.00143678,
+    "recommend": 0.00143678,
+    "record": 0.00718391,
+    "recovery": 0.00287356,
+    "registrations": 0.00143678,
+    "remind": 0.00143678,
+    "reminders": 0.00287356,
+    "reorder": 0.00143678,
+    "repeated": 0.00287356,
+    "report": 0.00431034,
+    "reports": 0.00287356,
+    "reproduce": 0.00143678,
+    "requests": 0.00143678,
+    "required": 0.00143678,
+    "resolution": 0.00287356,
+    "respectfully": 0.00143678,
+    "results": 0.00143678,
+    "retention": 0.00143678,
+    "retire": 0.00143678,
+    "review": 0.00431034,
+    "reviews": 0.00143678,
+    "right": 0.00287356,
+    "risks": 0.00143678,
+    "risky": 0.00143678,
+    "role": 0.00143678,
+    "roles": 0.00143678,
+    "route": 0.00287356,
+    "routes": 0.00143678,
+    "rules": 0.00143678,
+    "run": 0.00143678,
+    "safe": 0.00143678,
+    "satisfaction": 0.00143678,
+    "scan": 0.00143678,
+    "schedule": 0.00862069,
+    "screen": 0.00143678,
+    "secrets": 0.00143678,
+    "send": 0.00143678,
+    "sending": 0.00287356,
+    "sensitive": 0.00287356,
+    "separated": 0.00143678,
+    "sessions": 0.00143678,
+    "set": 0.00574713,
+    "severity": 0.00143678,
+    "shared": 0.00143678,
+    "shortages": 0.00143678,
+    "should": 0.00574713,
+    "show": 0.00143678,
+    "slides": 0.00143678,
+    "smaller": 0.00143678,
+    "snooze": 0.00143678,
+    "sort": 0.00143678,
+    "sources": 0.00287356,
+    "speakers": 0.00143678,
+    "specs": 0.00143678,
+    "spend": 0.00143678,
+    "spending": 0.00287356,
+    "stale": 0.00143678,
+    "state": 0.00143678,
+    "status": 0.00143678,
+    "stays": 0.00143678,
+    "steps": 0.00143678,
+    "stock": 0.00143678,
+    "stop": 0.00431034,
+    "store": 0.00431034,
+    "stories": 0.00143678,
+    "storing": 0.00143678,
+    "story": 0.00143678,
+    "submit": 0.00143678,
+    "submitting": 0.00143678,
+    "success": 0.00143678,
+    "suggest": 0.00431034,
+    "summaries": 0.00143678,
+    "summarize": 0.00574713,
+    "summary": 0.00143678,
+    "tailor": 0.00143678,
+    "task": 0.00287356,
+    "tasks": 0.00287356,
+    "tests": 0.00143678,
+    "the": 0.01149425,
+    "them": 0.00287356,
+    "thresholds": 0.00143678,
+    "time": 0.00143678,
+    "times": 0.00143678,
+    "to": 0.00143678,
+    "tone": 0.00431034,
+    "tool": 0.00287356,
+    "tools": 0.00287356,
+    "topic": 0.00287356,
+    "topics": 0.00287356,
+    "totals": 0.00431034,
+    "track": 0.01005747,
+    "trade": 0.00143678,
+    "training": 0.00143678,
+    "translate": 0.00143678,
+    "try": 0.00143678,
+    "uncertain": 0.00143678,
+    "uncertainty": 0.00143678,
+    "undo": 0.00143678,
+    "unsure": 0.00143678,
+    "unusual": 0.00143678,
+    "updates": 0.00143678,
+    "ups": 0.00143678,
+    "urgent": 0.00143678,
+    "use": 0.00143678,
+    "user": 0.00287356,
+    "users": 0.00143678,
+    "validate": 0.00431034,
+    "venue": 0.00143678,
+    "verify": 0.00287356,
+    "visible": 0.00143678,
+    "wait": 0.00143678,
+    "watch": 0.00143678,
+    "what": 0.00143678,
+    "when": 0.00287356,
+    "with": 0.00143678,
+    "without": 0.00287356,
+    "work": 0.00143678,
+    "write": 0.00287356
+  },
+  "vocabulary": [
+    "a",
+    "access",
+    "accessibility",
+    "accountable",
+    "accounts",
+    "actions",
+    "add",
+    "adjust",
+    "after",
+    "agent",
+    "agents",
+    "alert",
+    "alerts",
+    "allowed",
+    "an",
+    "and",
+    "answers",
+    "anything",
+    "applications",
+    "apply",
+    "approval",
+    "approvals",
+    "approved",
+    "ask",
+    "assess",
+    "assign",
+    "audience",
+    "audits",
+    "availability",
+    "avoid",
+    "backups",
+    "base",
+    "be",
+    "before",
+    "blockers",
+    "booking",
+    "boundaries",
+    "brief",
+    "briefs",
+    "buddy",
+    "budget",
+    "budgets",
+    "bug",
+    "by",
+    "cache",
+    "calendar",
+    "calls",
+    "cancellation",
+    "capture",
+    "cards",
+    "case",
+    "cases",
+    "categorize",
+    "changes",
+    "charts",
+    "check",
+    "checklist",
+    "checklists",
+    "checkpoints",
+    "checks",
+    "choose",
+    "cite",
+    "claims",
+    "classify",
+    "cleanup",
+    "clear",
+    "code",
+    "collect",
+    "comment",
+    "commitments",
+    "compare",
+    "compares",
+    "completion",
+    "concepts",
+    "conditions",
+    "confirm",
+    "conflict",
+    "consistently",
+    "constraints",
+    "context",
+    "contrast",
+    "controls",
+    "coordination",
+    "cost",
+    "create",
+    "criteria",
+    "customer",
+    "data",
+    "date",
+    "day",
+    "deadline",
+    "decision",
+    "decisions",
+    "deduplicate",
+    "define",
+    "delete",
+    "deletions",
+    "describe",
+    "design",
+    "detect",
+    "diff",
+    "difficulty",
+    "disclosure",
+    "document",
+    "documents",
+    "draft",
+    "drafts",
+    "duplicates",
+    "each",
+    "edits",
+    "email",
+    "entries",
+    "error",
+    "errors",
+    "escalate",
+    "evaluate",
+    "evaluation",
+    "event",
+    "every",
+    "evidence",
+    "exact",
+    "expense",
+    "experience",
+    "expire",
+    "export",
+    "external",
+    "extract",
+    "facts",
+    "failure",
+    "failures",
+    "fields",
+    "file",
+    "files",
+    "filing",
+    "filling",
+    "find",
+    "findings",
+    "first",
+    "fixes",
+    "flag",
+    "flashcards",
+    "folder",
+    "folders",
+    "follow",
+    "for",
+    "forecast",
+    "form",
+    "formulas",
+    "from",
+    "gather",
+    "goal",
+    "goals",
+    "gravion",
+    "group",
+    "guardrails",
+    "handle",
+    "handoff",
+    "happened",
+    "help",
+    "highlight",
+    "honestly",
+    "how",
+    "human",
+    "humans",
+    "identify",
+    "in",
+    "incidents",
+    "include",
+    "inputs",
+    "inventory",
+    "invites",
+    "invoice",
+    "irreversible",
+    "items",
+    "job",
+    "keep",
+    "key",
+    "keywords",
+    "knowledge",
+    "labels",
+    "language",
+    "latency",
+    "learning",
+    "let",
+    "level",
+    "levels",
+    "limit",
+    "limited",
+    "limits",
+    "list",
+    "location",
+    "log",
+    "logged",
+    "logging",
+    "manages",
+    "mask",
+    "mastered",
+    "match",
+    "me",
+    "meaning",
+    "media",
+    "meeting",
+    "memory",
+    "messages",
+    "methods",
+    "mismatches",
+    "missing",
+    "monitors",
+    "monthly",
+    "move",
+    "multi",
+    "name",
+    "narrow",
+    "needed",
+    "needs",
+    "news",
+    "normalize",
+    "notes",
+    "numbers",
+    "of",
+    "offs",
+    "on",
+    "onboarding",
+    "one",
+    "only",
+    "options",
+    "or",
+    "orders",
+    "organizes",
+    "outcomes",
+    "outdated",
+    "outliers",
+    "outline",
+    "owner",
+    "owners",
+    "pages",
+    "participants",
+    "pause",
+    "payment",
+    "payments",
+    "permissions",
+    "phrases",
+    "plan",
+    "planning",
+    "plans",
+    "please",
+    "points",
+    "policy",
+    "politely",
+    "possible",
+    "posts",
+    "practice",
+    "practices",
+    "preferences",
+    "prepares",
+    "present",
+    "presentations",
+    "preserve",
+    "preview",
+    "prices",
+    "privacy",
+    "probe",
+    "processing",
+    "produce",
+    "products",
+    "profile",
+    "progress",
+    "propose",
+    "publish",
+    "purchases",
+    "quality",
+    "quantities",
+    "question",
+    "quiz",
+    "rate",
+    "read",
+    "readability",
+    "receipts",
+    "recommend",
+    "record",
+    "recovery",
+    "registrations",
+    "remind",
+    "reminders",
+    "reorder",
+    "repeated",
+    "replies",
+    "report",
+    "reports",
+    "reproduce",
+    "requests",
+    "required",
+    "research",
+    "resolution",
+    "respectfully",
+    "results",
+    "retention",
+    "retire",
+    "review",
+    "reviews",
+    "right",
+    "risks",
+    "risky",
+    "role",
+    "roles",
+    "route",
+    "routes",
+    "rules",
+    "run",
+    "safe",
+    "satisfaction",
+    "scan",
+    "schedule",
+    "scheduling",
+    "screen",
+    "secrets",
+    "send",
+    "sending",
+    "sensitive",
+    "separated",
+    "sessions",
+    "set",
+    "severity",
+    "shared",
+    "shortages",
+    "should",
+    "show",
+    "slides",
+    "smaller",
+    "snooze",
+    "social",
+    "sort",
+    "sources",
+    "speakers",
+    "specs",
+    "spend",
+    "spending",
+    "spreadsheets",
+    "stale",
+    "state",
+    "status",
+    "stays",
+    "steps",
+    "stock",
+    "stop",
+    "store",
+    "stories",
+    "storing",
+    "story",
+    "study",
+    "submit",
+    "submitting",
+    "success",
+    "suggest",
+    "summaries",
+    "summarize",
+    "summarizes",
+    "summary",
+    "support",
+    "tailor",
+    "task",
+    "tasks",
+    "tests",
+    "that",
+    "the",
+    "them",
+    "thresholds",
+    "time",
+    "times",
+    "to",
+    "tone",
+    "tool",
+    "tools",
+    "topic",
+    "topics",
+    "totals",
+    "track",
+    "tracking",
+    "tracks",
+    "trade",
+    "training",
+    "translate",
+    "translates",
+    "travel",
+    "triage",
+    "try",
+    "uncertain",
+    "uncertainty",
+    "undo",
+    "unsure",
+    "unusual",
+    "updates",
+    "ups",
+    "uptime",
+    "urgent",
+    "use",
+    "user",
+    "users",
+    "using",
+    "validate",
+    "venue",
+    "verify",
+    "visible",
+    "wait",
+    "watch",
+    "website",
+    "what",
+    "when",
+    "with",
+    "without",
+    "work",
+    "workouts",
+    "write",
+    "writes"
+  ],
+  "weights_sha256": "042a93e086b03e252cfd502e9e7827c929b3954e75b1d0746bcce5bf26903fa7"
+}

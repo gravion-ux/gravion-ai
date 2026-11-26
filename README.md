@@ -26,10 +26,11 @@ engine, or on any inference endpoint you operate, with your own API key.
 > are built. Gravion Core now includes compact local trained weights
 > (`src/gravion_ai/data/gravion-core-weights.json`, 10,586,543
 > parameters counted from the stored quantized weights) trained
-> only from the bundled Gravion corpus. The specialist bundles still do
-> *not* contain trained weights or public hosting: they are the
-> packaging and protocol around models the project trains and hosts
-> as operations steps.
+> only from the bundled Gravion corpus. Each specialist bundle now
+> also includes compact local trained weights, trained only from
+> its bundled Gravion-owned seed corpus and counted from the stored
+> artifacts in the model registry; public hosting remains an
+> operations step.
 > Piece 1 shipped the *foundation*: the core scaffold,
 > the module registry with one module (chat) wired end-to-end, the
 > Gravion model registry with starter data, and the complete licensing
@@ -61,9 +62,8 @@ engine, or on any inference endpoint you operate, with your own API key.
 > (Intermediate)** bundles alongside Tier 2, tier bundles get
 > completeness checks and deterministic hashed descriptors
 > (`gravion bundles`), and training jobs get a spec + validator
-> (`gravion train`) — Gravion Core jobs now train locally, while
-> specialist jobs still require an operations-supplied weights
-> bundle or endpoint and say so. Piece 8 completes the platform:
+> (`gravion train`) — Gravion Core and specialist jobs train
+> locally from bundled Gravion-owned seed corpora. Piece 8 completes the platform:
 > the **all-in-one** module (routing by `<module>:` directive,
 > chat by default) and **Gravion Omni**, the Tier 4 (Advanced)
 > flagship serving every capability — every module is now
@@ -182,8 +182,14 @@ own documentation and seed dataset). The saved artifact
 direct, embedding, classifier, bias, transition, and unigram weights. On a
 held-out set of 1,530 paraphrased prompts it answers 1,238 correctly
 (80.9%), versus 0 for the earlier 750-parameter seed model. Gravion
-Core is not a billions-of-parameters model, and the specialist registry
-entries still include no trained weights. When a deployment
+Core is not a billions-of-parameters model. Each specialist registry
+entry (Chat, Code, Builder, Vision, Video, Audio, Shield, Agent and
+Omni) also includes local sparse n-gram classifier weights trained
+only from its bundled Gravion-owned seed corpus; the per-model
+parameter counts and SHA-256 hashes in
+`src/gravion_ai/data/models.json` are computed from the stored
+artifacts, and every specialist keeps the same deterministic
+offline fallback when no confident trained match is available. When a deployment
 connects an inference endpoint, that endpoint model's parameter
 count belongs to the connected model; Gravion provides the
 platform, licensing, modules and packaging around it.

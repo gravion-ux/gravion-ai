@@ -105,7 +105,7 @@ label{display:block;color:var(--muted);font-size:13px;margin:14px 0 7px;font-wei
 </section>
 <aside class="stack">
 <section class="card"><h3>Deployment</h3><dl id="deployment" class="kv small"></dl></section>
-<section class="card"><h3>Model honesty</h3><p class="small">Gravion Core is shown with the catalog’s verified parameter count only when its weights are marked included. Specialist entries stay labelled as packaging-ready when no trained weights ship in this repository. If you connect an endpoint, that model’s parameters belong to the connected model.</p><div id="core-summary" class="small"></div></section>
+<section class="card"><h3>Model honesty</h3><p class="small">Every Gravion entry is shown with the catalog’s verified parameter count only when its weights are marked included. If you connect an endpoint, that model’s parameters belong to the connected model.</p><div id="core-summary" class="small"></div></section>
 <section class="card"><h3>Bot slot</h3><div id="bot" class="small">Loading bot slot…</div></section>
 </aside>
 </main>

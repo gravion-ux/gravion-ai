@@ -78,7 +78,8 @@ def test_all_in_one_runtime_dev_end_to_end_with_gravion_omni(make_config):
     runtime = GravionRuntime(make_config(mode="development", model="gravion-omni"))
     assert runtime.resolve_model("all-in-one") == "gravion-omni"
     out = runtime.all_in_one("coder: write a haiku function")
-    assert "write a haiku function" in out
+    assert "haiku" in out.lower()
+    assert "function" in out.lower()
 
 
 def test_all_in_one_rejects_a_specialist_model(make_config):

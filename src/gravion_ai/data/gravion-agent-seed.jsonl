@@ -1,0 +1,196 @@
+{"completion": "Agent plan: read approved messages, group by topic, draft summaries, flag urgent items, and ask before sending anything.", "prompt": "plan an agent that summarizes email"}
+{"completion": "Agent plan: read approved messages, group by topic, draft summaries, flag urgent items, and ask before sending anything.", "prompt": "please plan an agent that summarizes email"}
+{"completion": "Agent plan: read approved messages, group by topic, draft summaries, flag urgent items, and ask before sending anything.", "prompt": "gravion agent plan an agent that summarizes email"}
+{"completion": "Agent plan: read approved messages, group by topic, draft summaries, flag urgent items, and ask before sending anything.", "prompt": "help me plan an agent that summarizes email"}
+{"completion": "Agent design: capture notes, extract decisions and owners, draft follow-ups, and store the approved summary.", "prompt": "design an agent for meeting notes"}
+{"completion": "Agent design: capture notes, extract decisions and owners, draft follow-ups, and store the approved summary.", "prompt": "please design an agent for meeting notes"}
+{"completion": "Agent design: capture notes, extract decisions and owners, draft follow-ups, and store the approved summary.", "prompt": "gravion agent design an agent for meeting notes"}
+{"completion": "Agent design: capture notes, extract decisions and owners, draft follow-ups, and store the approved summary.", "prompt": "help me design an agent for meeting notes"}
+{"completion": "Agent plan: collect tasks, sort by deadline, remind owners, detect blockers, and report progress.", "prompt": "plan an agent that tracks tasks"}
+{"completion": "Agent plan: collect tasks, sort by deadline, remind owners, detect blockers, and report progress.", "prompt": "please plan an agent that tracks tasks"}
+{"completion": "Agent plan: collect tasks, sort by deadline, remind owners, detect blockers, and report progress.", "prompt": "gravion agent plan an agent that tracks tasks"}
+{"completion": "Agent plan: collect tasks, sort by deadline, remind owners, detect blockers, and report progress.", "prompt": "help me plan an agent that tracks tasks"}
+{"completion": "Guardrails: allowed tools, approval points, spending limits, data boundaries, logging, and stop conditions.", "prompt": "describe guardrails for tool using agents"}
+{"completion": "Guardrails: allowed tools, approval points, spending limits, data boundaries, logging, and stop conditions.", "prompt": "please describe guardrails for tool using agents"}
+{"completion": "Guardrails: allowed tools, approval points, spending limits, data boundaries, logging, and stop conditions.", "prompt": "gravion agent describe guardrails for tool using agents"}
+{"completion": "Guardrails: allowed tools, approval points, spending limits, data boundaries, logging, and stop conditions.", "prompt": "help me describe guardrails for tool using agents"}
+{"completion": "Agent plan: define the question, gather sources, compare claims, cite evidence, and produce a brief.", "prompt": "plan an agent for research briefs"}
+{"completion": "Agent plan: define the question, gather sources, compare claims, cite evidence, and produce a brief.", "prompt": "please plan an agent for research briefs"}
+{"completion": "Agent plan: define the question, gather sources, compare claims, cite evidence, and produce a brief.", "prompt": "gravion agent plan an agent for research briefs"}
+{"completion": "Agent plan: define the question, gather sources, compare claims, cite evidence, and produce a brief.", "prompt": "help me plan an agent for research briefs"}
+{"completion": "Agent design: read context, draft in the right tone, check facts, and wait for human approval before sending.", "prompt": "design an agent that drafts replies"}
+{"completion": "Agent design: read context, draft in the right tone, check facts, and wait for human approval before sending.", "prompt": "please design an agent that drafts replies"}
+{"completion": "Agent design: read context, draft in the right tone, check facts, and wait for human approval before sending.", "prompt": "gravion agent design an agent that drafts replies"}
+{"completion": "Agent design: read context, draft in the right tone, check facts, and wait for human approval before sending.", "prompt": "help me design an agent that drafts replies"}
+{"completion": "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely.", "prompt": "plan an agent for calendar scheduling"}
+{"completion": "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely.", "prompt": "please plan an agent for calendar scheduling"}
+{"completion": "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely.", "prompt": "gravion agent plan an agent for calendar scheduling"}
+{"completion": "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely.", "prompt": "help me plan an agent for calendar scheduling"}
+{"completion": "On error, an agent should stop risky actions, record what happened, try safe recovery, and ask for help when unsure.", "prompt": "describe how agents should handle errors"}
+{"completion": "On error, an agent should stop risky actions, record what happened, try safe recovery, and ask for help when unsure.", "prompt": "please describe how agents should handle errors"}
+{"completion": "On error, an agent should stop risky actions, record what happened, try safe recovery, and ask for help when unsure.", "prompt": "gravion agent describe how agents should handle errors"}
+{"completion": "On error, an agent should stop risky actions, record what happened, try safe recovery, and ask for help when unsure.", "prompt": "help me describe how agents should handle errors"}
+{"completion": "Agent plan: watch approved items, record changes, alert on thresholds, and avoid purchases without approval.", "prompt": "plan an agent that monitors prices"}
+{"completion": "Agent plan: watch approved items, record changes, alert on thresholds, and avoid purchases without approval.", "prompt": "please plan an agent that monitors prices"}
+{"completion": "Agent plan: watch approved items, record changes, alert on thresholds, and avoid purchases without approval.", "prompt": "gravion agent plan an agent that monitors prices"}
+{"completion": "Agent plan: watch approved items, record changes, alert on thresholds, and avoid purchases without approval.", "prompt": "help me plan an agent that monitors prices"}
+{"completion": "Agent design: classify documents, name them consistently, store in the right folder, and log every move.", "prompt": "design an agent for document filing"}
+{"completion": "Agent design: classify documents, name them consistently, store in the right folder, and log every move.", "prompt": "please design an agent for document filing"}
+{"completion": "Agent design: classify documents, name them consistently, store in the right folder, and log every move.", "prompt": "gravion agent design an agent for document filing"}
+{"completion": "Agent design: classify documents, name them consistently, store in the right folder, and log every move.", "prompt": "help me design an agent for document filing"}
+{"completion": "Agent plan: gather data, validate totals, draft charts, write findings, and flag missing inputs.", "prompt": "plan an agent that prepares reports"}
+{"completion": "Agent plan: gather data, validate totals, draft charts, write findings, and flag missing inputs.", "prompt": "please plan an agent that prepares reports"}
+{"completion": "Agent plan: gather data, validate totals, draft charts, write findings, and flag missing inputs.", "prompt": "gravion agent plan an agent that prepares reports"}
+{"completion": "Agent plan: gather data, validate totals, draft charts, write findings, and flag missing inputs.", "prompt": "help me plan an agent that prepares reports"}
+{"completion": "Approval checkpoints pause the agent before external messages, payments, deletions, or irreversible changes.", "prompt": "describe agent approval checkpoints"}
+{"completion": "Approval checkpoints pause the agent before external messages, payments, deletions, or irreversible changes.", "prompt": "please describe agent approval checkpoints"}
+{"completion": "Approval checkpoints pause the agent before external messages, payments, deletions, or irreversible changes.", "prompt": "gravion agent describe agent approval checkpoints"}
+{"completion": "Approval checkpoints pause the agent before external messages, payments, deletions, or irreversible changes.", "prompt": "help me describe agent approval checkpoints"}
+{"completion": "Agent plan: classify requests, suggest answers, escalate sensitive cases, and track resolution quality.", "prompt": "plan an agent for customer support triage"}
+{"completion": "Agent plan: classify requests, suggest answers, escalate sensitive cases, and track resolution quality.", "prompt": "please plan an agent for customer support triage"}
+{"completion": "Agent plan: classify requests, suggest answers, escalate sensitive cases, and track resolution quality.", "prompt": "gravion agent plan an agent for customer support triage"}
+{"completion": "Agent plan: classify requests, suggest answers, escalate sensitive cases, and track resolution quality.", "prompt": "help me plan an agent for customer support triage"}
+{"completion": "Agent design: read the diff, run checks, comment on risks, verify tests, and summarize findings.", "prompt": "design an agent that reviews code changes"}
+{"completion": "Agent design: read the diff, run checks, comment on risks, verify tests, and summarize findings.", "prompt": "please design an agent that reviews code changes"}
+{"completion": "Agent design: read the diff, run checks, comment on risks, verify tests, and summarize findings.", "prompt": "gravion agent design an agent that reviews code changes"}
+{"completion": "Agent design: read the diff, run checks, comment on risks, verify tests, and summarize findings.", "prompt": "help me design an agent that reviews code changes"}
+{"completion": "Agent plan: collect preferences, compare routes and stays, check constraints, and present options before booking.", "prompt": "plan an agent for travel planning"}
+{"completion": "Agent plan: collect preferences, compare routes and stays, check constraints, and present options before booking.", "prompt": "please plan an agent for travel planning"}
+{"completion": "Agent plan: collect preferences, compare routes and stays, check constraints, and present options before booking.", "prompt": "gravion agent plan an agent for travel planning"}
+{"completion": "Agent plan: collect preferences, compare routes and stays, check constraints, and present options before booking.", "prompt": "help me plan an agent for travel planning"}
+{"completion": "Agent memory should store only approved facts, expire stale items, and let users review or delete entries.", "prompt": "describe agent memory boundaries"}
+{"completion": "Agent memory should store only approved facts, expire stale items, and let users review or delete entries.", "prompt": "please describe agent memory boundaries"}
+{"completion": "Agent memory should store only approved facts, expire stale items, and let users review or delete entries.", "prompt": "gravion agent describe agent memory boundaries"}
+{"completion": "Agent memory should store only approved facts, expire stale items, and let users review or delete entries.", "prompt": "help me describe agent memory boundaries"}
+{"completion": "Agent plan: inventory files, propose folders, move only after approval, and keep an undo log.", "prompt": "plan an agent that organizes files"}
+{"completion": "Agent plan: inventory files, propose folders, move only after approval, and keep an undo log.", "prompt": "please plan an agent that organizes files"}
+{"completion": "Agent plan: inventory files, propose folders, move only after approval, and keep an undo log.", "prompt": "gravion agent plan an agent that organizes files"}
+{"completion": "Agent plan: inventory files, propose folders, move only after approval, and keep an undo log.", "prompt": "help me plan an agent that organizes files"}
+{"completion": "Agent design: assess level, set goals, schedule practice, quiz progress, and adjust difficulty.", "prompt": "design an agent for learning plans"}
+{"completion": "Agent design: assess level, set goals, schedule practice, quiz progress, and adjust difficulty.", "prompt": "please design an agent for learning plans"}
+{"completion": "Agent design: assess level, set goals, schedule practice, quiz progress, and adjust difficulty.", "prompt": "gravion agent design an agent for learning plans"}
+{"completion": "Agent design: assess level, set goals, schedule practice, quiz progress, and adjust difficulty.", "prompt": "help me design an agent for learning plans"}
+{"completion": "Agent plan: probe approved pages, record status, alert on failures, and summarize incidents.", "prompt": "plan an agent that checks website uptime"}
+{"completion": "Agent plan: probe approved pages, record status, alert on failures, and summarize incidents.", "prompt": "please plan an agent that checks website uptime"}
+{"completion": "Agent plan: probe approved pages, record status, alert on failures, and summarize incidents.", "prompt": "gravion agent plan an agent that checks website uptime"}
+{"completion": "Agent plan: probe approved pages, record status, alert on failures, and summarize incidents.", "prompt": "help me plan an agent that checks website uptime"}
+{"completion": "Tool permissions should be narrow, time-limited when possible, logged, and separated by task.", "prompt": "describe safe agent tool permissions"}
+{"completion": "Tool permissions should be narrow, time-limited when possible, logged, and separated by task.", "prompt": "please describe safe agent tool permissions"}
+{"completion": "Tool permissions should be narrow, time-limited when possible, logged, and separated by task.", "prompt": "gravion agent describe safe agent tool permissions"}
+{"completion": "Tool permissions should be narrow, time-limited when possible, logged, and separated by task.", "prompt": "help me describe safe agent tool permissions"}
+{"completion": "Agent plan: extract invoice fields, match orders, flag mismatches, and route approvals before payment.", "prompt": "plan an agent for invoice processing"}
+{"completion": "Agent plan: extract invoice fields, match orders, flag mismatches, and route approvals before payment.", "prompt": "please plan an agent for invoice processing"}
+{"completion": "Agent plan: extract invoice fields, match orders, flag mismatches, and route approvals before payment.", "prompt": "gravion agent plan an agent for invoice processing"}
+{"completion": "Agent plan: extract invoice fields, match orders, flag mismatches, and route approvals before payment.", "prompt": "help me plan an agent for invoice processing"}
+{"completion": "Agent design: identify audience, extract key points, preserve numbers, and keep uncertainty visible.", "prompt": "design an agent that writes summaries"}
+{"completion": "Agent design: identify audience, extract key points, preserve numbers, and keep uncertainty visible.", "prompt": "please design an agent that writes summaries"}
+{"completion": "Agent design: identify audience, extract key points, preserve numbers, and keep uncertainty visible.", "prompt": "gravion agent design an agent that writes summaries"}
+{"completion": "Agent design: identify audience, extract key points, preserve numbers, and keep uncertainty visible.", "prompt": "help me design an agent that writes summaries"}
+{"completion": "Agent plan: draft posts from approved topics, check tone, schedule only after approval, and track results.", "prompt": "plan an agent for social media drafts"}
+{"completion": "Agent plan: draft posts from approved topics, check tone, schedule only after approval, and track results.", "prompt": "please plan an agent for social media drafts"}
+{"completion": "Agent plan: draft posts from approved topics, check tone, schedule only after approval, and track results.", "prompt": "gravion agent plan an agent for social media drafts"}
+{"completion": "Agent plan: draft posts from approved topics, check tone, schedule only after approval, and track results.", "prompt": "help me plan an agent for social media drafts"}
+{"completion": "Evaluate agents with task success, error rate, approval quality, cost, latency, and user satisfaction.", "prompt": "describe agent evaluation methods"}
+{"completion": "Evaluate agents with task success, error rate, approval quality, cost, latency, and user satisfaction.", "prompt": "please describe agent evaluation methods"}
+{"completion": "Evaluate agents with task success, error rate, approval quality, cost, latency, and user satisfaction.", "prompt": "gravion agent describe agent evaluation methods"}
+{"completion": "Evaluate agents with task success, error rate, approval quality, cost, latency, and user satisfaction.", "prompt": "help me describe agent evaluation methods"}
+{"completion": "Agent plan: capture commitments, set reminders, snooze respectfully, and confirm completion.", "prompt": "plan an agent that manages reminders"}
+{"completion": "Agent plan: capture commitments, set reminders, snooze respectfully, and confirm completion.", "prompt": "please plan an agent that manages reminders"}
+{"completion": "Agent plan: capture commitments, set reminders, snooze respectfully, and confirm completion.", "prompt": "gravion agent plan an agent that manages reminders"}
+{"completion": "Agent plan: capture commitments, set reminders, snooze respectfully, and confirm completion.", "prompt": "help me plan an agent that manages reminders"}
+{"completion": "Agent design: profile data, propose fixes, preview changes, apply approved edits, and keep backups.", "prompt": "design an agent for data cleanup"}
+{"completion": "Agent design: profile data, propose fixes, preview changes, apply approved edits, and keep backups.", "prompt": "please design an agent for data cleanup"}
+{"completion": "Agent design: profile data, propose fixes, preview changes, apply approved edits, and keep backups.", "prompt": "gravion agent design an agent for data cleanup"}
+{"completion": "Agent design: profile data, propose fixes, preview changes, apply approved edits, and keep backups.", "prompt": "help me design an agent for data cleanup"}
+{"completion": "Agent plan: define criteria, gather specs, normalize prices, highlight trade-offs, and recommend by use case.", "prompt": "plan an agent that compares products"}
+{"completion": "Agent plan: define criteria, gather specs, normalize prices, highlight trade-offs, and recommend by use case.", "prompt": "please plan an agent that compares products"}
+{"completion": "Agent plan: define criteria, gather specs, normalize prices, highlight trade-offs, and recommend by use case.", "prompt": "gravion agent plan an agent that compares products"}
+{"completion": "Agent plan: define criteria, gather specs, normalize prices, highlight trade-offs, and recommend by use case.", "prompt": "help me plan an agent that compares products"}
+{"completion": "Stop conditions include missing data, policy conflict, repeated failure, budget limit, and user cancellation.", "prompt": "describe agent stop conditions"}
+{"completion": "Stop conditions include missing data, policy conflict, repeated failure, budget limit, and user cancellation.", "prompt": "please describe agent stop conditions"}
+{"completion": "Stop conditions include missing data, policy conflict, repeated failure, budget limit, and user cancellation.", "prompt": "gravion agent describe agent stop conditions"}
+{"completion": "Stop conditions include missing data, policy conflict, repeated failure, budget limit, and user cancellation.", "prompt": "help me describe agent stop conditions"}
+{"completion": "Agent plan: create accounts checklist, schedule training, assign buddy tasks, and track completion.", "prompt": "plan an agent for onboarding checklists"}
+{"completion": "Agent plan: create accounts checklist, schedule training, assign buddy tasks, and track completion.", "prompt": "please plan an agent for onboarding checklists"}
+{"completion": "Agent plan: create accounts checklist, schedule training, assign buddy tasks, and track completion.", "prompt": "gravion agent plan an agent for onboarding checklists"}
+{"completion": "Agent plan: create accounts checklist, schedule training, assign buddy tasks, and track completion.", "prompt": "help me plan an agent for onboarding checklists"}
+{"completion": "Agent design: follow approved topics, deduplicate stories, summarize changes, and cite sources.", "prompt": "design an agent that monitors news topics"}
+{"completion": "Agent design: follow approved topics, deduplicate stories, summarize changes, and cite sources.", "prompt": "please design an agent that monitors news topics"}
+{"completion": "Agent design: follow approved topics, deduplicate stories, summarize changes, and cite sources.", "prompt": "gravion agent design an agent that monitors news topics"}
+{"completion": "Agent design: follow approved topics, deduplicate stories, summarize changes, and cite sources.", "prompt": "help me design an agent that monitors news topics"}
+{"completion": "Agent plan: gather required fields, validate entries, show a review screen, and submit only after approval.", "prompt": "plan an agent for form filling help"}
+{"completion": "Agent plan: gather required fields, validate entries, show a review screen, and submit only after approval.", "prompt": "please plan an agent for form filling help"}
+{"completion": "Agent plan: gather required fields, validate entries, show a review screen, and submit only after approval.", "prompt": "gravion agent plan an agent for form filling help"}
+{"completion": "Agent plan: gather required fields, validate entries, show a review screen, and submit only after approval.", "prompt": "help me plan an agent for form filling help"}
+{"completion": "Log goals, tool calls, decisions, approvals, errors, and outcomes without storing secrets.", "prompt": "describe agent logging practices"}
+{"completion": "Log goals, tool calls, decisions, approvals, errors, and outcomes without storing secrets.", "prompt": "please describe agent logging practices"}
+{"completion": "Log goals, tool calls, decisions, approvals, errors, and outcomes without storing secrets.", "prompt": "gravion agent describe agent logging practices"}
+{"completion": "Log goals, tool calls, decisions, approvals, errors, and outcomes without storing secrets.", "prompt": "help me describe agent logging practices"}
+{"completion": "Agent plan: outline story, draft slides, add evidence, check readability, and export after review.", "prompt": "plan an agent that prepares presentations"}
+{"completion": "Agent plan: outline story, draft slides, add evidence, check readability, and export after review.", "prompt": "please plan an agent that prepares presentations"}
+{"completion": "Agent plan: outline story, draft slides, add evidence, check readability, and export after review.", "prompt": "gravion agent plan an agent that prepares presentations"}
+{"completion": "Agent plan: outline story, draft slides, add evidence, check readability, and export after review.", "prompt": "help me plan an agent that prepares presentations"}
+{"completion": "Agent design: track stock levels, forecast shortages, alert owners, and suggest reorder quantities.", "prompt": "design an agent for inventory alerts"}
+{"completion": "Agent design: track stock levels, forecast shortages, alert owners, and suggest reorder quantities.", "prompt": "please design an agent for inventory alerts"}
+{"completion": "Agent design: track stock levels, forecast shortages, alert owners, and suggest reorder quantities.", "prompt": "gravion agent design an agent for inventory alerts"}
+{"completion": "Agent design: track stock levels, forecast shortages, alert owners, and suggest reorder quantities.", "prompt": "help me design an agent for inventory alerts"}
+{"completion": "Agent plan: detect language, translate meaning, preserve tone, and flag uncertain phrases.", "prompt": "plan an agent that translates messages"}
+{"completion": "Agent plan: detect language, translate meaning, preserve tone, and flag uncertain phrases.", "prompt": "please plan an agent that translates messages"}
+{"completion": "Agent plan: detect language, translate meaning, preserve tone, and flag uncertain phrases.", "prompt": "gravion agent plan an agent that translates messages"}
+{"completion": "Agent plan: detect language, translate meaning, preserve tone, and flag uncertain phrases.", "prompt": "help me plan an agent that translates messages"}
+{"completion": "Coordination needs clear roles, shared state, handoff rules, conflict resolution, and one accountable owner.", "prompt": "describe multi agent coordination"}
+{"completion": "Coordination needs clear roles, shared state, handoff rules, conflict resolution, and one accountable owner.", "prompt": "please describe multi agent coordination"}
+{"completion": "Coordination needs clear roles, shared state, handoff rules, conflict resolution, and one accountable owner.", "prompt": "gravion agent describe multi agent coordination"}
+{"completion": "Coordination needs clear roles, shared state, handoff rules, conflict resolution, and one accountable owner.", "prompt": "help me describe multi agent coordination"}
+{"completion": "Agent plan: reproduce steps, classify severity, find duplicates, assign owners, and track fixes.", "prompt": "plan an agent for bug report triage"}
+{"completion": "Agent plan: reproduce steps, classify severity, find duplicates, assign owners, and track fixes.", "prompt": "please plan an agent for bug report triage"}
+{"completion": "Agent plan: reproduce steps, classify severity, find duplicates, assign owners, and track fixes.", "prompt": "gravion agent plan an agent for bug report triage"}
+{"completion": "Agent plan: reproduce steps, classify severity, find duplicates, assign owners, and track fixes.", "prompt": "help me plan an agent for bug report triage"}
+{"completion": "Agent design: ask goals and limits, schedule sessions, track progress, and adjust for recovery.", "prompt": "design an agent that plans workouts"}
+{"completion": "Agent design: ask goals and limits, schedule sessions, track progress, and adjust for recovery.", "prompt": "please design an agent that plans workouts"}
+{"completion": "Agent design: ask goals and limits, schedule sessions, track progress, and adjust for recovery.", "prompt": "gravion agent design an agent that plans workouts"}
+{"completion": "Agent design: ask goals and limits, schedule sessions, track progress, and adjust for recovery.", "prompt": "help me design an agent that plans workouts"}
+{"completion": "Agent plan: capture receipts, categorize spending, flag unusual items, and summarize monthly totals.", "prompt": "plan an agent for expense tracking"}
+{"completion": "Agent plan: capture receipts, categorize spending, flag unusual items, and summarize monthly totals.", "prompt": "please plan an agent for expense tracking"}
+{"completion": "Agent plan: capture receipts, categorize spending, flag unusual items, and summarize monthly totals.", "prompt": "gravion agent plan an agent for expense tracking"}
+{"completion": "Agent plan: capture receipts, categorize spending, flag unusual items, and summarize monthly totals.", "prompt": "help me plan an agent for expense tracking"}
+{"completion": "Privacy controls limit data access, mask sensitive fields, set retention, and record every disclosure.", "prompt": "describe agent privacy controls"}
+{"completion": "Privacy controls limit data access, mask sensitive fields, set retention, and record every disclosure.", "prompt": "please describe agent privacy controls"}
+{"completion": "Privacy controls limit data access, mask sensitive fields, set retention, and record every disclosure.", "prompt": "gravion agent describe agent privacy controls"}
+{"completion": "Privacy controls limit data access, mask sensitive fields, set retention, and record every disclosure.", "prompt": "help me describe agent privacy controls"}
+{"completion": "Agent plan: match experience to the role, draft honestly, tailor keywords, and ask before submitting.", "prompt": "plan an agent that drafts job applications"}
+{"completion": "Agent plan: match experience to the role, draft honestly, tailor keywords, and ask before submitting.", "prompt": "please plan an agent that drafts job applications"}
+{"completion": "Agent plan: match experience to the role, draft honestly, tailor keywords, and ask before submitting.", "prompt": "gravion agent plan an agent that drafts job applications"}
+{"completion": "Agent plan: match experience to the role, draft honestly, tailor keywords, and ask before submitting.", "prompt": "help me plan an agent that drafts job applications"}
+{"completion": "Agent design: extract concepts, write clear cards, schedule reviews, and retire mastered cards.", "prompt": "design an agent for study flashcards"}
+{"completion": "Agent design: extract concepts, write clear cards, schedule reviews, and retire mastered cards.", "prompt": "please design an agent for study flashcards"}
+{"completion": "Agent design: extract concepts, write clear cards, schedule reviews, and retire mastered cards.", "prompt": "gravion agent design an agent for study flashcards"}
+{"completion": "Agent design: extract concepts, write clear cards, schedule reviews, and retire mastered cards.", "prompt": "help me design an agent for study flashcards"}
+{"completion": "Agent plan: scan pages, report contrast and labels, suggest fixes, and verify after changes.", "prompt": "plan an agent that checks accessibility"}
+{"completion": "Agent plan: scan pages, report contrast and labels, suggest fixes, and verify after changes.", "prompt": "please plan an agent that checks accessibility"}
+{"completion": "Agent plan: scan pages, report contrast and labels, suggest fixes, and verify after changes.", "prompt": "gravion agent plan an agent that checks accessibility"}
+{"completion": "Agent plan: scan pages, report contrast and labels, suggest fixes, and verify after changes.", "prompt": "help me plan an agent that checks accessibility"}
+{"completion": "Cost controls set budgets, cache repeated work, choose smaller tools first, and report spend.", "prompt": "describe agent cost controls"}
+{"completion": "Cost controls set budgets, cache repeated work, choose smaller tools first, and report spend.", "prompt": "please describe agent cost controls"}
+{"completion": "Cost controls set budgets, cache repeated work, choose smaller tools first, and report spend.", "prompt": "gravion agent describe agent cost controls"}
+{"completion": "Cost controls set budgets, cache repeated work, choose smaller tools first, and report spend.", "prompt": "help me describe agent cost controls"}
+{"completion": "Agent plan: track venue, speakers, schedule, registrations, reminders, and day-of checklist.", "prompt": "plan an agent for event coordination"}
+{"completion": "Agent plan: track venue, speakers, schedule, registrations, reminders, and day-of checklist.", "prompt": "please plan an agent for event coordination"}
+{"completion": "Agent plan: track venue, speakers, schedule, registrations, reminders, and day-of checklist.", "prompt": "gravion agent plan an agent for event coordination"}
+{"completion": "Agent plan: track venue, speakers, schedule, registrations, reminders, and day-of checklist.", "prompt": "help me plan an agent for event coordination"}
+{"completion": "Agent design: check formulas, totals, duplicates, outliers, and produce a findings list.", "prompt": "design an agent that audits spreadsheets"}
+{"completion": "Agent design: check formulas, totals, duplicates, outliers, and produce a findings list.", "prompt": "please design an agent that audits spreadsheets"}
+{"completion": "Agent design: check formulas, totals, duplicates, outliers, and produce a findings list.", "prompt": "gravion agent design an agent that audits spreadsheets"}
+{"completion": "Agent design: check formulas, totals, duplicates, outliers, and produce a findings list.", "prompt": "help me design an agent that audits spreadsheets"}
+{"completion": "Agent plan: find outdated pages, draft updates, route approvals, publish, and record changes.", "prompt": "plan an agent for knowledge base updates"}
+{"completion": "Agent plan: find outdated pages, draft updates, route approvals, publish, and record changes.", "prompt": "please plan an agent for knowledge base updates"}
+{"completion": "Agent plan: find outdated pages, draft updates, route approvals, publish, and record changes.", "prompt": "gravion agent plan an agent for knowledge base updates"}
+{"completion": "Agent plan: find outdated pages, draft updates, route approvals, publish, and record changes.", "prompt": "help me plan an agent for knowledge base updates"}
+{"completion": "Handoff should include goal, progress, evidence, blockers, and the exact decision needed.", "prompt": "describe agent handoff to humans"}
+{"completion": "Handoff should include goal, progress, evidence, blockers, and the exact decision needed.", "prompt": "please describe agent handoff to humans"}
+{"completion": "Handoff should include goal, progress, evidence, blockers, and the exact decision needed.", "prompt": "gravion agent describe agent handoff to humans"}
+{"completion": "Handoff should include goal, progress, evidence, blockers, and the exact decision needed.", "prompt": "help me describe agent handoff to humans"}
+{"completion": "Agent plan: collect reports, validate them, file by date and topic, log each location, and flag missing reports.", "prompt": "plan an agent that files reports"}
+{"completion": "Agent plan: collect reports, validate them, file by date and topic, log each location, and flag missing reports.", "prompt": "please plan an agent that files reports"}
+{"completion": "Agent plan: collect reports, validate them, file by date and topic, log each location, and flag missing reports.", "prompt": "gravion agent plan an agent that files reports"}
+{"completion": "Agent plan: collect reports, validate them, file by date and topic, log each location, and flag missing reports.", "prompt": "help me plan an agent that files reports"}

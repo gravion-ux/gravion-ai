@@ -1,0 +1,3925 @@
+{
+  "architecture": "sparse n-gram embedding + direct linear softmax classifier",
+  "bias": [
+    2.70885849,
+    -1.6791364,
+    1.16512024,
+    1.15044677,
+    -2.03086042,
+    1.60950005,
+    -1.99015808,
+    0.03065782,
+    -2.17395949,
+    -0.19125034,
+    -0.17349476,
+    1.28707135,
+    0.37704262,
+    1.49984801,
+    -0.19256486,
+    -3.75281501,
+    -1.08836663,
+    0.71883935,
+    -2.66099334,
+    0.98021466,
+    1.10074413,
+    -0.42572582,
+    -0.49830112,
+    -1.40744317,
+    -0.56181216,
+    0.59895909,
+    -1.06102026,
+    -0.79479426,
+    1.61699486,
+    -0.62667835,
+    0.15188178,
+    1.86139154,
+    1.09033871,
+    0.40651077,
+    0.78469497,
+    -0.32917178,
+    0.87305951,
+    2.32296753,
+    0.56277722,
+    -0.87043905,
+    -1.2493819,
+    0.14138736,
+    1.45824468,
+    0.86909115,
+    0.07938571,
+    0.49725726,
+    0.06715639,
+    0.363179,
+    -2.591537,
+    -2.23916602,
+    -1.33235943,
+    1.05306065,
+    0.32064581,
+    -0.30768582,
+    1.9029367,
+    0.58031005
+  ],
+  "classes": [
+    "A list keeps order and duplicates; a set keeps unique items and is built for membership checks.",
+    "A memory leak keeps unused data reachable, so memory grows over time; find retained references and release them.",
+    "A stack removes the newest item first; a queue removes the oldest item first.",
+    "A task class can store title, status, and due date, with methods to complete, reopen, and describe the task.",
+    "A transaction groups changes so they all succeed together or roll back together, keeping data consistent.",
+    "A variable is a named place that stores a value so code can read or update it later.",
+    "An index is a lookup structure that helps the database find rows faster, at the cost of storage and write time.",
+    "An interface is a contract: callers rely on promised inputs and outputs without knowing internal details.",
+    "Asynchronous code starts work without blocking everything else, then handles the result when it is ready.",
+    "Binary search repeatedly checks the middle of a sorted range and discards half until the target is found or absent.",
+    "Build the reversed text by reading characters from the end to the start, then test empty and single-character inputs.",
+    "Check for an empty list before indexing or averaging, and return a clear default or error message.",
+    "Check size, type, extension, and content; store uploads outside executable paths and scan when required.",
+    "Check type, length, range, and allowed characters; reject invalid input with a clear message before using it.",
+    "Code review checks correctness, clarity, tests, security, and maintainability before changes merge.",
+    "Compare neighboring values or use a known sorting method, then verify sorted, reversed, and duplicate inputs.",
+    "Count requests per key in a time window, allow bursts within limits, and return clear retry guidance.",
+    "Decide where null is allowed, check before use, and prefer explicit defaults or errors over silent failure.",
+    "Define a function that returns a three-line haiku, keep the syllable pattern clear, and test the exact output.",
+    "Define a small function with two numeric inputs, return their sum, and test it with positive, negative, and zero values.",
+    "Define required fields, types, ranges, and cross-field rules; report every validation problem clearly.",
+    "Define states, allowed transitions, events, and guards; reject transitions that are not listed.",
+    "Define the route, inputs, validation, success response, error responses, and tests for each case.",
+    "Dependency injection passes needed collaborators into code instead of creating them inside, making tests easier.",
+    "Event driven design reacts to named events, keeping producers and consumers loosely coupled.",
+    "Extract the repeated logic into one helper, keep behavior unchanged, and run the existing tests after each small change.",
+    "Feature flags switch behavior at runtime so teams can release gradually and disable risky paths quickly.",
+    "Immutable values do not change after creation, which reduces surprise side effects and simplifies reasoning.",
+    "Iterate over the collection in order and handle one item per pass; avoid changing the collection while looping.",
+    "Log important events with context, avoid secrets, use levels consistently, and make failures searchable.",
+    "Object oriented programming groups data and behavior into objects with clear responsibilities and interfaces.",
+    "Open the file safely, handle missing or unreadable files, and close resources even when an error occurs.",
+    "Parse arguments, validate them, run one clear action, print helpful output, and return a proper exit code.",
+    "Password storage should use a slow salted hash designed for passwords, never a fast general hash or plain text.",
+    "Profile first, find the hot path, reduce repeated work, choose better data structures, and measure again.",
+    "Read settings from a file or environment, validate required keys, apply defaults, and fail with clear messages.",
+    "Recursion solves a problem by calling the same function on a smaller input until a base case stops the calls.",
+    "Reproduce the failure, read the first error, isolate the smallest failing case, fix one cause, then rerun the test.",
+    "Retry only temporary failures, wait longer between attempts, cap total attempts, and log the final error.",
+    "Return early when input is invalid so the main path stays flat and readable.",
+    "Return page items, total count, page size, current page, and links or cursors for the next page.",
+    "Return service status, version, and dependency checks quickly, without exposing secrets or heavy work.",
+    "Split each non-empty line on the first separator, trim spaces, validate keys, and report malformed lines.",
+    "Split text into words, normalize case if needed, count each word, and test punctuation and empty text.",
+    "Store each value with an expiry time, return fresh values quickly, and refresh or remove stale entries.",
+    "Test a valid input, an empty input, malformed input, and boundary values; assert both output and error behavior.",
+    "Test just below, exactly at, and just above each boundary so off-by-one errors are caught.",
+    "Time complexity describes how running time grows as input size grows, using the dominant growth term.",
+    "Track seen values in a set and collect values that appear again, preserving first duplicate order if needed.",
+    "Trim whitespace, collapse repeated spaces, normalize case when appropriate, and test punctuation handling.",
+    "Use many fast unit tests, fewer integration tests, and a small number of end-to-end tests for critical paths.",
+    "Use names that state purpose, keep functions small, and remove comments that merely repeat the code.",
+    "Version control records changes over time so you can review history, collaborate, and restore earlier work.",
+    "Wait for a quiet period after the last call, then run the function once with the latest arguments.",
+    "Walk both lists with pointers, always take the smaller next value, then append the remaining tail.",
+    "Walk nested lists recursively or with a stack, append leaf values in order, and test empty nesting."
+  ],
+  "classifier": {
+    "data": "PbrXDu8e+AQDENEe5hfwKuSzCUkU/sznWwWwCxPs59shCwcv8FEh9F3e4Obp+R7yNt5V9AU2AQ3fPfURE70nBET75UgT69M4M6HF1hv5COtU9AfzFwASPhcSBxNHQQz2ZgMMBBLqBT5B6LjfIU8P9vHeCEv2LkIBHdDq4whIxyX2ASZVs/UeMCzWu7UJ+uno8sn+/BYPKhG/DHQvyxMrDP5brBH0UB4x3Uf45/fD/+jk2yMLAhrS4RoNJcgEquFBAvgO+gQ5K5kH5RIpBRW8S+Ap/MP30hA8HPrW0CPKFh04+S775tHoFmH21OARrwbu3BqfvAMSpv3c7ntJ7vZZ2QcPO+YWDRa62/niUcReDyL3qAvw6Pj4qgEOC7whyRbvEgW3yN4vCxiBF0A8+CYS1ecAnOy+CNI14fkZKCzp5eHy1Cvn/8of1/67F1EbAiQeM/P31K8bOSzoPgczReUnERoMWMcA3iPD6RQG+CgbEGILvAZiPvwy81Ik/tr6D+3jVewFERLXC7sPC6vy7zfSJNIZQwi/DvvhDeb50xKu6tL9508wKd7dBPwzudgK+6gVHCoXbeflwAT9ANbx/S/c0OPX7Ozd7bU23xP4JOcpTwUeBrjk9CD50Mwt2TQENQ9h/Mr3K+3Vrjtc7BDw4gLqDtIY5jQ3DM/1IubyBMzQCMobBxfS4gBEQhHS51X98SoOEuNFQUoR4AUQBcfqJuMtELI4PwbVyhce7g/j/+gCzAsXAy/0vPBW6rMzNPzlAiwE6C37Ekm9AyIpyfXPAhfO9+AzNPkfKf/yKUUDCNgKFzvQNcm9H7sP6+GxHwwHEODdrBvnvCnw4x7IwT/zzwAzN0kC7sXqxPqlzg44Du8vIC5CNP7w6Qk908wZ9dNI2z4gMO76+j7s8fyp1w8F9PAqsus3vQ76FirPCQVXvP6p8Qz+HNDRKsshyvDkAezyV8M11f8p5moszyDSFvU79AYw9cLECMgbRbnC0vgb+u3ZNAf90RjtAuQDDycJzszNFcyinzKmzzQtFA/gQS4z88fjud08stj2MrIC+CB8/Lzb5ewg5fhT5r0FOC4iwTYuDuP0BTc3BdukBOwNtxP9Iv0O+OYA6UDiyz3hBSbOsiUG7wSuJQStDyoaI9nhJSwDTPnm+dzo9cs41BLjzw4NvB3C+Osa8zAGNw4qSERF9w7eyaE=",
+    "encoding": "int8-base64",
+    "scale": 0.03788885732335368
+  },
+  "dim": 16,
+  "direct": {
+    "data": "DuvmCewi6+jsGAXiFODpIiLiIwQTGBPr5eXs6wgj6dcU6OMp5xMQFyMYCAUUCA/qBwnr3ukZCgTv9fTu9vL29fcoEPHw8PU18fEvEezv8fb18vb1GPH0K+z18u/z6x8l8u8XEPAXHvUUFvXw9ScbEPD29e/38/f29ykR8/Hy9jfy8zAT7fHy9/bz9/Ua8vbo7vbz8PTtISfy8BkS8Rog9hUX9vH2KR0S+vv7+fv7/Pz77SD6+fn7XPr7SCr4+fn7/Pr8+/L7+/f4/Pr5+vnx7/n58yD69PL7JCX7+vvs8B4LNBnsLhstIzLv8OXt4ibm7ufx7+vs7TQl4zU27e0k5+ol5O0b6O7u7e3t7u3v7iTy7zPjJfDs7vD89fT79Pv3VP769votP//++wD29vv5/vk7+/z2APf39fc7APP19/v9+fb3+vj59fj5+y73/Pb28/r59/r3+vj5+Pr4Lvn59Tn5+vny9y/5S/r4+fg7+vj2+fn1+fX4+Tr1+Pkt+Pn5+fr5+fj5+fn9/v38/f3+/f32J/z8/P3t/fzxNPz8/P39/P399/39+fv9/Pz8+/f4/Pz4Jvz49/0rLv38/fX1Jff8+/j8+fz6+/n7+i/7+vY6+vr68/gw/Pn7+/z5PPv59/z69vv2+Pk79vn6L/n6+/r6/Pr7+vn6+Pj4O/v4+/r78/n5+/r59Pv4+Pf48/v6+/r4+/L6+jv4W/r4+ff29fv3Nfn7NDz6+fn6+vn29fn9/v38/f3+/f32J/z8/P3t/fzxNPz8/P39/P399/39+fv9/Pz8+/f4/Pz4Jvz49/0rLv38/fX1Jf3+/fz+/f79/vks/f38/fH9/fXs/f38/v79/v36/v77/P39/P38+fn8/fop/fr5/jAy/f3++Pkp/f79/P79/v3++Sz9/fz98f399ez9/fz+/v3+/fr+/vv8/f38/fz5+fz9+in9+vn+MDL9/f74+Sn9/v38/v3+/f75LP39/P3x/f317P39/P7+/f79+v7++/z9/fz9/Pn5/P36Kf36+f4wMv39/vj5Kfr9/Sv9+v39/fv8+/r7/fr7+vz8+Dn4/f38/v77+/389vz8Sf36/Pz6OPv8+/v7/fz8/vv8+/v8+v39K/36/f39+/z7+vv9+vv6/Pz4Ofj9/fz+/vv7/fz2/PxJ/fr8/Po4+/z7+/v9/Pz++/z7+/z2/fwy/D/8/f37/fz8+vz8/Pv9/PVE+v38/P39+/z8+zz7/PP8+vz9/PH7/fv8/P39/f37/Pz8/fr8+/v7+vz7/Pz8+/j6+vj4/Pz7+Pz4/Pv6+/z6+Pr6+vv6/Ef6Q/n3+/n9Svv7+/z8/Eb79/r8+/7+NP76/v7+/P79/fz+/f38/v33Rvv+/v3+/vz9/vw+/f30/vv9/v3y/P38/Pz+/f3+/P79/f0w+Ur9+vj6Vfn+/vz9/Pn9/v3+/v3+/vn6/Pr6/f36/Pz5/P36/P7+/v3+/v3+/vr+/vv8+P78/vv+/fr++/7+/f3+/Pz6/f38/P79O/n7/v37/v78/P38Pf36/Pv7/P38+/z+/Pz9/f39/kf9/fz++/37+/37/fz8/P07/Pr7+/1K/f38/Pz8/E78/fz9+/r8/Pv8/Pr8/vz8/f38/fz7/f39+fv8/P38/v78//3+/v/4/Pz9/f75/f37+/z9/f7+/v7++P3++/z+/f3+Ovv5/f32/P09Qf78/f/9/vr6/f7///7//v////n9/v7///v+/vz8/v7////////5/v/8/v/+/v/9/Pr+/j3+/kH2//3+//7//Pz+/f///f/+/////v7++P7+/fn+/v5C/E///v7///75//75/v78//z+/vb8/f76/v7//v7//P/+/f79/fz+/f39/P3//0n+/fz+/vb//v7+/v39+/39/v78/P78/f5K/f7+/v7+/v7+/vz+/v78/P7+/v3//zb+/f////7+/v7+//7+/f7+/Un9//7+///+/v7++v7+9v/9/v7+9P7+/v7+//7+//7+/v7+/Pr5/mP6Y/v0/f7+/v34/v79/v7+/f/5+/369/7++f79+/7++v3+/v7+/v7+/v36/v71/vr+/f79//75//7//v/+/v75/v/9+f7+/vv2T/7+/v///vn//vz+/vb//f7+9kz+/vv+/v7+/v/+//7+/v3+/f79/f39/fv+/v79/fn//vz+/v7+/v79/f37/v39/v3+/kv++lL+/vz+/vz8/f79/vz9+v3+/Pr5/mP6Y/v0/f7+/v34/v79/v7+/f/5+/369/7++f79+/7++v3+/v7+/v7+/v36/v71/vr+/f79//3+//7//v/+/v1Q/v79+P3+/vz++v/+/v/+/fn+Qv3+/v3+/P39+f79/fn8/f7+/v/+/v79/f7//0D//v////v+/v7+//z+/v39/ff+///////7/v/+/P//+//9/fz++vr+/kX4//7+//7//f3+/P79/f79/v7+/v5A/f39/f5O/v7+/f3+/fj+/v3+/fz9/f39/fz+/v39/v7+/v39/v7+/f3+/v7+/v/+//7////6/P/+/v/1/v76+v3+/v//////+v7//f3///7//kH2//76/f37+//9/P/+/1L7/vn+/f3+Qv39/v7+/f5J/P7+/f/+/f3+/v39/v7+/v39/P38/vz9/v7+/v7+/v7+/f///fv9/v7+Nf78/f77/v3+//9J/v7+/v72//79/v7+/fv+/v3+/f3+/f3+/v3+//7+/v7+/v7+/v/+/f3//f79///////////79f/////6/v/9+f7+/v///v//+////f7///7//v39///89v/8/f/3+P////xBSv3//vz//P///v7+/v39//79/v7+P/r8//7+///9/f7+P/79/P79/v79/f3//f3+/v7+//v//v3+/v7//v///v//+fz//v7/N/7/9fv+/v7//v////v+//7+//7+//759//++/z++/z//Pv//v9W/P3+///+//7////5/f7+///7/v78/P7+////////+f7//P7//v7//fz6/v49/v5B9v/9/v/+//z8/v3///3//v////7+/vj+/v35/v7+QvxP//7+///++f/++f7+/P/8/v72/P3++v7+//7+//z//v3+/v///f/+////+f3+/v//+v7+/Pz+/v////////n+//3+///+//38+v7++P3+P0L//f7//v/7/P7+///+///////6+//+/v/5//76Rf7+////////Qv7//f7///7//vz7//77/P/6+//7+/////v4+/3//v////////r6///+//r+//tE/v7+///+///6/v/9/v///v/+/Pz//vz7/vz8//r6/////D77/f/+/f/+///+/v7+T/7+/vf+/v5C/fn//v7///74/v75//78/vz+/fn9/v74/v7//v7//P/+/f79//79/v3+/v77/fX+/v77/lb9/f7+/v7++/7//P7+/P7+/v3+/f38/v78/f73R/3+/v79/fz8/v//AP8A/wD//1f+//////n///v9////////AP/8/////////wD//fz///3+//z8//7+AP///P3+//8A/wD/AP//V/7/////+f//+/3///////8A//z/////////AP/9/P///f7//Pz//v4A///8/f7////////////////7///++/////7/+v////////v///8A//7//v7/+v//AE7+//////////////////////////////v///77/////v/6////////+////wD//v/+/v/6//8ATv7//////////////v//+//+AP/////+/v7//v/+///++P3///////7+///+//9c//7///72///+///////////+///+///7//4A//////7+/v/+//7///74/f///////v7///7//1z//v///vb///7///////////7/////////////APv+AP////n///z9///////////9////////////+vr///3+//39//7+//8AWP3///////////8A+/4A////+f///P3///////////3////////////6+v///f7//f3//v7//wBY/f/+///+//////////7////+/v///////////////////v7/////Pf/////////+/v///wD///////7///7//////////v////7+///////////////////+/v////89//////////7+////AP///////v//////AP//////UQD///n////9//v////////6///+///+//7///r////6///////////////+//////8A//////9RAP//+f////3/+/////////r///7///7//v//+v////r///////////////8A/////wD///38//////z///xI////AAD//wD+/wD//wAA/////v7///79//7+//z8AP8A/vz8/wD//////////P7/////+v///P7///////8A//z////////////7U////f7//P3//v7////7/v7/AP/////////8/v/////6///8/v///////wD//P////////////tT///9/v/8/f/+/v////v+/v////////8A//v9/////+r//2b7/v///wD/AP/+/////////////f3///79//79//39////+/79/////////wD/+/3/////6v//Zvv+////AP8A//7////////////9/f///v3//v3//f3////7/v3////6///////////////+//////74/v///wD///////7///f//v///k7///////////////////////r///////////////7//////vj+////AP///////v//9//+///+Tv//////////////////Nv/+///9//7//wD/////////AP///////v///////////////////wD//wD//////////////v82//7///3//v//AP////////8A///////+////////////////////AP//AP/////////////+//7///7///////////n///72///////5////////YP/////////+//72/v/++v///////////////v///v//////////+f///vb///////n///////9g//////////7//vb+//76////////////////AAD///8A/wD9///////9///+/f//AAD//wD/RP8A/v8A//////79AP/8///8/QD///////38//8AAP///wD/AP3///////3///79//8AAP//AP9E/wD+/wD//////v0A//z///z9AP///////fz//v///wD/AP///f////8A/v///vz/////AP8A//z///7////////+/gD//f7//v4A/v8A/wD+Qv/+////AP8A///9/////wD+///+/P////8A/wD//P///v////////7+AP/9/v/+/gD+/wD/AP5C////AP////////////n///74/////v73////////9v///////v/+/v9i/v//+f////////////////8A////////////+f///vj////+/vf////////2///////+//7+/2L+///5////////////////////AP8AAAD9///////+///+/v///wAA//8A/f8A/v////////7+//9C///6/f//////AP7+//////////////////j///5e/////v/5////////9////////v/+///4/v//+P//////////////////////////////+P///l7////+//n////////3///////+//7///j+///4/////////////////wD///8A/wD+/v/////8///+/v///wD///8A/f///v///////0f8///9/v7+/gD//gD/APr9////AP///wD/AP7+//////z///7+////AP///wD9///+////////R/z///3+/v7+AP/+AP8A+v3/Nv/+///9//7//wD/////////AP///////v///////////////////wD//wD//////////////v/+//9B//7/AP////////////////74//////////////3///z///////v//////////wD///////7///7//v/////////+////////+vz+///////+////RP///v/+/////v////7///////7///7/////9f/+///////////////////+Uv7////////////8///6//7////4//////////8A////////AP///////wD////6///++v////3+Uf////////v///////7//v//9/7///z///////////////////7//wD///////7////+////RP7+////////////+////v/+/////v7//v////////3///7//////////////v7///8ARv8A+P3///////////7/////AP/////+/f///v4A/v///v3////+/v7////////////+/v///wBG/wD4/f///////////v////8A//////79///+/gD+///+/f////7+/v//AP//AP8AAP7+/////z////n+////AP/////+/////wD///////3///7+//////7+AAAA/v/+//8A//8A/wAA/v7/////P///+f7///8A//////7/////AP///////f///v7//////v4AAAD+//7/AAD//wAAAP//VgD////9///+/P///wAAAAAA//////8A///////+////9f///wD19P////7/9/7//0H//v8A/////////////////vj//////////////f///P//////+///////////AP///////////wD///8A/f7///8A/f///v7///8A//////3///7/AP/////+/f///f//+EkA///////9/f//////AP///wD9/v///wD9///+/v///wD//////f///v8A//////79///9///4SQD///////39////AP8A/wD/AP3+////AP3///7+////AP//AP/8/wD+/////wD+/v3///v//0b6//7/AP///v7///8A/wD/AP8A/f7///8A/f///v7///8A//8A//z/AP7/////AP7+/f//+///Rvr//v8A///+/v/7//7+/0T+/v///////v7///8A//7+///+//////////7+///+/v////////////8A//7+//////v//v7/RP7+///////+/v///wD//v7///7//////////v7///7+/////////////wD//v7//////wD/////AP///fz//////P///Ej///8AAP//AP7/AP//AAD////+/v///v3//v7//PwA/wD+/Pz/AP////8A///9/P/////8///8SP///wAA//8A/v8A//8AAP////7+///+/f/+/v/8/AD/AP78/P8A/////wD///38//////z///xI////AAD//wD+/wD//wAA/////v7///79//7+//z8AP8A/vz8/v/+/v////////9K///////3//////////z///7//v7//v7///7////////////////////////+//7+/////////0r///////f//////////P///v/+/v/+/v///v////////////////////////7+/v/+/v7+/gD////+/v///wD//////v7+/v7///3+//7+/0v//////////////QD//v3+////Nv/+///9//7//wD/////////AP///////v///////////////////wD//wD//////////////v82//7///3//v//AP////////8A///////+////////////////////AP//AP/////////////+//39+//9/v1b/P///////f///////////f7+/f3///3///7///7//////////////f///v78/////f1Q//7+/vz9///+///9///////////9/v/+/v///v7//f///f/////////////+///+//3////9/VD//v7+/P3///7///3///////////3+//7+///+/v/9///9//////////////7///7//f////8A////////AP////r///76/////f5R////////+////////v/+///3/v///P///////////////wD///////8A////+v///vr////9/lH////////7///////+//7///f+///8///////////////+///+///////////5///+9v//////+f///////2D//////////v/+9v7//vr///////////////77/P/8/vv8dP/////++/7//////////P3++/v///z///z///3//////////////P//+/77/////vv8//z++/x0//////77/v/////////8/f77+////P///P///f/////////////8///7/vv//////wD///8A/wD+/v/////8///+/v///wD///8A/f///v///////0f8///9/v7+/gD//gD/APr9//79/f/+/v38/AD//v/+/f7//wD//////P7//f3///7///3+//3//////////////f///f5c/////v39//v++/36///+//79///////////7/f78df///P7//P7//f/////////////8///6/vv///82//7///3//v//AP////////8A///////+////////////////////AP//AP/////////////+/zb//v///f/+//8A/////////wD///////7///////////////////8A//8A//////////////7/Nv/+///9//7//wD/////////AP///////v///////////////////wD//wD//////////////v///wD/AP8A//9X/v/////5///7/f///////wD//P////////8A//38///9/v/8/P/+/gD///z9/v//AP8A/wD//1f+//////n///v9////////AP/8/////////wD//fz///3+//z8//7+AP///P3+//8A/wD/AP//V/7/////+f//+/3///////8A//z/////////AP/9/P///f7//Pz//v4A///8/f7/////AP///wD9/v///wD9///+/v///wD//////f///v8A//////79///9///4SQD///////39//////8A////AP3+////AP3///7+////AP/////9///+/wD//////v3///3///hJAP///////f3//v///v/////////+/////v7///////////////////7+/////z3//////////v7///8A///////+///+//////////7////+/v///////////////////v7/////Pf/////////+/v///wD///////////////////////v///77/////v/6////////+////wD//v/+/v/6//8ATv7/////////////////////////////+////vv////+//r////////7////AP/+//7+//r//wBO/v/////////////////////////////7///++/////7/+v////////v///8A//7//v7/+v//AE7+//////////////////r///////////////7//////vj+////AP///////v//9//+///+Tv//////////////////////+v///////////////v/////++P7///8A///////+///3//7///5O///////////////////+//9B//7/AP////////////////74//////////////3///z///////v//////////wD///////7//0H//v8A/////////////////vj//////////////f///P//////+///////////AP///////v//Qf/+/wD////////////////++P/////////////9///8///////7//////////8A////////AP/////////8/v/////6///8/v///////wD//P////////////tT///9/v/8/f/+/v////v+/v8A//////////z+//////r///z+////////AP/8////////////+1P///3+//z9//7+////+/7+/////v/+//7+///+//z+/////////////v3+/////v3+/1T//v7////////////+///+/P7//v/+///+//7///////7//f7///7///3//////f////////7//f/9/v7///7///////////9L//////7///7//v///////v/9/v///v///f/////9/////////v/9//3+/v///v///////////0v//////vz9//z+/P38//////5g///+//8A///+/v79/f///P///f7//f/////////////8///8/v7////+/P3//P78/fz//////mD///7//wD///7+/v39///8///9/v/9//////////////z///z+/v///////v7////+/v//+//9/v7//P////////9V//////7+/v7+///+/v///////////v////3+/////v///v/+//////////7////////6/P7///////7///9E///+//7////+/////v///////v///v/+///+//7//////////v////////r8/v///////v///0T///7//v////7////+///////+///+//7///7//v/////////+////////+vz+///////+////RP///v/+/////v////7///////7///7//v39//3+/f39//////79///////////8/v7+/P///f7//v7//P////////////9c///9//3////+/f3//f79/f3//////v3///////////z+/v78///9/v/+/v/8/////////////1z///3//f////7///v//gD//////v7+//7//v///vj9///////+/v///v//XP/+///+9v///v///////////v///v//+//+AP/////+/v7//v/+///++P3///////7+///+//9c//7///72///+///////////+///9/fv//f79W/z///////3///////////3+/v39///9///+///+//////////////3///7+/P////79/f/+/v38/AD//v/+/f7//wD//////P7//f3///7///3+//3//////////////f///f5c/////v39//7+/fz8AP/+//79/v//AP/////8/v/9/f///v///f7//f/////////////9///9/lz/////AP//AP8A///+8////wD9///+/f///wD//wAA//8A//8AAP8A////////Uf///wD59///AP7/9/8A//8A/wD///7z////AP3///79////AP//AAD//wD//wAA/wD///////9R////APn3//8A/v/3/wD//wD/AP///vP///8A/f///v3///8A//8AAP//AP//AAD/AP///////1H///8A+ff//wD+//f+///7//4A//////7+/v/+//7///74/f///////v7///7//1z//v///vb///7///////////7///////r///////////////7//////vj+////AP///////v//9//+///+Tv///////////////////////v//AP///////v////7///9E/v7////////////7///+//7////+/v/+/////////f///v/////+//8A///////+/////v///0T+/v////////////v///7//v////7+//7////////9///+//////7//wD///////7////+////RP7+////////////+////v/+/////v7//v////////3///7//v38/+T8f/77//////78///////////8/f79+////f/+/f///f/////////////8///6//z////+/f3/fv3k/fr///////z///7////+//3+//38///8///+///9//////////////7///r//f//////////////APv+AP////n///z9///////////9////////////+vr///3+//39//7+//8AWP3///////////8A+/4A////+f///P3///////////3////////////6+v///f7//f3//v7//wBY/f///////////wD7/gD////5///8/f///////////f////////////r6///9/v/9/f/+/v//AFj9//7///7//////////v////7+///////////////////+/v////89//////////7+////AP///////v///v/////////+/////v7///////////////////7+/////z3//////////v7///8A///////+///+//////////7////+/v///////////////////v7/////Pf/////////+/v///wD///////75/P/8/vz8/P/////+/f///v//////cf3+/P3///z///v+//3//v///v///////P//+//8/////vn8//z+/Pz8//////79///+//////9x/f78/f///P//+/7//f/+///+///////8///7//z////////////////////7///++/////7/+v////////v///8A//7//v7/+v//AE7+//////////////7//////wD//////1EA///5/////f/7////////+v///v///v/+///6////+v///////////////v///v//////////+f///vb///////n///////9g//////////7//vb+//76/////////////////wD////////////5///++P////7+9/////////b///////7//v7/Yv7///n///////////////////////////////j///5e/////v/5////////9////////v/+///4/v//+P///////////////wD///////8A////+v///vr////9/lH////////7///////+//7///f+///8//////////////82//7///3//v//AP////////8A///////+////////////////////AP//AP/////////////+/zb//v///f/+//8A/////////wD///////7///////////////////8A//8A//////////////7/Nv/+///9//7//wD/////////AP///////v///////////////////wD//wD//////////////v/9/VD//v7+/P3///7///3///////////3+//7+///+/v/9///9//////////////7///7//f////z9/f/+/v7+/v///////v///////////lL//f3///////3///7//wD//////v///v///f/9/wD//P39//7+/v7+///////+///////////+Uv/9/f///////f///v//AP/////+///+///9//3/AP////7+/////v7///v//f7+//z/////////Vf/////+/v7+/v///v7///////////7////9/v///////v7////+/v//+//9/v7//P////////9V//////7+/v7+///+/v///////////v////3+///////+/v////7+///7//3+/v/8/////////1X//////v7+/v7///7+///////////+/////f7///8AAP8AAP8A/wD/9f/////9/wD9+////wAA/wD///8A//8A//////7+////9////gBb8f//AP7++P8AAP///wD/AP3///////3///79//8AAP//AP9E/wD+/wD//////v0A//z///z9AP///////fz//wAA////AP8A/f///////f///v3//wAA//8A/0T/AP7/AP/////+/QD//P///P0A///////9/P/+//7+/////////0r///////f//////////P///v/+/v/+/v///v////////////////////////7//v7/////////Sv//////9//////////8///+//7+//7+///+/////////////////////////v/+/v////////9K///////3//////////z///7//v7//v7///7///////////////////////////7///8A/////v7//////////////////////v//Q//////+/v7////+/v/9/v/////////+/v///v///wD////+/v/////////////////////+//9D//////7+/v////7+//3+//////////7+///+////AP////7+//////////////////////7//0P//////v7+/////v7//f7//////////v78/f3//v7+/v7///////7///////////5S//39///////9///+//8A//////7///7///3//f8A//z9/f/+/v7+/v///////v///////////lL//f3///////3///7//wD//////v///v///f/9/wD//P39//7+/v7+///////+///////////+Uv/9/f///////f///v//AP/////+///+///9//3/AP/////////////////7///++/////7/+v////////v///8A//7//v7/+v//AE7+//////////////v//v7/RP7+///////+/v///wD//v7///7//////////v7///7+/////////////wD//v7/////+//+/v9E/v7///////7+////AP/+/v///v/////////+/v///v7/////////////AP/+/v/////++/z//P77/HT//////vv+//////////z9/vv7///8///8///9//////////////z///v++/////77/P/8/vv8dP/////++/7//////////P3++/v///z///z///3//////////////P//+/77/////vz9//z+/P38//////5g///+//8A///+/v79/f///P///f7//f/////////////8///8/v7////+/P3//P78/fz//////mD///7//wD///7+/v39///8///9/v/9//////////////z///z+/v////79/P/k/H/++//////+/P///////////P3+/fv///3//v3///3//////////////P//+v/8/////v39/3795P36///////8///+/////v/9/v/9/P///P///v///f/////////////+///6//3////++fz//P78/Pz//////v3///7//////3H9/vz9///8///7/v/9//7///7///////z///v//P////75/P/8/vz8/P/////+/f///v//////cf3+/P3///z///v+//3//v///v///////P//+//8/////P39//7+/v7+///////+///////////+Uv/9/f///////f///v//AP/////+///+///9//3/AP/8/f3//v7+/v7///////7///////////5S//39///////9///+//8A//////7///7///3//f8A//77/v/9/vz8/P///v///f//////////+/z+cfr//v3///r+//3////+///+/////f//+//9//7+/vv+//3+/Pz8///+///9///////////7/P5x+v/+/f//+v7//f////7///7////9///7//3//v79/Pz+/f7+/v3//////vz+//7///////z+/vv+///9/v9f/v/9//////////////3///3//f////38/P79/v7+/f/////+/P7//v///////P7++/7///3+/1/+//3//////////////f///f/9/////v39//v++/36///+//79///////////7/f78df///P7//P7//f/////////////8///6/vv////+/f3/+/77/fr///7//v3///////////v9/vx1///8/v/8/v/9//////////////z///r++/////39+//9/v1b/P///////f///////////f7+/f3///3///7///7//////////////f///v78/////f37//3+/Vv8///////9///////////9/v79/f///f///v///v/////////////9///+/vz////+dP3//P78/fz///7///z+//////////j+/vr7///7///7/v/9//////////////z///r+/v////50/f/8/vz9/P///v///P7/////////+P7++vv///v///v+//3//////////////P//+v7+/////fv9//3+/f39///+//78///////////9/v79/f//W////f///f////8A///////8///8/v7////9+/3//f79/f3///7//vz///////////3+/v39//9b///9///9/////wD///////z///z+/v////7+/v/+/v7+/gD////+/v///wD//////v7+/v7///3+//7+/0v//////////////QD//v3+/////v7+//7+/v7+AP////7+////AP/////+/v7+/v///f7//v7/S//////////////9AP/+/f7////9/VD//v7+/P3///7///3///////////3+//7+///+/v/9///9//////////////7///7//f////39UP/+/v78/f///v///f///////////f7//v7///7+//3///3//////////////v///v/9/////vr9//v+/P36//////77/v/////////8/f77+v//+////f7//f7////////////8//90/vz////++v3/+/78/fr//////vv+//////////z9/vv6///7///9/v/9/v////////////z//3T+/P///zb//v///f/+//8A/////////wD///////7///////////////////8A//8A//////////////7/Nv/+///9//7//wD/////////AP///////v///////////////////wD//wD//////////////v/+/f3//f79/f3//////v3///////////z+/v78///9/v/+/v/8/////////////1z///3//f////79/f/9/v39/f/////+/f///////////P7+/vz///3+//7+//z/////////////XP///f/9/////v39//7+/fz8AP/+//79/v//AP/////8/v/9/f///v///f7//f/////////////9///9/lz////+/f3//v79/PwA//7//v3+//8A//////z+//39///+///9/v/9//////////////3///3+XP//////AP8A/wD//1f+//////n///v9////////AP/8/////////wD//fz///3+//z8//7+AP///P3+/v///v/////////+/////v7///////////////////7+/////z3//////////v7///8A///////+///+//////////7////+/v///////////////////v7/////Pf/////////+/v///wD///////7///7//////////v////7+///////////////////+/v////89//////////7+////AP///////vv+//3+/Pz8///+///9///////////7/P5x+v/+/f//+v7//f////7///7////9///7//3//v7++/7//f78/Pz///7///3///////////v8/nH6//79///6/v/9/////v///v////3///v//f/+/v///v///wD////+/v/////////////////////+//9D//////7+/v////7+//3+//////////7+/v//////AP//////UQD///n////9//v////////6///+///+//7///r////6///////////////+//////8A//////9RAP//+f////3/+/////////r///7///7//v//+v////r//////////////wAA/wAA/wD/AP/1//////3/AP37////AAD/AP///wD//wD//////v7////3///+AFvx//8A/v74AAD/AAD/AP8A//X//////f8A/fv///8AAP8A////AP//AP/////+/v////f///4AW/H//wD+/vj++/7//f78/Pz///7///3///////////v8/nH6//79///6/v/9/////v///v////3///v//f/+/gAAAP8AAAD///72AP//AP3///79AP///wD/////AP/////////////////4////APn5//8A//9LAAAA/wAAAP///vYA//8A/f///v0A////AP////8A//////////////////j///8A+fn//wD//0sAAAD/AAAA///+9gD//wD9///+/QD///8A/////wD/////////////////+P///wD5+f//AP//S///AP8A/wD/AP3+////AP3///7+////AP//AP/8/wD+/////wD+/v3///v//0b6//7/AP///v7//v//Qf/+/wD////////////////++P/////////////9///8///////7//////////8A////////////AP///wD9/v///wD9///+/v///wD//////f///v8A//////79///9///4SQD///////39//////8A////AP3+////AP3///7+////AP/////9///+/wD//////v3///3///hJAP///////f3////+////AP////7+//////////////////////7//0P//////v7+/////v7//f7//////////v7///7///8A/////v7//////////////////////v//Q//////+/v7////+/v/9/v/////////+/v////8A/wAAAP3///////7///7+////AAD//wD9/wD+/////////v7//0L///r9//////8A/v7//////wD/AAAA/f///////v///v7///8AAP//AP3/AP7////////+/v//Qv//+v3//////wD+/v/9/Pz+/f7+/v3//////vz+//7///////z+/vv+///9/v9f/v/9//////////////3///3//f////8A//8A/wD///7z////AP3///79////AP//AAD//wD//wAA/wD///////9R////APn3//8A/v/3//8A//8A/wAA/v7/////P///+f7///8A//////7/////AP///////f///v7//////v4AAAD+//7/AP////8A///9/P/////8///8SP///wAA//8A/v8A//8AAP////7+///+/f/+/v/8/AD/AP78/P8A/////wD///38//////z///xI////AAD//wD+/wD//wAA/////v7///79//7+//z8AP8A/vz8/wD//wD/AP///vP///8A/f///v3///8A//8AAP//AP//AAD/AP///////1H///8A+ff//wD+//cAAP8AAP8A/wD/9f/////9/wD9+////wAA/wD///8A//8A//////7+////9////gBb8f//AP7++AAAAP8AAAD///72AP//AP3///79AP///wD/////AP/////////////////4////APn5//8A//9L/////wD/AAAA//f//////P///fz/////AP8A//8AAP/////////+//////b///4A7l3//wD+//j/AAD//wAAAP//VgD////9///+/P///wAAAAAA//////8A///////+////9f///wD19P////7/9/78/f/8/vz9/P/////+YP///v//AP///v7+/f3///z///3+//3//////////////P///P7+/////wD//////////P7/////+v///P7///////8A//z////////////7U////f7//P3//v7////7/v7/AP/////////8/v/////6///8/v///////wD//P////////////tT///9/v/8/f/+/v////v+/v8A//////////z+//////r///z+////////AP/8////////////+1P///3+//z9//7+////+/7+/////////wD/+/3/////6v//Zvv+////AP8A//7////////////9/f///v3//v3//f3////7/v3/////////AP/7/f/////q//9m+/7///8A/wD//v////////////39///+/f/+/f/9/f////v+/f7//v7/////////Sv//////9//////////8///+//7+//7+///+/////////////////////////v/+/v////////9K///////3//////////z///7//v7//v7///7////////////////////////+//7+//7///////b///7+/1f//////v/+/P///////v7///7+/v///v///////v7////+/v////7//v7//v//////9v///v7/V//////+//78///////+/v///v7+///+///////+/v////7+///////+////AP////7+//////////////////////7//0P//////v7+/////v7//f7//////////v7///7///8A/////v7//////////////////////v//Q//////+/v7////+/v/9/v/////////+/v///v///wD////+/v/////////////////////+//9D//////7+/v////7+//3+//////////7+/fz8/v3+/v79//////78/v/+///////8/v77/v///f7/X/7//f/////////////9///9//3////9/Pz+/f7+/v3//////vz+//7///////z+/vv+///9/v9f/v/9//////////////3///3//f////38/P79/v7+/f/////+/P7//v///////P7++/7///3+/1/+//3//////////////f///f/9////////+v///////////////v/////++P7///8A///////+///3//7///5O///////////////////////6///////////////+//////74/v///wD///////7///f//v///k7///////////////////////r///////////////7//////vj+////AP///////v//9//+///+Tv////////////////////////////8A+/4A////+f///P3///////////3////////////6+v///f7//f3//v7//wBY/f///wD///8A/wD+/v/////8///+/v///wD///8A/f///v///////0f8///9/v7+/gD//gD/APr9////AP///wD/AP7+//////z///7+////AP///wD9///+////////R/z///3+/v7+AP/+AP8A+v3//v39//v++/36///+//79///////////7/f78df///P7//P7//f/////////////8///6/vv////+/f3/+/77/fr///7//v3///////////v9/vx1///8/v/8/v/9//////////////z///r++/////////7//v/+/v///v/8/v////////////79/v////79/v9U//7+/////////////v///vz+//7//////v/+//7+///+//z+/////////////v3+/////v3+/1T//v7////////////+///+/P7//v/////+//7//v7///7//P7////////////+/f7////+/f7/VP/+/v////////////7///78/v/+//7///7//v///////v9K/v/////////////+///////+/v/9//7+/v////////////////3/////+//+/v9E/v7///////7+////AP/+/v///v/////////+/v///v7/////////////AP/+/v/////7//7+/0T+/v///////v7///8A//7+///+//////////7+///+/v////////////8A//7+//////79/P/k/H/++//////+/P///////////P3+/fv///3//v3///3//////////////P//+v/8/////vn8//z+/Pz8//////79///+//////9x/f78/f///P//+/7//f/+///+///////8///7//z////+///+//7///////7/Sv7//////////////v///////v7//f/+/v7////////////////9//////7///7//v///////v9K/v/////////////+///////+/v/9//7+/v////////////////3//////v///v/+///////+/0r+//////////////7///////7+//3//v7+/////////////////f/////9/fv//f79W/z///////3///////////3+/v39///9///+///+//////////////3///7+/P////39+//9/v1b/P///////f///////////f7+/f3///3///7///7//////////////f///v78/////f37//3+/Vv8///////9///////////9/v79/f///f///v///v/////////////9///+/vz/////AAD///8A/wD9///////9///+/f//AAD//wD/RP8A/v8A//////79AP/8///8/QD///////38//////8A/wAAAP3///////7///7+////AAD//wD9/wD+/////////v7//0L///r9//////8A/v7//////wD/AAAA/f///////v///v7///8AAP//AP3/AP7////////+/v//Qv//+v3//////wD+/v//////AP8AAAD9///////+///+/v///wAA//8A/f8A/v////////7+//9C///6/f//////AP7+//50/f/8/vz9/P///v///P7/////////+P7++vv///v///v+//3//////////////P//+v7+////////////////////+P///l7////+//n////////3///////+//7///j+///4///////////////+///+//7//////////v////////r8/v///////v///0T///7//v////7////+///////+///+//7///7//v/////////+////////+vz+///////+////RP///v/+/////v////7///////7///7//////wD/AAAA/f///////v///v7///8AAP//AP3/AP7////////+/v//Qv//+v3//////wD+/v82//7///3//v//AP////////8A///////+////////////////////AP//AP/////////////+/zb//v///f/+//8A/////////wD///////7///////////////////8A//8A//////////////7//v/+/v////////9K///////3//////////z///7//v7//v7///7////////////////////////+///7//4A//////7+/v/+//7///74/f///////v7///7//1z//v///vb///7///////////7///7///7///////////n///72///////5////////YP/////////+//72/v/++v///////////////v///v//////////+f///vb///////n///////9g//////////7//vb+//76////////////////AAD///8A/wD9///////9///+/f//AAD//wD/RP8A/v8A//////79AP/8///8/QD///////38//8AAP///wD/AP3///////3///79//8AAP//AP9E/wD+/wD//////v0A//z///z9AP///////fz//wAA////AP8A/f///////f///v3//wAA//8A/0T/AP7/AP/////+/QD//P///P0A///////9/P/////1//7///////////////////5S/v////////////z///r//v////j//////////wD///////7///7//v/////////+////////+vz+///////+////RP///v/+/////v////7///////7///7//////v//AP///////v////7///9E/v7////////////7///+//7////+/v/+/////////f///v/+///+//7///////7//f7///7///3//////f////////7//f/9/v7///7///////////9L//////7///7//v///////v/9/v///v///f/////9/////////v/9//3+/v///v///////////0v//////nT9//z+/P38///+///8/v/////////4/v76+///+///+/7//f/////////////8///6/v7////+dP3//P78/fz///7///z+//////////j+/vr7///7///7/v/9//////////////z///r+/v////7///8A/wD///3/////AP7///78/////wD/AP/8///+/////////v4A//3+//7+AP7/AP8A/kL//v///wD/AP///f////8A/v///vz/////AP8A//z///7////////+/gD//f7//v4A/v8A/wD+Qv/+////AP8A///9/////wD+///+/P////8A/wD//P///v////////7+AP/9/v/+/gD+/wD/AP5C//7///7//v///////v/9/v///v///f/////9/////////v/9//3+/v///v///////////0v/////AAAA/wAAAP///vYA//8A/f///v0A////AP////8A//////////////////j///8A+fn//wD//0sAAAD/AAAA///+9gD//wD9///+/QD///8A/////wD/////////////////+P///wD5+f//AP//S/////8A/wAAAP/3//////z///38/////wD/AP//AAD//////////v/////2///+AO5d//8A/v/4/////wD/AAAA//f//////P///fz/////AP8A//8AAP/////////+//////b///4A7l3//wD+//j+//7+//7///////b///7+/1f//////v/+/P///////v7///7+/v///v///////v7////+/v////7//v7//v//////9v///v7/V//////+//78///////+/v///v7+///+///////+/v////7+/////v/+/v/+///////2///+/v9X//////7//vz///////7+///+/v7///7///////7+/////v7/////AP////8A///9/P/////8///8SP///wAA//8A/v8A//8AAP////7+///+/f/+/v/8/AD/AP78/P37/f/9/v39/f///v/+/P///////////f7+/f3//1v///3///3/////AP///////P///P7+/////fv9//3+/f39///+//78///////////9/v79/f//W////f///f////8A///////8///8/v7////9+/3//f79/f3///7//vz///////////3+/v39//9b///9///9/////wD///////z///z+/v////7///8A/wD///3/////AP7///78/////wD/AP/8///+/////////v4A//3+//7+AP7/AP8A/kL//v///wD/AP///f////8A/v///vz/////AP8A//z///7////////+/gD//f7//v4A/v8A/wD+Qv/+////AP8A///9/////wD+///+/P////8A/wD//P///v////////7+AP/9/v/+/gD+/wD/AP5C//37/f/9/v39/f///v/+/P///////////f7+/f3//1v///3///3/////AP///////P///P7+/////fv9//3+/f39///+//78///////////9/v79/f//W////f///f////8A///////8///8/v7//////wD////////////5///++P////7+9/////////b///////7//v7/Yv7///n/////////////////AP////////////n///74/////v73////////9v///////v/+/v9i/v//+f///////////////////wD/AAAA/f///////v///v7///8AAP//AP3/AP7////////+/v//Qv//+v3//////wD+/v//////AP8AAAD9///////+///+/v///wAA//8A/f8A/v////////7+//9C///6/f//////AP7+//38/P79/v7+/f/////+/P7//v///////P7++/7///3+/1/+//3//////////////f///f/9/////////v/+//7+///+//z+/////////////v3+/////v3+/1T//v7////////////+///+/P7//v//AAD///8A/wD9///////9///+/f//AAD//wD/RP8A/v8A//////79AP/8///8/QD///////38//8AAP///wD/AP3///////3///79//8AAP//AP9E/wD+/wD//////v0A//z///z9AP///////fz//wAA////AP8A/f///////f///v3//wAA//8A/0T/AP7/AP/////+/QD//P///P0A///////9/P/9+/3//f79/f3///7//vz///////////3+/v39//9b///9///9/////wD///////z///z+/v////76/f/7/vz9+v/////++/7//////////P3++/r///v///3+//3+/////////////P//dP78/////f1Q//7+/vz9///+///9///////////9/v/+/v///v7//f///f/////////////+///+//3////9/VD//v7+/P3///7///3///////////3+//7+///+/v/9///9//////////////7///7//f////////////////////j///5e/////v/5////////9////////v/+///4/v//+P//////////////////////////////+P///l7////+//n////////3///////+//7///j+///4///////////////+///+//7///////7//f7///7///3//////f////////7//f/9/v7///7///////////9L//////7///7//v///////v/9/v///v///f/////9/////////v/9//3+/v///v///////////0v//////v///v/+///////+//3+///+///9//////3////////+//3//f7+///+////////////S/////////7///8A/////v7//////////////////////v//Q//////+/v7////+/v/9/v/////////+/v7+/v/+/v7+/gD////+/v///wD//////v7+/v7///3+//7+/0v//////////////QD//v3+/////v7+//7+/v7+AP////7+////AP/////+/v7+/v///f7//v7/S//////////////9AP/+/f7////+/v7//v7+/v4A/////v7///8A//////7+/v7+///9/v/+/v9L//////////////0A//79/v///////v7////+/v//+//9/v7//P////////9V//////7+/v7+///+/v///////////v////3+///////+/v////7+///7//3+/v/8/////////1X//////v7+/v7///7+///////////+/////f7///////7+/////v7///v//f7+//z/////////Vf/////+/v7+/v///v7///////////7////9/v//////AP////////////n///74/////v73////////9v///////v/+/v9i/v//+f////////////////8A////AP8A/v7//////P///v7///8A////AP3///7///////9H/P///f7+/v4A//4A/wD6/f///wD///8A/wD+/v/////8///+/v///wD///8A/f///v///////0f8///9/v7+/gD//gD/APr9////AP///wD/AP7+//////z///7+////AP///wD9///+////////R/z///3+/v7+AP/+AP8A+v3//wAA//8AAAD//1YA/////f///vz///8AAAAAAP//////AP///////v////X///8A9fT////+//f/AAD//wAAAP//VgD////9///+/P///wAAAAAA//////8A///////+////9f///wD19P////7/9/8AAP//AAAA//9WAP////3///78////AAAAAAD//////wD///////7////1////APX0/////v/3/vz9//z+/P38//////5g///+//8A///+/v79/f///P///f7//f/////////////8///8/v7////+/P3//P78/fz//////mD///7//wD///7+/v39///8///9/v/9//////////////z///z+/v////////7//wD///////7////+////RP7+////////////+////v/+/////v7//v////////3///7///8A/wD/AP//V/7/////+f//+/3///////8A//z/////////AP/9/P///f7//Pz//v4A///8/f7//wD/AP8A//9X/v/////5///7/f///////wD//P////////8A//38///9/v/8/P/+/gD///z9/jb//v///f/+//8A/////////wD///////7///////////////////8A//8A//////////////7//v//Qf/+/wD////////////////++P/////////////9///8///////7//////////8A///////+//9B//7/AP////////////////74//////////////3///z///////v//////////wD///////7///7//v/////////+////////+vz+///////+////RP///v/+/////v////7///////7///7//v///v/+//////////7////////6/P7///////7///9E///+//7////+/////v///////v///v/////1//7///////////////////5S/v////////////z///r//v////j//////////wD///////////X//v///////////////////lL+/////////////P//+v/+////+P//////////AP//////+//+/v9E/v7///////7+////AP/+/v///v/////////+/v///v7/////////////AP/+/v/////+/f3//f79/f3//////v3///////////z+/v78///9/v/+/v/8/////////////1z///3//f////////7//v/+/v///v/8/v////////////79/v////79/v9U//7+/////////////v///vz+//7//////v/+//7+///+//z+/////////////v3+/////v3+/1T//v7////////////+///+/P7//v/////+//7//v7///7//P7////////////+/f7////+/f7/VP/+/v////////////7///78/v/+//8A////////AP////r///76/////f5R////////+////////v/+///3/v///P///////////////wD///////8A////+v///vr////9/lH////////7///////+//7///f+///8///////////////////+//8A///////+/////v///0T+/v////////////v///7//v////7+//7////////9///+//////7//wD///////7////+////RP7+////////////+////v/+/////v7//v////////3///7//////////////v7///8ARv8A+P3///////////7/////AP/////+/f///v4A/v///v3////+/v7////////////+/v///wBG/wD4/f///////////v////8A//////79///+/gD+///+/f////7+/v7///8A/wD///3/////AP7///78/////wD/AP/8///+/////////v4A//3+//7+AP7/AP8A/kL//v///wD/AP///f////8A/v///vz/////AP8A//z///7////////+/gD//f7//v4A/v8A/wD+Qv///wD//wD/AAD+/v////8////5/v///wD//////v////8A///////9///+/v/////+/gAAAP7//v//AP//AP8AAP7+/////z////n+////AP/////+/////wD///////3///7+//////7+AAAA/v/+//8A//8A/wAA/v7/////P///+f7///8A//////7/////AP///////f///v7//////v4AAAD+//79/VD//v7+/P3///7///3///////////3+//7+///+/v/9///9//////////////7///7//f////39UP/+/v78/f///v///f///////////f7//v7///7+//3///3//////////////v///v/9/////f1Q//7+/vz9///+///9///////////9/v/+/v///v7//f///f/////////////+///+//3////////1//7///////////////////5S/v////////////z///r//v////j//////////wD///////////X//v///////////////////lL+/////////////P//+v/+////+P//////////AP///////v///v/////////+/////v7///////////////////7+/////z3//////////v7///8A///////+///+//////////7////+/v///////////////////v7/////Pf/////////+/v///wD///////7///7//////////v////7+///////////////////+/v////89//////////7+////AP///////wAA//8AAAD//1YA/////f///vz///8AAAAAAP//////AP///////v////X///8A9fT////+//f+//9B//7/AP////////////////74//////////////3///z///////v//////////wD///////v//v7/RP7+///////+/v///wD//v7///7//////////v7///7+/////////////wD//v7///////8A/wD/AP8A/f7///8A/f///v7///8A//8A//z/AP7/////AP7+/f//+///Rvr//v8A///+/v//////AP///wD9/v///wD9///+/v///wD//////f///v8A//////79///9///4SQD///////39//7///7//////////v////7+///////////////////+/v////89//////////7+////AP///////v///v/////////+/////v7///////////////////7+/////z3//////////v7///8A///////++v3/+/78/fr//////vv+//////////z9/vv6///7///9/v/9/v////////////z//3T+/P////76/f/7/vz9+v/////++/7//////////P3++/r///v///3+//3+/////////////P//dP78/////////wD/AAAA//f//////P///fz/////AP8A//8AAP/////////+//////b///4A7l3//wD+//j/AP////8A///9/P/////8///8SP///wAA//8A/v8A//8AAP////7+///+/f/+/v/8/AD/AP78/P8A/////wD///38//////z///xI////AAD//wD+/wD//wAA/////v7///79//7+//z8AP8A/vz8/wAA////AP8A/f///////f///v3//wAA//8A/0T/AP7/AP/////+/QD//P///P0A///////9/P//AAD///8A/wD9///////9///+/f//AAD//wD/RP8A/v8A//////79AP/8///8/QD///////38/zb//v///f/+//8A/////////wD///////7///////////////////8A//8A//////////////7/Nv/+///9//7//wD/////////AP///////v///////////////////wD//wD//////////////v82//7///3//v//AP////////8A///////+////////////////////AP//AP/////////////+//79/f/9/v39/f/////+/f///////////P7+/vz///3+//7+//z/////////////XP///f/9/////v39//3+/f39//////79///////////8/v7+/P///f7//v7//P////////////9c///9//3////+/f3//f79/f3//////v3///////////z+/v78///9/v/+/v/8/////////////1z///3//f////8A//8A/wD///7z////AP3///79////AP//AAD//wD//wAA/wD///////9R////APn3//8A/v/3/wD//wD/AP///vP///8A/f///v3///8A//8AAP//AP//AAD/AP///////1H///8A+ff//wD+//cAAP8AAP8A/wD/9f/////9/wD9+////wAA/wD///8A//8A//////7+////9////gBb8f//AP7++AAA/wAA/wD/AP/1//////3/AP37////AAD/AP///wD//wD//////v7////3///+AFvx//8A/v74AAAA/wAAAP///vYA//8A/f///v0A////AP////8A//////////////////j///8A+fn//wD//0sAAAD/AAAA///+9gD//wD9///+/QD///8A/////wD/////////////////+P///wD5+f//AP//S/////8A/wAAAP/3//////z///38/////wD/AP//AAD//////////v/////2///+AO5d//8A/v/4/////wD/AAAA//f//////P///fz/////AP8A//8AAP/////////+//////b///4A7l3//wD+//j/AAD//wAAAP//VgD////9///+/P///wAAAAAA//////8A///////+////9f///wD19P////7/9/8AAP//AAAA//9WAP////3///78////AAAAAAD//////wD///////7////1////APX0/////v/3/v///v/+//////////7////////6/P7///////7///9E///+//7////+/////v///////v///v/+/f3/fv3k/fr///////z///7////+//3+//38///8///+///9//////////////7///r//f////8A/////wD///38//////z///xI////AAD//wD+/wD//wAA/////v7///79//7+//z8AP8A/vz8/v///wD/AP///f////8A/v///vz/////AP8A//z///7////////+/gD//f7//v4A/v8A/wD+Qv/+////AP8A///9/////wD+///+/P////8A/wD//P///v////////7+AP/9/v/+/gD+/wD/AP5C////AP8A/wD/AP3+////AP3///7+////AP//AP/8/wD+/////wD+/v3///v//0b6//7/AP///v7///8A/wD/AP8A/f7///8A/f///v7///8A//8A//z/AP7/////AP7+/f//+///Rvr//v8A///+/v///wD/AP8A/wD9/v///wD9///+/v///wD//wD//P8A/v////8A/v79///7//9G+v/+/wD///7+//7//////wD//////1EA///5/////f/7////////+v///v///v/+///6////+v///////////////v//////AP//////UQD///n////9//v////////6///+///+//7///r////6///////////////+///+//7///////7/Sv7//////////////v///////v7//f/+/v7////////////////9//////7///7//v///////v9K/v/////////////+///////+/v/9//7+/v////////////////3//////v///v/+///////+/0r+//////////////7///////7+//3//v7+/////////////////f/////+///+//7///////7/Sv7//////////////v///////v7//f/+/v7////////////////9//////7///7//v///////v9K/v/////////////+///////+/v/9//7+/v////////////////3//////v///v/+///////+/0r+//////////////7///////7+//3//v7+/////////////////f/////////+//8A///////+/////v///0T+/v////////////v///7//v////7+//7////////9///+//////8A/wAAAP3///////7///7+////AAD//wD9/wD+/////////v7//0L///r9//////8A/v7//////wD/AAAA/f///////v///v7///8AAP//AP3/AP7////////+/v//Qv//+v3//////wD+/v/+//7+//7///////b///7+/1f//////v/+/P///////v7///7+/v///v///////v7////+/v////v//v7/RP7+///////+/v///wD//v7///7//////////v7///7+/////////////wD//v7/////+//+/v9E/v7///////7+////AP/+/v///v/////////+/v///v7/////////////AP/+/v/////7//7+/0T+/v///////v7///8A//7+///+//////////7+///+/v////////////8A//7+//////79/f/+/v38/AD//v/+/f7//wD//////P7//f3///7///3+//3//////////////f///f5c/////v39//7+/fz8AP/+//79/v//AP/////8/v/9/f///v///f7//f/////////////9///9/lz////+/f3//v79/PwA//7//v3+//8A//////z+//39///+///9/v/9//////////////3///3+XP////7+/v/+/v7+/gD////+/v///wD//////v7+/v7///3+//7+/0v//////////////QD//v3+/////v7+//7+/v7+AP////7+////AP/////+/v7+/v///f7//v7/S//////////////9AP/+/f7//////wD///8A/wD+/v/////8///+/v///wD///8A/f///v///////0f8///9/v7+/gD//gD/APr9//////////////////v///77/////v/6////////+////wD//v/+/v/6//8ATv7//////////////v///v/+///////+//3+///+///9//////3////////+//3//f7+///+////////////S///////AP//AP8A///+8////wD9///+/f///wD//wAA//8A//8AAP8A////////Uf///wD59///AP7/9/8A//8A/wD///7z////AP3///79////AP//AAD//wD//wAA/wD///////9R////APn3//8A/v/3//8A/wD/AP//V/7/////+f//+/3///////8A//z/////////AP/9/P///f7//Pz//v4A///8/f7//////////wD7/gD////5///8/f///////////f////////////r6///9/v/9/f/+/v//AFj9//8A//////////z+//////r///z+////////AP/8////////////+1P///3+//z9//7+////+/7+/////////wD/+/3/////6v//Zvv+////AP8A//7////////////9/f///v3//v3//f3////7/v3/AAD///8A/wD9///////9///+/f//AAD//wD/RP8A/v8A//////79AP/8///8/QD///////38//7///8A/wD///3/////AP7///78/////wD/AP/8///+/////////v4A//3+//7+AP7/AP8A/kL//////wD/AAAA/f///////v///v7///8AAP//AP3/AP7////////+/v//Qv//+v3//////wD+/v///wD///8A/wD+/v/////8///+/v///wD///8A/f///v///////0f8///9/v7+/gD//gD/APr9//////////////7+////AEb/APj9///////////+/////wD//////v3///7+AP7///79/////v7+//8A//8A/wAA/v7/////P///+f7///8A//////7/////AP///////f///v7//////v4AAAD+//7/////AP///wD9/v///wD9///+/v///wD//////f///v8A//////79///9///4SQD///////39////AP8A/wD/AP3+////AP3///7+////AP//AP/8/wD+/////wD+/v3///v//0b6//7/AP///v7////+////AP////7+//////////////////////7//0P//////v7+/////v7//f7//////////v7///7///8A/////v7//////////////////////v//Q//////+/v7////+/v/9/v/////////+/vcG/voE/AUCBAP+/////wYDBAT6/AH/BwECBQX7BQH+/gADBf38/QAC/vz8//3+APz9Bv8BAfv79wb++gT8BQIEA/7/////BgMEBPr8Af8HAQIFBfsFAf7+AAMF/fz9AAL+/Pz//f4A/P0G/wEB+/v2A/37Bf0EAgYA/QD/AAEFAwME+/4B/wUABAUH+wMA/v4BAwT9/P4BAwD7+//8/gL//QQAAAD8/vYD/fsF/QQCBgD9AP8AAQUDAwT7/gH/BQAEBQf7AwD+/gEDBP38/gEDAPv7//z+Av/9BAAAAPz+9gP9+wX9BAIGAP0A/wABBQMDBPv+Af8FAAQFB/sDAP7+AQME/fz+AQMA+/v//P4C//0EAAAA/P75Bf/9BP0G/wYB/AD+AQL9AwQD/P3+/gMCBAcG/QEB/vwDBQT//f7+AwD+/P/7/QH9/gYAAQH8+vv+/vv+/f7+/goF/Pz8/hD8/QoC+/z9/f78/v0E/f4K/P79/P37Bgj9/AUE/AYH/gQE/vz+CQYD+/7++/79/v7+CgX8/Pz+EPz9CgL7/P39/vz+/QT9/gr8/v38/fsGCP38BQT8Bgf+BAT+/P4JBgP9/v37/v3+/v4IBP38/P0Q/P0LA/v8/f79/f7+BP39Cfz+/Pz9+wcJ/fwFAvwFB/4GBf38/QgGBf3+/fv+/f7+/ggE/fz8/RD8/QsD+/z9/v39/v4E/f0J/P78/P37Bwn9/AUC/AUH/gYF/fz9CAYF/P39/P78/f3+CgT8/Pz9C/z8CwX7/Pz9/fz+/Qf8/Qv6/f38/fsJCfz8BwT8Bgj9BQb9/P0KBwT8/v78/v3+/v4KBv38/P4Q/f0KA/z8/f7+/f7+Bf3++vz+/fz9+wcI/fwGBfwGB/4EBP79/gkGA/3+/vz+/f7+/ggE/f39/hD9/QsE/Pz9/v79/v4F/f35/P79/P37Bwn9/QUD/AYH/gYF/v39CAYG/P39/P78/v3+CgT9/P3+DP39CwX7/Pz+/f3+/Qj8/fr7/f38/fsKCf38BwT8Bgn9BQb+/P4LBwQDCwX8CgcKCAr9/fr8+Af7/fr9/Pv8/A0I+QsL/PwI+vsH+f0G+/v9/fz7/Pz8/Qf9/Qv5B/z8/QMLBfwKBwoICv39+vz4B/v9+v38+/z8DQj5Cwv8/Aj6+wf5/Qb7+/39/Pv8/Pz9B/39C/kH/Pz9AQkE+wsFCggM/P37/PkJ+/z7/f38/PwLCPoLDfz8B/v7CPn8Bvv9/fz8/Pz8/PwI/fwK+Qj9+/wBCQT7CwUKCAz8/fv8+Qn7/Pv9/fz8/AsI+gsN/PwH+/sI+fwG+/39/Pz8/Pz8/Aj9/Ar5CP37/AQMB/wKCA0IDPz8+fv5Cvn7+fz8+vv7Cgr5DQ38/An5+gr6+gf6+/v8+/z9/Pz7Cf38DfkJ/Pv7/v///v/+///////+C/7//g7////9/gr//v////8P///+///+//3//g39//8L/v///////v///v/+///+//7///////4L/v/+Dv////3+Cv/+/////w////7///7//f/+Df3//wv+///////+///+//7///7//v///////gv+//4O/////f4K//7/////D////v///v/9//4N/f//C/7///////7///7//v///v//////////Cv///g7//v/9/gr//v////4O///+//79//3+/g7+/v8K///////////+///+///+//////////8K///+Dv/+//3+Cv/+/////g7///7//v3//f7+Dv7+/wr///////////7///7///7//////////wr///4O//7//f4K//7////+Dv///v/+/f/9/v4O/v7/Cv///////////v///v///v/+//7//v//DP/+/Q/+//78/gz///////8O///+//7+//3+/w/9/v8M/v7//v///v/+/v7+///+//7//v/+//8M//79D/7//vz+DP///////w7///7//v7//f7/D/3+/wz+/v/+///+//7+/v8A/wn//v/////////////+/////g7+/////////////f//Ef/+////DP//////////AP///////wD/Cf/+//////////////7////+Dv7////////////9//8R//7///8M//////////8A////////AP8J//7//////////////v////4O/v////////////3//xH//v///wz//////////wD///////7//wn//////////////////v///g7+/////////////f//EP//////DP///////////////////v//Cf/////////////////+///+Dv7////////////9//8Q//////8M///////////////////+//8J//////////////////7///4O/v////////////3//xD//////wz///////////////////7//wv//wD///////7///7//////gz+///////+/////v//E//+///+D////////////////////v//C///AP///////v///v/////+DP7///////7////+//8T//7///4P////////////////////AP//AP4A//8AAP///v8A//8A/w3+/////wD//////w7//v//////////AP///wD///8R////AP8A//8A/gD//wAA///+/wD//wD/Df7/////AP//////Dv/+//////////8A////AP///xH///8A/wD//wD///////////7///////8O//////////////8P/////////////wD///8A////EP//////AP//AP///////////v///////w7//////////////w//////////////AP///wD///8Q//////4A//7//////wD////+////////D///////AP//////D/////////////8A////////ABL///////7+ABf+F//8/wD////+/wAAAAD/AAD//v/+/v///gAA/wD//wAAAAAA/wAA////AAD+AP4AAAD/AP////8A/////w///////xIA/////wD//QAA/wD//////////wAAAP8A//8A////AAD//wAA//8A//8A/wD/AAAAAP//AAAA/wD/D///AAD/AAD/////DgD//wD//wAA//8A//8AAAAAAP8AAP8A/wD/////AP////8P//////8SAP////8A//0AAP8A//////////8AAAD/AP//AP///wAA//8AAP////////8AAAAA/w7//////xEAAP8AAAD//v///wD//wD//wD//wAAAP8A////////AP//AP8AAP/+/gAX/hX//v8AAAD//gAAAAAAAAAA/v////4A//4A//7/AP4AAAAAAAAAAP8A/gAA/QD+AP8A////////AAAAAP8O//////8RAAD/AAAA//7///8A//8A//8A//8AAAD/AP///////wD//wD/AAD/AAD/AP8AAAD/AP///wAA/wAA/w7//wAAAAAA//8A/w8A//8A//8A////AP///wAAAAD/AP//AP/+//8X/xr//f8A/////gD///8A/////v///v4A//7///8A//8AAP8AAAAA/////wD//f///wD/////AP////8A/wAQ/wD//wAUAP//////AP4A////////////////AP///wAA////AAD//////wD/AAD/AP8AAAAA/wD//wD//////xD//wAAAAAA//8AABD///8A//8A////AP///wAAAAD/AP//AP8AAP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOAAAAAAAAAAD/AAAAAAAAAAAA/wAA/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAP8AAAAAAAAAAAD/AP8AABD/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAAAAP//AAAAAAD//wD/AP7/GwAAAAAA/wAAAAAAAAAA//8A//4AAP8AAP8AAP8AAAAAAAAAAAAA/wAA/wD/AAAA////AP///wD/AAAAAP8XAAAAAAAAAAAA/////wAA/wAA/wAA/wAAAAAAAAAAAAD/AAD///8AAAAA/v8A/wD//v8AAAAAAP8AAAAAAAAAABv/AP//AAD/AAD/AAD/AP8AAAAAAAAAAP8AAP8A/wAAAP8A/wAA////AAAAAAAAAAAAAAAAAAAA/xMA//8AAAAAAP8AAP8AAAAAAAAAAAAAAAAA/wD/AAAAAP4AAP//////AAAAAAD/AAAAAAAAAAD//wAZ/wAA/wAA/wAA/wAAAAAAAAAAAAD/AAD/AP8AAAD///8AAAD/AP8AAAAAAP8AAAAAAAAAAP//AP//AAD/AAAW/wD/AAAAAAAAAAAAAP8AAP8A/wAAAP///wD/AP///wAAAAD//wAAAAAAAAAA//8A/xsAAP8AAP8AAP8AAAAAAP8AAAAA/wAA/wD/AAAA////AP8A/xb/AAAAAAD/AAAAAAAAAAD//wD//wAAAAAA/wAA/wAAAAAAAAAAAAD/AAD/AP8AAAAAG/8A/wD///8AAAAAAP8AAAAAAAAAAP7/AP//AAD+AAD+/wD/AAAAAAAAAAAAAP8AAP8A/wAAAP///wD/AAD/AAAAAAAA/wAAAAAAAAAA//8A//8AABUAAP8AAP8AAAAAAAAAAAAA/wAA/wAAAAAA/wAAAAAAAP//AAAAAP8AAAAAAAAAAAAAAAAA/wAA//8A/wAAEQAAAAAAAAAAAAD/AAAA/wAAAAD/ABMA/wD///8AAAAAAP8AAAAAAAAAAAAAAAD/AAAAAAD/AAD/AAAAAAAAAAAAAP8AAP8AAAAAAAD+/wD+AP///gAAAAAA/wAAAAAAAAAA//8A//4AAP8AAP8AAP8AAAAAAAAAAAAA/wAAG///AAAADQD/AAD/AAAAAAAAAAAAAAAAAAAAAAAA/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//8A/wD/AP8AAAAAAP//AAAAAAAAAP8A////AAD/AAAAAAD/AAAAAAAAAAAAABUAAAAA/wAAAAD//wAA/wD//wAAAAAA/wAAAAAAAAAA//8A//8AAAAAAP8AAP8AAAAAAAAAAAAA/wAA/wAVAAAAAAAA/wAAAAAAAAASAAAAAAD+AAAAAAAAAP8AAAAAAP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP8AAAAAAAAAAP0AAAAAABQAAAAAAAAA/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/AAAAAAAAAAAAAAD/AAAAAAD/AAAUAP//AAAAAAAAAAAA/wAAAP//AP8AAAAAAAAAAAAAAAAAAP8AAAAAAAAAAAAAAP8AAAAAAP8AABQA//8AAAAAAAAAAAD/AAAA//8A/wAAAAAAAAAAAAAAAAAA/wAAAAAAAP8AAAAA/wAAAAAAAP8A/wAA/wAAAAD/AAAAAAAAAAASAAD/AAAAAAAAAAAAAAAA/wD/AAAA/wAAAAAAAAAUAAAAAP//AAD/AAAAAAAAAAAAAAAAAAAAAP8AAP8AAAAAAAAAAAAAAAD/AP8AAAD/AAAAAAAAABQAAAAA//8AAP8AAAAAAAAAAAAAAAAAAAAA/wAA/wAAAAAAAP8AAAAAAAAAEv8AAAAAAAAAAAAAAAAAAAAAAP8A/wD/AAAAAAAAAAAAAAAAAAD/AAAAAAAAAAAA/wAAAAAAAAAS/wAAAAAAAAAAAAAAAAAAAAAA/wD/AP8AAAAAAAAAAAAAAAAAAP8AAAAA/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAA/wAAAAAAAAAAAAAA/wD/AAD/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgAAAAAAAAAA/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/AAAAAAAAAAAAAAD/AAAAAAD/AAAUAP//AAAAAAAAAAAA/wAAAP//AP8AAAAAAAAAAAAAAAD/AP8AAAD/AAAAAAAAABQAAAAA//8AAP8AAAAAAAAAAAAAAAAAAAAA/wAA/wAAAAAAAP8AAAAAAAAAEv8AAAAAAAAAAAAAAAAAAAAAAP8A/wD/AAAAAAAAAAAAAAAAAAD/AAAAAP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wAAAAAOAAAAAAAAAP8AAAAAAAAAAAAAAAAAAAAAAAAAAAD/AP8AAAAAAAAAAAAAAP8AAAAAAP8AABMAAP8AAAAAAAAAAAAAAAAA//8AAAAAAAAAAAAAAAAAAP8AAP8AAP8AAAAAAAAAEwAAAAAAAAAA/wAAAAAAAAAAAAAAAAAAAAD//wAAAP8AAAAAAAAAAAAA/wAR/wAAAAAAAAAAAAD/AAAAAAD//wD/AAAAAAAAAAAAAAAAAAAAAP8AAAAA/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/AAAAAA4AAAAAAAAA/wAAAAAAAAAAAAD/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP8AAAAADgAAAAAAAAD/AAAAAAAAAAAAAP8AAAAAEP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP//AP8A//8aAAAAAP//AAAAAAAAAAD//wD//gAA/wAA/wAA/wAAAAAAAAAAAAD/AAD/AP8AAAAA//8A/wD/AP4AAAAA/xYAAAAAAAAAAP//AAD/AAD/AAD/AAD/AAAAAAAAAAAAAP8AAP8A/wAAAAD+/wD//////wAAAAAA/wAAAAAAAAAAGf8A//8AAP8AAP8AAP8AAAAAAAAAAAAA/wAA/wD/AAAA/wD/AP//AP8AAAAAAAAAAAAAAAAAAAD/EwD//wAAAAAA/wAA/wAAAAAAAAAAAAD/AAD/AAAAAAD//v8A/wAA//8AAAAAAP8AAAAAAAAAAP//ABn/AAD/AAD+AAD/AAAAAAAAAAAAAP8AAP8A/wAAAP///wD/AP///wAAAAAA/wAAAAAAAAAA/wAA//8AAP8AABYAAP8AAAAAAAAAAAAA/wAA/wD/AAAA////AP//////AAAAAAAAAAAAAAAAAAD//wD/GgAA/wAA/wAA/wAAAAAAAAAAAP//AAD+//8AAAD///8A//8AFf8AAAAAAAAAAAAAAAAAAP//AP8AAAAAAAD/AAAAAAAAAAAAAAAAAP8AAAAA/wAAAAAa/wD/AP///wAAAAAA//8AAAAAAAAA/v8A//8AAP8AAP8AAP8AAAAAAAAAAAAA/wAA/gAAAAAA////AP8A/wD/AAAAAAD/AAAAAAAAAAD//wAAAAAAFQAA/wAA/wAAAAAAAAAAAAD/AAD/AP8AAAAAAP8A/wAA/wAAAAAAAP8AAAAAAAAAAAAAAAD/AAD/AAD/AAASAAAAAAAAAAAAAP8AAAD//wAAAP//EwD//wD/AAAAAAAA/wAAAAAAAAAA/wAAAP8AAP8AAAAAAP8AAAAAAAAAAAAAAAAA/wD/AAAA//7/AP//////AAAAAAD//wAAAAAAAAD//wD//gAA/gAA/wAAAAAAAAAAAAAAAAD/AAAaAP8AAAANAAAAAP8AAAAAAAAAAAAAAAAAAAAAAAD/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wD/AAAA/wAAAAAA/wAAAAAAAAAA//8A//8AAP8AAP8AAP8AAAAAAAAAAAAAFQAA/wD/AAAA////AP//////AAAAAAD/AAAAAAAAAAD//wD//wAA/wAA//8A/wAAAAAAAAAAAAD/AAD/ABUAAAD/AAAAAAAAAAAAABEAAAAAAP4AAAAAAAAA/wAAAAAAAAAAAAAA/wAAAAAAAAAAAAAAAAAAAAAAAAAAAP8AAAAAAAAA/QAAAAAAEwAAAAAAAAD/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/AP8AAAAAAAAAAAAAAP8AAAAAAP8AABMAAP8AAAAAAAAAAAAAAAAA//8AAAAAAAAAAAAAAAAAAP8A/wAAAAAAAAAAAAAA/wAAAAAA/wAAEwAA/wAAAAAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAD//wAAAAAA/wAAAAD/AAAAAAAAAAD/AP8A/wAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAAAAAAD/AAD/AAD/AAAAAAAAABMAAAAAAAAAAP8AAAAAAAAAAAAAAAAAAAAA//8AAAAAAAAAAAAAAAAAAP8AAP8AAP8AAAAAAAAAEwAAAAAAAAAA/wAAAAAAAAAAAAAAAAAAAAD//wAAAP8AAAAAAAAAAAAA/wAR/wAAAAAAAAAAAAD/AAAAAAD//wD/AAAAAAAAAAAAAAAAAAAAAP8AAAAA/wAAAAAAAAAAAAD/ABH/AAAAAAAAAAAAAP8AAAAAAP//AP8AAAAAAAAAAAAAAAAAAAAA/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wAAAAAAAAAA/wAAEAAAAAAAAAAAAAAAAAD//wAAAAAAAAAA/wAAAP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAAAAAAAAAAD/AP8AABH/AAAAAAAAAAD/AAAAAAAAAAAAAAAAAAAAAP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wD/AP//HAAAAAAA////AAAAAAAA//8A//8AAP8AAP8AAP8AAAAAAAAAAAAA/wAA/wD/AAAAAP//AP8A////AAAAAAAX/wAAAAAAAAD/AP///wAA/wAA/wAA/wAAAAAAAAAAAAD/AAD/AP8AAAAA//8A/wD/////AAAA//8AAAAAAP8AABsAAP//AAD//wD/AAD/AAD/AAAAAAAAAP8AAP8A/wAAAP//AAD/AAD//wAAAAAAAAAAAAAAAAAA/xQA//8AAP8AAP//AAAAAAAAAAAAAAAA/wAA/wD/AAAAAP//AP8A////AAD/AAD/AAAA/wAAAAD+//8c/gAA/wAA/wAA/wAA/wD/AAAAAAD/AAD/AP8A/wD///8A/wD///8AAAAAAP8AAAAAAAD/AP8AAP8AAAD//wAX/wD/AAAAAAAAAAAAAP8AAP8A/wAAAP///wD//////gAA/wD//wAAAAAAAAAA/////hwAAP//AP8AAP8AAAAAAAAAAAAA/wAA/wD/AAAA////AP///xb/AAAAAAD/AAAAAAAAAAD/AAD//wAA/wAAAAAA/wAAAAAAAAAAAAD/AAD/AP8AAAAAHf8A/wD///8AAAD/AP8AAAAAAAAA////AP//AAD/AAD/AP//AAAAAAAAAAAAAP8AAP8A/wAAAP/+/wD/AP///wAAAAAA/wAAAAAAAAAA//8A//8AABcAAP8AAAAA//8AAAAAAAAA/wAA//8AAAAAAAD/AP///wAAAAAAAAD/AAAAAAAAAAD/AP///wAA//8A/wAAEwAAAAAAAAAAAAD/AAAA/wAAAAD//xQA//////8AAAAAAAAAAAAAAAAAAP//AP//AAAAAAD/AAD/AAAAAAAAAAAAAP8AAAAA/wAAAAD//wD/AP///gAAAAAA/wAA/wAAAAAA/v8A/v8AAP8AAAD/AP8AAAAAAAAAAAAA/wAAHAD/AAAADgD/AAD/AAAAAAAAAAAAAAAAAAAAAAAA/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A//////8AAAAAAP8AAAAAAAAAAP//AAD/AAD/AAD/AAD/AAAAAAAAAAAAABcAAP8AAAAAAAD//wAAAP///wAAAAAA//8AAAAAAAAA/wAA//8AAP8AAP8AAP8AAAAAAAAAAAAA/wAA/wAXAAAA/wAAAAAAAAAAAAATAAAAAAD+AAAAAAAAAP8AAAAAAAD/AAAAAAAAAAD/AAAAAAAAAAAAAAAAAAAAAAAAAP8AAAAAAP0AAP8AABYAAAAAAAAA/wAAAAAA/wAAAAAAAAAAAAAAAAD/AP8AAAAA/wAAAAAAAP8A/wD/AAAA/wD//wAAAAAAAAAAAP//AAAAAAAAAAAVAP8AAAAAAAD//wAA/wAAAP8AAAAAAAAA/wD/AP8AAAD/AP//AAAAAAAAAAAA//8AAAAAAAAAABUA/wAAAAAAAP//AAD/AAAA/wAAAAD/AAD/AAAAAAAAAP8A/wAAAAAAAP8AAAAAAAAAAAAAAP8A/wD/AAAAAAAAAAAAAAAAAAATAAAAAAD/AAAAAAD/AAAA/wD/AP8A/wAA/wAAAAAVAAAAAAD/AAD/AAD/AAAAAAAAAAAA/wAAAP8AAAAAAP8AAAAAAP8AAAD/AP8A/wD/AAD/AAAAABUAAAAAAP8AAP8AAP8AAAAAAAAAAAD/AAAA/wAAAAAAAAAAAP8AAAAAAAAAEwAAAAAAAAAAAAAA/wAAAAAAAP8A/wAA/wAAAAAAAAAAAP8AAAD/AAAAAAAAAAAA/wAAAAAAAAATAAAAAAAAAAAAAAD/AAAAAAAA/wD/AAD/AAAAAAAAAAAA/wAAAP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP8AABEAAAAAAAD/AAAAAAAA/wAAAAAAAAAAAAA=",
+    "encoding": "int8-base64",
+    "scale": 0.02360467647942971
+  },
+  "embedding": {
+    "data": "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",
+    "encoding": "int8-base64",
+    "scale": 0.038691637084240046
+  },
+  "exact_prompts": {
+    "create a configuration loader": 35,
+    "create a health check endpoint": 41,
+    "create a simple class for a task": 3,
+    "create a simple state machine": 21,
+    "debug a failing test step by step": 37,
+    "design a cache with expiry": 44,
+    "design a file upload validation": 12,
+    "design a logging approach": 29,
+    "design a pagination response": 40,
+    "design a rate limiter": 16,
+    "design a small api endpoint": 22,
+    "explain a variable in simple terms": 5,
+    "explain asynchronous code": 8,
+    "explain code review goals": 14,
+    "explain database indexes": 6,
+    "explain database transactions": 4,
+    "explain dependency injection": 23,
+    "explain event driven design": 24,
+    "explain feature flags": 26,
+    "explain hashing for passwords": 33,
+    "explain immutability benefits": 27,
+    "explain interfaces and contracts": 7,
+    "explain memory leaks": 1,
+    "explain object oriented programming": 30,
+    "explain recursion with an example": 36,
+    "explain stack and queue differences": 2,
+    "explain testing pyramids": 50,
+    "explain the difference between a list and a set": 0,
+    "explain time complexity simply": 47,
+    "explain version control basics": 52,
+    "gravion code create a configuration loader": 35,
+    "gravion code create a health check endpoint": 41,
+    "gravion code create a simple class for a task": 3,
+    "gravion code create a simple state machine": 21,
+    "gravion code debug a failing test step by step": 37,
+    "gravion code design a cache with expiry": 44,
+    "gravion code design a file upload validation": 12,
+    "gravion code design a logging approach": 29,
+    "gravion code design a pagination response": 40,
+    "gravion code design a rate limiter": 16,
+    "gravion code design a small api endpoint": 22,
+    "gravion code explain a variable in simple terms": 5,
+    "gravion code explain asynchronous code": 8,
+    "gravion code explain code review goals": 14,
+    "gravion code explain database indexes": 6,
+    "gravion code explain database transactions": 4,
+    "gravion code explain dependency injection": 23,
+    "gravion code explain event driven design": 24,
+    "gravion code explain feature flags": 26,
+    "gravion code explain hashing for passwords": 33,
+    "gravion code explain immutability benefits": 27,
+    "gravion code explain interfaces and contracts": 7,
+    "gravion code explain memory leaks": 1,
+    "gravion code explain object oriented programming": 30,
+    "gravion code explain recursion with an example": 36,
+    "gravion code explain stack and queue differences": 2,
+    "gravion code explain testing pyramids": 50,
+    "gravion code explain the difference between a list and a set": 0,
+    "gravion code explain time complexity simply": 47,
+    "gravion code explain version control basics": 52,
+    "gravion code handle an empty list safely": 11,
+    "gravion code handle null values safely": 17,
+    "gravion code improve slow code performance": 34,
+    "gravion code make a simple command line tool": 32,
+    "gravion code make a small data validation schema": 20,
+    "gravion code make code readable with naming": 51,
+    "gravion code refactor duplicated code safely": 25,
+    "gravion code validate user input in code": 13,
+    "gravion code write a binary search explanation": 9,
+    "gravion code write a debounce helper outline": 53,
+    "gravion code write a function that adds two numbers": 19,
+    "gravion code write a function to count word frequency": 43,
+    "gravion code write a function to find duplicates": 48,
+    "gravion code write a function to flatten nested lists": 55,
+    "gravion code write a function to normalize text": 49,
+    "gravion code write a function to reverse a string": 10,
+    "gravion code write a guard clause example": 39,
+    "gravion code write a haiku function": 18,
+    "gravion code write a loop that prints each item": 28,
+    "gravion code write a merge of two sorted lists": 54,
+    "gravion code write a parser for key value lines": 42,
+    "gravion code write a retry helper with backoff": 38,
+    "gravion code write a sort function": 15,
+    "gravion code write a sorting function outline": 15,
+    "gravion code write a test for boundary values": 46,
+    "gravion code write a unit test for a parser": 45,
+    "gravion code write error handling for file reading": 31,
+    "handle an empty list safely": 11,
+    "handle null values safely": 17,
+    "help me create a configuration loader": 35,
+    "help me create a health check endpoint": 41,
+    "help me create a simple class for a task": 3,
+    "help me create a simple state machine": 21,
+    "help me debug a failing test step by step": 37,
+    "help me design a cache with expiry": 44,
+    "help me design a file upload validation": 12,
+    "help me design a logging approach": 29,
+    "help me design a pagination response": 40,
+    "help me design a rate limiter": 16,
+    "help me design a small api endpoint": 22,
+    "help me explain a variable in simple terms": 5,
+    "help me explain asynchronous code": 8,
+    "help me explain code review goals": 14,
+    "help me explain database indexes": 6,
+    "help me explain database transactions": 4,
+    "help me explain dependency injection": 23,
+    "help me explain event driven design": 24,
+    "help me explain feature flags": 26,
+    "help me explain hashing for passwords": 33,
+    "help me explain immutability benefits": 27,
+    "help me explain interfaces and contracts": 7,
+    "help me explain memory leaks": 1,
+    "help me explain object oriented programming": 30,
+    "help me explain recursion with an example": 36,
+    "help me explain stack and queue differences": 2,
+    "help me explain testing pyramids": 50,
+    "help me explain the difference between a list and a set": 0,
+    "help me explain time complexity simply": 47,
+    "help me explain version control basics": 52,
+    "help me handle an empty list safely": 11,
+    "help me handle null values safely": 17,
+    "help me improve slow code performance": 34,
+    "help me make a simple command line tool": 32,
+    "help me make a small data validation schema": 20,
+    "help me make code readable with naming": 51,
+    "help me refactor duplicated code safely": 25,
+    "help me validate user input in code": 13,
+    "help me write a binary search explanation": 9,
+    "help me write a debounce helper outline": 53,
+    "help me write a function that adds two numbers": 19,
+    "help me write a function to count word frequency": 43,
+    "help me write a function to find duplicates": 48,
+    "help me write a function to flatten nested lists": 55,
+    "help me write a function to normalize text": 49,
+    "help me write a function to reverse a string": 10,
+    "help me write a guard clause example": 39,
+    "help me write a haiku function": 18,
+    "help me write a loop that prints each item": 28,
+    "help me write a merge of two sorted lists": 54,
+    "help me write a parser for key value lines": 42,
+    "help me write a retry helper with backoff": 38,
+    "help me write a sort function": 15,
+    "help me write a sorting function outline": 15,
+    "help me write a test for boundary values": 46,
+    "help me write a unit test for a parser": 45,
+    "help me write error handling for file reading": 31,
+    "improve slow code performance": 34,
+    "make a simple command line tool": 32,
+    "make a small data validation schema": 20,
+    "make code readable with naming": 51,
+    "please create a configuration loader": 35,
+    "please create a health check endpoint": 41,
+    "please create a simple class for a task": 3,
+    "please create a simple state machine": 21,
+    "please debug a failing test step by step": 37,
+    "please design a cache with expiry": 44,
+    "please design a file upload validation": 12,
+    "please design a logging approach": 29,
+    "please design a pagination response": 40,
+    "please design a rate limiter": 16,
+    "please design a small api endpoint": 22,
+    "please explain a variable in simple terms": 5,
+    "please explain asynchronous code": 8,
+    "please explain code review goals": 14,
+    "please explain database indexes": 6,
+    "please explain database transactions": 4,
+    "please explain dependency injection": 23,
+    "please explain event driven design": 24,
+    "please explain feature flags": 26,
+    "please explain hashing for passwords": 33,
+    "please explain immutability benefits": 27,
+    "please explain interfaces and contracts": 7,
+    "please explain memory leaks": 1,
+    "please explain object oriented programming": 30,
+    "please explain recursion with an example": 36,
+    "please explain stack and queue differences": 2,
+    "please explain testing pyramids": 50,
+    "please explain the difference between a list and a set": 0,
+    "please explain time complexity simply": 47,
+    "please explain version control basics": 52,
+    "please handle an empty list safely": 11,
+    "please handle null values safely": 17,
+    "please improve slow code performance": 34,
+    "please make a simple command line tool": 32,
+    "please make a small data validation schema": 20,
+    "please make code readable with naming": 51,
+    "please refactor duplicated code safely": 25,
+    "please validate user input in code": 13,
+    "please write a binary search explanation": 9,
+    "please write a debounce helper outline": 53,
+    "please write a function that adds two numbers": 19,
+    "please write a function to count word frequency": 43,
+    "please write a function to find duplicates": 48,
+    "please write a function to flatten nested lists": 55,
+    "please write a function to normalize text": 49,
+    "please write a function to reverse a string": 10,
+    "please write a guard clause example": 39,
+    "please write a haiku function": 18,
+    "please write a loop that prints each item": 28,
+    "please write a merge of two sorted lists": 54,
+    "please write a parser for key value lines": 42,
+    "please write a retry helper with backoff": 38,
+    "please write a sort function": 15,
+    "please write a sorting function outline": 15,
+    "please write a test for boundary values": 46,
+    "please write a unit test for a parser": 45,
+    "please write error handling for file reading": 31,
+    "refactor duplicated code safely": 25,
+    "validate user input in code": 13,
+    "write a binary search explanation": 9,
+    "write a debounce helper outline": 53,
+    "write a function that adds two numbers": 19,
+    "write a function to count word frequency": 43,
+    "write a function to find duplicates": 48,
+    "write a function to flatten nested lists": 55,
+    "write a function to normalize text": 49,
+    "write a function to reverse a string": 10,
+    "write a guard clause example": 39,
+    "write a haiku function": 18,
+    "write a loop that prints each item": 28,
+    "write a merge of two sorted lists": 54,
+    "write a parser for key value lines": 42,
+    "write a retry helper with backoff": 38,
+    "write a sort function": 15,
+    "write a sorting function outline": 15,
+    "write a test for boundary values": 46,
+    "write a unit test for a parser": 45,
+    "write error handling for file reading": 31
+  },
+  "features": [
+    "a",
+    "write",
+    "write a",
+    "function",
+    "explain",
+    "code",
+    "design",
+    "a function",
+    "design a",
+    "for",
+    "write a function",
+    "a function to",
+    "function to",
+    "to",
+    "create",
+    "create a",
+    "simple",
+    "with",
+    "a simple",
+    "and",
+    "make",
+    "safely",
+    "test",
+    "a parser",
+    "a small",
+    "an",
+    "create a simple",
+    "database",
+    "endpoint",
+    "example",
+    "explain database",
+    "file",
+    "for a",
+    "handle",
+    "helper",
+    "in",
+    "list",
+    "lists",
+    "make a",
+    "outline",
+    "parser",
+    "small",
+    "test for",
+    "that",
+    "two",
+    "validation",
+    "values",
+    "a binary",
+    "a binary search",
+    "a cache",
+    "a cache with",
+    "a configuration",
+    "a configuration loader",
+    "a debounce",
+    "a debounce helper",
+    "a failing",
+    "a failing test",
+    "a file",
+    "a file upload",
+    "a function that",
+    "a guard",
+    "a guard clause",
+    "a haiku",
+    "a haiku function",
+    "a health",
+    "a health check",
+    "a list",
+    "a list and",
+    "a logging",
+    "a logging approach",
+    "a loop",
+    "a loop that",
+    "a merge",
+    "a merge of",
+    "a pagination",
+    "a pagination response",
+    "a parser for",
+    "a rate",
+    "a rate limiter",
+    "a retry",
+    "a retry helper",
+    "a set",
+    "a simple class",
+    "a simple command",
+    "a simple state",
+    "a small api",
+    "a small data",
+    "a sort",
+    "a sort function",
+    "a sorting",
+    "a sorting function",
+    "a string",
+    "a task",
+    "a test",
+    "a test for",
+    "a unit",
+    "a unit test",
+    "a variable",
+    "a variable in",
+    "adds",
+    "adds two",
+    "adds two numbers",
+    "an empty",
+    "an empty list",
+    "an example",
+    "and a",
+    "and a set",
+    "and contracts",
+    "and queue",
+    "and queue differences",
+    "api",
+    "api endpoint",
+    "approach",
+    "asynchronous",
+    "asynchronous code",
+    "backoff",
+    "basics",
+    "benefits",
+    "between",
+    "between a",
+    "between a list",
+    "binary",
+    "binary search",
+    "binary search explanation",
+    "boundary",
+    "boundary values",
+    "by",
+    "by step",
+    "cache",
+    "cache with",
+    "cache with expiry",
+    "check",
+    "check endpoint",
+    "class",
+    "class for",
+    "class for a",
+    "clause",
+    "clause example",
+    "code performance",
+    "code readable",
+    "code readable with",
+    "code review",
+    "code review goals",
+    "code safely",
+    "command",
+    "command line",
+    "command line tool",
+    "complexity",
+    "complexity simply",
+    "configuration",
+    "configuration loader",
+    "contracts",
+    "control",
+    "control basics",
+    "count",
+    "count word",
+    "count word frequency",
+    "create a configuration",
+    "create a health",
+    "data",
+    "data validation",
+    "data validation schema",
+    "database indexes",
+    "database transactions",
+    "debounce",
+    "debounce helper",
+    "debounce helper outline",
+    "debug",
+    "debug a",
+    "debug a failing",
+    "dependency",
+    "dependency injection",
+    "design a cache",
+    "design a file",
+    "design a logging",
+    "design a pagination",
+    "design a rate",
+    "design a small",
+    "difference",
+    "difference between",
+    "difference between a",
+    "differences",
+    "driven",
+    "driven design",
+    "duplicated",
+    "duplicated code",
+    "duplicated code safely",
+    "duplicates",
+    "each",
+    "each item",
+    "empty",
+    "empty list",
+    "empty list safely",
+    "error",
+    "error handling",
+    "error handling for",
+    "event",
+    "event driven",
+    "event driven design",
+    "expiry",
+    "explain a",
+    "explain a variable",
+    "explain asynchronous",
+    "explain asynchronous code",
+    "explain code",
+    "explain code review",
+    "explain database indexes",
+    "explain database transactions",
+    "explain dependency",
+    "explain dependency injection",
+    "explain event",
+    "explain event driven",
+    "explain feature",
+    "explain feature flags",
+    "explain hashing",
+    "explain hashing for",
+    "explain immutability",
+    "explain immutability benefits",
+    "explain interfaces",
+    "explain interfaces and",
+    "explain memory",
+    "explain memory leaks",
+    "explain object",
+    "explain object oriented",
+    "explain recursion",
+    "explain recursion with",
+    "explain stack",
+    "explain stack and",
+    "explain testing",
+    "explain testing pyramids",
+    "explain the",
+    "explain the difference",
+    "explain time",
+    "explain time complexity",
+    "explain version",
+    "explain version control",
+    "explanation",
+    "failing",
+    "failing test",
+    "failing test step",
+    "feature",
+    "feature flags",
+    "file reading",
+    "file upload",
+    "file upload validation",
+    "find",
+    "find duplicates",
+    "flags",
+    "flatten",
+    "flatten nested",
+    "flatten nested lists",
+    "for a parser",
+    "for a task",
+    "for boundary",
+    "for boundary values",
+    "for file",
+    "for file reading",
+    "for key",
+    "for key value",
+    "for passwords",
+    "frequency",
+    "function outline",
+    "function that",
+    "function that adds",
+    "function to count",
+    "function to find",
+    "function to flatten",
+    "function to normalize",
+    "function to reverse",
+    "goals",
+    "guard",
+    "guard clause",
+    "guard clause example",
+    "haiku",
+    "haiku function",
+    "handle an",
+    "handle an empty",
+    "handle null",
+    "handle null values",
+    "handling",
+    "handling for",
+    "handling for file",
+    "hashing",
+    "hashing for",
+    "hashing for passwords",
+    "health",
+    "health check",
+    "health check endpoint",
+    "helper outline",
+    "helper with",
+    "helper with backoff",
+    "immutability",
+    "immutability benefits",
+    "improve",
+    "improve slow",
+    "improve slow code",
+    "in code",
+    "in simple",
+    "in simple terms",
+    "indexes",
+    "injection",
+    "input",
+    "input in",
+    "input in code",
+    "interfaces",
+    "interfaces and",
+    "interfaces and contracts",
+    "item",
+    "key",
+    "key value",
+    "key value lines",
+    "leaks",
+    "limiter",
+    "line",
+    "line tool",
+    "lines",
+    "list and",
+    "list and a",
+    "list safely",
+    "loader",
+    "logging",
+    "logging approach",
+    "loop",
+    "loop that",
+    "loop that prints",
+    "machine",
+    "make a simple",
+    "make a small",
+    "make code",
+    "make code readable",
+    "memory",
+    "memory leaks",
+    "merge",
+    "merge of",
+    "merge of two",
+    "naming",
+    "nested",
+    "nested lists",
+    "normalize",
+    "normalize text",
+    "null",
+    "null values",
+    "null values safely",
+    "numbers",
+    "object",
+    "object oriented",
+    "object oriented programming",
+    "of",
+    "of two",
+    "of two sorted",
+    "oriented",
+    "oriented programming",
+    "pagination",
+    "pagination response",
+    "parser for",
+    "parser for key",
+    "passwords",
+    "performance",
+    "prints",
+    "prints each",
+    "prints each item",
+    "programming",
+    "pyramids",
+    "queue",
+    "queue differences",
+    "rate",
+    "rate limiter",
+    "readable",
+    "readable with",
+    "readable with naming",
+    "reading",
+    "recursion",
+    "recursion with",
+    "recursion with an",
+    "refactor",
+    "refactor duplicated",
+    "refactor duplicated code",
+    "response",
+    "retry",
+    "retry helper",
+    "retry helper with",
+    "reverse",
+    "reverse a",
+    "reverse a string",
+    "review",
+    "review goals",
+    "schema",
+    "search",
+    "search explanation",
+    "set",
+    "simple class",
+    "simple class for",
+    "simple command",
+    "simple command line",
+    "simple state",
+    "simple state machine",
+    "simple terms",
+    "simply",
+    "slow",
+    "slow code",
+    "slow code performance",
+    "small api",
+    "small api endpoint",
+    "small data",
+    "small data validation",
+    "sort",
+    "sort function",
+    "sorted",
+    "sorted lists",
+    "sorting",
+    "sorting function",
+    "sorting function outline",
+    "stack",
+    "stack and",
+    "stack and queue",
+    "state",
+    "state machine",
+    "step",
+    "step by",
+    "step by step",
+    "string",
+    "task",
+    "terms",
+    "test for a",
+    "test for boundary",
+    "test step",
+    "test step by",
+    "testing",
+    "testing pyramids",
+    "text",
+    "that adds",
+    "that adds two",
+    "that prints",
+    "that prints each",
+    "the",
+    "the difference",
+    "the difference between",
+    "time",
+    "time complexity",
+    "time complexity simply",
+    "to count",
+    "to count word",
+    "to find",
+    "to find duplicates",
+    "to flatten",
+    "to flatten nested",
+    "to normalize",
+    "to normalize text",
+    "to reverse",
+    "to reverse a",
+    "tool",
+    "transactions",
+    "two numbers",
+    "two sorted",
+    "two sorted lists",
+    "unit",
+    "unit test",
+    "unit test for",
+    "upload",
+    "upload validation",
+    "user",
+    "user input",
+    "user input in",
+    "validate",
+    "validate user",
+    "validate user input",
+    "validation schema",
+    "value",
+    "value lines",
+    "values safely",
+    "variable",
+    "variable in",
+    "variable in simple",
+    "version",
+    "version control",
+    "version control basics",
+    "with an",
+    "with an example",
+    "with backoff",
+    "with expiry",
+    "with naming",
+    "word",
+    "word frequency",
+    "write a binary",
+    "write a debounce",
+    "write a guard",
+    "write a haiku",
+    "write a loop",
+    "write a merge",
+    "write a parser",
+    "write a retry",
+    "write a sort",
+    "write a sorting",
+    "write a test",
+    "write a unit",
+    "write error",
+    "write error handling",
+    "gravion",
+    "gravion code",
+    "help",
+    "help me",
+    "me",
+    "please",
+    "code write",
+    "gravion code write",
+    "help me write",
+    "me write",
+    "please write",
+    "code write a",
+    "me write a",
+    "please write a",
+    "code explain",
+    "gravion code explain",
+    "help me explain",
+    "me explain",
+    "please explain",
+    "code design",
+    "code design a",
+    "gravion code design",
+    "help me design",
+    "me design",
+    "me design a",
+    "please design",
+    "please design a",
+    "code create",
+    "code create a",
+    "gravion code create",
+    "help me create",
+    "me create",
+    "me create a",
+    "please create",
+    "please create a",
+    "code make",
+    "gravion code make",
+    "help me make",
+    "me make",
+    "please make",
+    "code explain database",
+    "code handle",
+    "code make a",
+    "gravion code handle",
+    "help me handle",
+    "me explain database",
+    "me handle",
+    "me make a",
+    "please explain database",
+    "please handle",
+    "please make a",
+    "code debug",
+    "code debug a",
+    "code explain a",
+    "code explain asynchronous",
+    "code explain code",
+    "code explain dependency",
+    "code explain event",
+    "code explain feature",
+    "code explain hashing",
+    "code explain immutability",
+    "code explain interfaces",
+    "code explain memory",
+    "code explain object",
+    "code explain recursion",
+    "code explain stack",
+    "code explain testing",
+    "code explain the",
+    "code explain time",
+    "code explain version",
+    "code handle an",
+    "code handle null",
+    "code improve",
+    "code improve slow",
+    "code make code",
+    "code refactor",
+    "code refactor duplicated",
+    "code validate",
+    "code validate user",
+    "code write error",
+    "gravion code debug",
+    "gravion code improve",
+    "gravion code refactor",
+    "gravion code validate",
+    "help me debug",
+    "help me improve",
+    "help me refactor",
+    "help me validate",
+    "me debug",
+    "me debug a",
+    "me explain a",
+    "me explain asynchronous",
+    "me explain code",
+    "me explain dependency",
+    "me explain event",
+    "me explain feature",
+    "me explain hashing",
+    "me explain immutability",
+    "me explain interfaces",
+    "me explain memory",
+    "me explain object",
+    "me explain recursion",
+    "me explain stack",
+    "me explain testing",
+    "me explain the",
+    "me explain time",
+    "me explain version",
+    "me handle an",
+    "me handle null",
+    "me improve",
+    "me improve slow",
+    "me make code",
+    "me refactor",
+    "me refactor duplicated",
+    "me validate",
+    "me validate user",
+    "me write error",
+    "please debug",
+    "please debug a",
+    "please explain a",
+    "please explain asynchronous",
+    "please explain code",
+    "please explain dependency",
+    "please explain event",
+    "please explain feature",
+    "please explain hashing",
+    "please explain immutability",
+    "please explain interfaces",
+    "please explain memory",
+    "please explain object",
+    "please explain recursion",
+    "please explain stack",
+    "please explain testing",
+    "please explain the",
+    "please explain time",
+    "please explain version",
+    "please handle an",
+    "please handle null",
+    "please improve",
+    "please improve slow",
+    "please make code",
+    "please refactor",
+    "please refactor duplicated",
+    "please validate",
+    "please validate user",
+    "please write error"
+  ],
+  "format": "gravion-core-local-v3",
+  "model_id": "gravion-code",
+  "parameter_count": 48653,
+  "trained_from": {
+    "classes": 56,
+    "dataset_sha256": "426088660e88a1c35d64dd98ad5601b234a58cc1a87d8db54def21a8896d3a00",
+    "examples": 228,
+    "features": 643,
+    "source": "data/gravion-code-seed.jsonl"
+  },
+  "transitions": {
+    "<s>": {
+      "a": 0.10526316,
+      "an": 0.03508772,
+      "asynchronous": 0.01754386,
+      "binary": 0.01754386,
+      "build": 0.01754386,
+      "check": 0.05263158,
+      "code": 0.01754386,
+      "compare": 0.03508772,
+      "count": 0.01754386,
+      "decide": 0.01754386,
+      "define": 0.0877193,
+      "dependency": 0.01754386,
+      "event": 0.01754386,
+      "extract": 0.01754386,
+      "feature": 0.01754386,
+      "immutable": 0.01754386,
+      "iterate": 0.01754386,
+      "log": 0.01754386,
+      "object": 0.01754386,
+      "open": 0.01754386,
+      "parse": 0.01754386,
+      "password": 0.01754386,
+      "profile": 0.01754386,
+      "read": 0.01754386,
+      "recursion": 0.01754386,
+      "reproduce": 0.01754386,
+      "retry": 0.01754386,
+      "return": 0.05263158,
+      "split": 0.03508772,
+      "store": 0.01754386,
+      "test": 0.03508772,
+      "time": 0.01754386,
+      "track": 0.01754386,
+      "trim": 0.01754386,
+      "use": 0.03508772,
+      "version": 0.01754386,
+      "wait": 0.01754386,
+      "walk": 0.03508772
+    },
+    "a": {
+      "base": 0.03030303,
+      "clear": 0.06060606,
+      "contract": 0.03030303,
+      "fast": 0.03030303,
+      "file": 0.03030303,
+      "function": 0.03030303,
+      "known": 0.06060606,
+      "list": 0.03030303,
+      "lookup": 0.03030303,
+      "memory": 0.03030303,
+      "named": 0.03030303,
+      "problem": 0.03030303,
+      "proper": 0.03030303,
+      "queue": 0.03030303,
+      "quiet": 0.03030303,
+      "set": 0.06060606,
+      "slow": 0.03030303,
+      "small": 0.06060606,
+      "smaller": 0.03030303,
+      "sorted": 0.03030303,
+      "stack": 0.06060606,
+      "task": 0.03030303,
+      "three": 0.03030303,
+      "time": 0.03030303,
+      "transaction": 0.03030303,
+      "valid": 0.03030303,
+      "value": 0.03030303,
+      "variable": 0.03030303
+    },
+    "above": {
+      "each": 1.0
+    },
+    "absent": {
+      "</s>": 1.0
+    },
+    "action": {
+      "print": 1.0
+    },
+    "after": {
+      "creation": 0.33333333,
+      "each": 0.33333333,
+      "the": 0.33333333
+    },
+    "again": {
+      "</s>": 0.5,
+      "preserving": 0.5
+    },
+    "all": {
+      "succeed": 1.0
+    },
+    "allow": {
+      "bursts": 1.0
+    },
+    "allowed": {
+      "characters": 0.33333333,
+      "check": 0.33333333,
+      "transitions": 0.33333333
+    },
+    "always": {
+      "take": 1.0
+    },
+    "an": {
+      "empty": 0.33333333,
+      "error": 0.16666667,
+      "expiry": 0.16666667,
+      "index": 0.16666667,
+      "interface": 0.16666667
+    },
+    "and": {
+      "a": 0.01886792,
+      "allowed": 0.01886792,
+      "behavior": 0.01886792,
+      "boundary": 0.01886792,
+      "close": 0.01886792,
+      "collect": 0.01886792,
+      "consumers": 0.01886792,
+      "content": 0.01886792,
+      "cross": 0.01886792,
+      "dependency": 0.01886792,
+      "describe": 0.01886792,
+      "disable": 0.01886792,
+      "discards": 0.01886792,
+      "due": 0.01886792,
+      "duplicate": 0.03773585,
+      "duplicates": 0.01886792,
+      "empty": 0.01886792,
+      "error": 0.01886792,
+      "fail": 0.01886792,
+      "guards": 0.01886792,
+      "handle": 0.01886792,
+      "interfaces": 0.01886792,
+      "is": 0.01886792,
+      "just": 0.01886792,
+      "links": 0.01886792,
+      "log": 0.01886792,
+      "maintainability": 0.01886792,
+      "make": 0.01886792,
+      "measure": 0.01886792,
+      "outputs": 0.01886792,
+      "prefer": 0.01886792,
+      "readable": 0.01886792,
+      "refresh": 0.01886792,
+      "release": 0.01886792,
+      "remove": 0.01886792,
+      "report": 0.01886792,
+      "restore": 0.01886792,
+      "return": 0.05660377,
+      "run": 0.01886792,
+      "scan": 0.01886792,
+      "simplifies": 0.01886792,
+      "single": 0.01886792,
+      "test": 0.09433962,
+      "tests": 0.01886792,
+      "write": 0.01886792,
+      "zero": 0.01886792
+    },
+    "appear": {
+      "again": 1.0
+    },
+    "append": {
+      "leaf": 0.5,
+      "the": 0.5
+    },
+    "apply": {
+      "defaults": 1.0
+    },
+    "appropriate": {
+      "and": 1.0
+    },
+    "are": {
+      "caught": 0.5,
+      "not": 0.5
+    },
+    "arguments": {
+      "</s>": 0.5,
+      "validate": 0.5
+    },
+    "as": {
+      "input": 1.0
+    },
+    "assert": {
+      "both": 1.0
+    },
+    "asynchronous": {
+      "code": 1.0
+    },
+    "at": {
+      "and": 0.33333333,
+      "runtime": 0.33333333,
+      "the": 0.33333333
+    },
+    "attempts": {
+      "and": 0.5,
+      "cap": 0.5
+    },
+    "averaging": {
+      "and": 1.0
+    },
+    "avoid": {
+      "changing": 0.5,
+      "secrets": 0.5
+    },
+    "back": {
+      "together": 1.0
+    },
+    "base": {
+      "case": 1.0
+    },
+    "before": {
+      "changes": 0.25,
+      "indexing": 0.25,
+      "use": 0.25,
+      "using": 0.25
+    },
+    "behavior": {
+      "</s>": 0.25,
+      "at": 0.25,
+      "into": 0.25,
+      "unchanged": 0.25
+    },
+    "below": {
+      "exactly": 1.0
+    },
+    "better": {
+      "data": 1.0
+    },
+    "between": {
+      "attempts": 1.0
+    },
+    "binary": {
+      "search": 1.0
+    },
+    "blocking": {
+      "everything": 1.0
+    },
+    "both": {
+      "lists": 0.5,
+      "output": 0.5
+    },
+    "boundary": {
+      "so": 0.5,
+      "values": 0.5
+    },
+    "build": {
+      "the": 1.0
+    },
+    "built": {
+      "for": 1.0
+    },
+    "bursts": {
+      "within": 1.0
+    },
+    "by": {
+      "calling": 0.33333333,
+      "one": 0.33333333,
+      "reading": 0.33333333
+    },
+    "call": {
+      "then": 1.0
+    },
+    "callers": {
+      "rely": 1.0
+    },
+    "calling": {
+      "the": 1.0
+    },
+    "calls": {
+      "</s>": 1.0
+    },
+    "can": {
+      "read": 0.25,
+      "release": 0.25,
+      "review": 0.25,
+      "store": 0.25
+    },
+    "cap": {
+      "total": 1.0
+    },
+    "case": {
+      "</s>": 0.2,
+      "fix": 0.2,
+      "if": 0.2,
+      "stops": 0.2,
+      "when": 0.2
+    },
+    "caught": {
+      "</s>": 1.0
+    },
+    "cause": {
+      "then": 1.0
+    },
+    "change": {
+      "</s>": 0.5,
+      "after": 0.5
+    },
+    "changes": {
+      "merge": 0.33333333,
+      "over": 0.33333333,
+      "so": 0.33333333
+    },
+    "changing": {
+      "the": 1.0
+    },
+    "character": {
+      "inputs": 1.0
+    },
+    "characters": {
+      "from": 0.5,
+      "reject": 0.5
+    },
+    "check": {
+      "before": 0.25,
+      "for": 0.25,
+      "size": 0.25,
+      "type": 0.25
+    },
+    "checks": {
+      "</s>": 0.25,
+      "correctness": 0.25,
+      "quickly": 0.25,
+      "the": 0.25
+    },
+    "choose": {
+      "better": 1.0
+    },
+    "clarity": {
+      "tests": 1.0
+    },
+    "class": {
+      "can": 1.0
+    },
+    "clear": {
+      "action": 0.14285714,
+      "and": 0.14285714,
+      "default": 0.14285714,
+      "message": 0.14285714,
+      "messages": 0.14285714,
+      "responsibilities": 0.14285714,
+      "retry": 0.14285714
+    },
+    "clearly": {
+      "</s>": 1.0
+    },
+    "close": {
+      "resources": 1.0
+    },
+    "code": {
+      "</s>": 0.33333333,
+      "can": 0.16666667,
+      "instead": 0.16666667,
+      "review": 0.16666667,
+      "starts": 0.16666667
+    },
+    "collaborate": {
+      "and": 1.0
+    },
+    "collaborators": {
+      "into": 1.0
+    },
+    "collapse": {
+      "repeated": 1.0
+    },
+    "collect": {
+      "values": 1.0
+    },
+    "collection": {
+      "in": 0.5,
+      "while": 0.5
+    },
+    "comments": {
+      "that": 1.0
+    },
+    "compare": {
+      "neighboring": 1.0
+    },
+    "complete": {
+      "reopen": 1.0
+    },
+    "complexity": {
+      "describes": 1.0
+    },
+    "consistent": {
+      "</s>": 1.0
+    },
+    "consistently": {
+      "and": 1.0
+    },
+    "consumers": {
+      "loosely": 1.0
+    },
+    "content": {
+      "store": 1.0
+    },
+    "context": {
+      "avoid": 1.0
+    },
+    "contract": {
+      "callers": 1.0
+    },
+    "control": {
+      "records": 1.0
+    },
+    "correctness": {
+      "clarity": 1.0
+    },
+    "cost": {
+      "of": 1.0
+    },
+    "count": {
+      "each": 0.33333333,
+      "page": 0.33333333,
+      "requests": 0.33333333
+    },
+    "coupled": {
+      "</s>": 1.0
+    },
+    "creating": {
+      "them": 1.0
+    },
+    "creation": {
+      "which": 1.0
+    },
+    "critical": {
+      "paths": 1.0
+    },
+    "cross": {
+      "field": 1.0
+    },
+    "current": {
+      "page": 1.0
+    },
+    "cursors": {
+      "for": 1.0
+    },
+    "data": {
+      "and": 0.25,
+      "consistent": 0.25,
+      "reachable": 0.25,
+      "structures": 0.25
+    },
+    "database": {
+      "find": 1.0
+    },
+    "date": {
+      "with": 1.0
+    },
+    "decide": {
+      "where": 1.0
+    },
+    "default": {
+      "or": 1.0
+    },
+    "defaults": {
+      "and": 0.5,
+      "or": 0.5
+    },
+    "define": {
+      "a": 0.4,
+      "required": 0.2,
+      "states": 0.2,
+      "the": 0.2
+    },
+    "dependency": {
+      "checks": 0.5,
+      "injection": 0.5
+    },
+    "describe": {
+      "the": 1.0
+    },
+    "describes": {
+      "how": 1.0
+    },
+    "design": {
+      "reacts": 1.0
+    },
+    "designed": {
+      "for": 1.0
+    },
+    "details": {
+      "</s>": 1.0
+    },
+    "disable": {
+      "risky": 1.0
+    },
+    "discards": {
+      "half": 1.0
+    },
+    "do": {
+      "not": 1.0
+    },
+    "dominant": {
+      "growth": 1.0
+    },
+    "driven": {
+      "design": 1.0
+    },
+    "due": {
+      "date": 1.0
+    },
+    "duplicate": {
+      "inputs": 0.66666667,
+      "order": 0.33333333
+    },
+    "duplicates": {
+      "a": 1.0
+    },
+    "each": {
+      "boundary": 0.16666667,
+      "case": 0.16666667,
+      "non": 0.16666667,
+      "small": 0.16666667,
+      "value": 0.16666667,
+      "word": 0.16666667
+    },
+    "earlier": {
+      "work": 1.0
+    },
+    "early": {
+      "when": 1.0
+    },
+    "easier": {
+      "</s>": 1.0
+    },
+    "effects": {
+      "and": 1.0
+    },
+    "else": {
+      "then": 1.0
+    },
+    "empty": {
+      "and": 0.16666667,
+      "input": 0.16666667,
+      "line": 0.16666667,
+      "list": 0.16666667,
+      "nesting": 0.16666667,
+      "text": 0.16666667
+    },
+    "end": {
+      "tests": 0.33333333,
+      "to": 0.66666667
+    },
+    "entries": {
+      "</s>": 1.0
+    },
+    "environment": {
+      "validate": 1.0
+    },
+    "error": {
+      "</s>": 0.16666667,
+      "behavior": 0.16666667,
+      "isolate": 0.16666667,
+      "message": 0.16666667,
+      "occurs": 0.16666667,
+      "responses": 0.16666667
+    },
+    "errors": {
+      "are": 0.5,
+      "over": 0.5
+    },
+    "even": {
+      "when": 1.0
+    },
+    "event": {
+      "driven": 1.0
+    },
+    "events": {
+      "and": 0.33333333,
+      "keeping": 0.33333333,
+      "with": 0.33333333
+    },
+    "every": {
+      "validation": 1.0
+    },
+    "everything": {
+      "else": 1.0
+    },
+    "exact": {
+      "output": 1.0
+    },
+    "exactly": {
+      "at": 1.0
+    },
+    "executable": {
+      "paths": 1.0
+    },
+    "existing": {
+      "tests": 1.0
+    },
+    "exit": {
+      "code": 1.0
+    },
+    "expiry": {
+      "time": 1.0
+    },
+    "explicit": {
+      "defaults": 1.0
+    },
+    "exposing": {
+      "secrets": 1.0
+    },
+    "extension": {
+      "and": 1.0
+    },
+    "extract": {
+      "the": 1.0
+    },
+    "fail": {
+      "with": 1.0
+    },
+    "failing": {
+      "case": 1.0
+    },
+    "failure": {
+      "</s>": 0.5,
+      "read": 0.5
+    },
+    "failures": {
+      "searchable": 0.5,
+      "wait": 0.5
+    },
+    "fast": {
+      "general": 0.5,
+      "unit": 0.5
+    },
+    "faster": {
+      "at": 1.0
+    },
+    "feature": {
+      "flags": 1.0
+    },
+    "fewer": {
+      "integration": 1.0
+    },
+    "field": {
+      "rules": 1.0
+    },
+    "fields": {
+      "types": 1.0
+    },
+    "file": {
+      "or": 0.5,
+      "safely": 0.5
+    },
+    "files": {
+      "and": 1.0
+    },
+    "final": {
+      "error": 1.0
+    },
+    "find": {
+      "retained": 0.33333333,
+      "rows": 0.33333333,
+      "the": 0.33333333
+    },
+    "first": {
+      "</s>": 0.16666667,
+      "a": 0.16666667,
+      "duplicate": 0.16666667,
+      "error": 0.16666667,
+      "find": 0.16666667,
+      "separator": 0.16666667
+    },
+    "fix": {
+      "one": 1.0
+    },
+    "flags": {
+      "switch": 1.0
+    },
+    "flat": {
+      "and": 1.0
+    },
+    "for": {
+      "a": 0.14285714,
+      "an": 0.14285714,
+      "critical": 0.14285714,
+      "each": 0.14285714,
+      "membership": 0.14285714,
+      "passwords": 0.14285714,
+      "the": 0.14285714
+    },
+    "found": {
+      "or": 1.0
+    },
+    "fresh": {
+      "values": 1.0
+    },
+    "from": {
+      "a": 0.5,
+      "the": 0.5
+    },
+    "function": {
+      "on": 0.25,
+      "once": 0.25,
+      "that": 0.25,
+      "with": 0.25
+    },
+    "functions": {
+      "small": 1.0
+    },
+    "general": {
+      "hash": 1.0
+    },
+    "gradually": {
+      "and": 1.0
+    },
+    "groups": {
+      "changes": 0.5,
+      "data": 0.5
+    },
+    "grows": {
+      "as": 0.33333333,
+      "over": 0.33333333,
+      "using": 0.33333333
+    },
+    "growth": {
+      "term": 1.0
+    },
+    "guards": {
+      "reject": 1.0
+    },
+    "guidance": {
+      "</s>": 1.0
+    },
+    "haiku": {
+      "keep": 1.0
+    },
+    "half": {
+      "until": 1.0
+    },
+    "handle": {
+      "missing": 0.5,
+      "one": 0.5
+    },
+    "handles": {
+      "the": 1.0
+    },
+    "handling": {
+      "</s>": 1.0
+    },
+    "hash": {
+      "designed": 0.5,
+      "or": 0.5
+    },
+    "heavy": {
+      "work": 1.0
+    },
+    "helper": {
+      "keep": 1.0
+    },
+    "helpful": {
+      "output": 1.0
+    },
+    "helps": {
+      "the": 1.0
+    },
+    "history": {
+      "collaborate": 1.0
+    },
+    "hot": {
+      "path": 1.0
+    },
+    "how": {
+      "running": 1.0
+    },
+    "if": {
+      "needed": 1.0
+    },
+    "immutable": {
+      "values": 1.0
+    },
+    "important": {
+      "events": 1.0
+    },
+    "in": {
+      "a": 0.5,
+      "order": 0.5
+    },
+    "index": {
+      "is": 1.0
+    },
+    "indexing": {
+      "or": 1.0
+    },
+    "injection": {
+      "passes": 1.0
+    },
+    "input": {
+      "an": 0.14285714,
+      "and": 0.14285714,
+      "is": 0.14285714,
+      "malformed": 0.14285714,
+      "size": 0.14285714,
+      "until": 0.14285714,
+      "with": 0.14285714
+    },
+    "inputs": {
+      "</s>": 0.5,
+      "and": 0.16666667,
+      "return": 0.16666667,
+      "validation": 0.16666667
+    },
+    "inside": {
+      "making": 1.0
+    },
+    "instead": {
+      "of": 1.0
+    },
+    "integration": {
+      "tests": 1.0
+    },
+    "interface": {
+      "is": 1.0
+    },
+    "interfaces": {
+      "</s>": 1.0
+    },
+    "internal": {
+      "details": 1.0
+    },
+    "into": {
+      "code": 0.25,
+      "objects": 0.25,
+      "one": 0.25,
+      "words": 0.25
+    },
+    "invalid": {
+      "input": 0.5,
+      "so": 0.5
+    },
+    "is": {
+      "a": 0.375,
+      "allowed": 0.125,
+      "built": 0.125,
+      "found": 0.125,
+      "invalid": 0.125,
+      "ready": 0.125
+    },
+    "isolate": {
+      "the": 1.0
+    },
+    "it": {
+      "</s>": 0.25,
+      "is": 0.25,
+      "later": 0.25,
+      "with": 0.25
+    },
+    "item": {
+      "first": 0.66666667,
+      "per": 0.33333333
+    },
+    "items": {
+      "and": 0.5,
+      "total": 0.5
+    },
+    "iterate": {
+      "over": 1.0
+    },
+    "just": {
+      "above": 0.5,
+      "below": 0.5
+    },
+    "keep": {
+      "behavior": 0.33333333,
+      "functions": 0.33333333,
+      "the": 0.33333333
+    },
+    "keeping": {
+      "data": 0.5,
+      "producers": 0.5
+    },
+    "keeps": {
+      "order": 0.33333333,
+      "unique": 0.33333333,
+      "unused": 0.33333333
+    },
+    "key": {
+      "in": 1.0
+    },
+    "keys": {
+      "and": 0.5,
+      "apply": 0.5
+    },
+    "knowing": {
+      "internal": 1.0
+    },
+    "known": {
+      "sorting": 1.0
+    },
+    "last": {
+      "call": 1.0
+    },
+    "later": {
+      "</s>": 1.0
+    },
+    "latest": {
+      "arguments": 1.0
+    },
+    "leaf": {
+      "values": 1.0
+    },
+    "leak": {
+      "keeps": 1.0
+    },
+    "length": {
+      "range": 1.0
+    },
+    "levels": {
+      "consistently": 1.0
+    },
+    "limits": {
+      "and": 1.0
+    },
+    "line": {
+      "haiku": 0.5,
+      "on": 0.5
+    },
+    "lines": {
+      "</s>": 1.0
+    },
+    "links": {
+      "or": 1.0
+    },
+    "list": {
+      "before": 0.5,
+      "keeps": 0.5
+    },
+    "listed": {
+      "</s>": 1.0
+    },
+    "lists": {
+      "recursively": 0.5,
+      "with": 0.5
+    },
+    "log": {
+      "important": 0.5,
+      "the": 0.5
+    },
+    "logic": {
+      "into": 1.0
+    },
+    "longer": {
+      "between": 1.0
+    },
+    "lookup": {
+      "structure": 1.0
+    },
+    "looping": {
+      "</s>": 1.0
+    },
+    "loosely": {
+      "coupled": 1.0
+    },
+    "main": {
+      "path": 1.0
+    },
+    "maintainability": {
+      "before": 1.0
+    },
+    "make": {
+      "failures": 1.0
+    },
+    "making": {
+      "tests": 1.0
+    },
+    "malformed": {
+      "input": 0.5,
+      "lines": 0.5
+    },
+    "many": {
+      "fast": 1.0
+    },
+    "measure": {
+      "again": 1.0
+    },
+    "membership": {
+      "checks": 1.0
+    },
+    "memory": {
+      "grows": 0.5,
+      "leak": 0.5
+    },
+    "merely": {
+      "repeat": 1.0
+    },
+    "merge": {
+      "</s>": 1.0
+    },
+    "message": {
+      "</s>": 0.5,
+      "before": 0.5
+    },
+    "messages": {
+      "</s>": 1.0
+    },
+    "method": {
+      "then": 1.0
+    },
+    "methods": {
+      "to": 1.0
+    },
+    "middle": {
+      "of": 1.0
+    },
+    "missing": {
+      "or": 1.0
+    },
+    "named": {
+      "events": 0.5,
+      "place": 0.5
+    },
+    "names": {
+      "that": 1.0
+    },
+    "needed": {
+      "</s>": 0.33333333,
+      "collaborators": 0.33333333,
+      "count": 0.33333333
+    },
+    "negative": {
+      "and": 1.0
+    },
+    "neighboring": {
+      "values": 1.0
+    },
+    "nested": {
+      "lists": 1.0
+    },
+    "nesting": {
+      "</s>": 1.0
+    },
+    "never": {
+      "a": 1.0
+    },
+    "newest": {
+      "item": 1.0
+    },
+    "next": {
+      "page": 0.5,
+      "value": 0.5
+    },
+    "non": {
+      "empty": 1.0
+    },
+    "normalize": {
+      "case": 1.0
+    },
+    "not": {
+      "change": 0.5,
+      "listed": 0.5
+    },
+    "null": {
+      "is": 1.0
+    },
+    "number": {
+      "of": 1.0
+    },
+    "numeric": {
+      "inputs": 1.0
+    },
+    "object": {
+      "oriented": 1.0
+    },
+    "objects": {
+      "with": 1.0
+    },
+    "occurs": {
+      "</s>": 1.0
+    },
+    "of": {
+      "a": 0.25,
+      "creating": 0.25,
+      "end": 0.25,
+      "storage": 0.25
+    },
+    "off": {
+      "by": 1.0
+    },
+    "oldest": {
+      "item": 1.0
+    },
+    "on": {
+      "a": 0.33333333,
+      "promised": 0.33333333,
+      "the": 0.33333333
+    },
+    "once": {
+      "with": 1.0
+    },
+    "one": {
+      "cause": 0.2,
+      "clear": 0.2,
+      "errors": 0.2,
+      "helper": 0.2,
+      "item": 0.2
+    },
+    "only": {
+      "temporary": 1.0
+    },
+    "open": {
+      "the": 1.0
+    },
+    "or": {
+      "absent": 0.06666667,
+      "averaging": 0.06666667,
+      "cursors": 0.06666667,
+      "environment": 0.06666667,
+      "error": 0.06666667,
+      "errors": 0.06666667,
+      "heavy": 0.06666667,
+      "plain": 0.06666667,
+      "remove": 0.06666667,
+      "roll": 0.06666667,
+      "unreadable": 0.06666667,
+      "update": 0.06666667,
+      "use": 0.13333333,
+      "with": 0.06666667
+    },
+    "order": {
+      "and": 0.75,
+      "if": 0.25
+    },
+    "oriented": {
+      "programming": 1.0
+    },
+    "output": {
+      "</s>": 0.33333333,
+      "and": 0.66666667
+    },
+    "outputs": {
+      "without": 1.0
+    },
+    "outside": {
+      "executable": 1.0
+    },
+    "over": {
+      "silent": 0.25,
+      "the": 0.25,
+      "time": 0.5
+    },
+    "page": {
+      "</s>": 0.25,
+      "and": 0.25,
+      "items": 0.25,
+      "size": 0.25
+    },
+    "parse": {
+      "arguments": 1.0
+    },
+    "pass": {
+      "avoid": 1.0
+    },
+    "passes": {
+      "needed": 1.0
+    },
+    "password": {
+      "storage": 1.0
+    },
+    "passwords": {
+      "never": 1.0
+    },
+    "path": {
+      "reduce": 0.5,
+      "stays": 0.5
+    },
+    "paths": {
+      "</s>": 0.33333333,
+      "and": 0.33333333,
+      "quickly": 0.33333333
+    },
+    "pattern": {
+      "clear": 1.0
+    },
+    "per": {
+      "key": 0.5,
+      "pass": 0.5
+    },
+    "period": {
+      "after": 1.0
+    },
+    "place": {
+      "that": 1.0
+    },
+    "plain": {
+      "text": 1.0
+    },
+    "pointers": {
+      "always": 1.0
+    },
+    "positive": {
+      "negative": 1.0
+    },
+    "prefer": {
+      "explicit": 1.0
+    },
+    "preserving": {
+      "first": 1.0
+    },
+    "print": {
+      "helpful": 1.0
+    },
+    "problem": {
+      "by": 0.5,
+      "clearly": 0.5
+    },
+    "producers": {
+      "and": 1.0
+    },
+    "profile": {
+      "first": 1.0
+    },
+    "programming": {
+      "groups": 1.0
+    },
+    "promised": {
+      "inputs": 1.0
+    },
+    "proper": {
+      "exit": 1.0
+    },
+    "punctuation": {
+      "and": 0.5,
+      "handling": 0.5
+    },
+    "purpose": {
+      "keep": 1.0
+    },
+    "queue": {
+      "removes": 1.0
+    },
+    "quickly": {
+      "</s>": 0.33333333,
+      "and": 0.33333333,
+      "without": 0.33333333
+    },
+    "quiet": {
+      "period": 1.0
+    },
+    "range": {
+      "and": 1.0
+    },
+    "ranges": {
+      "and": 1.0
+    },
+    "reachable": {
+      "so": 1.0
+    },
+    "reacts": {
+      "to": 1.0
+    },
+    "read": {
+      "or": 0.33333333,
+      "settings": 0.33333333,
+      "the": 0.33333333
+    },
+    "readable": {
+      "</s>": 1.0
+    },
+    "reading": {
+      "characters": 1.0
+    },
+    "ready": {
+      "</s>": 1.0
+    },
+    "reasoning": {
+      "</s>": 1.0
+    },
+    "records": {
+      "changes": 1.0
+    },
+    "recursion": {
+      "solves": 1.0
+    },
+    "recursively": {
+      "or": 1.0
+    },
+    "reduce": {
+      "repeated": 1.0
+    },
+    "reduces": {
+      "surprise": 1.0
+    },
+    "references": {
+      "and": 1.0
+    },
+    "refresh": {
+      "or": 1.0
+    },
+    "reject": {
+      "invalid": 0.5,
+      "transitions": 0.5
+    },
+    "release": {
+      "gradually": 0.5,
+      "them": 0.5
+    },
+    "rely": {
+      "on": 1.0
+    },
+    "remaining": {
+      "tail": 1.0
+    },
+    "remove": {
+      "comments": 0.5,
+      "stale": 0.5
+    },
+    "removes": {
+      "the": 1.0
+    },
+    "reopen": {
+      "and": 1.0
+    },
+    "repeat": {
+      "the": 1.0
+    },
+    "repeated": {
+      "logic": 0.33333333,
+      "spaces": 0.33333333,
+      "work": 0.33333333
+    },
+    "repeatedly": {
+      "checks": 1.0
+    },
+    "report": {
+      "every": 0.5,
+      "malformed": 0.5
+    },
+    "reproduce": {
+      "the": 1.0
+    },
+    "requests": {
+      "per": 1.0
+    },
+    "required": {
+      "</s>": 0.33333333,
+      "fields": 0.33333333,
+      "keys": 0.33333333
+    },
+    "rerun": {
+      "the": 1.0
+    },
+    "resources": {
+      "even": 1.0
+    },
+    "response": {
+      "error": 1.0
+    },
+    "responses": {
+      "and": 1.0
+    },
+    "responsibilities": {
+      "and": 1.0
+    },
+    "restore": {
+      "earlier": 1.0
+    },
+    "result": {
+      "when": 1.0
+    },
+    "retained": {
+      "references": 1.0
+    },
+    "retry": {
+      "guidance": 0.5,
+      "only": 0.5
+    },
+    "return": {
+      "a": 0.25,
+      "clear": 0.125,
+      "early": 0.125,
+      "fresh": 0.125,
+      "page": 0.125,
+      "service": 0.125,
+      "their": 0.125
+    },
+    "returns": {
+      "a": 1.0
+    },
+    "reversed": {
+      "and": 0.66666667,
+      "text": 0.33333333
+    },
+    "review": {
+      "checks": 0.5,
+      "history": 0.5
+    },
+    "risky": {
+      "paths": 1.0
+    },
+    "roll": {
+      "back": 1.0
+    },
+    "route": {
+      "inputs": 1.0
+    },
+    "rows": {
+      "faster": 1.0
+    },
+    "rules": {
+      "report": 1.0
+    },
+    "run": {
+      "one": 0.33333333,
+      "the": 0.66666667
+    },
+    "running": {
+      "time": 1.0
+    },
+    "runtime": {
+      "so": 1.0
+    },
+    "safely": {
+      "handle": 1.0
+    },
+    "salted": {
+      "hash": 1.0
+    },
+    "same": {
+      "function": 1.0
+    },
+    "scan": {
+      "when": 1.0
+    },
+    "search": {
+      "repeatedly": 1.0
+    },
+    "searchable": {
+      "</s>": 1.0
+    },
+    "secrets": {
+      "or": 0.5,
+      "use": 0.5
+    },
+    "security": {
+      "and": 1.0
+    },
+    "seen": {
+      "values": 1.0
+    },
+    "separator": {
+      "trim": 1.0
+    },
+    "service": {
+      "status": 1.0
+    },
+    "set": {
+      "and": 0.5,
+      "keeps": 0.5
+    },
+    "settings": {
+      "from": 1.0
+    },
+    "should": {
+      "use": 1.0
+    },
+    "side": {
+      "effects": 1.0
+    },
+    "silent": {
+      "failure": 1.0
+    },
+    "simplifies": {
+      "reasoning": 1.0
+    },
+    "single": {
+      "character": 1.0
+    },
+    "size": {
+      "current": 0.33333333,
+      "grows": 0.33333333,
+      "type": 0.33333333
+    },
+    "slow": {
+      "salted": 1.0
+    },
+    "small": {
+      "and": 0.25,
+      "change": 0.25,
+      "function": 0.25,
+      "number": 0.25
+    },
+    "smaller": {
+      "input": 0.5,
+      "next": 0.5
+    },
+    "smallest": {
+      "failing": 1.0
+    },
+    "so": {
+      "code": 0.14285714,
+      "memory": 0.14285714,
+      "off": 0.14285714,
+      "teams": 0.14285714,
+      "the": 0.14285714,
+      "they": 0.14285714,
+      "you": 0.14285714
+    },
+    "solves": {
+      "a": 1.0
+    },
+    "sorted": {
+      "range": 0.33333333,
+      "reversed": 0.66666667
+    },
+    "sorting": {
+      "method": 1.0
+    },
+    "spaces": {
+      "normalize": 0.5,
+      "validate": 0.5
+    },
+    "split": {
+      "each": 0.5,
+      "text": 0.5
+    },
+    "stack": {
+      "append": 0.5,
+      "removes": 0.5
+    },
+    "stale": {
+      "entries": 1.0
+    },
+    "start": {
+      "then": 1.0
+    },
+    "starts": {
+      "work": 1.0
+    },
+    "state": {
+      "purpose": 1.0
+    },
+    "states": {
+      "allowed": 1.0
+    },
+    "status": {
+      "and": 0.5,
+      "version": 0.5
+    },
+    "stays": {
+      "flat": 1.0
+    },
+    "stops": {
+      "the": 1.0
+    },
+    "storage": {
+      "and": 0.5,
+      "should": 0.5
+    },
+    "store": {
+      "each": 0.33333333,
+      "title": 0.33333333,
+      "uploads": 0.33333333
+    },
+    "stores": {
+      "a": 1.0
+    },
+    "structure": {
+      "that": 1.0
+    },
+    "structures": {
+      "and": 1.0
+    },
+    "succeed": {
+      "together": 1.0
+    },
+    "success": {
+      "response": 1.0
+    },
+    "sum": {
+      "and": 1.0
+    },
+    "surprise": {
+      "side": 1.0
+    },
+    "switch": {
+      "behavior": 1.0
+    },
+    "syllable": {
+      "pattern": 1.0
+    },
+    "tail": {
+      "</s>": 1.0
+    },
+    "take": {
+      "the": 1.0
+    },
+    "target": {
+      "is": 1.0
+    },
+    "task": {
+      "</s>": 0.5,
+      "class": 0.5
+    },
+    "teams": {
+      "can": 1.0
+    },
+    "temporary": {
+      "failures": 1.0
+    },
+    "term": {
+      "</s>": 1.0
+    },
+    "test": {
+      "</s>": 0.11111111,
+      "a": 0.11111111,
+      "empty": 0.22222222,
+      "it": 0.11111111,
+      "just": 0.11111111,
+      "punctuation": 0.22222222,
+      "the": 0.11111111
+    },
+    "tests": {
+      "after": 0.14285714,
+      "and": 0.14285714,
+      "easier": 0.14285714,
+      "fewer": 0.14285714,
+      "for": 0.28571429,
+      "security": 0.14285714
+    },
+    "text": {
+      "</s>": 0.5,
+      "by": 0.25,
+      "into": 0.25
+    },
+    "that": {
+      "appear": 0.14285714,
+      "are": 0.14285714,
+      "helps": 0.14285714,
+      "merely": 0.14285714,
+      "returns": 0.14285714,
+      "state": 0.14285714,
+      "stores": 0.14285714
+    },
+    "the": {
+      "calls": 0.02702703,
+      "code": 0.02702703,
+      "collection": 0.05405405,
+      "cost": 0.02702703,
+      "database": 0.02702703,
+      "dominant": 0.02702703,
+      "end": 0.02702703,
+      "exact": 0.02702703,
+      "existing": 0.02702703,
+      "failure": 0.02702703,
+      "file": 0.02702703,
+      "final": 0.02702703,
+      "first": 0.05405405,
+      "function": 0.02702703,
+      "hot": 0.02702703,
+      "last": 0.02702703,
+      "latest": 0.02702703,
+      "main": 0.02702703,
+      "middle": 0.02702703,
+      "newest": 0.02702703,
+      "next": 0.02702703,
+      "oldest": 0.02702703,
+      "remaining": 0.02702703,
+      "repeated": 0.02702703,
+      "result": 0.02702703,
+      "reversed": 0.02702703,
+      "route": 0.02702703,
+      "same": 0.02702703,
+      "smaller": 0.02702703,
+      "smallest": 0.02702703,
+      "start": 0.02702703,
+      "syllable": 0.02702703,
+      "target": 0.02702703,
+      "task": 0.02702703,
+      "test": 0.02702703
+    },
+    "their": {
+      "sum": 1.0
+    },
+    "them": {
+      "</s>": 0.33333333,
+      "inside": 0.33333333,
+      "run": 0.33333333
+    },
+    "then": {
+      "append": 0.14285714,
+      "handles": 0.14285714,
+      "rerun": 0.14285714,
+      "run": 0.14285714,
+      "test": 0.14285714,
+      "verify": 0.28571429
+    },
+    "they": {
+      "all": 1.0
+    },
+    "three": {
+      "line": 1.0
+    },
+    "time": {
+      "</s>": 0.14285714,
+      "complexity": 0.14285714,
+      "find": 0.14285714,
+      "grows": 0.14285714,
+      "return": 0.14285714,
+      "so": 0.14285714,
+      "window": 0.14285714
+    },
+    "title": {
+      "status": 1.0
+    },
+    "to": {
+      "complete": 0.25,
+      "end": 0.25,
+      "named": 0.25,
+      "the": 0.25
+    },
+    "together": {
+      "keeping": 0.5,
+      "or": 0.5
+    },
+    "total": {
+      "attempts": 0.5,
+      "count": 0.5
+    },
+    "track": {
+      "seen": 1.0
+    },
+    "transaction": {
+      "groups": 1.0
+    },
+    "transitions": {
+      "events": 0.5,
+      "that": 0.5
+    },
+    "trim": {
+      "spaces": 0.5,
+      "whitespace": 0.5
+    },
+    "two": {
+      "numeric": 1.0
+    },
+    "type": {
+      "extension": 0.5,
+      "length": 0.5
+    },
+    "types": {
+      "ranges": 1.0
+    },
+    "unchanged": {
+      "and": 1.0
+    },
+    "unique": {
+      "items": 1.0
+    },
+    "unit": {
+      "tests": 1.0
+    },
+    "unreadable": {
+      "files": 1.0
+    },
+    "until": {
+      "a": 0.5,
+      "the": 0.5
+    },
+    "unused": {
+      "data": 1.0
+    },
+    "update": {
+      "it": 1.0
+    },
+    "uploads": {
+      "outside": 1.0
+    },
+    "use": {
+      "a": 0.42857143,
+      "and": 0.14285714,
+      "levels": 0.14285714,
+      "many": 0.14285714,
+      "names": 0.14285714
+    },
+    "using": {
+      "it": 0.5,
+      "the": 0.5
+    },
+    "valid": {
+      "input": 1.0
+    },
+    "validate": {
+      "keys": 0.33333333,
+      "required": 0.33333333,
+      "them": 0.33333333
+    },
+    "validation": {
+      "problem": 0.5,
+      "success": 0.5
+    },
+    "value": {
+      "so": 0.33333333,
+      "then": 0.33333333,
+      "with": 0.33333333
+    },
+    "values": {
+      "</s>": 0.11111111,
+      "assert": 0.11111111,
+      "do": 0.11111111,
+      "in": 0.22222222,
+      "or": 0.22222222,
+      "quickly": 0.11111111,
+      "that": 0.11111111
+    },
+    "variable": {
+      "is": 1.0
+    },
+    "verify": {
+      "sorted": 1.0
+    },
+    "version": {
+      "and": 0.5,
+      "control": 0.5
+    },
+    "wait": {
+      "for": 0.5,
+      "longer": 0.5
+    },
+    "walk": {
+      "both": 0.5,
+      "nested": 0.5
+    },
+    "when": {
+      "an": 0.2,
+      "appropriate": 0.2,
+      "input": 0.2,
+      "it": 0.2,
+      "required": 0.2
+    },
+    "where": {
+      "null": 1.0
+    },
+    "which": {
+      "reduces": 1.0
+    },
+    "while": {
+      "looping": 1.0
+    },
+    "whitespace": {
+      "collapse": 1.0
+    },
+    "window": {
+      "allow": 1.0
+    },
+    "with": {
+      "a": 0.18181818,
+      "an": 0.09090909,
+      "clear": 0.18181818,
+      "context": 0.09090909,
+      "methods": 0.09090909,
+      "pointers": 0.09090909,
+      "positive": 0.09090909,
+      "the": 0.09090909,
+      "two": 0.09090909
+    },
+    "within": {
+      "limits": 1.0
+    },
+    "without": {
+      "blocking": 0.33333333,
+      "exposing": 0.33333333,
+      "knowing": 0.33333333
+    },
+    "word": {
+      "and": 1.0
+    },
+    "words": {
+      "normalize": 1.0
+    },
+    "work": {
+      "</s>": 0.5,
+      "choose": 0.25,
+      "without": 0.25
+    },
+    "write": {
+      "time": 1.0
+    },
+    "you": {
+      "can": 1.0
+    },
+    "zero": {
+      "values": 1.0
+    }
+  },
+  "unigram_weights": {
+    "a": 0.03481013,
+    "above": 0.00105485,
+    "absent": 0.00105485,
+    "action": 0.00105485,
+    "after": 0.00316456,
+    "again": 0.0021097,
+    "all": 0.00105485,
+    "allow": 0.00105485,
+    "allowed": 0.00316456,
+    "always": 0.00105485,
+    "an": 0.00632911,
+    "and": 0.05590717,
+    "appear": 0.00105485,
+    "append": 0.0021097,
+    "apply": 0.00105485,
+    "appropriate": 0.00105485,
+    "are": 0.0021097,
+    "arguments": 0.0021097,
+    "as": 0.00105485,
+    "assert": 0.00105485,
+    "asynchronous": 0.00105485,
+    "at": 0.00316456,
+    "attempts": 0.0021097,
+    "averaging": 0.00105485,
+    "avoid": 0.0021097,
+    "back": 0.00105485,
+    "base": 0.00105485,
+    "before": 0.00421941,
+    "behavior": 0.00421941,
+    "below": 0.00105485,
+    "better": 0.00105485,
+    "between": 0.00105485,
+    "binary": 0.00105485,
+    "blocking": 0.00105485,
+    "both": 0.0021097,
+    "boundary": 0.0021097,
+    "build": 0.00105485,
+    "built": 0.00105485,
+    "bursts": 0.00105485,
+    "by": 0.00316456,
+    "call": 0.00105485,
+    "callers": 0.00105485,
+    "calling": 0.00105485,
+    "calls": 0.00105485,
+    "can": 0.00421941,
+    "cap": 0.00105485,
+    "case": 0.00527426,
+    "caught": 0.00105485,
+    "cause": 0.00105485,
+    "change": 0.0021097,
+    "changes": 0.00316456,
+    "changing": 0.00105485,
+    "character": 0.00105485,
+    "characters": 0.0021097,
+    "check": 0.00421941,
+    "checks": 0.00421941,
+    "choose": 0.00105485,
+    "clarity": 0.00105485,
+    "class": 0.00105485,
+    "clear": 0.00738397,
+    "clearly": 0.00105485,
+    "close": 0.00105485,
+    "code": 0.00632911,
+    "collaborate": 0.00105485,
+    "collaborators": 0.00105485,
+    "collapse": 0.00105485,
+    "collect": 0.00105485,
+    "collection": 0.0021097,
+    "comments": 0.00105485,
+    "compare": 0.0021097,
+    "complete": 0.00105485,
+    "complexity": 0.00105485,
+    "consistent": 0.00105485,
+    "consistently": 0.00105485,
+    "consumers": 0.00105485,
+    "content": 0.00105485,
+    "context": 0.00105485,
+    "contract": 0.00105485,
+    "control": 0.00105485,
+    "correctness": 0.00105485,
+    "cost": 0.00105485,
+    "count": 0.00316456,
+    "coupled": 0.00105485,
+    "creating": 0.00105485,
+    "creation": 0.00105485,
+    "critical": 0.00105485,
+    "cross": 0.00105485,
+    "current": 0.00105485,
+    "cursors": 0.00105485,
+    "data": 0.00421941,
+    "database": 0.00105485,
+    "date": 0.00105485,
+    "decide": 0.00105485,
+    "default": 0.00105485,
+    "defaults": 0.0021097,
+    "define": 0.00527426,
+    "dependency": 0.0021097,
+    "describe": 0.00105485,
+    "describes": 0.00105485,
+    "design": 0.00105485,
+    "designed": 0.00105485,
+    "details": 0.00105485,
+    "disable": 0.00105485,
+    "discards": 0.00105485,
+    "do": 0.00105485,
+    "dominant": 0.00105485,
+    "driven": 0.00105485,
+    "due": 0.00105485,
+    "duplicate": 0.00316456,
+    "duplicates": 0.00105485,
+    "each": 0.00632911,
+    "earlier": 0.00105485,
+    "early": 0.00105485,
+    "easier": 0.00105485,
+    "effects": 0.00105485,
+    "else": 0.00105485,
+    "empty": 0.00632911,
+    "end": 0.00316456,
+    "entries": 0.00105485,
+    "environment": 0.00105485,
+    "error": 0.00632911,
+    "errors": 0.0021097,
+    "even": 0.00105485,
+    "event": 0.00105485,
+    "events": 0.00316456,
+    "every": 0.00105485,
+    "everything": 0.00105485,
+    "exact": 0.00105485,
+    "exactly": 0.00105485,
+    "executable": 0.00105485,
+    "existing": 0.00105485,
+    "exit": 0.00105485,
+    "expiry": 0.00105485,
+    "explicit": 0.00105485,
+    "exposing": 0.00105485,
+    "extension": 0.00105485,
+    "extract": 0.00105485,
+    "fail": 0.00105485,
+    "failing": 0.00105485,
+    "failure": 0.0021097,
+    "failures": 0.0021097,
+    "fast": 0.0021097,
+    "faster": 0.00105485,
+    "feature": 0.00105485,
+    "fewer": 0.00105485,
+    "field": 0.00105485,
+    "fields": 0.00105485,
+    "file": 0.0021097,
+    "files": 0.00105485,
+    "final": 0.00105485,
+    "find": 0.00316456,
+    "first": 0.00632911,
+    "fix": 0.00105485,
+    "flags": 0.00105485,
+    "flat": 0.00105485,
+    "for": 0.00738397,
+    "found": 0.00105485,
+    "fresh": 0.00105485,
+    "from": 0.0021097,
+    "function": 0.00421941,
+    "functions": 0.00105485,
+    "general": 0.00105485,
+    "gradually": 0.00105485,
+    "groups": 0.0021097,
+    "grows": 0.00316456,
+    "growth": 0.00105485,
+    "guards": 0.00105485,
+    "guidance": 0.00105485,
+    "haiku": 0.00105485,
+    "half": 0.00105485,
+    "handle": 0.0021097,
+    "handles": 0.00105485,
+    "handling": 0.00105485,
+    "hash": 0.0021097,
+    "heavy": 0.00105485,
+    "helper": 0.00105485,
+    "helpful": 0.00105485,
+    "helps": 0.00105485,
+    "history": 0.00105485,
+    "hot": 0.00105485,
+    "how": 0.00105485,
+    "if": 0.0021097,
+    "immutable": 0.00105485,
+    "important": 0.00105485,
+    "in": 0.00421941,
+    "index": 0.00105485,
+    "indexing": 0.00105485,
+    "injection": 0.00105485,
+    "input": 0.00738397,
+    "inputs": 0.00632911,
+    "inside": 0.00105485,
+    "instead": 0.00105485,
+    "integration": 0.00105485,
+    "interface": 0.00105485,
+    "interfaces": 0.00105485,
+    "internal": 0.00105485,
+    "into": 0.00421941,
+    "invalid": 0.0021097,
+    "is": 0.00843882,
+    "isolate": 0.00105485,
+    "it": 0.00421941,
+    "item": 0.00316456,
+    "items": 0.0021097,
+    "iterate": 0.00105485,
+    "just": 0.0021097,
+    "keep": 0.00316456,
+    "keeping": 0.0021097,
+    "keeps": 0.00316456,
+    "key": 0.00105485,
+    "keys": 0.0021097,
+    "knowing": 0.00105485,
+    "known": 0.0021097,
+    "last": 0.00105485,
+    "later": 0.00105485,
+    "latest": 0.00105485,
+    "leaf": 0.00105485,
+    "leak": 0.00105485,
+    "length": 0.00105485,
+    "levels": 0.00105485,
+    "limits": 0.00105485,
+    "line": 0.0021097,
+    "lines": 0.00105485,
+    "links": 0.00105485,
+    "list": 0.0021097,
+    "listed": 0.00105485,
+    "lists": 0.0021097,
+    "log": 0.0021097,
+    "logic": 0.00105485,
+    "longer": 0.00105485,
+    "lookup": 0.00105485,
+    "looping": 0.00105485,
+    "loosely": 0.00105485,
+    "main": 0.00105485,
+    "maintainability": 0.00105485,
+    "make": 0.00105485,
+    "making": 0.00105485,
+    "malformed": 0.0021097,
+    "many": 0.00105485,
+    "measure": 0.00105485,
+    "membership": 0.00105485,
+    "memory": 0.0021097,
+    "merely": 0.00105485,
+    "merge": 0.00105485,
+    "message": 0.0021097,
+    "messages": 0.00105485,
+    "method": 0.0021097,
+    "methods": 0.00105485,
+    "middle": 0.00105485,
+    "missing": 0.00105485,
+    "named": 0.0021097,
+    "names": 0.00105485,
+    "needed": 0.00316456,
+    "negative": 0.00105485,
+    "neighboring": 0.0021097,
+    "nested": 0.00105485,
+    "nesting": 0.00105485,
+    "never": 0.00105485,
+    "newest": 0.00105485,
+    "next": 0.0021097,
+    "non": 0.00105485,
+    "normalize": 0.0021097,
+    "not": 0.0021097,
+    "null": 0.00105485,
+    "number": 0.00105485,
+    "numeric": 0.00105485,
+    "object": 0.00105485,
+    "objects": 0.00105485,
+    "occurs": 0.00105485,
+    "of": 0.00421941,
+    "off": 0.00105485,
+    "oldest": 0.00105485,
+    "on": 0.00316456,
+    "once": 0.00105485,
+    "one": 0.00527426,
+    "only": 0.00105485,
+    "open": 0.00105485,
+    "or": 0.01582278,
+    "order": 0.00421941,
+    "oriented": 0.00105485,
+    "output": 0.00316456,
+    "outputs": 0.00105485,
+    "outside": 0.00105485,
+    "over": 0.00421941,
+    "page": 0.00421941,
+    "parse": 0.00105485,
+    "pass": 0.00105485,
+    "passes": 0.00105485,
+    "password": 0.00105485,
+    "passwords": 0.00105485,
+    "path": 0.0021097,
+    "paths": 0.00316456,
+    "pattern": 0.00105485,
+    "per": 0.0021097,
+    "period": 0.00105485,
+    "place": 0.00105485,
+    "plain": 0.00105485,
+    "pointers": 0.00105485,
+    "positive": 0.00105485,
+    "prefer": 0.00105485,
+    "preserving": 0.00105485,
+    "print": 0.00105485,
+    "problem": 0.0021097,
+    "producers": 0.00105485,
+    "profile": 0.00105485,
+    "programming": 0.00105485,
+    "promised": 0.00105485,
+    "proper": 0.00105485,
+    "punctuation": 0.0021097,
+    "purpose": 0.00105485,
+    "queue": 0.00105485,
+    "quickly": 0.00316456,
+    "quiet": 0.00105485,
+    "range": 0.0021097,
+    "ranges": 0.00105485,
+    "reachable": 0.00105485,
+    "reacts": 0.00105485,
+    "read": 0.00316456,
+    "readable": 0.00105485,
+    "reading": 0.00105485,
+    "ready": 0.00105485,
+    "reasoning": 0.00105485,
+    "records": 0.00105485,
+    "recursion": 0.00105485,
+    "recursively": 0.00105485,
+    "reduce": 0.00105485,
+    "reduces": 0.00105485,
+    "references": 0.00105485,
+    "refresh": 0.00105485,
+    "reject": 0.0021097,
+    "release": 0.0021097,
+    "rely": 0.00105485,
+    "remaining": 0.00105485,
+    "remove": 0.0021097,
+    "removes": 0.0021097,
+    "reopen": 0.00105485,
+    "repeat": 0.00105485,
+    "repeated": 0.00316456,
+    "repeatedly": 0.00105485,
+    "report": 0.0021097,
+    "reproduce": 0.00105485,
+    "requests": 0.00105485,
+    "required": 0.00316456,
+    "rerun": 0.00105485,
+    "resources": 0.00105485,
+    "response": 0.00105485,
+    "responses": 0.00105485,
+    "responsibilities": 0.00105485,
+    "restore": 0.00105485,
+    "result": 0.00105485,
+    "retained": 0.00105485,
+    "retry": 0.0021097,
+    "return": 0.00843882,
+    "returns": 0.00105485,
+    "reversed": 0.00316456,
+    "review": 0.0021097,
+    "risky": 0.00105485,
+    "roll": 0.00105485,
+    "route": 0.00105485,
+    "rows": 0.00105485,
+    "rules": 0.00105485,
+    "run": 0.00316456,
+    "running": 0.00105485,
+    "runtime": 0.00105485,
+    "safely": 0.00105485,
+    "salted": 0.00105485,
+    "same": 0.00105485,
+    "scan": 0.00105485,
+    "search": 0.00105485,
+    "searchable": 0.00105485,
+    "secrets": 0.0021097,
+    "security": 0.00105485,
+    "seen": 0.00105485,
+    "separator": 0.00105485,
+    "service": 0.00105485,
+    "set": 0.0021097,
+    "settings": 0.00105485,
+    "should": 0.00105485,
+    "side": 0.00105485,
+    "silent": 0.00105485,
+    "simplifies": 0.00105485,
+    "single": 0.00105485,
+    "size": 0.00316456,
+    "slow": 0.00105485,
+    "small": 0.00421941,
+    "smaller": 0.0021097,
+    "smallest": 0.00105485,
+    "so": 0.00738397,
+    "solves": 0.00105485,
+    "sorted": 0.00316456,
+    "sorting": 0.0021097,
+    "spaces": 0.0021097,
+    "split": 0.0021097,
+    "stack": 0.0021097,
+    "stale": 0.00105485,
+    "start": 0.00105485,
+    "starts": 0.00105485,
+    "state": 0.00105485,
+    "states": 0.00105485,
+    "status": 0.0021097,
+    "stays": 0.00105485,
+    "stops": 0.00105485,
+    "storage": 0.0021097,
+    "store": 0.00316456,
+    "stores": 0.00105485,
+    "structure": 0.00105485,
+    "structures": 0.00105485,
+    "succeed": 0.00105485,
+    "success": 0.00105485,
+    "sum": 0.00105485,
+    "surprise": 0.00105485,
+    "switch": 0.00105485,
+    "syllable": 0.00105485,
+    "tail": 0.00105485,
+    "take": 0.00105485,
+    "target": 0.00105485,
+    "task": 0.0021097,
+    "teams": 0.00105485,
+    "temporary": 0.00105485,
+    "term": 0.00105485,
+    "test": 0.00949367,
+    "tests": 0.00738397,
+    "text": 0.00421941,
+    "that": 0.00738397,
+    "the": 0.03902954,
+    "their": 0.00105485,
+    "them": 0.00316456,
+    "then": 0.00738397,
+    "they": 0.00105485,
+    "three": 0.00105485,
+    "time": 0.00738397,
+    "title": 0.00105485,
+    "to": 0.00421941,
+    "together": 0.0021097,
+    "total": 0.0021097,
+    "track": 0.00105485,
+    "transaction": 0.00105485,
+    "transitions": 0.0021097,
+    "trim": 0.0021097,
+    "two": 0.00105485,
+    "type": 0.0021097,
+    "types": 0.00105485,
+    "unchanged": 0.00105485,
+    "unique": 0.00105485,
+    "unit": 0.00105485,
+    "unreadable": 0.00105485,
+    "until": 0.0021097,
+    "unused": 0.00105485,
+    "update": 0.00105485,
+    "uploads": 0.00105485,
+    "use": 0.00738397,
+    "using": 0.0021097,
+    "valid": 0.00105485,
+    "validate": 0.00316456,
+    "validation": 0.0021097,
+    "value": 0.00316456,
+    "values": 0.00949367,
+    "variable": 0.00105485,
+    "verify": 0.0021097,
+    "version": 0.0021097,
+    "wait": 0.0021097,
+    "walk": 0.0021097,
+    "when": 0.00527426,
+    "where": 0.00105485,
+    "which": 0.00105485,
+    "while": 0.00105485,
+    "whitespace": 0.00105485,
+    "window": 0.00105485,
+    "with": 0.01160338,
+    "within": 0.00105485,
+    "without": 0.00316456,
+    "word": 0.00105485,
+    "words": 0.00105485,
+    "work": 0.00421941,
+    "write": 0.00105485,
+    "you": 0.00105485,
+    "zero": 0.00105485
+  },
+  "vocabulary": [
+    "a",
+    "above",
+    "absent",
+    "action",
+    "adds",
+    "after",
+    "again",
+    "all",
+    "allow",
+    "allowed",
+    "always",
+    "an",
+    "and",
+    "api",
+    "appear",
+    "append",
+    "apply",
+    "approach",
+    "appropriate",
+    "are",
+    "arguments",
+    "as",
+    "assert",
+    "asynchronous",
+    "at",
+    "attempts",
+    "averaging",
+    "avoid",
+    "back",
+    "backoff",
+    "base",
+    "basics",
+    "before",
+    "behavior",
+    "below",
+    "benefits",
+    "better",
+    "between",
+    "binary",
+    "blocking",
+    "both",
+    "boundary",
+    "build",
+    "built",
+    "bursts",
+    "by",
+    "cache",
+    "call",
+    "callers",
+    "calling",
+    "calls",
+    "can",
+    "cap",
+    "case",
+    "caught",
+    "cause",
+    "change",
+    "changes",
+    "changing",
+    "character",
+    "characters",
+    "check",
+    "checks",
+    "choose",
+    "clarity",
+    "class",
+    "clause",
+    "clear",
+    "clearly",
+    "close",
+    "code",
+    "collaborate",
+    "collaborators",
+    "collapse",
+    "collect",
+    "collection",
+    "command",
+    "comments",
+    "compare",
+    "complete",
+    "complexity",
+    "configuration",
+    "consistent",
+    "consistently",
+    "consumers",
+    "content",
+    "context",
+    "contract",
+    "contracts",
+    "control",
+    "correctness",
+    "cost",
+    "count",
+    "coupled",
+    "create",
+    "creating",
+    "creation",
+    "critical",
+    "cross",
+    "current",
+    "cursors",
+    "data",
+    "database",
+    "date",
+    "debounce",
+    "debug",
+    "decide",
+    "default",
+    "defaults",
+    "define",
+    "dependency",
+    "describe",
+    "describes",
+    "design",
+    "designed",
+    "details",
+    "difference",
+    "differences",
+    "disable",
+    "discards",
+    "do",
+    "dominant",
+    "driven",
+    "due",
+    "duplicate",
+    "duplicated",
+    "duplicates",
+    "each",
+    "earlier",
+    "early",
+    "easier",
+    "effects",
+    "else",
+    "empty",
+    "end",
+    "endpoint",
+    "entries",
+    "environment",
+    "error",
+    "errors",
+    "even",
+    "event",
+    "events",
+    "every",
+    "everything",
+    "exact",
+    "exactly",
+    "example",
+    "executable",
+    "existing",
+    "exit",
+    "expiry",
+    "explain",
+    "explanation",
+    "explicit",
+    "exposing",
+    "extension",
+    "extract",
+    "fail",
+    "failing",
+    "failure",
+    "failures",
+    "fast",
+    "faster",
+    "feature",
+    "fewer",
+    "field",
+    "fields",
+    "file",
+    "files",
+    "final",
+    "find",
+    "first",
+    "fix",
+    "flags",
+    "flat",
+    "flatten",
+    "for",
+    "found",
+    "frequency",
+    "fresh",
+    "from",
+    "function",
+    "functions",
+    "general",
+    "goals",
+    "gradually",
+    "gravion",
+    "groups",
+    "grows",
+    "growth",
+    "guard",
+    "guards",
+    "guidance",
+    "haiku",
+    "half",
+    "handle",
+    "handles",
+    "handling",
+    "hash",
+    "hashing",
+    "health",
+    "heavy",
+    "help",
+    "helper",
+    "helpful",
+    "helps",
+    "history",
+    "hot",
+    "how",
+    "if",
+    "immutability",
+    "immutable",
+    "important",
+    "improve",
+    "in",
+    "index",
+    "indexes",
+    "indexing",
+    "injection",
+    "input",
+    "inputs",
+    "inside",
+    "instead",
+    "integration",
+    "interface",
+    "interfaces",
+    "internal",
+    "into",
+    "invalid",
+    "is",
+    "isolate",
+    "it",
+    "item",
+    "items",
+    "iterate",
+    "just",
+    "keep",
+    "keeping",
+    "keeps",
+    "key",
+    "keys",
+    "knowing",
+    "known",
+    "last",
+    "later",
+    "latest",
+    "leaf",
+    "leak",
+    "leaks",
+    "length",
+    "levels",
+    "limiter",
+    "limits",
+    "line",
+    "lines",
+    "links",
+    "list",
+    "listed",
+    "lists",
+    "loader",
+    "log",
+    "logging",
+    "logic",
+    "longer",
+    "lookup",
+    "loop",
+    "looping",
+    "loosely",
+    "machine",
+    "main",
+    "maintainability",
+    "make",
+    "making",
+    "malformed",
+    "many",
+    "me",
+    "measure",
+    "membership",
+    "memory",
+    "merely",
+    "merge",
+    "message",
+    "messages",
+    "method",
+    "methods",
+    "middle",
+    "missing",
+    "named",
+    "names",
+    "naming",
+    "needed",
+    "negative",
+    "neighboring",
+    "nested",
+    "nesting",
+    "never",
+    "newest",
+    "next",
+    "non",
+    "normalize",
+    "not",
+    "null",
+    "number",
+    "numbers",
+    "numeric",
+    "object",
+    "objects",
+    "occurs",
+    "of",
+    "off",
+    "oldest",
+    "on",
+    "once",
+    "one",
+    "only",
+    "open",
+    "or",
+    "order",
+    "oriented",
+    "outline",
+    "output",
+    "outputs",
+    "outside",
+    "over",
+    "page",
+    "pagination",
+    "parse",
+    "parser",
+    "pass",
+    "passes",
+    "password",
+    "passwords",
+    "path",
+    "paths",
+    "pattern",
+    "per",
+    "performance",
+    "period",
+    "place",
+    "plain",
+    "please",
+    "pointers",
+    "positive",
+    "prefer",
+    "preserving",
+    "print",
+    "prints",
+    "problem",
+    "producers",
+    "profile",
+    "programming",
+    "promised",
+    "proper",
+    "punctuation",
+    "purpose",
+    "pyramids",
+    "queue",
+    "quickly",
+    "quiet",
+    "range",
+    "ranges",
+    "rate",
+    "reachable",
+    "reacts",
+    "read",
+    "readable",
+    "reading",
+    "ready",
+    "reasoning",
+    "records",
+    "recursion",
+    "recursively",
+    "reduce",
+    "reduces",
+    "refactor",
+    "references",
+    "refresh",
+    "reject",
+    "release",
+    "rely",
+    "remaining",
+    "remove",
+    "removes",
+    "reopen",
+    "repeat",
+    "repeated",
+    "repeatedly",
+    "report",
+    "reproduce",
+    "requests",
+    "required",
+    "rerun",
+    "resources",
+    "response",
+    "responses",
+    "responsibilities",
+    "restore",
+    "result",
+    "retained",
+    "retry",
+    "return",
+    "returns",
+    "reverse",
+    "reversed",
+    "review",
+    "risky",
+    "roll",
+    "route",
+    "rows",
+    "rules",
+    "run",
+    "running",
+    "runtime",
+    "safely",
+    "salted",
+    "same",
+    "scan",
+    "schema",
+    "search",
+    "searchable",
+    "secrets",
+    "security",
+    "seen",
+    "separator",
+    "service",
+    "set",
+    "settings",
+    "should",
+    "side",
+    "silent",
+    "simple",
+    "simplifies",
+    "simply",
+    "single",
+    "size",
+    "slow",
+    "small",
+    "smaller",
+    "smallest",
+    "so",
+    "solves",
+    "sort",
+    "sorted",
+    "sorting",
+    "spaces",
+    "split",
+    "stack",
+    "stale",
+    "start",
+    "starts",
+    "state",
+    "states",
+    "status",
+    "stays",
+    "step",
+    "stops",
+    "storage",
+    "store",
+    "stores",
+    "string",
+    "structure",
+    "structures",
+    "succeed",
+    "success",
+    "sum",
+    "surprise",
+    "switch",
+    "syllable",
+    "tail",
+    "take",
+    "target",
+    "task",
+    "teams",
+    "temporary",
+    "term",
+    "terms",
+    "test",
+    "testing",
+    "tests",
+    "text",
+    "that",
+    "the",
+    "their",
+    "them",
+    "then",
+    "they",
+    "three",
+    "time",
+    "title",
+    "to",
+    "together",
+    "tool",
+    "total",
+    "track",
+    "transaction",
+    "transactions",
+    "transitions",
+    "trim",
+    "two",
+    "type",
+    "types",
+    "unchanged",
+    "unique",
+    "unit",
+    "unreadable",
+    "until",
+    "unused",
+    "update",
+    "upload",
+    "uploads",
+    "use",
+    "user",
+    "using",
+    "valid",
+    "validate",
+    "validation",
+    "value",
+    "values",
+    "variable",
+    "verify",
+    "version",
+    "wait",
+    "walk",
+    "when",
+    "where",
+    "which",
+    "while",
+    "whitespace",
+    "window",
+    "with",
+    "within",
+    "without",
+    "word",
+    "words",
+    "work",
+    "write",
+    "you",
+    "zero"
+  ],
+  "weights_sha256": "2a25e0d13bf2d294b099844a0258769c93074c4d2dbdb811d85bc980be9cd29b"
+}
