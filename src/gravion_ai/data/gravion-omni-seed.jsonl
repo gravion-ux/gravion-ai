@@ -350,6 +350,206 @@
 {"completion": "Thanks for the conversation. I will send the agreed next steps and check in after the first milestone.", "prompt": "please write a closing message for a conversation"}
 {"completion": "Thanks for the conversation. I will send the agreed next steps and check in after the first milestone.", "prompt": "gravion omni write a closing message for a conversation"}
 {"completion": "Thanks for the conversation. I will send the agreed next steps and check in after the first milestone.", "prompt": "help me write a closing message for a conversation"}
+{"completion": "Share your order number and I will check its current status and tell you the next step.", "prompt": "check the status of an order"}
+{"completion": "Share your order number and I will check its current status and tell you the next step.", "prompt": "please check the status of an order"}
+{"completion": "Share your order number and I will check its current status and tell you the next step.", "prompt": "gravion omni check the status of an order"}
+{"completion": "Share your order number and I will check its current status and tell you the next step.", "prompt": "help me check the status of an order"}
+{"completion": "Use the tracking link from your confirmation message, or share your order number and I will look up the latest delivery update.", "prompt": "explain how to track a delivery"}
+{"completion": "Use the tracking link from your confirmation message, or share your order number and I will look up the latest delivery update.", "prompt": "please explain how to track a delivery"}
+{"completion": "Use the tracking link from your confirmation message, or share your order number and I will look up the latest delivery update.", "prompt": "gravion omni explain how to track a delivery"}
+{"completion": "Use the tracking link from your confirmation message, or share your order number and I will look up the latest delivery update.", "prompt": "help me explain how to track a delivery"}
+{"completion": "Sorry your package has not arrived. Share your order number and delivery address so I can check the carrier record and arrange the next step.", "prompt": "help with a missing package"}
+{"completion": "Sorry your package has not arrived. Share your order number and delivery address so I can check the carrier record and arrange the next step.", "prompt": "please help with a missing package"}
+{"completion": "Sorry your package has not arrived. Share your order number and delivery address so I can check the carrier record and arrange the next step.", "prompt": "gravion omni help with a missing package"}
+{"completion": "Sorry your package has not arrived. Share your order number and delivery address so I can check the carrier record and arrange the next step.", "prompt": "help me help with a missing package"}
+{"completion": "To return an item, keep it unused with its packaging, start the return from your orders page, and follow the pickup or drop-off instructions shown there.", "prompt": "explain the return process"}
+{"completion": "To return an item, keep it unused with its packaging, start the return from your orders page, and follow the pickup or drop-off instructions shown there.", "prompt": "please explain the return process"}
+{"completion": "To return an item, keep it unused with its packaging, start the return from your orders page, and follow the pickup or drop-off instructions shown there.", "prompt": "gravion omni explain the return process"}
+{"completion": "To return an item, keep it unused with its packaging, start the return from your orders page, and follow the pickup or drop-off instructions shown there.", "prompt": "help me explain the return process"}
+{"completion": "If your order has not shipped yet, I can update the delivery address. Share your order number and the new address.", "prompt": "help change a delivery address"}
+{"completion": "If your order has not shipped yet, I can update the delivery address. Share your order number and the new address.", "prompt": "please help change a delivery address"}
+{"completion": "If your order has not shipped yet, I can update the delivery address. Share your order number and the new address.", "prompt": "gravion omni help change a delivery address"}
+{"completion": "If your order has not shipped yet, I can update the delivery address. Share your order number and the new address.", "prompt": "help me help change a delivery address"}
+{"completion": "Once a returned item is received and checked, the refund goes back to the original payment method; the exact timing depends on your bank or payment provider.", "prompt": "explain how refunds are processed"}
+{"completion": "Once a returned item is received and checked, the refund goes back to the original payment method; the exact timing depends on your bank or payment provider.", "prompt": "please explain how refunds are processed"}
+{"completion": "Once a returned item is received and checked, the refund goes back to the original payment method; the exact timing depends on your bank or payment provider.", "prompt": "gravion omni explain how refunds are processed"}
+{"completion": "Once a returned item is received and checked, the refund goes back to the original payment method; the exact timing depends on your bank or payment provider.", "prompt": "help me explain how refunds are processed"}
+{"completion": "Sorry the item arrived damaged. Share a photo of the damage and your order number, and I will arrange a replacement or refund.", "prompt": "help with a damaged item"}
+{"completion": "Sorry the item arrived damaged. Share a photo of the damage and your order number, and I will arrange a replacement or refund.", "prompt": "please help with a damaged item"}
+{"completion": "Sorry the item arrived damaged. Share a photo of the damage and your order number, and I will arrange a replacement or refund.", "prompt": "gravion omni help with a damaged item"}
+{"completion": "Sorry the item arrived damaged. Share a photo of the damage and your order number, and I will arrange a replacement or refund.", "prompt": "help me help with a damaged item"}
+{"completion": "Warranty cover depends on the product and the fault. Share the product name and purchase date and I will check what applies.", "prompt": "explain warranty coverage basics"}
+{"completion": "Warranty cover depends on the product and the fault. Share the product name and purchase date and I will check what applies.", "prompt": "please explain warranty coverage basics"}
+{"completion": "Warranty cover depends on the product and the fault. Share the product name and purchase date and I will check what applies.", "prompt": "gravion omni explain warranty coverage basics"}
+{"completion": "Warranty cover depends on the product and the fault. Share the product name and purchase date and I will check what applies.", "prompt": "help me explain warranty coverage basics"}
+{"completion": "Use the forgot password link on the sign-in page; a reset link will be sent to your registered email address.", "prompt": "help reset an account password"}
+{"completion": "Use the forgot password link on the sign-in page; a reset link will be sent to your registered email address.", "prompt": "please help reset an account password"}
+{"completion": "Use the forgot password link on the sign-in page; a reset link will be sent to your registered email address.", "prompt": "gravion omni help reset an account password"}
+{"completion": "Use the forgot password link on the sign-in page; a reset link will be sent to your registered email address.", "prompt": "help me help reset an account password"}
+{"completion": "Open account settings, edit the detail you want to change, and save. Some changes ask you to confirm by email first.", "prompt": "explain how to update account details"}
+{"completion": "Open account settings, edit the detail you want to change, and save. Some changes ask you to confirm by email first.", "prompt": "please explain how to update account details"}
+{"completion": "Open account settings, edit the detail you want to change, and save. Some changes ask you to confirm by email first.", "prompt": "gravion omni explain how to update account details"}
+{"completion": "Open account settings, edit the detail you want to change, and save. Some changes ask you to confirm by email first.", "prompt": "help me explain how to update account details"}
+{"completion": "If a payment failed, check that the card details and balance are correct, then try again. Share the order number if the charge still appears.", "prompt": "help with a failed payment"}
+{"completion": "If a payment failed, check that the card details and balance are correct, then try again. Share the order number if the charge still appears.", "prompt": "please help with a failed payment"}
+{"completion": "If a payment failed, check that the card details and balance are correct, then try again. Share the order number if the charge still appears.", "prompt": "gravion omni help with a failed payment"}
+{"completion": "If a payment failed, check that the card details and balance are correct, then try again. Share the order number if the charge still appears.", "prompt": "help me help with a failed payment"}
+{"completion": "Open your subscription settings, choose cancel, and confirm. You keep access until the end of the current paid period.", "prompt": "explain subscription cancellation steps"}
+{"completion": "Open your subscription settings, choose cancel, and confirm. You keep access until the end of the current paid period.", "prompt": "please explain subscription cancellation steps"}
+{"completion": "Open your subscription settings, choose cancel, and confirm. You keep access until the end of the current paid period.", "prompt": "gravion omni explain subscription cancellation steps"}
+{"completion": "Open your subscription settings, choose cancel, and confirm. You keep access until the end of the current paid period.", "prompt": "help me explain subscription cancellation steps"}
+{"completion": "Invoices are available from your orders page and are also emailed after payment. Tell me the order number if you need another copy.", "prompt": "help find an invoice copy"}
+{"completion": "Invoices are available from your orders page and are also emailed after payment. Tell me the order number if you need another copy.", "prompt": "please help find an invoice copy"}
+{"completion": "Invoices are available from your orders page and are also emailed after payment. Tell me the order number if you need another copy.", "prompt": "gravion omni help find an invoice copy"}
+{"completion": "Invoices are available from your orders page and are also emailed after payment. Tell me the order number if you need another copy.", "prompt": "help me help find an invoice copy"}
+{"completion": "Delivery estimates are shown at checkout and in your confirmation message; they depend on your location and the items ordered.", "prompt": "explain delivery time estimates"}
+{"completion": "Delivery estimates are shown at checkout and in your confirmation message; they depend on your location and the items ordered.", "prompt": "please explain delivery time estimates"}
+{"completion": "Delivery estimates are shown at checkout and in your confirmation message; they depend on your location and the items ordered.", "prompt": "gravion omni explain delivery time estimates"}
+{"completion": "Delivery estimates are shown at checkout and in your confirmation message; they depend on your location and the items ordered.", "prompt": "help me explain delivery time estimates"}
+{"completion": "Sorry you received the wrong item. Share your order number and a photo of what arrived, and I will arrange the correct item.", "prompt": "help with a wrong item received"}
+{"completion": "Sorry you received the wrong item. Share your order number and a photo of what arrived, and I will arrange the correct item.", "prompt": "please help with a wrong item received"}
+{"completion": "Sorry you received the wrong item. Share your order number and a photo of what arrived, and I will arrange the correct item.", "prompt": "gravion omni help with a wrong item received"}
+{"completion": "Sorry you received the wrong item. Share your order number and a photo of what arrived, and I will arrange the correct item.", "prompt": "help me help with a wrong item received"}
+{"completion": "Sorry your order is running late. Share your order number and I will track the package and tell you the latest delivery update.", "prompt": "my package is late"}
+{"completion": "Sorry your order is running late. Share your order number and I will track the package and tell you the latest delivery update.", "prompt": "please my package is late"}
+{"completion": "Sorry your order is running late. Share your order number and I will track the package and tell you the latest delivery update.", "prompt": "gravion omni my package is late"}
+{"completion": "Sorry your order is running late. Share your order number and I will track the package and tell you the latest delivery update.", "prompt": "help me my package is late"}
+{"completion": "Sorry the wrong order arrived. Share your order number and I will arrange a refund or the correct item for you.", "prompt": "paisa wapas chahiye order galat aaya"}
+{"completion": "Sorry the wrong order arrived. Share your order number and I will arrange a refund or the correct item for you.", "prompt": "please paisa wapas chahiye order galat aaya"}
+{"completion": "Sorry the wrong order arrived. Share your order number and I will arrange a refund or the correct item for you.", "prompt": "gravion omni paisa wapas chahiye order galat aaya"}
+{"completion": "Sorry the wrong order arrived. Share your order number and I will arrange a refund or the correct item for you.", "prompt": "help me paisa wapas chahiye order galat aaya"}
+{"completion": "Enter the code in the discount field before paying and check that the total updates. Codes cannot usually be added after payment.", "prompt": "explain how to apply a discount code"}
+{"completion": "Enter the code in the discount field before paying and check that the total updates. Codes cannot usually be added after payment.", "prompt": "please explain how to apply a discount code"}
+{"completion": "Enter the code in the discount field before paying and check that the total updates. Codes cannot usually be added after payment.", "prompt": "gravion omni explain how to apply a discount code"}
+{"completion": "Enter the code in the discount field before paying and check that the total updates. Codes cannot usually be added after payment.", "prompt": "help me explain how to apply a discount code"}
+{"completion": "After several failed sign-ins the account locks for safety. Wait a short while, then use the password reset link to regain access.", "prompt": "help with an account lockout"}
+{"completion": "After several failed sign-ins the account locks for safety. Wait a short while, then use the password reset link to regain access.", "prompt": "please help with an account lockout"}
+{"completion": "After several failed sign-ins the account locks for safety. Wait a short while, then use the password reset link to regain access.", "prompt": "gravion omni help with an account lockout"}
+{"completion": "After several failed sign-ins the account locks for safety. Wait a short while, then use the password reset link to regain access.", "prompt": "help me help with an account lockout"}
+{"completion": "You can reach the team through this chat, the contact form, or the support email listed on the contact page.", "prompt": "explain how to contact the team"}
+{"completion": "You can reach the team through this chat, the contact form, or the support email listed on the contact page.", "prompt": "please explain how to contact the team"}
+{"completion": "You can reach the team through this chat, the contact form, or the support email listed on the contact page.", "prompt": "gravion omni explain how to contact the team"}
+{"completion": "You can reach the team through this chat, the contact form, or the support email listed on the contact page.", "prompt": "help me explain how to contact the team"}
+{"completion": "Thanks for reporting it. Tell me the page address, what you expected, and what happened instead, and I will pass it to the team.", "prompt": "help report a website problem"}
+{"completion": "Thanks for reporting it. Tell me the page address, what you expected, and what happened instead, and I will pass it to the team.", "prompt": "please help report a website problem"}
+{"completion": "Thanks for reporting it. Tell me the page address, what you expected, and what happened instead, and I will pass it to the team.", "prompt": "gravion omni help report a website problem"}
+{"completion": "Thanks for reporting it. Tell me the page address, what you expected, and what happened instead, and I will pass it to the team.", "prompt": "help me help report a website problem"}
+{"completion": "To request your data or ask for deletion, send a request from your registered email address so your identity can be verified.", "prompt": "explain data privacy request steps"}
+{"completion": "To request your data or ask for deletion, send a request from your registered email address so your identity can be verified.", "prompt": "please explain data privacy request steps"}
+{"completion": "To request your data or ask for deletion, send a request from your registered email address so your identity can be verified.", "prompt": "gravion omni explain data privacy request steps"}
+{"completion": "To request your data or ask for deletion, send a request from your registered email address so your identity can be verified.", "prompt": "help me explain data privacy request steps"}
+{"completion": "Open account settings, enter the new email address, and confirm through the verification message sent to it.", "prompt": "help change an email address"}
+{"completion": "Open account settings, enter the new email address, and confirm through the verification message sent to it.", "prompt": "please help change an email address"}
+{"completion": "Open account settings, enter the new email address, and confirm through the verification message sent to it.", "prompt": "gravion omni help change an email address"}
+{"completion": "Open account settings, enter the new email address, and confirm through the verification message sent to it.", "prompt": "help me help change an email address"}
+{"completion": "Open subscription settings and choose pause if available; billing stops during the pause and resumes on the date shown.", "prompt": "explain how to pause a subscription"}
+{"completion": "Open subscription settings and choose pause if available; billing stops during the pause and resumes on the date shown.", "prompt": "please explain how to pause a subscription"}
+{"completion": "Open subscription settings and choose pause if available; billing stops during the pause and resumes on the date shown.", "prompt": "gravion omni explain how to pause a subscription"}
+{"completion": "Open subscription settings and choose pause if available; billing stops during the pause and resumes on the date shown.", "prompt": "help me explain how to pause a subscription"}
+{"completion": "Sorry about the duplicate charge. Share the order number and the charge dates, and I will check and arrange a refund of the extra charge.", "prompt": "help with a duplicate charge"}
+{"completion": "Sorry about the duplicate charge. Share the order number and the charge dates, and I will check and arrange a refund of the extra charge.", "prompt": "please help with a duplicate charge"}
+{"completion": "Sorry about the duplicate charge. Share the order number and the charge dates, and I will check and arrange a refund of the extra charge.", "prompt": "gravion omni help with a duplicate charge"}
+{"completion": "Sorry about the duplicate charge. Share the order number and the charge dates, and I will check and arrange a refund of the extra charge.", "prompt": "help me help with a duplicate charge"}
+{"completion": "Enter the gift card code on the balance page or at checkout to see the remaining amount.", "prompt": "explain gift card balance checks"}
+{"completion": "Enter the gift card code on the balance page or at checkout to see the remaining amount.", "prompt": "please explain gift card balance checks"}
+{"completion": "Enter the gift card code on the balance page or at checkout to see the remaining amount.", "prompt": "gravion omni explain gift card balance checks"}
+{"completion": "Enter the gift card code on the balance page or at checkout to see the remaining amount.", "prompt": "help me explain gift card balance checks"}
+{"completion": "Share your order number, the fault, and your preferred pickup day, and I will book the collection.", "prompt": "help schedule a repair pickup"}
+{"completion": "Share your order number, the fault, and your preferred pickup day, and I will book the collection.", "prompt": "please help schedule a repair pickup"}
+{"completion": "Share your order number, the fault, and your preferred pickup day, and I will book the collection.", "prompt": "gravion omni help schedule a repair pickup"}
+{"completion": "Share your order number, the fault, and your preferred pickup day, and I will book the collection.", "prompt": "help me help schedule a repair pickup"}
+{"completion": "Start by charging or connecting the product as the guide shows, then follow the first-time setup prompts on screen.", "prompt": "explain product setup first steps"}
+{"completion": "Start by charging or connecting the product as the guide shows, then follow the first-time setup prompts on screen.", "prompt": "please explain product setup first steps"}
+{"completion": "Start by charging or connecting the product as the guide shows, then follow the first-time setup prompts on screen.", "prompt": "gravion omni explain product setup first steps"}
+{"completion": "Start by charging or connecting the product as the guide shows, then follow the first-time setup prompts on screen.", "prompt": "help me explain product setup first steps"}
+{"completion": "Check spam and promotions folders first. If it is not there, share your order number and I will resend the confirmation.", "prompt": "help with a missing confirmation email"}
+{"completion": "Check spam and promotions folders first. If it is not there, share your order number and I will resend the confirmation.", "prompt": "please help with a missing confirmation email"}
+{"completion": "Check spam and promotions folders first. If it is not there, share your order number and I will resend the confirmation.", "prompt": "gravion omni help with a missing confirmation email"}
+{"completion": "Check spam and promotions folders first. If it is not there, share your order number and I will resend the confirmation.", "prompt": "help me help with a missing confirmation email"}
+{"completion": "Points are earned on eligible purchases and can be applied at checkout; your balance and expiry dates are shown in your account.", "prompt": "explain how loyalty points work"}
+{"completion": "Points are earned on eligible purchases and can be applied at checkout; your balance and expiry dates are shown in your account.", "prompt": "please explain how loyalty points work"}
+{"completion": "Points are earned on eligible purchases and can be applied at checkout; your balance and expiry dates are shown in your account.", "prompt": "gravion omni explain how loyalty points work"}
+{"completion": "Points are earned on eligible purchases and can be applied at checkout; your balance and expiry dates are shown in your account.", "prompt": "help me explain how loyalty points work"}
+{"completion": "Open billing settings, add the new payment method, and set it as default before the next billing date.", "prompt": "help update payment method"}
+{"completion": "Open billing settings, add the new payment method, and set it as default before the next billing date.", "prompt": "please help update payment method"}
+{"completion": "Open billing settings, add the new payment method, and set it as default before the next billing date.", "prompt": "gravion omni help update payment method"}
+{"completion": "Open billing settings, add the new payment method, and set it as default before the next billing date.", "prompt": "help me help update payment method"}
+{"completion": "Size exchanges are started from your orders page; the replacement is sent once the original item is on its way back.", "prompt": "explain exchange options for size"}
+{"completion": "Size exchanges are started from your orders page; the replacement is sent once the original item is on its way back.", "prompt": "please explain exchange options for size"}
+{"completion": "Size exchanges are started from your orders page; the replacement is sent once the original item is on its way back.", "prompt": "gravion omni explain exchange options for size"}
+{"completion": "Size exchanges are started from your orders page; the replacement is sent once the original item is on its way back.", "prompt": "help me explain exchange options for size"}
+{"completion": "Sorry your delivery is late. Share your order number and I will check the latest carrier update right away.", "prompt": "help with a late delivery apology"}
+{"completion": "Sorry your delivery is late. Share your order number and I will check the latest carrier update right away.", "prompt": "please help with a late delivery apology"}
+{"completion": "Sorry your delivery is late. Share your order number and I will check the latest carrier update right away.", "prompt": "gravion omni help with a late delivery apology"}
+{"completion": "Sorry your delivery is late. Share your order number and I will check the latest carrier update right away.", "prompt": "help me help with a late delivery apology"}
+{"completion": "Open the order in your account and choose download receipt; a copy is also attached to your confirmation email.", "prompt": "explain how to download a receipt"}
+{"completion": "Open the order in your account and choose download receipt; a copy is also attached to your confirmation email.", "prompt": "please explain how to download a receipt"}
+{"completion": "Open the order in your account and choose download receipt; a copy is also attached to your confirmation email.", "prompt": "gravion omni explain how to download a receipt"}
+{"completion": "Open the order in your account and choose download receipt; a copy is also attached to your confirmation email.", "prompt": "help me explain how to download a receipt"}
+{"completion": "Tell me the order number and the amount that looks wrong, and I will review the charge and correct it if needed.", "prompt": "help report a billing error"}
+{"completion": "Tell me the order number and the amount that looks wrong, and I will review the charge and correct it if needed.", "prompt": "please help report a billing error"}
+{"completion": "Tell me the order number and the amount that looks wrong, and I will review the charge and correct it if needed.", "prompt": "gravion omni help report a billing error"}
+{"completion": "Tell me the order number and the amount that looks wrong, and I will review the charge and correct it if needed.", "prompt": "help me help report a billing error"}
+{"completion": "Verification usually means confirming your email address and, for some actions, entering a code sent to you.", "prompt": "explain account verification steps"}
+{"completion": "Verification usually means confirming your email address and, for some actions, entering a code sent to you.", "prompt": "please explain account verification steps"}
+{"completion": "Verification usually means confirming your email address and, for some actions, entering a code sent to you.", "prompt": "gravion omni explain account verification steps"}
+{"completion": "Verification usually means confirming your email address and, for some actions, entering a code sent to you.", "prompt": "help me explain account verification steps"}
+{"completion": "Manuals are linked on each product page and in the support section; tell me the model name if you cannot find yours.", "prompt": "help find product manuals"}
+{"completion": "Manuals are linked on each product page and in the support section; tell me the model name if you cannot find yours.", "prompt": "please help find product manuals"}
+{"completion": "Manuals are linked on each product page and in the support section; tell me the model name if you cannot find yours.", "prompt": "gravion omni help find product manuals"}
+{"completion": "Manuals are linked on each product page and in the support section; tell me the model name if you cannot find yours.", "prompt": "help me help find product manuals"}
+{"completion": "During an outage, status updates are posted on the status page. Share what you are seeing and I will check the latest note.", "prompt": "explain service outage updates"}
+{"completion": "During an outage, status updates are posted on the status page. Share what you are seeing and I will check the latest note.", "prompt": "please explain service outage updates"}
+{"completion": "During an outage, status updates are posted on the status page. Share what you are seeing and I will check the latest note.", "prompt": "gravion omni explain service outage updates"}
+{"completion": "During an outage, status updates are posted on the status page. Share what you are seeing and I will check the latest note.", "prompt": "help me explain service outage updates"}
+{"completion": "If your order was cancelled, the confirmation message explains why and whether a refund is on its way.", "prompt": "help with a cancelled order question"}
+{"completion": "If your order was cancelled, the confirmation message explains why and whether a refund is on its way.", "prompt": "please help with a cancelled order question"}
+{"completion": "If your order was cancelled, the confirmation message explains why and whether a refund is on its way.", "prompt": "gravion omni help with a cancelled order question"}
+{"completion": "If your order was cancelled, the confirmation message explains why and whether a refund is on its way.", "prompt": "help me help with a cancelled order question"}
+{"completion": "Orders can be changed before they ship. Share your order number and the change you need as soon as possible.", "prompt": "explain how to change an order"}
+{"completion": "Orders can be changed before they ship. Share your order number and the change you need as soon as possible.", "prompt": "please explain how to change an order"}
+{"completion": "Orders can be changed before they ship. Share your order number and the change you need as soon as possible.", "prompt": "gravion omni explain how to change an order"}
+{"completion": "Orders can be changed before they ship. Share your order number and the change you need as soon as possible.", "prompt": "help me explain how to change an order"}
+{"completion": "Share your order number and preferred dates, and I will book the installation visit.", "prompt": "help with installation booking"}
+{"completion": "Share your order number and preferred dates, and I will book the installation visit.", "prompt": "please help with installation booking"}
+{"completion": "Share your order number and preferred dates, and I will book the installation visit.", "prompt": "gravion omni help with installation booking"}
+{"completion": "Share your order number and preferred dates, and I will book the installation visit.", "prompt": "help me help with installation booking"}
+{"completion": "Spare parts can be ordered from the parts section by model name; share your model if you need help finding the right part.", "prompt": "explain spare parts ordering"}
+{"completion": "Spare parts can be ordered from the parts section by model name; share your model if you need help finding the right part.", "prompt": "please explain spare parts ordering"}
+{"completion": "Spare parts can be ordered from the parts section by model name; share your model if you need help finding the right part.", "prompt": "gravion omni explain spare parts ordering"}
+{"completion": "Spare parts can be ordered from the parts section by model name; share your model if you need help finding the right part.", "prompt": "help me explain spare parts ordering"}
+{"completion": "Restart the device, check your connection, and try the update again. Tell me the error message if it still fails.", "prompt": "help with a software update problem"}
+{"completion": "Restart the device, check your connection, and try the update again. Tell me the error message if it still fails.", "prompt": "please help with a software update problem"}
+{"completion": "Restart the device, check your connection, and try the update again. Tell me the error message if it still fails.", "prompt": "gravion omni help with a software update problem"}
+{"completion": "Restart the device, check your connection, and try the update again. Tell me the error message if it still fails.", "prompt": "help me help with a software update problem"}
+{"completion": "Account closure is started from account settings after any open orders finish; you will be asked to confirm by email.", "prompt": "explain how to close an account"}
+{"completion": "Account closure is started from account settings after any open orders finish; you will be asked to confirm by email.", "prompt": "please explain how to close an account"}
+{"completion": "Account closure is started from account settings after any open orders finish; you will be asked to confirm by email.", "prompt": "gravion omni explain how to close an account"}
+{"completion": "Account closure is started from account settings after any open orders finish; you will be asked to confirm by email.", "prompt": "help me explain how to close an account"}
+{"completion": "Check the recycle or trash area first; recently deleted files can usually be restored from there for a limited time.", "prompt": "help recover a deleted file"}
+{"completion": "Check the recycle or trash area first; recently deleted files can usually be restored from there for a limited time.", "prompt": "please help recover a deleted file"}
+{"completion": "Check the recycle or trash area first; recently deleted files can usually be restored from there for a limited time.", "prompt": "gravion omni help recover a deleted file"}
+{"completion": "Check the recycle or trash area first; recently deleted files can usually be restored from there for a limited time.", "prompt": "help me help recover a deleted file"}
+{"completion": "Accessibility options include larger text, keyboard navigation, and screen reader support; tell me what you need and I will guide you.", "prompt": "explain accessibility support options"}
+{"completion": "Accessibility options include larger text, keyboard navigation, and screen reader support; tell me what you need and I will guide you.", "prompt": "please explain accessibility support options"}
+{"completion": "Accessibility options include larger text, keyboard navigation, and screen reader support; tell me what you need and I will guide you.", "prompt": "gravion omni explain accessibility support options"}
+{"completion": "Accessibility options include larger text, keyboard navigation, and screen reader support; tell me what you need and I will guide you.", "prompt": "help me explain accessibility support options"}
+{"completion": "Gift messages are added at checkout and printed with the delivery note. Share your order number if the message needs changing.", "prompt": "help with a gift order message"}
+{"completion": "Gift messages are added at checkout and printed with the delivery note. Share your order number if the message needs changing.", "prompt": "please help with a gift order message"}
+{"completion": "Gift messages are added at checkout and printed with the delivery note. Share your order number if the message needs changing.", "prompt": "gravion omni help with a gift order message"}
+{"completion": "Gift messages are added at checkout and printed with the delivery note. Share your order number if the message needs changing.", "prompt": "help me help with a gift order message"}
+{"completion": "For bulk orders, share the product, quantity, and delivery location, and the team will reply with availability and pricing.", "prompt": "explain bulk order enquiries"}
+{"completion": "For bulk orders, share the product, quantity, and delivery location, and the team will reply with availability and pricing.", "prompt": "please explain bulk order enquiries"}
+{"completion": "For bulk orders, share the product, quantity, and delivery location, and the team will reply with availability and pricing.", "prompt": "gravion omni explain bulk order enquiries"}
+{"completion": "For bulk orders, share the product, quantity, and delivery location, and the team will reply with availability and pricing.", "prompt": "help me explain bulk order enquiries"}
+{"completion": "Share your area or postcode and I will check whether the service is available there.", "prompt": "help check service availability"}
+{"completion": "Share your area or postcode and I will check whether the service is available there.", "prompt": "please help check service availability"}
+{"completion": "Share your area or postcode and I will check whether the service is available there.", "prompt": "gravion omni help check service availability"}
+{"completion": "Share your area or postcode and I will check whether the service is available there.", "prompt": "help me help check service availability"}
+{"completion": "Feedback can be sent through the feedback form or this chat; specific examples help the team act on it faster.", "prompt": "explain how to give feedback"}
+{"completion": "Feedback can be sent through the feedback form or this chat; specific examples help the team act on it faster.", "prompt": "please explain how to give feedback"}
+{"completion": "Feedback can be sent through the feedback form or this chat; specific examples help the team act on it faster.", "prompt": "gravion omni explain how to give feedback"}
+{"completion": "Feedback can be sent through the feedback form or this chat; specific examples help the team act on it faster.", "prompt": "help me explain how to give feedback"}
 {"completion": "Define a small function with two numeric inputs, return their sum, and test it with positive, negative, and zero values.", "prompt": "write a function that adds two numbers"}
 {"completion": "Define a small function with two numeric inputs, return their sum, and test it with positive, negative, and zero values.", "prompt": "please write a function that adds two numbers"}
 {"completion": "Define a small function with two numeric inputs, return their sum, and test it with positive, negative, and zero values.", "prompt": "gravion omni write a function that adds two numbers"}
@@ -418,10 +618,10 @@
 {"completion": "Version control records changes over time so you can review history, collaborate, and restore earlier work.", "prompt": "please explain version control basics"}
 {"completion": "Version control records changes over time so you can review history, collaborate, and restore earlier work.", "prompt": "gravion omni explain version control basics"}
 {"completion": "Version control records changes over time so you can review history, collaborate, and restore earlier work.", "prompt": "help me explain version control basics"}
-{"completion": "Build the reversed text by reading characters from the end to the start, then test empty and single-character inputs.", "prompt": "write a function to reverse a string"}
-{"completion": "Build the reversed text by reading characters from the end to the start, then test empty and single-character inputs.", "prompt": "please write a function to reverse a string"}
-{"completion": "Build the reversed text by reading characters from the end to the start, then test empty and single-character inputs.", "prompt": "gravion omni write a function to reverse a string"}
-{"completion": "Build the reversed text by reading characters from the end to the start, then test empty and single-character inputs.", "prompt": "help me write a function to reverse a string"}
+{"completion": "Use a small function: def reverse(text): return text[::-1]. Test it with empty and single-character inputs.", "prompt": "write a function to reverse a string"}
+{"completion": "Use a small function: def reverse(text): return text[::-1]. Test it with empty and single-character inputs.", "prompt": "please write a function to reverse a string"}
+{"completion": "Use a small function: def reverse(text): return text[::-1]. Test it with empty and single-character inputs.", "prompt": "gravion omni write a function to reverse a string"}
+{"completion": "Use a small function: def reverse(text): return text[::-1]. Test it with empty and single-character inputs.", "prompt": "help me write a function to reverse a string"}
 {"completion": "Asynchronous code starts work without blocking everything else, then handles the result when it is ready.", "prompt": "explain asynchronous code"}
 {"completion": "Asynchronous code starts work without blocking everything else, then handles the result when it is ready.", "prompt": "please explain asynchronous code"}
 {"completion": "Asynchronous code starts work without blocking everything else, then handles the result when it is ready.", "prompt": "gravion omni explain asynchronous code"}
@@ -578,6 +778,198 @@
 {"completion": "Compare neighboring values or use a known sorting method, then verify sorted, reversed, and duplicate inputs.", "prompt": "please write a sort function"}
 {"completion": "Compare neighboring values or use a known sorting method, then verify sorted, reversed, and duplicate inputs.", "prompt": "gravion omni write a sort function"}
 {"completion": "Compare neighboring values or use a known sorting method, then verify sorted, reversed, and duplicate inputs.", "prompt": "help me write a sort function"}
+{"completion": "Reviewing for bugs: check inputs, edge cases, error handling, and resource cleanup, then list findings by severity.", "prompt": "review this code for bugs"}
+{"completion": "Reviewing for bugs: check inputs, edge cases, error handling, and resource cleanup, then list findings by severity.", "prompt": "please review this code for bugs"}
+{"completion": "Reviewing for bugs: check inputs, edge cases, error handling, and resource cleanup, then list findings by severity.", "prompt": "gravion omni review this code for bugs"}
+{"completion": "Reviewing for bugs: check inputs, edge cases, error handling, and resource cleanup, then list findings by severity.", "prompt": "help me review this code for bugs"}
+{"completion": "This code reads its inputs, applies its core logic step by step, and returns a result; I will walk through each part in order.", "prompt": "explain what this code does"}
+{"completion": "This code reads its inputs, applies its core logic step by step, and returns a result; I will walk through each part in order.", "prompt": "please explain what this code does"}
+{"completion": "This code reads its inputs, applies its core logic step by step, and returns a result; I will walk through each part in order.", "prompt": "gravion omni explain what this code does"}
+{"completion": "This code reads its inputs, applies its core logic step by step, and returns a result; I will walk through each part in order.", "prompt": "help me explain what this code does"}
+{"completion": "Edge cases to check: empty input, boundary values, duplicate items, very large input, and unexpected types.", "prompt": "check this function for edge cases"}
+{"completion": "Edge cases to check: empty input, boundary values, duplicate items, very large input, and unexpected types.", "prompt": "please check this function for edge cases"}
+{"completion": "Edge cases to check: empty input, boundary values, duplicate items, very large input, and unexpected types.", "prompt": "gravion omni check this function for edge cases"}
+{"completion": "Edge cases to check: empty input, boundary values, duplicate items, very large input, and unexpected types.", "prompt": "help me check this function for edge cases"}
+{"completion": "Good error handling catches expected failures, adds context, cleans up resources, and never hides the original cause.", "prompt": "review error handling in this code"}
+{"completion": "Good error handling catches expected failures, adds context, cleans up resources, and never hides the original cause.", "prompt": "please review error handling in this code"}
+{"completion": "Good error handling catches expected failures, adds context, cleans up resources, and never hides the original cause.", "prompt": "gravion omni review error handling in this code"}
+{"completion": "Good error handling catches expected failures, adds context, cleans up resources, and never hides the original cause.", "prompt": "help me review error handling in this code"}
+{"completion": "The loop repeats its body once per item: it reads the next value, processes it, and stops when no items remain.", "prompt": "explain this loop step by step"}
+{"completion": "The loop repeats its body once per item: it reads the next value, processes it, and stops when no items remain.", "prompt": "please explain this loop step by step"}
+{"completion": "The loop repeats its body once per item: it reads the next value, processes it, and stops when no items remain.", "prompt": "gravion omni explain this loop step by step"}
+{"completion": "The loop repeats its body once per item: it reads the next value, processes it, and stops when no items remain.", "prompt": "help me explain this loop step by step"}
+{"completion": "Look for repeated work inside loops, unnecessary copies, and slow lookups that a set or index would speed up.", "prompt": "find performance problems in this code"}
+{"completion": "Look for repeated work inside loops, unnecessary copies, and slow lookups that a set or index would speed up.", "prompt": "please find performance problems in this code"}
+{"completion": "Look for repeated work inside loops, unnecessary copies, and slow lookups that a set or index would speed up.", "prompt": "gravion omni find performance problems in this code"}
+{"completion": "Look for repeated work inside loops, unnecessary copies, and slow lookups that a set or index would speed up.", "prompt": "help me find performance problems in this code"}
+{"completion": "Check input validation, output encoding, secret handling, and permission checks before anything else.", "prompt": "review this code for security issues"}
+{"completion": "Check input validation, output encoding, secret handling, and permission checks before anything else.", "prompt": "please review this code for security issues"}
+{"completion": "Check input validation, output encoding, secret handling, and permission checks before anything else.", "prompt": "gravion omni review this code for security issues"}
+{"completion": "Check input validation, output encoding, secret handling, and permission checks before anything else.", "prompt": "help me review this code for security issues"}
+{"completion": "The class groups related data and behavior; each method has one job, and the constructor sets the starting state.", "prompt": "explain this class and its methods"}
+{"completion": "The class groups related data and behavior; each method has one job, and the constructor sets the starting state.", "prompt": "please explain this class and its methods"}
+{"completion": "The class groups related data and behavior; each method has one job, and the constructor sets the starting state.", "prompt": "gravion omni explain this class and its methods"}
+{"completion": "The class groups related data and behavior; each method has one job, and the constructor sets the starting state.", "prompt": "help me explain this class and its methods"}
+{"completion": "Names should state purpose plainly; rename vague variables, and keep naming style consistent across the file.", "prompt": "check naming quality in this code"}
+{"completion": "Names should state purpose plainly; rename vague variables, and keep naming style consistent across the file.", "prompt": "please check naming quality in this code"}
+{"completion": "Names should state purpose plainly; rename vague variables, and keep naming style consistent across the file.", "prompt": "gravion omni check naming quality in this code"}
+{"completion": "Names should state purpose plainly; rename vague variables, and keep naming style consistent across the file.", "prompt": "help me check naming quality in this code"}
+{"completion": "Coverage gaps usually hide in error paths, boundary values, and rare branches; add tests there first.", "prompt": "review test coverage for this module"}
+{"completion": "Coverage gaps usually hide in error paths, boundary values, and rare branches; add tests there first.", "prompt": "please review test coverage for this module"}
+{"completion": "Coverage gaps usually hide in error paths, boundary values, and rare branches; add tests there first.", "prompt": "gravion omni review test coverage for this module"}
+{"completion": "Coverage gaps usually hide in error paths, boundary values, and rare branches; add tests there first.", "prompt": "help me review test coverage for this module"}
+{"completion": "The function solves a smaller version of the problem each call until the base case returns a direct answer.", "prompt": "explain this recursive function"}
+{"completion": "The function solves a smaller version of the problem each call until the base case returns a direct answer.", "prompt": "please explain this recursive function"}
+{"completion": "The function solves a smaller version of the problem each call until the base case returns a direct answer.", "prompt": "gravion omni explain this recursive function"}
+{"completion": "The function solves a smaller version of the problem each call until the base case returns a direct answer.", "prompt": "help me explain this recursive function"}
+{"completion": "Repeated blocks should become one shared helper so fixes apply everywhere at once.", "prompt": "find duplicated logic in this code"}
+{"completion": "Repeated blocks should become one shared helper so fixes apply everywhere at once.", "prompt": "please find duplicated logic in this code"}
+{"completion": "Repeated blocks should become one shared helper so fixes apply everywhere at once.", "prompt": "gravion omni find duplicated logic in this code"}
+{"completion": "Repeated blocks should become one shared helper so fixes apply everywhere at once.", "prompt": "help me find duplicated logic in this code"}
+{"completion": "A clear API has predictable names, validated inputs, consistent errors, and no surprises for callers.", "prompt": "review this api design"}
+{"completion": "A clear API has predictable names, validated inputs, consistent errors, and no surprises for callers.", "prompt": "please review this api design"}
+{"completion": "A clear API has predictable names, validated inputs, consistent errors, and no surprises for callers.", "prompt": "gravion omni review this api design"}
+{"completion": "A clear API has predictable names, validated inputs, consistent errors, and no surprises for callers.", "prompt": "help me review this api design"}
+{"completion": "The code compares values and reorders them until the whole sequence is in ascending order.", "prompt": "explain this sorting code"}
+{"completion": "The code compares values and reorders them until the whole sequence is in ascending order.", "prompt": "please explain this sorting code"}
+{"completion": "The code compares values and reorders them until the whole sequence is in ascending order.", "prompt": "gravion omni explain this sorting code"}
+{"completion": "The code compares values and reorders them until the whole sequence is in ascending order.", "prompt": "help me explain this sorting code"}
+{"completion": "Files, connections, and locks should be released on every path, including when errors occur.", "prompt": "check resource cleanup in this code"}
+{"completion": "Files, connections, and locks should be released on every path, including when errors occur.", "prompt": "please check resource cleanup in this code"}
+{"completion": "Files, connections, and locks should be released on every path, including when errors occur.", "prompt": "gravion omni check resource cleanup in this code"}
+{"completion": "Files, connections, and locks should be released on every path, including when errors occur.", "prompt": "help me check resource cleanup in this code"}
+{"completion": "Shared mutable state needs synchronization; check for races between reads and writes across threads.", "prompt": "review concurrency safety here"}
+{"completion": "Shared mutable state needs synchronization; check for races between reads and writes across threads.", "prompt": "please review concurrency safety here"}
+{"completion": "Shared mutable state needs synchronization; check for races between reads and writes across threads.", "prompt": "gravion omni review concurrency safety here"}
+{"completion": "Shared mutable state needs synchronization; check for races between reads and writes across threads.", "prompt": "help me review concurrency safety here"}
+{"completion": "The pattern matches text by describing allowed characters and repetition; I will break it into parts.", "prompt": "explain this regular expression"}
+{"completion": "The pattern matches text by describing allowed characters and repetition; I will break it into parts.", "prompt": "please explain this regular expression"}
+{"completion": "The pattern matches text by describing allowed characters and repetition; I will break it into parts.", "prompt": "gravion omni explain this regular expression"}
+{"completion": "The pattern matches text by describing allowed characters and repetition; I will break it into parts.", "prompt": "help me explain this regular expression"}
+{"completion": "Long functions, deep nesting, and unclear names hurt readability; split, flatten, and rename.", "prompt": "find readability problems in this code"}
+{"completion": "Long functions, deep nesting, and unclear names hurt readability; split, flatten, and rename.", "prompt": "please find readability problems in this code"}
+{"completion": "Long functions, deep nesting, and unclear names hurt readability; split, flatten, and rename.", "prompt": "gravion omni find readability problems in this code"}
+{"completion": "Long functions, deep nesting, and unclear names hurt readability; split, flatten, and rename.", "prompt": "help me find readability problems in this code"}
+{"completion": "Check parameterization, index use, result size limits, and transaction boundaries.", "prompt": "review this database query code"}
+{"completion": "Check parameterization, index use, result size limits, and transaction boundaries.", "prompt": "please review this database query code"}
+{"completion": "Check parameterization, index use, result size limits, and transaction boundaries.", "prompt": "gravion omni review this database query code"}
+{"completion": "Check parameterization, index use, result size limits, and transaction boundaries.", "prompt": "help me review this database query code"}
+{"completion": "The code tracks a current state and only allows listed transitions when events arrive.", "prompt": "explain this state machine code"}
+{"completion": "The code tracks a current state and only allows listed transitions when events arrive.", "prompt": "please explain this state machine code"}
+{"completion": "The code tracks a current state and only allows listed transitions when events arrive.", "prompt": "gravion omni explain this state machine code"}
+{"completion": "The code tracks a current state and only allows listed transitions when events arrive.", "prompt": "help me explain this state machine code"}
+{"completion": "Validate type, length, range, and allowed values on the server before using any input.", "prompt": "check input validation in this handler"}
+{"completion": "Validate type, length, range, and allowed values on the server before using any input.", "prompt": "please check input validation in this handler"}
+{"completion": "Validate type, length, range, and allowed values on the server before using any input.", "prompt": "gravion omni check input validation in this handler"}
+{"completion": "Validate type, length, range, and allowed values on the server before using any input.", "prompt": "help me check input validation in this handler"}
+{"completion": "Logs should carry context, avoid secrets, and make failures searchable without flooding output.", "prompt": "review logging in this code"}
+{"completion": "Logs should carry context, avoid secrets, and make failures searchable without flooding output.", "prompt": "please review logging in this code"}
+{"completion": "Logs should carry context, avoid secrets, and make failures searchable without flooding output.", "prompt": "gravion omni review logging in this code"}
+{"completion": "Logs should carry context, avoid secrets, and make failures searchable without flooding output.", "prompt": "help me review logging in this code"}
+{"completion": "The cache stores recent results with an expiry, returning fresh values fast and refreshing stale ones.", "prompt": "explain this caching code"}
+{"completion": "The cache stores recent results with an expiry, returning fresh values fast and refreshing stale ones.", "prompt": "please explain this caching code"}
+{"completion": "The cache stores recent results with an expiry, returning fresh values fast and refreshing stale ones.", "prompt": "gravion omni explain this caching code"}
+{"completion": "The cache stores recent results with an expiry, returning fresh values fast and refreshing stale ones.", "prompt": "help me explain this caching code"}
+{"completion": "Check loop bounds, slice ends, and index arithmetic against empty and single-item inputs.", "prompt": "find off by one risks in this code"}
+{"completion": "Check loop bounds, slice ends, and index arithmetic against empty and single-item inputs.", "prompt": "please find off by one risks in this code"}
+{"completion": "Check loop bounds, slice ends, and index arithmetic against empty and single-item inputs.", "prompt": "gravion omni find off by one risks in this code"}
+{"completion": "Check loop bounds, slice ends, and index arithmetic against empty and single-item inputs.", "prompt": "help me find off by one risks in this code"}
+{"completion": "Check path safety, missing-file handling, encoding, and that files close even on error.", "prompt": "review this file handling code"}
+{"completion": "Check path safety, missing-file handling, encoding, and that files close even on error.", "prompt": "please review this file handling code"}
+{"completion": "Check path safety, missing-file handling, encoding, and that files close even on error.", "prompt": "gravion omni review this file handling code"}
+{"completion": "Check path safety, missing-file handling, encoding, and that files close even on error.", "prompt": "help me review this file handling code"}
+{"completion": "The code starts work without blocking, then handles results or errors when they arrive.", "prompt": "explain this asynchronous code path"}
+{"completion": "The code starts work without blocking, then handles results or errors when they arrive.", "prompt": "please explain this asynchronous code path"}
+{"completion": "The code starts work without blocking, then handles results or errors when they arrive.", "prompt": "gravion omni explain this asynchronous code path"}
+{"completion": "The code starts work without blocking, then handles results or errors when they arrive.", "prompt": "help me explain this asynchronous code path"}
+{"completion": "Every value that can be missing needs an explicit check or a clear default before use.", "prompt": "check null handling in this code"}
+{"completion": "Every value that can be missing needs an explicit check or a clear default before use.", "prompt": "please check null handling in this code"}
+{"completion": "Every value that can be missing needs an explicit check or a clear default before use.", "prompt": "gravion omni check null handling in this code"}
+{"completion": "Every value that can be missing needs an explicit check or a clear default before use.", "prompt": "help me check null handling in this code"}
+{"completion": "Prefer maintained, minimal dependencies; check licenses, update history, and whether the standard library suffices.", "prompt": "review dependency choices in this project"}
+{"completion": "Prefer maintained, minimal dependencies; check licenses, update history, and whether the standard library suffices.", "prompt": "please review dependency choices in this project"}
+{"completion": "Prefer maintained, minimal dependencies; check licenses, update history, and whether the standard library suffices.", "prompt": "gravion omni review dependency choices in this project"}
+{"completion": "Prefer maintained, minimal dependencies; check licenses, update history, and whether the standard library suffices.", "prompt": "help me review dependency choices in this project"}
+{"completion": "The parser reads input token by token, validates structure, and builds a result or reports the first error.", "prompt": "explain this parser code"}
+{"completion": "The parser reads input token by token, validates structure, and builds a result or reports the first error.", "prompt": "please explain this parser code"}
+{"completion": "The parser reads input token by token, validates structure, and builds a result or reports the first error.", "prompt": "gravion omni explain this parser code"}
+{"completion": "The parser reads input token by token, validates structure, and builds a result or reports the first error.", "prompt": "help me explain this parser code"}
+{"completion": "Watch for global state changes, file writes, and network calls hidden inside innocent-looking helpers.", "prompt": "find hidden side effects in this code"}
+{"completion": "Watch for global state changes, file writes, and network calls hidden inside innocent-looking helpers.", "prompt": "please find hidden side effects in this code"}
+{"completion": "Watch for global state changes, file writes, and network calls hidden inside innocent-looking helpers.", "prompt": "gravion omni find hidden side effects in this code"}
+{"completion": "Watch for global state changes, file writes, and network calls hidden inside innocent-looking helpers.", "prompt": "help me find hidden side effects in this code"}
+{"completion": "Configuration should validate required keys, apply safe defaults, and fail with clear messages.", "prompt": "review this configuration loading code"}
+{"completion": "Configuration should validate required keys, apply safe defaults, and fail with clear messages.", "prompt": "please review this configuration loading code"}
+{"completion": "Configuration should validate required keys, apply safe defaults, and fail with clear messages.", "prompt": "gravion omni review this configuration loading code"}
+{"completion": "Configuration should validate required keys, apply safe defaults, and fail with clear messages.", "prompt": "help me review this configuration loading code"}
+{"completion": "It checks the middle of a sorted range and discards half each step until the target is found or absent.", "prompt": "explain this binary search implementation"}
+{"completion": "It checks the middle of a sorted range and discards half each step until the target is found or absent.", "prompt": "please explain this binary search implementation"}
+{"completion": "It checks the middle of a sorted range and discards half each step until the target is found or absent.", "prompt": "gravion omni explain this binary search implementation"}
+{"completion": "It checks the middle of a sorted range and discards half each step until the target is found or absent.", "prompt": "help me explain this binary search implementation"}
+{"completion": "Retries should cover temporary failures only, back off between attempts, and stop after a clear limit.", "prompt": "check retry logic in this code"}
+{"completion": "Retries should cover temporary failures only, back off between attempts, and stop after a clear limit.", "prompt": "please check retry logic in this code"}
+{"completion": "Retries should cover temporary failures only, back off between attempts, and stop after a clear limit.", "prompt": "gravion omni check retry logic in this code"}
+{"completion": "Retries should cover temporary failures only, back off between attempts, and stop after a clear limit.", "prompt": "help me check retry logic in this code"}
+{"completion": "Check password storage, session expiry, token handling, and that failures reveal no useful detail.", "prompt": "review this authentication code"}
+{"completion": "Check password storage, session expiry, token handling, and that failures reveal no useful detail.", "prompt": "please review this authentication code"}
+{"completion": "Check password storage, session expiry, token handling, and that failures reveal no useful detail.", "prompt": "gravion omni review this authentication code"}
+{"completion": "Check password storage, session expiry, token handling, and that failures reveal no useful detail.", "prompt": "help me review this authentication code"}
+{"completion": "The handler reacts to a named event, reads its payload, and updates state or triggers follow-up work.", "prompt": "explain this event handler code"}
+{"completion": "The handler reacts to a named event, reads its payload, and updates state or triggers follow-up work.", "prompt": "please explain this event handler code"}
+{"completion": "The handler reacts to a named event, reads its payload, and updates state or triggers follow-up work.", "prompt": "gravion omni explain this event handler code"}
+{"completion": "The handler reacts to a named event, reads its payload, and updates state or triggers follow-up work.", "prompt": "help me explain this event handler code"}
+{"completion": "Look for growing collections, unclosed resources, and references kept after they are no longer needed.", "prompt": "find memory leak risks in this code"}
+{"completion": "Look for growing collections, unclosed resources, and references kept after they are no longer needed.", "prompt": "please find memory leak risks in this code"}
+{"completion": "Look for growing collections, unclosed resources, and references kept after they are no longer needed.", "prompt": "gravion omni find memory leak risks in this code"}
+{"completion": "Look for growing collections, unclosed resources, and references kept after they are no longer needed.", "prompt": "help me find memory leak risks in this code"}
+{"completion": "Check page bounds, total counts, stable ordering, and that empty pages return cleanly.", "prompt": "review this pagination code"}
+{"completion": "Check page bounds, total counts, stable ordering, and that empty pages return cleanly.", "prompt": "please review this pagination code"}
+{"completion": "Check page bounds, total counts, stable ordering, and that empty pages return cleanly.", "prompt": "gravion omni review this pagination code"}
+{"completion": "Check page bounds, total counts, stable ordering, and that empty pages return cleanly.", "prompt": "help me review this pagination code"}
+{"completion": "It walks two sorted lists together, always taking the smaller next value, then appends the tail.", "prompt": "explain this merge algorithm code"}
+{"completion": "It walks two sorted lists together, always taking the smaller next value, then appends the tail.", "prompt": "please explain this merge algorithm code"}
+{"completion": "It walks two sorted lists together, always taking the smaller next value, then appends the tail.", "prompt": "gravion omni explain this merge algorithm code"}
+{"completion": "It walks two sorted lists together, always taking the smaller next value, then appends the tail.", "prompt": "help me explain this merge algorithm code"}
+{"completion": "Mixed types in one collection cause subtle bugs; enforce one shape at the boundary.", "prompt": "check type consistency in this code"}
+{"completion": "Mixed types in one collection cause subtle bugs; enforce one shape at the boundary.", "prompt": "please check type consistency in this code"}
+{"completion": "Mixed types in one collection cause subtle bugs; enforce one shape at the boundary.", "prompt": "gravion omni check type consistency in this code"}
+{"completion": "Mixed types in one collection cause subtle bugs; enforce one shape at the boundary.", "prompt": "help me check type consistency in this code"}
+{"completion": "Arguments should be validated early, help text should match behavior, and exit codes should be meaningful.", "prompt": "review this cli argument parsing"}
+{"completion": "Arguments should be validated early, help text should match behavior, and exit codes should be meaningful.", "prompt": "please review this cli argument parsing"}
+{"completion": "Arguments should be validated early, help text should match behavior, and exit codes should be meaningful.", "prompt": "gravion omni review this cli argument parsing"}
+{"completion": "Arguments should be validated early, help text should match behavior, and exit codes should be meaningful.", "prompt": "help me review this cli argument parsing"}
+{"completion": "The decorator wraps a function to add behavior before or after it runs, without changing its core logic.", "prompt": "explain this decorator code"}
+{"completion": "The decorator wraps a function to add behavior before or after it runs, without changing its core logic.", "prompt": "please explain this decorator code"}
+{"completion": "The decorator wraps a function to add behavior before or after it runs, without changing its core logic.", "prompt": "gravion omni explain this decorator code"}
+{"completion": "The decorator wraps a function to add behavior before or after it runs, without changing its core logic.", "prompt": "help me explain this decorator code"}
+{"completion": "Assumptions about input size, ordering, locale, or timing break first; make them explicit and tested.", "prompt": "find brittle assumptions in this code"}
+{"completion": "Assumptions about input size, ordering, locale, or timing break first; make them explicit and tested.", "prompt": "please find brittle assumptions in this code"}
+{"completion": "Assumptions about input size, ordering, locale, or timing break first; make them explicit and tested.", "prompt": "gravion omni find brittle assumptions in this code"}
+{"completion": "Assumptions about input size, ordering, locale, or timing break first; make them explicit and tested.", "prompt": "help me find brittle assumptions in this code"}
+{"completion": "Migrations should be reversible where possible, tested on realistic data, and safe to run once.", "prompt": "review this migration code"}
+{"completion": "Migrations should be reversible where possible, tested on realistic data, and safe to run once.", "prompt": "please review this migration code"}
+{"completion": "Migrations should be reversible where possible, tested on realistic data, and safe to run once.", "prompt": "gravion omni review this migration code"}
+{"completion": "Migrations should be reversible where possible, tested on realistic data, and safe to run once.", "prompt": "help me review this migration code"}
+{"completion": "The code takes items in order, processes each, and acknowledges or retries based on the outcome.", "prompt": "explain this queue processing code"}
+{"completion": "The code takes items in order, processes each, and acknowledges or retries based on the outcome.", "prompt": "please explain this queue processing code"}
+{"completion": "The code takes items in order, processes each, and acknowledges or retries based on the outcome.", "prompt": "gravion omni explain this queue processing code"}
+{"completion": "The code takes items in order, processes each, and acknowledges or retries based on the outcome.", "prompt": "help me explain this queue processing code"}
+{"completion": "Test just below, exactly at, and just above each boundary so off-by-one errors surface.", "prompt": "check boundary tests for this function"}
+{"completion": "Test just below, exactly at, and just above each boundary so off-by-one errors surface.", "prompt": "please check boundary tests for this function"}
+{"completion": "Test just below, exactly at, and just above each boundary so off-by-one errors surface.", "prompt": "gravion omni check boundary tests for this function"}
+{"completion": "Test just below, exactly at, and just above each boundary so off-by-one errors surface.", "prompt": "help me check boundary tests for this function"}
+{"completion": "Error messages should say what failed, why it matters, and what the user can do next.", "prompt": "review this error message wording"}
+{"completion": "Error messages should say what failed, why it matters, and what the user can do next.", "prompt": "please review this error message wording"}
+{"completion": "Error messages should say what failed, why it matters, and what the user can do next.", "prompt": "gravion omni review this error message wording"}
+{"completion": "Error messages should say what failed, why it matters, and what the user can do next.", "prompt": "help me review this error message wording"}
+{"completion": "The schema lists required fields, types, and ranges, and reports every problem it finds.", "prompt": "explain this data validation schema"}
+{"completion": "The schema lists required fields, types, and ranges, and reports every problem it finds.", "prompt": "please explain this data validation schema"}
+{"completion": "The schema lists required fields, types, and ranges, and reports every problem it finds.", "prompt": "gravion omni explain this data validation schema"}
+{"completion": "The schema lists required fields, types, and ranges, and reports every problem it finds.", "prompt": "help me explain this data validation schema"}
+{"completion": "Findings by severity: correctness and security first, then performance, then readability and style.", "prompt": "summarize review findings by severity"}
+{"completion": "Findings by severity: correctness and security first, then performance, then readability and style.", "prompt": "please summarize review findings by severity"}
+{"completion": "Findings by severity: correctness and security first, then performance, then readability and style.", "prompt": "gravion omni summarize review findings by severity"}
+{"completion": "Findings by severity: correctness and security first, then performance, then readability and style.", "prompt": "help me summarize review findings by severity"}
 {"completion": "Landing page plan: clear hero, proof of work, services, process, testimonial space, and one contact action.", "prompt": "plan a landing page for a small studio"}
 {"completion": "Landing page plan: clear hero, proof of work, services, process, testimonial space, and one contact action.", "prompt": "please plan a landing page for a small studio"}
 {"completion": "Landing page plan: clear hero, proof of work, services, process, testimonial space, and one contact action.", "prompt": "gravion omni plan a landing page for a small studio"}

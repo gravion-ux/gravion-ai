@@ -58,6 +58,14 @@
 {"completion": "Sorry you received the wrong item. Share your order number and a photo of what arrived, and I will arrange the correct item.", "prompt": "please help with a wrong item received"}
 {"completion": "Sorry you received the wrong item. Share your order number and a photo of what arrived, and I will arrange the correct item.", "prompt": "gravion support help with a wrong item received"}
 {"completion": "Sorry you received the wrong item. Share your order number and a photo of what arrived, and I will arrange the correct item.", "prompt": "help me help with a wrong item received"}
+{"completion": "Sorry your order is running late. Share your order number and I will track the package and tell you the latest delivery update.", "prompt": "my package is late"}
+{"completion": "Sorry your order is running late. Share your order number and I will track the package and tell you the latest delivery update.", "prompt": "please my package is late"}
+{"completion": "Sorry your order is running late. Share your order number and I will track the package and tell you the latest delivery update.", "prompt": "gravion support my package is late"}
+{"completion": "Sorry your order is running late. Share your order number and I will track the package and tell you the latest delivery update.", "prompt": "help me my package is late"}
+{"completion": "Sorry the wrong order arrived. Share your order number and I will arrange a refund or the correct item for you.", "prompt": "paisa wapas chahiye order galat aaya"}
+{"completion": "Sorry the wrong order arrived. Share your order number and I will arrange a refund or the correct item for you.", "prompt": "please paisa wapas chahiye order galat aaya"}
+{"completion": "Sorry the wrong order arrived. Share your order number and I will arrange a refund or the correct item for you.", "prompt": "gravion support paisa wapas chahiye order galat aaya"}
+{"completion": "Sorry the wrong order arrived. Share your order number and I will arrange a refund or the correct item for you.", "prompt": "help me paisa wapas chahiye order galat aaya"}
 {"completion": "Enter the code in the discount field before paying and check that the total updates. Codes cannot usually be added after payment.", "prompt": "explain how to apply a discount code"}
 {"completion": "Enter the code in the discount field before paying and check that the total updates. Codes cannot usually be added after payment.", "prompt": "please explain how to apply a discount code"}
 {"completion": "Enter the code in the discount field before paying and check that the total updates. Codes cannot usually be added after payment.", "prompt": "gravion support explain how to apply a discount code"}

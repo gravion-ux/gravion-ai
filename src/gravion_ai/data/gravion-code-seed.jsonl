@@ -66,10 +66,10 @@
 {"completion": "Version control records changes over time so you can review history, collaborate, and restore earlier work.", "prompt": "please explain version control basics"}
 {"completion": "Version control records changes over time so you can review history, collaborate, and restore earlier work.", "prompt": "gravion code explain version control basics"}
 {"completion": "Version control records changes over time so you can review history, collaborate, and restore earlier work.", "prompt": "help me explain version control basics"}
-{"completion": "Build the reversed text by reading characters from the end to the start, then test empty and single-character inputs.", "prompt": "write a function to reverse a string"}
-{"completion": "Build the reversed text by reading characters from the end to the start, then test empty and single-character inputs.", "prompt": "please write a function to reverse a string"}
-{"completion": "Build the reversed text by reading characters from the end to the start, then test empty and single-character inputs.", "prompt": "gravion code write a function to reverse a string"}
-{"completion": "Build the reversed text by reading characters from the end to the start, then test empty and single-character inputs.", "prompt": "help me write a function to reverse a string"}
+{"completion": "Use a small function: def reverse(text): return text[::-1]. Test it with empty and single-character inputs.", "prompt": "write a function to reverse a string"}
+{"completion": "Use a small function: def reverse(text): return text[::-1]. Test it with empty and single-character inputs.", "prompt": "please write a function to reverse a string"}
+{"completion": "Use a small function: def reverse(text): return text[::-1]. Test it with empty and single-character inputs.", "prompt": "gravion code write a function to reverse a string"}
+{"completion": "Use a small function: def reverse(text): return text[::-1]. Test it with empty and single-character inputs.", "prompt": "help me write a function to reverse a string"}
 {"completion": "Asynchronous code starts work without blocking everything else, then handles the result when it is ready.", "prompt": "explain asynchronous code"}
 {"completion": "Asynchronous code starts work without blocking everything else, then handles the result when it is ready.", "prompt": "please explain asynchronous code"}
 {"completion": "Asynchronous code starts work without blocking everything else, then handles the result when it is ready.", "prompt": "gravion code explain asynchronous code"}
