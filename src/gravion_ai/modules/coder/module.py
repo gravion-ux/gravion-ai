@@ -8,11 +8,13 @@ gets its own guidance appended to the deployment's system context,
 so the same model behaves as a generator, a reviewer or a teacher
 depending on what was actually asked.
 
-Detection is deterministic and deliberately simple: an explicit
-"review:" / "explain:" style prefix, or a plain request to review /
-explain *this* code. Anything else is generation. The rules are
-small enough to state in a docstring and pin in tests — no hidden
-heuristics.
+Detection is deterministic and deliberately simple, in priority
+order: an explicit "review:" / "explain:" style prefix; a request
+that opens with a generation verb ("write code to explain…") is
+generation; then a review or explain verb aimed at code ("can you
+review my code", "what does this code do") anywhere in the
+request. Anything else is generation. The rules are small enough
+to state in a docstring and pin in tests — no hidden heuristics.
 
 The coder module is served by **Gravion Code**, whose first trained
 bundle ships at Tier 2 in this piece (see data/models.json). A
@@ -23,6 +25,8 @@ capability instead of silently answering with the wrong model.
 """
 
 from __future__ import annotations
+
+import re
 
 from ...registry import ModuleContext, ModuleManifest
 
@@ -56,6 +60,33 @@ names; do not change the code.""",
 _REVIEW_PREFIXES = ("review:", "review this", "review the", "please review")
 _EXPLAIN_PREFIXES = ("explain:", "explain this", "explain the", "please explain")
 
+# A request that opens with a generation verb is generation even
+# when it later mentions explaining or reviewing ("write code to
+# explain how sorting works" asks for code, not an explanation).
+_GENERATE_OPENERS = (
+    "write",
+    "create",
+    "build",
+    "implement",
+    "generate",
+    "make",
+    "develop",
+    "code",
+    "add",
+    "fix",
+    "refactor",
+)
+
+_CODE_OBJECT = r"(?:code|function|script|snippet|program|module|class)"
+_REVIEW_RE = re.compile(
+    r"\b(?:review|audit|check)\b[^.?!]*\b" + _CODE_OBJECT + r"\b"
+)
+_EXPLAIN_RES = (
+    re.compile(r"\b(?:explain|describe)\b[^.?!]*\b" + _CODE_OBJECT + r"\b"),
+    re.compile(r"\bwhat does (?:this|the|it)\b[^.?!]*\b(?:do|mean)\b"),
+    re.compile(r"\bhow does (?:this|the|it)\b[^.?!]*\bwork\b"),
+)
+
 
 def detect_task(prompt: str) -> str:
     """Classify a coder prompt as generate / review / explain."""
@@ -63,6 +94,13 @@ def detect_task(prompt: str) -> str:
     if text.startswith(_REVIEW_PREFIXES) or "code review" in text:
         return TASK_REVIEW
     if text.startswith(_EXPLAIN_PREFIXES):
+        return TASK_EXPLAIN
+    first_word = text.split(None, 1)[0].strip(",:;") if text else ""
+    if first_word in _GENERATE_OPENERS:
+        return TASK_GENERATE
+    if _REVIEW_RE.search(text):
+        return TASK_REVIEW
+    if any(pattern.search(text) for pattern in _EXPLAIN_RES):
         return TASK_EXPLAIN
     return TASK_GENERATE
 

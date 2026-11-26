@@ -1034,18 +1034,6 @@ def train_local_core(
     return GravionCoreLocalModel(_validate_artifact(artifact, source), source=source)
 
 
-def train_local_model(
-    examples: Iterable[tuple[str, str]],
-    *,
-    model_id: str,
-    source: str = "<dataset>",
-    **kwargs,
-) -> GravionCoreLocalModel:
-    """Train any bundled local Gravion model with the v3 pipeline."""
-
-    return train_local_core(examples, model_id=model_id, source=source, **kwargs)
-
-
 # ---------------------------------------------------------------------------
 # Persistence
 # ---------------------------------------------------------------------------

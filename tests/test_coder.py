@@ -60,6 +60,16 @@ def test_coder_instantiates_and_answers():
         ("write a function that retries with backoff", TASK_GENERATE),
         ("add a login form to the settings page", TASK_GENERATE),
         ("fix the off-by-one in the parser", TASK_GENERATE),
+        # Natural phrasings that used to fall through to generate:
+        ("can you explain this code?", TASK_EXPLAIN),
+        ("what does this code do?", TASK_EXPLAIN),
+        ("how does this function work?", TASK_EXPLAIN),
+        ("could you review my code?", TASK_REVIEW),
+        ("check this code for bugs", TASK_REVIEW),
+        # Generation openers win over later explain/review words:
+        ("write code to explain how sorting works", TASK_GENERATE),
+        ("write a function that reviews log files", TASK_GENERATE),
+        ("add a check to this function", TASK_GENERATE),
     ],
 )
 def test_detect_task(prompt, expected):
