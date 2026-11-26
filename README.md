@@ -209,6 +209,11 @@ company policy, injected into every module's system context.
 
 ## Licensing — the short version
 
+The source code in this repository is MIT licensed (see
+[LICENSE](LICENSE)). Running Gravion AI as a production
+deployment is additionally governed by the commercial
+agreement described below.
+
 Gravion AI is built to be a commercial platform, and its licensing is
 designed in two separate layers (full detail: [docs/LICENSING.md](docs/LICENSING.md)):
 
