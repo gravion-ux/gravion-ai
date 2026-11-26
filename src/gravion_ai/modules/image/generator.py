@@ -114,6 +114,11 @@ _PALETTE_KEYWORDS = {
 
 _QUOTED_RE = re.compile(r"[\"“]([^\"”]{1,120})[\"”]")
 
+_HUMAN_KEYWORDS = (
+    "human", "portrait", "person", "man", "woman", "figure",
+    "girl", "boy", "people", "silhouette",
+)
+
 
 @dataclass(frozen=True)
 class GeneratedImage:
@@ -125,6 +130,7 @@ class GeneratedImage:
     palette: str
     quality: str
     text_rendered: str | None = None
+    human_figure: bool = False
 
     @property
     def width(self) -> int:
@@ -349,6 +355,143 @@ def _draw_text(img: Image.Image, text: str, palette: dict) -> None:
         y += line_h
 
 
+def _wants_human(prompt: str) -> bool:
+    text = prompt.lower()
+    return any(word in text for word in _HUMAN_KEYWORDS)
+
+
+def _draw_sunset_lighting(img: Image.Image, rng: random.Random,
+                          sun_pos: tuple[int, int], palette: dict) -> None:
+    """Warm bloom, a lens-flare streak and horizon haze for golden light."""
+    w, h = img.size
+    sx, sy = sun_pos
+    warm = palette["sun"]
+    # Broad warm bloom around the sun.
+    img.alpha_composite(_glow((w, h), (sx, sy), max(w // 3, 40), warm, strength=120))
+    # Lens-flare style streak and ghost circles along the sun axis.
+    flare = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    fdraw = ImageDraw.Draw(flare)
+    streak_h = max(h // 160, 2)
+    fdraw.rectangle([0, sy - streak_h, w, sy + streak_h], fill=warm + (70,))
+    cx, cy = w // 2, h // 2
+    for t, r_scale, alpha in ((0.35, 0.05, 60), (0.6, 0.035, 45), (0.85, 0.07, 35)):
+        gx = int(sx + (cx - sx) * t)
+        gy = int(sy + (cy - sy) * t)
+        r = max(int(min(w, h) * r_scale), 4)
+        fdraw.ellipse([gx - r, gy - r, gx + r, gy + r], fill=warm + (alpha,))
+    img.alpha_composite(flare.filter(ImageFilter.GaussianBlur(max(w // 200, 2))))
+    # Atmospheric haze bands hugging the horizon.
+    haze = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    hdraw = ImageDraw.Draw(haze)
+    horizon = int(h * 0.62)
+    for i in range(4):
+        y0 = horizon - int(h * 0.05) + i * int(h * 0.03)
+        hdraw.rectangle([0, y0, w, y0 + int(h * 0.035)], fill=warm + (28,))
+    img.alpha_composite(haze.filter(ImageFilter.GaussianBlur(max(h // 60, 4))))
+
+
+def _draw_human_figure(img: Image.Image, rng: random.Random, palette: dict,
+                       sun_pos: tuple[int, int]) -> None:
+    """A detailed standing human figure with rim light from the sun.
+
+    Rendered as a shaded silhouette: head with hair, neck, shoulders,
+    torso with clothing shading, arms and legs, a warm rim light on
+    the sun-facing side, and a soft ground shadow. Position and
+    proportions vary slightly with the seed but stay deterministic.
+    """
+    w, h = img.size
+    ground_y = int(h * 0.86)
+    fig_h = int(h * rng.uniform(0.52, 0.6))
+    cx = int(w * rng.uniform(0.42, 0.58))
+    top = ground_y - fig_h
+    head_r = max(int(fig_h * 0.075), 6)
+    head_cy = top + head_r
+    neck_w = max(head_r // 3, 3)
+    shoulder_y = head_cy + head_r + int(fig_h * 0.05)
+    shoulder_w = int(fig_h * 0.21)
+    hip_y = top + int(fig_h * 0.55)
+    hip_w = int(fig_h * 0.12)
+    dark = palette["ground"]
+    shade = _lerp(dark, palette["accent"], 0.18)
+    rim = palette["accent"]
+    sun_left = sun_pos[0] < cx
+
+    # Soft ground shadow, stretched away from the sun.
+    shadow = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    sdraw = ImageDraw.Draw(shadow)
+    sh_w = int(fig_h * 0.3)
+    sh_off = int(fig_h * 0.08) * (1 if sun_left else -1)
+    sdraw.ellipse([cx - sh_w + sh_off, ground_y - max(h // 120, 2),
+                   cx + sh_w + sh_off, ground_y + max(h // 60, 4)],
+                  fill=(0, 0, 0, 110))
+    img.alpha_composite(shadow.filter(ImageFilter.GaussianBlur(max(h // 100, 3))))
+
+    draw = ImageDraw.Draw(img, "RGBA")
+    # Legs: two tapered shapes from hips to feet.
+    leg_w = max(int(fig_h * 0.045), 3)
+    for side in (-1, 1):
+        hip_x = cx + side * hip_w // 2
+        foot_x = cx + side * int(fig_h * 0.07)
+        draw.polygon([(hip_x - leg_w, hip_y), (hip_x + leg_w, hip_y),
+                      (foot_x + leg_w // 2, ground_y), (foot_x - leg_w // 2, ground_y)],
+                     fill=dark + (255,))
+    # Torso with clothing shading: dark base, lighter sun-side panel.
+    torso = [(cx - shoulder_w, shoulder_y), (cx + shoulder_w, shoulder_y),
+             (cx + hip_w, hip_y), (cx - hip_w, hip_y)]
+    draw.polygon(torso, fill=dark + (255,))
+    lit = [(cx, shoulder_y), (cx + shoulder_w if sun_left else cx - shoulder_w, shoulder_y),
+           (cx + hip_w if sun_left else cx - hip_w, hip_y), (cx, hip_y)]
+    draw.polygon(lit, fill=shade + (160,))
+    # Arms hanging along the torso.
+    arm_w = max(int(fig_h * 0.035), 3)
+    for side in (-1, 1):
+        sx0 = cx + side * shoulder_w
+        hx0 = cx + side * int(hip_w * 1.25)
+        draw.polygon([(sx0 - arm_w, shoulder_y), (sx0 + arm_w, shoulder_y),
+                      (hx0 + arm_w // 2, hip_y + int(fig_h * 0.06)),
+                      (hx0 - arm_w // 2, hip_y + int(fig_h * 0.06))],
+                     fill=dark + (255,))
+    # Neck and head.
+    draw.rectangle([cx - neck_w, head_cy, cx + neck_w, shoulder_y], fill=dark + (255,))
+    draw.ellipse([cx - head_r, head_cy - head_r, cx + head_r, head_cy + head_r],
+                 fill=dark + (255,))
+    # Hair: a cap over the top of the head with a slight sweep.
+    hair = _lerp(dark, (0, 0, 0), 0.4)
+    draw.pieslice([cx - head_r, head_cy - head_r, cx + head_r, head_cy + head_r],
+                  start=180, end=360, fill=hair + (255,))
+    draw.polygon([(cx - head_r, head_cy), (cx + head_r, head_cy),
+                  (cx + head_r // 2, head_cy - head_r // 2)], fill=hair + (255,))
+    # Rim light: a warm edge on the sun-facing side of head and body.
+    rim_w = max(int(fig_h * 0.012), 2)
+    if sun_left:
+        draw.arc([cx - head_r, head_cy - head_r, cx + head_r, head_cy + head_r],
+                 start=90, end=270, fill=rim + (235,), width=rim_w)
+        draw.line([(cx - shoulder_w, shoulder_y), (cx - hip_w, hip_y)],
+                  fill=rim + (220,), width=rim_w)
+    else:
+        draw.arc([cx - head_r, head_cy - head_r, cx + head_r, head_cy + head_r],
+                 start=270, end=90, fill=rim + (235,), width=rim_w)
+        draw.line([(cx + shoulder_w, shoulder_y), (cx + hip_w, hip_y)],
+                  fill=rim + (220,), width=rim_w)
+
+
+def _texture_grain(img: Image.Image, rng: random.Random, amount: int) -> None:
+    """Fine photographic texture noise, scaled by the quality level."""
+    if amount <= 0:
+        return
+    w, h = img.size
+    small = Image.new("L", (max(w // 4, 8), max(h // 4, 8)))
+    px = small.load()
+    for y in range(small.height):
+        for x in range(small.width):
+            px[x, y] = rng.randint(0, 255)
+    noise = small.resize((w, h), Image.BILINEAR).filter(
+        ImageFilter.GaussianBlur(1))
+    layer = Image.merge("RGBA", (noise, noise, noise,
+                                 Image.new("L", (w, h), amount)))
+    img.alpha_composite(layer)
+
+
 def _vignette(img: Image.Image) -> None:
     """Darken the corners slightly for a finished, photographic feel."""
     w, h = img.size
@@ -427,6 +570,13 @@ def generate_image(prompt: str, width: int = 1024, height: int = 1024,
     if not night:
         _draw_particles(img, rng, cfg["particles"] // 2, palette["accent"],
                         night=False)
+        _draw_sunset_lighting(img, rng, (sun_x, sun_y), palette)
+
+    human = _wants_human(prompt)
+    if human:
+        _draw_human_figure(img, rng, palette, (sun_x, sun_y))
+
+    _texture_grain(img, rng, cfg["grain"])
 
     if text:
         _draw_text(img, text, palette)
@@ -435,6 +585,8 @@ def generate_image(prompt: str, width: int = 1024, height: int = 1024,
 
     if ss > 1:
         img = img.resize((width, height), Image.LANCZOS)
+    if quality == "ultra":
+        img = img.filter(ImageFilter.UnsharpMask(radius=2, percent=80, threshold=2))
     return GeneratedImage(
         image=img.convert("RGB"),
         prompt=prompt.strip(),
@@ -442,6 +594,7 @@ def generate_image(prompt: str, width: int = 1024, height: int = 1024,
         palette=palette_name,
         quality=quality,
         text_rendered=text,
+        human_figure=human,
     )
 
 

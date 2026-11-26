@@ -140,3 +140,29 @@ def test_module_generate_local_wiring(tmp_path):
     assert result.image.size == (1024, 576)
     assert result.text_rendered == "Gravion AI"
     assert out.exists()
+
+
+def test_human_prompt_draws_figure():
+    result = generate_image("human portrait at sunset", width=512, height=512,
+                            quality="ultra", seed=7)
+    assert result.human_figure is True
+    # The figure occupies the centre foreground: dark silhouette pixels
+    # must be present in the middle band above the ground line.
+    band = result.image.crop((200, 150, 312, 430))
+    raw = band.tobytes()
+    dark = sum(1 for i in range(0, len(raw), 3)
+               if raw[i] < 45 and raw[i + 1] < 35 and raw[i + 2] < 60)
+    assert dark > 300
+
+
+def test_landscape_prompt_has_no_figure():
+    result = generate_image("sunset over mountains", width=256, height=256)
+    assert result.human_figure is False
+
+
+def test_human_generation_is_deterministic():
+    a = generate_image("a person at dusk", width=256, height=256, seed=3)
+    b = generate_image("a person at dusk", width=256, height=256, seed=3)
+    assert a.human_figure and b.human_figure
+    assert hashlib.sha256(_png_bytes(a)).hexdigest() == hashlib.sha256(
+        _png_bytes(b)).hexdigest()
