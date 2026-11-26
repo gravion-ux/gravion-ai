@@ -19,6 +19,28 @@ def test_dev_chat_end_to_end(make_config):
     assert "what can you do?" in out
 
 
+def test_runtime_records_persistent_run_events_without_prompt(make_config):
+    config = make_config(mode="development")
+    runtime = GravionRuntime(config)
+    runtime.chat("private prompt text")
+    events = runtime.events.entries()
+    assert [e.event for e in events] == ["run.started", "run.completed"]
+    assert events[0].run_id == events[1].run_id
+    assert events[0].details["input_chars"] == len("private prompt text")
+    raw = (config.state_dir / "run-events.jsonl").read_text(encoding="utf-8")
+    assert "private prompt text" not in raw
+    assert runtime.status()["run_events"] == 2
+
+
+def test_runtime_records_failed_run_event(make_config):
+    runtime = GravionRuntime(make_config(mode="production"))
+    with pytest.raises(SuspendedError):
+        runtime.chat("hello")
+    events = runtime.events.entries()
+    assert [e.event for e in events] == ["run.started", "run.failed"]
+    assert events[-1].details["error_type"] == "SuspendedError"
+
+
 def test_chat_resolves_model_through_registry(make_config):
     runtime = GravionRuntime(make_config(mode="development", model="gravion-core"))
     assert runtime.resolve_model("chat") == "gravion-core"

@@ -137,9 +137,9 @@ A structured, editable registry of **Gravion's own models**
 Two ways to reach a model, behind one `ChatProvider` interface:
 
 - **Gravion Core** (`providers.GravionCoreProvider`) — the built-in
-  engine. Piece 1's Core is a deterministic offline responder that
-  proves the full path with zero infrastructure; trained Core weights
-  plug into the same interface in later pieces.
+  engine. It uses compact local trained weights when available and
+  falls back to a deterministic offline responder that proves the
+  full path with zero infrastructure.
 - **Endpoint** (`providers.EndpointProvider`) — a generic inference
   endpoint the operator runs or rents: base URL + API key from the
   deployment config, a small chat-completions JSON contract

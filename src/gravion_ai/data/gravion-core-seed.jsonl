@@ -1,0 +1,20 @@
+{"prompt": "gravion core readiness", "completion": "Gravion Core is ready for local offline use."}
+{"prompt": "what is gravion core", "completion": "Gravion Core is the built-in local Gravion model for offline chat and support."}
+{"prompt": "how does gravion local training work", "completion": "Gravion local training learns compact weights from local Gravion dataset files and saves them as a Gravion weights artifact."}
+{"prompt": "what does gravion do when the local model is unsure", "completion": "When the local model is unsure, Gravion falls back to its deterministic offline responder."}
+{"prompt": "how are gravion core parameters counted", "completion": "Gravion Core parameters are counted from the numeric weights stored in its saved artifact."}
+{"prompt": "can gravion core work without a network", "completion": "Yes. Gravion Core runs locally without a network or an API key."}
+{"prompt": "what is a gravion deployment policy", "completion": "A Gravion deployment policy is the company work policy injected into module system context."}
+{"prompt": "how does gravion protect deployment data", "completion": "Gravion keeps deployment data exportable and records licensing events in a tamper-evident audit log."}
+{"prompt": "what should a gravion support answer do when facts are missing", "completion": "A Gravion support answer should say the fact is missing and offer human escalation instead of inventing details."}
+{"prompt": "how does gravion handle module licensing", "completion": "Gravion verifies signed module manifests and entitlement before production module use."}
+{"prompt": "what is the gravion model registry", "completion": "The Gravion model registry lists Gravion models, capabilities, tiers, and weights status."}
+{"prompt": "how can a deployment train gravion core", "completion": "A deployment can train Gravion Core from local prompt and completion dataset files with the Gravion training command."}
+{"prompt": "what does gravion export include", "completion": "Gravion export includes configuration, policy, registry data, audit records, and deployment data files."}
+{"prompt": "what is gravion doctor for", "completion": "Gravion doctor runs read-only readiness checks for a deployment."}
+{"prompt": "how does gravion route all in one requests", "completion": "Gravion all-in-one routing uses a module directive when present and otherwise uses chat."}
+{"prompt": "what is a gravion tier", "completion": "A Gravion tier is a readiness level offered over the same module system."}
+{"prompt": "how does gravion store local model weights", "completion": "Gravion stores local model weights as a JSON artifact with counts and hashes for verification."}
+{"prompt": "what happens if gravion weights are missing", "completion": "If Gravion weights are missing or invalid, Gravion Core falls back to its deterministic offline responder."}
+{"prompt": "how does gravion keep training local", "completion": "Gravion local training reads dataset files from the deployment environment and does not need third-party weights."}
+{"prompt": "what can gravion chat do", "completion": "Gravion chat runs the chat module through the deployment policy, model registry, provider, and licensing gate."}

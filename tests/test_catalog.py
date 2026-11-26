@@ -10,6 +10,21 @@ def test_bundled_registry_loads_and_validates():
     assert len(entries) >= 10
     core = catalog.get("gravion-core")
     assert core is not None and core.status == "available"
+    assert core.weights_status == "included"
+    assert core.weights_included is True
+    assert core.parameter_count == 10586543
+    assert core.weights_artifact == "data/gravion-core-weights.json"
+    assert core.weights_sha256
+
+
+def test_bundled_registry_specialists_do_not_claim_included_trained_weights():
+    catalog = ModelCatalog.load()
+    for entry in catalog.list():
+        assert "trained bundle" not in entry.notes.lower(), entry.id
+        if entry.id != "gravion-core":
+            assert entry.weights_included is False, entry.id
+            assert entry.weights_status == "packaging_ready_no_weights", entry.id
+            assert "no trained weights" in entry.notes.lower(), entry.id
 
 
 def test_registry_contains_only_gravion_models():
@@ -42,9 +57,8 @@ def test_models_for_tier_filter():
 
 
 def test_gravion_chat_and_code_available_as_tier2_bundles():
-    """Piece 2: the first trained bundles of Gravion Chat and Gravion
-    Code ship at Tier 2 (Basic) only; higher-tier bundles are later
-    pieces, so the entries must not claim them yet."""
+    """Piece 2: the Gravion Chat and Gravion Code registry entries resolve at
+    Tier 2 (Basic) without claiming included trained weights."""
     catalog = ModelCatalog.load()
     chat = catalog.get("gravion-chat")
     assert chat is not None and chat.status == "available"
@@ -56,9 +70,8 @@ def test_gravion_chat_and_code_available_as_tier2_bundles():
 
 
 def test_gravion_vision_and_audio_available_as_tier2_bundles():
-    """Piece 3: the first trained bundles of Gravion Vision and
-    Gravion Audio ship at Tier 2 (Basic) only; higher-tier bundles
-    are later pieces, so the entries must not claim them yet."""
+    """Piece 3: the Gravion Vision and Gravion Audio registry entries resolve
+    at Tier 2 (Basic) without claiming included trained weights."""
     catalog = ModelCatalog.load()
     vision = catalog.get("gravion-vision")
     assert vision is not None and vision.status == "available"
@@ -71,10 +84,8 @@ def test_gravion_vision_and_audio_available_as_tier2_bundles():
 
 
 def test_gravion_video_available_as_tier2_bundle():
-    """Piece 4: the first trained bundle of Gravion Video ships at
-    Tier 2 (Basic) only; the long-form stitching pipeline and the
-    higher-tier bundles are later pieces, so the entry must not
-    claim them yet."""
+    """Piece 4: the Gravion Video registry entry resolves at Tier 2 (Basic)
+    without claiming included trained weights or long-form stitching."""
     catalog = ModelCatalog.load()
     video = catalog.get("gravion-video")
     assert video is not None and video.status == "available"
@@ -83,9 +94,8 @@ def test_gravion_video_available_as_tier2_bundle():
 
 
 def test_gravion_builder_available_as_tier2_bundle():
-    """Piece 5: the first trained bundle of Gravion Builder ships
-    at Tier 2 (Basic) only; higher-tier bundles are later pieces,
-    so the entry must not claim them yet."""
+    """Piece 5: the Gravion Builder registry entry resolves at Tier 2 (Basic)
+    without claiming included trained weights."""
     catalog = ModelCatalog.load()
     builder = catalog.get("gravion-builder")
     assert builder is not None and builder.status == "available"
@@ -94,9 +104,8 @@ def test_gravion_builder_available_as_tier2_bundle():
 
 
 def test_gravion_shield_and_agent_available_as_tier2_bundles():
-    """Piece 6: the first trained bundles of Gravion Shield and
-    Gravion Agent ship at Tier 2 (Basic) only; higher-tier bundles
-    are later pieces, so the entries must not claim them yet."""
+    """Piece 6: the Gravion Shield and Gravion Agent registry entries resolve
+    at Tier 2 (Basic) without claiming included trained weights."""
     catalog = ModelCatalog.load()
     shield = catalog.get("gravion-shield")
     assert shield is not None and shield.status == "available"
@@ -162,6 +171,10 @@ def test_malformed_entry_bad_tier_and_status_fail():
         ModelCatalog.from_data({"models": [_entry(tiers=["tier-9-ultra"])]})
     with pytest.raises(CatalogError, match="status"):
         ModelCatalog.from_data({"models": [_entry(status="shipped")]})
+    with pytest.raises(CatalogError, match="weights_status"):
+        ModelCatalog.from_data(
+            {"models": [_entry(weights_status="definitely-trained")]}
+        )
 
 
 def test_duplicate_id_fails():
@@ -186,6 +199,7 @@ def test_cli_models_list(capsys):
     out = capsys.readouterr().out
     assert "gravion-core" in out
     assert "gravion-omni" in out
+    assert "weights=packaging_ready_no_weights" in out
 
 
 def test_cli_models_list_capability_filter(capsys):
@@ -196,8 +210,8 @@ def test_cli_models_list_capability_filter(capsys):
 
 
 def test_gravion_omni_available_at_tier4():
-    """Piece 8: Gravion Omni ships as the Tier 4 (Advanced)
-    flagship serving every capability."""
+    """Piece 8: Gravion Omni is the Tier 4 (Advanced) all-capability
+    registry entry, with no included trained weights claimed."""
     catalog = ModelCatalog.load()
     omni = catalog.get("gravion-omni")
     assert omni is not None and omni.status == "available"

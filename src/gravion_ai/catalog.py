@@ -6,13 +6,17 @@ variant, the capabilities it serves (the module types), the tiers it
 is offered in, and its build status.
 
 Modules declare the *capability* they need; the registry resolves
-which Gravion models can serve it. The registry ships as data
-(data/models.json): Gravion Core is *available* (it is the built-in
-engine in providers.py), and Gravion Chat / Gravion Code are
-*available* as Tier 2 first trained bundles since Piece 2. The
-remaining specialist models are *planned* — they land with their
-module pieces, and the registry says so honestly instead of
-pretending they exist.
+which Gravion model entries can serve it. The registry ships as data
+(data/models.json). ``status="available"`` means the registry entry
+and module/bundle packaging path are available to resolve; it does
+not by itself claim that trained weights are included. The separate
+``weights_status`` field states the weights position explicitly:
+Gravion Core includes compact local trained weights (with a
+deterministic fallback), and the specialist entries are
+packaging-ready entries with no trained weights included in this
+repository. Real specialist model behaviour requires an
+operator-supplied endpoint or a future operations-supplied weights
+bundle.
 
 The registry is data, not code: a deployment can replace it wholesale
 by placing its own `models.json` in the deployment home (same schema,
@@ -37,6 +41,16 @@ CAPABILITIES = frozenset(
     t.value for t in ModuleType if t is not ModuleType.ALL_IN_ONE
 )
 STATUSES = frozenset({"available", "planned"})
+WEIGHTS_STATUSES = frozenset(
+    {
+        "not_applicable",
+        "packaging_ready_no_weights",
+        "planned_no_weights",
+        "operator_supplied",
+        "included",
+        "unspecified",
+    }
+)
 REQUIRED_FIELDS = ("id", "name", "capabilities", "tiers", "status")
 
 
@@ -49,6 +63,17 @@ class ModelEntry:
     status: str
     context_window: int | None = None
     notes: str = ""
+    weights_status: str = "unspecified"
+    parameter_count: int | None = None
+    weights_artifact: str = ""
+    weights_sha256: str = ""
+
+    @property
+    def weights_included(self) -> bool:
+        """True only when the registry explicitly says weights ship
+        with the entry. ``status="available"`` alone never implies
+        trained weights are present."""
+        return self.weights_status == "included"
 
     def serves(self, capability: str) -> bool:
         return capability in self.capabilities
@@ -90,12 +115,40 @@ def _validate_entry(raw: object, index: int) -> ModelEntry:
             f"{where}: 'status' must be one of {sorted(STATUSES)}, "
             f"got {raw['status']!r}"
         )
+    weights_status = raw.get("weights_status", "unspecified")
+    if weights_status not in WEIGHTS_STATUSES:
+        raise CatalogError(
+            f"{where}: 'weights_status' must be one of "
+            f"{sorted(WEIGHTS_STATUSES)}, got {weights_status!r}"
+        )
     context_window = raw.get("context_window")
     if context_window is not None and (
         not isinstance(context_window, int) or context_window <= 0
     ):
         raise CatalogError(
             f"{where}: 'context_window' must be a positive integer or null"
+        )
+    parameter_count = raw.get("parameter_count")
+    if parameter_count is not None and (
+        isinstance(parameter_count, bool)
+        or not isinstance(parameter_count, int)
+        or parameter_count < 0
+    ):
+        raise CatalogError(
+            f"{where}: 'parameter_count' must be a non-negative integer or null"
+        )
+    weights_artifact = raw.get("weights_artifact", "")
+    if not isinstance(weights_artifact, str):
+        raise CatalogError(f"{where}: 'weights_artifact' must be a string")
+    weights_sha256 = raw.get("weights_sha256", "")
+    if not isinstance(weights_sha256, str):
+        raise CatalogError(f"{where}: 'weights_sha256' must be a string")
+    if weights_status == "included" and (
+        not parameter_count or not weights_artifact or not weights_sha256
+    ):
+        raise CatalogError(
+            f"{where}: included weights require parameter_count, "
+            "weights_artifact, and weights_sha256"
         )
     return ModelEntry(
         id=raw["id"],
@@ -105,6 +158,10 @@ def _validate_entry(raw: object, index: int) -> ModelEntry:
         status=raw["status"],
         context_window=context_window,
         notes=raw.get("notes", ""),
+        weights_status=weights_status,
+        parameter_count=parameter_count,
+        weights_artifact=weights_artifact,
+        weights_sha256=weights_sha256,
     )
 
 

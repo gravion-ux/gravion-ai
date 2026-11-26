@@ -1,8 +1,5 @@
 import os
 import stat
-import sys
-
-import pytest
 
 from gravion_ai.licensing import DeploymentIdentity
 
@@ -21,11 +18,6 @@ def test_identity_persists_across_loads(tmp_path):
     assert first.deployment_id == second.deployment_id
 
 
-@pytest.mark.skipif(
-    sys.platform == "win32",
-    reason="Windows does not apply POSIX permission bits, so os.chmod "
-    "cannot produce mode 0o600",
-)
 def test_private_key_permissions_are_owner_only(tmp_path):
     DeploymentIdentity.create_or_load(tmp_path)
     mode = stat.S_IMODE(os.stat(tmp_path / "identity.key").st_mode)

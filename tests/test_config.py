@@ -47,3 +47,83 @@ def test_invalid_provider_type_rejected(tmp_path):
 def test_load_missing_deployment_raises(tmp_path):
     with pytest.raises(ConfigError):
         GravionConfig.load(tmp_path / "nope")
+
+
+def test_unknown_tier_is_config_error(tmp_path):
+    config = GravionConfig(tier="tier-99", home=tmp_path / "h")
+    with pytest.raises(ConfigError):
+        config.validate()
+
+
+def test_endpoint_provider_requires_valid_base_url(tmp_path):
+    from gravion_ai.config import ProviderConfig
+
+    config = GravionConfig(
+        provider=ProviderConfig(type="endpoint", base_url=""), home=tmp_path / "h"
+    )
+    with pytest.raises(ConfigError):
+        config.validate()
+
+
+def test_production_rejects_stored_api_key_and_remote_http(tmp_path):
+    from gravion_ai.config import ProviderConfig
+
+    stored_key = GravionConfig(
+        mode="production",
+        provider=ProviderConfig(
+            type="endpoint",
+            base_url="https://endpoint.example/v1",
+            api_key="secret",
+        ),
+        home=tmp_path / "h",
+    )
+    with pytest.raises(ConfigError):
+        stored_key.validate()
+
+    remote_http = GravionConfig(
+        mode="production",
+        provider=ProviderConfig(
+            type="endpoint", base_url="http://endpoint.example/v1"
+        ),
+        home=tmp_path / "h",
+    )
+    with pytest.raises(ConfigError):
+        remote_http.validate()
+
+
+def test_from_dict_rejects_unknown_fields(tmp_path):
+    with pytest.raises(ConfigError):
+        GravionConfig.from_dict({"surprise": True}, tmp_path / "h")
+    with pytest.raises(ConfigError):
+        GravionConfig.from_dict({"provider": {"surprise": True}}, tmp_path / "h")
+
+
+def test_provider_retry_and_generation_fields_validate(tmp_path):
+    from gravion_ai.config import ProviderConfig
+
+    config = GravionConfig.from_dict(
+        {
+            "provider": {
+                "type": "endpoint",
+                "base_url": "http://localhost:9999/v1",
+                "max_retries": 3,
+                "retry_backoff_seconds": 1.5,
+                "temperature": 0.2,
+                "max_tokens": 256,
+            }
+        },
+        tmp_path / "h",
+    )
+    assert config.provider.max_retries == 3
+    assert config.provider.retry_backoff_seconds == 1.5
+    assert config.provider.temperature == 0.2
+    assert config.provider.max_tokens == 256
+
+    for bad in (
+        ProviderConfig(max_retries=6),
+        ProviderConfig(retry_backoff_seconds=31),
+        ProviderConfig(temperature=2.1),
+        ProviderConfig(max_tokens=0),
+    ):
+        with pytest.raises(ConfigError):
+            GravionConfig(provider=bad, home=tmp_path / "h").validate()

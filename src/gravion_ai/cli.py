@@ -2,6 +2,7 @@
 
     gravion init                     create a deployment
     gravion status                   deployment + gate state
+    gravion doctor                   production-readiness checks
     gravion modules list             the module catalogue
     gravion models list              the Gravion model registry
     gravion chat "hello"             run the chat module
@@ -26,8 +27,8 @@
                                      validate a training job
     gravion train prepare --data examples.jsonl --out dataset/
                                      prepare a fine-tuning dataset
-    gravion train run --job job.json run a training job (needs the
-                                     hosted training pipeline)
+    gravion train run --job job.json run a training job (local
+                                     Gravion Core training)
     gravion omni "coder: fix..."     run the all-in-one module
                                      (routes by directive, else chat)
     gravion authority serve --issuer-key issuer.key --licenses DIR
@@ -112,7 +113,17 @@ def cmd_init(args) -> int:
         company=args.company,
         mode=args.mode,
         tier=args.tier,
-        provider=ProviderConfig(type=args.provider, model=args.model),
+        provider=ProviderConfig(
+            type=args.provider,
+            model=args.model,
+            base_url=args.base_url or "",
+            api_key_env=args.api_key_env,
+            timeout_seconds=args.timeout,
+            max_retries=args.max_retries,
+            retry_backoff_seconds=args.retry_backoff,
+            temperature=args.temperature,
+            max_tokens=args.max_tokens,
+        ),
         home=home,
     )
     config.save()
@@ -152,6 +163,57 @@ def cmd_status(args) -> int:
     return 0
 
 
+def cmd_doctor(args) -> int:
+    from .doctor import doctor_ok, run_doctor
+
+    checks = run_doctor(_load_config(args))
+    for check in checks:
+        print(f"{check.status:<4} {check.name}: {check.detail}")
+    return 0 if doctor_ok(checks) else 1
+
+
+def cmd_web_serve(args) -> int:
+    from .web import make_server
+
+    config = _load_config(args)
+    server = make_server(config, host=args.host, port=args.port)
+    host, port = server.server_address[:2]
+    print(f"gravion web UI serving on http://{host}:{port}")
+    print("  local by default — put a TLS reverse proxy in front for production")
+    print("  Ctrl-C to stop")
+    try:
+        server.serve_forever()
+    except KeyboardInterrupt:
+        print("\nweb UI stopped")
+    finally:
+        server.server_close()
+    return 0
+
+
+def cmd_bot(args) -> int:
+    from .bots import bot_status, check_bot_slot
+
+    config = _load_config(args)
+    if args.action == "check":
+        status = check_bot_slot(config)
+    else:
+        status = bot_status(config)
+    print(f"bot slot: {'configured' if status['configured'] else 'empty'}")
+    if status.get("name"):
+        print(f"  name: {status['name']}")
+    if status.get("kind"):
+        print(f"  kind: {status['kind']}")
+    if status.get("endpoint_url"):
+        print(f"  endpoint: {status['endpoint_url']}")
+    if status.get("files"):
+        print(f"  files: {', '.join(status['files'])}")
+    for item in status.get("needed", []):
+        print(f"  needed: {item}")
+    for problem in status.get("problems", []):
+        print(f"  problem: {problem}")
+    return 0 if status["configured"] and not status.get("problems") else 1
+
+
 def cmd_modules_list(args) -> int:
     registry = default_registry()
     for m in registry.list():
@@ -174,7 +236,13 @@ def cmd_models_list(args) -> int:
         return 0
     for e in entries:
         caps = ",".join(e.capabilities)
-        print(f"{e.id:<16} {e.name:<16} {e.status:<10} caps={caps}")
+        params = (
+            f" params={e.parameter_count}" if e.parameter_count is not None else ""
+        )
+        print(
+            f"{e.id:<16} {e.name:<16} {e.status:<10} "
+            f"weights={e.weights_status}{params} caps={caps}"
+        )
     return 0
 
 
@@ -360,7 +428,11 @@ def cmd_train(args) -> int:
         print(f"training job valid: model {job.model}, data {job.data}, "
               f"base tier {job.base_tier}")
         return 0
-    run_training_job(job)  # raises honestly: no backend in this build
+    report = run_training_job(job, home=_home(args))
+    print(f"training complete: model {report['model']}")
+    print(f"  weights:    {report['weights_path']}")
+    print(f"  parameters: {report['parameter_count']}")
+    print(f"  examples:   {report['examples']}")
     return 0
 
 
@@ -506,10 +578,39 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--provider", choices=["gravion-core", "endpoint"], default="gravion-core")
     p.add_argument("--model", default="gravion-core",
                    help="Gravion model id from the registry (e.g. gravion-code for the coder module)")
+    p.add_argument("--base-url", help="inference endpoint base URL (provider=endpoint)")
+    p.add_argument("--api-key-env", default="GRAVION_API_KEY",
+                   help="environment variable holding the endpoint API key")
+    p.add_argument("--timeout", type=float, default=60.0,
+                   help="endpoint timeout in seconds (1-300)")
+    p.add_argument("--max-retries", type=int, default=2,
+                   help="endpoint retries for transient failures (0-5)")
+    p.add_argument("--retry-backoff", type=float, default=0.5,
+                   help="base retry backoff in seconds (0-30)")
+    p.add_argument("--temperature", type=float,
+                   help="optional endpoint temperature (0-2)")
+    p.add_argument("--max-tokens", type=int,
+                   help="optional endpoint max_tokens")
     p.set_defaults(func=cmd_init)
 
     p = sub.add_parser("status", help="show deployment and gate state")
     p.set_defaults(func=cmd_status)
+
+    p = sub.add_parser("doctor", help="run production-readiness checks")
+    p.set_defaults(func=cmd_doctor)
+
+    p = sub.add_parser("web", help="run the local web UI")
+    web_sub = p.add_subparsers(dest="action", required=True)
+    wp = web_sub.add_parser("serve", help="serve the web UI and JSON API")
+    wp.add_argument("--host", default="127.0.0.1")
+    wp.add_argument("--port", type=int, default=8791)
+    p.set_defaults(func=cmd_web_serve)
+
+    p = sub.add_parser("bot", help="inspect the drop-in bot integration slot")
+    bot_sub = p.add_subparsers(dest="action", required=True)
+    bot_sub.add_parser("status", help="show bot slot status and missing inputs")
+    bot_sub.add_parser("check", help="validate the bot slot manifest without running bot code")
+    p.set_defaults(func=cmd_bot)
 
     p = sub.add_parser("modules", help="module catalogue")
     p_sub = p.add_subparsers(dest="modules_command", required=True)
@@ -642,7 +743,7 @@ def build_parser() -> argparse.ArgumentParser:
     p_issue.add_argument("--tier", choices=sorted(TIERS), required=True)
     p_issue.add_argument("--modules", required=True, help="comma-separated module names, or *")
     p_issue.add_argument("--agreement-ref", required=True)
-    p_issue.add_argument("--equity", type=float, required=True, help="partnership equity %% (10-20)")
+    p_issue.add_argument("--equity", type=float, required=True, help="partnership equity % (10-20)")
     p_issue.add_argument("--days", type=int, default=365)
     p_issue.add_argument("--out")
     p_issue.set_defaults(func=cmd_license_issue)

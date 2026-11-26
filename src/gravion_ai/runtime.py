@@ -15,12 +15,14 @@ suspended deployment can always take its data out.
 from __future__ import annotations
 
 import json
+import time
 import zipfile
-from pathlib import Path, PurePosixPath
+from pathlib import Path
 
 from .catalog import ModelCatalog
 from .config import MODE_PRODUCTION, GravionConfig
 from .errors import ModuleError, ModuleTamperError
+from .events import RunEventLog
 from .licensing import AuditLog, EntitlementGate
 from .licensing.authority import EntitlementClient, HttpAuthorityClient
 from .licensing.keys import KeyPair
@@ -52,9 +54,11 @@ class GravionRuntime:
     ):
         self.config = config
         self.audit = AuditLog(config.state_dir / "audit.jsonl")
+        self.events = RunEventLog(config.state_dir / "run-events.jsonl")
+        self.event_log = self.events
         self.registry = registry or default_registry()
         self.catalog = ModelCatalog.load_for_home(config.home)
-        self.provider = build_provider(config.provider)
+        self.provider = build_provider(config.provider, home=config.home)
         if issuer_public is None:
             issuer_public = load_issuer_public(config)
         if client is None and config.authority_url:
@@ -66,6 +70,19 @@ class GravionRuntime:
             audit=self.audit,
             now_fn=now_fn,
         )
+
+    def _append_event(self, event: str, **kwargs) -> None:
+        """Best-effort operational event recording.
+
+        The run event log is observability, not entitlement control:
+        a local event-log write failure must not change module API
+        behaviour. The licensing audit log remains the security
+        record.
+        """
+        try:
+            self.events.append(event, **kwargs)
+        except (OSError, ValueError):
+            pass
 
     # -- model resolution --------------------------------------------------
     def resolve_model(self, capability: str = "chat") -> str:
@@ -128,15 +145,54 @@ class GravionRuntime:
                 raise
             self.audit.append("module.verified", {"module": name})
 
-    def run_module(self, name: str, prompt: str) -> str:
-        self._gate_and_verify(name)
-        module = self.registry.instantiate(name)
-        ctx = ModuleContext(
-            system_context=self.config.system_context(),
-            provider=self.provider,
-            model=self.resolve_model(name),
+    def run_module(
+        self, name: str, prompt: str, *, session_id: str | None = None
+    ) -> str:
+        run_id = RunEventLog.new_run_id()
+        started = time.monotonic()
+        self._append_event(
+            "run.started",
+            run_id=run_id,
+            session_id=session_id,
+            module=name,
+            model=self.config.provider.model,
+            details={"input_chars": len(prompt)},
         )
-        return module.run(ctx, prompt)
+        try:
+            self._gate_and_verify(name)
+            module = self.registry.instantiate(name)
+            resolved_model = self.resolve_model(name)
+            ctx = ModuleContext(
+                system_context=self.config.system_context(),
+                provider=self.provider,
+                model=resolved_model,
+            )
+            output = module.run(ctx, prompt)
+        except Exception as exc:
+            self._append_event(
+                "run.failed",
+                run_id=run_id,
+                session_id=session_id,
+                module=name,
+                model=self.config.provider.model,
+                details={
+                    "duration_ms": round((time.monotonic() - started) * 1000),
+                    "error_type": exc.__class__.__name__,
+                },
+            )
+            raise
+        self._append_event(
+            "run.completed",
+            run_id=run_id,
+            session_id=session_id,
+            module=name,
+            model=resolved_model,
+            details={
+                "duration_ms": round((time.monotonic() - started) * 1000),
+                "output_chars": len(output),
+            },
+        )
+        return output
 
     def chat(self, prompt: str) -> str:
         return self.run_module("chat", prompt)
@@ -176,9 +232,41 @@ class GravionRuntime:
         it (the local development planner, not the trained Gravion
         Agent model) and the plan itself, whose status records
         that nothing was executed."""
-        self._gate_and_verify("agentic")
-        module = self.registry.instantiate("agentic")
-        return module.plan(prompt, Path(out_path))
+        run_id = RunEventLog.new_run_id()
+        started = time.monotonic()
+        self._append_event(
+            "run.started",
+            run_id=run_id,
+            module="agentic",
+            details={"operation": "plan_agent", "input_chars": len(prompt)},
+        )
+        try:
+            self._gate_and_verify("agentic")
+            module = self.registry.instantiate("agentic")
+            result = module.plan(prompt, Path(out_path))
+        except Exception as exc:
+            self._append_event(
+                "run.failed",
+                run_id=run_id,
+                module="agentic",
+                details={
+                    "operation": "plan_agent",
+                    "duration_ms": round((time.monotonic() - started) * 1000),
+                    "error_type": exc.__class__.__name__,
+                },
+            )
+            raise
+        self._append_event(
+            "run.completed",
+            run_id=run_id,
+            module="agentic",
+            details={
+                "operation": "plan_agent",
+                "duration_ms": round((time.monotonic() - started) * 1000),
+                "output_name": Path(out_path).name,
+            },
+        )
+        return result
 
     def build_website(self, prompt: str, out_dir: Path):
         """Build a real static website for a brief via the
@@ -188,9 +276,41 @@ class GravionRuntime:
         builder that produced it (the local development builder,
         not the trained Gravion Builder model) and the files
         written."""
-        self._gate_and_verify("website-builder")
-        module = self.registry.instantiate("website-builder")
-        return module.build(prompt, Path(out_dir))
+        run_id = RunEventLog.new_run_id()
+        started = time.monotonic()
+        self._append_event(
+            "run.started",
+            run_id=run_id,
+            module="website-builder",
+            details={"operation": "build_website", "input_chars": len(prompt)},
+        )
+        try:
+            self._gate_and_verify("website-builder")
+            module = self.registry.instantiate("website-builder")
+            result = module.build(prompt, Path(out_dir))
+        except Exception as exc:
+            self._append_event(
+                "run.failed",
+                run_id=run_id,
+                module="website-builder",
+                details={
+                    "operation": "build_website",
+                    "duration_ms": round((time.monotonic() - started) * 1000),
+                    "error_type": exc.__class__.__name__,
+                },
+            )
+            raise
+        self._append_event(
+            "run.completed",
+            run_id=run_id,
+            module="website-builder",
+            details={
+                "operation": "build_website",
+                "duration_ms": round((time.monotonic() - started) * 1000),
+                "output_name": Path(out_dir).name,
+            },
+        )
+        return result
 
     def render_video(self, prompt: str, out_path: Path):
         """Render a real MP4 for a video request via the video
@@ -199,9 +319,41 @@ class GravionRuntime:
         pipeline's VideoResult — the file, the renderer that
         produced it (the local development renderer, not the
         trained Gravion Video model) and the rendered spec."""
-        self._gate_and_verify("video")
-        module = self.registry.instantiate("video")
-        return module.render(prompt, Path(out_path))
+        run_id = RunEventLog.new_run_id()
+        started = time.monotonic()
+        self._append_event(
+            "run.started",
+            run_id=run_id,
+            module="video",
+            details={"operation": "render_video", "input_chars": len(prompt)},
+        )
+        try:
+            self._gate_and_verify("video")
+            module = self.registry.instantiate("video")
+            result = module.render(prompt, Path(out_path))
+        except Exception as exc:
+            self._append_event(
+                "run.failed",
+                run_id=run_id,
+                module="video",
+                details={
+                    "operation": "render_video",
+                    "duration_ms": round((time.monotonic() - started) * 1000),
+                    "error_type": exc.__class__.__name__,
+                },
+            )
+            raise
+        self._append_event(
+            "run.completed",
+            run_id=run_id,
+            module="video",
+            details={
+                "operation": "render_video",
+                "duration_ms": round((time.monotonic() - started) * 1000),
+                "output_name": Path(out_path).name,
+            },
+        )
+        return result
 
     # -- status ----------------------------------------------------------------
     def status(self) -> dict:
@@ -215,6 +367,8 @@ class GravionRuntime:
             "model": self.config.provider.model,
             "gate_state": decision.state.value,
             "gate_reason": decision.reason,
+            "run_events": self.events.count(),
+            "run_event_log": "state/run-events.jsonl",
             "modules": [
                 {"name": m.name, "type": m.type.value, "status": m.status.value}
                 for m in self.registry.list()
@@ -276,10 +430,11 @@ class GravionRuntime:
             add_file(cfg.state_dir / "identity.pub", "state/identity.pub")
             add_file(cfg.state_dir / "license.json", "state/license.json")
             add_file(cfg.state_dir / "audit.jsonl", "state/audit.jsonl")
+            add_file(cfg.state_dir / "run-events.jsonl", "state/run-events.jsonl")
             if cfg.data_dir.exists():
                 for path in sorted(cfg.data_dir.rglob("*")):
                     if path.is_file():
-                        arcname = (PurePosixPath("data") / path.relative_to(cfg.data_dir).as_posix()).as_posix()
+                        arcname = str(Path("data") / path.relative_to(cfg.data_dir))
                         archive.write(path, arcname)
                         included.append(arcname)
         return sorted(included)

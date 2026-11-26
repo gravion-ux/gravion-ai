@@ -1,0 +1,1295 @@
+{
+  "architecture": "compact n-gram + TF-IDF retrieval",
+  "examples": [
+    {
+      "completion": "Gravion Core is ready for local offline use.",
+      "prompt": "gravion core readiness",
+      "prompt_vector": {
+        "core": 0.38856156,
+        "core readiness": 0.57805264,
+        "gravion": 0.17248222,
+        "gravion core": 0.38856156,
+        "readiness": 0.57805264
+      }
+    },
+    {
+      "completion": "Gravion Core is the built-in local Gravion model for offline chat and support.",
+      "prompt": "what is gravion core",
+      "prompt_vector": {
+        "core": 0.39811929,
+        "gravion": 0.17672489,
+        "gravion core": 0.39811929,
+        "is": 0.37087702,
+        "is gravion": 0.52061564,
+        "what": 0.291,
+        "what is": 0.39811929
+      }
+    },
+    {
+      "completion": "Gravion local training learns compact weights from local Gravion dataset files and saves them as a Gravion weights artifact.",
+      "prompt": "how does gravion local training work",
+      "prompt_vector": {
+        "does": 0.21676994,
+        "does gravion": 0.21676994,
+        "gravion": 0.11734434,
+        "gravion local": 0.3932649,
+        "how": 0.21676994,
+        "how does": 0.24626026,
+        "local": 0.28574338,
+        "local training": 0.3932649,
+        "training": 0.34568587,
+        "training work": 0.3932649,
+        "work": 0.34568587
+      }
+    },
+    {
+      "completion": "When the local model is unsure, Gravion falls back to its deterministic offline responder.",
+      "prompt": "what does gravion do when the local model is unsure",
+      "prompt_vector": {
+        "do": 0.22015884,
+        "do when": 0.24398514,
+        "does": 0.15299626,
+        "does gravion": 0.15299626,
+        "gravion": 0.08282165,
+        "gravion do": 0.27756643,
+        "is": 0.17381054,
+        "is unsure": 0.27756643,
+        "local": 0.20167772,
+        "local model": 0.24398514,
+        "model": 0.22015884,
+        "model is": 0.27756643,
+        "the": 0.24398514,
+        "the local": 0.27756643,
+        "unsure": 0.27756643,
+        "what": 0.13637638,
+        "what does": 0.24398514,
+        "when": 0.24398514,
+        "when the": 0.27756643
+      }
+    },
+    {
+      "completion": "Gravion Core parameters are counted from the numeric weights stored in its saved artifact.",
+      "prompt": "how are gravion core parameters counted",
+      "prompt_vector": {
+        "are": 0.28174176,
+        "are gravion": 0.35520742,
+        "core": 0.23876709,
+        "core parameters": 0.35520742,
+        "counted": 0.35520742,
+        "gravion": 0.10598856,
+        "gravion core": 0.23876709,
+        "how": 0.19579243,
+        "how are": 0.35520742,
+        "parameters": 0.35520742,
+        "parameters counted": 0.35520742
+      }
+    },
+    {
+      "completion": "Yes. Gravion Core runs locally without a network or an API key.",
+      "prompt": "can gravion core work without a network",
+      "prompt_vector": {
+        "a": 0.21673402,
+        "a network": 0.32242941,
+        "can": 0.25574305,
+        "can gravion": 0.28342039,
+        "core": 0.21673402,
+        "core work": 0.32242941,
+        "gravion": 0.09620809,
+        "gravion core": 0.21673402,
+        "network": 0.32242941,
+        "without": 0.32242941,
+        "without a": 0.32242941,
+        "work": 0.28342039,
+        "work without": 0.32242941
+      }
+    },
+    {
+      "completion": "A Gravion deployment policy is the company work policy injected into module system context.",
+      "prompt": "what is a gravion deployment policy",
+      "prompt_vector": {
+        "a": 0.26052413,
+        "a gravion": 0.30741475,
+        "deployment": 0.30741475,
+        "deployment policy": 0.38757479,
+        "gravion": 0.11564649,
+        "gravion deployment": 0.38757479,
+        "is": 0.24269715,
+        "is a": 0.34068417,
+        "policy": 0.38757479,
+        "what": 0.19042665,
+        "what is": 0.26052413
+      }
+    },
+    {
+      "completion": "Gravion keeps deployment data exportable and records licensing events in a tamper-evident audit log.",
+      "prompt": "how does gravion protect deployment data",
+      "prompt_vector": {
+        "data": 0.37737827,
+        "deployment": 0.29932712,
+        "deployment data": 0.37737827,
+        "does": 0.20801313,
+        "does gravion": 0.20801313,
+        "gravion": 0.112604,
+        "gravion protect": 0.37737827,
+        "how": 0.20801313,
+        "how does": 0.23631214,
+        "protect": 0.37737827,
+        "protect deployment": 0.37737827
+      }
+    },
+    {
+      "completion": "A Gravion support answer should say the fact is missing and offer human escalation instead of inventing details.",
+      "prompt": "what should a gravion support answer do when facts are missing",
+      "prompt_vector": {
+        "a": 0.16419168,
+        "a gravion": 0.19374383,
+        "answer": 0.24426358,
+        "answer do": 0.24426358,
+        "are": 0.19374383,
+        "are missing": 0.21471142,
+        "do": 0.19374383,
+        "do when": 0.21471142,
+        "facts": 0.24426358,
+        "facts are": 0.24426358,
+        "gravion": 0.07288458,
+        "gravion support": 0.24426358,
+        "missing": 0.21471142,
+        "should": 0.24426358,
+        "should a": 0.24426358,
+        "support": 0.24426358,
+        "support answer": 0.24426358,
+        "what": 0.12001373,
+        "what should": 0.24426358,
+        "when": 0.21471142,
+        "when facts": 0.24426358
+      }
+    },
+    {
+      "completion": "Gravion verifies signed module manifests and entitlement before production module use.",
+      "prompt": "how does gravion handle module licensing",
+      "prompt_vector": {
+        "does": 0.20272821,
+        "does gravion": 0.20272821,
+        "gravion": 0.10974311,
+        "gravion handle": 0.36779034,
+        "handle": 0.36779034,
+        "handle module": 0.36779034,
+        "how": 0.20272821,
+        "how does": 0.23030823,
+        "licensing": 0.36779034,
+        "module": 0.36779034,
+        "module licensing": 0.36779034
+      }
+    },
+    {
+      "completion": "The Gravion model registry lists Gravion models, capabilities, tiers, and weights status.",
+      "prompt": "what is the gravion model registry",
+      "prompt_vector": {
+        "gravion": 0.10840553,
+        "gravion model": 0.36330762,
+        "is": 0.22750118,
+        "is the": 0.36330762,
+        "model": 0.28816663,
+        "model registry": 0.36330762,
+        "registry": 0.36330762,
+        "the": 0.31935296,
+        "the gravion": 0.36330762,
+        "what": 0.1785035,
+        "what is": 0.24421197
+      }
+    },
+    {
+      "completion": "A deployment can train Gravion Core from local prompt and completion dataset files with the Gravion training command.",
+      "prompt": "how can a deployment train gravion core",
+      "prompt_vector": {
+        "a": 0.22398097,
+        "a deployment": 0.33321051,
+        "can": 0.26429434,
+        "can a": 0.33321051,
+        "core": 0.22398097,
+        "deployment": 0.26429434,
+        "deployment train": 0.33321051,
+        "gravion": 0.09942501,
+        "gravion core": 0.22398097,
+        "how": 0.1836676,
+        "how can": 0.33321051,
+        "train": 0.33321051,
+        "train gravion": 0.33321051
+      }
+    },
+    {
+      "completion": "Gravion export includes configuration, policy, registry data, audit records, and deployment data files.",
+      "prompt": "what does gravion export include",
+      "prompt_vector": {
+        "does": 0.23065712,
+        "does gravion": 0.23065712,
+        "export": 0.41845908,
+        "export include": 0.41845908,
+        "gravion": 0.1248619,
+        "gravion export": 0.41845908,
+        "include": 0.41845908,
+        "what": 0.20560099,
+        "what does": 0.36783193
+      }
+    },
+    {
+      "completion": "Gravion doctor runs read-only readiness checks for a deployment.",
+      "prompt": "what is gravion doctor for",
+      "prompt_vector": {
+        "doctor": 0.41006118,
+        "doctor for": 0.41006118,
+        "for": 0.41006118,
+        "gravion": 0.12235609,
+        "gravion doctor": 0.41006118,
+        "is": 0.256778,
+        "is gravion": 0.36045005,
+        "what": 0.20147486,
+        "what is": 0.27563927
+      }
+    },
+    {
+      "completion": "Gravion all-in-one routing uses a module directive when present and otherwise uses chat.",
+      "prompt": "how does gravion route all in one requests",
+      "prompt_vector": {
+        "all": 0.29627013,
+        "all in": 0.29627013,
+        "does": 0.16330585,
+        "does gravion": 0.16330585,
+        "gravion": 0.08840255,
+        "gravion route": 0.29627013,
+        "how": 0.16330585,
+        "how does": 0.18552269,
+        "in": 0.29627013,
+        "in one": 0.29627013,
+        "one": 0.29627013,
+        "one requests": 0.29627013,
+        "requests": 0.29627013,
+        "route": 0.29627013,
+        "route all": 0.29627013
+      }
+    },
+    {
+      "completion": "A Gravion tier is a readiness level offered over the same module system.",
+      "prompt": "what is a gravion tier",
+      "prompt_vector": {
+        "a": 0.29977362,
+        "a gravion": 0.35372858,
+        "gravion": 0.13306931,
+        "gravion tier": 0.4459652,
+        "is": 0.27926089,
+        "is a": 0.39201024,
+        "tier": 0.4459652,
+        "what": 0.21911554,
+        "what is": 0.29977362
+      }
+    },
+    {
+      "completion": "Gravion stores local model weights as a JSON artifact with counts and hashes for verification.",
+      "prompt": "how does gravion store local model weights",
+      "prompt_vector": {
+        "does": 0.19373338,
+        "does gravion": 0.19373338,
+        "gravion": 0.10487393,
+        "gravion store": 0.35147189,
+        "how": 0.19373338,
+        "how does": 0.22008971,
+        "local": 0.25537688,
+        "local model": 0.30894917,
+        "model": 0.27877882,
+        "model weights": 0.35147189,
+        "store": 0.35147189,
+        "store local": 0.35147189,
+        "weights": 0.30894917
+      }
+    },
+    {
+      "completion": "If Gravion weights are missing or invalid, Gravion Core falls back to its deterministic offline responder.",
+      "prompt": "what happens if gravion weights are missing",
+      "prompt_vector": {
+        "are": 0.24741384,
+        "are missing": 0.27418977,
+        "gravion": 0.09307472,
+        "gravion weights": 0.31192832,
+        "happens": 0.31192832,
+        "happens if": 0.31192832,
+        "if": 0.31192832,
+        "if gravion": 0.31192832,
+        "missing": 0.27418977,
+        "weights": 0.27418977,
+        "weights are": 0.31192832,
+        "what": 0.15325937,
+        "what happens": 0.31192832
+      }
+    },
+    {
+      "completion": "Gravion local training reads dataset files from the deployment environment and does not need third-party weights.",
+      "prompt": "how does gravion keep training local",
+      "prompt_vector": {
+        "does": 0.21305691,
+        "does gravion": 0.21305691,
+        "gravion": 0.11533435,
+        "gravion keep": 0.3865287,
+        "how": 0.21305691,
+        "how does": 0.24204209,
+        "keep": 0.3865287,
+        "keep training": 0.3865287,
+        "local": 0.2808489,
+        "training": 0.33976465,
+        "training local": 0.3865287
+      }
+    },
+    {
+      "completion": "Gravion chat runs the chat module through the deployment policy, model registry, provider, and licensing gate.",
+      "prompt": "what can gravion chat do",
+      "prompt_vector": {
+        "can": 0.31448085,
+        "can gravion": 0.34851499,
+        "chat": 0.39648342,
+        "chat do": 0.39648342,
+        "do": 0.31448085,
+        "gravion": 0.11830469,
+        "gravion chat": 0.39648342,
+        "what": 0.19480372,
+        "what can": 0.39648342
+      }
+    }
+  ],
+  "format": "gravion-core-local-v1",
+  "idf": {
+    "a": 2.25276297,
+    "a deployment": 3.35137526,
+    "a gravion": 2.65822808,
+    "a network": 3.35137526,
+    "all": 3.35137526,
+    "all in": 3.35137526,
+    "answer": 3.35137526,
+    "answer do": 3.35137526,
+    "are": 2.65822808,
+    "are gravion": 3.35137526,
+    "are missing": 2.94591015,
+    "can": 2.65822808,
+    "can a": 3.35137526,
+    "can gravion": 2.94591015,
+    "chat": 3.35137526,
+    "chat do": 3.35137526,
+    "core": 2.25276297,
+    "core parameters": 3.35137526,
+    "core readiness": 3.35137526,
+    "core work": 3.35137526,
+    "counted": 3.35137526,
+    "data": 3.35137526,
+    "deployment": 2.65822808,
+    "deployment data": 3.35137526,
+    "deployment policy": 3.35137526,
+    "deployment train": 3.35137526,
+    "do": 2.65822808,
+    "do when": 2.94591015,
+    "doctor": 3.35137526,
+    "doctor for": 3.35137526,
+    "does": 1.84729786,
+    "does gravion": 1.84729786,
+    "export": 3.35137526,
+    "export include": 3.35137526,
+    "facts": 3.35137526,
+    "facts are": 3.35137526,
+    "for": 3.35137526,
+    "gravion": 1.0,
+    "gravion chat": 3.35137526,
+    "gravion core": 2.25276297,
+    "gravion deployment": 3.35137526,
+    "gravion do": 3.35137526,
+    "gravion doctor": 3.35137526,
+    "gravion export": 3.35137526,
+    "gravion handle": 3.35137526,
+    "gravion keep": 3.35137526,
+    "gravion local": 3.35137526,
+    "gravion model": 3.35137526,
+    "gravion protect": 3.35137526,
+    "gravion route": 3.35137526,
+    "gravion store": 3.35137526,
+    "gravion support": 3.35137526,
+    "gravion tier": 3.35137526,
+    "gravion weights": 3.35137526,
+    "handle": 3.35137526,
+    "handle module": 3.35137526,
+    "happens": 3.35137526,
+    "happens if": 3.35137526,
+    "how": 1.84729786,
+    "how are": 3.35137526,
+    "how can": 3.35137526,
+    "how does": 2.09861229,
+    "if": 3.35137526,
+    "if gravion": 3.35137526,
+    "in": 3.35137526,
+    "in one": 3.35137526,
+    "include": 3.35137526,
+    "is": 2.09861229,
+    "is a": 2.94591015,
+    "is gravion": 2.94591015,
+    "is the": 3.35137526,
+    "is unsure": 3.35137526,
+    "keep": 3.35137526,
+    "keep training": 3.35137526,
+    "licensing": 3.35137526,
+    "local": 2.43508453,
+    "local model": 2.94591015,
+    "local training": 3.35137526,
+    "missing": 2.94591015,
+    "model": 2.65822808,
+    "model is": 3.35137526,
+    "model registry": 3.35137526,
+    "model weights": 3.35137526,
+    "module": 3.35137526,
+    "module licensing": 3.35137526,
+    "network": 3.35137526,
+    "one": 3.35137526,
+    "one requests": 3.35137526,
+    "parameters": 3.35137526,
+    "parameters counted": 3.35137526,
+    "policy": 3.35137526,
+    "protect": 3.35137526,
+    "protect deployment": 3.35137526,
+    "readiness": 3.35137526,
+    "registry": 3.35137526,
+    "requests": 3.35137526,
+    "route": 3.35137526,
+    "route all": 3.35137526,
+    "should": 3.35137526,
+    "should a": 3.35137526,
+    "store": 3.35137526,
+    "store local": 3.35137526,
+    "support": 3.35137526,
+    "support answer": 3.35137526,
+    "the": 2.94591015,
+    "the gravion": 3.35137526,
+    "the local": 3.35137526,
+    "tier": 3.35137526,
+    "train": 3.35137526,
+    "train gravion": 3.35137526,
+    "training": 2.94591015,
+    "training local": 3.35137526,
+    "training work": 3.35137526,
+    "unsure": 3.35137526,
+    "weights": 2.94591015,
+    "weights are": 3.35137526,
+    "what": 1.64662716,
+    "what can": 3.35137526,
+    "what does": 2.94591015,
+    "what happens": 3.35137526,
+    "what is": 2.25276297,
+    "what should": 3.35137526,
+    "when": 2.94591015,
+    "when facts": 3.35137526,
+    "when the": 3.35137526,
+    "without": 3.35137526,
+    "without a": 3.35137526,
+    "work": 2.94591015,
+    "work without": 3.35137526
+  },
+  "model_id": "gravion-core",
+  "parameter_count": 750,
+  "trained_from": {
+    "dataset_sha256": "22effba99030b4134e22fd43d490a96641df70ae7498c51a280b51fa93d3d8bf",
+    "examples": 20,
+    "source": "src/gravion_ai/data/gravion-core-seed.jsonl"
+  },
+  "transitions": {
+    "<s>": {
+      "a": 0.2,
+      "gravion": 0.6,
+      "if": 0.05,
+      "the": 0.05,
+      "when": 0.05,
+      "yes": 0.05
+    },
+    "a": {
+      "deployment": 0.18181818,
+      "gravion": 0.36363636,
+      "json": 0.09090909,
+      "module": 0.09090909,
+      "network": 0.09090909,
+      "readiness": 0.09090909,
+      "tamper": 0.09090909
+    },
+    "all": {
+      "in": 1.0
+    },
+    "an": {
+      "api": 1.0
+    },
+    "and": {
+      "completion": 0.08333333,
+      "deployment": 0.08333333,
+      "does": 0.08333333,
+      "entitlement": 0.08333333,
+      "hashes": 0.08333333,
+      "licensing": 0.08333333,
+      "offer": 0.08333333,
+      "otherwise": 0.08333333,
+      "records": 0.08333333,
+      "saves": 0.08333333,
+      "support": 0.08333333,
+      "weights": 0.08333333
+    },
+    "answer": {
+      "should": 1.0
+    },
+    "api": {
+      "key": 1.0
+    },
+    "are": {
+      "counted": 0.5,
+      "missing": 0.5
+    },
+    "artifact": {
+      "</s>": 0.66666667,
+      "with": 0.33333333
+    },
+    "as": {
+      "a": 1.0
+    },
+    "audit": {
+      "log": 0.5,
+      "records": 0.5
+    },
+    "back": {
+      "to": 1.0
+    },
+    "before": {
+      "production": 1.0
+    },
+    "built": {
+      "in": 1.0
+    },
+    "can": {
+      "train": 1.0
+    },
+    "capabilities": {
+      "tiers": 1.0
+    },
+    "chat": {
+      "</s>": 0.25,
+      "and": 0.25,
+      "module": 0.25,
+      "runs": 0.25
+    },
+    "checks": {
+      "for": 1.0
+    },
+    "command": {
+      "</s>": 1.0
+    },
+    "compact": {
+      "weights": 1.0
+    },
+    "company": {
+      "work": 1.0
+    },
+    "completion": {
+      "dataset": 1.0
+    },
+    "configuration": {
+      "policy": 1.0
+    },
+    "context": {
+      "</s>": 1.0
+    },
+    "core": {
+      "falls": 0.16666667,
+      "from": 0.16666667,
+      "is": 0.33333333,
+      "parameters": 0.16666667,
+      "runs": 0.16666667
+    },
+    "counted": {
+      "from": 1.0
+    },
+    "counts": {
+      "and": 1.0
+    },
+    "data": {
+      "audit": 0.33333333,
+      "exportable": 0.33333333,
+      "files": 0.33333333
+    },
+    "dataset": {
+      "files": 1.0
+    },
+    "deployment": {
+      "</s>": 0.14285714,
+      "can": 0.14285714,
+      "data": 0.28571429,
+      "environment": 0.14285714,
+      "policy": 0.28571429
+    },
+    "details": {
+      "</s>": 1.0
+    },
+    "deterministic": {
+      "offline": 1.0
+    },
+    "directive": {
+      "when": 1.0
+    },
+    "doctor": {
+      "runs": 1.0
+    },
+    "does": {
+      "not": 1.0
+    },
+    "entitlement": {
+      "before": 1.0
+    },
+    "environment": {
+      "and": 1.0
+    },
+    "escalation": {
+      "instead": 1.0
+    },
+    "events": {
+      "in": 1.0
+    },
+    "evident": {
+      "audit": 1.0
+    },
+    "export": {
+      "includes": 1.0
+    },
+    "exportable": {
+      "and": 1.0
+    },
+    "fact": {
+      "is": 1.0
+    },
+    "falls": {
+      "back": 1.0
+    },
+    "files": {
+      "</s>": 0.25,
+      "and": 0.25,
+      "from": 0.25,
+      "with": 0.25
+    },
+    "for": {
+      "a": 0.25,
+      "local": 0.25,
+      "offline": 0.25,
+      "verification": 0.25
+    },
+    "from": {
+      "local": 0.5,
+      "the": 0.5
+    },
+    "gate": {
+      "</s>": 1.0
+    },
+    "gravion": {
+      "all": 0.03846154,
+      "chat": 0.03846154,
+      "core": 0.23076923,
+      "dataset": 0.03846154,
+      "deployment": 0.03846154,
+      "doctor": 0.03846154,
+      "export": 0.03846154,
+      "falls": 0.03846154,
+      "keeps": 0.03846154,
+      "local": 0.07692308,
+      "model": 0.07692308,
+      "models": 0.03846154,
+      "stores": 0.03846154,
+      "support": 0.03846154,
+      "tier": 0.03846154,
+      "training": 0.03846154,
+      "verifies": 0.03846154,
+      "weights": 0.07692308
+    },
+    "hashes": {
+      "for": 1.0
+    },
+    "human": {
+      "escalation": 1.0
+    },
+    "if": {
+      "gravion": 1.0
+    },
+    "in": {
+      "a": 0.25,
+      "its": 0.25,
+      "local": 0.25,
+      "one": 0.25
+    },
+    "includes": {
+      "configuration": 1.0
+    },
+    "injected": {
+      "into": 1.0
+    },
+    "instead": {
+      "of": 1.0
+    },
+    "into": {
+      "module": 1.0
+    },
+    "invalid": {
+      "gravion": 1.0
+    },
+    "inventing": {
+      "details": 1.0
+    },
+    "is": {
+      "a": 0.16666667,
+      "missing": 0.16666667,
+      "ready": 0.16666667,
+      "the": 0.33333333,
+      "unsure": 0.16666667
+    },
+    "its": {
+      "deterministic": 0.66666667,
+      "saved": 0.33333333
+    },
+    "json": {
+      "artifact": 1.0
+    },
+    "keeps": {
+      "deployment": 1.0
+    },
+    "key": {
+      "</s>": 1.0
+    },
+    "learns": {
+      "compact": 1.0
+    },
+    "level": {
+      "offered": 1.0
+    },
+    "licensing": {
+      "events": 0.5,
+      "gate": 0.5
+    },
+    "lists": {
+      "gravion": 1.0
+    },
+    "local": {
+      "gravion": 0.25,
+      "model": 0.25,
+      "offline": 0.125,
+      "prompt": 0.125,
+      "training": 0.25
+    },
+    "locally": {
+      "without": 1.0
+    },
+    "log": {
+      "</s>": 1.0
+    },
+    "manifests": {
+      "and": 1.0
+    },
+    "missing": {
+      "and": 0.5,
+      "or": 0.5
+    },
+    "model": {
+      "for": 0.2,
+      "is": 0.2,
+      "registry": 0.4,
+      "weights": 0.2
+    },
+    "models": {
+      "capabilities": 1.0
+    },
+    "module": {
+      "directive": 0.16666667,
+      "manifests": 0.16666667,
+      "system": 0.33333333,
+      "through": 0.16666667,
+      "use": 0.16666667
+    },
+    "need": {
+      "third": 1.0
+    },
+    "network": {
+      "or": 1.0
+    },
+    "not": {
+      "need": 1.0
+    },
+    "numeric": {
+      "weights": 1.0
+    },
+    "of": {
+      "inventing": 1.0
+    },
+    "offer": {
+      "human": 1.0
+    },
+    "offered": {
+      "over": 1.0
+    },
+    "offline": {
+      "chat": 0.25,
+      "responder": 0.5,
+      "use": 0.25
+    },
+    "one": {
+      "routing": 1.0
+    },
+    "only": {
+      "readiness": 1.0
+    },
+    "or": {
+      "an": 0.5,
+      "invalid": 0.5
+    },
+    "otherwise": {
+      "uses": 1.0
+    },
+    "over": {
+      "the": 1.0
+    },
+    "parameters": {
+      "are": 1.0
+    },
+    "party": {
+      "weights": 1.0
+    },
+    "policy": {
+      "injected": 0.25,
+      "is": 0.25,
+      "model": 0.25,
+      "registry": 0.25
+    },
+    "present": {
+      "and": 1.0
+    },
+    "production": {
+      "module": 1.0
+    },
+    "prompt": {
+      "and": 1.0
+    },
+    "provider": {
+      "and": 1.0
+    },
+    "read": {
+      "only": 1.0
+    },
+    "readiness": {
+      "checks": 0.5,
+      "level": 0.5
+    },
+    "reads": {
+      "dataset": 1.0
+    },
+    "ready": {
+      "for": 1.0
+    },
+    "records": {
+      "and": 0.5,
+      "licensing": 0.5
+    },
+    "registry": {
+      "data": 0.33333333,
+      "lists": 0.33333333,
+      "provider": 0.33333333
+    },
+    "responder": {
+      "</s>": 1.0
+    },
+    "routing": {
+      "uses": 1.0
+    },
+    "runs": {
+      "locally": 0.33333333,
+      "read": 0.33333333,
+      "the": 0.33333333
+    },
+    "same": {
+      "module": 1.0
+    },
+    "saved": {
+      "artifact": 1.0
+    },
+    "saves": {
+      "them": 1.0
+    },
+    "say": {
+      "the": 1.0
+    },
+    "should": {
+      "say": 1.0
+    },
+    "signed": {
+      "module": 1.0
+    },
+    "status": {
+      "</s>": 1.0
+    },
+    "stored": {
+      "in": 1.0
+    },
+    "stores": {
+      "local": 1.0
+    },
+    "support": {
+      "</s>": 0.5,
+      "answer": 0.5
+    },
+    "system": {
+      "</s>": 0.5,
+      "context": 0.5
+    },
+    "tamper": {
+      "evident": 1.0
+    },
+    "the": {
+      "built": 0.09090909,
+      "chat": 0.09090909,
+      "company": 0.09090909,
+      "deployment": 0.18181818,
+      "fact": 0.09090909,
+      "gravion": 0.18181818,
+      "local": 0.09090909,
+      "numeric": 0.09090909,
+      "same": 0.09090909
+    },
+    "them": {
+      "as": 1.0
+    },
+    "third": {
+      "party": 1.0
+    },
+    "through": {
+      "the": 1.0
+    },
+    "tier": {
+      "is": 1.0
+    },
+    "tiers": {
+      "and": 1.0
+    },
+    "to": {
+      "its": 1.0
+    },
+    "train": {
+      "gravion": 1.0
+    },
+    "training": {
+      "command": 0.33333333,
+      "learns": 0.33333333,
+      "reads": 0.33333333
+    },
+    "unsure": {
+      "gravion": 1.0
+    },
+    "use": {
+      "</s>": 1.0
+    },
+    "uses": {
+      "a": 0.5,
+      "chat": 0.5
+    },
+    "verification": {
+      "</s>": 1.0
+    },
+    "verifies": {
+      "signed": 1.0
+    },
+    "weights": {
+      "</s>": 0.14285714,
+      "are": 0.14285714,
+      "artifact": 0.14285714,
+      "as": 0.14285714,
+      "from": 0.14285714,
+      "status": 0.14285714,
+      "stored": 0.14285714
+    },
+    "when": {
+      "present": 0.5,
+      "the": 0.5
+    },
+    "with": {
+      "counts": 0.5,
+      "the": 0.5
+    },
+    "without": {
+      "a": 1.0
+    },
+    "work": {
+      "policy": 1.0
+    },
+    "yes": {
+      "gravion": 1.0
+    }
+  },
+  "unigram_weights": {
+    "a": 0.03873239,
+    "all": 0.00352113,
+    "an": 0.00352113,
+    "and": 0.04225352,
+    "answer": 0.00352113,
+    "api": 0.00352113,
+    "are": 0.00704225,
+    "artifact": 0.01056338,
+    "as": 0.00704225,
+    "audit": 0.00704225,
+    "back": 0.00704225,
+    "before": 0.00352113,
+    "built": 0.00352113,
+    "can": 0.00352113,
+    "capabilities": 0.00352113,
+    "chat": 0.01408451,
+    "checks": 0.00352113,
+    "command": 0.00352113,
+    "compact": 0.00352113,
+    "company": 0.00352113,
+    "completion": 0.00352113,
+    "configuration": 0.00352113,
+    "context": 0.00352113,
+    "core": 0.02112676,
+    "counted": 0.00352113,
+    "counts": 0.00352113,
+    "data": 0.01056338,
+    "dataset": 0.01056338,
+    "deployment": 0.02464789,
+    "details": 0.00352113,
+    "deterministic": 0.00704225,
+    "directive": 0.00352113,
+    "doctor": 0.00352113,
+    "does": 0.00352113,
+    "entitlement": 0.00352113,
+    "environment": 0.00352113,
+    "escalation": 0.00352113,
+    "events": 0.00352113,
+    "evident": 0.00352113,
+    "export": 0.00352113,
+    "exportable": 0.00352113,
+    "fact": 0.00352113,
+    "falls": 0.00704225,
+    "files": 0.01408451,
+    "for": 0.01408451,
+    "from": 0.01408451,
+    "gate": 0.00352113,
+    "gravion": 0.0915493,
+    "hashes": 0.00352113,
+    "human": 0.00352113,
+    "if": 0.00352113,
+    "in": 0.01408451,
+    "includes": 0.00352113,
+    "injected": 0.00352113,
+    "instead": 0.00352113,
+    "into": 0.00352113,
+    "invalid": 0.00352113,
+    "inventing": 0.00352113,
+    "is": 0.02112676,
+    "its": 0.01056338,
+    "json": 0.00352113,
+    "keeps": 0.00352113,
+    "key": 0.00352113,
+    "learns": 0.00352113,
+    "level": 0.00352113,
+    "licensing": 0.00704225,
+    "lists": 0.00352113,
+    "local": 0.02816901,
+    "locally": 0.00352113,
+    "log": 0.00352113,
+    "manifests": 0.00352113,
+    "missing": 0.00704225,
+    "model": 0.01760563,
+    "models": 0.00352113,
+    "module": 0.02112676,
+    "need": 0.00352113,
+    "network": 0.00352113,
+    "not": 0.00352113,
+    "numeric": 0.00352113,
+    "of": 0.00352113,
+    "offer": 0.00352113,
+    "offered": 0.00352113,
+    "offline": 0.01408451,
+    "one": 0.00352113,
+    "only": 0.00352113,
+    "or": 0.00704225,
+    "otherwise": 0.00352113,
+    "over": 0.00352113,
+    "parameters": 0.00352113,
+    "party": 0.00352113,
+    "policy": 0.01408451,
+    "present": 0.00352113,
+    "production": 0.00352113,
+    "prompt": 0.00352113,
+    "provider": 0.00352113,
+    "read": 0.00352113,
+    "readiness": 0.00704225,
+    "reads": 0.00352113,
+    "ready": 0.00352113,
+    "records": 0.00704225,
+    "registry": 0.01056338,
+    "responder": 0.00704225,
+    "routing": 0.00352113,
+    "runs": 0.01056338,
+    "same": 0.00352113,
+    "saved": 0.00352113,
+    "saves": 0.00352113,
+    "say": 0.00352113,
+    "should": 0.00352113,
+    "signed": 0.00352113,
+    "status": 0.00352113,
+    "stored": 0.00352113,
+    "stores": 0.00352113,
+    "support": 0.00704225,
+    "system": 0.00704225,
+    "tamper": 0.00352113,
+    "the": 0.03873239,
+    "them": 0.00352113,
+    "third": 0.00352113,
+    "through": 0.00352113,
+    "tier": 0.00352113,
+    "tiers": 0.00352113,
+    "to": 0.00704225,
+    "train": 0.00352113,
+    "training": 0.01056338,
+    "unsure": 0.00352113,
+    "use": 0.00704225,
+    "uses": 0.00704225,
+    "verification": 0.00352113,
+    "verifies": 0.00352113,
+    "weights": 0.02464789,
+    "when": 0.00704225,
+    "with": 0.00704225,
+    "without": 0.00352113,
+    "work": 0.00352113,
+    "yes": 0.00352113
+  },
+  "vocabulary": [
+    "a",
+    "a deployment",
+    "a gravion",
+    "a network",
+    "all",
+    "all in",
+    "answer",
+    "answer do",
+    "are",
+    "are gravion",
+    "are missing",
+    "can",
+    "can a",
+    "can gravion",
+    "chat",
+    "chat do",
+    "core",
+    "core parameters",
+    "core readiness",
+    "core work",
+    "counted",
+    "data",
+    "deployment",
+    "deployment data",
+    "deployment policy",
+    "deployment train",
+    "do",
+    "do when",
+    "doctor",
+    "doctor for",
+    "does",
+    "does gravion",
+    "export",
+    "export include",
+    "facts",
+    "facts are",
+    "for",
+    "gravion",
+    "gravion chat",
+    "gravion core",
+    "gravion deployment",
+    "gravion do",
+    "gravion doctor",
+    "gravion export",
+    "gravion handle",
+    "gravion keep",
+    "gravion local",
+    "gravion model",
+    "gravion protect",
+    "gravion route",
+    "gravion store",
+    "gravion support",
+    "gravion tier",
+    "gravion weights",
+    "handle",
+    "handle module",
+    "happens",
+    "happens if",
+    "how",
+    "how are",
+    "how can",
+    "how does",
+    "if",
+    "if gravion",
+    "in",
+    "in one",
+    "include",
+    "is",
+    "is a",
+    "is gravion",
+    "is the",
+    "is unsure",
+    "keep",
+    "keep training",
+    "licensing",
+    "local",
+    "local model",
+    "local training",
+    "missing",
+    "model",
+    "model is",
+    "model registry",
+    "model weights",
+    "module",
+    "module licensing",
+    "network",
+    "one",
+    "one requests",
+    "parameters",
+    "parameters counted",
+    "policy",
+    "protect",
+    "protect deployment",
+    "readiness",
+    "registry",
+    "requests",
+    "route",
+    "route all",
+    "should",
+    "should a",
+    "store",
+    "store local",
+    "support",
+    "support answer",
+    "the",
+    "the gravion",
+    "the local",
+    "tier",
+    "train",
+    "train gravion",
+    "training",
+    "training local",
+    "training work",
+    "unsure",
+    "weights",
+    "weights are",
+    "what",
+    "what can",
+    "what does",
+    "what happens",
+    "what is",
+    "what should",
+    "when",
+    "when facts",
+    "when the",
+    "without",
+    "without a",
+    "work",
+    "work without"
+  ],
+  "weights_sha256": "f1d1bb5938c8a853fc81a9fc29a7ab8da4d1b0bd650b8d8415f9db55bb71c497"
+}
