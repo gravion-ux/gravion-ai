@@ -35,7 +35,6 @@ from typing import Protocol
 
 from ..canonical import canonical_json
 from ..errors import (
-    BadSignatureError,
     LicenseError,
     LicenseExpiredError,
     NotEntitledError,

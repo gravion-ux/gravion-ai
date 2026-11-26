@@ -35,7 +35,6 @@ from pathlib import Path
 
 from ..canonical import canonical_json, document_hash
 from ..errors import (
-    BadSignatureError,
     LicenseError,
     LicenseExpiredError,
     NotEntitledError,

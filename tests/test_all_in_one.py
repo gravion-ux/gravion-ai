@@ -54,6 +54,46 @@ def test_parse_route_refuses_self_routing():
         parse_route("all-in-one: coder: fix this")
 
 
+@pytest.mark.parametrize(
+    "prompt,expected",
+    [
+        # Regression: a directive with no space after the colon, or
+        # with capitalised name, used to fall through to chat.
+        ("coder:fix this function", ("coder", "fix this function")),
+        ("Coder: fix this function", ("coder", "fix this function")),
+        ("IMAGE:a logo for the bakery", ("image", "a logo for the bakery")),
+    ],
+)
+def test_parse_route_directive_spelling_variants(prompt, expected):
+    assert parse_route(prompt) == expected
+
+
+def test_parse_route_refuses_capitalised_self_routing():
+    with pytest.raises(ModuleError, match="cannot route to itself"):
+        parse_route("All-In-One: coder: fix this")
+
+
+@pytest.mark.parametrize(
+    "prompt,expected_module",
+    [
+        ("write a python function to sort a list", "coder"),
+        ("draw a logo for the bakery", "image"),
+        ("compose a song about the rain", "music"),
+        ("make a short video clip of the sea", "video"),
+        ("build a website for our cafe", "website-builder"),
+        ("triage this alert about CVE-2024-12345", "cyber"),
+        ("i need a refund for my invoice", "support"),
+        ("plan steps for an agent workflow", "agentic"),
+        ("what is a function in mathematics", "chat"),
+        ("make something nice for me", "chat"),
+    ],
+)
+def test_parse_route_infers_clear_intent(prompt, expected_module):
+    name, routed = parse_route(prompt)
+    assert name == expected_module
+    assert routed == prompt
+
+
 def test_all_in_one_defaults_to_chat():
     module = default_registry().instantiate("all-in-one")
     out = module.run(_ctx(GravionCoreProvider()), "what can you do?")

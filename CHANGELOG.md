@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- All-in-one routing: directives are now case-insensitive and the space after the colon is optional (`coder:fix this` routes to coder instead of silently falling back to chat). Requests without a directive route by a conservative intent check — a clear verb-plus-object signal for exactly one module (code fence, CVE id, `write a python function`, `build a website`) selects that module; anything ambiguous still goes to chat. Removed two unused licensing imports.
+
 - Local Gravion Core training: Gravion Core now includes a sparse n-gram embedding + direct linear softmax classifier trained only from the bundled Gravion corpus (5,657 examples, 779 answer classes; 10,586,543 parameters counted from stored quantized weights; held-out eval 1,238/1,530, 80.9%, versus 0/1,530 for the earlier 750-parameter seed model), with local `gravion-core` training jobs saving verifiable artifacts under deployment `data/models/` and deterministic fallback when weights are missing, invalid, or not confident. Legacy v1 artifacts remain loadable.
 - P0 runtime reliability: model registry now carries explicit `weights_status` values so `available` cannot imply included trained weights; endpoint provider gained bounded retries/backoff, timeout/duration logging with redacted metadata, optional temperature/max_tokens, and Gravion request IDs; runtime now writes a persistent content-free run/session event log at `state/run-events.jsonl`.
 - Production hardening: strict deployment config validation (unknown fields, endpoint URL rules, production HTTPS for remote endpoints, no stored API keys in production config), safer endpoint-provider errors (bounded responses, text-only content, HTTP status without upstream body leaks), and `gravion doctor` readiness checks.
