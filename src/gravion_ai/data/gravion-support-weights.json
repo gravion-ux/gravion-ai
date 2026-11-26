@@ -1,0 +1,2924 @@
+{
+  "architecture": "sparse n-gram embedding + direct linear softmax classifier",
+  "bias": [
+    -0.33223459,
+    -1.02899504,
+    -0.16759431,
+    0.03236099,
+    1.42268717,
+    0.75258809,
+    -0.08027292,
+    1.43043864,
+    1.57527196,
+    -3.47926164,
+    0.85063922,
+    0.26787904,
+    -2.37150264,
+    0.86353832,
+    0.60737371,
+    0.68571883,
+    -0.14030717,
+    0.38399297,
+    -0.73375648,
+    0.66210896,
+    0.4723458,
+    -0.67760664,
+    -0.06101387,
+    -0.65750432,
+    -1.34765053,
+    0.14151816,
+    0.18869001,
+    0.75517255,
+    2.01212144,
+    0.11325225,
+    1.0143292,
+    0.95629311,
+    -2.13037515,
+    -2.36534262,
+    0.17116199,
+    0.36582527,
+    -3.21807122,
+    0.59921914,
+    0.29916412,
+    0.86441278,
+    0.60797274,
+    0.99222505,
+    0.64506447,
+    0.71110308,
+    -0.71900874,
+    -0.69214165,
+    0.55436379,
+    -0.7952801
+  ],
+  "classes": [
+    "Accessibility options include larger text, keyboard navigation, and screen reader support; tell me what you need and I will guide you.",
+    "Account closure is started from account settings after any open orders finish; you will be asked to confirm by email.",
+    "After several failed sign-ins the account locks for safety. Wait a short while, then use the password reset link to regain access.",
+    "Check spam and promotions folders first. If it is not there, share your order number and I will resend the confirmation.",
+    "Check the recycle or trash area first; recently deleted files can usually be restored from there for a limited time.",
+    "Delivery estimates are shown at checkout and in your confirmation message; they depend on your location and the items ordered.",
+    "During an outage, status updates are posted on the status page. Share what you are seeing and I will check the latest note.",
+    "Enter the code in the discount field before paying and check that the total updates. Codes cannot usually be added after payment.",
+    "Enter the gift card code on the balance page or at checkout to see the remaining amount.",
+    "Feedback can be sent through the feedback form or this chat; specific examples help the team act on it faster.",
+    "For bulk orders, share the product, quantity, and delivery location, and the team will reply with availability and pricing.",
+    "Gift messages are added at checkout and printed with the delivery note. Share your order number if the message needs changing.",
+    "If a payment failed, check that the card details and balance are correct, then try again. Share the order number if the charge still appears.",
+    "If your order has not shipped yet, I can update the delivery address. Share your order number and the new address.",
+    "If your order was cancelled, the confirmation message explains why and whether a refund is on its way.",
+    "Invoices are available from your orders page and are also emailed after payment. Tell me the order number if you need another copy.",
+    "Manuals are linked on each product page and in the support section; tell me the model name if you cannot find yours.",
+    "Once a returned item is received and checked, the refund goes back to the original payment method; the exact timing depends on your bank or payment provider.",
+    "Open account settings, edit the detail you want to change, and save. Some changes ask you to confirm by email first.",
+    "Open account settings, enter the new email address, and confirm through the verification message sent to it.",
+    "Open billing settings, add the new payment method, and set it as default before the next billing date.",
+    "Open subscription settings and choose pause if available; billing stops during the pause and resumes on the date shown.",
+    "Open the order in your account and choose download receipt; a copy is also attached to your confirmation email.",
+    "Open your subscription settings, choose cancel, and confirm. You keep access until the end of the current paid period.",
+    "Orders can be changed before they ship. Share your order number and the change you need as soon as possible.",
+    "Points are earned on eligible purchases and can be applied at checkout; your balance and expiry dates are shown in your account.",
+    "Restart the device, check your connection, and try the update again. Tell me the error message if it still fails.",
+    "Share your area or postcode and I will check whether the service is available there.",
+    "Share your order number and I will check its current status and tell you the next step.",
+    "Share your order number and preferred dates, and I will book the installation visit.",
+    "Share your order number, the fault, and your preferred pickup day, and I will book the collection.",
+    "Size exchanges are started from your orders page; the replacement is sent once the original item is on its way back.",
+    "Sorry about the duplicate charge. Share the order number and the charge dates, and I will check and arrange a refund of the extra charge.",
+    "Sorry the item arrived damaged. Share a photo of the damage and your order number, and I will arrange a replacement or refund.",
+    "Sorry you received the wrong item. Share your order number and a photo of what arrived, and I will arrange the correct item.",
+    "Sorry your delivery is late. Share your order number and I will check the latest carrier update right away.",
+    "Sorry your package has not arrived. Share your order number and delivery address so I can check the carrier record and arrange the next step.",
+    "Spare parts can be ordered from the parts section by model name; share your model if you need help finding the right part.",
+    "Start by charging or connecting the product as the guide shows, then follow the first-time setup prompts on screen.",
+    "Tell me the order number and the amount that looks wrong, and I will review the charge and correct it if needed.",
+    "Thanks for reporting it. Tell me the page address, what you expected, and what happened instead, and I will pass it to the team.",
+    "To request your data or ask for deletion, send a request from your registered email address so your identity can be verified.",
+    "To return an item, keep it unused with its packaging, start the return from your orders page, and follow the pickup or drop-off instructions shown there.",
+    "Use the forgot password link on the sign-in page; a reset link will be sent to your registered email address.",
+    "Use the tracking link from your confirmation message, or share your order number and I will look up the latest delivery update.",
+    "Verification usually means confirming your email address and, for some actions, entering a code sent to you.",
+    "Warranty cover depends on the product and the fault. Share the product name and purchase date and I will check what applies.",
+    "You can reach the team through this chat, the contact form, or the support email listed on the contact page."
+  ],
+  "classifier": {
+    "data": "CiHb0fHxPR5Oxu684RkJzRINqyYrJwTf6GTD8Sgsqxj8tRgN/Ru2GMAL2/JQONPlAbEHDdUDRQ2R1jHtTNjY+/YnMw35qvvX+8426O7D7RgIBODfCe7tAH4LCvnRI9z93VnarscxMPEdFPkeDRwP/inaEn8oKxT3ARgl/xDuNfbxOe8s1wDqBP4V2O8jBla5MU+zLzYySPFSQdD95NMHKAAcDc3sJv3p8wK216L1AiQA2kVpzwQEDurt2TXwDljPyrRtrP3+xT3swC8NLBUFEdm3GPEW8TkVDh9XKOQJ+Tnm1mgoyjr5D/noD7y8+iQP5BQjxvLEAd3jNv8IGgaXCOUW+qbYtN4xHQ75OyDx2d35YsVC4AXPHgMoBwHL3PwhJAzWDxlpy8NKHsDvGuPdMffP8+EfIikFpjskGh8XxjD35Cab9i+y+u0H9/Un/PI6WwnqWOH3Pu4h8d/qpL0ZBPTs8k8e6TfYAFIDQL3IygJMSdb7JubRMO/xxLTp/QXeAf35HQ5sPt/bWAIM0wXNWvxEzysfOCfj/g/4ucYfCMXcsz715/2i3swoFOUSyiDR1O30qtYGDMUD5SsuQxMeBs3oEhPiUvq6zf30G/YmBRQqxxnlEOaZNSPY0xMkIfPmE+T8vf6t/yXJ7/T2wN4g7QtkPPMI+i8aBNr8wTkbAwfph0ULxQ3yACHBTgTsHvPF99YaEM6c11Puz1QsDzMdtfoQKAL6wdoQG5Us/Ub/XfYLiRo9FNT0GUrSAwLJDekGAZA4EtO4Cxa5vfoFO+QYqUNAz+H+GgH8G/ERGx3ITdf3YtfcFbPwLwTizCYD4QAUKBMZDAu3PhADF1I+AuEr8i7t/grrvRrknksNMw/2/cwSDNrRW9j4GAIAALMDEt9DrVbd3xIK67740QEM0gQRDMgS0+kd/tvtxxrP7Fcuyv4Qw/A4+BEt+XAfQhG9/AVI7TbE3ypEzCML+7fBIx/LBiYhFP1WJTsrIuS1EwMdEQrpOLEoIUAfoSMAITrgAyct",
+    "encoding": "int8-base64",
+    "scale": 0.03710082947738527
+  },
+  "dim": 16,
+  "direct": {
+    "data": "8+kUAh7t7Ojp8O8FDRwHGS3s6x0u7evx7O4EMdwvHeoPEAIEDe3mGxrn7h7q7+7tLArl6OEzLwQgETPn6uHn4OAaB9/iCg4pBhno4NTn4Bzp6eno6jIc4+IcMtsMKzAF7ejcFzbr7Cfq4OsaJjYb4ePn5uDiNDft4ugc4uTQNeslIxgaIevrMTHr6+Yv7ezfWfz/+/7/APn+/QL9/v/9/wH++v8D+/wA/Pv7AvwE//oC/vr8AAH8AAD8Af/8AAH79vVAIOf19vX09vUiKeoj7u729u3p9vb29vYj7e9N5/UpKiIjJvX06ur09eb29fb39vVAIOf19vX09vUiKeoj7u729u3p9vb29vYj7e9N5/UpKiIjJvX06ur09eb29fb37yT39/Xt8CHtLOr3+PT39vdAJPT2JibuIkT49vD39u/4+Pf3+O7x9fbv7fUm7+4j7yT39/Xt8CHtLOr3+PT39vdAJPT2JibuIkT49vD39u/4+Pf3+O7x9fbv7fUm7+4j+PjqJuv4+Pf3+PgqM+4q8/L4+PPw+Pj5+Pgr8fPe7PcyMioqLvf37u739/P49/j5+PjqJuv4+Pf3+PgqM+4q8/L4+PPw+Pj5+Pgr8fPe7PcyMioqLvf37u739/P49/j58yv5+fjy9Sb0NfH5+ff5+PnlLfb5LS70KOX5+PT5+PT6+vn6+vP1+Pjz8/gs9PMt8yv5+fjy9Sb0NfH5+ff5+PnlLfb5LS70KOX5+PT5+PT6+vn6+vP1+Pjz8/gs9PMt8yv5+fjy9Sb0NfH5+ff5+PnlLfb5LS70KOX5+PT5+PT6+vn6+vP1+Pjz8/gs9PMt90RK9fT29vT28fX29fD3Tez06Eft9PH3RfT18T/x9Pb39/f29/f19PT19kjz9vbv+EJQ+fn2+PX37/f5+fj79fj2SfT09/bz7fT4+Pb0+Pj6+vr7+vj2+fnz+FH2Zffx+PL48/j49/X29m1T8/hV+Pr39Pj49vX5T/bw+EX2+Pjw8/Lv9Pj4+Pj49fj2+fj19vr69/lt+fP49/j291b2+fv5+Pb58u/6+Pn2+fn4+Pnx9vhd9/n59/j4+fpV+fj28Pj6/Prz9fj1+PT8/Pr8+fj2+Pr6+flb+fT7+/n7+vH7/Pz8/PRO+/tO9Pf4WvL5/VFT+/v7/Pv7+Pz7+/v89/v78vf3/Pv89fv7+vn3+/z7/Pz8+/z8+/z7/FX8+vz5/PX7+/v9/Pr8+vz8/FT8+Pr691H6+vf8Uvv7+vn8+vz8/Pv7/Pz7+Pj8/Pr2/fz4+fj8/fz69vj48Pj9/fv7+/z39/r7+Pf69fb8+0j9/Pr9/f39/vr4/Pz6bfr3+vpZ/PL3+Pr8/fr89vz39fr2+vv7WPpo+/r9+Pte+fr4+vz3+Pj39/z8+/v8/Pn6+/z4/vz9/f39/fb9+v39/ln9/P79/Pn99vP+/P39/Pz9/P79/f38/f39+vv9/f1Z/v35/v78Ufz//v/+//729P31/f3///39//7//v70/f36/P7w7/X2af7+/P3+/v7+/v/+/v38/Pv+/f39/v38/VX8+fv+/VL7/f3+/f78+/r8+/38/fz7/f79+fn9/fr7/v3+/fb9/v79/fv9+vz+/v39/f77+fz9+/n9U/z+/Uv+/f3+/v7+//39/v79/f36/v74/fb9/f3+/fv++/3+/vn++/z7+Ff8+/n9U/z9/fv+/f3+/v7+/v39/fz9/fz6/v35/f37/Pv9+v38/fz9/Pv8+vr9/vr5/f39/P38Z0n8/P38/fz8/P39+/v9/Pr9/v39/v78Zfz+/v7+//76+vj7+/z+/lf8/v7+/f74/Pv7/P34+Pn66v79/Pv+/vv+/v7+/f77/fr8/P79/v39/Pv9UmD9/vr5/f79/v39+fz7+/39/fz8/Pz7+vv8/ff+/fz9/P79+v38/Pxe/v1g+f30/f38/v79/f38/vz5/fz8/Pv5+vn6+vn8/fz9/f39/f39/v38/Pv+/f39/v38/VX8+fv+/VL7/f3+/f78+/r8+/38/fz7/f79+fn9/fr7/v3+/f77/fr8/P79/v39/Pv9UmD9/vr5/f79/v39+fz7+/39/fz8/Pz7+vv8/ff+/fz9/v78+/f9/f39/v37/Pn8+/v9/vv8/f39/v77/Pz89v38/Pv8/P79V1T9/fz9/v7+/v78+/f9/f39/v37/Pn8+/v9/vv8/f39/v77/Pz89v38/Pv8/P79V1T9/fz9/v7+/v779Pz+/v7+/v/17/z3/f3+//39//7//v73/f75/P7ub1bz7v7//Pz+/v3+/v7//v78Ufz//v/+//729P31/f3///39//7//v70/f36/P7w7/X2af7+/P3+/v7+/v/+a/z9/f33+fz6/fr+/v3+/f37/P39/Pz3/Pn+/fz+/Fj+/v79/vn3/f34+fz8+fb8/f34+fv9/v3+/v35bfv5+/v+/vtp/v7+/v71+vz5/P3z9Pf59P3+/Pz9/vr+/f3+/v77+fn+//7+/v749/v3/Pz+//z9/v3+/v5f/P36+f73+Pn59/7952r+/f3+/v7++/39/fz7+/37/fv+/fz982f8/v37/f33/vz9+/38+/r9/fz9/fpc/Pz5+vv9+vv+/v78+/f9/f39/v37/Pn8+/v9/vv8/f39/v77/Pz89v38/Pv8/P79V1T9/fz9/v7+/v78+/f9/f39/v37/Pn8+/v9/vv8/f39/v77/Pz89v38/Pv8/P79V1T9/fz9/v7++v38/Pv7Z/z7/fv9/Pz9+vr7/Pv5/Pz8/Pv8Zvr8/Pv9/fz8/Pr7+/v7+Pv9/Pv8+vv+/v77/PT7+Pz+/v3+/v76+v7+XPRu+vn+/v3+/fr+/v7+/vv3/v72/P31+Pv4/v78Ufz//v/+//729P31/f3///39//7//v70/f36/P7w7/X2af7+/P3+/v7+/v/+///+/fz//v/////+/vz+/f7///7+///////+/v7++//+/v3+/v//buj//v7+///////+/fz//v/////+/vz+/f7///7+///////+/v7++//+/v3+/v//buj//v7+///////++/7////////1/P5j////////////AP/5//78/v/5+/v4/P///v7////////////++/7////////1/P5j////////////AP/5//78/v/5+/v4/P///v7////////////9+P7////////69f78//////7///8A///7/v/8/v/0e/P59f///v7///////8A///9+P7////////69f78//////7///8A///7/v/8/v/0e/P59f///v7///////8A///+/l/////////+/vz9/v7///7+///////9/v7++/79/fz+/v7++/z+/v7///7////+/l/////////+/vz9/v7///7+///////9/v7++/79/fz+/v7++/z+/v7///7////+/v3///7+///+/lv+/f7///r+//7////+/f7+/f/+/v79/v//+/z///79//////7//////1T//P/////////+/f//9vf//f3/////////////AP/////////4///8//7//////1T//P/////////+/f//9vf//f3/////////////AP/////////4///8///++f7////////49f73///////////////5/v/9/v9/8/r19f////7///7////////++f7////////49f73///////////////5/v/9/v9/8/r19f////7///7////////++/3////////7cP77//7///7+///////4///8/v/19vn89v///v/////////////++/3////////7cP77//7///7+///////4///8/v/19vn89v///v/////////////++/7///////9h+v71//8A///+///////6///9/v/6+/v6+////v7////////////++/7///////9h+v71//8A///+///////6///9/v/6+/v6+////v7////////////++/7////////7+/75///////+///////6///9/v/0+vxi+////v7////////////++/7////////7+/75///////+///////6///9/v/0+vxi+////v7////////////+aP7////////8+/78///////////////6//78/v/6+vv86////v7////////////+6v7////////6+f/5/v7////+///////6///9/v/29fr7fv///v////////////3///////b/+v7////////9/P//92T/+v3////////////////////////0//77///+/fv+//7+///9/v39/f3///79///////9/v7+X//+/v39/v7++/v+//7////////+/fv+//7+///9/v39/f3///79///////9/v7+X//+/v39/v7++/v+//7////////9+/7/AP/////6+f75///////+//////9i/v/8/v/5+vv7+f///v7////////////9+/7/AP/////6+f75///////+//////9i/v/8/v/5+vv7+f///v7///////////3///////b/+v7////////9/f//Xvb+/P3///////7////////////////4///6///+/fz+///////+/v3+/f7+//7+//7+///9/v7++//+/v7+/v/+6Wz///7////////+/fz+///////+/v3+/f7+//7+//7+///9/v7++//+/v7+/v/+6Wz///7////////++/7////////7+f77/v7////+///////8/v/9/v/69GP6+v///v7////////////++/7////////7+f77/v7////+///////8/v/9/v/69GP6+v///v7/////////cf3+//76/P79/vz///////79/v7+/v77/vz///7//vr///////z8//78/P7+/fv+cf3+//76/P79/vz///////79/v7+/v77/vz///7//vr///////z8//78/P7+/fv+cf3+//76/P79/vz///////79/v7+/v77/vz///7//vr///////z8//78/P7+/fv+/vT////+/vz/+P7////////9Wf///f3/+v3///////8A////AP7////+///8/v/6//9f/f7////+///9/f7+/f7///38///////9/v75/v/9/v7+/f///v7///X///////31/v7+/v/+//7+/v7/+/3///v8///+/////f3+/v7////+//7+/v7+/2H//f///f3+//79/f39/v3///7//v79/v7//v75/v3+/v7//v3///////78///6/f3+bfz9/f3+//79/f39/v3///7//v79/v7//v75/v3+/v7//v3///////78///6/f3+bfz9//9f/f7////+///9/f7+/f7///38///////9/v75/v/9/v7+/f///v7///X///////31/v7+/v/+//7+/v7/+/3///v8///+/////f3+/v7////+//7+/v7+/2H//f////7+/v7//v/////+/vr+/P3//1j9/////v/+/v3//v7+/v7+///+/v3///z///7///7+/v7//v/////+/vr+/P3//1j9/////v/+/v3//v7+/v7+///+/v3///z///7////9//3+/v////7//v7/Xff///z9/////////f7+/v7//v7+/v7+/f7+//r////////9//3+/v////7//v7/Xff///z9/////////f7+/v7//v7+/v7+/f7+//r////////++/7////////7+/75///////+///////6///9/v/0+vxi+////v7///////////7//////1T//P/////////+/f//9vf//f3/////////////AP/////////4///8//7//////1T//P/////////+/f//9vf//f3/////////////AP/////////4///8//7//////1T//P/////////+/f//9vf//f3/////////////AP/////////4///8/vz////9/vz9+/3///////9i/P///Pz9/fn///////7///////7+///+/f/9/v77/vz////9/vz9+/3///////9i/P///Pz9/fn///////7///////7+///+/f/9/v77/v79/v3+/f7+//7+/v3+/Pz+//37///////+afz+/v/+/v3+/f7+/f3+/vz///7//f7////9/f5f/v3+/////v/8/v///v78/v3//v7//vz///////r9//7+/f7+/v7+/f7////9/f5f/v3+/////v/8/v///v78/v3//v7//vz///////r9//7+/f7+/v7++/7///78/f78/fz////+/v79/f7//v78/v3///7+/vr////+//z8///7/f79+2/9///+/fz//v/////+/vz+/f7///7+///////+/v7++//+/v3+/v//buj//v7+///////+/fz//v/////+/vz+/f7///7+///////+/v7++//+/v3+/v//buj//v7+///////4/P3+///+///7+f77/v7///79///+///7/v52/f/6+/r7+//+/v7///7//////P3///79/P38/XL//////v/9/f7+/f79/fz//v3//v3///////39//78+v7+/Pz+/P3///79/P38/XL//////v/9/f7+/f79/fz//v3//v3///////39//78+v7+/Pz+/P3///79/P38/XL//////v/9/f7+/f79/fz//v3//v3///////39//78+v7+/Pz++/7+///9/f78/v3///7+///9/f7//v5w/vz///7//vz///////34///4/f7++fz++/7+///9/f78/v3///7+///9/f7//v5w/vz///7//vz///////34///4/f7++fz+///++/7////////1/P5j////////////AP/5//78/v/5+/v4/P///v7////////////++/7////////1/P5j////////////AP/5//78/v/5+/v4/P///v7////////////++/7////////1/P5j////////////AP/5//78/v/5+/v4/P///v7//////////f7////9/f5f/v3+/////v/8/v///v78/v3//v7//vz///////r9//7+/f7+/v7+/f7////9/f5f/v3+/////v/8/v///v78/v3//v7//vz///////r9//7+/f7+/v7+/f7////9/f5f/v3+/////v/8/v///v78/v3//v7//vz///////r9//7+/f7+/v7+///+/v3///7+///+/lv+/f7///r+//7////+/f7+/f/+/v79/v//+/z///79///////+/v3///7+///+/lv+/f7///r+//7////+/f7+/f/+/v79/v//+/z///79//////7+/v7//v/////+/vr+/P3//1j9/////v/+/v3//v7+/v7+///+/v3///z///7///f///////z/+/7////////8+v///Pr/Vf7///7///8A///////////////7///6///++f7////////49f73///////////////5/v/9/v9/8/r19f////7///7//////v79/v3+/f7+//7+/v3+/Pz+//37///////+afz+/v/+/v3+/f7+/f3+/vz///7//v79/v3+/f7+//7+/v3+/Pz+//37///////+afz+/v/+/v3+/f7+/f3+/vz///7////+//7//v7+//7///7+/v/+//3+//7//v7+/U3//v7////////+//7//v3////+///+//7//v7+//7///7+/v/+//3+//7//v7+/U3//v7////////+//7//v3////+/f7////9/f5f/v3+/////v/8/v///v78/v3//v7//vz///////r9//7+/f7+/v7+/1X////+//3/+/7////////99f///f3/+P3//////////////////////v/+/v/7/1X////+//3/+/7////////99f///f3/+P3//////////////////////v/+/v/7/1X////+//3/+/7////////99f///f3/+P3//////////////////////v/+/v/7//7//////1T//P/////////+/f//9vf//f3/////////////AP/////////4///8///+aP7////////8+/78///////////////6//78/v/6+vv86////v7////////////+aP7////////8+/78///////////////6//78/v/6+vv86////v7///////////v///////z/9P//AP/////9+v//+/r/+vz///7///////////7//////v/7//5e//v///////z/9P//AP/////9+v//+/r/+vz///7///////////7//////v/7//5e//v///////z/9P//AP/////9+v//+/r/+vz///7///////////7//////v/7//5e///9//3+/v////7//v7/Xff///z9/////////f7+/v7//v7+/v7+/f7+//r/////+/7///78/f78/fz////+/v79/f7//v78/v3///7+/vr////+//z8///7/f79+2/9+/7///78/f78/fz////+/v79/f7//v78/v3///7+/vr////+//z8///7/f79+2/9///9+P7////////69f78//////7///8A///7/v/8/v/0e/P59f///v7///////8A///9+P7////////69f78//////7///8A///7/v/8/v/0e/P59f///v7///////8A/P7////8/v/+/v3//////v7+/v/+/v75//3///7///z///////77//5h/v7/+fz+/P7////8/v/+/v3//////v7+/v/+/v75//3///7///z///////77//5h/v7/+fz+/P7////8/v/+/v3//////v7+/v/+/v75//3///7///z///////77//5h/v7/+fz+///+/l/////////+/vz9/v7///7+///////9/v7++/79/fz+/v7++/z+/v7///7////+/l/////////+/vz9/v7///7+///////9/v7++/79/fz+/v7++/z+/v7///7////+/v3///7+///+/lv+/f7///r+//7////+/f7+/f/+/v79/v//+/z///79///////++/7////////7+/75///////+///////6///9/v/0+vxi+////v7/////////+f7///9w/P39/fz+//7///79/f7+/f79/f3//v7///z////+/vz8/v/8/f79/Pv9+f7///9w/P39/fz+//7///79/f7+/f79/f3//v7///z////+/vz8/v/8/f79/Pv9/vT////+/vz/+P7////////9Wf///f3/+v3///////8A////AP7////+///8/v/6//7//////1T//P/////////+/f//9vf//f3/////////////AP/////////4///8//7//////1T//P/////////+/f//9vf//f3/////////////AP/////////4///8//3///////b/+v7////////9/P//92T/+v3////////////////////////0//77//3///////b/+v7////////9/P//92T/+v3////////////////////////0//77//3///////b/+v7////////9/P//92T/+v3////////////////////////0//77///++f7////////49f73///////////////5/v/9/v9/8/r19f////7///7////////++f7////////49f73///////////////5/v/9/v9/8/r19f////7///7///////7+/v7//v/////+/vr+/P3//1j9/////v/+/v3//v7+/v7+///+/v3///z///7//P3///79/P38/XL//////v/9/f7+/f79/fz//v3//v3///////39//78+v7+/Pz+///+/fz//v/////+/vz+/f7///7+///////+/v7++//+/v3+/v//buj//v7+////+f7///9w/P39/fz+//7///79/f7+/f79/f3//v7///z////+/vz8/v/8/f79/Pv9+v7///79/f79//3/AP///v/+/v7//v78/v3///7//l7///////38/v/8/f7+/fv++v7///79/f79//3/AP///v/+/v7//v78/v3///7//l7///////38/v/8/f7+/fv++v7///79/f79//3/AP///v/+/v7//v78/v3///7//l7///////38/v/8/f7+/fv+cf3+//76/P79/vz///////79/v7+/v77/vz///7//vr///////z8//78/P7+/fv+cf3+//76/P79/vz///////79/v7+/v77/vz///7//vr///////z8//78/P7+/fv+/f3+//79/f39/v3///7//v79/v7//v75/v3+/v7//v3///////78///6/f3+bfz9/f3+//79/f39/v3///7//v79/v7//v75/v3+/v7//v3///////78///6/f3+bfz9/P3///79/P38/XL//////v/9/f7+/f79/fz//v3//v3///////39//78+v7+/Pz+/P3///79/P38/XL//////v/9/f7+/f79/fz//v3//v3///////39//78+v7+/Pz+/P7////8/v/+/v3//////v7+/v/+/v75//3///7///z///////77//5h/v7/+fz+/P7////8/v/+/v3//////v7+/v/+/v75//3///7///z///////77//5h/v7/+fz++f7///9w/P39/fz+//7///79/f7+/f79/f3//v7///z////+/vz8/v/8/f79/Pv9+f7///9w/P39/fz+//7///79/f7+/f79/f3//v7///z////+/vz8/v/8/f79/Pv9+v7///79/f79//3/AP///v/+/v7//v78/v3///7//l7///////38/v/8/f7+/fv++v7///79/f79//3/AP///v/+/v7//v78/v3///7//l7///////38/v/8/f7+/fv+/f7////9/f5f/v3+/////v/8/v///v78/v3//v7//vz///////r9//7+/f7+/v7+/f7////9/f5f/v3+/////v/8/v///v78/v3//v7//vz///////r9//7+/f7+/v7+/fz////+/v79+/z////////5/P///P39/Wb///7///7///////3+///+/f/9/f37/vz////9/vz9+/3///////9i/P///Pz9/fn///////7///////7+///+/f/9/v77/f7////9/f79//3//////v39/////v75//7//////vz///////xf///7/P7+/P3//f7////9/f79//3//////v39/////v75//7//////vz///////xf///7/P7+/P3//P7///79a/79/vz///7//v79/v7+/v7+/fz//f7//vz///////z8/v79+v7//f39/P7///79a/79/vz///7//v79/v7+/v7+/fz//f7//vz///////z8/v79+v7//f39/P7+///9+/35/v3+//7+/v/8/v/+/f78/v3///7///z//////m/7/v/9/P/+/f3+/P7+///9+/35/v3+//7+/v/8/v/+/f78/v3///7///z//////m/7/v/9/P/+/f3++/7+///9/f78/v3///7+///9/f7//v5w/vz///7//vz///////34///4/f7++fz++/7+///9/f78/v3///7+///9/f7//v5w/vz///7//vz///////34///4/f7++fz+/P7+//79+f78/vv///7+/v78/v7+/v79/vz//v3//v3///////37///9cf7+/f38/P7+//79+f78/vv///7+/v78/v7+/v79/vz//v3//v3///////37///9cf7+/f38+/7///78/f78/fz////+/v79/f7//v78/v3///7+/vr////+//z8///7/f79+2/9+/7///78/f78/fz////+/v79/f7//v78/v3///7+/vr////+//z8///7/f79+2/9///++/3////////7cP77//7///7+///////4///8/v/19vn89v///v/////////////++/3////////7cP77//7///7+///////4///8/v/19vn89v///v////////////v////+/v3+Z/7////////89///+vr++fz///////7////////////+///8///0///+/l/////////+/vz9/v7///7+///////9/v7++/79/fz+/v7++/z+/v7///7////9//3+/v////7//v7/Xff///z9/////////f7+/v7//v7+/v7+/f7+//r////////9//3+/v////7//v7/Xff///z9/////////f7+/v7//v7+/v7+/f7+//r//////v/+/v3+/v/+//7+/v3+9Wr+//79/v/+//7+/P79/f7+/v7+/v79/f7+/v3//v7//v/+/v3+/v/+//7+/v3+9Wr+//79/v/+//7+/P79/f7+/v7+/v79/f7+/v3//v7//f7////9/f79//3//////v39/////v75//7//////vz///////xf///7/P7+/P3//f7////9/f79//3//////v39/////v75//7//////vz///////xf///7/P7+/P3/+v7///79/f79//3/AP///v/+/v7//v78/v3///7//l7///////38/v/8/f7+/fv++v7///79/f79//3/AP///v/+/v7//v78/v3///7//l7///////38/v/8/f7+/fv+/f7////9/f5f/v3+/////v/8/v///v78/v3//v7//vz///////r9//7+/f7+/v7+/f7////9/f5f/v3+/////v/8/v///v78/v3//v7//vz///////r9//7+/f7+/v7+///++/7///////9h+v71//8A///+///////6///9/v/6+/v6+////v7////////////++/7///////9h+v71//8A///+///////6///9/v/6+/v6+////v7///////////v////+/v3+Z/7////////89///+vr++fz///////7////////////+///8///0//v////+/v3+Z/7////////89///+vr++fz///////7////////////+///8///0///+/v3///7+///+/lv+/f7///r+//7////+/f7+/f/+/v79/v//+/z///79//////7+/v7//v/////+/vr+/P3//1j9/////v/+/v3//v7+/v7+///+/v3///z///7//v79/v3+/f7+//7+/v3+/Pz+//37///////+afz+/v/+/v3+/f7+/f3+/vz///7//v79/v3+/f7+//7+/v3+/Pz+//37///////+afz+/v/+/v3+/f7+/f3+/vz///7////9//3+/v////7//v7/Xff///z9/////////f7+/v7//v7+/v7+/f7+//r//////v/+/v3+/v/+//7+/v3+9Wr+//79/v/+//7+/P79/f7+/v7+/v79/f7+/v3//v7////+/l/////////+/vz9/v7///7+///////9/v7++/79/fz+/v7++/z+/v7///7////+/l/////////+/vz9/v7///7+///////9/v7++/79/fz+/v7++/z+/v7///7///31/v7+/v/+//7+/v7/+/3///v8///+/////f3+/v7////+//7+/v7+/2H//f////31/v7+/v/+//7+/v7/+/3///v8///+/////f3+/v7////+//7+/v7+/2H//f/////+/fv+//7+///9/v39/f3///79///////9/v7+X//+/v39/v7++/v+//7////////+/fv+//7+///9/v39/f3///79///////9/v7+X//+/v39/v7++/v+//7//////v77/v3+/v7+//7+/f3+/P3///1r///////9+/39/f7+/v79/v7+/v3+//v+/v7//v77/v3+/v7+//7+/f3+/P3///1r///////9+/39/f7+/v79/v7+/v3+//v+/v7///9f/f7////+///9/f7+/f7///38///////9/v75/v/9/v7+/f///v7///X////////4/P3+///+///7+f77/v7///79///+///7/v52/f/6+/r7+//+/v7///7//////fz////+/v79+/z////////5/P///P39/Wb///7///7///////3+///+/f/9/f37/fz////+/v79+/z////////5/P///P39/Wb///7///7///////3+///+/f/9/f37/vz////9/vz9+/3///////9i/P///Pz9/fn///////7///////7+///+/f/9/v77/vz////9/vz9+/3///////9i/P///Pz9/fn///////7///////7+///+/f/9/v77//7//////1T//P/////////+/f//9vf//f3/////////////AP/////////4///8//f///////z/+/7////////8+v///Pr/Vf7///7///8A///////////////7///6/1X////+//3/+/7////////99f///f3/+P3//////////////////////v/+/v/7//v///////z/9P//AP/////9+v//+/r/+vz///7///////////7//////v/7//5e//3///////b/+v7////////9/P//92T/+v3////////////////////////0//77//v////+/v3+Z/7////////89///+vr++fz///////7////////////+///8///0//3///////b/+v7////////9/f//Xvb+/P3///////7////////////////4///6//7////+//j//P7///7//wD+/f//9/T//f3///////////////7//////v9c///6/vT////+/vz/+P7////////9Wf///f3/+v3///////8A////AP7////+///8/v/6///4/P3+///+///7+f77/v7///79///+///7/v52/f/6+/r7+//+/v7///7////////4/P3+///+///7+f77/v7///79///+///7/v52/f/6+/r7+//+/v7///7////////9//3+/v////7//v7/Xff///z9/////////f7+/v7//v7+/v7+/f7+//r////////9//3+/v////7//v7/Xff///z9/////////f7+/v7//v7+/v7+/f7+//r////////++/7////////7+f77/v7////+///////8/v/9/v/69GP6+v///v7////////////++/7////////7+/75///////+///////6///9/v/0+vxi+////v7////////////++/7////////7+/75///////+///////6///9/v/0+vxi+////v7////////////++/7////////7+/75///////+///////6///9/v/0+vxi+////v7///////////9f/f7////+///9/f7+/f7///38///////9/v75/v/9/v7+/f///v7///X//////fz////+/v79+/z////////5/P///P39/Wb///7///7///////3+///+/f/9/f37/fz////+/v79+/z////////5/P///P39/Wb///7///7///////3+///+/f/9/f37/fz////+/v79+/z////////5/P///P39/Wb///7///7///////3+///+/f/9/f37/v/+/v3+/v/+//7+/v3+9Wr+//79/v/+//7+/P79/f7+/v7+/v79/f7+/v3//v7////++/7///////9h+v71//8A///+///////6///9/v/6+/v6+////v7//////////v77/v3+/v7+//7+/f3+/P3///1r///////9+/39/f7+/v79/v7+/v3+//v+/v7////+aP7////////8+/78///////////////6//78/v/6+vv86////v7////////////+aP7////////8+/78///////////////6//78/v/6+vv86////v7////////////+6v7////////6+f/5/v7////+///////6///9/v/29fr7fv///v/////////////+//7//v7+//7///7+/v/+//3+//7//v7+/U3//v7////////+//7//v3////+///+//7//v7+//7///7+/v/+//3+//7//v7+/U3//v7////////+//7//v3////+///+//7//v7+//7///7+/v/+//3+//7//v7+/U3//v7////////+//7//v3////++v7///79/f79//3/AP///v/+/v7//v78/v3///7//l7///////38/v/8/f7+/fv++v7///79/f79//3/AP///v/+/v7//v78/v3///7//l7///////38/v/8/f7+/fv+/P3///79/P38/XL//////v/9/f7+/f79/fz//v3//v3///////39//78+v7+/Pz+///++/7///////9h+v71//8A///+///////6///9/v/6+/v6+////v7////////////++/7////////1/P5j////////////AP/5//78/v/5+/v4/P///v7//////////P7+///9+/35/v3+//7+/v/8/v/+/f78/v3///7///z//////m/7/v/9/P/+/f3+/P7///79a/79/vz///7//v79/v7+/v7+/fz//f7//vz///////z8/v79+v7//f39/P7///79a/79/vz///7//v79/v7+/v7+/fz//f7//vz///////z8/v79+v7//f39///+6v7////////6+f/5/v7////+///////6///9/v/29fr7fv///v///////////P7+///9+/35/v3+//7+/v/8/v/+/f78/v3///7///z//////m/7/v/9/P/+/f3+/P7+///9+/35/v3+//7+/v/8/v/+/f78/v3///7///z//////m/7/v/9/P/+/f3+//31/v7+/v/+//7+/v7/+/3///v8///+/////f3+/v7////+//7+/v7+/2H//f////3///////b/+v7////////9/f//Xvb+/P3///////7////////////////4///6//3///////b/+v7////////9/f//Xvb+/P3///////7////////////////4///6//3///////b/+v7////////9/f//Xvb+/P3///////7////////////////4///6/v77/v3+/v7+//7+/f3+/P3///1r///////9+/39/f7+/v79/v7+/v3+//v+/v7////+/fv+//7+///9/v39/f3///79///////9/v7+X//+/v39/v7++/v+//7//////fz////+/v79+/z////////5/P///P39/Wb///7///7///////3+///+/f/9/f37/fz////+/v79+/z////////5/P///P39/Wb///7///7///////3+///+/f/9/f37/P7////8/v/+/v3//////v7+/v/+/v75//3///7///z///////77//5h/v7/+fz+/P7////8/v/+/v3//////v7+/v/+/v75//3///7///z///////77//5h/v7/+fz+/P7////8/v/+/v3//////v7+/v/+/v75//3///7///z///////77//5h/v7/+fz+/P7+//79+f78/vv///7+/v78/v7+/v79/vz//v3//v3///////37///9cf7+/f38/vz////9/vz9+/3///////9i/P///Pz9/fn///////7///////7+///+/f/9/v77/v/+/v3+/v/+//7+/v3+9Wr+//79/v/+//7+/P79/f7+/v7+/v79/f7+/v3//v7//f7////9/f79//3//////v39/////v75//7//////vz///////xf///7/P7+/P3//f7////9/f79//3//////v39/////v75//7//////vz///////xf///7/P7+/P3////++/7////////1/P5j////////////AP/5//78/v/5+/v4/P///v7///////////3///////b/+v7////////9/P//92T/+v3////////////////////////0//77///++/7////////7+f77/v7////+///////8/v/9/v/69GP6+v///v7////////////+/l/////////+/vz9/v7///7+///////9/v7++/79/fz+/v7++/z+/v7///7////+/l/////////+/vz9/v7///7+///////9/v7++/79/fz+/v7++/z+/v7///7////+/l/////////+/vz9/v7///7+///////9/v7++/79/fz+/v7++/z+/v7///7//vz////9/vz9+/3///////9i/P///Pz9/fn///////7///////7+///+/f/9/v77/vz////9/vz9+/3///////9i/P///Pz9/fn///////7///////7+///+/f/9/v77/vz////9/vz9+/3///////9i/P///Pz9/fn///////7///////7+///+/f/9/v77///+/fv+//7+///9/v39/f3///79///////9/v7+X//+/v39/v7++/v+//7////////+/fv+//7+///9/v39/f3///79///////9/v7+X//+/v39/v7++/v+//7////////+/fz//v/////+/vz+/f7///7+///////+/v7++//+/v3+/v//buj//v7+///////+/fz+///////+/v3+/f7+//7+//7+///9/v7++//+/v7+/v/+6Wz///7//////P7////8/v/+/v3//////v7+/v/+/v75//3///7///z///////77//5h/v7/+fz+/P7////8/v/+/v3//////v7+/v/+/v75//3///7///z///////77//5h/v7/+fz+//31/v7+/v/+//7+/v7/+/3///v8///+/////f3+/v7////+//7+/v7+/2H//f////31/v7+/v/+//7+/v7/+/3///v8///+/////f3+/v7////+//7+/v7+/2H//f////31/v7+/v/+//7+/v7/+/3///v8///+/////f3+/v7////+//7+/v7+/2H//f///P7+//79+f78/vv///7+/v78/v7+/v79/vz//v3//v3///////37///9cf7+/f38/P7+//79+f78/vv///7+/v78/v7+/v79/vz//v3//v3///////37///9cf7+/f38///+/fv+//7+///9/v39/f3///79///////9/v7+X//+/v39/v7++/v+//7////////+/fv+//7+///9/v39/f3///79///////9/v7+X//+/v39/v7++/v+//7////////+/fv+//7+///9/v39/f3///79///////9/v7+X//+/v39/v7++/v+//7//////v79/v3+/f7+//7+/v3+/Pz+//37///////+afz+/v/+/v3+/f7+/f3+/vz///7//P7///79a/79/vz///7//v79/v7+/v7+/fz//f7//vz///////z8/v79+v7//f39/P7///79a/79/vz///7//v79/v7+/v7+/fz//f7//vz///////z8/v79+v7//f39/f7////9/f79//3//////v39/////v75//7//////vz///////xf///7/P7+/P3//f7////9/f79//3//////v39/////v75//7//////vz///////xf///7/P7+/P3//f7////9/f79//3//////v39/////v75//7//////vz///////xf///7/P7+/P3/+v7///79/f79//3/AP///v/+/v7//v78/v3///7//l7///////38/v/8/f7+/fv+///9+/7/AP/////6+f75///////+//////9i/v/8/v/5+vv7+f///v7////////////9+/7/AP/////6+f75///////+//////9i/v/8/v/5+vv7+f///v7////////////9+/7/AP/////6+f75///////+//////9i/v/8/v/5+vv7+f///v7//////////P7+///9+/35/v3+//7+/v/8/v/+/f78/v3///7///z//////m/7/v/9/P/+/f3+/P7+///9+/35/v3+//7+/v/8/v/+/f78/v3///7///z//////m/7/v/9/P/+/f3+/P7+///9+/35/v3+//7+/v/8/v/+/f78/v3///7///z//////m/7/v/9/P/+/f3+///+//7//v7+//7///7+/v/+//3+//7//v7+/U3//v7////////+//7//v3////+///+//7//v7+//7///7+/v/+//3+//7//v7+/U3//v7////////+//7//v3////+///+//7//v7+//7///7+/v/+//3+//7//v7+/U3//v7////////+//7//v3////++/7+///9/f78/v3///7+///9/f7//v5w/vz///7//vz///////34///4/f7++fz++/7+///9/f78/v3///7+///9/f7//v5w/vz///7//vz///////34///4/f7++fz+cf3+//76/P79/vz///////79/v7+/v77/vz///7//vr///////z8//78/P7+/fv+//v///////z/9P//AP/////9+v//+/r/+vz///7///////////7//////v/7//5e/P7+//79+f78/vv///7+/v78/v7+/v79/vz//v3//v3///////37///9cf7+/f38/P7+//79+f78/vv///7+/v78/v7+/v79/vz//v3//v3///////37///9cf7+/f38///+//7//v7+//7///7+/v/+//3+//7//v7+/U3//v7////////+//7//v3////+///+//7//v7+//7///7+/v/+//3+//7//v7+/U3//v7////////+//7//v3////+//v///////z/9P//AP/////9+v//+/r/+vz///7///////////7//////v/7//5e+f7///9w/P39/fz+//7///79/f7+/f79/f3//v7///z////+/vz8/v/8/f79/Pv9+f7///9w/P39/fz+//7///79/f7+/f79/f3//v7///z////+/vz8/v/8/f79/Pv9//7//////1T//P/////////+/f//9vf//f3/////////////AP/////////4///8//7//////1T//P/////////+/f//9vf//f3/////////////AP/////////4///8//f///////z/+/7////////8+v///Pr/Vf7///7///8A///////////////7///6//f///////z/+/7////////8+v///Pr/Vf7///7///8A///////////////7///6/1X////+//3/+/7////////99f///f3/+P3//////////////////////v/+/v/7/1X////+//3/+/7////////99f///f3/+P3//////////////////////v/+/v/7//v///////z/9P//AP/////9+v//+/r/+vz///7///////////7//////v/7//5e//v///////z/9P//AP/////9+v//+/r/+vz///7///////////7//////v/7//5e//3///////b/+v7////////9/P//92T/+v3////////////////////////0//77//3///////b/+v7////////9/P//92T/+v3////////////////////////0//77//v////+/v3+Z/7////////89///+vr++fz///////7////////////+///8///0//v////+/v3+Z/7////////89///+vr++fz///////7////////////+///8///0//3///////b/+v7////////9/f//Xvb+/P3///////7////////////////4///6//3///////b/+v7////////9/f//Xvb+/P3///////7////////////////4///6//7////+//j//P7///7//wD+/f//9/T//f3///////////////7//////v9c///6//7////+//j//P7///7//wD+/f//9/T//f3///////////////7//////v9c///6/vT////+/vz/+P7////////9Wf///f3/+v3///////8A////AP7////+///8/v/6/vT////+/vz/+P7////////9Wf///f3/+v3///////8A////AP7////+///8/v/6//7////+//j//P7///7//wD+/f//9/T//f3///////////////7//////v9c///6//7////+//j//P7///7//wD+/f//9/T//f3///////////////7//////v9c///6//7////+//j//P7///7//wD+/f//9/T//f3///////////////7//////v9c///6/vT////+/vz/+P7////////9Wf///f3/+v3///////8A////AP7////+///8/v/6/vT////+/vz/+P7////////9Wf///f3/+v3///////8A////AP7////+///8/v/6/v77/v3+/v7+//7+/f3+/P3///1r///////9+/39/f7+/v79/v7+/v3+//v+/v7//v77/v3+/v7+//7+/f3+/P3///1r///////9+/39/f7+/v79/v7+/v3+//v+/v7////9+/7/AP/////6+f75///////+//////9i/v/8/v/5+vv7+f///v7//////////P7///79a/79/vz///7//v79/v7+/v7+/fz//f7//vz///////z8/v79+v7//f39/f3+//79/f39/v3///7//v79/v7//v75/v3+/v7//v3///////78///6/f3+bfz9/f3+//79/f39/v3///7//v79/v7//v75/v3+/v7//v3///////78///6/f3+bfz9+/7///78/f78/fz////+/v79/f7//v78/v3///7+/vr////+//z8///7/f79+2/9+/7///78/f78/fz////+/v79/f7//v78/v3///7+/vr////+//z8///7/f79+2/9+/7///78/f78/fz////+/v79/f7//v78/v3///7+/vr////+//z8///7/f79+2/9///+/fz+///////+/v3+/f7+//7+//7+///9/v7++//+/v7+/v/+6Wz///7////////+/fz+///////+/v3+/f7+//7+//7+///9/v7++//+/v7+/v/+6Wz///7////////++/7////////1/P5j////////////AP/5//78/v/5+/v4/P///v7////////////9+P7////////69f78//////7///8A///7/v/8/v/0e/P59f///v7///////8A///++f7////////49f73///////////////5/v/9/v9/8/r19f////7///7////////++/3////////7cP77//7///7+///////4///8/v/19vn89v///v/////////////++/7///////9h+v71//8A///+///////6///9/v/6+/v6+////v7////////////++/7////////7+/75///////+///////6///9/v/0+vxi+////v7////////////9+/7/AP/////6+f75///////+//////9i/v/8/v/5+vv7+f///v7////////////++/7////////7+f77/v7////+///////8/v/9/v/69GP6+v///v7///////////9f/f7////+///9/f7+/f7///38///////9/v75/v/9/v7+/f///v7///X///////9f/f7////+///9/f7+/f7///38///////9/v75/v/9/v7+/f///v7///X////////4/P3+///+///7+f77/v7///79///+///7/v52/f/6+/r7+//+/v7///7////////4/P3+///+///7+f77/v7///79///+///7/v52/f/6+/r7+//+/v7///7//////fz////+/v79+/z////////5/P///P39/Wb///7///7///////3+///+/f/9/f37///++/7////////7+f77/v7////+///////8/v/9/v/69GP6+v///v7////////////++/7////////7+f77/v7////+///////8/v/9/v/69GP6+v///v7////////////++/7////////7+f77/v7////+///////8/v/9/v/69GP6+v///v7/////////Av4A/AADA/sA/gT+/wD+AAMB/AAE/f4E/v78A/0FAf8D/vv9AQT/AQEABAH+AwT9Av4A/AADA/sA/gT+/wD+AAMB/AAE/f4E/v78A/0FAf8D/vv9AQT/AQEABAH+AwT9Bvz+/AICA/z/AAT+AAD8AAT//f8E//4E/gD6Bf0G//8BAP38AAP+AgD+AwD/BAP9Bvz+/AICA/z/AAT+AAD8AAT//f8E//4E/gD6Bf0G//8BAP38AAP+AgD+AwD/BAP9A/oA+wAIBPkB/gX8/gL8AAYB+wAG+/0D+wD9Bv4GAAABAPz8/gX//wEABgD9AwX6CAT7+/kJCwEIAwv7+/r6+fkHAfn5AgMKAwT7+Pb7+Qb7+/v7+goG+fkHC/gECQoCDAL5+/kKCgMGBQv6+/n7+fgEAvj5BQQKAwX6+PX6+Ab7+/v7/AoG+foFCvcFCgoDDAL5+/kKCgMGBQv6+/n7+fgEAvj5BQQKAwX6+PX6+Ab7+/v7/AoG+foFCvcFCgoDCQH6+fgPDAEJBA36+vj6+PgIAfj4AQMKAQf6+fX6+Af6+vr5+w0H+PgIDfYFCg0ACAT7+/kJCwEIAwv7+/r6+fkHAfn5AgMKAwT7+Pb7+Qb7+/v7+goG+fkHC/gECQoC+vsGAQf6+fr5+/oDBAcEBwr7+wgL+/v6+/sCC/ULCPoIBAEDB/r5CAj5+gn6+vr7+voGAgr5+fr5+/oEBQgDCAz7+wgM+/r6+/sBDfUMCPkGBQIBBfn5CQb5+Qn6+vr7+voGAgr5+fr5+/oEBQgDCAz7+wgM+/r6+/sBDfUMCPkGBQIBBfn5CQb5+Qn6+vr7+/kGAgn5+fn5+/kDBAoDCQ76+gkO+vr5+voDDvUMCPkHBgIDA/n4Bwn5+gr5+fn7+vsGAQf6+fr5+/oDBAcEBwr7+wgL+/v6+/sCC/ULCPoIBAEDB/r5CAj5+gn6+vr7/v0PCPr9/v39/v4JCvoH/Pz+/vz7/v7+/v4H+/wR+v4KCggHCv39+/r+/vr+/f79/v0PCPn9/v39/f0ICvsI/Pv+/fv7/f79/v4J/PwS+v0NCwkKCP39+/r9/fr9/f7+/v4OB/r+/v39/v4ICfsJ+/z+/vv7/v7+/v4H+/wR+v0MCQcIDP79+/v9/fr+/f7+/Qj9/v37/An8Cvv+/v3+/v4NCP3+Cgn8CQ/+/fz+/vz+/v7+/vv9/f78+/0K/PsJ/Aj+/v37/Af7DPv+/v3+/v4QCP3+CQn8CBH+/vz+/fz+/v7+/vv8/f38+/0L/PwI/An+/v37/Aj8Cvv+/v7+/v4QCP7+CAj8CQ7+/fz+/vz+/v7+/vz8/v78+/0K/PsJAP////8A////AP///xT//v8AABP//////////////////////////v7/////AP//////////////////////FBUA//7+/////////v////////////////////7//////wD///7/AP////////7///8AAP//////AP///////f//////////FRP/////AP//AP///////////wD//xX//v//ABT//////wD//v7//////////////v7/////AP8A//////7/////////////FBn////+/////////v///////////////v////7//////wD///7/////AP////7//////////////////////f////////8AFRX///////8A//////8A////AP///xT//v///xP//////////////wD//////wD//v7///////8A/////////wD/AP//////ExX/AP7+/////////v////////8A//////////7/AP///wD///7/////AAD///7/////AP//////AAD//////f///////wD/FBP/AP///wAAAAAAAAAA/wAAAAAAAP//AAAAAP8AAAAA/wAA/xIAAP8AAAAAAAAAAAAAAP8AAAAAAAD/AAAAAAAAAAAAAP///wAAAP//AAAAAAD//xIA/wAAAAAAAAAAAP8A//8AAAAAAAD/AAAAAAAAAAAAAP///wAAAP//AAAAAAD//xIA/wAAAAAAAAAAAP8A//8AAAAAAAD/AAAAAAAAAAAAAP///wAAAP//AAAAAAD//xIA/wAAAAAAAAAAAP8A//8AAAAAGgAAAAD+/wD/AP8AAAAAAP//AAAAAAD/AP8AAAAAAP4AAAAAAP//AAD//wAA//8A////AAD/////AP8AAP8AAAD//wAAAAD+AP8AAAAAAP8AAAAAAP//AAD+//8AGf///wAAAAD//wD/ABoAAAAAAAD//wAA/wD///8AAP8A//8AAAAAAP//AAD//gD///8A/wAAAAD//wD/AP8AAAAAAAAAAAAAAAD/AP8AAP8AAP8AAAAAAAD/AAAX/wAA/v8A/gAAAP8Z////AP8AAAAAAP///wAA/wD///8AAAAAAP8AAAAAAP//AP///wD//////wAAAAD//wD/AP8AAAAAAAAAAAAAAAD/AP8AAP8AABYAAAAAAP//AAD//wAA//8A/wAAAAD///8WAAAAAAAAAAD//wAAAAD/AP8AAAAAAP8AAAAAAP7/AAD//wAA//8A//8AAAD//wD/AP8AAAAAAP//AAAAAAD+AAAAAAAA//8AAAAAAP8XAAD///8A//8A/wAAAAD/GQD/AP8AAAAAAP//AAAAAP8A//8A//8AAP8AAAAAAP//AAD//gAA/////wAAAAD////+AP8AAAAA/wD//wAAAAD/AP8AAAAAAP8AAAAAABn//wD//wAAAP///v8AAAD/AAD/AP8AAAAAAAD/AAAAAAAbAP8AAAAA//8AAAAAAP/+AAD+/wAA/v8A/wAAAAD//v////4AAAAAAAD/AAD/AAD/AP8A//8AAP8AAAAAAP//AAD/Gv8A//////8AAAD/AAD///8AAAAAAAD//wAAAAD/AP8AAP8A//4AAAAAAP//AAD//wD//xkAAAD/AP8A/wAAAAD///8A//8AAP//AAAAAAD/Gf///wAAAP8A/wAA////AP8AAAAAAAAA/xcA/wAAAAD/AP///wAAAP8AAAAAAAD///////8A//8A/wAA//8AAP8AAAAAAP/+/wD/AAAAAAAAAAAA//8AAP//AAAAAAAA//8A/wAAAAAA/wAAAAAAABYA/wAAAAAA//8AAAAAAAD/AP////8AAP//AAAAAAD/AAAAFgAAAP//AAAA//8AAAAAAAAAAAD+//8AAAAAAAD///////8AAP8ZAAAAAAD/////AAAAAP//AAAAAP8AAP8AAP8AAAD/AAAA/wD/AP8AAAAA/wAAAP//AAAAAAAA/xMA/wAAAAAAAAAAAAAA//8A/wAAAAD/AAAA/wD/AP8AAAAA/wAAAP//AAAAAAAA/xMA/wAAAAAAAAAAAAAA//8A/wAAGwAAAAD///////8AAAAAAAD//wAA//////8AAAAAAP8AAAAAAP//AAD//wAA//////8AAAAA//////8AAAAA/wD///8A/wD+//8AAP8AAP8AAAAAAAD/AP////8AG/////8AAAD//////xwAAAAA/wD//wAA/wAA//8AAP8A//8AAAD/AP//AP////8A//////8AAAD//wAAAP8AAAAAAP8A/wAAAAD+AP8AAAAAAP8AAAAAAP//AAAY//8A/v8A/v8AAAAc//////8AAP8AAAD//wAAAP8A//8AAP8AAP8AAAAAAP//AAD//////////wAAAAD//wD/AP8AAAAAAAAAAAAA/wD///8AAP8A/xcAAAAAAP//AAD//wAA/////wAAAAD///8YAP//AAAAAAD/AAAA/wD///8AAP8AAP8AAAAAAP//AP///wAA/////wAAAAAA/wD/AP8AAAAAAP//AAAAAAD+AP8A/wAA//8AAAAAAP8YAAD//wAA//8A/wAAAP//GwD/AP8AAAAA/wD//wD//wD///8A/wAAAP8AAAAAAP//AAD//gAA//////8AAAD////+//8AAAAAAAD//wD/////AP8AAP8AAP8AAAAAABz/AAD//wAA//////8A/wAA/wD///8AAAAAAAD///8A/wAc//8AAAAAAP8AAAAAAP/+AAD+/wAA/v////8AAAD//v////8AAP//////AAAA/wD///8AAP8AAP8AAAAAAP//AAD/HP////////8AAAD//wD///8AAAAAAAD//wAAAP//AP8A/wAAAP8AAAD/AP//AAD//////xv/AAD/AP8A/wD/AAAA////////AP//AP8AAAD/Gf//AAAAAP///wAA//8AAP8AAP8AAAAAABgAAAAAAAAAAP////8AAP8AAAAAAAAAAP///gD/////AAAA/v8AAP8AAAAAAP/9AAAAAAAAAAAA//8A//8AAP//AAAAAAAA/////wAAAAAAAAAA/wD/ABgA/wAAAAD///8AAAAAAAD/AP////8AAAD/AAD/AAAAAAD/FwAAAP////////8AAAAAAAAAAP///////wAAAP8A//8A//8AAP8bAAAAAAD//////wD/////AAD///8AAP4AAAAAAAAAAAAA/wAAAAAAAP//AAAAAP8AAAAA/wAA/xIAAP8AAAAAAAAAAAAAAP8AAAAAAAAAAAAA/wAAAAAAAP//AAAAAP8AAAAA/wAA/xIAAP8AAAAAAAAAAAAAAP8AAAAAGwAAAAD+/wD///8AAAAAAAD/AAAAAP//AP8AAAAA//4AAAAAAP//AP////////8A//8AAP///wD///8AAAAAAAAAAAAAAAD+AP8A/wAAAP8AAAAAAAD/AAD+////Gv////8AAAD/////ABoAAAAAAAD//wAAAAD///8AAP8AAAAAAAAAAP//AAD//wAA/////wAAAAD/AAAA//8AAAAAAAD/AAAA/wD+AP8AAAAAAP8AAAAAAAD/AAAX/wAA/v8A/gAAAAAZ//////8AAAAAAAD/AAAA/wD///8AAP8AAP8AAAAAAP//AAD//wD///8A/gAAAP///wD/AP8AAAAAAAD//wAAAAD/AP8AAAAAABYAAAAAAP//AAD//wAA//8A/wAAAAD//wAXAP8AAAAAAAD/AAAAAP//AP8AAP8AAP8AAAAAAP7/AAD//wAA//8A/wAAAAD/////AP8AAAAAAP8AAAAAAAD+AP8AAAAAAP8AAAAAAP8WAAD//wD///8A/wAAAAD/GAD/AP8AAAAAAAD//wAAAAD/AP8A//8A//8AAAAAAP//AAD///8A/////wAAAAD////+//8AAAAAAAD/AAAA/wD/AP8AAAAAAP8AAAAAABr/AAAA/wD//////wAAAAD//////wAAAAAAAAD//wAAAAAa//8AAP8AAP8AAAAAAP/+AAD+AAD//v8A//8AAAD//gD/AP8AAAAA/wD/AP8A/wD/AP8AAP8AAP8AAAAAAP//AAD/GgAA/////wAAAAD/////AP8AAAAAAAD//wAAAAD/AP8AAP8AAP4AAAAAAP//AAD//////xkAAAD///8A/wD/AAAAAP////8AAP//AAAAAAD/GP///wAAAP///wAA//8A//8AAAAAAAD/ABYAAAAAAAD/////AP8AAAD/AAAAAAD///8A/wD/////AAAA//8AAAAAAAAAAP/9AP8AAAAAAAAAAP8A//8AAP//AAAAAAAA////AAAAAAAAAP8AAAAAABcA/wAAAAD///8AAAD/AAD/AP8A//8AAAAAAAAAAAD/////FgAA/////wAA//8AAP8AAAAAAAD///8AAAD/AAD//wAA//8AAP8YAAAAAAD//////wD/AP8AAAAAAAAAAP8AAAAA",
+    "encoding": "int8-base64",
+    "scale": 0.01940554896677573
+  },
+  "embedding": {
+    "data": "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BgP+AAP+/AT+//z6/wAB/fkE//4BAP77/vwBAf0AAAEDAAMABgIEAwH++wIBAgEB/f7++/4BAfsB/gMDBAEDAQAEAwIA/P/9APwD/v78/gL8A/3/Av/+//4A/f4EAv7/Av//+wD7AAP8//7++/4C///+Avr/Bfv//wH//wIA/wX9/gIC/gX//P3//wL/AgEB/f4BAv4F//z+//8C/wIBAAH//fz9/QYDCPkA+v0CAfr9Avz+Awf7BAD/+/sEA/sAAP8D+/0C//79APr9+P4ABAH+/v0H/P8B/gAC+gEB/QYB/v/9AP39AAsBAgH9A/z/AAYH/wD/AwL+/QH8BgIAAf4BAAX7//0A/wL+AAQBB/r/Bv7+Afn/BP/9/QUA/QAC+wb++PkEBf4BAwAFAgMBAAcD/f3/AgD/Af8EBAT5CPwIBf0AA/z6BPz/+/n+AAH89wX//QEA/fr9+wIC/AABAQQABQEIBAYEAv35BAEDAQH8//75/QIC+gH9BAQGAgMB/wUDAgD7//sA/AT9/vv9A/sE+wADAP7+/QH8/gYD/gAC//76AfsAA/z//f75/QP/AP4D+P8G+f//Av7+A///Bw==",
+    "encoding": "int8-base64",
+    "scale": 0.0355905698040339
+  },
+  "exact_prompts": {
+    "check the status of an order": 28,
+    "explain accessibility support options": 0,
+    "explain account verification steps": 45,
+    "explain bulk order enquiries": 10,
+    "explain data privacy request steps": 41,
+    "explain delivery time estimates": 5,
+    "explain exchange options for size": 31,
+    "explain gift card balance checks": 8,
+    "explain how loyalty points work": 25,
+    "explain how refunds are processed": 17,
+    "explain how to apply a discount code": 7,
+    "explain how to change an order": 24,
+    "explain how to close an account": 1,
+    "explain how to contact the team": 47,
+    "explain how to download a receipt": 22,
+    "explain how to give feedback": 9,
+    "explain how to pause a subscription": 21,
+    "explain how to track a delivery": 44,
+    "explain how to update account details": 18,
+    "explain product setup first steps": 38,
+    "explain service outage updates": 6,
+    "explain spare parts ordering": 37,
+    "explain subscription cancellation steps": 23,
+    "explain the return process": 42,
+    "explain warranty coverage basics": 46,
+    "gravion support check the status of an order": 28,
+    "gravion support explain accessibility support options": 0,
+    "gravion support explain account verification steps": 45,
+    "gravion support explain bulk order enquiries": 10,
+    "gravion support explain data privacy request steps": 41,
+    "gravion support explain delivery time estimates": 5,
+    "gravion support explain exchange options for size": 31,
+    "gravion support explain gift card balance checks": 8,
+    "gravion support explain how loyalty points work": 25,
+    "gravion support explain how refunds are processed": 17,
+    "gravion support explain how to apply a discount code": 7,
+    "gravion support explain how to change an order": 24,
+    "gravion support explain how to close an account": 1,
+    "gravion support explain how to contact the team": 47,
+    "gravion support explain how to download a receipt": 22,
+    "gravion support explain how to give feedback": 9,
+    "gravion support explain how to pause a subscription": 21,
+    "gravion support explain how to track a delivery": 44,
+    "gravion support explain how to update account details": 18,
+    "gravion support explain product setup first steps": 38,
+    "gravion support explain service outage updates": 6,
+    "gravion support explain spare parts ordering": 37,
+    "gravion support explain subscription cancellation steps": 23,
+    "gravion support explain the return process": 42,
+    "gravion support explain warranty coverage basics": 46,
+    "gravion support help change a delivery address": 13,
+    "gravion support help change an email address": 19,
+    "gravion support help check service availability": 27,
+    "gravion support help find an invoice copy": 15,
+    "gravion support help find product manuals": 16,
+    "gravion support help recover a deleted file": 4,
+    "gravion support help report a billing error": 39,
+    "gravion support help report a website problem": 40,
+    "gravion support help reset an account password": 43,
+    "gravion support help schedule a repair pickup": 30,
+    "gravion support help update payment method": 20,
+    "gravion support help with a cancelled order question": 14,
+    "gravion support help with a damaged item": 33,
+    "gravion support help with a duplicate charge": 32,
+    "gravion support help with a failed payment": 12,
+    "gravion support help with a gift order message": 11,
+    "gravion support help with a late delivery apology": 35,
+    "gravion support help with a missing confirmation email": 3,
+    "gravion support help with a missing package": 36,
+    "gravion support help with a software update problem": 26,
+    "gravion support help with a wrong item received": 34,
+    "gravion support help with an account lockout": 2,
+    "gravion support help with installation booking": 29,
+    "help change a delivery address": 13,
+    "help change an email address": 19,
+    "help check service availability": 27,
+    "help find an invoice copy": 15,
+    "help find product manuals": 16,
+    "help me check the status of an order": 28,
+    "help me explain accessibility support options": 0,
+    "help me explain account verification steps": 45,
+    "help me explain bulk order enquiries": 10,
+    "help me explain data privacy request steps": 41,
+    "help me explain delivery time estimates": 5,
+    "help me explain exchange options for size": 31,
+    "help me explain gift card balance checks": 8,
+    "help me explain how loyalty points work": 25,
+    "help me explain how refunds are processed": 17,
+    "help me explain how to apply a discount code": 7,
+    "help me explain how to change an order": 24,
+    "help me explain how to close an account": 1,
+    "help me explain how to contact the team": 47,
+    "help me explain how to download a receipt": 22,
+    "help me explain how to give feedback": 9,
+    "help me explain how to pause a subscription": 21,
+    "help me explain how to track a delivery": 44,
+    "help me explain how to update account details": 18,
+    "help me explain product setup first steps": 38,
+    "help me explain service outage updates": 6,
+    "help me explain spare parts ordering": 37,
+    "help me explain subscription cancellation steps": 23,
+    "help me explain the return process": 42,
+    "help me explain warranty coverage basics": 46,
+    "help me help change a delivery address": 13,
+    "help me help change an email address": 19,
+    "help me help check service availability": 27,
+    "help me help find an invoice copy": 15,
+    "help me help find product manuals": 16,
+    "help me help recover a deleted file": 4,
+    "help me help report a billing error": 39,
+    "help me help report a website problem": 40,
+    "help me help reset an account password": 43,
+    "help me help schedule a repair pickup": 30,
+    "help me help update payment method": 20,
+    "help me help with a cancelled order question": 14,
+    "help me help with a damaged item": 33,
+    "help me help with a duplicate charge": 32,
+    "help me help with a failed payment": 12,
+    "help me help with a gift order message": 11,
+    "help me help with a late delivery apology": 35,
+    "help me help with a missing confirmation email": 3,
+    "help me help with a missing package": 36,
+    "help me help with a software update problem": 26,
+    "help me help with a wrong item received": 34,
+    "help me help with an account lockout": 2,
+    "help me help with installation booking": 29,
+    "help recover a deleted file": 4,
+    "help report a billing error": 39,
+    "help report a website problem": 40,
+    "help reset an account password": 43,
+    "help schedule a repair pickup": 30,
+    "help update payment method": 20,
+    "help with a cancelled order question": 14,
+    "help with a damaged item": 33,
+    "help with a duplicate charge": 32,
+    "help with a failed payment": 12,
+    "help with a gift order message": 11,
+    "help with a late delivery apology": 35,
+    "help with a missing confirmation email": 3,
+    "help with a missing package": 36,
+    "help with a software update problem": 26,
+    "help with a wrong item received": 34,
+    "help with an account lockout": 2,
+    "help with installation booking": 29,
+    "please check the status of an order": 28,
+    "please explain accessibility support options": 0,
+    "please explain account verification steps": 45,
+    "please explain bulk order enquiries": 10,
+    "please explain data privacy request steps": 41,
+    "please explain delivery time estimates": 5,
+    "please explain exchange options for size": 31,
+    "please explain gift card balance checks": 8,
+    "please explain how loyalty points work": 25,
+    "please explain how refunds are processed": 17,
+    "please explain how to apply a discount code": 7,
+    "please explain how to change an order": 24,
+    "please explain how to close an account": 1,
+    "please explain how to contact the team": 47,
+    "please explain how to download a receipt": 22,
+    "please explain how to give feedback": 9,
+    "please explain how to pause a subscription": 21,
+    "please explain how to track a delivery": 44,
+    "please explain how to update account details": 18,
+    "please explain product setup first steps": 38,
+    "please explain service outage updates": 6,
+    "please explain spare parts ordering": 37,
+    "please explain subscription cancellation steps": 23,
+    "please explain the return process": 42,
+    "please explain warranty coverage basics": 46,
+    "please help change a delivery address": 13,
+    "please help change an email address": 19,
+    "please help check service availability": 27,
+    "please help find an invoice copy": 15,
+    "please help find product manuals": 16,
+    "please help recover a deleted file": 4,
+    "please help report a billing error": 39,
+    "please help report a website problem": 40,
+    "please help reset an account password": 43,
+    "please help schedule a repair pickup": 30,
+    "please help update payment method": 20,
+    "please help with a cancelled order question": 14,
+    "please help with a damaged item": 33,
+    "please help with a duplicate charge": 32,
+    "please help with a failed payment": 12,
+    "please help with a gift order message": 11,
+    "please help with a late delivery apology": 35,
+    "please help with a missing confirmation email": 3,
+    "please help with a missing package": 36,
+    "please help with a software update problem": 26,
+    "please help with a wrong item received": 34,
+    "please help with an account lockout": 2,
+    "please help with installation booking": 29
+  },
+  "features": [
+    "help",
+    "explain",
+    "a",
+    "support",
+    "help with",
+    "with",
+    "explain how",
+    "how",
+    "help with a",
+    "with a",
+    "explain how to",
+    "how to",
+    "to",
+    "an",
+    "account",
+    "order",
+    "delivery",
+    "steps",
+    "an account",
+    "change",
+    "the",
+    "update",
+    "a delivery",
+    "a missing",
+    "address",
+    "an order",
+    "change an",
+    "check",
+    "email",
+    "find",
+    "gift",
+    "help change",
+    "help find",
+    "help report",
+    "help report a",
+    "item",
+    "missing",
+    "options",
+    "payment",
+    "problem",
+    "product",
+    "report",
+    "report a",
+    "service",
+    "subscription",
+    "with a missing",
+    "a billing",
+    "a billing error",
+    "a cancelled",
+    "a cancelled order",
+    "a damaged",
+    "a damaged item",
+    "a deleted",
+    "a deleted file",
+    "a delivery address",
+    "a discount",
+    "a discount code",
+    "a duplicate",
+    "a duplicate charge",
+    "a failed",
+    "a failed payment",
+    "a gift",
+    "a gift order",
+    "a late",
+    "a late delivery",
+    "a missing confirmation",
+    "a missing package",
+    "a receipt",
+    "a repair",
+    "a repair pickup",
+    "a software",
+    "a software update",
+    "a subscription",
+    "a website",
+    "a website problem",
+    "a wrong",
+    "a wrong item",
+    "accessibility",
+    "accessibility support",
+    "accessibility support options",
+    "account details",
+    "account lockout",
+    "account password",
+    "account verification",
+    "account verification steps",
+    "an account lockout",
+    "an account password",
+    "an email",
+    "an email address",
+    "an invoice",
+    "an invoice copy",
+    "apology",
+    "apply",
+    "apply a",
+    "apply a discount",
+    "are",
+    "are processed",
+    "availability",
+    "balance",
+    "balance checks",
+    "basics",
+    "billing",
+    "billing error",
+    "booking",
+    "bulk",
+    "bulk order",
+    "bulk order enquiries",
+    "cancellation",
+    "cancellation steps",
+    "cancelled",
+    "cancelled order",
+    "cancelled order question",
+    "card",
+    "card balance",
+    "card balance checks",
+    "change a",
+    "change a delivery",
+    "change an email",
+    "change an order",
+    "charge",
+    "check service",
+    "check service availability",
+    "check the",
+    "check the status",
+    "checks",
+    "close",
+    "close an",
+    "close an account",
+    "code",
+    "confirmation",
+    "confirmation email",
+    "contact",
+    "contact the",
+    "contact the team",
+    "copy",
+    "coverage",
+    "coverage basics",
+    "damaged",
+    "damaged item",
+    "data",
+    "data privacy",
+    "data privacy request",
+    "deleted",
+    "deleted file",
+    "delivery address",
+    "delivery apology",
+    "delivery time",
+    "delivery time estimates",
+    "details",
+    "discount",
+    "discount code",
+    "download",
+    "download a",
+    "download a receipt",
+    "duplicate",
+    "duplicate charge",
+    "email address",
+    "enquiries",
+    "error",
+    "estimates",
+    "exchange",
+    "exchange options",
+    "exchange options for",
+    "explain accessibility",
+    "explain accessibility support",
+    "explain account",
+    "explain account verification",
+    "explain bulk",
+    "explain bulk order",
+    "explain data",
+    "explain data privacy",
+    "explain delivery",
+    "explain delivery time",
+    "explain exchange",
+    "explain exchange options",
+    "explain gift",
+    "explain gift card",
+    "explain how loyalty",
+    "explain how refunds",
+    "explain product",
+    "explain product setup",
+    "explain service",
+    "explain service outage",
+    "explain spare",
+    "explain spare parts",
+    "explain subscription",
+    "explain subscription cancellation",
+    "explain the",
+    "explain the return",
+    "explain warranty",
+    "explain warranty coverage",
+    "failed",
+    "failed payment",
+    "feedback",
+    "file",
+    "find an",
+    "find an invoice",
+    "find product",
+    "find product manuals",
+    "first",
+    "first steps",
+    "for",
+    "for size",
+    "gift card",
+    "gift card balance",
+    "gift order",
+    "gift order message",
+    "give",
+    "give feedback",
+    "help change a",
+    "help change an",
+    "help check",
+    "help check service",
+    "help find an",
+    "help find product",
+    "help recover",
+    "help recover a",
+    "help reset",
+    "help reset an",
+    "help schedule",
+    "help schedule a",
+    "help update",
+    "help update payment",
+    "help with an",
+    "help with installation",
+    "how loyalty",
+    "how loyalty points",
+    "how refunds",
+    "how refunds are",
+    "how to apply",
+    "how to change",
+    "how to close",
+    "how to contact",
+    "how to download",
+    "how to give",
+    "how to pause",
+    "how to track",
+    "how to update",
+    "installation",
+    "installation booking",
+    "invoice",
+    "invoice copy",
+    "item received",
+    "late",
+    "late delivery",
+    "late delivery apology",
+    "lockout",
+    "loyalty",
+    "loyalty points",
+    "loyalty points work",
+    "manuals",
+    "message",
+    "method",
+    "missing confirmation",
+    "missing confirmation email",
+    "missing package",
+    "of",
+    "of an",
+    "of an order",
+    "options for",
+    "options for size",
+    "order enquiries",
+    "order message",
+    "order question",
+    "ordering",
+    "outage",
+    "outage updates",
+    "package",
+    "parts",
+    "parts ordering",
+    "password",
+    "pause",
+    "pause a",
+    "pause a subscription",
+    "payment method",
+    "pickup",
+    "points",
+    "points work",
+    "privacy",
+    "privacy request",
+    "privacy request steps",
+    "process",
+    "processed",
+    "product manuals",
+    "product setup",
+    "product setup first",
+    "question",
+    "receipt",
+    "received",
+    "recover",
+    "recover a",
+    "recover a deleted",
+    "refunds",
+    "refunds are",
+    "refunds are processed",
+    "repair",
+    "repair pickup",
+    "report a billing",
+    "report a website",
+    "request",
+    "request steps",
+    "reset",
+    "reset an",
+    "reset an account",
+    "return",
+    "return process",
+    "schedule",
+    "schedule a",
+    "schedule a repair",
+    "service availability",
+    "service outage",
+    "service outage updates",
+    "setup",
+    "setup first",
+    "setup first steps",
+    "size",
+    "software",
+    "software update",
+    "software update problem",
+    "spare",
+    "spare parts",
+    "spare parts ordering",
+    "status",
+    "status of",
+    "status of an",
+    "subscription cancellation",
+    "subscription cancellation steps",
+    "support options",
+    "team",
+    "the return",
+    "the return process",
+    "the status",
+    "the status of",
+    "the team",
+    "time",
+    "time estimates",
+    "to apply",
+    "to apply a",
+    "to change",
+    "to change an",
+    "to close",
+    "to close an",
+    "to contact",
+    "to contact the",
+    "to download",
+    "to download a",
+    "to give",
+    "to give feedback",
+    "to pause",
+    "to pause a",
+    "to track",
+    "to track a",
+    "to update",
+    "to update account",
+    "track",
+    "track a",
+    "track a delivery",
+    "update account",
+    "update account details",
+    "update payment",
+    "update payment method",
+    "update problem",
+    "updates",
+    "verification",
+    "verification steps",
+    "warranty",
+    "warranty coverage",
+    "warranty coverage basics",
+    "website",
+    "website problem",
+    "with a cancelled",
+    "with a damaged",
+    "with a duplicate",
+    "with a failed",
+    "with a gift",
+    "with a late",
+    "with a software",
+    "with a wrong",
+    "with an",
+    "with an account",
+    "with installation",
+    "with installation booking",
+    "work",
+    "wrong",
+    "wrong item",
+    "wrong item received",
+    "gravion",
+    "gravion support",
+    "help me",
+    "me",
+    "please",
+    "gravion support explain",
+    "help me explain",
+    "me explain",
+    "please explain",
+    "support explain",
+    "gravion support help",
+    "help me help",
+    "me help",
+    "please help",
+    "support help",
+    "me help with",
+    "please help with",
+    "support help with",
+    "me explain how",
+    "please explain how",
+    "support explain how",
+    "me help change",
+    "me help find",
+    "me help report",
+    "please help change",
+    "please help find",
+    "please help report",
+    "support help change",
+    "support help find",
+    "support help report",
+    "gravion support check",
+    "help me check",
+    "me check",
+    "me check the",
+    "me explain accessibility",
+    "me explain account",
+    "me explain bulk",
+    "me explain data",
+    "me explain delivery",
+    "me explain exchange",
+    "me explain gift",
+    "me explain product",
+    "me explain service",
+    "me explain spare",
+    "me explain subscription",
+    "me explain the",
+    "me explain warranty",
+    "me help check",
+    "me help recover",
+    "me help reset",
+    "me help schedule",
+    "me help update",
+    "please check",
+    "please check the",
+    "please explain accessibility",
+    "please explain account",
+    "please explain bulk",
+    "please explain data",
+    "please explain delivery",
+    "please explain exchange",
+    "please explain gift",
+    "please explain product",
+    "please explain service",
+    "please explain spare",
+    "please explain subscription",
+    "please explain the",
+    "please explain warranty",
+    "please help check",
+    "please help recover",
+    "please help reset",
+    "please help schedule",
+    "please help update",
+    "support check",
+    "support check the",
+    "support explain accessibility",
+    "support explain account",
+    "support explain bulk",
+    "support explain data",
+    "support explain delivery",
+    "support explain exchange",
+    "support explain gift",
+    "support explain product",
+    "support explain service",
+    "support explain spare",
+    "support explain subscription",
+    "support explain the",
+    "support explain warranty",
+    "support help check",
+    "support help recover",
+    "support help reset",
+    "support help schedule",
+    "support help update"
+  ],
+  "format": "gravion-core-local-v3",
+  "model_id": "gravion-support",
+  "parameter_count": 32515,
+  "trained_from": {
+    "classes": 48,
+    "dataset_sha256": "90acfa13e77e013da7bfe92af2fae0defbe7a3655fa462912c54c880f2f9e672",
+    "examples": 192,
+    "features": 478,
+    "source": "data/gravion-support-seed.jsonl"
+  },
+  "transitions": {
+    "<s>": {
+      "accessibility": 0.02083333,
+      "account": 0.02083333,
+      "after": 0.02083333,
+      "check": 0.04166667,
+      "delivery": 0.02083333,
+      "during": 0.02083333,
+      "enter": 0.04166667,
+      "feedback": 0.02083333,
+      "for": 0.02083333,
+      "gift": 0.02083333,
+      "if": 0.0625,
+      "invoices": 0.02083333,
+      "manuals": 0.02083333,
+      "once": 0.02083333,
+      "open": 0.125,
+      "orders": 0.02083333,
+      "points": 0.02083333,
+      "restart": 0.02083333,
+      "share": 0.08333333,
+      "size": 0.02083333,
+      "sorry": 0.10416667,
+      "spare": 0.02083333,
+      "start": 0.02083333,
+      "tell": 0.02083333,
+      "thanks": 0.02083333,
+      "to": 0.04166667,
+      "use": 0.04166667,
+      "verification": 0.02083333,
+      "warranty": 0.02083333,
+      "you": 0.02083333
+    },
+    "a": {
+      "code": 0.07692308,
+      "copy": 0.07692308,
+      "limited": 0.07692308,
+      "payment": 0.07692308,
+      "photo": 0.15384615,
+      "refund": 0.15384615,
+      "replacement": 0.07692308,
+      "request": 0.07692308,
+      "reset": 0.07692308,
+      "returned": 0.07692308,
+      "short": 0.07692308
+    },
+    "about": {
+      "the": 1.0
+    },
+    "access": {
+      "</s>": 0.5,
+      "until": 0.5
+    },
+    "accessibility": {
+      "options": 1.0
+    },
+    "account": {
+      "</s>": 0.14285714,
+      "and": 0.14285714,
+      "closure": 0.14285714,
+      "locks": 0.14285714,
+      "settings": 0.42857143
+    },
+    "act": {
+      "on": 1.0
+    },
+    "actions": {
+      "entering": 1.0
+    },
+    "add": {
+      "the": 1.0
+    },
+    "added": {
+      "after": 0.5,
+      "at": 0.5
+    },
+    "address": {
+      "</s>": 0.25,
+      "and": 0.25,
+      "share": 0.125,
+      "so": 0.25,
+      "what": 0.125
+    },
+    "after": {
+      "any": 0.25,
+      "payment": 0.5,
+      "several": 0.25
+    },
+    "again": {
+      "share": 0.5,
+      "tell": 0.5
+    },
+    "also": {
+      "attached": 0.5,
+      "emailed": 0.5
+    },
+    "amount": {
+      "</s>": 0.5,
+      "that": 0.5
+    },
+    "an": {
+      "item": 0.5,
+      "outage": 0.5
+    },
+    "and": {
+      "a": 0.01754386,
+      "are": 0.01754386,
+      "arrange": 0.03508772,
+      "balance": 0.01754386,
+      "can": 0.01754386,
+      "check": 0.01754386,
+      "checked": 0.01754386,
+      "choose": 0.03508772,
+      "confirm": 0.03508772,
+      "correct": 0.01754386,
+      "delivery": 0.03508772,
+      "expiry": 0.01754386,
+      "follow": 0.01754386,
+      "for": 0.01754386,
+      "i": 0.26315789,
+      "in": 0.03508772,
+      "preferred": 0.01754386,
+      "pricing": 0.01754386,
+      "printed": 0.01754386,
+      "promotions": 0.01754386,
+      "purchase": 0.01754386,
+      "resumes": 0.01754386,
+      "save": 0.01754386,
+      "screen": 0.01754386,
+      "set": 0.01754386,
+      "tell": 0.01754386,
+      "the": 0.12280702,
+      "try": 0.01754386,
+      "what": 0.01754386,
+      "whether": 0.01754386,
+      "your": 0.03508772
+    },
+    "another": {
+      "copy": 1.0
+    },
+    "any": {
+      "open": 1.0
+    },
+    "appears": {
+      "</s>": 1.0
+    },
+    "applied": {
+      "at": 1.0
+    },
+    "applies": {
+      "</s>": 1.0
+    },
+    "are": {
+      "added": 0.09090909,
+      "also": 0.09090909,
+      "available": 0.09090909,
+      "correct": 0.09090909,
+      "earned": 0.09090909,
+      "linked": 0.09090909,
+      "posted": 0.09090909,
+      "seeing": 0.09090909,
+      "shown": 0.18181818,
+      "started": 0.09090909
+    },
+    "area": {
+      "first": 0.5,
+      "or": 0.5
+    },
+    "arrange": {
+      "a": 0.5,
+      "the": 0.5
+    },
+    "arrived": {
+      "and": 0.33333333,
+      "damaged": 0.33333333,
+      "share": 0.33333333
+    },
+    "as": {
+      "default": 0.25,
+      "possible": 0.25,
+      "soon": 0.25,
+      "the": 0.25
+    },
+    "ask": {
+      "for": 0.5,
+      "you": 0.5
+    },
+    "asked": {
+      "to": 1.0
+    },
+    "at": {
+      "checkout": 1.0
+    },
+    "attached": {
+      "to": 1.0
+    },
+    "availability": {
+      "and": 1.0
+    },
+    "available": {
+      "billing": 0.33333333,
+      "from": 0.33333333,
+      "there": 0.33333333
+    },
+    "away": {
+      "</s>": 1.0
+    },
+    "back": {
+      "</s>": 0.5,
+      "to": 0.5
+    },
+    "balance": {
+      "and": 0.33333333,
+      "are": 0.33333333,
+      "page": 0.33333333
+    },
+    "bank": {
+      "or": 1.0
+    },
+    "be": {
+      "added": 0.11111111,
+      "applied": 0.11111111,
+      "asked": 0.11111111,
+      "changed": 0.11111111,
+      "ordered": 0.11111111,
+      "restored": 0.11111111,
+      "sent": 0.22222222,
+      "verified": 0.11111111
+    },
+    "before": {
+      "paying": 0.33333333,
+      "the": 0.33333333,
+      "they": 0.33333333
+    },
+    "billing": {
+      "date": 0.33333333,
+      "settings": 0.33333333,
+      "stops": 0.33333333
+    },
+    "book": {
+      "the": 1.0
+    },
+    "bulk": {
+      "orders": 1.0
+    },
+    "by": {
+      "charging": 0.25,
+      "email": 0.5,
+      "model": 0.25
+    },
+    "can": {
+      "be": 0.55555556,
+      "check": 0.11111111,
+      "reach": 0.11111111,
+      "update": 0.11111111,
+      "usually": 0.11111111
+    },
+    "cancel": {
+      "and": 1.0
+    },
+    "cancelled": {
+      "the": 1.0
+    },
+    "cannot": {
+      "find": 0.5,
+      "usually": 0.5
+    },
+    "card": {
+      "code": 0.5,
+      "details": 0.5
+    },
+    "carrier": {
+      "record": 0.5,
+      "update": 0.5
+    },
+    "change": {
+      "and": 0.5,
+      "you": 0.5
+    },
+    "changed": {
+      "before": 1.0
+    },
+    "changes": {
+      "ask": 1.0
+    },
+    "changing": {
+      "</s>": 1.0
+    },
+    "charge": {
+      "</s>": 0.2,
+      "and": 0.2,
+      "dates": 0.2,
+      "share": 0.2,
+      "still": 0.2
+    },
+    "charging": {
+      "or": 1.0
+    },
+    "chat": {
+      "specific": 0.5,
+      "the": 0.5
+    },
+    "check": {
+      "and": 0.08333333,
+      "its": 0.08333333,
+      "spam": 0.08333333,
+      "that": 0.16666667,
+      "the": 0.33333333,
+      "what": 0.08333333,
+      "whether": 0.08333333,
+      "your": 0.08333333
+    },
+    "checked": {
+      "the": 1.0
+    },
+    "checkout": {
+      "and": 0.5,
+      "to": 0.25,
+      "your": 0.25
+    },
+    "choose": {
+      "cancel": 0.33333333,
+      "download": 0.33333333,
+      "pause": 0.33333333
+    },
+    "closure": {
+      "is": 1.0
+    },
+    "code": {
+      "in": 0.33333333,
+      "on": 0.33333333,
+      "sent": 0.33333333
+    },
+    "codes": {
+      "cannot": 1.0
+    },
+    "collection": {
+      "</s>": 1.0
+    },
+    "confirm": {
+      "by": 0.5,
+      "through": 0.25,
+      "you": 0.25
+    },
+    "confirmation": {
+      "</s>": 0.2,
+      "email": 0.2,
+      "message": 0.6
+    },
+    "confirming": {
+      "your": 1.0
+    },
+    "connecting": {
+      "the": 1.0
+    },
+    "connection": {
+      "and": 1.0
+    },
+    "contact": {
+      "form": 0.5,
+      "page": 0.5
+    },
+    "copy": {
+      "</s>": 0.5,
+      "is": 0.5
+    },
+    "correct": {
+      "it": 0.33333333,
+      "item": 0.33333333,
+      "then": 0.33333333
+    },
+    "cover": {
+      "depends": 1.0
+    },
+    "current": {
+      "paid": 0.5,
+      "status": 0.5
+    },
+    "damage": {
+      "and": 1.0
+    },
+    "damaged": {
+      "share": 1.0
+    },
+    "data": {
+      "or": 1.0
+    },
+    "date": {
+      "</s>": 0.33333333,
+      "and": 0.33333333,
+      "shown": 0.33333333
+    },
+    "dates": {
+      "and": 0.66666667,
+      "are": 0.33333333
+    },
+    "day": {
+      "and": 1.0
+    },
+    "default": {
+      "before": 1.0
+    },
+    "deleted": {
+      "files": 1.0
+    },
+    "deletion": {
+      "send": 1.0
+    },
+    "delivery": {
+      "address": 0.28571429,
+      "estimates": 0.14285714,
+      "is": 0.14285714,
+      "location": 0.14285714,
+      "note": 0.14285714,
+      "update": 0.14285714
+    },
+    "depend": {
+      "on": 1.0
+    },
+    "depends": {
+      "on": 1.0
+    },
+    "detail": {
+      "you": 1.0
+    },
+    "details": {
+      "and": 1.0
+    },
+    "device": {
+      "check": 1.0
+    },
+    "discount": {
+      "field": 1.0
+    },
+    "download": {
+      "receipt": 1.0
+    },
+    "drop": {
+      "off": 1.0
+    },
+    "duplicate": {
+      "charge": 1.0
+    },
+    "during": {
+      "an": 0.5,
+      "the": 0.5
+    },
+    "each": {
+      "product": 1.0
+    },
+    "earned": {
+      "on": 1.0
+    },
+    "edit": {
+      "the": 1.0
+    },
+    "eligible": {
+      "purchases": 1.0
+    },
+    "email": {
+      "</s>": 0.25,
+      "address": 0.5,
+      "first": 0.125,
+      "listed": 0.125
+    },
+    "emailed": {
+      "after": 1.0
+    },
+    "end": {
+      "of": 1.0
+    },
+    "enter": {
+      "the": 1.0
+    },
+    "entering": {
+      "a": 1.0
+    },
+    "error": {
+      "message": 1.0
+    },
+    "estimates": {
+      "are": 1.0
+    },
+    "exact": {
+      "timing": 1.0
+    },
+    "examples": {
+      "help": 1.0
+    },
+    "exchanges": {
+      "are": 1.0
+    },
+    "expected": {
+      "and": 1.0
+    },
+    "expiry": {
+      "dates": 1.0
+    },
+    "explains": {
+      "why": 1.0
+    },
+    "extra": {
+      "charge": 1.0
+    },
+    "failed": {
+      "check": 0.5,
+      "sign": 0.5
+    },
+    "fails": {
+      "</s>": 1.0
+    },
+    "faster": {
+      "</s>": 1.0
+    },
+    "fault": {
+      "and": 0.5,
+      "share": 0.5
+    },
+    "feedback": {
+      "can": 0.5,
+      "form": 0.5
+    },
+    "field": {
+      "before": 1.0
+    },
+    "files": {
+      "can": 1.0
+    },
+    "find": {
+      "yours": 1.0
+    },
+    "finding": {
+      "the": 1.0
+    },
+    "finish": {
+      "you": 1.0
+    },
+    "first": {
+      "</s>": 0.25,
+      "if": 0.25,
+      "recently": 0.25,
+      "time": 0.25
+    },
+    "folders": {
+      "first": 1.0
+    },
+    "follow": {
+      "the": 1.0
+    },
+    "for": {
+      "a": 0.16666667,
+      "bulk": 0.16666667,
+      "deletion": 0.16666667,
+      "reporting": 0.16666667,
+      "safety": 0.16666667,
+      "some": 0.16666667
+    },
+    "forgot": {
+      "password": 1.0
+    },
+    "form": {
+      "or": 1.0
+    },
+    "from": {
+      "account": 0.125,
+      "the": 0.125,
+      "there": 0.125,
+      "your": 0.625
+    },
+    "gift": {
+      "card": 0.5,
+      "messages": 0.5
+    },
+    "goes": {
+      "back": 1.0
+    },
+    "guide": {
+      "shows": 0.5,
+      "you": 0.5
+    },
+    "happened": {
+      "instead": 1.0
+    },
+    "has": {
+      "not": 1.0
+    },
+    "help": {
+      "finding": 0.5,
+      "the": 0.5
+    },
+    "i": {
+      "can": 0.11764706,
+      "will": 0.88235294
+    },
+    "identity": {
+      "can": 1.0
+    },
+    "if": {
+      "a": 0.08333333,
+      "available": 0.08333333,
+      "it": 0.16666667,
+      "needed": 0.08333333,
+      "the": 0.16666667,
+      "you": 0.25,
+      "your": 0.16666667
+    },
+    "in": {
+      "page": 0.16666667,
+      "the": 0.33333333,
+      "your": 0.5
+    },
+    "include": {
+      "larger": 1.0
+    },
+    "ins": {
+      "the": 1.0
+    },
+    "installation": {
+      "visit": 1.0
+    },
+    "instead": {
+      "and": 1.0
+    },
+    "instructions": {
+      "shown": 1.0
+    },
+    "invoices": {
+      "are": 1.0
+    },
+    "is": {
+      "also": 0.11111111,
+      "available": 0.11111111,
+      "late": 0.11111111,
+      "not": 0.11111111,
+      "on": 0.22222222,
+      "received": 0.11111111,
+      "sent": 0.11111111,
+      "started": 0.11111111
+    },
+    "it": {
+      "</s>": 0.11111111,
+      "as": 0.11111111,
+      "faster": 0.11111111,
+      "if": 0.11111111,
+      "is": 0.11111111,
+      "still": 0.11111111,
+      "tell": 0.11111111,
+      "to": 0.11111111,
+      "unused": 0.11111111
+    },
+    "item": {
+      "</s>": 0.16666667,
+      "arrived": 0.16666667,
+      "is": 0.33333333,
+      "keep": 0.16666667,
+      "share": 0.16666667
+    },
+    "items": {
+      "ordered": 1.0
+    },
+    "its": {
+      "current": 0.25,
+      "packaging": 0.25,
+      "way": 0.5
+    },
+    "keep": {
+      "access": 0.5,
+      "it": 0.5
+    },
+    "keyboard": {
+      "navigation": 1.0
+    },
+    "larger": {
+      "text": 1.0
+    },
+    "late": {
+      "share": 1.0
+    },
+    "latest": {
+      "carrier": 0.33333333,
+      "delivery": 0.33333333,
+      "note": 0.33333333
+    },
+    "limited": {
+      "time": 1.0
+    },
+    "link": {
+      "from": 0.25,
+      "on": 0.25,
+      "to": 0.25,
+      "will": 0.25
+    },
+    "linked": {
+      "on": 1.0
+    },
+    "listed": {
+      "on": 1.0
+    },
+    "location": {
+      "and": 1.0
+    },
+    "locks": {
+      "for": 1.0
+    },
+    "look": {
+      "up": 1.0
+    },
+    "looks": {
+      "wrong": 1.0
+    },
+    "manuals": {
+      "are": 1.0
+    },
+    "me": {
+      "the": 0.83333333,
+      "what": 0.16666667
+    },
+    "means": {
+      "confirming": 1.0
+    },
+    "message": {
+      "explains": 0.16666667,
+      "if": 0.16666667,
+      "needs": 0.16666667,
+      "or": 0.16666667,
+      "sent": 0.16666667,
+      "they": 0.16666667
+    },
+    "messages": {
+      "are": 1.0
+    },
+    "method": {
+      "and": 0.5,
+      "the": 0.5
+    },
+    "model": {
+      "if": 0.33333333,
+      "name": 0.66666667
+    },
+    "name": {
+      "and": 0.33333333,
+      "if": 0.33333333,
+      "share": 0.33333333
+    },
+    "navigation": {
+      "and": 1.0
+    },
+    "need": {
+      "and": 0.25,
+      "another": 0.25,
+      "as": 0.25,
+      "help": 0.25
+    },
+    "needed": {
+      "</s>": 1.0
+    },
+    "needs": {
+      "changing": 1.0
+    },
+    "new": {
+      "address": 0.33333333,
+      "email": 0.33333333,
+      "payment": 0.33333333
+    },
+    "next": {
+      "billing": 0.33333333,
+      "step": 0.66666667
+    },
+    "not": {
+      "arrived": 0.33333333,
+      "shipped": 0.33333333,
+      "there": 0.33333333
+    },
+    "note": {
+      "</s>": 0.5,
+      "share": 0.5
+    },
+    "number": {
+      "and": 0.75,
+      "if": 0.1875,
+      "the": 0.0625
+    },
+    "of": {
+      "the": 0.75,
+      "what": 0.25
+    },
+    "off": {
+      "instructions": 1.0
+    },
+    "on": {
+      "each": 0.07142857,
+      "eligible": 0.07142857,
+      "it": 0.07142857,
+      "its": 0.14285714,
+      "screen": 0.07142857,
+      "the": 0.42857143,
+      "your": 0.14285714
+    },
+    "once": {
+      "a": 0.5,
+      "the": 0.5
+    },
+    "open": {
+      "account": 0.28571429,
+      "billing": 0.14285714,
+      "orders": 0.14285714,
+      "subscription": 0.14285714,
+      "the": 0.14285714,
+      "your": 0.14285714
+    },
+    "options": {
+      "include": 1.0
+    },
+    "or": {
+      "ask": 0.09090909,
+      "at": 0.09090909,
+      "connecting": 0.09090909,
+      "drop": 0.09090909,
+      "payment": 0.09090909,
+      "postcode": 0.09090909,
+      "refund": 0.09090909,
+      "share": 0.09090909,
+      "the": 0.09090909,
+      "this": 0.09090909,
+      "trash": 0.09090909
+    },
+    "order": {
+      "has": 0.05263158,
+      "in": 0.05263158,
+      "number": 0.84210526,
+      "was": 0.05263158
+    },
+    "ordered": {
+      "</s>": 0.5,
+      "from": 0.5
+    },
+    "orders": {
+      "can": 0.16666667,
+      "finish": 0.16666667,
+      "page": 0.5,
+      "share": 0.16666667
+    },
+    "original": {
+      "item": 0.5,
+      "payment": 0.5
+    },
+    "outage": {
+      "status": 1.0
+    },
+    "package": {
+      "has": 1.0
+    },
+    "packaging": {
+      "start": 1.0
+    },
+    "page": {
+      "</s>": 0.11111111,
+      "a": 0.11111111,
+      "address": 0.11111111,
+      "and": 0.33333333,
+      "or": 0.11111111,
+      "share": 0.11111111,
+      "the": 0.11111111
+    },
+    "paid": {
+      "period": 1.0
+    },
+    "part": {
+      "</s>": 1.0
+    },
+    "parts": {
+      "can": 0.5,
+      "section": 0.5
+    },
+    "pass": {
+      "it": 1.0
+    },
+    "password": {
+      "link": 0.5,
+      "reset": 0.5
+    },
+    "pause": {
+      "and": 0.5,
+      "if": 0.5
+    },
+    "paying": {
+      "and": 1.0
+    },
+    "payment": {
+      "</s>": 0.16666667,
+      "failed": 0.16666667,
+      "method": 0.33333333,
+      "provider": 0.16666667,
+      "tell": 0.16666667
+    },
+    "period": {
+      "</s>": 1.0
+    },
+    "photo": {
+      "of": 1.0
+    },
+    "pickup": {
+      "day": 0.5,
+      "or": 0.5
+    },
+    "points": {
+      "are": 1.0
+    },
+    "possible": {
+      "</s>": 1.0
+    },
+    "postcode": {
+      "and": 1.0
+    },
+    "posted": {
+      "on": 1.0
+    },
+    "preferred": {
+      "dates": 0.5,
+      "pickup": 0.5
+    },
+    "pricing": {
+      "</s>": 1.0
+    },
+    "printed": {
+      "with": 1.0
+    },
+    "product": {
+      "and": 0.2,
+      "as": 0.2,
+      "name": 0.2,
+      "page": 0.2,
+      "quantity": 0.2
+    },
+    "promotions": {
+      "folders": 1.0
+    },
+    "prompts": {
+      "on": 1.0
+    },
+    "provider": {
+      "</s>": 1.0
+    },
+    "purchase": {
+      "date": 1.0
+    },
+    "purchases": {
+      "and": 1.0
+    },
+    "quantity": {
+      "and": 1.0
+    },
+    "reach": {
+      "the": 1.0
+    },
+    "reader": {
+      "support": 1.0
+    },
+    "receipt": {
+      "a": 1.0
+    },
+    "received": {
+      "and": 0.5,
+      "the": 0.5
+    },
+    "recently": {
+      "deleted": 1.0
+    },
+    "record": {
+      "and": 1.0
+    },
+    "recycle": {
+      "or": 1.0
+    },
+    "refund": {
+      "</s>": 0.25,
+      "goes": 0.25,
+      "is": 0.25,
+      "of": 0.25
+    },
+    "regain": {
+      "access": 1.0
+    },
+    "registered": {
+      "email": 1.0
+    },
+    "remaining": {
+      "amount": 1.0
+    },
+    "replacement": {
+      "is": 0.5,
+      "or": 0.5
+    },
+    "reply": {
+      "with": 1.0
+    },
+    "reporting": {
+      "it": 1.0
+    },
+    "request": {
+      "from": 0.5,
+      "your": 0.5
+    },
+    "resend": {
+      "the": 1.0
+    },
+    "reset": {
+      "link": 1.0
+    },
+    "restart": {
+      "the": 1.0
+    },
+    "restored": {
+      "from": 1.0
+    },
+    "resumes": {
+      "on": 1.0
+    },
+    "return": {
+      "an": 0.5,
+      "from": 0.5
+    },
+    "returned": {
+      "item": 1.0
+    },
+    "review": {
+      "the": 1.0
+    },
+    "right": {
+      "away": 0.5,
+      "part": 0.5
+    },
+    "safety": {
+      "wait": 1.0
+    },
+    "save": {
+      "some": 1.0
+    },
+    "screen": {
+      "</s>": 0.5,
+      "reader": 0.5
+    },
+    "section": {
+      "by": 0.5,
+      "tell": 0.5
+    },
+    "see": {
+      "the": 1.0
+    },
+    "seeing": {
+      "and": 1.0
+    },
+    "send": {
+      "a": 1.0
+    },
+    "sent": {
+      "once": 0.2,
+      "through": 0.2,
+      "to": 0.6
+    },
+    "service": {
+      "is": 1.0
+    },
+    "set": {
+      "it": 1.0
+    },
+    "settings": {
+      "add": 0.16666667,
+      "after": 0.16666667,
+      "and": 0.16666667,
+      "choose": 0.16666667,
+      "edit": 0.16666667,
+      "enter": 0.16666667
+    },
+    "setup": {
+      "prompts": 1.0
+    },
+    "several": {
+      "failed": 1.0
+    },
+    "share": {
+      "a": 0.05263158,
+      "the": 0.21052632,
+      "what": 0.05263158,
+      "your": 0.68421053
+    },
+    "ship": {
+      "share": 1.0
+    },
+    "shipped": {
+      "yet": 1.0
+    },
+    "short": {
+      "while": 1.0
+    },
+    "shown": {
+      "</s>": 0.25,
+      "at": 0.25,
+      "in": 0.25,
+      "there": 0.25
+    },
+    "shows": {
+      "then": 1.0
+    },
+    "sign": {
+      "in": 0.5,
+      "ins": 0.5
+    },
+    "size": {
+      "exchanges": 1.0
+    },
+    "so": {
+      "i": 0.5,
+      "your": 0.5
+    },
+    "some": {
+      "actions": 0.5,
+      "changes": 0.5
+    },
+    "soon": {
+      "as": 1.0
+    },
+    "sorry": {
+      "about": 0.2,
+      "the": 0.2,
+      "you": 0.2,
+      "your": 0.4
+    },
+    "spam": {
+      "and": 1.0
+    },
+    "spare": {
+      "parts": 1.0
+    },
+    "specific": {
+      "examples": 1.0
+    },
+    "start": {
+      "by": 0.5,
+      "the": 0.5
+    },
+    "started": {
+      "from": 1.0
+    },
+    "status": {
+      "and": 0.33333333,
+      "page": 0.33333333,
+      "updates": 0.33333333
+    },
+    "step": {
+      "</s>": 1.0
+    },
+    "still": {
+      "appears": 0.5,
+      "fails": 0.5
+    },
+    "stops": {
+      "during": 1.0
+    },
+    "subscription": {
+      "settings": 1.0
+    },
+    "support": {
+      "email": 0.33333333,
+      "section": 0.33333333,
+      "tell": 0.33333333
+    },
+    "team": {
+      "</s>": 0.25,
+      "act": 0.25,
+      "through": 0.25,
+      "will": 0.25
+    },
+    "tell": {
+      "me": 0.85714286,
+      "you": 0.14285714
+    },
+    "text": {
+      "keyboard": 1.0
+    },
+    "thanks": {
+      "for": 1.0
+    },
+    "that": {
+      "looks": 0.33333333,
+      "the": 0.66666667
+    },
+    "the": {
+      "account": 0.01162791,
+      "amount": 0.01162791,
+      "balance": 0.01162791,
+      "card": 0.01162791,
+      "carrier": 0.01162791,
+      "change": 0.01162791,
+      "charge": 0.03488372,
+      "code": 0.01162791,
+      "collection": 0.01162791,
+      "confirmation": 0.02325581,
+      "contact": 0.02325581,
+      "correct": 0.01162791,
+      "current": 0.01162791,
+      "damage": 0.01162791,
+      "date": 0.01162791,
+      "delivery": 0.02325581,
+      "detail": 0.01162791,
+      "device": 0.01162791,
+      "discount": 0.01162791,
+      "duplicate": 0.01162791,
+      "end": 0.01162791,
+      "error": 0.01162791,
+      "exact": 0.01162791,
+      "extra": 0.01162791,
+      "fault": 0.02325581,
+      "feedback": 0.01162791,
+      "first": 0.01162791,
+      "forgot": 0.01162791,
+      "gift": 0.01162791,
+      "guide": 0.01162791,
+      "installation": 0.01162791,
+      "item": 0.01162791,
+      "items": 0.01162791,
+      "latest": 0.03488372,
+      "message": 0.01162791,
+      "model": 0.01162791,
+      "new": 0.03488372,
+      "next": 0.03488372,
+      "order": 0.05813953,
+      "original": 0.02325581,
+      "page": 0.01162791,
+      "parts": 0.01162791,
+      "password": 0.01162791,
+      "pause": 0.01162791,
+      "pickup": 0.01162791,
+      "product": 0.04651163,
+      "recycle": 0.01162791,
+      "refund": 0.01162791,
+      "remaining": 0.01162791,
+      "replacement": 0.01162791,
+      "return": 0.01162791,
+      "right": 0.01162791,
+      "service": 0.01162791,
+      "sign": 0.01162791,
+      "status": 0.01162791,
+      "support": 0.02325581,
+      "team": 0.04651163,
+      "total": 0.01162791,
+      "tracking": 0.01162791,
+      "update": 0.01162791,
+      "verification": 0.01162791,
+      "wrong": 0.01162791
+    },
+    "then": {
+      "follow": 0.33333333,
+      "try": 0.33333333,
+      "use": 0.33333333
+    },
+    "there": {
+      "</s>": 0.5,
+      "for": 0.25,
+      "share": 0.25
+    },
+    "they": {
+      "depend": 0.5,
+      "ship": 0.5
+    },
+    "this": {
+      "chat": 1.0
+    },
+    "through": {
+      "the": 0.66666667,
+      "this": 0.33333333
+    },
+    "time": {
+      "</s>": 0.5,
+      "setup": 0.5
+    },
+    "timing": {
+      "depends": 1.0
+    },
+    "to": {
+      "change": 0.07692308,
+      "confirm": 0.15384615,
+      "it": 0.07692308,
+      "regain": 0.07692308,
+      "request": 0.07692308,
+      "return": 0.07692308,
+      "see": 0.07692308,
+      "the": 0.15384615,
+      "you": 0.07692308,
+      "your": 0.15384615
+    },
+    "total": {
+      "updates": 1.0
+    },
+    "tracking": {
+      "link": 1.0
+    },
+    "trash": {
+      "area": 1.0
+    },
+    "try": {
+      "again": 0.5,
+      "the": 0.5
+    },
+    "until": {
+      "the": 1.0
+    },
+    "unused": {
+      "with": 1.0
+    },
+    "up": {
+      "the": 1.0
+    },
+    "update": {
+      "</s>": 0.25,
+      "again": 0.25,
+      "right": 0.25,
+      "the": 0.25
+    },
+    "updates": {
+      "are": 0.5,
+      "codes": 0.5
+    },
+    "use": {
+      "the": 1.0
+    },
+    "usually": {
+      "be": 0.66666667,
+      "means": 0.33333333
+    },
+    "verification": {
+      "message": 0.5,
+      "usually": 0.5
+    },
+    "verified": {
+      "</s>": 1.0
+    },
+    "visit": {
+      "</s>": 1.0
+    },
+    "wait": {
+      "a": 1.0
+    },
+    "want": {
+      "to": 1.0
+    },
+    "warranty": {
+      "cover": 1.0
+    },
+    "was": {
+      "cancelled": 1.0
+    },
+    "way": {
+      "</s>": 0.5,
+      "back": 0.5
+    },
+    "what": {
+      "applies": 0.16666667,
+      "arrived": 0.16666667,
+      "happened": 0.16666667,
+      "you": 0.5
+    },
+    "whether": {
+      "a": 0.5,
+      "the": 0.5
+    },
+    "while": {
+      "then": 1.0
+    },
+    "why": {
+      "and": 1.0
+    },
+    "will": {
+      "arrange": 0.11111111,
+      "be": 0.11111111,
+      "book": 0.11111111,
+      "check": 0.33333333,
+      "guide": 0.05555556,
+      "look": 0.05555556,
+      "pass": 0.05555556,
+      "reply": 0.05555556,
+      "resend": 0.05555556,
+      "review": 0.05555556
+    },
+    "with": {
+      "availability": 0.33333333,
+      "its": 0.33333333,
+      "the": 0.33333333
+    },
+    "wrong": {
+      "and": 0.5,
+      "item": 0.5
+    },
+    "yet": {
+      "i": 1.0
+    },
+    "you": {
+      "</s>": 0.125,
+      "are": 0.0625,
+      "can": 0.0625,
+      "cannot": 0.0625,
+      "expected": 0.0625,
+      "keep": 0.0625,
+      "need": 0.25,
+      "received": 0.0625,
+      "the": 0.0625,
+      "to": 0.0625,
+      "want": 0.0625,
+      "will": 0.0625
+    },
+    "your": {
+      "account": 0.05405405,
+      "area": 0.02702703,
+      "balance": 0.02702703,
+      "bank": 0.02702703,
+      "confirmation": 0.08108108,
+      "connection": 0.02702703,
+      "data": 0.02702703,
+      "delivery": 0.02702703,
+      "email": 0.02702703,
+      "identity": 0.02702703,
+      "location": 0.02702703,
+      "model": 0.02702703,
+      "order": 0.37837838,
+      "orders": 0.08108108,
+      "package": 0.02702703,
+      "preferred": 0.02702703,
+      "registered": 0.05405405,
+      "subscription": 0.02702703
+    },
+    "yours": {
+      "</s>": 1.0
+    }
+  },
+  "unigram_weights": {
+    "a": 0.01303912,
+    "about": 0.00100301,
+    "access": 0.00200602,
+    "accessibility": 0.00100301,
+    "account": 0.00702106,
+    "act": 0.00100301,
+    "actions": 0.00100301,
+    "add": 0.00100301,
+    "added": 0.00200602,
+    "address": 0.00802407,
+    "after": 0.00401204,
+    "again": 0.00200602,
+    "also": 0.00200602,
+    "amount": 0.00200602,
+    "an": 0.00200602,
+    "and": 0.05717151,
+    "another": 0.00100301,
+    "any": 0.00100301,
+    "appears": 0.00100301,
+    "applied": 0.00100301,
+    "applies": 0.00100301,
+    "are": 0.0110331,
+    "area": 0.00200602,
+    "arrange": 0.00401204,
+    "arrived": 0.00300903,
+    "as": 0.00401204,
+    "ask": 0.00200602,
+    "asked": 0.00100301,
+    "at": 0.00401204,
+    "attached": 0.00100301,
+    "availability": 0.00100301,
+    "available": 0.00300903,
+    "away": 0.00100301,
+    "back": 0.00200602,
+    "balance": 0.00300903,
+    "bank": 0.00100301,
+    "be": 0.00902708,
+    "before": 0.00300903,
+    "billing": 0.00300903,
+    "book": 0.00200602,
+    "bulk": 0.00100301,
+    "by": 0.00401204,
+    "can": 0.00902708,
+    "cancel": 0.00100301,
+    "cancelled": 0.00100301,
+    "cannot": 0.00200602,
+    "card": 0.00200602,
+    "carrier": 0.00200602,
+    "change": 0.00200602,
+    "changed": 0.00100301,
+    "changes": 0.00100301,
+    "changing": 0.00100301,
+    "charge": 0.00501505,
+    "charging": 0.00100301,
+    "chat": 0.00200602,
+    "check": 0.01203611,
+    "checked": 0.00100301,
+    "checkout": 0.00401204,
+    "choose": 0.00300903,
+    "closure": 0.00100301,
+    "code": 0.00300903,
+    "codes": 0.00100301,
+    "collection": 0.00100301,
+    "confirm": 0.00401204,
+    "confirmation": 0.00501505,
+    "confirming": 0.00100301,
+    "connecting": 0.00100301,
+    "connection": 0.00100301,
+    "contact": 0.00200602,
+    "copy": 0.00200602,
+    "correct": 0.00300903,
+    "cover": 0.00100301,
+    "current": 0.00200602,
+    "damage": 0.00100301,
+    "damaged": 0.00100301,
+    "data": 0.00100301,
+    "date": 0.00300903,
+    "dates": 0.00300903,
+    "day": 0.00100301,
+    "default": 0.00100301,
+    "deleted": 0.00100301,
+    "deletion": 0.00100301,
+    "delivery": 0.00702106,
+    "depend": 0.00100301,
+    "depends": 0.00200602,
+    "detail": 0.00100301,
+    "details": 0.00100301,
+    "device": 0.00100301,
+    "discount": 0.00100301,
+    "download": 0.00100301,
+    "drop": 0.00100301,
+    "duplicate": 0.00100301,
+    "during": 0.00200602,
+    "each": 0.00100301,
+    "earned": 0.00100301,
+    "edit": 0.00100301,
+    "eligible": 0.00100301,
+    "email": 0.00802407,
+    "emailed": 0.00100301,
+    "end": 0.00100301,
+    "enter": 0.00300903,
+    "entering": 0.00100301,
+    "error": 0.00100301,
+    "estimates": 0.00100301,
+    "exact": 0.00100301,
+    "examples": 0.00100301,
+    "exchanges": 0.00100301,
+    "expected": 0.00100301,
+    "expiry": 0.00100301,
+    "explains": 0.00100301,
+    "extra": 0.00100301,
+    "failed": 0.00200602,
+    "fails": 0.00100301,
+    "faster": 0.00100301,
+    "fault": 0.00200602,
+    "feedback": 0.00200602,
+    "field": 0.00100301,
+    "files": 0.00100301,
+    "find": 0.00100301,
+    "finding": 0.00100301,
+    "finish": 0.00100301,
+    "first": 0.00401204,
+    "folders": 0.00100301,
+    "follow": 0.00200602,
+    "for": 0.00601805,
+    "forgot": 0.00100301,
+    "form": 0.00200602,
+    "from": 0.00802407,
+    "gift": 0.00200602,
+    "goes": 0.00100301,
+    "guide": 0.00200602,
+    "happened": 0.00100301,
+    "has": 0.00200602,
+    "help": 0.00200602,
+    "i": 0.01705115,
+    "identity": 0.00100301,
+    "if": 0.01203611,
+    "in": 0.00601805,
+    "include": 0.00100301,
+    "ins": 0.00100301,
+    "installation": 0.00100301,
+    "instead": 0.00100301,
+    "instructions": 0.00100301,
+    "invoices": 0.00100301,
+    "is": 0.00902708,
+    "it": 0.00902708,
+    "item": 0.00601805,
+    "items": 0.00100301,
+    "its": 0.00401204,
+    "keep": 0.00200602,
+    "keyboard": 0.00100301,
+    "larger": 0.00100301,
+    "late": 0.00100301,
+    "latest": 0.00300903,
+    "limited": 0.00100301,
+    "link": 0.00401204,
+    "linked": 0.00100301,
+    "listed": 0.00100301,
+    "location": 0.00200602,
+    "locks": 0.00100301,
+    "look": 0.00100301,
+    "looks": 0.00100301,
+    "manuals": 0.00100301,
+    "me": 0.00601805,
+    "means": 0.00100301,
+    "message": 0.00601805,
+    "messages": 0.00100301,
+    "method": 0.00200602,
+    "model": 0.00300903,
+    "name": 0.00300903,
+    "navigation": 0.00100301,
+    "need": 0.00401204,
+    "needed": 0.00100301,
+    "needs": 0.00100301,
+    "new": 0.00300903,
+    "next": 0.00300903,
+    "not": 0.00300903,
+    "note": 0.00200602,
+    "number": 0.01604814,
+    "of": 0.00401204,
+    "off": 0.00100301,
+    "on": 0.01404213,
+    "once": 0.00200602,
+    "open": 0.00702106,
+    "options": 0.00100301,
+    "or": 0.0110331,
+    "order": 0.01905717,
+    "ordered": 0.00200602,
+    "orders": 0.00601805,
+    "original": 0.00200602,
+    "outage": 0.00100301,
+    "package": 0.00100301,
+    "packaging": 0.00100301,
+    "page": 0.00902708,
+    "paid": 0.00100301,
+    "part": 0.00100301,
+    "parts": 0.00200602,
+    "pass": 0.00100301,
+    "password": 0.00200602,
+    "pause": 0.00200602,
+    "paying": 0.00100301,
+    "payment": 0.00601805,
+    "period": 0.00100301,
+    "photo": 0.00200602,
+    "pickup": 0.00200602,
+    "points": 0.00100301,
+    "possible": 0.00100301,
+    "postcode": 0.00100301,
+    "posted": 0.00100301,
+    "preferred": 0.00200602,
+    "pricing": 0.00100301,
+    "printed": 0.00100301,
+    "product": 0.00501505,
+    "promotions": 0.00100301,
+    "prompts": 0.00100301,
+    "provider": 0.00100301,
+    "purchase": 0.00100301,
+    "purchases": 0.00100301,
+    "quantity": 0.00100301,
+    "reach": 0.00100301,
+    "reader": 0.00100301,
+    "receipt": 0.00100301,
+    "received": 0.00200602,
+    "recently": 0.00100301,
+    "record": 0.00100301,
+    "recycle": 0.00100301,
+    "refund": 0.00401204,
+    "regain": 0.00100301,
+    "registered": 0.00200602,
+    "remaining": 0.00100301,
+    "replacement": 0.00200602,
+    "reply": 0.00100301,
+    "reporting": 0.00100301,
+    "request": 0.00200602,
+    "resend": 0.00100301,
+    "reset": 0.00200602,
+    "restart": 0.00100301,
+    "restored": 0.00100301,
+    "resumes": 0.00100301,
+    "return": 0.00200602,
+    "returned": 0.00100301,
+    "review": 0.00100301,
+    "right": 0.00200602,
+    "safety": 0.00100301,
+    "save": 0.00100301,
+    "screen": 0.00200602,
+    "section": 0.00200602,
+    "see": 0.00100301,
+    "seeing": 0.00100301,
+    "send": 0.00100301,
+    "sent": 0.00501505,
+    "service": 0.00100301,
+    "set": 0.00100301,
+    "settings": 0.00601805,
+    "setup": 0.00100301,
+    "several": 0.00100301,
+    "share": 0.01905717,
+    "ship": 0.00100301,
+    "shipped": 0.00100301,
+    "short": 0.00100301,
+    "shown": 0.00401204,
+    "shows": 0.00100301,
+    "sign": 0.00200602,
+    "size": 0.00100301,
+    "so": 0.00200602,
+    "some": 0.00200602,
+    "soon": 0.00100301,
+    "sorry": 0.00501505,
+    "spam": 0.00100301,
+    "spare": 0.00100301,
+    "specific": 0.00100301,
+    "start": 0.00200602,
+    "started": 0.00200602,
+    "status": 0.00300903,
+    "step": 0.00200602,
+    "still": 0.00200602,
+    "stops": 0.00100301,
+    "subscription": 0.00200602,
+    "support": 0.00300903,
+    "team": 0.00401204,
+    "tell": 0.00702106,
+    "text": 0.00100301,
+    "thanks": 0.00100301,
+    "that": 0.00300903,
+    "the": 0.08625878,
+    "then": 0.00300903,
+    "there": 0.00401204,
+    "they": 0.00200602,
+    "this": 0.00200602,
+    "through": 0.00300903,
+    "time": 0.00200602,
+    "timing": 0.00100301,
+    "to": 0.01303912,
+    "total": 0.00100301,
+    "tracking": 0.00100301,
+    "trash": 0.00100301,
+    "try": 0.00200602,
+    "until": 0.00100301,
+    "unused": 0.00100301,
+    "up": 0.00100301,
+    "update": 0.00401204,
+    "updates": 0.00200602,
+    "use": 0.00300903,
+    "usually": 0.00300903,
+    "verification": 0.00200602,
+    "verified": 0.00100301,
+    "visit": 0.00100301,
+    "wait": 0.00100301,
+    "want": 0.00100301,
+    "warranty": 0.00100301,
+    "was": 0.00100301,
+    "way": 0.00200602,
+    "what": 0.00601805,
+    "whether": 0.00200602,
+    "while": 0.00100301,
+    "why": 0.00100301,
+    "will": 0.01805416,
+    "with": 0.00300903,
+    "wrong": 0.00200602,
+    "yet": 0.00100301,
+    "you": 0.01604814,
+    "your": 0.03711133,
+    "yours": 0.00100301
+  },
+  "vocabulary": [
+    "a",
+    "about",
+    "access",
+    "accessibility",
+    "account",
+    "act",
+    "actions",
+    "add",
+    "added",
+    "address",
+    "after",
+    "again",
+    "also",
+    "amount",
+    "an",
+    "and",
+    "another",
+    "any",
+    "apology",
+    "appears",
+    "applied",
+    "applies",
+    "apply",
+    "are",
+    "area",
+    "arrange",
+    "arrived",
+    "as",
+    "ask",
+    "asked",
+    "at",
+    "attached",
+    "availability",
+    "available",
+    "away",
+    "back",
+    "balance",
+    "bank",
+    "basics",
+    "be",
+    "before",
+    "billing",
+    "book",
+    "booking",
+    "bulk",
+    "by",
+    "can",
+    "cancel",
+    "cancellation",
+    "cancelled",
+    "cannot",
+    "card",
+    "carrier",
+    "change",
+    "changed",
+    "changes",
+    "changing",
+    "charge",
+    "charging",
+    "chat",
+    "check",
+    "checked",
+    "checkout",
+    "checks",
+    "choose",
+    "close",
+    "closure",
+    "code",
+    "codes",
+    "collection",
+    "confirm",
+    "confirmation",
+    "confirming",
+    "connecting",
+    "connection",
+    "contact",
+    "copy",
+    "correct",
+    "cover",
+    "coverage",
+    "current",
+    "damage",
+    "damaged",
+    "data",
+    "date",
+    "dates",
+    "day",
+    "default",
+    "deleted",
+    "deletion",
+    "delivery",
+    "depend",
+    "depends",
+    "detail",
+    "details",
+    "device",
+    "discount",
+    "download",
+    "drop",
+    "duplicate",
+    "during",
+    "each",
+    "earned",
+    "edit",
+    "eligible",
+    "email",
+    "emailed",
+    "end",
+    "enquiries",
+    "enter",
+    "entering",
+    "error",
+    "estimates",
+    "exact",
+    "examples",
+    "exchange",
+    "exchanges",
+    "expected",
+    "expiry",
+    "explain",
+    "explains",
+    "extra",
+    "failed",
+    "fails",
+    "faster",
+    "fault",
+    "feedback",
+    "field",
+    "file",
+    "files",
+    "find",
+    "finding",
+    "finish",
+    "first",
+    "folders",
+    "follow",
+    "for",
+    "forgot",
+    "form",
+    "from",
+    "gift",
+    "give",
+    "goes",
+    "gravion",
+    "guide",
+    "happened",
+    "has",
+    "help",
+    "how",
+    "i",
+    "identity",
+    "if",
+    "in",
+    "include",
+    "ins",
+    "installation",
+    "instead",
+    "instructions",
+    "invoice",
+    "invoices",
+    "is",
+    "it",
+    "item",
+    "items",
+    "its",
+    "keep",
+    "keyboard",
+    "larger",
+    "late",
+    "latest",
+    "limited",
+    "link",
+    "linked",
+    "listed",
+    "location",
+    "lockout",
+    "locks",
+    "look",
+    "looks",
+    "loyalty",
+    "manuals",
+    "me",
+    "means",
+    "message",
+    "messages",
+    "method",
+    "missing",
+    "model",
+    "name",
+    "navigation",
+    "need",
+    "needed",
+    "needs",
+    "new",
+    "next",
+    "not",
+    "note",
+    "number",
+    "of",
+    "off",
+    "on",
+    "once",
+    "open",
+    "options",
+    "or",
+    "order",
+    "ordered",
+    "ordering",
+    "orders",
+    "original",
+    "outage",
+    "package",
+    "packaging",
+    "page",
+    "paid",
+    "part",
+    "parts",
+    "pass",
+    "password",
+    "pause",
+    "paying",
+    "payment",
+    "period",
+    "photo",
+    "pickup",
+    "please",
+    "points",
+    "possible",
+    "postcode",
+    "posted",
+    "preferred",
+    "pricing",
+    "printed",
+    "privacy",
+    "problem",
+    "process",
+    "processed",
+    "product",
+    "promotions",
+    "prompts",
+    "provider",
+    "purchase",
+    "purchases",
+    "quantity",
+    "question",
+    "reach",
+    "reader",
+    "receipt",
+    "received",
+    "recently",
+    "record",
+    "recover",
+    "recycle",
+    "refund",
+    "refunds",
+    "regain",
+    "registered",
+    "remaining",
+    "repair",
+    "replacement",
+    "reply",
+    "report",
+    "reporting",
+    "request",
+    "resend",
+    "reset",
+    "restart",
+    "restored",
+    "resumes",
+    "return",
+    "returned",
+    "review",
+    "right",
+    "safety",
+    "save",
+    "schedule",
+    "screen",
+    "section",
+    "see",
+    "seeing",
+    "send",
+    "sent",
+    "service",
+    "set",
+    "settings",
+    "setup",
+    "several",
+    "share",
+    "ship",
+    "shipped",
+    "short",
+    "shown",
+    "shows",
+    "sign",
+    "size",
+    "so",
+    "software",
+    "some",
+    "soon",
+    "sorry",
+    "spam",
+    "spare",
+    "specific",
+    "start",
+    "started",
+    "status",
+    "step",
+    "steps",
+    "still",
+    "stops",
+    "subscription",
+    "support",
+    "team",
+    "tell",
+    "text",
+    "thanks",
+    "that",
+    "the",
+    "then",
+    "there",
+    "they",
+    "this",
+    "through",
+    "time",
+    "timing",
+    "to",
+    "total",
+    "track",
+    "tracking",
+    "trash",
+    "try",
+    "until",
+    "unused",
+    "up",
+    "update",
+    "updates",
+    "use",
+    "usually",
+    "verification",
+    "verified",
+    "visit",
+    "wait",
+    "want",
+    "warranty",
+    "was",
+    "way",
+    "website",
+    "what",
+    "whether",
+    "while",
+    "why",
+    "will",
+    "with",
+    "work",
+    "wrong",
+    "yet",
+    "you",
+    "your",
+    "yours"
+  ],
+  "weights_sha256": "3f24e5094f510b20cb8f789e581e3b83212dd5d8534a96121fb1515b4157c842"
+}

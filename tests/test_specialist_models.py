@@ -14,6 +14,8 @@ from gravion_ai.registry import ModuleContext, default_registry
 
 MODULE_FOR_MODEL = {
     "gravion-chat": "chat",
+    "gravion-support": "support",
+    "gravion-review": "coder",
     "gravion-code": "coder",
     "gravion-builder": "website-builder",
     "gravion-vision": "image",

@@ -9,11 +9,15 @@ and adding deterministic logic of its own:
 1. **Task detection.** A request is one of three tasks: *analyse*
    (understand an artefact — a log excerpt, an alert, a config, a
    code snippet), *triage* (decide priority and next steps for an
-   alert or finding), or *report* (write the finding up). Triage
-   and report are detected from explicit phrasing — a "triage:" /
-   "report:" style prefix, or a request to triage / write up *this*
-   or *the* item — mirroring the coder module's task detection.
-   Anything else is analysis.
+   alert or finding), or *report* (write the finding up). Detection
+   is deterministic, in priority order: an explicit "triage:" /
+   "report:" style prefix; a request that opens with an analysis
+   verb ("analyse this triage report") is analysis even when it
+   later names a report or triage as a noun; then a report or
+   triage verb aimed at an item anywhere in the request ("can you
+   triage this alert", "could you write up this finding") —
+   mirroring the coder module's task detection. Anything else is
+   analysis.
 
 2. **Indicator extraction.** Indicators of compromise named in the
    request are extracted deterministically and recorded in the
@@ -99,12 +103,41 @@ _SEVERITY_RE = re.compile(
 )
 
 
+# A request that opens with an analysis verb is analysis even when
+# it later mentions a report or triage as a noun ("analyse this
+# triage report", "what does this alert mean").
+_ANALYSE_OPENERS = (
+    "analyse",
+    "analyze",
+    "explain",
+    "describe",
+    "what",
+    "how",
+    "why",
+)
+
+_ITEM = r"(?:this|the|that|incident|finding|alert|issue|vulnerability|event)"
+_REPORT_RES = (
+    re.compile(r"\bwrite up\b"),
+    re.compile(r"\bwrite (?:a|the|up)\b[^.?!]*\breport\b"),
+    re.compile(r"\breport\b[^.?!]*\b" + _ITEM + r"\b"),
+)
+_TRIAGE_RE = re.compile(r"\btriage\b[^.?!]*\b" + _ITEM + r"\b")
+
+
 def detect_task(prompt: str) -> str:
     """Classify a cyber prompt as analyse / triage / report."""
     text = prompt.strip().lower()
     if text.startswith(_REPORT_PREFIXES):
         return TASK_REPORT
     if text.startswith(_TRIAGE_PREFIXES):
+        return TASK_TRIAGE
+    first_word = text.split(None, 1)[0].strip(",:;") if text else ""
+    if first_word in _ANALYSE_OPENERS:
+        return TASK_ANALYSE
+    if any(pattern.search(text) for pattern in _REPORT_RES):
+        return TASK_REPORT
+    if _TRIAGE_RE.search(text):
         return TASK_TRIAGE
     return TASK_ANALYSE
 

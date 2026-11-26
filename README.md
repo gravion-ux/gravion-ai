@@ -137,6 +137,9 @@ Piece 5* as a Tier 2 registry/bundle packaging entry), **Gravion Shield** and
 **Gravion Agent** (*available since Piece 6* as Tier 2
 registry/bundle packaging entries),
 and **Gravion Omni** (*available since Piece 8*), the all-in-one flagship at the Advanced tier.
+**Gravion Support** (dedicated customer-support specialist) and
+**Gravion Review** (code-review specialist) join the registry with
+included local weights trained from their own Gravion-owned seed corpora.
 Deployments can register private variants by dropping their own
 `models.json` into the deployment home — same schema, same validation.
 

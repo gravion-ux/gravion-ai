@@ -1,0 +1,192 @@
+{"completion": "Share your order number and I will check its current status and tell you the next step.", "prompt": "check the status of an order"}
+{"completion": "Share your order number and I will check its current status and tell you the next step.", "prompt": "please check the status of an order"}
+{"completion": "Share your order number and I will check its current status and tell you the next step.", "prompt": "gravion support check the status of an order"}
+{"completion": "Share your order number and I will check its current status and tell you the next step.", "prompt": "help me check the status of an order"}
+{"completion": "Use the tracking link from your confirmation message, or share your order number and I will look up the latest delivery update.", "prompt": "explain how to track a delivery"}
+{"completion": "Use the tracking link from your confirmation message, or share your order number and I will look up the latest delivery update.", "prompt": "please explain how to track a delivery"}
+{"completion": "Use the tracking link from your confirmation message, or share your order number and I will look up the latest delivery update.", "prompt": "gravion support explain how to track a delivery"}
+{"completion": "Use the tracking link from your confirmation message, or share your order number and I will look up the latest delivery update.", "prompt": "help me explain how to track a delivery"}
+{"completion": "Sorry your package has not arrived. Share your order number and delivery address so I can check the carrier record and arrange the next step.", "prompt": "help with a missing package"}
+{"completion": "Sorry your package has not arrived. Share your order number and delivery address so I can check the carrier record and arrange the next step.", "prompt": "please help with a missing package"}
+{"completion": "Sorry your package has not arrived. Share your order number and delivery address so I can check the carrier record and arrange the next step.", "prompt": "gravion support help with a missing package"}
+{"completion": "Sorry your package has not arrived. Share your order number and delivery address so I can check the carrier record and arrange the next step.", "prompt": "help me help with a missing package"}
+{"completion": "To return an item, keep it unused with its packaging, start the return from your orders page, and follow the pickup or drop-off instructions shown there.", "prompt": "explain the return process"}
+{"completion": "To return an item, keep it unused with its packaging, start the return from your orders page, and follow the pickup or drop-off instructions shown there.", "prompt": "please explain the return process"}
+{"completion": "To return an item, keep it unused with its packaging, start the return from your orders page, and follow the pickup or drop-off instructions shown there.", "prompt": "gravion support explain the return process"}
+{"completion": "To return an item, keep it unused with its packaging, start the return from your orders page, and follow the pickup or drop-off instructions shown there.", "prompt": "help me explain the return process"}
+{"completion": "If your order has not shipped yet, I can update the delivery address. Share your order number and the new address.", "prompt": "help change a delivery address"}
+{"completion": "If your order has not shipped yet, I can update the delivery address. Share your order number and the new address.", "prompt": "please help change a delivery address"}
+{"completion": "If your order has not shipped yet, I can update the delivery address. Share your order number and the new address.", "prompt": "gravion support help change a delivery address"}
+{"completion": "If your order has not shipped yet, I can update the delivery address. Share your order number and the new address.", "prompt": "help me help change a delivery address"}
+{"completion": "Once a returned item is received and checked, the refund goes back to the original payment method; the exact timing depends on your bank or payment provider.", "prompt": "explain how refunds are processed"}
+{"completion": "Once a returned item is received and checked, the refund goes back to the original payment method; the exact timing depends on your bank or payment provider.", "prompt": "please explain how refunds are processed"}
+{"completion": "Once a returned item is received and checked, the refund goes back to the original payment method; the exact timing depends on your bank or payment provider.", "prompt": "gravion support explain how refunds are processed"}
+{"completion": "Once a returned item is received and checked, the refund goes back to the original payment method; the exact timing depends on your bank or payment provider.", "prompt": "help me explain how refunds are processed"}
+{"completion": "Sorry the item arrived damaged. Share a photo of the damage and your order number, and I will arrange a replacement or refund.", "prompt": "help with a damaged item"}
+{"completion": "Sorry the item arrived damaged. Share a photo of the damage and your order number, and I will arrange a replacement or refund.", "prompt": "please help with a damaged item"}
+{"completion": "Sorry the item arrived damaged. Share a photo of the damage and your order number, and I will arrange a replacement or refund.", "prompt": "gravion support help with a damaged item"}
+{"completion": "Sorry the item arrived damaged. Share a photo of the damage and your order number, and I will arrange a replacement or refund.", "prompt": "help me help with a damaged item"}
+{"completion": "Warranty cover depends on the product and the fault. Share the product name and purchase date and I will check what applies.", "prompt": "explain warranty coverage basics"}
+{"completion": "Warranty cover depends on the product and the fault. Share the product name and purchase date and I will check what applies.", "prompt": "please explain warranty coverage basics"}
+{"completion": "Warranty cover depends on the product and the fault. Share the product name and purchase date and I will check what applies.", "prompt": "gravion support explain warranty coverage basics"}
+{"completion": "Warranty cover depends on the product and the fault. Share the product name and purchase date and I will check what applies.", "prompt": "help me explain warranty coverage basics"}
+{"completion": "Use the forgot password link on the sign-in page; a reset link will be sent to your registered email address.", "prompt": "help reset an account password"}
+{"completion": "Use the forgot password link on the sign-in page; a reset link will be sent to your registered email address.", "prompt": "please help reset an account password"}
+{"completion": "Use the forgot password link on the sign-in page; a reset link will be sent to your registered email address.", "prompt": "gravion support help reset an account password"}
+{"completion": "Use the forgot password link on the sign-in page; a reset link will be sent to your registered email address.", "prompt": "help me help reset an account password"}
+{"completion": "Open account settings, edit the detail you want to change, and save. Some changes ask you to confirm by email first.", "prompt": "explain how to update account details"}
+{"completion": "Open account settings, edit the detail you want to change, and save. Some changes ask you to confirm by email first.", "prompt": "please explain how to update account details"}
+{"completion": "Open account settings, edit the detail you want to change, and save. Some changes ask you to confirm by email first.", "prompt": "gravion support explain how to update account details"}
+{"completion": "Open account settings, edit the detail you want to change, and save. Some changes ask you to confirm by email first.", "prompt": "help me explain how to update account details"}
+{"completion": "If a payment failed, check that the card details and balance are correct, then try again. Share the order number if the charge still appears.", "prompt": "help with a failed payment"}
+{"completion": "If a payment failed, check that the card details and balance are correct, then try again. Share the order number if the charge still appears.", "prompt": "please help with a failed payment"}
+{"completion": "If a payment failed, check that the card details and balance are correct, then try again. Share the order number if the charge still appears.", "prompt": "gravion support help with a failed payment"}
+{"completion": "If a payment failed, check that the card details and balance are correct, then try again. Share the order number if the charge still appears.", "prompt": "help me help with a failed payment"}
+{"completion": "Open your subscription settings, choose cancel, and confirm. You keep access until the end of the current paid period.", "prompt": "explain subscription cancellation steps"}
+{"completion": "Open your subscription settings, choose cancel, and confirm. You keep access until the end of the current paid period.", "prompt": "please explain subscription cancellation steps"}
+{"completion": "Open your subscription settings, choose cancel, and confirm. You keep access until the end of the current paid period.", "prompt": "gravion support explain subscription cancellation steps"}
+{"completion": "Open your subscription settings, choose cancel, and confirm. You keep access until the end of the current paid period.", "prompt": "help me explain subscription cancellation steps"}
+{"completion": "Invoices are available from your orders page and are also emailed after payment. Tell me the order number if you need another copy.", "prompt": "help find an invoice copy"}
+{"completion": "Invoices are available from your orders page and are also emailed after payment. Tell me the order number if you need another copy.", "prompt": "please help find an invoice copy"}
+{"completion": "Invoices are available from your orders page and are also emailed after payment. Tell me the order number if you need another copy.", "prompt": "gravion support help find an invoice copy"}
+{"completion": "Invoices are available from your orders page and are also emailed after payment. Tell me the order number if you need another copy.", "prompt": "help me help find an invoice copy"}
+{"completion": "Delivery estimates are shown at checkout and in your confirmation message; they depend on your location and the items ordered.", "prompt": "explain delivery time estimates"}
+{"completion": "Delivery estimates are shown at checkout and in your confirmation message; they depend on your location and the items ordered.", "prompt": "please explain delivery time estimates"}
+{"completion": "Delivery estimates are shown at checkout and in your confirmation message; they depend on your location and the items ordered.", "prompt": "gravion support explain delivery time estimates"}
+{"completion": "Delivery estimates are shown at checkout and in your confirmation message; they depend on your location and the items ordered.", "prompt": "help me explain delivery time estimates"}
+{"completion": "Sorry you received the wrong item. Share your order number and a photo of what arrived, and I will arrange the correct item.", "prompt": "help with a wrong item received"}
+{"completion": "Sorry you received the wrong item. Share your order number and a photo of what arrived, and I will arrange the correct item.", "prompt": "please help with a wrong item received"}
+{"completion": "Sorry you received the wrong item. Share your order number and a photo of what arrived, and I will arrange the correct item.", "prompt": "gravion support help with a wrong item received"}
+{"completion": "Sorry you received the wrong item. Share your order number and a photo of what arrived, and I will arrange the correct item.", "prompt": "help me help with a wrong item received"}
+{"completion": "Enter the code in the discount field before paying and check that the total updates. Codes cannot usually be added after payment.", "prompt": "explain how to apply a discount code"}
+{"completion": "Enter the code in the discount field before paying and check that the total updates. Codes cannot usually be added after payment.", "prompt": "please explain how to apply a discount code"}
+{"completion": "Enter the code in the discount field before paying and check that the total updates. Codes cannot usually be added after payment.", "prompt": "gravion support explain how to apply a discount code"}
+{"completion": "Enter the code in the discount field before paying and check that the total updates. Codes cannot usually be added after payment.", "prompt": "help me explain how to apply a discount code"}
+{"completion": "After several failed sign-ins the account locks for safety. Wait a short while, then use the password reset link to regain access.", "prompt": "help with an account lockout"}
+{"completion": "After several failed sign-ins the account locks for safety. Wait a short while, then use the password reset link to regain access.", "prompt": "please help with an account lockout"}
+{"completion": "After several failed sign-ins the account locks for safety. Wait a short while, then use the password reset link to regain access.", "prompt": "gravion support help with an account lockout"}
+{"completion": "After several failed sign-ins the account locks for safety. Wait a short while, then use the password reset link to regain access.", "prompt": "help me help with an account lockout"}
+{"completion": "You can reach the team through this chat, the contact form, or the support email listed on the contact page.", "prompt": "explain how to contact the team"}
+{"completion": "You can reach the team through this chat, the contact form, or the support email listed on the contact page.", "prompt": "please explain how to contact the team"}
+{"completion": "You can reach the team through this chat, the contact form, or the support email listed on the contact page.", "prompt": "gravion support explain how to contact the team"}
+{"completion": "You can reach the team through this chat, the contact form, or the support email listed on the contact page.", "prompt": "help me explain how to contact the team"}
+{"completion": "Thanks for reporting it. Tell me the page address, what you expected, and what happened instead, and I will pass it to the team.", "prompt": "help report a website problem"}
+{"completion": "Thanks for reporting it. Tell me the page address, what you expected, and what happened instead, and I will pass it to the team.", "prompt": "please help report a website problem"}
+{"completion": "Thanks for reporting it. Tell me the page address, what you expected, and what happened instead, and I will pass it to the team.", "prompt": "gravion support help report a website problem"}
+{"completion": "Thanks for reporting it. Tell me the page address, what you expected, and what happened instead, and I will pass it to the team.", "prompt": "help me help report a website problem"}
+{"completion": "To request your data or ask for deletion, send a request from your registered email address so your identity can be verified.", "prompt": "explain data privacy request steps"}
+{"completion": "To request your data or ask for deletion, send a request from your registered email address so your identity can be verified.", "prompt": "please explain data privacy request steps"}
+{"completion": "To request your data or ask for deletion, send a request from your registered email address so your identity can be verified.", "prompt": "gravion support explain data privacy request steps"}
+{"completion": "To request your data or ask for deletion, send a request from your registered email address so your identity can be verified.", "prompt": "help me explain data privacy request steps"}
+{"completion": "Open account settings, enter the new email address, and confirm through the verification message sent to it.", "prompt": "help change an email address"}
+{"completion": "Open account settings, enter the new email address, and confirm through the verification message sent to it.", "prompt": "please help change an email address"}
+{"completion": "Open account settings, enter the new email address, and confirm through the verification message sent to it.", "prompt": "gravion support help change an email address"}
+{"completion": "Open account settings, enter the new email address, and confirm through the verification message sent to it.", "prompt": "help me help change an email address"}
+{"completion": "Open subscription settings and choose pause if available; billing stops during the pause and resumes on the date shown.", "prompt": "explain how to pause a subscription"}
+{"completion": "Open subscription settings and choose pause if available; billing stops during the pause and resumes on the date shown.", "prompt": "please explain how to pause a subscription"}
+{"completion": "Open subscription settings and choose pause if available; billing stops during the pause and resumes on the date shown.", "prompt": "gravion support explain how to pause a subscription"}
+{"completion": "Open subscription settings and choose pause if available; billing stops during the pause and resumes on the date shown.", "prompt": "help me explain how to pause a subscription"}
+{"completion": "Sorry about the duplicate charge. Share the order number and the charge dates, and I will check and arrange a refund of the extra charge.", "prompt": "help with a duplicate charge"}
+{"completion": "Sorry about the duplicate charge. Share the order number and the charge dates, and I will check and arrange a refund of the extra charge.", "prompt": "please help with a duplicate charge"}
+{"completion": "Sorry about the duplicate charge. Share the order number and the charge dates, and I will check and arrange a refund of the extra charge.", "prompt": "gravion support help with a duplicate charge"}
+{"completion": "Sorry about the duplicate charge. Share the order number and the charge dates, and I will check and arrange a refund of the extra charge.", "prompt": "help me help with a duplicate charge"}
+{"completion": "Enter the gift card code on the balance page or at checkout to see the remaining amount.", "prompt": "explain gift card balance checks"}
+{"completion": "Enter the gift card code on the balance page or at checkout to see the remaining amount.", "prompt": "please explain gift card balance checks"}
+{"completion": "Enter the gift card code on the balance page or at checkout to see the remaining amount.", "prompt": "gravion support explain gift card balance checks"}
+{"completion": "Enter the gift card code on the balance page or at checkout to see the remaining amount.", "prompt": "help me explain gift card balance checks"}
+{"completion": "Share your order number, the fault, and your preferred pickup day, and I will book the collection.", "prompt": "help schedule a repair pickup"}
+{"completion": "Share your order number, the fault, and your preferred pickup day, and I will book the collection.", "prompt": "please help schedule a repair pickup"}
+{"completion": "Share your order number, the fault, and your preferred pickup day, and I will book the collection.", "prompt": "gravion support help schedule a repair pickup"}
+{"completion": "Share your order number, the fault, and your preferred pickup day, and I will book the collection.", "prompt": "help me help schedule a repair pickup"}
+{"completion": "Start by charging or connecting the product as the guide shows, then follow the first-time setup prompts on screen.", "prompt": "explain product setup first steps"}
+{"completion": "Start by charging or connecting the product as the guide shows, then follow the first-time setup prompts on screen.", "prompt": "please explain product setup first steps"}
+{"completion": "Start by charging or connecting the product as the guide shows, then follow the first-time setup prompts on screen.", "prompt": "gravion support explain product setup first steps"}
+{"completion": "Start by charging or connecting the product as the guide shows, then follow the first-time setup prompts on screen.", "prompt": "help me explain product setup first steps"}
+{"completion": "Check spam and promotions folders first. If it is not there, share your order number and I will resend the confirmation.", "prompt": "help with a missing confirmation email"}
+{"completion": "Check spam and promotions folders first. If it is not there, share your order number and I will resend the confirmation.", "prompt": "please help with a missing confirmation email"}
+{"completion": "Check spam and promotions folders first. If it is not there, share your order number and I will resend the confirmation.", "prompt": "gravion support help with a missing confirmation email"}
+{"completion": "Check spam and promotions folders first. If it is not there, share your order number and I will resend the confirmation.", "prompt": "help me help with a missing confirmation email"}
+{"completion": "Points are earned on eligible purchases and can be applied at checkout; your balance and expiry dates are shown in your account.", "prompt": "explain how loyalty points work"}
+{"completion": "Points are earned on eligible purchases and can be applied at checkout; your balance and expiry dates are shown in your account.", "prompt": "please explain how loyalty points work"}
+{"completion": "Points are earned on eligible purchases and can be applied at checkout; your balance and expiry dates are shown in your account.", "prompt": "gravion support explain how loyalty points work"}
+{"completion": "Points are earned on eligible purchases and can be applied at checkout; your balance and expiry dates are shown in your account.", "prompt": "help me explain how loyalty points work"}
+{"completion": "Open billing settings, add the new payment method, and set it as default before the next billing date.", "prompt": "help update payment method"}
+{"completion": "Open billing settings, add the new payment method, and set it as default before the next billing date.", "prompt": "please help update payment method"}
+{"completion": "Open billing settings, add the new payment method, and set it as default before the next billing date.", "prompt": "gravion support help update payment method"}
+{"completion": "Open billing settings, add the new payment method, and set it as default before the next billing date.", "prompt": "help me help update payment method"}
+{"completion": "Size exchanges are started from your orders page; the replacement is sent once the original item is on its way back.", "prompt": "explain exchange options for size"}
+{"completion": "Size exchanges are started from your orders page; the replacement is sent once the original item is on its way back.", "prompt": "please explain exchange options for size"}
+{"completion": "Size exchanges are started from your orders page; the replacement is sent once the original item is on its way back.", "prompt": "gravion support explain exchange options for size"}
+{"completion": "Size exchanges are started from your orders page; the replacement is sent once the original item is on its way back.", "prompt": "help me explain exchange options for size"}
+{"completion": "Sorry your delivery is late. Share your order number and I will check the latest carrier update right away.", "prompt": "help with a late delivery apology"}
+{"completion": "Sorry your delivery is late. Share your order number and I will check the latest carrier update right away.", "prompt": "please help with a late delivery apology"}
+{"completion": "Sorry your delivery is late. Share your order number and I will check the latest carrier update right away.", "prompt": "gravion support help with a late delivery apology"}
+{"completion": "Sorry your delivery is late. Share your order number and I will check the latest carrier update right away.", "prompt": "help me help with a late delivery apology"}
+{"completion": "Open the order in your account and choose download receipt; a copy is also attached to your confirmation email.", "prompt": "explain how to download a receipt"}
+{"completion": "Open the order in your account and choose download receipt; a copy is also attached to your confirmation email.", "prompt": "please explain how to download a receipt"}
+{"completion": "Open the order in your account and choose download receipt; a copy is also attached to your confirmation email.", "prompt": "gravion support explain how to download a receipt"}
+{"completion": "Open the order in your account and choose download receipt; a copy is also attached to your confirmation email.", "prompt": "help me explain how to download a receipt"}
+{"completion": "Tell me the order number and the amount that looks wrong, and I will review the charge and correct it if needed.", "prompt": "help report a billing error"}
+{"completion": "Tell me the order number and the amount that looks wrong, and I will review the charge and correct it if needed.", "prompt": "please help report a billing error"}
+{"completion": "Tell me the order number and the amount that looks wrong, and I will review the charge and correct it if needed.", "prompt": "gravion support help report a billing error"}
+{"completion": "Tell me the order number and the amount that looks wrong, and I will review the charge and correct it if needed.", "prompt": "help me help report a billing error"}
+{"completion": "Verification usually means confirming your email address and, for some actions, entering a code sent to you.", "prompt": "explain account verification steps"}
+{"completion": "Verification usually means confirming your email address and, for some actions, entering a code sent to you.", "prompt": "please explain account verification steps"}
+{"completion": "Verification usually means confirming your email address and, for some actions, entering a code sent to you.", "prompt": "gravion support explain account verification steps"}
+{"completion": "Verification usually means confirming your email address and, for some actions, entering a code sent to you.", "prompt": "help me explain account verification steps"}
+{"completion": "Manuals are linked on each product page and in the support section; tell me the model name if you cannot find yours.", "prompt": "help find product manuals"}
+{"completion": "Manuals are linked on each product page and in the support section; tell me the model name if you cannot find yours.", "prompt": "please help find product manuals"}
+{"completion": "Manuals are linked on each product page and in the support section; tell me the model name if you cannot find yours.", "prompt": "gravion support help find product manuals"}
+{"completion": "Manuals are linked on each product page and in the support section; tell me the model name if you cannot find yours.", "prompt": "help me help find product manuals"}
+{"completion": "During an outage, status updates are posted on the status page. Share what you are seeing and I will check the latest note.", "prompt": "explain service outage updates"}
+{"completion": "During an outage, status updates are posted on the status page. Share what you are seeing and I will check the latest note.", "prompt": "please explain service outage updates"}
+{"completion": "During an outage, status updates are posted on the status page. Share what you are seeing and I will check the latest note.", "prompt": "gravion support explain service outage updates"}
+{"completion": "During an outage, status updates are posted on the status page. Share what you are seeing and I will check the latest note.", "prompt": "help me explain service outage updates"}
+{"completion": "If your order was cancelled, the confirmation message explains why and whether a refund is on its way.", "prompt": "help with a cancelled order question"}
+{"completion": "If your order was cancelled, the confirmation message explains why and whether a refund is on its way.", "prompt": "please help with a cancelled order question"}
+{"completion": "If your order was cancelled, the confirmation message explains why and whether a refund is on its way.", "prompt": "gravion support help with a cancelled order question"}
+{"completion": "If your order was cancelled, the confirmation message explains why and whether a refund is on its way.", "prompt": "help me help with a cancelled order question"}
+{"completion": "Orders can be changed before they ship. Share your order number and the change you need as soon as possible.", "prompt": "explain how to change an order"}
+{"completion": "Orders can be changed before they ship. Share your order number and the change you need as soon as possible.", "prompt": "please explain how to change an order"}
+{"completion": "Orders can be changed before they ship. Share your order number and the change you need as soon as possible.", "prompt": "gravion support explain how to change an order"}
+{"completion": "Orders can be changed before they ship. Share your order number and the change you need as soon as possible.", "prompt": "help me explain how to change an order"}
+{"completion": "Share your order number and preferred dates, and I will book the installation visit.", "prompt": "help with installation booking"}
+{"completion": "Share your order number and preferred dates, and I will book the installation visit.", "prompt": "please help with installation booking"}
+{"completion": "Share your order number and preferred dates, and I will book the installation visit.", "prompt": "gravion support help with installation booking"}
+{"completion": "Share your order number and preferred dates, and I will book the installation visit.", "prompt": "help me help with installation booking"}
+{"completion": "Spare parts can be ordered from the parts section by model name; share your model if you need help finding the right part.", "prompt": "explain spare parts ordering"}
+{"completion": "Spare parts can be ordered from the parts section by model name; share your model if you need help finding the right part.", "prompt": "please explain spare parts ordering"}
+{"completion": "Spare parts can be ordered from the parts section by model name; share your model if you need help finding the right part.", "prompt": "gravion support explain spare parts ordering"}
+{"completion": "Spare parts can be ordered from the parts section by model name; share your model if you need help finding the right part.", "prompt": "help me explain spare parts ordering"}
+{"completion": "Restart the device, check your connection, and try the update again. Tell me the error message if it still fails.", "prompt": "help with a software update problem"}
+{"completion": "Restart the device, check your connection, and try the update again. Tell me the error message if it still fails.", "prompt": "please help with a software update problem"}
+{"completion": "Restart the device, check your connection, and try the update again. Tell me the error message if it still fails.", "prompt": "gravion support help with a software update problem"}
+{"completion": "Restart the device, check your connection, and try the update again. Tell me the error message if it still fails.", "prompt": "help me help with a software update problem"}
+{"completion": "Account closure is started from account settings after any open orders finish; you will be asked to confirm by email.", "prompt": "explain how to close an account"}
+{"completion": "Account closure is started from account settings after any open orders finish; you will be asked to confirm by email.", "prompt": "please explain how to close an account"}
+{"completion": "Account closure is started from account settings after any open orders finish; you will be asked to confirm by email.", "prompt": "gravion support explain how to close an account"}
+{"completion": "Account closure is started from account settings after any open orders finish; you will be asked to confirm by email.", "prompt": "help me explain how to close an account"}
+{"completion": "Check the recycle or trash area first; recently deleted files can usually be restored from there for a limited time.", "prompt": "help recover a deleted file"}
+{"completion": "Check the recycle or trash area first; recently deleted files can usually be restored from there for a limited time.", "prompt": "please help recover a deleted file"}
+{"completion": "Check the recycle or trash area first; recently deleted files can usually be restored from there for a limited time.", "prompt": "gravion support help recover a deleted file"}
+{"completion": "Check the recycle or trash area first; recently deleted files can usually be restored from there for a limited time.", "prompt": "help me help recover a deleted file"}
+{"completion": "Accessibility options include larger text, keyboard navigation, and screen reader support; tell me what you need and I will guide you.", "prompt": "explain accessibility support options"}
+{"completion": "Accessibility options include larger text, keyboard navigation, and screen reader support; tell me what you need and I will guide you.", "prompt": "please explain accessibility support options"}
+{"completion": "Accessibility options include larger text, keyboard navigation, and screen reader support; tell me what you need and I will guide you.", "prompt": "gravion support explain accessibility support options"}
+{"completion": "Accessibility options include larger text, keyboard navigation, and screen reader support; tell me what you need and I will guide you.", "prompt": "help me explain accessibility support options"}
+{"completion": "Gift messages are added at checkout and printed with the delivery note. Share your order number if the message needs changing.", "prompt": "help with a gift order message"}
+{"completion": "Gift messages are added at checkout and printed with the delivery note. Share your order number if the message needs changing.", "prompt": "please help with a gift order message"}
+{"completion": "Gift messages are added at checkout and printed with the delivery note. Share your order number if the message needs changing.", "prompt": "gravion support help with a gift order message"}
+{"completion": "Gift messages are added at checkout and printed with the delivery note. Share your order number if the message needs changing.", "prompt": "help me help with a gift order message"}
+{"completion": "For bulk orders, share the product, quantity, and delivery location, and the team will reply with availability and pricing.", "prompt": "explain bulk order enquiries"}
+{"completion": "For bulk orders, share the product, quantity, and delivery location, and the team will reply with availability and pricing.", "prompt": "please explain bulk order enquiries"}
+{"completion": "For bulk orders, share the product, quantity, and delivery location, and the team will reply with availability and pricing.", "prompt": "gravion support explain bulk order enquiries"}
+{"completion": "For bulk orders, share the product, quantity, and delivery location, and the team will reply with availability and pricing.", "prompt": "help me explain bulk order enquiries"}
+{"completion": "Share your area or postcode and I will check whether the service is available there.", "prompt": "help check service availability"}
+{"completion": "Share your area or postcode and I will check whether the service is available there.", "prompt": "please help check service availability"}
+{"completion": "Share your area or postcode and I will check whether the service is available there.", "prompt": "gravion support help check service availability"}
+{"completion": "Share your area or postcode and I will check whether the service is available there.", "prompt": "help me help check service availability"}
+{"completion": "Feedback can be sent through the feedback form or this chat; specific examples help the team act on it faster.", "prompt": "explain how to give feedback"}
+{"completion": "Feedback can be sent through the feedback form or this chat; specific examples help the team act on it faster.", "prompt": "please explain how to give feedback"}
+{"completion": "Feedback can be sent through the feedback form or this chat; specific examples help the team act on it faster.", "prompt": "gravion support explain how to give feedback"}
+{"completion": "Feedback can be sent through the feedback form or this chat; specific examples help the team act on it faster.", "prompt": "help me explain how to give feedback"}

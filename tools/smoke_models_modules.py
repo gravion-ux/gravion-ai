@@ -37,6 +37,8 @@ MODULE_PROMPTS = {
 MODEL_PROMPTS = {
     "gravion-core": "Hello",
     "gravion-chat": "Hello, how are you?",
+    "gravion-support": "check the status of an order",
+    "gravion-review": "review this code for bugs",
     "gravion-code": "Write a python function",
     "gravion-builder": "Build a landing page",
     "gravion-vision": "Draw a logo",

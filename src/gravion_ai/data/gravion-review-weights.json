@@ -1,0 +1,3232 @@
+{
+  "architecture": "sparse n-gram embedding + direct linear softmax classifier",
+  "bias": [
+    -1.87258244,
+    0.17348757,
+    -0.34412274,
+    1.10186136,
+    1.93845236,
+    -1.79949355,
+    0.59571064,
+    -1.52436793,
+    0.11955296,
+    0.80479729,
+    1.65304482,
+    1.35452425,
+    0.23720188,
+    -0.86350918,
+    -0.0872769,
+    1.57659197,
+    -0.62905341,
+    0.67724955,
+    0.90944391,
+    -1.31132591,
+    -0.88499564,
+    0.75309181,
+    -0.8180123,
+    -1.01404035,
+    0.12867527,
+    -0.38432598,
+    1.69433773,
+    -1.35724914,
+    -0.86999708,
+    -1.23191869,
+    0.30858397,
+    1.07011127,
+    -1.32267296,
+    1.64049053,
+    -1.67283666,
+    0.53084809,
+    0.40967834,
+    0.77597272,
+    -1.67246985,
+    -1.49055529,
+    1.01834333,
+    0.92526162,
+    -1.90850139,
+    -1.42714012,
+    0.37949845,
+    0.87105459,
+    1.63517785,
+    1.20451188
+  ],
+  "classes": [
+    "A clear API has predictable names, validated inputs, consistent errors, and no surprises for callers.",
+    "Arguments should be validated early, help text should match behavior, and exit codes should be meaningful.",
+    "Assumptions about input size, ordering, locale, or timing break first; make them explicit and tested.",
+    "Check input validation, output encoding, secret handling, and permission checks before anything else.",
+    "Check loop bounds, slice ends, and index arithmetic against empty and single-item inputs.",
+    "Check page bounds, total counts, stable ordering, and that empty pages return cleanly.",
+    "Check parameterization, index use, result size limits, and transaction boundaries.",
+    "Check password storage, session expiry, token handling, and that failures reveal no useful detail.",
+    "Check path safety, missing-file handling, encoding, and that files close even on error.",
+    "Configuration should validate required keys, apply safe defaults, and fail with clear messages.",
+    "Coverage gaps usually hide in error paths, boundary values, and rare branches; add tests there first.",
+    "Edge cases to check: empty input, boundary values, duplicate items, very large input, and unexpected types.",
+    "Error messages should say what failed, why it matters, and what the user can do next.",
+    "Every value that can be missing needs an explicit check or a clear default before use.",
+    "Files, connections, and locks should be released on every path, including when errors occur.",
+    "Findings by severity: correctness and security first, then performance, then readability and style.",
+    "Good error handling catches expected failures, adds context, cleans up resources, and never hides the original cause.",
+    "It checks the middle of a sorted range and discards half each step until the target is found or absent.",
+    "It walks two sorted lists together, always taking the smaller next value, then appends the tail.",
+    "Logs should carry context, avoid secrets, and make failures searchable without flooding output.",
+    "Long functions, deep nesting, and unclear names hurt readability; split, flatten, and rename.",
+    "Look for growing collections, unclosed resources, and references kept after they are no longer needed.",
+    "Look for repeated work inside loops, unnecessary copies, and slow lookups that a set or index would speed up.",
+    "Migrations should be reversible where possible, tested on realistic data, and safe to run once.",
+    "Mixed types in one collection cause subtle bugs; enforce one shape at the boundary.",
+    "Names should state purpose plainly; rename vague variables, and keep naming style consistent across the file.",
+    "Prefer maintained, minimal dependencies; check licenses, update history, and whether the standard library suffices.",
+    "Repeated blocks should become one shared helper so fixes apply everywhere at once.",
+    "Retries should cover temporary failures only, back off between attempts, and stop after a clear limit.",
+    "Reviewing for bugs: check inputs, edge cases, error handling, and resource cleanup, then list findings by severity.",
+    "Shared mutable state needs synchronization; check for races between reads and writes across threads.",
+    "Test just below, exactly at, and just above each boundary so off-by-one errors surface.",
+    "The cache stores recent results with an expiry, returning fresh values fast and refreshing stale ones.",
+    "The class groups related data and behavior; each method has one job, and the constructor sets the starting state.",
+    "The code compares values and reorders them until the whole sequence is in ascending order.",
+    "The code starts work without blocking, then handles results or errors when they arrive.",
+    "The code takes items in order, processes each, and acknowledges or retries based on the outcome.",
+    "The code tracks a current state and only allows listed transitions when events arrive.",
+    "The decorator wraps a function to add behavior before or after it runs, without changing its core logic.",
+    "The function solves a smaller version of the problem each call until the base case returns a direct answer.",
+    "The handler reacts to a named event, reads its payload, and updates state or triggers follow-up work.",
+    "The loop repeats its body once per item: it reads the next value, processes it, and stops when no items remain.",
+    "The parser reads input token by token, validates structure, and builds a result or reports the first error.",
+    "The pattern matches text by describing allowed characters and repetition; I will break it into parts.",
+    "The schema lists required fields, types, and ranges, and reports every problem it finds.",
+    "This code reads its inputs, applies its core logic step by step, and returns a result; I will walk through each part in order.",
+    "Validate type, length, range, and allowed values on the server before using any input.",
+    "Watch for global state changes, file writes, and network calls hidden inside innocent-looking helpers."
+  ],
+  "classifier": {
+    "data": "XswSv/0i8+WlAv5eBMfn6EgDRxXn7/3guDPoPEoI3M7DOdjVSQkm/y2e/eICFKECLSjcuiHbWwIp9wwbHe8gP+ApHFpPOjITKNv//vwoKu9IJ+rd4tgF+7Q0DEnvCqc5QeXmCCUT5yguWAMVKha63mL7ze3S0/4j3lw8FNgICbw6F8TZIyKXyPb5HSvT6O0D+wzNCTnt/OXvSeQ5vjre6VHwPcL/OAkA0gsTCAHXMSY+Dz8Uv+4+wxPmF/0XsiHo/eAoiBrhwwK9Lu4oHQbiEQgeA/hG0ayrGvARk++25fg1Dj9ONc8FEU2r+MfLzP4gDyQ4EDwXFw/E+dsOvRA3ugnv271/ycjJ2Rf88fDVyPLW8VLxu/4Xww7iPCE1LDQpsyTd2eA46cvz7fo5BEf5LTACxSp5pA8H4sjzKPTf0+3mzoIZCrAaGO+j5tM17wvh3TrdRS/2/Tcq6NTta/cVPM7Gmhcl7Dq6Rur6/VMy79ZF3KTu7AnvFNPrMlkJQAgL5UT4/Ouh7APjlz64EdX/9fUC72T/pvXl/wH3gd0FxQz9qjT3RuodB7r58uME6s7Yme7fKm8EMbkBtOb8LuIINrkfLDc2sguv/rvlvvjYO0ZWU8nsKOoo7AIW/jf0lssKVNAhEgMX6iCxB7gHtPfs8zdSTfjdB+QA5vQjrvPVHyXAFfXP2vrqKGNbAQ7jSgbK7NRRFtQL1igQ1sDuOTn72+wL3SKQHuExMvcyxNRJCi/M1cXjBVbWSBAHz9IRJ+Ir/+3+DeUzUThe/r79GkgSBhq19EHuQhxKCh5EHewZER+3urj8oA3MAQkFL0LxKjDlCRZr5a9f1ef3H/ztAhxVyQgoBSe1FwLtD1zO4bsLGSDJDGn3/lQvPuv54P3TECwM2g3iy7liADEkUBAdFfxQI9DMU6ybGBb18kn8Fggs/ezczCw9mwwGAtEkFPEU6VPR9kS4GNUB+Sdg3xIP7+38E970cSfcwun9APjnywDM4uKO3c7uLgoQGzEEOf73vOvv",
+    "encoding": "int8-base64",
+    "scale": 0.036196029092383196
+  },
+  "dim": 16,
+  "direct": {
+    "data": "Fgb89usWBhUEBgH/Bvr9vPoDAgn68/oX/fsD+vkFuv4T+BEBAgIQEgT8EBICCAHzyM0LDP40IS4fINLWyQwP1w3LIRsKAwovDwzPCgob1dctyS0cHx8tzSLLL8nKHcsDJxfuDuYoGyYZGRjnGeXsJh7y8S/r6u4r7Owd7u4cMeb27vjx8fD09u7t9/Px8Orp7/AcLBHs7O7p7O3q7R0f7SLy7y0bFBvsIB3jGhk+7+zy8PHv7u/y8/Dw8vLxQt0U7+7u7eru7O7s7unp7vDv6PAhIfDv7e7t7/Dt8PDv7ekuGC0fHiErLSMcKi8hNOzt8/Me7RLy8fPv8O/r8Rod7SHz8y4bFhvxHxwvGhnt8Ov08fTz8vP09PPy9fTy6CsW8/Me7RLy8fPv8O/r8Rod7SHz8y4bFhvxHxwvGhnt8Ov08fTz8vP09PPy9fTy6CsW8O/w7+3w7e/t7+rq7/Hx6fEjJPHw8PDv8fHv8fLw7uswGjAiIiQtLyYeLTAj2u7w9fUh7xf08/Xy8/Pw9CAj8if19TMeGh/zJCHoHR3w9PH29Pb09PX29vX09vb16+EaOy3zIvM7LjguLuLvLfP07Ovz8u7z8/Q98/Ps8/Qv5O/08/Tz9PH19PPz9PP08PLz+Pfs9uz5+Pj3+PE2+Dk29ur4+e3t6+34OTTy5jv39zf69/n6+fj6+fj3+fn49Tft+/s3+Cv7+/v6+vr5+u7s+fH6+u01LzT67O32OeP5+vn7+/v5+vv7+/v6+/v69PQv9vX6Ofr19fb09UI59fv69/j6+vn7+vv2+vr3+/pK9jj7+fv7/Pr7+vr6+/r6+fX7/fz6/UT9/P38/Pr8/fz7Tvz6+/z78/v9+/z6+fv9+vv7+fz7+vv8+fpO+/v6+/v6/Pz9/Pz8/Pz8/PY//Pz8+/33+v39/Pz9/P37/P38+z77+Pr6+/n5avr2+fX2/Pj9+vv5+fr3+Plg9/z8+lD3/Uv9/fD5+vr49fX6+fb5/Pz9/f79/v39/v39/v7+/Pr5+/z+Pv75+vv5+vz9+/7+/fv+/vz+/v76/v39/v1P/f3+/v7+/v7+/v7+/v7+/f7++Pn8/Pz6+vz7+/z9WPb9/VP+/vT8/fz8/Pz7/f38/P3+/v7+/v7+/v7//v7+/f38+/v+/P79/f38/Erx/P7+/P79/f7+/v79/f78/v78+0b+/f7+/v7+/f79/v79/fv+/v79/vz+/v7+/v37/vz7/f37+v39/f3++/v8/f3+/fv5+vj6+vr7/Gb7+fz6/Ez9//76/fv+/v79/v79/lH4/k7+/vH6+/v+9vb8+vj9/v7+/v///v/+//7+/////fz6//76/fv+/v79/v79/lH4/k7+/vH6+/v+9vb8+vj9/v7+/v///v/+//7+/////fz6/v/1/vj//v7+/v7+/vf0/vv+//r39fX/9vb9WFX+//7//v7+/v/+/v7+/v///vz4/v/1/vj//v7+/v7+/vf0/vv+//r39fX/9vb9WFX+//7//v7+/v/+/v7+/v///vz4/v/1/vj//v7+/v7+/vf0/vv+//r39fX/9vb9WFX+//7//v7+/v/+/v7+/v///vz4/v/z/vr+/v/+/v7+/vr6/vv+/vpP9k/++vv98fn+/v7////+/v7///7///7+/f31/v/z/vr+/v/+/v7+/vr6/vv+/vpP9k/++vv98fn+/v7////+/v7///7///7+/f31/v/z/vr+/v/+/v7+/vr6/vv+/vpP9k/++vv98fn+/v7////+/v7///7///7+/f31+/z+Pv75+vv5+vz9+/7+/fv+/vz+/v76/v39/v1P/f3+/v7+/v7+/v7+/v7+/f7+///3/j7//////v7+//v7/vz+/vz4Svn/+/v99fn+/v7//v/+/v/////+/////Pz4///3/j7//////v7+//v7/vz+/vz4Svn/+/v99fn+/v7//v/+/v/////+/////Pz4///3/j7//////v7+//v7/vz+/vz4Svn/+/v99fn+/v7//v/+/v/////+/////Pz4+/z+Pv75+vv5+vz9+/7+/fv+/vz+/v76/v39/v1P/f3+/v7+/v7+/v7+/v7+/f7+/fz+/f3+/f79/fdA/f39/P79/f7+/v7+/f39/v79/UD+/f7+/v3+/f39/v79/fn+/v79/v3+/v7+/f37/vv7/P35/P39/f7+/Pv7/vz+/fv9+vv8/Pz89/z6/Pld/Uz9///////////////////////9Z//////////////////7/fr4+/z4/Pv9+v38/f/////////////////////////9Z//////////////////7/fr4+/z4/Pv9+v38/f/////////////////////////8/f////////////////79Uf78/P39/P38/v37/v7////////////////////////8/f////////////////79Uf78/P39/P38/v37/v7////////////////////////8/f////////////////79Uf78/P39/P38/v37/v7/bfb//f/5/Pr7/Pv++P///v7///7+///7///+/v/9/P7///7/////////////////bfb//f/5/Pr7/Pv++P///v7///7+///7///+/v/9/P7///7/////////////////91r//v/7/Pz9/P3++////v/////////8///+///9/f7///////////////////7/91r//v/7/Pz9/P3++////v/////////8///+///9/f7///////////////////7///9c//z///////////39//7///36+/r//P3/+Pz//////////////////////v/4//9c//z///////////39//7///36+/r//P3/+Pz//////////////////////v/4//9c//z///////////39//7///36+/r//P3/+Pz//////////////////////v/4///////////////////////9+f///////////////v/7/Ppm+Pv7/fz9+f3+/f/////////////////////////9+f///////////////v/7/Ppm+Pv7/fz9+f3+/f/////////////////////////9+f///////////////v/7/Ppm+Pv7/fz9+f3+/f///Pz//P/2+Xb59/7+/P///v7///7////z/v/+///7/v7////+//7////////////+/Pz//P/2+Xb59/7+/P///v7///7////z/v/+///7/v7////+//7////////////+//////////////7+/////v9e/P/////////////////9/P39/P38+v38/fn7/v////////////////7+/////v9e/P/////////////////9/P39/P38+v38/fn7/v////////////////7+/////v9e/P/////////////////9/P39/P38+v38/fn7/v////7//////////vv1/////v///////////v/+/////kz///////////////////3///7//////////vv1/////v///////////v/+/////kz///////////////////3///7//////////vv1/////v///////////v/+/////kz///////////////////3///9c//z///////////39//7///36+/r//P3/+Pz//////////////////////v/4//9c//z///////////39//7///36+/r//P3/+Pz//////////////////////v/4//9c//z///////////39//7///36+/r//P3/+Pz//////////////////////v/4/f3/4v/8/f38/f7+/f///v3///7////9///+//9p/v7////////////////////////8/0j/////////AP79//7///799v3//v7//P3//////////////////////v78///8/0j/////////AP79//7///799v3//v7//P3//////////////////////v78/v7///3+/v7+/f3+/v7/Uf7//////v///v/9////+/7//////v///v/8/////v7///////7///////7//////v/9/f/////////////////9/P79/P3+/P1T/fz8//////////////////7////////8+v////////////////97/fb6+fz4/Pn99fz9/f////////////////7////////8+v////////////////97/fb6+fz4/Pn99fz9/f////7//v7///////xM/////v/+///////////+///+/vX//v/////////////+//z///7//////////vv1/////v///////////v/+/////kz///////////////////3///7//////////vv1/////v///////////v/+/////kz///////////////////3////+//7///////79//38/v7///7+/v7//fz9/v3///3//v/////////////+/k3+///+//7///////79//38/v7///7+/v7//fz9/v3///3//v/////////////+/k3+///9//3///////////n3//3///39/f3/+Vv//fj///////////////////////39///9//3///////////n3//3///39/f3/+Vv//fj///////////////////////39///9//3//////////1r7//j///z9/f3/+fn+/fr///////////////////////39///9//3//////////1r7//j///z9/f3/+fn+/fr///////////////////////39///9//3////////+//ta//3///39/P7/+Pf+/fj///7//////////////////v38///9//3////////+//ta//3///39/P7/+Pf+/fj///7//////////////////v38///8//3////////+//n4//7///39/f3/+fn+913///////////////////8A//79///8//3////////+//n4//7///39/f3/+fn+913///////////////////8A//79//7//v7///////xM/////v/+///////////+///+/vX//v/////////////+//z///7//v7///////xM/////v/+///////////+///+/vX//v/////////////+//z////9//3///////////n5//3///38/fz/XPf//fn///4A/wD///////////////z9///9//3///////////n5//3///38/fz/XPf//fn///4A/wD///////////////z9//7///7+/v/+/v3+/v7+/fz///7//v7//v5K/v7//f7///////////////////3+//7///7+/v/+/v3+/v7+/fz///7//v7//v5K/v7//f7///////////////////3+//7///7+/v/+/v3+/v7+/fz///7//v7//v5K/v7//f7///////////////////3+///////////////////////8/f////////////////79Uf78/P39/P38/v37/v7////////////////////////8/f////////////////79Uf78/P39/P38/v37/v7////////////////////////8/f////////////////79Uf78/P39/P38/v37/v7////9//3////////+//ta//3///39/P7/+Pf+/fj///7//////////////////v38///9//3////////+//ta//3///39/P7/+Pf+/fj///7//////////////////v38///9//3////////+//ta//3///39/P7/+Pf+/fj///7//////////////////v3891r//v/7/Pz9/P3++////v/////////8///+///9/f7///////////////////7/91r//v/7/Pz9/P3++////v/////////8///+///9/f7///////////////////7/91r//v/7/Pz9/P3++////v/////////8///+///9/f7///////////////////7////+/v3+/v////7+///+///+/f/+/f7+/v///v7///7+/v39/P3+//3+/f/+Wv79/f3/4v/8/f38/f7+/f///v3///7////9///+//9p/v7//////////////////////v7/XP/9/f39/f7+/v////7///7////+///+///m/////////////////////v/////////////////////////9+f///////////////v/7/Ppm+Pv7/fz9+f3+/f///Pv//v79/f39/fv+/P//+/7///7////9///8///+Y/7//////v///v7+/v7///7+/Pv//v79/f39/fv+/P//+/7///7////9///8///+Y/7//////v///v7+/v7///7+/Pv//v79/f39/fv+/P//+/7///7////9///8///+Y/7//////v///v7+/v7///7+/Pz//P/69vj5aP7//P///v7////////6///+///8/f7//////////////////v///Pz//P/69vj5aP7//P///v7////////6///+///8/f7//////////////////v///Pz//P/69vj5aP7//P///v7////////6///+///8/f7//////////////////v/////9//3///////////n5//3///38/fz/XPf//fn///4A/wD///////////////z9///9//3///////////n5//3///38/fz/XPf//fn///4A/wD///////////////z9///9//3///////////n5//3///38/fz/XPf//fn///4A/wD///////////////z9/f3//v/+/v7+/lD8/f///v/////////+///9///+/fv//v/////////+///+//7//f3//v/+/v7+/lD8/f///v/////////+///9///+/fv//v/////////+///+//7//f3//v/+/v7+/lD8/f///v/////////+///9///+/fv//v/////////+///+//7//////////////v/+/////v/6/f/////////////////++/38/f38+P37/ftf/v///////////////v/+/////v/6/f/////////////////++/38/f38+P37/ftf/v///////////////v/+/////v/6/f/////////////////++/38/f38+P37/ftf/v//+/z//f/5Zvj69v3+/P////7////////7///+///9/v7///7///7/////////////+/z//f/5Zvj69v3+/P////7////////7///+///9/v7///7///7/////////////+/z//f/5Zvj69v3+/P////7////////7///+///9/v7///7///7//////////////////////v7////////////9+f////7//////////v/3/fj7+/p4/Pv99/z8/f///////////v7////////////9+f////7//////////v/3/fj7+/p4/Pv99/z8/f////7///7+/v/+/v3+/v7+/fz///7//v7//v5K/v7//f7///////////////////3+//7///7+/v/+/v3+/v7+/fz///7//v7//v5K/v7//f7///////////////////3+//7///7+/v/+/v3+/v7+/fz///7//v7//v5K/v7//f7///////////////////3+bfb//f/5/Pr7/Pv++P///v7///7+///7///+/v/9/P7///7////////////////////+/v3+/v////7+///+///+/f/+/f7+/v///v7///7+/v39/P3+//3+/f/+Wv79///4//v///////////78//7///35+fj//f3/YPj///////////////////////76///4//v///////////78//7///35+fj//f3/YPj///////////////////////76///4//v///////////78//7///35+fj//f3/YPj///////////////////////76//7//v7///////xM/////v/+///////////+///+/vX//v/////////////+//z///7//v7///////xM/////v/+///////////+///+/vX//v/////////////+//z////4//z///////////3+//7///37/Pr//f3++/3//////////////////////v5P///4//z///////////3+//7///37/Pr//f3++/3//////////////////////v5P///4//z///////////3+//7///37/Pr//f3++/3//////////////////////v5P///9/v7//v/+//////f+/1b///X9/v3//f39/v7+////////////////AP////79///9/v7//v/+//////f+/1b///X9/v3//f39/v7+////////////////AP////79+fr//f/7+/39/P3/Wv///v7////////9///+///+/f//////////////////////+fr//f/7+/39/P3/Wv///v7////////9///+///+/f/////////////////////////////////////+///////8+/////////////////76/Pn7+/v8/Wf8+v38/v/////////////////+///////8+/////////////////76/Pn7+/v8/Wf8+v38/v/////////////////+///////8+/////////////////76/Pn7+/v8/Wf8+v38/v/////////////////////////9+f///////////////v/7/Ppm+Pv7/fz9+f3+/f////////////////7+/////v9e/P/////////////////9/P39/P38+v38/fn7/v////////////////7////////8+v////////////////97/fb6+fz4/Pn99fz9/f/////////////////////////8/f////////////////79Uf78/P39/P38/v37/v7//////////////v/+/////v/6/f/////////////////++/38/f38+P37/ftf/v///////////v7////////////9+f////7//////////v/3/fj7+/p4/Pv99/z8/f/////////////////+///////8+/////////////////76/Pn7+/v8/Wf8+v38/v////////7///////7//////v/9/f/////////////////9/P79/P3+/P1T/fz8///////////////////////////9Z//////////////////7/fr4+/z4/Pv9+v38/f////////////7//v///v/////8+v/////////////////1/fn5+vn1/Pr9f/v8/f////////7///////7////////9+//////////////////5/Pv5afr8/vv8+v39/P/////////////////+/v///v/6/f////7////+//////79+/z9/Pz7bP35+/f5///////////////+///+/////v/4/P////////////////78+/v9/Pz8+Pv8+m76/v////////////////7////////9+v/////////////////3/Xv6+vr4/Pn99vz8/P////////////////7////////9+//////////////////8/fn7+WX6/fv9+/39/f/////+/v3+/v////7+///+///+/f/+/f7+/v///v7///7+/v39/P3+//3+/f/+Wv79///+/v3+/v////7+///+///+/f/+/f7+/v///v7///7+/v39/P3+//3+/f/+Wv79///////////+///+/////v/4/P////////////////78+/v9/Pz8+Pv8+m76/v///Pz//P/5+vtj+f7//P///v3///7////6///+///8/f/////+//////7//////////Pz//P/5+vtj+f7//P///v3///7////6///+///8/f/////+//////7//////////Pz//P/5+vtj+f7//P///v3///7////6///+///8/f/////+//////7///////////9c//z///////////39//7///36+/r//P3/+Pz//////////////////////v/4//9c//z///////////39//7///36+/r//P3/+Pz//////////////////////v/4///4//v///////////78//7///35+fj//f3/YPj///////////////////////76///4//v///////////78//7///35+fj//f3/YPj///////////////////////76///4//z///////////3+//7///37/Pr//f3++/3//////////////////////v5P///4//z///////////3+//7///37/Pr//f3++/3//////////////////////v5P///7//X///////////79//7///77VPz//f3/+vz///////////8A/////////v78///7//X///////////79//7///77VPz//f3/+vz///////////8A/////////v78///8/0j/////////AP79//7///799v3//v7//P3//////////////////////v78///8/0j/////////AP79//7///799v3//v7//P3//////////////////////v78///6//3///////////39//7///3p+2X//f3++Pz//////////////////////v77///6//3///////////39//7///3p+2X//f3++Pz//////////////////////v77///5//3///////////39//3///1l++v//f7++f3//////////////////////v77///5//3///////////39//3///1l++v//f7++f3//////////////////////v77/v7///3+/v7+/f3+/v7/Uf7//////v///v/9////+/7//////v///v/8/////v7//v7///3+/v7+/f3+/v7/Uf7//////v///v/9////+/7//////v///v/8/////v7//v7///3+/v7+/f3+/v7/Uf7//////v///v/9////+/7//////v///v/8/////v7//f3/4v/8/f38/f7+/f///v3///7////9///+//9p/v7///////////////////////7//v7///////xM/////v/+///////////+///+/vX//v/////////////+//z///7//v7///////xM/////v/+///////////+///+/vX//v/////////////+//z//v7/XP/9/f39/f7+/v////7///7////+///+///m/////////////////////v///v7/XP/9/f39/f7+/v////7///7////+///+///m/////////////////////v////7//////////vv1/////v///////////v/+/////kz///////////////////3//f3//v/+/v7+/lD8/f///v/////////+///9///+/fv//v/////////+///+//7///7//v7///////xM/////v/+///////////+///+/vX//v/////////////+//z///7//v7///////xM/////v/+///////////+///+/vX//v/////////////+//z////////////////+///////8+/////////////////76/Pn7+/v8/Wf8+v38/v///Pz//P/5+vtj+f7//P///v3///7////6///+///8/f/////+//////7//////////Pv//v79/f39/fv+/P//+/7///7////9///8///+Y/7//////v///v7+/v7///7+///4//z///////////3+//7///37/Pr//f3++/3//////////////////////v5P///4//z///////////3+//7///37/Pr//f3++/3//////////////////////v5P///4//z///////////3+//7///37/Pr//f3++/3//////////////////////v5P//////////////7+/////v9e/P/////////////////9/P39/P38+v38/fn7/v/////+//7///////79//38/v7///7+/v7//fz9/v3///3//v/////////////+/k3+//7///7+/v/+/v3+/v7+/fz///7//v7//v5K/v7//f7///////////////////3+///+//7///////79//38/v7///7+/v7//fz9/v3///3//v/////////////+/k3+///+//7///////79//38/v7///7+/v7//fz9/v3///3//v/////////////+/k3+///+//7///////79//38/v7///7+/v7//fz9/v3///3//v/////////////+/k3+/v7/XP/9/f39/f7+/v////7///7////+///+///m/////////////////////v/////////////////////////8/f////////////////79Uf78/P39/P38/v37/v7////////////////////////8/f////////////////79Uf78/P39/P38/v37/v7////7//X///////////79//7///77VPz//f3/+vz///////////8A/////////v78///7//X///////////79//7///77VPz//f3/+vz///////////8A/////////v78///7//X///////////79//7///77VPz//f3/+vz///////////8A/////////v78/Pz//P/69vj5aP7//P///v7////////6///+///8/f7//////////////////v///Pz//P/69vj5aP7//P///v7////////6///+///8/f7//////////////////v/////9/v3////+/v/+//z8//P//1/7/fz//fz9/fz+//////////////////////79///9/v3////+/v/+//z8//P//1/7/fz//fz9/fz+//////////////////////79///9/v3////+/v/+//z8//P//1/7/fz//fz9/fz+//////////////////////79//////7///////7//////v/9/f/////////////////9/P79/P3+/P1T/fz8//////////7///////7//////v/9/f/////////////////9/P79/P3+/P1T/fz8//////////7///////7//////v/9/f/////////////////9/P79/P3+/P1T/fz8//////////////////7////////9+//////////////////8/fn7+WX6/fv9+/39/f////////////////7////////9+//////////////////8/fn7+WX6/fv9+/39/f/////7//X///////////79//7///77VPz//f3/+vz///////////8A/////////v78///7//X///////////79//7///77VPz//f3/+vz///////////8A/////////v78///7//X///////////79//7///77VPz//f3/+vz///////////8A/////////v78///////////////////////9Z//////////////////7/fr4+/z4/Pv9+v38/f/////////////////////////9Z//////////////////7/fr4+/z4/Pv9+v38/f/////////////////////////9Z//////////////////7/fr4+/z4/Pv9+v38/f//+fr//f/7+/39/P3/Wv///v7////////9///+///+/f//////////////////////+fr//f/7+/39/P3/Wv///v7////////9///+///+/f/////////////////////////////////////////////8/f////////////////79Uf78/P39/P38/v37/v7/+vv//f/2+fT59/7/+/7//v/+/v7///95///+///9/f7///////7//////////v//+vv//f/2+fT59/7/+/7//v/+/v7///95///+///9/f7///////7//////////v///f3//v/+/v7+/lD8/f///v/////////+///9///+/fv//v/////////+///+//7////9//3///////////n3//3///39/f3/+Vv//fj///////////////////////39///9//3///////////n3//3///39/f3/+Vv//fj///////////////////////39///9//3///////////n3//3///39/f3/+Vv//fj///////////////////////39///9//3//////////1r7//j///z9/f3/+fn+/fr///////////////////////39///9//3//////////1r7//j///z9/f3/+fn+/fr///////////////////////39///9//3//////////1r7//j///z9/f3/+fn+/fr///////////////////////39///8/0j/////////AP79//7///799v3//v7//P3//////////////////////v78///8/0j/////////AP79//7///799v3//v7//P3//////////////////////v78///8/0j/////////AP79//7///799v3//v7//P3//////////////////////v78///8/0j/////////AP79//7///799v3//v7//P3//////////////////////v78///8/0j/////////AP79//7///799v3//v7//P3//////////////////////v78///8/0j/////////AP79//7///799v3//v7//P3//////////////////////v78+fz+/P97+vX5+P7/+v///v7////////1/v7+//76/f7////////////+//7///7/+fz+/P97+vX5+P7/+v///v7////////1/v7+//76/f7////////////+//7///7///////////7//v///v/////8+v/////////////////1/fn5+vn1/Pr9f/v8/f////////////7//v///v/////8+v/////////////////1/fn5+vn1/Pr9f/v8/f//91r//v/7/Pz9/P3++////v/////////8///+///9/f7///////////////////7////////////////////////9+f///////////////v/7/Ppm+Pv7/fz9+f3+/f/////6//3///////////39//7///3p+2X//f3++Pz//////////////////////v77///6//3///////////39//7///3p+2X//f3++Pz//////////////////////v77///6//3///////////39//7///3p+2X//f3++Pz//////////////////////v77//////7///////7////////9+//////////////////5/Pv5afr8/vv8+v39/P////////7///////7////////9+//////////////////5/Pv5afr8/vv8+v39/P////7///7+/v/+/v3+/v7+/fz///7//v7//v5K/v7//f7///////////////////3+///9//3///////////n3//3///39/f3/+Vv//fj///////////////////////39///9//3///////////n3//3///39/f3/+Vv//fj///////////////////////39///9//3///////////n3//3///39/f3/+Vv//fj///////////////////////39+/z//f/5Zvj69v3+/P////7////////7///+///9/v7///7///7/////////////+/z//f/5Zvj69v3+/P////7////////7///+///9/v7///7///7///////////////////7///////7////////9+//////////////////5/Pv5afr8/vv8+v39/P////////7///////7////////9+//////////////////5/Pv5afr8/vv8+v39/P////////7///////7////////9+//////////////////5/Pv5afr8/vv8+v39/P/////5//3///////////39//3///1l++v//f7++f3//////////////////////v77///5//3///////////39//3///1l++v//f7++f3//////////////////////v77///5//3///////////39//3///1l++v//f7++f3//////////////////////v77///////////////+/v///v/6/f////7////+//////79+/z9/Pz7bP35+/f5///////////////////+/v///v/6/f////7////+//////79+/z9/Pz7bP35+/f5///////////////+///+/////v/4/P////////////////78+/v9/Pz8+Pv8+m76/v/////////////+///+/////v/4/P////////////////78+/v9/Pz8+Pv8+m76/v/////9//3////////+//ta//3///39/P7/+Pf+/fj///7//////////////////v38///9//3////////+//ta//3///39/P7/+Pf+/fj///7//////////////////v38///9//3////////+//ta//3///39/P7/+Pf+/fj///7//////////////////v38///8//3////////+//n4//7///39/f3/+fn+913///////////////////8A//79///8//3////////+//n4//7///39/f3/+fn+913///////////////////8A//79///8//3////////+//n4//7///39/f3/+fn+913///////////////////8A//79/Pv//v79/f39/fv+/P//+/7///7////9///8///+Y/7//////v///v7+/v7///7+/Pv//v79/f39/fv+/P//+/7///7////9///8///+Y/7//////v///v7+/v7///7+//7///7+/v/+/v3+/v7+/fz///7//v7//v5K/v7//f7///////////////////3+//7///7+/v/+/v3+/v7+/fz///7//v7//v5K/v7//f7///////////////////3+///9/v7//v/+//////f+/1b///X9/v3//f39/v7+////////////////AP////79///9/v7//v/+//////f+/1b///X9/v3//f39/v7+////////////////AP////79/v7///3+/v7+/f3+/v7/Uf7//////v///v/9////+/7//////v///v/8/////v7//v7///3+/v7+/f3+/v7/Uf7//////v///v/9////+/7//////v///v/8/////v7////9/v3////+/v/+//z8//P//1/7/fz//fz9/fz+//////////////////////79///9/v3////+/v/+//z8//P//1/7/fz//fz9/fz+//////////////////////79/f3//v/+/v7+/lD8/f///v/////////+///9///+/fv//v/////////+///+//7//f3//v/+/v7+/lD8/f///v/////////+///9///+/fv//v/////////+///+//7/bfb//f/5/Pr7/Pv++P///v7///7+///7///+/v/9/P7///7//////////////////Pz//P/2+Xb59/7+/P///v7///7////z/v/+///7/v7////+//7////////////+91r//v/7/Pz9/P3++////v/////////8///+///9/f7///////////////////7//Pz//P/69vj5aP7//P///v7////////6///+///8/f7//////////////////v//+/z//f/5Zvj69v3+/P////7////////7///+///9/v7///7///7/////////////+fr//f/7+/39/P3/Wv///v7////////9///+///+/f///////////////////////Pz//P/5+vtj+f7//P///v3///7////6///+///8/f/////+//////7/////////+vv//f/2+fT59/7/+/7//v/+/v7///95///+///9/f7///////7//////////v//+fz+/P97+vX5+P7/+v///v7////////1/v7+//76/f7////////////+//7///7//Pv//v79/f39/fv+/P//+/7///7////9///8///+Y/7//////v///v7+/v7///7+/Pv//v79/f39/fv+/P//+/7///7////9///8///+Y/7//////v///v7+/v7///7+/////////////v/+/////v/6/f/////////////////++/38/f38+P37/ftf/v////////////////7+/////v9e/P/////////////////9/P39/P38+v38/fn7/v////////////////7+/////v9e/P/////////////////9/P39/P38+v38/fn7/v///v7/XP/9/f39/f7+/v////7///7////+///+///m/////////////////////v///v7/XP/9/f39/f7+/v////7///7////+///+///m/////////////////////v///v7///3+/v7+/f3+/v7/Uf7//////v///v/9////+/7//////v///v/8/////v7////4//z///////////3+//7///37/Pr//f3++/3//////////////////////v5P///4//z///////////3+//7///37/Pr//f3++/3//////////////////////v5P///4//z///////////3+//7///37/Pr//f3++/3//////////////////////v5P//////////////7////////9+v/////////////////3/Xv6+vr4/Pn99vz8/P////////////////7////////9+v/////////////////3/Xv6+vr4/Pn99vz8/P////////////////7////////9+//////////////////8/fn7+WX6/fv9+/39/f////////////////7////////9+//////////////////8/fn7+WX6/fv9+/39/f////////////////7////////9+//////////////////8/fn7+WX6/fv9+/39/f////////7///////7//////v/9/f/////////////////9/P79/P3+/P1T/fz8//////////7///////7//////v/9/f/////////////////9/P79/P3+/P1T/fz8//////////7///////7//////v/9/f/////////////////9/P79/P3+/P1T/fz8/////v7///3+/v7+/f3+/v7/Uf7//////v///v/9////+/7//////v///v/8/////v7//v7///3+/v7+/f3+/v7/Uf7//////v///v/9////+/7//////v///v/8/////v7//v7///3+/v7+/f3+/v7/Uf7//////v///v/9////+/7//////v///v/8/////v7//f3//v/+/v7+/lD8/f///v/////////+///9///+/fv//v/////////+///+//7//f3//v/+/v7+/lD8/f///v/////////+///9///+/fv//v/////////+///+//7//f3//v/+/v7+/lD8/f///v/////////+///9///+/fv//v/////////+///+//7///7//////////vv1/////v///////////v/+/////kz///////////////////3///7//////////vv1/////v///////////v/+/////kz///////////////////3///7//////////vv1/////v///////////v/+/////kz///////////////////3/bfb//f/5/Pr7/Pv++P///v7///7+///7///+/v/9/P7///7/////////////////bfb//f/5/Pr7/Pv++P///v7///7+///7///+/v/9/P7///7////////////////////////////////////////9+f///////////////v/7/Ppm+Pv7/fz9+f3+/f/////////////////////////9+f///////////////v/7/Ppm+Pv7/fz9+f3+/f///Pz//P/2+Xb59/7+/P///v7///7////z/v/+///7/v7////+//7////////////+/Pz//P/2+Xb59/7+/P///v7///7////z/v/+///7/v7////+//7////////////+//////////////7+/////v9e/P/////////////////9/P39/P38+v38/fn7/v////////////////7+/////v9e/P/////////////////9/P39/P38+v38/fn7/v////////////////7////////8+v////////////////97/fb6+fz4/Pn99fz9/f////////////////7////////8+v////////////////97/fb6+fz4/Pn99fz9/f/////////////////////////8/f////////////////79Uf78/P39/P38/v37/v7////////////////////////8/f////////////////79Uf78/P39/P38/v37/v7/91r//v/7/Pz9/P3++////v/////////8///+///9/f7///////////////////7/91r//v/7/Pz9/P3++////v/////////8///+///9/f7///////////////////7////+/v3+/v////7+///+///+/f/+/f7+/v///v7///7+/v39/P3+//3+/f/+Wv79/Pz//P/69vj5aP7//P///v7////////6///+///8/f7//////////////////v///Pz//P/69vj5aP7//P///v7////////6///+///8/f7//////////////////v///////////////v/+/////v/6/f/////////////////++/38/f38+P37/ftf/v///////////////v/+/////v/6/f/////////////////++/38/f38+P37/ftf/v//+/z//f/5Zvj69v3+/P////7////////7///+///9/v7///7///7/////////////+/z//f/5Zvj69v3+/P////7////////7///+///9/v7///7///7//////////////////////v7////////////9+f////7//////////v/3/fj7+/p4/Pv99/z8/f///////////v7////////////9+f////7//////////v/3/fj7+/p4/Pv99/z8/f//+fr//f/7+/39/P3/Wv///v7////////9///+///+/f//////////////////////+fr//f/7+/39/P3/Wv///v7////////9///+///+/f/////////////////////////////////////+///////8+/////////////////76/Pn7+/v8/Wf8+v38/v/////////////////+///////8+/////////////////76/Pn7+/v8/Wf8+v38/v///Pz//P/5+vtj+f7//P///v3///7////6///+///8/f/////+//////7//////////Pz//P/5+vtj+f7//P///v3///7////6///+///8/f/////+//////7///////////7//v7///////xM/////v/+///////////+///+/vX//v/////////////+//z////+//7///////79//38/v7///7+/v7//fz9/v3///3//v/////////////+/k3+//////7///////7//////v/9/f/////////////////9/P79/P3+/P1T/fz8//////////7///////7//////v/9/f/////////////////9/P79/P3+/P1T/fz8///////////////////////////9Z//////////////////7/fr4+/z4/Pv9+v38/f/////////////////////////9Z//////////////////7/fr4+/z4/Pv9+v38/f//+vv//f/2+fT59/7/+/7//v/+/v7///95///+///9/f7///////7//////////v//+vv//f/2+fT59/7/+/7//v/+/v7///95///+///9/f7///////7//////////v///f3//v/+/v7+/lD8/f///v/////////+///9///+/fv//v/////////+///+//7/+fz+/P97+vX5+P7/+v///v7////////1/v7+//76/f7////////////+//7///7/+fz+/P97+vX5+P7/+v///v7////////1/v7+//76/f7////////////+//7///7///////////7//v///v/////8+v/////////////////1/fn5+vn1/Pr9f/v8/f////////////7//v///v/////8+v/////////////////1/fn5+vn1/Pr9f/v8/f////7///7+/v/+/v3+/v7+/fz///7//v7//v5K/v7//f7///////////////////3+//////7///////7////////9+//////////////////5/Pv5afr8/vv8+v39/P////////7///////7////////9+//////////////////5/Pv5afr8/vv8+v39/P/////////////////+/v///v/6/f////7////+//////79+/z9/Pz7bP35+/f5///////////////////+/v///v/6/f////7////+//////79+/z9/Pz7bP35+/f5///////////////+///+/////v/4/P////////////////78+/v9/Pz8+Pv8+m76/v/////////////+///+/////v/4/P////////////////78+/v9/Pz8+Pv8+m76/v////////////////7////////9+v/////////////////3/Xv6+vr4/Pn99vz8/P////////////////7////////9+v/////////////////3/Xv6+vr4/Pn99vz8/P////////////////7////////9+//////////////////8/fn7+WX6/fv9+/39/f////////////////7////////9+//////////////////8/fn7+WX6/fv9+/39/f/////9//3///////////n5//3///38/fz/XPf//fn///4A/wD///////////////z9///9//3///////////n5//3///38/fz/XPf//fn///4A/wD///////////////z9///9//3///////////n5//3///38/fz/XPf//fn///4A/wD///////////////z9///+//7///////79//38/v7///7+/v7//fz9/v3///3//v/////////////+/k3+///+//7///////79//38/v7///7+/v7//fz9/v3///3//v/////////////+/k3+/////////////v/+/////v/6/f/////////////////++/38/f38+P37/ftf/v/////+/v3+/v////7+///+///+/f/+/f7+/v///v7///7+/v39/P3+//3+/f/+Wv79///+/v3+/v////7+///+///+/f/+/f7+/v///v7///7+/v39/P3+//3+/f/+Wv79///+/v3+/v////7+///+///+/f/+/f7+/v///v7///7+/v39/P3+//3+/f/+Wv79+fr//f/7+/39/P3/Wv///v7////////9///+///+/f//////////////////////A/8A/fkDAQT///z+//7+AP0BAAH+/QADAP//AAEABf4E/QUA/wACBf3+BAP/A//9A/8A/fkDAQT///z+//7+AP0BAAH+/QADAP//AAEABf4E/QUA/wACBf3+BAP/A//9AgAA/vsD/wMAAP7/////Av0A/gP//P8G/wH+//8BBP4E/AIBAAAFA//+AwT/AP/8AgAA/vsD/wMAAP7/////Av0A/gP//P8G/wH+//8BBP4E/AIBAAAFA//+AwT/AP/8AgAA/vsD/wMAAP7/////Av0A/gP//P8G/wH+//8BBP4E/AIBAAAFA//+AwT/AP/8BQH+/PkE/wUAAf/+AP7+A/7+AgEA+/4E/f3//f4BBv8C/AL/AAAEAQL+AwQBAQD8/Pz8/Pv8/Pv7+/r6/Pz8+v0ICPz9/P38/Pz8/P38/PsLBQwHBwgJCwYGCwoHDfv8Cgj7BvsLCQsHCQn5B/n7+Ar8/A/7+/sM+/oJ+/sIDvn8+/z8/Pv8/fv8/Pz8+/v7/Pz8/Pv8/Pz8/Pv7/P38+/wHBfz8/Pz8/P38/Pz8/PsKBAgIBwgMCwYGCgwGDPv7CQf8B/sLBwoHBwj6B/n7+Qn8/A77/PsN+/sJ+/sIDfn9/f38/Pz8/Pz8/fz8+/r7/Pz8/Pv8/Pz8/Pv7/P38+/wHBfz8/Pz8/P38/Pz8/PsKBAgIBwgMCwYGCgwGDPv7CQf8B/sLBwoHBwj6B/n7+Qn8/A77/PsN+/sJ+/sIDfn9/f38/Pz8/Pz8/fz8+/r7/Pz7+/r8+/z7/Pr6+/z8+/wHCvz8+/z7/Pv7/Pz7+/oKBgoHCQkLCQoHCgwKDfv7DQn6BfoMCA0JCgv5Cfj6+Av7+w77+voN+foK+/sLEPn8+/z8/Pv8+/v8/Pv7+vr6/Pz8/Pv8/Pv7+/r6/Pz8+v0ICPz9/P38/Pz8/P38/PsLBQwHBwgJCwYGCwoHDfv8Cgj7BvsLCQsHCQn5B/n7+Ar8/A/7+/sM+/oJ+/sIDvn8+/z8/Pv8/fv8/Pz8+/v7/Pz8/Pz8/Pz9/Pv7/P39+/0HBv39/P39/f38/f39/PsKBAkJCAgMCwcGCgwH9/z8/Pz8/Pv8/Pz7/Pv6/P38+/wHC/38/Pz7/Pz8/Pz8/PsKBgsICQoLCgoICwwL9/v8/Pz9/Pz8/Pz8+/r7/Pz8+v0JCf39/f38/P39/f38/PsMBg0IBwgKCwcHCwoI9/z8DAv9Cf0NCgwJCvn8Cf39/Pv9/fz9/v0O/f37/f0L+fz+/v79/v39/f39/v3+/f39EAz9B/0OCg8LDPn8C/z9+/v9/Pz9/f0P/P37/f0N+fv9/P39/fz+/f39/f39/P39DQr9CP0NCw4LC/j8Cv79+/v9/fz9/f4O/f37/f0L+fz9/f39/f39/v39/f39/f39/v78/vz+/v7+/vwN/g4M/fr+/vv8/Pz+DQ38+w/+/g3//v/+/v7+//7+/v/+/gz8/v78/vz+/v7+/vwM/g4M/vv+/vz8+/z+DA39+g7+/gz//v/+/v7+/v7+/v7+/Qz7/v78/vz+/v7+/vwM/g4M/vv+/vz8+/z+DA39+g7+/gz//v/+/v7+/v7+/v7+/Qz7/v77/vv+/v7+/fwN/g4O/fv+/vz7+/v+Dg39+g/9/g7+/f7+/v7//v7+/v7+/Q77/v78/vz+/v7+/vwN/g4M/fr+/vv8/Pz+DQ38+w/+/g3//v/+/v7+//7+/v/+/gz8//8O/gn//////v7+//z8/vz//vsLCw3+/Pv9Dvr+/////////////////////f0L//8N/gr////////+//v8/v3//vwMCgz/+/z9Dfr///7////+/////////////P0L//8N/gr////////+//v8/v3//vwMCgz/+/z9Dfr///7////+/////////////P0L/v8O/gv//v/////+//z7//z+//sODA3/+vv+Dfj+/v7////+/v/////////+/f0M//8O/gn//////v7+//z8/vz//vsLCw3+/Pv9Dvr+/////////////////////f0LAAAAAP8AAAAA//8AAAAAEwAAAAAAAAAAAAD/AAAA//8AAAAAAAAAAAD/AAAAAAAAAAAAAP8A/wAA//8A/wAAEwAAAAAAAAAAAAD/AAAA/gAAAAAAAAAA/wD/AAAAAAAAAAAAAAAAAAAAAP/9AAAAAAAAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAAAAAP8AAAAAAAAAAAAAAAD/AP//AP8AAAAAAAAA////AP8AAP8AAAAAAAAAAAAAAAAAABIAAAD/AP8AAAAAAAAAAP7+AP8AAP///wAA/hUA//4AAAAAAAAAAAAAAAAAAAAAAP//AAD/AP8AAAAAAAAAABX/AP4AAP///wAA/v////8AAAAAAAAAAAAAAAAAAAAAAP//AAD/AAAAAAAAAAAAAP8VAP8AAP///wAA/v4A//4AAP8AAAAAAAAAAAAAAAAAAP//AAD/AP8AAAAAAAAAAP/+AAAAAAAA//8A/v4A/hYAAAAAAAAAAAAAAAAAAAAAAP//AAAAAAAAAAAAAP8SAAAAAAAAAAAAAAAAAAAAAAAAAP0A/wAAAAAAAAAAAAAAAP8AAAD/AP8AAAAAAAAAAP7+AP8AAP////8AFf8A//8AAAAAAAAA/wAAAAAAAAAAAP//AAAAAP8AAAAAAAAAAAAAAAD//wAA/wAAAAAA/wAAAAAA////////AP8A/wAAFQD/AAAWAP8AAAAAAAAAAP//AP8AAP/+//4A//8A/v8AAAAAAAAAAAAAAAAAAAAA/wD+AAD+AP8AAAAAAAAAAP//AP8AAP///v4A////F/4AAAAAAAAAAAAAAAAAAAAAAAD/AAD+AP8AAAAAAAAAAP8AAAAAAP////8A//8A//8AAAAAAAAAAAAAAAAAAAAAAAASAAD/AP0AAAAAAAAAAAD/AAAAAAD/FP8A//8A//8AAAAAAAAAAAAAAAAAAAAA////AAD/ABEAAAAAAAAAAP//AAAAAAD//v8AAAAA//8AAAAAAAAAAAAAAAAAAAAA/wD/AAD+AP8AAAAAAAAAAP//AP8AAAD6/xgA//8A/v8AAP8AAAAAAAAAAAAAAAAA/wD/AAD+AP8AAAAAAAAAAP//AP8AAP8Y//sA//8A/v8AAAAAAAAAAAAAAAAAAAAA/wD///8A/wD//////////wAA/wAAAAAAAAAAAAD/AAAAFv8AAAAAAAAAAAAAAP8AAAD/AP8AAAAAAAAA//8A/wAA//8AAP8AAAAAAAASAAAA/wAAAAAAAAAAAAAAAAAAAP8AAAAAAP8AAAD/AAAAAP7/ABMAAP7/AP8A/////wD/AAAAAAAAAAAAAAAAAAAAAP8AAAAA//8AAAAAAAAAAP//AP0AABb///8A//////8AAAAAAAAAAAAAAAAAAAAAAP////8A/wD//wD//xP//wAAAAAAAAAAAAAAAAD/AAD///8AAAAAAAAAAAAAAAD/AAAAAAAAAP8A/wAA//8A/wAAEwAAAAAAAAAAAAD/AAAA/gAAAAAAAAAA/wD/AAAAAAAAAAAAAP8A/wAA//8A/wAAEwAAAAAAAAAAAAD/AAAA/gAAAAAAAAAA/wD/AAAAAAAAAAAAAAAAAAAAAP/9AAAA/wAAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAAAAAP8AAAAAAP8AAAAAAAD/AP//AAAAAP8A/wAA//////8AAP8AAAAAAAAAAAAAAAAAABQAAAD/AP8AAAAAAAAAAP7+AP8AAP////8A/hcA//4A/wAAAAAAAAAAAAAAAAAAAP//AAD/AP8AAAAAAAAAABf/AP4AAP////8A/v4A//8AAAAAAAAAAAAAAAAAAAAAAAD/AAD/AP8AAAAAAAAAAP8XAP8AAP////8A/v4AAP4AAAAAAAAAAAAAAAAAAAAAAP//AAD/AP8AAAAAAAAAAP7+AP8AAAD///8A//7//hcAAAAAAAAAAAAAAAAAAAAAAP//AAAA//8AAAAAAP8TAAAA/wAAAAAAAAAAAAAAAAAAAP4AAAAAAAAAAAAAAAD/AP8AAAD/AAAAAAAAAAAAAP3+AP8AAP////8AF/4A//8AAP8AAAAAAAAAAAAAAAAAAP//AAD///8AAAAAAAD/AAD/AAAA/wAA/wAAAP8AAP8AAP//////////AP8A/wAAFgD/AAAYAP8AAAAAAAAAAAD/AAAAAP/+//8A//8A/v8AAAAAAAAAAAAAAAAAAAAAAAD+AAD+AP8AAAAAAAAAAAD/AAAAAP/+/v4A//8AGP4AAAAAAAAAAAAAAAAAAAAAAAD+AAD+AP8AAAAAAAAAAP8AAP8AAP////8AAP8A/v8AAAAAAAAAAAAAAAAAAAAAAAAUAAD+AP0AAAAAAAAAAP//AAAAAP//Ff8A//8A/v8AAAAAAAAAAAAAAAAAAAAA/wD/AAD/ABIAAAAAAAAAAP//AAAAAAD//v8A//8A//8AAAAAAAAAAAAAAAAAAAAAAAD/AAD/AP8AAAAAAAAAAP//AP8AAP/7/xkA//8A/v8AAAAAAAAAAAAAAAAAAAAAAAD+AAD+AP8AAAAAAAAAAP//AP8AAP8a//oA//8A/v8AAAAAAAAAAAAAAAAAAAAAAAD///8A//////////8A/wAA/wAAAAAAAAD/AAD/AAD/GQAAAAAAAAD/AAAAAP//AP8AAAAAAP8AAAAAAP////8A//8AAP8A/wAAAAATAAAA/wAAAAAAAAAAAAAAAAAAAP//AAD/AP8AAAAAAAAAAP7/ABUAAP3///8A////AP8AAAAAAAAAAAAAAAAAAAAAAAD/AAD/AP8AAAAAAAAAAP//AP0AABf///8A////////AAAAAAAAAAAAAAAAAAAAAAD///8A/wD/AAD/ABT//wAA/wAAAAAAAAAAAAD/AAAA//8AAAAAAAAAAAAAAAAAAAAAAAAAAP8A/wAA////AP8AFAAAAAAAAAAAAAD/AAAA/wAAAAAAAAAAAAD/AAAAAP8AAAAAAP8A/wAA////AP8AFAAAAAAAAAAAAAD/AAAA/wAAAAAAAAAAAAD/AAAAAP8AAP8AAAAAAAAAAP79AAAAAAAAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAAAAAP8AAAAAAP8AAAAAAAD/AP//AAAAAAAAAAAA////AAAAAP8AAAAAAAAAAAAAAAAAABL/AAD/AAAAAAAAAAAAAP7+AP8AAP///wAA/hUA//4AAAAAAAAAAAAAAAAAAAAAAP//AAD/AP8AAAAAAAAAABX/AP4AAP//AP8A//4A//4AAAAAAAAAAAAAAAAAAAAAAP8AAAD/AP8AAAAAAAAAAP8VAP8AAP////8A/v4A//8AAAAAAAAAAAAAAAAAAAAAAP//AAD/AP8AAAAAAAAAAP7+AP8AAP////8A/v8A/hYAAAAAAAAAAAAAAAAAAAAAAP//AAAAAAAAAAAAAP8SAAAAAAAAAAAAAAAAAAAAAAAAAP0AAAAAAAAAAAAAAAAAAP8AAAAAAP8AAAAAAAAAAP/+AP8AAP////8AFv4A//4AAAAAAAAAAAAAAAAAAAAAAP//AAAAAP//AAAAAP//AAAAAAAA/wAA/wAA/wAAAAAAAAD/AP//////AP///wAAFgD/AAAWAP8AAAAAAAAAAP//AAAAAP/+//8A//8A/v8AAAAAAAAAAAAAAAAAAAAAAAD+AAD+AP8AAAAAAAAAAP//AP8AAP///v4A//8AF/4AAAAAAAAAAAAAAAAAAAAAAP//AAD+AP8AAAAAAAAAAAD/AP8AAP////8A/////wAAAAAAAAAAAAAAAAAAAAAAAAATAAD/AP0AAAAAAAAAAP//AAAAAP//FP8AAP8A/v8AAAAAAAAAAAAAAAAAAAAA/wD/AAD/ABEAAAAAAAAAAAD/AAAAAAD//v8AAAAA//8AAAAAAAAAAAAAAAAAAAAAAP//AAD/AP8AAAAAAAAAAP//AP8AAP/6/xgA//8A/v8AAAAAAAAAAAAAAAAAAAAAAAD/AAD/AP8AAAAAAAAAAP//AP8AAP8Y//sA/////gAAAAAAAAAAAAAAAAAAAAAAAAD+//8AAAD//////////wAA/v8AAAAAAAD/AAD/AAD/FwAAAAAAAAAAAAAA/wAAAAAAAP8AAP8AAAD///8A/wAA//8AAAAAAAAAAAARAAAA//8AAAAAAAAAAAAAAAAAAP8AAAD///8AAAD/AAAAAP4AABQAAP0AAP8A////AP8AAAAAAAAAAAAAAAAAAAAAAAD/AAD/AP8AAAAAAAAAAP//AP0AABf///8A//////8AAAAAAAAAAAAAAAAAAAAAAP////8A/wAA////ABP//wAA/wAAAAAAAAAAAAD/AAD///8AAAAAAAAAAAAAAAAAAAAAAAAAAP8AAAAA//8AAAAAEwAAAAAAAAAAAAD/AAAA//8AAAAAAAAAAAD/AAAAAAAAAAAAAP8AAAAA//8AAAAAEwAAAAAAAAAAAAD/AAAA//8AAAAAAAAAAAD/AAAAAAAA",
+    "encoding": "int8-base64",
+    "scale": 0.02148678359084242
+  },
+  "embedding": {
+    "data": "CPoP8OEG/P78EA4ODgP+APwegRIP+foYOw4VC+Md6R478v7mGvr5Assa+C3u/e7v9CXaEDPZFvYi0gHsB9r2Dtj4Df++K/wVHBD/Av0lHQbj9AUXMNsD9//e+twH7ez34/UFFzDbA/f+3vrdB+3s99jrGfnFLP0ODBn8/wArHwPqBe8VMeAA8Qbb/+QG9PgBNgTo4QD39/nkJgo6CATk+w4bOBvm1u3qBeoLwe7cBwnU+d8IExgcBhbs/AYiDAH9IR0M7/sEHvgJ+wv8BtoSFPoQIA0VGhMP9vr2BOcLFvIVFSL97BD78Pz/B/IC9BfzDAT25xwD0t/9Bwj28u31/AoT9/YI+hf+DP//BgTsAQv69QTcFPbs+/AQ+wQD//UDDwoQ9vwM+wP3AAnz/fgNDgMIEgzx+f76/xPw9vL2/QEH/v/qF/rm6/oPA/P68vX6B/7/6xf65uv6DwPz+vL1+uX/CAwT/Qrn+/D2/QX5ERbl/wcME/wK5/vw9v0F+REW5QAICxP9Cuf78Pb9BfkRFvzq4AP59Qv6BPj7/hQLBPH86uAD+fUL+wT4+/4UCwTx/ergA/n1C/oE+Pv+FAsE8QoT9/YI+hj+DP//BgTsAQv/DwgUBA8CDwgD+gMNCQ8H/w8IFAQPAw8IA/oDDQkPB/4PCBQEDwMPCAP6Aw0JDwcKE/f2CPoX/gz//wYE7QELDw0NAvMABvkB+wn3AvIIAvf2EhHr9v8B9wcB+gTyCPL1Cvr4Awb88Pj3/QwCCfoJ9Qn6+AMG/PD49/0MAgn6CQD6CgUA/PkGAvX1/AoH+/kA+goFAPz5BgL19fwKB/v6APoKBgD8+AYC9vT8Cgb7+g7zA/QACv778fv+EAHy/fwO9AP0AAr++vH7/hAB8v38BwIOCfv9Afr3BvoGEAL89wcCDgn7/QH69wb6Bg8D+/f5DP7zBwcGAgbyAP79B+4A+Qz+8gYHBQIG8gD9/QfuAPkM/vMHBwUCBvIA/v0H7gD5+PT7Cw34DP/99PQFAvUJ+ff0+wsN+Az//fT0BQL1Cfn48/oLDfcM//309AUC9QkR/vj/8fUBCvwUD/z2AgfsEf74APL1AQr8FA/89gIH7PwAC//7+AbxAvYNBgsEBgn8AAz/+/gG8QL2DQYLBAYK/AAM//v4BvEC9g0GCwQGCgcNB/79AvoD/P8G9P38AwcHDQj+/QL6A/z/BvT9/AQHBw0I/v0C+gP8/wb0/fwDB/kM/vMHBwUCBvIA/f0H7gD5DP7yBwcFAgbyAP79B+4A+Qz+8gcHBQIG8gD+/QfuAAwS+QEF/wb8AQT9CPzn9P4ABAoLBA4GAwMAAgT7Cgn7AAQKCwQOBgMDAAIE+woJ+wAHBwMJAwMC+P76AfUDCvT6BA//CAkJCvr8+v/3/gMD9Aj/8wH1+wYWFf8C+Q387/QI//MB9fsHFhX/AvkN/O8I/wUE9/4M9gX8AwMF9QT7Bw0I/v0C+gP8/wb0/f0EBwcNCP79AvoD/P8F9P38Awf6/g8D9/v8AwID/P4B+/v7+/4PA/f7/QMCAvz+APv7+wD9/hH59f39/Aj+7PgG9QEA/f4R+fT9/fwI/uz4BvUBBAQC+wj+7/IEAwPw/fb9/QQEAvsI/u/yBAMD8P72/P0PABEMBP8BCA71/v30+gIFDwARDAT/AQgO9f799PoCBfQFCgcE9gLz/vn6+f3+Dw30BQsHBPYC9P75+vn9/g8NCAAFA/f+DPYF/AMDBPYE+wgABQT3/Qz2BfwDAwX1BPv9DAD58/X8BPbxDvoE/AP8/QwA+fT1+wT28Q76BPwC/P7yB/8IAAYD9wD++wD++fv+8gf/CAAGA/cA/vsA/vr6/vIH/wgABgP3AP/7AP75+wD6CgUA/PkGAvX1/AoH+/kA+goGAPz4BgL19fwKBvv5APoKBgD8+QYC9vX8Cgb7+g8AEQwE/wEHDvb+/fT6AgUPABEMBP8BBw72/v31+gIFDwARDAT/AQgO9f799foCBQYCDgn7/QD69wb6BhAD+/cGAg4J+/0A+vcG+gYPAvv3BgIOCfv9APr4BvoGEAL89wAN9AX6/v4HEPgDA/36/gIMEvkBBf8G+wEE/Qj85/T+/gL/9AP7EgML+wL+CAUNDfn49PsLDfgM//309AUC9QkN9wYG/gX8B/QA8f7w//3/DPcGBv4F/Af0APH+8P/+/w33BQb+BfwH9QDx/vD//f/1A/oGDP0B+QEL+ATyDP379QP6Bwz9AfoBC/cE8wz9+/UD+gYM/QH5AQv3BfIM/fv9DAD59PX7BPbxDvoE/AL8/QwA+PT1+wT28Q76BPwC/P0MAPn09fwE9vEN+gT8AvwJ/Qn3/woBAfwBA/8A+wkHCf0J+P8KAQH7AQP/APwJBwn8CPj/CgAB+wED/wD8CQf9+AMO9PwC/vUEBfwE9w33/fgDD/T8Av71BAX8BPcN9/34Aw70/AL+9QQF/AT3DfcF+gAGBwb8CQ8O//0LBPT5BfoABgcG/AkPDv/9CwT0+QX6AAYHBvwJDw7//QsE9Pnx7e0A8Pzy+/z8DBL9BAn38e3tAO/88vv8/AwS/QQJ9/7yB/8I/wYD9wD/+wD++fr+8gf/CAAHA/cA/vsA/vn6/vIH/wgABgP3AP77AP76+g7zA/QACv768fv+EAHy/fwADfQF+v7+BxD4AwL9+v4C8fv9BRAGCPT+9/wECPwCCfH7/QUQBwj0/ff8BAj7Agnx+/0FEAcI9P73/AMI/AIJCAAFBPf+DPcF/AMDBPUE+wgABQP3/gz3BfwDAwT2BPvw+fz5AAcABwYICwT79f/88Pn8+QAHAAcGCAwE+/b//PD5/PkABwAHBggLBPv1//wD+/3wD/z3+fYL/wP9/Pj9BPr98A/79/n2CwAD/fz4/fb7B+wF+vUC+QX8AgYD/Qb2+wfsBPr1AvoF/AIGA/0GCAoCCfr+Avf9EPT48fsCBggKAgn6/wL3/RD0+PH7AgYICgIJ+v8C9/0Q9Pjx+wIG+fjz+gsN+Az//fT0BQL1Cfz/DP/7+AXxAvYNBgsEBgn0CP/zAfb7BhYU/wL5DfzvAPoKBgD8+QYC9fT8Cgb7+v34Aw/0/AL+9QQF/AT3Dffx7e0A8Pzy+/z8DBL9BAn3CAsCCfr+Avf9EPT48fsCBvoED/8ICQkK+/z6//f+AwP1Cvr4Awb88Pj3/QwCCfoJ+wX68vcVAgoFEgMGB/cSCQT9AQQDBRQJEfvw/gcKAAAGCBX7+BD19/wE/vsAAhDy+fYP7PH+B/r7D/8FAgb5/AEF9gzsAPkKCvgN7PUN/Q0M8P8PBggIDf0CDgb9//8GAA31Bfr+/gcQ+AMD/fr+AgAN9AX6/v4HEPgDA/36/gL59g/s8f4H+vsP/wUCBvn7BAb3/AYJ7PUD+AUD+PoAAgQF9/wGCez0A/gFA/j7AQIEBvf8Bgrs9QP4BQP4+gEC+Qz+8gcHBgIG8gD9/QfuAPkM/vMGBwUCBvIA/v0H7gDx+/0FEAcI9P73/AMI/AIJ8fv9BRAHCPT99/wDCPwCCfD5/PkABwAHBggMBPv1//zw+fz5AAcABwYICwT79f/8/wr+CQAB/AwEAvgAEgAGDP8K/gkAAfwMBAL4ABIABgwABAoLBA4GAwQBAgP7Cgn7AAQKCwQOBgMDAQIE+woJ+/v09AEAAwrwDgYABQ4P/vf69PQBAAQK8A4GAAUOD/73AvbsAvnxAQr18vv5BvwG+gL27AL58QEK9fL7+Qb8BvoABwcDCQMEAvj++gH1Awr0AAcHAwkDAwL4/vsB9QMK9AAHBwMJAwMC+P77AfUDCvQMEvkBBv8G/AEE/Qj85/T/CAAFBPf9DPcF/AMDBfUE+wgABQT3/gz2BfwDAwX1BPv+Av/0A/sRAgv7Av4IBg0N/gL/9AP7EQML+wL+CAYNDQcNCP79AvoC/P8F9P38AwcJ/An4/woAAfwBA/8A+wkHCAAFBPf+DPYF/AMDBfUE+wj/BQT3/gz2BfwDBAX1BPsICgIJ+v8C9/0Q9Pjx+wIGBAb3/AYJ7PUD+AUD+PsBAg33Bgb+BfwI9ADx/vD//f/w+fz5AAcABwYIDAT79f/88Pn8+QAHAAcGCAwE+/b//PD5/PkABwAHBggMBPv1//z8AAz/+/gG8QL2DQYLBAYJ+/4PA/f7/QMCA/z+APv7+/7yB/8I/wcD9wD/+wD++fr7/g8D9/r9AwID/P4A+/v7+/4PA/f7/AMCA/z+APv7+/v+DwP3+vwDAgP8/gD7+/v+Av/0AvsSAwv7Av4IBQ0NAPoKBQD8+QYC9fX8Cgb7+QD6CgYA/PkGAvX0/AoH+/n/Cv4JAAH8DAQC+AASAAYM/gr+CQAB/AwEAvgAEv8GC/8K/gkAAfwMBAL4ABL/Bgz1A/oHDP0B+QEL9wXzDP379QP6Bgz9AfkBC/gF8gz9+w4A9wgT8QME+Pj+Dv38+vsOAPcIE/EDBPn4/g79/Pr7DgD3CBPxAwT4+P0O/fz6+/oED/8ICQkK+/z6//f+AwP5BA//CAkJCvr8+v/3/gMD+gQP/wgJCQr6/Pr/9/4DAwzw/w8GCAgN/QMOBvz//wYM8P8QBggIDf0DDgX8//8F/wr+CQAB/AwEAvgAEgAGDP8K/gkAAfwMBAL4ABIABgv/Cv4JAAH8DAQC+AASAAYM9Ar6+AMG/PD49/0MAgn6CfQK+vgDBvzw+Pf9DAIJ+gn0Cfr4Awb88Pj3/QwCCfoJ9vsH7AX69QL6BfwCBgP9Bvb7B+wF+/UC+gX8AgYD/QYA+goGAPz5BgL29fwKBvv6B/btAPgE/gX58wwPBRIJBAf27QD4Bf0F+fMMDwQSCAQJ/Aj4/woBAfwBA/8A+wkHAP3+Efn0/f38CP7s+Ab1AQD9/hH59P39/Aj97PgG9QEA/f4R+fT9/fwI/uz4BvUBBAQC+wj+7/IEAwPw/fb8/QQEAvsI/u/yBAMD8P32/P0EBAL7CP7v8gQDA/D99vz9AAQKCwQOBgMEAAIE+woJ+wAECgsEDgYDBAECA/sKCfsABAoLBA4GAwMBAgP7Cgn7AAQKCwQOBgMEAAIE+woJ+wAECgsEDgYDBAECBPsKCfsABQoLBA4GAwMAAgT7Cgn7CwsC+vb1BP3vCAEM/gHsEQoLAvr29QT97ggBDP4B7BH7Bfry9hUCCgUSAwYH9xIJ+wX68vYVAgoFEgMHB/cSCQcCDgn7/QD69wb6BhAC+/f5+PT7Cw34DP/98/QFAvUJ+/TzAQADCvAOBgAFDg/+9/r09AEBAwrwDgYABQ4P/vf79PMBAAMK8A4GAAUOD/73Bf0BBAMFEwkR+/D+BwoAAAT9AQQDBRQJEfvw/gcKAAD+8gf/CAAGA/cA/vsA//r6AP3+Efn1/f38CP7s+Ab1AQD9/hH59P39/Aj+7PgG9QEA/f4R+fT9/fwI/ez4BvUBBfoABgcG/AkPDv/9CwT0+QX6AAYHBvwJDw7//QsE9PkF/QEEAwUTCRH78P4HCgAABf0BBAMFFAkR+/D+BwoAAAX9AQQDBRMJEfvw/gcKAAAC9u0C+fEBCvXy+/kG/Ab6AvbsAvnyAQr18vv5BvwG+gL27QL58QEL9vL7+Qb8BvoGCBX7+BD19/wE/vsAAhDyBggV+/gQ9ff8BP77AAMQ8vn2D+zx/gf6+w//BQIG+fv59g/s8f4H+vsP/wUCBvn7DwARDAT/AQgO9f799PoCBQ8AEQwE/wEHDvb+/fT6AgUPABEMBP8BCA71/v30+gIF9AULBwT2AfT++fr5/f4PDfQFCgYE9gLz/vn6+f3+Dw30BQsHBPYC8/75+vn9/Q8NDfcFBv4F/Af0APH+8P/+/w33Bgb+BfwH9ADx/vD//f/+8gf/CAAGA/cA//sA/vn6/vIH/wgABgP3AP77AP/6+gT7/fAP+/f59gv/A/38+P0D+v3wD/v3+fYM/wP9/Pj9AAcHAwkDAwL4/voB9QMK9AAHBwMJAwMC+P76AfUDCvQOAPcHE/EDBPj4/Q79/Pr7DgD3BxPxAwT5+P0O/fz6+wn8CPj/CgEB+wED/wD7CQcJ/Qn4/woBAPwBA/8A+wkHDvQD9AAK/vrx+/8QAfL9/BH++QDx9QEK/BQP/PYCCOwHAg4J+/0B+vcG+gYPA/v39QP6Bwz9AfoBC/cF8wz9+wX6AAYHBvwJDw7//QsE9Pn2+wfsBfr1AvoF/AIGA/0GBAb3/AYJ7PUD+AUD+PsAAgf27QD4Bf4F+fMMDwUSCQQKCwL69vYE/u4IAQz+AewRDPcGBv4F/Af0APH+8P/9/w33Bgb+BfwH9ADx/vD//f/9+AMO9PwC/vUEBfwE9w33/AAM//v4BfEC9g0GCwQGCfwADP/7+AXxAvYNBgsEBgr+Av/0A/sSAwv7Av4IBg0N/gL/9AP7EgIL+wL+CAUNDQAHBwMJAwMC+P77AfUDCvTw+fz5AAcABwYIDAT79f/88Pn8+QAHAAcGCAsE+/b//PD5/PkABwAHBggMBPv1//wBBfcM7AD5Cgn4Dez0Df0NAQX2DOwA+QoJ+A3t9A39DQzwAA8GCAgN/QIOBvz//wYM8P8PBggIDf0DDgb9/gAFDPD/DwYIBw39Ag4F/f7/BfoED/8ICQkK+vz6//f+AwP5BA//CAkJCvv8+v/3/wMD+gQP/wgJCQr6/Pr/9/4DAwAHBwMJAgQC+P77AfUDCvQABwcDCQMDAvj++gH1Awr0AAcHAwkDAwL4/vsB9QMK9An8Cff/CgAB/AED/wD7CQcJ/Qj4/woBAPsBA/8A+wkHCfwI+P8KAQH8AQP/APsJBwcNCP78AvoD/P8F9P38AwcHDQf+/QL6A/z/BvT9/AQHBw0H/v0C+gP8/wb0/f0EBw7zA/QACv768Pv+EAHy/fwO9AP0AAr++/D7/xAB8v38+fjz+wsM+Az//fT0BQL1Cfn49PsLDfcN//3z9AUC9QkR/vkA8fUBCvwUD/z2AgjsEf74//H1AQr8FA/89gII7Pz/DP/7+AXxAvYNBgsEBgn8AAz/+/gF8QL2DQYLBAYJ9Aj/8wH1+wYWFP8C+Q387/QI//MB9vsGFhT/AvkN/O8A+goFAPz4BQL19PwKB/v6APoKBQD8+AUC9fX8Cgf7+QYCDgn7/QD6+Ab6Bg8D+/cHAg4J+v0A+vgG+gYQA/v3AA31Bfr+/gcQ+AMD/fr+AvUD+wcM/QH6AQv4BfMM/fv1A/oGDP0B+gEL+AXyDP37/fgDD/T8Av71BAX8BPcN9/34Aw/0/AL+9QQF/AT3DfcF+gAGBwb8CQ8O//0LBPT5BfoABgcG/AkPDv/9CwX1+fHt7QDv/PL7/PwMEv0ECffx7e0A8Pzy+/z8DBL9BAn39vsH7AX69QL6BfwBBgP9Bvb7B+wF+vUC+gX8AgYD/QYICgIJ+v8C9/0Q9Pjx+wIGCAoDCfr/Avf+EPT48fsCBgQG9/wGCez0A/gFA/j7AQIEBvf8Bgns9QP4BQP4+wACCP8FBPf9DPYF/AMDBfUE+/v+DwP3+vwDAgP8/gH7+/v6BA//CAkJCvv8+v/3/gMD+gQO/wgJCQr7/Pr/9/4DA/QK+vgDBvzw+Pf9DAIJ+gn1Cvr4Awb88Pj3/QsCCfoJB/btAPgE/gX58wwPBBIIBAf27QD4Bf0F+fMMDwQSCAQJ/An4/woBAfwBA/8A+wkHCwsC+vb2BP3uCAEM/gHsEQsLAvr29gT+7ggBDP4B7BH7Bfry9hUBCgUSAwcH9xIJ+wX68vYVAgoFEgMGB/cSCf7yB/8IAAYD9wD++wD/+voE/QEEAwUUCRH78P4HCgAABf0BBAMFFAkR+/D+BwoAAAYIFfv4EPX3/AT++wACEPIGCBX7+BD19/sE/vsAAxDy+fYP7PH+B/r7DwAFAgb5+/n2D+zx/gf6+w7/BQIG+fsBBfYM7AD5Cgr4Dez0DP0NAQX3DOwA+QoK+A3t9Az9DQzw/w8GCAgN/QIOBv3+AAYM8P8PBggIDf0CDgb9//8G/QwA+PP1+wT28Q36BPwC/P0MAPnz9fsE9vEO+gT8Avz9DAD59PX8BPbxDvoE/AP8+/4PA/f6/AMCA/z+Afv7+/v+DwP3+vwDAgP8/gH7+/v9+AMP9PwC/vUEBfwE9w33AA30Bfr+/gcQ+AMD/fr+AgAN9AX6/v4HEPgDAv36/gIADfUF+v7+BhD4AwP9+v4C9vsH7AX69QL6BfwBBgP9BvkBAgT2AQAABPwA+wECBAH5AAIE9gEAAAT8APsAAwQABf4B/v0A/wH7AQAC/QEA/AX+Af79AP8B+wEAA/0BAPwF/gH+/QD/AfsBAAL9AQD8B/4H/vsD/wL4BP8F/AEB/PD/AgDqDP4HDgMC/QAMCgMY+fv1Cvv9AO4K/hL8/fX99v0C/e4M/gYIBgEC/woIARb6+vcK+/4B8Aj/EP3+9v72/QL+7wz9BggGAQL/CgcAFvr69wr7/gHwCP8Q/f72/vj+AgDyCf8EBQT/Av8IBgEU+v32Cf39APAJ/w/8/vf98P8CAOoM/gcOAwL9AAwKAxj5+/UK+/0A7Qr/Evz89P31+Qb87w3+BAMIAAH/DQgA+PsF//MJAAMBBv8BAAkGAfD7Bf/rDf8FCAYB/QEOCwIPAvf4//3//voKBBEDAvn/DAH6+QD+/v76CQINAQH6/w4B+fj//f7++QoDEAIB+f7/CA0K+vT8+QT3A+z99gMEBAcNB/v0+/kB+gPv+/YBAgQHDAf89Pv5AfoD7/v2AQIFBg4G+fb7/AD7A/L7+AIC/wgNCvr0/PkE9wPs/fYDBPH/9gQGBQgAB/j//woCAAH1/vYBBgUHAQX6/wEJA///9f73AQYFBwEF+v8BCQL///b++AEEBgcCBPz/AwgDAP/x//YDBgQIAAf4//8KAgABAQICAQMBAQH+AP4B/QED/QACAgEDAQEB/v//AP0BA/0CBAL//wH+Af8AAv3//wEC//8EAf7+/wEAAf//AP/+/wD//wT+/f///wL/+/4C/QABAQD+A//7/AEBAfz//f//BAAEAwH/AAIE/f///f4AAf0BAwIB/gH9//7+////BAQCAAEB/v8D/QH/AQEB/QH+/wP//v39/wH9/AT+Af8A/wAE/QL//wACBf0BAf/+/wD+AwD8AgICAAH8AP//AvsA/P//AQUCAvz//f8BAv8BA/z+//4AAQACAQIDAf/9//8AA/8CAAD/AwEB/gAFAAEDAAECAwEDAgEBAAAB/wIC///9/AAAAQP8AwIAAQQE//0B/foB/vwAA/38//4B/wL+BP0BAv8B/wL9APv/+wD/AP/8AgACAAIB/v///gD//v4A///8BP/+/v4CAAD///7/AwD9AwX8AQH//f8D///+/wL/A/7/AwAA/wAB/wD/AwIAAgIBAwEBAf4A/wD9AQP9AAICAQMBAQD+//8A/QED/QIDAv8AAf8B/wAB/f//AQL//wQA/v//AQAB/wAA////AP8ABP79AAD/Av/7/gH9AAEBAf8CAPz9AQEB/AD+//8EAAQDAQAAAgP+AP/9/wEB/gEDAQH+AP3///////8DAwIAAQH+AAP+Af8BAQH+Af8AAwD+/f3/Af39A/4B/wH/AAP+Af8AAAEE/gEB//8AAP4DAP0CAgEAAf0AAP8C+wD9//8BBAIC/f/+/wEC/wAC/P7//gACAAIBAgMB//4A/wAC/wIAAP8DAQH+AAQAAQIAAQIDAQQCAQEAAQH/AwL///39AAABAvwDAQABAwT//gH+/AD+/AAD/f3//gH/Af8D/gIBAAH/Av0A/f/9AP8AAP0CAAIAAQH+AAD/AAD+/wH///wD//7+/gMAAf///v8DAP4CBPwBAf7+/wP/////Av8C/gACAAD/AAEAAP8CAgACAgECAQEB/v//AP0BAv0AAgIBAgEBAP7//wD+AQP9AQQCAP8A/gH/AAL8//8BAv7/BAH+/v8AAQD//wD///8A//8F/v3///8C//v+Av0AAAEB/wL/+/wCAAH7//3/AAMABAMB/wECBP3///3+AQL8AQMCAv0B/P/+/v4A/wQEAgABAf3/BP0C/wEBAf0B//8DAP79/f8B/vwE/gH/Af8ABPwC//8AAgX9AQD//v8B/QP//AICAgAC/AD//wL7APv//wIFAQL8//3/AQL/AQP7/v/+AAIAAgICAwH//QD//wP/AwD//wMBAP7/Bv8BAwABAgMCAwIBAQAAAP8CAv/+/fwAAAED+wQBAAEEBP/+AP37Af78AAP9/P/+Av8C/gT9AQL/Af8C/QD8APwA/wD//AIAAgACAf4AAP4A//7/Af7//AT//v7+AwAA///+/wQA/gIF/AEB/v7/BP///v8C/wL+AAMAAP8AAQAA/wMCAAICAQMBAQH+AP4B/QED/QECAgEDAQEA/QD+Af0BA/0=",
+    "encoding": "int8-base64",
+    "scale": 0.05658852960181048
+  },
+  "exact_prompts": {
+    "check boundary tests for this function": 31,
+    "check input validation in this handler": 46,
+    "check naming quality in this code": 25,
+    "check null handling in this code": 13,
+    "check resource cleanup in this code": 14,
+    "check retry logic in this code": 28,
+    "check this function for edge cases": 11,
+    "check type consistency in this code": 24,
+    "explain this asynchronous code path": 35,
+    "explain this binary search implementation": 17,
+    "explain this caching code": 32,
+    "explain this class and its methods": 33,
+    "explain this data validation schema": 44,
+    "explain this decorator code": 38,
+    "explain this event handler code": 40,
+    "explain this loop step by step": 41,
+    "explain this merge algorithm code": 18,
+    "explain this parser code": 42,
+    "explain this queue processing code": 36,
+    "explain this recursive function": 39,
+    "explain this regular expression": 43,
+    "explain this sorting code": 34,
+    "explain this state machine code": 37,
+    "explain what this code does": 45,
+    "find brittle assumptions in this code": 2,
+    "find duplicated logic in this code": 27,
+    "find hidden side effects in this code": 47,
+    "find memory leak risks in this code": 21,
+    "find off by one risks in this code": 4,
+    "find performance problems in this code": 22,
+    "find readability problems in this code": 20,
+    "gravion review check boundary tests for this function": 31,
+    "gravion review check input validation in this handler": 46,
+    "gravion review check naming quality in this code": 25,
+    "gravion review check null handling in this code": 13,
+    "gravion review check resource cleanup in this code": 14,
+    "gravion review check retry logic in this code": 28,
+    "gravion review check this function for edge cases": 11,
+    "gravion review check type consistency in this code": 24,
+    "gravion review explain this asynchronous code path": 35,
+    "gravion review explain this binary search implementation": 17,
+    "gravion review explain this caching code": 32,
+    "gravion review explain this class and its methods": 33,
+    "gravion review explain this data validation schema": 44,
+    "gravion review explain this decorator code": 38,
+    "gravion review explain this event handler code": 40,
+    "gravion review explain this loop step by step": 41,
+    "gravion review explain this merge algorithm code": 18,
+    "gravion review explain this parser code": 42,
+    "gravion review explain this queue processing code": 36,
+    "gravion review explain this recursive function": 39,
+    "gravion review explain this regular expression": 43,
+    "gravion review explain this sorting code": 34,
+    "gravion review explain this state machine code": 37,
+    "gravion review explain what this code does": 45,
+    "gravion review find brittle assumptions in this code": 2,
+    "gravion review find duplicated logic in this code": 27,
+    "gravion review find hidden side effects in this code": 47,
+    "gravion review find memory leak risks in this code": 21,
+    "gravion review find off by one risks in this code": 4,
+    "gravion review find performance problems in this code": 22,
+    "gravion review find readability problems in this code": 20,
+    "gravion review review concurrency safety here": 30,
+    "gravion review review dependency choices in this project": 26,
+    "gravion review review error handling in this code": 16,
+    "gravion review review logging in this code": 19,
+    "gravion review review test coverage for this module": 10,
+    "gravion review review this api design": 0,
+    "gravion review review this authentication code": 7,
+    "gravion review review this cli argument parsing": 1,
+    "gravion review review this code for bugs": 29,
+    "gravion review review this code for security issues": 3,
+    "gravion review review this configuration loading code": 9,
+    "gravion review review this database query code": 6,
+    "gravion review review this error message wording": 12,
+    "gravion review review this file handling code": 8,
+    "gravion review review this migration code": 23,
+    "gravion review review this pagination code": 5,
+    "gravion review summarize review findings by severity": 15,
+    "help me check boundary tests for this function": 31,
+    "help me check input validation in this handler": 46,
+    "help me check naming quality in this code": 25,
+    "help me check null handling in this code": 13,
+    "help me check resource cleanup in this code": 14,
+    "help me check retry logic in this code": 28,
+    "help me check this function for edge cases": 11,
+    "help me check type consistency in this code": 24,
+    "help me explain this asynchronous code path": 35,
+    "help me explain this binary search implementation": 17,
+    "help me explain this caching code": 32,
+    "help me explain this class and its methods": 33,
+    "help me explain this data validation schema": 44,
+    "help me explain this decorator code": 38,
+    "help me explain this event handler code": 40,
+    "help me explain this loop step by step": 41,
+    "help me explain this merge algorithm code": 18,
+    "help me explain this parser code": 42,
+    "help me explain this queue processing code": 36,
+    "help me explain this recursive function": 39,
+    "help me explain this regular expression": 43,
+    "help me explain this sorting code": 34,
+    "help me explain this state machine code": 37,
+    "help me explain what this code does": 45,
+    "help me find brittle assumptions in this code": 2,
+    "help me find duplicated logic in this code": 27,
+    "help me find hidden side effects in this code": 47,
+    "help me find memory leak risks in this code": 21,
+    "help me find off by one risks in this code": 4,
+    "help me find performance problems in this code": 22,
+    "help me find readability problems in this code": 20,
+    "help me review concurrency safety here": 30,
+    "help me review dependency choices in this project": 26,
+    "help me review error handling in this code": 16,
+    "help me review logging in this code": 19,
+    "help me review test coverage for this module": 10,
+    "help me review this api design": 0,
+    "help me review this authentication code": 7,
+    "help me review this cli argument parsing": 1,
+    "help me review this code for bugs": 29,
+    "help me review this code for security issues": 3,
+    "help me review this configuration loading code": 9,
+    "help me review this database query code": 6,
+    "help me review this error message wording": 12,
+    "help me review this file handling code": 8,
+    "help me review this migration code": 23,
+    "help me review this pagination code": 5,
+    "help me summarize review findings by severity": 15,
+    "please check boundary tests for this function": 31,
+    "please check input validation in this handler": 46,
+    "please check naming quality in this code": 25,
+    "please check null handling in this code": 13,
+    "please check resource cleanup in this code": 14,
+    "please check retry logic in this code": 28,
+    "please check this function for edge cases": 11,
+    "please check type consistency in this code": 24,
+    "please explain this asynchronous code path": 35,
+    "please explain this binary search implementation": 17,
+    "please explain this caching code": 32,
+    "please explain this class and its methods": 33,
+    "please explain this data validation schema": 44,
+    "please explain this decorator code": 38,
+    "please explain this event handler code": 40,
+    "please explain this loop step by step": 41,
+    "please explain this merge algorithm code": 18,
+    "please explain this parser code": 42,
+    "please explain this queue processing code": 36,
+    "please explain this recursive function": 39,
+    "please explain this regular expression": 43,
+    "please explain this sorting code": 34,
+    "please explain this state machine code": 37,
+    "please explain what this code does": 45,
+    "please find brittle assumptions in this code": 2,
+    "please find duplicated logic in this code": 27,
+    "please find hidden side effects in this code": 47,
+    "please find memory leak risks in this code": 21,
+    "please find off by one risks in this code": 4,
+    "please find performance problems in this code": 22,
+    "please find readability problems in this code": 20,
+    "please review concurrency safety here": 30,
+    "please review dependency choices in this project": 26,
+    "please review error handling in this code": 16,
+    "please review logging in this code": 19,
+    "please review test coverage for this module": 10,
+    "please review this api design": 0,
+    "please review this authentication code": 7,
+    "please review this cli argument parsing": 1,
+    "please review this code for bugs": 29,
+    "please review this code for security issues": 3,
+    "please review this configuration loading code": 9,
+    "please review this database query code": 6,
+    "please review this error message wording": 12,
+    "please review this file handling code": 8,
+    "please review this migration code": 23,
+    "please review this pagination code": 5,
+    "please summarize review findings by severity": 15,
+    "review concurrency safety here": 30,
+    "review dependency choices in this project": 26,
+    "review error handling in this code": 16,
+    "review logging in this code": 19,
+    "review test coverage for this module": 10,
+    "review this api design": 0,
+    "review this authentication code": 7,
+    "review this cli argument parsing": 1,
+    "review this code for bugs": 29,
+    "review this code for security issues": 3,
+    "review this configuration loading code": 9,
+    "review this database query code": 6,
+    "review this error message wording": 12,
+    "review this file handling code": 8,
+    "review this migration code": 23,
+    "review this pagination code": 5,
+    "summarize review findings by severity": 15
+  },
+  "features": [
+    "this",
+    "code",
+    "review",
+    "this code",
+    "explain",
+    "in",
+    "in this",
+    "explain this",
+    "in this code",
+    "review this",
+    "check",
+    "find",
+    "for",
+    "by",
+    "function",
+    "handling",
+    "code for",
+    "error",
+    "for this",
+    "handler",
+    "handling in",
+    "handling in this",
+    "logic",
+    "logic in",
+    "logic in this",
+    "problems",
+    "problems in",
+    "problems in this",
+    "review this code",
+    "risks",
+    "risks in",
+    "risks in this",
+    "this code for",
+    "this function",
+    "validation",
+    "algorithm",
+    "algorithm code",
+    "and",
+    "and its",
+    "and its methods",
+    "api",
+    "api design",
+    "argument",
+    "argument parsing",
+    "assumptions",
+    "assumptions in",
+    "assumptions in this",
+    "asynchronous",
+    "asynchronous code",
+    "asynchronous code path",
+    "authentication",
+    "authentication code",
+    "binary",
+    "binary search",
+    "binary search implementation",
+    "boundary",
+    "boundary tests",
+    "boundary tests for",
+    "brittle",
+    "brittle assumptions",
+    "brittle assumptions in",
+    "bugs",
+    "by one",
+    "by one risks",
+    "by severity",
+    "by step",
+    "caching",
+    "caching code",
+    "cases",
+    "check boundary",
+    "check boundary tests",
+    "check input",
+    "check input validation",
+    "check naming",
+    "check naming quality",
+    "check null",
+    "check null handling",
+    "check resource",
+    "check resource cleanup",
+    "check retry",
+    "check retry logic",
+    "check this",
+    "check this function",
+    "check type",
+    "check type consistency",
+    "choices",
+    "choices in",
+    "choices in this",
+    "class",
+    "class and",
+    "class and its",
+    "cleanup",
+    "cleanup in",
+    "cleanup in this",
+    "cli",
+    "cli argument",
+    "cli argument parsing",
+    "code does",
+    "code for bugs",
+    "code for security",
+    "code path",
+    "concurrency",
+    "concurrency safety",
+    "concurrency safety here",
+    "configuration",
+    "configuration loading",
+    "configuration loading code",
+    "consistency",
+    "consistency in",
+    "consistency in this",
+    "coverage",
+    "coverage for",
+    "coverage for this",
+    "data",
+    "data validation",
+    "data validation schema",
+    "database",
+    "database query",
+    "database query code",
+    "decorator",
+    "decorator code",
+    "dependency",
+    "dependency choices",
+    "dependency choices in",
+    "design",
+    "does",
+    "duplicated",
+    "duplicated logic",
+    "duplicated logic in",
+    "edge",
+    "edge cases",
+    "effects",
+    "effects in",
+    "effects in this",
+    "error handling",
+    "error handling in",
+    "error message",
+    "error message wording",
+    "event",
+    "event handler",
+    "event handler code",
+    "explain this asynchronous",
+    "explain this binary",
+    "explain this caching",
+    "explain this class",
+    "explain this data",
+    "explain this decorator",
+    "explain this event",
+    "explain this loop",
+    "explain this merge",
+    "explain this parser",
+    "explain this queue",
+    "explain this recursive",
+    "explain this regular",
+    "explain this sorting",
+    "explain this state",
+    "explain what",
+    "explain what this",
+    "expression",
+    "file",
+    "file handling",
+    "file handling code",
+    "find brittle",
+    "find brittle assumptions",
+    "find duplicated",
+    "find duplicated logic",
+    "find hidden",
+    "find hidden side",
+    "find memory",
+    "find memory leak",
+    "find off",
+    "find off by",
+    "find performance",
+    "find performance problems",
+    "find readability",
+    "find readability problems",
+    "findings",
+    "findings by",
+    "findings by severity",
+    "for bugs",
+    "for edge",
+    "for edge cases",
+    "for security",
+    "for security issues",
+    "for this function",
+    "for this module",
+    "function for",
+    "function for edge",
+    "handler code",
+    "handling code",
+    "here",
+    "hidden",
+    "hidden side",
+    "hidden side effects",
+    "implementation",
+    "in this handler",
+    "in this project",
+    "input",
+    "input validation",
+    "input validation in",
+    "issues",
+    "its",
+    "its methods",
+    "leak",
+    "leak risks",
+    "leak risks in",
+    "loading",
+    "loading code",
+    "logging",
+    "logging in",
+    "logging in this",
+    "loop",
+    "loop step",
+    "loop step by",
+    "machine",
+    "machine code",
+    "memory",
+    "memory leak",
+    "memory leak risks",
+    "merge",
+    "merge algorithm",
+    "merge algorithm code",
+    "message",
+    "message wording",
+    "methods",
+    "migration",
+    "migration code",
+    "module",
+    "naming",
+    "naming quality",
+    "naming quality in",
+    "null",
+    "null handling",
+    "null handling in",
+    "off",
+    "off by",
+    "off by one",
+    "one",
+    "one risks",
+    "one risks in",
+    "pagination",
+    "pagination code",
+    "parser",
+    "parser code",
+    "parsing",
+    "path",
+    "performance",
+    "performance problems",
+    "performance problems in",
+    "processing",
+    "processing code",
+    "project",
+    "quality",
+    "quality in",
+    "quality in this",
+    "query",
+    "query code",
+    "queue",
+    "queue processing",
+    "queue processing code",
+    "readability",
+    "readability problems",
+    "readability problems in",
+    "recursive",
+    "recursive function",
+    "regular",
+    "regular expression",
+    "resource",
+    "resource cleanup",
+    "resource cleanup in",
+    "retry",
+    "retry logic",
+    "retry logic in",
+    "review concurrency",
+    "review concurrency safety",
+    "review dependency",
+    "review dependency choices",
+    "review error",
+    "review error handling",
+    "review findings",
+    "review findings by",
+    "review logging",
+    "review logging in",
+    "review test",
+    "review test coverage",
+    "review this api",
+    "review this authentication",
+    "review this cli",
+    "review this configuration",
+    "review this database",
+    "review this error",
+    "review this file",
+    "review this migration",
+    "review this pagination",
+    "safety",
+    "safety here",
+    "schema",
+    "search",
+    "search implementation",
+    "security",
+    "security issues",
+    "severity",
+    "side",
+    "side effects",
+    "side effects in",
+    "sorting",
+    "sorting code",
+    "state",
+    "state machine",
+    "state machine code",
+    "step",
+    "step by",
+    "step by step",
+    "summarize",
+    "summarize review",
+    "summarize review findings",
+    "test",
+    "test coverage",
+    "test coverage for",
+    "tests",
+    "tests for",
+    "tests for this",
+    "this api",
+    "this api design",
+    "this asynchronous",
+    "this asynchronous code",
+    "this authentication",
+    "this authentication code",
+    "this binary",
+    "this binary search",
+    "this caching",
+    "this caching code",
+    "this class",
+    "this class and",
+    "this cli",
+    "this cli argument",
+    "this code does",
+    "this configuration",
+    "this configuration loading",
+    "this data",
+    "this data validation",
+    "this database",
+    "this database query",
+    "this decorator",
+    "this decorator code",
+    "this error",
+    "this error message",
+    "this event",
+    "this event handler",
+    "this file",
+    "this file handling",
+    "this function for",
+    "this handler",
+    "this loop",
+    "this loop step",
+    "this merge",
+    "this merge algorithm",
+    "this migration",
+    "this migration code",
+    "this module",
+    "this pagination",
+    "this pagination code",
+    "this parser",
+    "this parser code",
+    "this project",
+    "this queue",
+    "this queue processing",
+    "this recursive",
+    "this recursive function",
+    "this regular",
+    "this regular expression",
+    "this sorting",
+    "this sorting code",
+    "this state",
+    "this state machine",
+    "type",
+    "type consistency",
+    "type consistency in",
+    "validation in",
+    "validation in this",
+    "validation schema",
+    "what",
+    "what this",
+    "what this code",
+    "wording",
+    "gravion",
+    "gravion review",
+    "help",
+    "help me",
+    "me",
+    "please",
+    "gravion review explain",
+    "gravion review review",
+    "help me explain",
+    "help me review",
+    "me explain",
+    "me review",
+    "please explain",
+    "please review",
+    "review explain",
+    "review review",
+    "me explain this",
+    "please explain this",
+    "review explain this",
+    "me review this",
+    "please review this",
+    "review review this",
+    "gravion review check",
+    "help me check",
+    "me check",
+    "please check",
+    "review check",
+    "gravion review find",
+    "help me find",
+    "me find",
+    "please find",
+    "review find",
+    "gravion review summarize",
+    "help me summarize",
+    "me check boundary",
+    "me check input",
+    "me check naming",
+    "me check null",
+    "me check resource",
+    "me check retry",
+    "me check this",
+    "me check type",
+    "me explain what",
+    "me find brittle",
+    "me find duplicated",
+    "me find hidden",
+    "me find memory",
+    "me find off",
+    "me find performance",
+    "me find readability",
+    "me review concurrency",
+    "me review dependency",
+    "me review error",
+    "me review logging",
+    "me review test",
+    "me summarize",
+    "me summarize review",
+    "please check boundary",
+    "please check input",
+    "please check naming",
+    "please check null",
+    "please check resource",
+    "please check retry",
+    "please check this",
+    "please check type",
+    "please explain what",
+    "please find brittle",
+    "please find duplicated",
+    "please find hidden",
+    "please find memory",
+    "please find off",
+    "please find performance",
+    "please find readability",
+    "please review concurrency",
+    "please review dependency",
+    "please review error",
+    "please review logging",
+    "please review test",
+    "please summarize",
+    "please summarize review",
+    "review check boundary",
+    "review check input",
+    "review check naming",
+    "review check null",
+    "review check resource",
+    "review check retry",
+    "review check this",
+    "review check type",
+    "review explain what",
+    "review find brittle",
+    "review find duplicated",
+    "review find hidden",
+    "review find memory",
+    "review find off",
+    "review find performance",
+    "review find readability",
+    "review review concurrency",
+    "review review dependency",
+    "review review error",
+    "review review logging",
+    "review review test",
+    "review summarize",
+    "review summarize review"
+  ],
+  "format": "gravion-core-local-v3",
+  "model_id": "gravion-review",
+  "parameter_count": 33191,
+  "trained_from": {
+    "classes": 48,
+    "dataset_sha256": "450675ba101c256f4d0409132091b53fe230900a1c8e922db1acd1ab61d460bf",
+    "examples": 192,
+    "features": 488,
+    "source": "data/gravion-review-seed.jsonl"
+  },
+  "transitions": {
+    "<s>": {
+      "a": 0.02083333,
+      "arguments": 0.02083333,
+      "assumptions": 0.02083333,
+      "check": 0.125,
+      "configuration": 0.02083333,
+      "coverage": 0.02083333,
+      "edge": 0.02083333,
+      "error": 0.02083333,
+      "every": 0.02083333,
+      "files": 0.02083333,
+      "findings": 0.02083333,
+      "good": 0.02083333,
+      "it": 0.04166667,
+      "logs": 0.02083333,
+      "long": 0.02083333,
+      "look": 0.04166667,
+      "migrations": 0.02083333,
+      "mixed": 0.02083333,
+      "names": 0.02083333,
+      "prefer": 0.02083333,
+      "repeated": 0.02083333,
+      "retries": 0.02083333,
+      "reviewing": 0.02083333,
+      "shared": 0.02083333,
+      "test": 0.02083333,
+      "the": 0.27083333,
+      "this": 0.02083333,
+      "validate": 0.02083333,
+      "watch": 0.02083333
+    },
+    "a": {
+      "clear": 0.25,
+      "current": 0.08333333,
+      "direct": 0.08333333,
+      "function": 0.08333333,
+      "named": 0.08333333,
+      "result": 0.16666667,
+      "set": 0.08333333,
+      "smaller": 0.08333333,
+      "sorted": 0.08333333
+    },
+    "about": {
+      "input": 1.0
+    },
+    "above": {
+      "each": 1.0
+    },
+    "absent": {
+      "</s>": 1.0
+    },
+    "acknowledges": {
+      "or": 1.0
+    },
+    "across": {
+      "the": 0.5,
+      "threads": 0.5
+    },
+    "add": {
+      "behavior": 0.5,
+      "tests": 0.5
+    },
+    "adds": {
+      "context": 1.0
+    },
+    "after": {
+      "a": 0.33333333,
+      "it": 0.33333333,
+      "they": 0.33333333
+    },
+    "against": {
+      "empty": 1.0
+    },
+    "allowed": {
+      "characters": 0.5,
+      "values": 0.5
+    },
+    "allows": {
+      "listed": 1.0
+    },
+    "always": {
+      "taking": 1.0
+    },
+    "an": {
+      "expiry": 0.5,
+      "explicit": 0.5
+    },
+    "and": {
+      "acknowledges": 0.02173913,
+      "allowed": 0.02173913,
+      "behavior": 0.02173913,
+      "builds": 0.02173913,
+      "discards": 0.02173913,
+      "exit": 0.02173913,
+      "fail": 0.02173913,
+      "index": 0.02173913,
+      "just": 0.02173913,
+      "keep": 0.02173913,
+      "locks": 0.02173913,
+      "make": 0.02173913,
+      "network": 0.02173913,
+      "never": 0.02173913,
+      "no": 0.02173913,
+      "only": 0.02173913,
+      "permission": 0.02173913,
+      "ranges": 0.02173913,
+      "rare": 0.02173913,
+      "references": 0.02173913,
+      "refreshing": 0.02173913,
+      "rename": 0.02173913,
+      "reorders": 0.02173913,
+      "repetition": 0.02173913,
+      "reports": 0.02173913,
+      "resource": 0.02173913,
+      "returns": 0.02173913,
+      "safe": 0.02173913,
+      "security": 0.02173913,
+      "single": 0.02173913,
+      "slow": 0.02173913,
+      "stop": 0.02173913,
+      "stops": 0.02173913,
+      "style": 0.02173913,
+      "tested": 0.02173913,
+      "that": 0.06521739,
+      "the": 0.02173913,
+      "transaction": 0.02173913,
+      "unclear": 0.02173913,
+      "unexpected": 0.02173913,
+      "updates": 0.02173913,
+      "what": 0.02173913,
+      "whether": 0.02173913,
+      "writes": 0.02173913
+    },
+    "answer": {
+      "</s>": 1.0
+    },
+    "any": {
+      "input": 1.0
+    },
+    "anything": {
+      "else": 1.0
+    },
+    "api": {
+      "has": 1.0
+    },
+    "appends": {
+      "the": 1.0
+    },
+    "applies": {
+      "its": 1.0
+    },
+    "apply": {
+      "everywhere": 0.5,
+      "safe": 0.5
+    },
+    "are": {
+      "no": 1.0
+    },
+    "arguments": {
+      "should": 1.0
+    },
+    "arithmetic": {
+      "against": 1.0
+    },
+    "arrive": {
+      "</s>": 1.0
+    },
+    "ascending": {
+      "order": 1.0
+    },
+    "assumptions": {
+      "about": 1.0
+    },
+    "at": {
+      "and": 0.33333333,
+      "once": 0.33333333,
+      "the": 0.33333333
+    },
+    "attempts": {
+      "and": 1.0
+    },
+    "avoid": {
+      "secrets": 1.0
+    },
+    "back": {
+      "off": 1.0
+    },
+    "base": {
+      "case": 1.0
+    },
+    "based": {
+      "on": 1.0
+    },
+    "be": {
+      "meaningful": 0.2,
+      "missing": 0.2,
+      "released": 0.2,
+      "reversible": 0.2,
+      "validated": 0.2
+    },
+    "become": {
+      "one": 1.0
+    },
+    "before": {
+      "anything": 0.25,
+      "or": 0.25,
+      "use": 0.25,
+      "using": 0.25
+    },
+    "behavior": {
+      "and": 0.33333333,
+      "before": 0.33333333,
+      "each": 0.33333333
+    },
+    "below": {
+      "exactly": 1.0
+    },
+    "between": {
+      "attempts": 0.5,
+      "reads": 0.5
+    },
+    "blocking": {
+      "then": 1.0
+    },
+    "blocks": {
+      "should": 1.0
+    },
+    "body": {
+      "once": 1.0
+    },
+    "boundaries": {
+      "</s>": 1.0
+    },
+    "boundary": {
+      "</s>": 0.25,
+      "so": 0.25,
+      "values": 0.5
+    },
+    "bounds": {
+      "slice": 0.5,
+      "total": 0.5
+    },
+    "branches": {
+      "add": 1.0
+    },
+    "break": {
+      "first": 0.5,
+      "it": 0.5
+    },
+    "bugs": {
+      "check": 0.5,
+      "enforce": 0.5
+    },
+    "builds": {
+      "a": 1.0
+    },
+    "by": {
+      "describing": 0.16666667,
+      "one": 0.16666667,
+      "severity": 0.33333333,
+      "step": 0.16666667,
+      "token": 0.16666667
+    },
+    "cache": {
+      "stores": 1.0
+    },
+    "call": {
+      "until": 1.0
+    },
+    "callers": {
+      "</s>": 1.0
+    },
+    "calls": {
+      "hidden": 1.0
+    },
+    "can": {
+      "be": 0.5,
+      "do": 0.5
+    },
+    "carry": {
+      "context": 1.0
+    },
+    "case": {
+      "returns": 1.0
+    },
+    "cases": {
+      "error": 0.5,
+      "to": 0.5
+    },
+    "catches": {
+      "expected": 1.0
+    },
+    "cause": {
+      "</s>": 0.5,
+      "subtle": 0.5
+    },
+    "changes": {
+      "file": 1.0
+    },
+    "changing": {
+      "its": 1.0
+    },
+    "characters": {
+      "and": 1.0
+    },
+    "check": {
+      "empty": 0.09090909,
+      "for": 0.09090909,
+      "input": 0.09090909,
+      "inputs": 0.09090909,
+      "licenses": 0.09090909,
+      "loop": 0.09090909,
+      "or": 0.09090909,
+      "page": 0.09090909,
+      "parameterization": 0.09090909,
+      "password": 0.09090909,
+      "path": 0.09090909
+    },
+    "checks": {
+      "before": 0.5,
+      "the": 0.5
+    },
+    "class": {
+      "groups": 1.0
+    },
+    "cleanly": {
+      "</s>": 1.0
+    },
+    "cleans": {
+      "up": 1.0
+    },
+    "cleanup": {
+      "then": 1.0
+    },
+    "clear": {
+      "api": 0.25,
+      "default": 0.25,
+      "limit": 0.25,
+      "messages": 0.25
+    },
+    "close": {
+      "even": 1.0
+    },
+    "code": {
+      "compares": 0.2,
+      "reads": 0.2,
+      "starts": 0.2,
+      "takes": 0.2,
+      "tracks": 0.2
+    },
+    "codes": {
+      "should": 1.0
+    },
+    "collection": {
+      "cause": 1.0
+    },
+    "collections": {
+      "unclosed": 1.0
+    },
+    "compares": {
+      "values": 1.0
+    },
+    "configuration": {
+      "should": 1.0
+    },
+    "connections": {
+      "and": 1.0
+    },
+    "consistent": {
+      "across": 0.5,
+      "errors": 0.5
+    },
+    "constructor": {
+      "sets": 1.0
+    },
+    "context": {
+      "avoid": 0.5,
+      "cleans": 0.5
+    },
+    "copies": {
+      "and": 1.0
+    },
+    "core": {
+      "logic": 1.0
+    },
+    "correctness": {
+      "and": 1.0
+    },
+    "counts": {
+      "stable": 1.0
+    },
+    "cover": {
+      "temporary": 1.0
+    },
+    "coverage": {
+      "gaps": 1.0
+    },
+    "current": {
+      "state": 1.0
+    },
+    "data": {
+      "and": 1.0
+    },
+    "decorator": {
+      "wraps": 1.0
+    },
+    "deep": {
+      "nesting": 1.0
+    },
+    "default": {
+      "before": 1.0
+    },
+    "defaults": {
+      "and": 1.0
+    },
+    "dependencies": {
+      "check": 1.0
+    },
+    "describing": {
+      "allowed": 1.0
+    },
+    "detail": {
+      "</s>": 1.0
+    },
+    "direct": {
+      "answer": 1.0
+    },
+    "discards": {
+      "half": 1.0
+    },
+    "do": {
+      "next": 1.0
+    },
+    "duplicate": {
+      "items": 1.0
+    },
+    "each": {
+      "and": 0.16666667,
+      "boundary": 0.16666667,
+      "call": 0.16666667,
+      "method": 0.16666667,
+      "part": 0.16666667,
+      "step": 0.16666667
+    },
+    "early": {
+      "help": 1.0
+    },
+    "edge": {
+      "cases": 1.0
+    },
+    "else": {
+      "</s>": 1.0
+    },
+    "empty": {
+      "and": 0.33333333,
+      "input": 0.33333333,
+      "pages": 0.33333333
+    },
+    "encoding": {
+      "and": 0.5,
+      "secret": 0.5
+    },
+    "ends": {
+      "and": 1.0
+    },
+    "enforce": {
+      "one": 1.0
+    },
+    "error": {
+      "</s>": 0.33333333,
+      "handling": 0.33333333,
+      "messages": 0.16666667,
+      "paths": 0.16666667
+    },
+    "errors": {
+      "and": 0.25,
+      "occur": 0.25,
+      "surface": 0.25,
+      "when": 0.25
+    },
+    "even": {
+      "on": 1.0
+    },
+    "event": {
+      "reads": 1.0
+    },
+    "events": {
+      "arrive": 1.0
+    },
+    "every": {
+      "path": 0.33333333,
+      "problem": 0.33333333,
+      "value": 0.33333333
+    },
+    "everywhere": {
+      "at": 1.0
+    },
+    "exactly": {
+      "at": 1.0
+    },
+    "exit": {
+      "codes": 1.0
+    },
+    "expected": {
+      "failures": 1.0
+    },
+    "expiry": {
+      "returning": 0.5,
+      "token": 0.5
+    },
+    "explicit": {
+      "and": 0.5,
+      "check": 0.5
+    },
+    "fail": {
+      "with": 1.0
+    },
+    "failed": {
+      "why": 1.0
+    },
+    "failures": {
+      "adds": 0.25,
+      "only": 0.25,
+      "reveal": 0.25,
+      "searchable": 0.25
+    },
+    "fast": {
+      "and": 1.0
+    },
+    "fields": {
+      "types": 1.0
+    },
+    "file": {
+      "</s>": 0.33333333,
+      "handling": 0.33333333,
+      "writes": 0.33333333
+    },
+    "files": {
+      "close": 0.5,
+      "connections": 0.5
+    },
+    "findings": {
+      "by": 1.0
+    },
+    "finds": {
+      "</s>": 1.0
+    },
+    "first": {
+      "</s>": 0.25,
+      "error": 0.25,
+      "make": 0.25,
+      "then": 0.25
+    },
+    "fixes": {
+      "apply": 1.0
+    },
+    "flatten": {
+      "and": 1.0
+    },
+    "flooding": {
+      "output": 1.0
+    },
+    "follow": {
+      "up": 1.0
+    },
+    "for": {
+      "bugs": 0.16666667,
+      "callers": 0.16666667,
+      "global": 0.16666667,
+      "growing": 0.16666667,
+      "races": 0.16666667,
+      "repeated": 0.16666667
+    },
+    "found": {
+      "or": 1.0
+    },
+    "fresh": {
+      "values": 1.0
+    },
+    "function": {
+      "solves": 0.5,
+      "to": 0.5
+    },
+    "functions": {
+      "deep": 1.0
+    },
+    "gaps": {
+      "usually": 1.0
+    },
+    "global": {
+      "state": 1.0
+    },
+    "good": {
+      "error": 1.0
+    },
+    "groups": {
+      "related": 1.0
+    },
+    "growing": {
+      "collections": 1.0
+    },
+    "half": {
+      "each": 1.0
+    },
+    "handler": {
+      "reacts": 1.0
+    },
+    "handles": {
+      "results": 1.0
+    },
+    "handling": {
+      "and": 0.6,
+      "catches": 0.2,
+      "encoding": 0.2
+    },
+    "has": {
+      "one": 0.5,
+      "predictable": 0.5
+    },
+    "help": {
+      "text": 1.0
+    },
+    "helper": {
+      "so": 1.0
+    },
+    "helpers": {
+      "</s>": 1.0
+    },
+    "hidden": {
+      "inside": 1.0
+    },
+    "hide": {
+      "in": 1.0
+    },
+    "hides": {
+      "the": 1.0
+    },
+    "history": {
+      "and": 1.0
+    },
+    "hurt": {
+      "readability": 1.0
+    },
+    "i": {
+      "will": 1.0
+    },
+    "in": {
+      "ascending": 0.2,
+      "error": 0.2,
+      "one": 0.2,
+      "order": 0.4
+    },
+    "including": {
+      "when": 1.0
+    },
+    "index": {
+      "arithmetic": 0.33333333,
+      "use": 0.33333333,
+      "would": 0.33333333
+    },
+    "innocent": {
+      "looking": 1.0
+    },
+    "input": {
+      "</s>": 0.16666667,
+      "and": 0.16666667,
+      "boundary": 0.16666667,
+      "size": 0.16666667,
+      "token": 0.16666667,
+      "validation": 0.16666667
+    },
+    "inputs": {
+      "</s>": 0.25,
+      "applies": 0.25,
+      "consistent": 0.25,
+      "edge": 0.25
+    },
+    "inside": {
+      "innocent": 0.5,
+      "loops": 0.5
+    },
+    "into": {
+      "parts": 1.0
+    },
+    "is": {
+      "found": 0.5,
+      "in": 0.5
+    },
+    "it": {
+      "and": 0.125,
+      "checks": 0.125,
+      "finds": 0.125,
+      "into": 0.125,
+      "matters": 0.125,
+      "reads": 0.125,
+      "runs": 0.125,
+      "walks": 0.125
+    },
+    "item": {
+      "inputs": 0.5,
+      "it": 0.5
+    },
+    "items": {
+      "in": 0.33333333,
+      "remain": 0.33333333,
+      "very": 0.33333333
+    },
+    "its": {
+      "body": 0.2,
+      "core": 0.4,
+      "inputs": 0.2,
+      "payload": 0.2
+    },
+    "job": {
+      "and": 1.0
+    },
+    "just": {
+      "above": 0.5,
+      "below": 0.5
+    },
+    "keep": {
+      "naming": 1.0
+    },
+    "kept": {
+      "after": 1.0
+    },
+    "keys": {
+      "apply": 1.0
+    },
+    "large": {
+      "input": 1.0
+    },
+    "length": {
+      "range": 1.0
+    },
+    "library": {
+      "suffices": 1.0
+    },
+    "licenses": {
+      "update": 1.0
+    },
+    "limit": {
+      "</s>": 1.0
+    },
+    "limits": {
+      "and": 1.0
+    },
+    "list": {
+      "findings": 1.0
+    },
+    "listed": {
+      "transitions": 1.0
+    },
+    "lists": {
+      "required": 0.5,
+      "together": 0.5
+    },
+    "locale": {
+      "or": 1.0
+    },
+    "locks": {
+      "should": 1.0
+    },
+    "logic": {
+      "</s>": 0.5,
+      "step": 0.5
+    },
+    "logs": {
+      "should": 1.0
+    },
+    "long": {
+      "functions": 1.0
+    },
+    "longer": {
+      "needed": 1.0
+    },
+    "look": {
+      "for": 1.0
+    },
+    "looking": {
+      "helpers": 1.0
+    },
+    "lookups": {
+      "that": 1.0
+    },
+    "loop": {
+      "bounds": 0.5,
+      "repeats": 0.5
+    },
+    "loops": {
+      "unnecessary": 1.0
+    },
+    "maintained": {
+      "minimal": 1.0
+    },
+    "make": {
+      "failures": 0.5,
+      "them": 0.5
+    },
+    "match": {
+      "behavior": 1.0
+    },
+    "matches": {
+      "text": 1.0
+    },
+    "matters": {
+      "and": 1.0
+    },
+    "meaningful": {
+      "</s>": 1.0
+    },
+    "messages": {
+      "</s>": 0.5,
+      "should": 0.5
+    },
+    "method": {
+      "has": 1.0
+    },
+    "middle": {
+      "of": 1.0
+    },
+    "migrations": {
+      "should": 1.0
+    },
+    "minimal": {
+      "dependencies": 1.0
+    },
+    "missing": {
+      "file": 0.5,
+      "needs": 0.5
+    },
+    "mixed": {
+      "types": 1.0
+    },
+    "mutable": {
+      "state": 1.0
+    },
+    "named": {
+      "event": 1.0
+    },
+    "names": {
+      "hurt": 0.33333333,
+      "should": 0.33333333,
+      "validated": 0.33333333
+    },
+    "naming": {
+      "style": 1.0
+    },
+    "needed": {
+      "</s>": 1.0
+    },
+    "needs": {
+      "an": 0.5,
+      "synchronization": 0.5
+    },
+    "nesting": {
+      "and": 1.0
+    },
+    "network": {
+      "calls": 1.0
+    },
+    "never": {
+      "hides": 1.0
+    },
+    "next": {
+      "</s>": 0.33333333,
+      "value": 0.66666667
+    },
+    "no": {
+      "items": 0.25,
+      "longer": 0.25,
+      "surprises": 0.25,
+      "useful": 0.25
+    },
+    "occur": {
+      "</s>": 1.0
+    },
+    "of": {
+      "a": 0.5,
+      "the": 0.5
+    },
+    "off": {
+      "between": 0.5,
+      "by": 0.5
+    },
+    "on": {
+      "error": 0.2,
+      "every": 0.2,
+      "realistic": 0.2,
+      "the": 0.4
+    },
+    "once": {
+      "</s>": 0.66666667,
+      "per": 0.33333333
+    },
+    "one": {
+      "collection": 0.2,
+      "errors": 0.2,
+      "job": 0.2,
+      "shape": 0.2,
+      "shared": 0.2
+    },
+    "ones": {
+      "</s>": 1.0
+    },
+    "only": {
+      "allows": 0.5,
+      "back": 0.5
+    },
+    "or": {
+      "a": 0.11111111,
+      "absent": 0.11111111,
+      "after": 0.11111111,
+      "errors": 0.11111111,
+      "index": 0.11111111,
+      "reports": 0.11111111,
+      "retries": 0.11111111,
+      "timing": 0.11111111,
+      "triggers": 0.11111111
+    },
+    "order": {
+      "</s>": 0.66666667,
+      "processes": 0.33333333
+    },
+    "ordering": {
+      "and": 0.5,
+      "locale": 0.5
+    },
+    "original": {
+      "cause": 1.0
+    },
+    "outcome": {
+      "</s>": 1.0
+    },
+    "output": {
+      "</s>": 0.5,
+      "encoding": 0.5
+    },
+    "page": {
+      "bounds": 1.0
+    },
+    "pages": {
+      "return": 1.0
+    },
+    "parameterization": {
+      "index": 1.0
+    },
+    "parser": {
+      "reads": 1.0
+    },
+    "part": {
+      "in": 1.0
+    },
+    "parts": {
+      "</s>": 1.0
+    },
+    "password": {
+      "storage": 1.0
+    },
+    "path": {
+      "including": 0.5,
+      "safety": 0.5
+    },
+    "paths": {
+      "boundary": 1.0
+    },
+    "pattern": {
+      "matches": 1.0
+    },
+    "payload": {
+      "and": 1.0
+    },
+    "per": {
+      "item": 1.0
+    },
+    "performance": {
+      "then": 1.0
+    },
+    "permission": {
+      "checks": 1.0
+    },
+    "plainly": {
+      "rename": 1.0
+    },
+    "possible": {
+      "tested": 1.0
+    },
+    "predictable": {
+      "names": 1.0
+    },
+    "prefer": {
+      "maintained": 1.0
+    },
+    "problem": {
+      "each": 0.5,
+      "it": 0.5
+    },
+    "processes": {
+      "each": 0.5,
+      "it": 0.5
+    },
+    "purpose": {
+      "plainly": 1.0
+    },
+    "races": {
+      "between": 1.0
+    },
+    "range": {
+      "and": 1.0
+    },
+    "ranges": {
+      "and": 1.0
+    },
+    "rare": {
+      "branches": 1.0
+    },
+    "reacts": {
+      "to": 1.0
+    },
+    "readability": {
+      "and": 0.5,
+      "split": 0.5
+    },
+    "reads": {
+      "and": 0.2,
+      "input": 0.2,
+      "its": 0.4,
+      "the": 0.2
+    },
+    "realistic": {
+      "data": 1.0
+    },
+    "recent": {
+      "results": 1.0
+    },
+    "references": {
+      "kept": 1.0
+    },
+    "refreshing": {
+      "stale": 1.0
+    },
+    "related": {
+      "data": 1.0
+    },
+    "released": {
+      "on": 1.0
+    },
+    "remain": {
+      "</s>": 1.0
+    },
+    "rename": {
+      "</s>": 0.5,
+      "vague": 0.5
+    },
+    "reorders": {
+      "them": 1.0
+    },
+    "repeated": {
+      "blocks": 0.5,
+      "work": 0.5
+    },
+    "repeats": {
+      "its": 1.0
+    },
+    "repetition": {
+      "i": 1.0
+    },
+    "reports": {
+      "every": 0.5,
+      "the": 0.5
+    },
+    "required": {
+      "fields": 0.5,
+      "keys": 0.5
+    },
+    "resource": {
+      "cleanup": 1.0
+    },
+    "resources": {
+      "and": 1.0
+    },
+    "result": {
+      "i": 0.33333333,
+      "or": 0.33333333,
+      "size": 0.33333333
+    },
+    "results": {
+      "or": 0.5,
+      "with": 0.5
+    },
+    "retries": {
+      "based": 0.5,
+      "should": 0.5
+    },
+    "return": {
+      "cleanly": 1.0
+    },
+    "returning": {
+      "fresh": 1.0
+    },
+    "returns": {
+      "a": 1.0
+    },
+    "reveal": {
+      "no": 1.0
+    },
+    "reversible": {
+      "where": 1.0
+    },
+    "reviewing": {
+      "for": 1.0
+    },
+    "run": {
+      "once": 1.0
+    },
+    "runs": {
+      "without": 1.0
+    },
+    "safe": {
+      "defaults": 0.5,
+      "to": 0.5
+    },
+    "safety": {
+      "missing": 1.0
+    },
+    "say": {
+      "what": 1.0
+    },
+    "schema": {
+      "lists": 1.0
+    },
+    "searchable": {
+      "without": 1.0
+    },
+    "secret": {
+      "handling": 1.0
+    },
+    "secrets": {
+      "and": 1.0
+    },
+    "security": {
+      "first": 1.0
+    },
+    "sequence": {
+      "is": 1.0
+    },
+    "server": {
+      "before": 1.0
+    },
+    "session": {
+      "expiry": 1.0
+    },
+    "set": {
+      "or": 1.0
+    },
+    "sets": {
+      "the": 1.0
+    },
+    "severity": {
+      "</s>": 0.5,
+      "correctness": 0.5
+    },
+    "shape": {
+      "at": 1.0
+    },
+    "shared": {
+      "helper": 0.5,
+      "mutable": 0.5
+    },
+    "should": {
+      "be": 0.36363636,
+      "become": 0.09090909,
+      "carry": 0.09090909,
+      "cover": 0.09090909,
+      "match": 0.09090909,
+      "say": 0.09090909,
+      "state": 0.09090909,
+      "validate": 0.09090909
+    },
+    "single": {
+      "item": 1.0
+    },
+    "size": {
+      "limits": 0.5,
+      "ordering": 0.5
+    },
+    "slice": {
+      "ends": 1.0
+    },
+    "slow": {
+      "lookups": 1.0
+    },
+    "smaller": {
+      "next": 0.5,
+      "version": 0.5
+    },
+    "so": {
+      "fixes": 0.5,
+      "off": 0.5
+    },
+    "solves": {
+      "a": 1.0
+    },
+    "sorted": {
+      "lists": 0.5,
+      "range": 0.5
+    },
+    "speed": {
+      "up": 1.0
+    },
+    "split": {
+      "flatten": 1.0
+    },
+    "stable": {
+      "ordering": 1.0
+    },
+    "stale": {
+      "ones": 1.0
+    },
+    "standard": {
+      "library": 1.0
+    },
+    "starting": {
+      "state": 1.0
+    },
+    "starts": {
+      "work": 1.0
+    },
+    "state": {
+      "</s>": 0.16666667,
+      "and": 0.16666667,
+      "changes": 0.16666667,
+      "needs": 0.16666667,
+      "or": 0.16666667,
+      "purpose": 0.16666667
+    },
+    "step": {
+      "and": 0.33333333,
+      "by": 0.33333333,
+      "until": 0.33333333
+    },
+    "stop": {
+      "after": 1.0
+    },
+    "stops": {
+      "when": 1.0
+    },
+    "storage": {
+      "session": 1.0
+    },
+    "stores": {
+      "recent": 1.0
+    },
+    "structure": {
+      "and": 1.0
+    },
+    "style": {
+      "</s>": 0.5,
+      "consistent": 0.5
+    },
+    "subtle": {
+      "bugs": 1.0
+    },
+    "suffices": {
+      "</s>": 1.0
+    },
+    "surface": {
+      "</s>": 1.0
+    },
+    "surprises": {
+      "for": 1.0
+    },
+    "synchronization": {
+      "check": 1.0
+    },
+    "tail": {
+      "</s>": 1.0
+    },
+    "takes": {
+      "items": 1.0
+    },
+    "taking": {
+      "the": 1.0
+    },
+    "target": {
+      "is": 1.0
+    },
+    "temporary": {
+      "failures": 1.0
+    },
+    "test": {
+      "just": 1.0
+    },
+    "tested": {
+      "</s>": 0.5,
+      "on": 0.5
+    },
+    "tests": {
+      "there": 1.0
+    },
+    "text": {
+      "by": 0.5,
+      "should": 0.5
+    },
+    "that": {
+      "a": 0.2,
+      "can": 0.2,
+      "empty": 0.2,
+      "failures": 0.2,
+      "files": 0.2
+    },
+    "the": {
+      "base": 0.03225806,
+      "boundary": 0.03225806,
+      "cache": 0.03225806,
+      "class": 0.03225806,
+      "code": 0.12903226,
+      "constructor": 0.03225806,
+      "decorator": 0.03225806,
+      "file": 0.03225806,
+      "first": 0.03225806,
+      "function": 0.03225806,
+      "handler": 0.03225806,
+      "loop": 0.03225806,
+      "middle": 0.03225806,
+      "next": 0.03225806,
+      "original": 0.03225806,
+      "outcome": 0.03225806,
+      "parser": 0.03225806,
+      "pattern": 0.03225806,
+      "problem": 0.03225806,
+      "schema": 0.03225806,
+      "server": 0.03225806,
+      "smaller": 0.03225806,
+      "standard": 0.03225806,
+      "starting": 0.03225806,
+      "tail": 0.03225806,
+      "target": 0.03225806,
+      "user": 0.03225806,
+      "whole": 0.03225806
+    },
+    "them": {
+      "explicit": 0.5,
+      "until": 0.5
+    },
+    "then": {
+      "appends": 0.2,
+      "handles": 0.2,
+      "list": 0.2,
+      "performance": 0.2,
+      "readability": 0.2
+    },
+    "there": {
+      "first": 1.0
+    },
+    "they": {
+      "are": 0.5,
+      "arrive": 0.5
+    },
+    "this": {
+      "code": 1.0
+    },
+    "threads": {
+      "</s>": 1.0
+    },
+    "through": {
+      "each": 1.0
+    },
+    "timing": {
+      "break": 1.0
+    },
+    "to": {
+      "a": 0.25,
+      "add": 0.25,
+      "check": 0.25,
+      "run": 0.25
+    },
+    "together": {
+      "always": 1.0
+    },
+    "token": {
+      "by": 0.33333333,
+      "handling": 0.33333333,
+      "validates": 0.33333333
+    },
+    "total": {
+      "counts": 1.0
+    },
+    "tracks": {
+      "a": 1.0
+    },
+    "transaction": {
+      "boundaries": 1.0
+    },
+    "transitions": {
+      "when": 1.0
+    },
+    "triggers": {
+      "follow": 1.0
+    },
+    "two": {
+      "sorted": 1.0
+    },
+    "type": {
+      "length": 1.0
+    },
+    "types": {
+      "</s>": 0.33333333,
+      "and": 0.33333333,
+      "in": 0.33333333
+    },
+    "unclear": {
+      "names": 1.0
+    },
+    "unclosed": {
+      "resources": 1.0
+    },
+    "unexpected": {
+      "types": 1.0
+    },
+    "unnecessary": {
+      "copies": 1.0
+    },
+    "until": {
+      "the": 1.0
+    },
+    "up": {
+      "</s>": 0.33333333,
+      "resources": 0.33333333,
+      "work": 0.33333333
+    },
+    "update": {
+      "history": 1.0
+    },
+    "updates": {
+      "state": 1.0
+    },
+    "use": {
+      "</s>": 0.5,
+      "result": 0.5
+    },
+    "useful": {
+      "detail": 1.0
+    },
+    "user": {
+      "can": 1.0
+    },
+    "using": {
+      "any": 1.0
+    },
+    "usually": {
+      "hide": 1.0
+    },
+    "vague": {
+      "variables": 1.0
+    },
+    "validate": {
+      "required": 0.5,
+      "type": 0.5
+    },
+    "validated": {
+      "early": 0.5,
+      "inputs": 0.5
+    },
+    "validates": {
+      "structure": 1.0
+    },
+    "validation": {
+      "output": 1.0
+    },
+    "value": {
+      "processes": 0.33333333,
+      "that": 0.33333333,
+      "then": 0.33333333
+    },
+    "values": {
+      "and": 0.4,
+      "duplicate": 0.2,
+      "fast": 0.2,
+      "on": 0.2
+    },
+    "variables": {
+      "and": 1.0
+    },
+    "version": {
+      "of": 1.0
+    },
+    "very": {
+      "large": 1.0
+    },
+    "walk": {
+      "through": 1.0
+    },
+    "walks": {
+      "two": 1.0
+    },
+    "watch": {
+      "for": 1.0
+    },
+    "what": {
+      "failed": 0.5,
+      "the": 0.5
+    },
+    "when": {
+      "errors": 0.25,
+      "events": 0.25,
+      "no": 0.25,
+      "they": 0.25
+    },
+    "where": {
+      "possible": 1.0
+    },
+    "whether": {
+      "the": 1.0
+    },
+    "whole": {
+      "sequence": 1.0
+    },
+    "why": {
+      "it": 1.0
+    },
+    "will": {
+      "break": 0.5,
+      "walk": 0.5
+    },
+    "with": {
+      "an": 0.5,
+      "clear": 0.5
+    },
+    "without": {
+      "blocking": 0.33333333,
+      "changing": 0.33333333,
+      "flooding": 0.33333333
+    },
+    "work": {
+      "</s>": 0.33333333,
+      "inside": 0.33333333,
+      "without": 0.33333333
+    },
+    "would": {
+      "speed": 1.0
+    },
+    "wraps": {
+      "a": 1.0
+    },
+    "writes": {
+      "across": 0.5,
+      "and": 0.5
+    }
+  },
+  "unigram_weights": {
+    "a": 0.01606426,
+    "about": 0.00133869,
+    "above": 0.00133869,
+    "absent": 0.00133869,
+    "acknowledges": 0.00133869,
+    "across": 0.00267738,
+    "add": 0.00267738,
+    "adds": 0.00133869,
+    "after": 0.00401606,
+    "against": 0.00133869,
+    "allowed": 0.00267738,
+    "allows": 0.00133869,
+    "always": 0.00133869,
+    "an": 0.00267738,
+    "and": 0.06157965,
+    "answer": 0.00133869,
+    "any": 0.00133869,
+    "anything": 0.00133869,
+    "api": 0.00133869,
+    "appends": 0.00133869,
+    "applies": 0.00133869,
+    "apply": 0.00267738,
+    "are": 0.00133869,
+    "arguments": 0.00133869,
+    "arithmetic": 0.00133869,
+    "arrive": 0.00267738,
+    "ascending": 0.00133869,
+    "assumptions": 0.00133869,
+    "at": 0.00401606,
+    "attempts": 0.00133869,
+    "avoid": 0.00133869,
+    "back": 0.00133869,
+    "base": 0.00133869,
+    "based": 0.00133869,
+    "be": 0.00669344,
+    "become": 0.00133869,
+    "before": 0.00535475,
+    "behavior": 0.00401606,
+    "below": 0.00133869,
+    "between": 0.00267738,
+    "blocking": 0.00133869,
+    "blocks": 0.00133869,
+    "body": 0.00133869,
+    "boundaries": 0.00133869,
+    "boundary": 0.00535475,
+    "bounds": 0.00267738,
+    "branches": 0.00133869,
+    "break": 0.00267738,
+    "bugs": 0.00267738,
+    "builds": 0.00133869,
+    "by": 0.00803213,
+    "cache": 0.00133869,
+    "call": 0.00133869,
+    "callers": 0.00133869,
+    "calls": 0.00133869,
+    "can": 0.00267738,
+    "carry": 0.00133869,
+    "case": 0.00133869,
+    "cases": 0.00267738,
+    "catches": 0.00133869,
+    "cause": 0.00267738,
+    "changes": 0.00133869,
+    "changing": 0.00133869,
+    "characters": 0.00133869,
+    "check": 0.01472557,
+    "checks": 0.00267738,
+    "class": 0.00133869,
+    "cleanly": 0.00133869,
+    "cleans": 0.00133869,
+    "cleanup": 0.00133869,
+    "clear": 0.00535475,
+    "close": 0.00133869,
+    "code": 0.00669344,
+    "codes": 0.00133869,
+    "collection": 0.00133869,
+    "collections": 0.00133869,
+    "compares": 0.00133869,
+    "configuration": 0.00133869,
+    "connections": 0.00133869,
+    "consistent": 0.00267738,
+    "constructor": 0.00133869,
+    "context": 0.00267738,
+    "copies": 0.00133869,
+    "core": 0.00267738,
+    "correctness": 0.00133869,
+    "counts": 0.00133869,
+    "cover": 0.00133869,
+    "coverage": 0.00133869,
+    "current": 0.00133869,
+    "data": 0.00267738,
+    "decorator": 0.00133869,
+    "deep": 0.00133869,
+    "default": 0.00133869,
+    "defaults": 0.00133869,
+    "dependencies": 0.00133869,
+    "describing": 0.00133869,
+    "detail": 0.00133869,
+    "direct": 0.00133869,
+    "discards": 0.00133869,
+    "do": 0.00133869,
+    "duplicate": 0.00133869,
+    "each": 0.00803213,
+    "early": 0.00133869,
+    "edge": 0.00267738,
+    "else": 0.00133869,
+    "empty": 0.00401606,
+    "encoding": 0.00267738,
+    "ends": 0.00133869,
+    "enforce": 0.00133869,
+    "error": 0.00803213,
+    "errors": 0.00535475,
+    "even": 0.00133869,
+    "event": 0.00133869,
+    "events": 0.00133869,
+    "every": 0.00401606,
+    "everywhere": 0.00133869,
+    "exactly": 0.00133869,
+    "exit": 0.00133869,
+    "expected": 0.00133869,
+    "expiry": 0.00267738,
+    "explicit": 0.00267738,
+    "fail": 0.00133869,
+    "failed": 0.00133869,
+    "failures": 0.00535475,
+    "fast": 0.00133869,
+    "fields": 0.00133869,
+    "file": 0.00401606,
+    "files": 0.00267738,
+    "findings": 0.00267738,
+    "finds": 0.00133869,
+    "first": 0.00535475,
+    "fixes": 0.00133869,
+    "flatten": 0.00133869,
+    "flooding": 0.00133869,
+    "follow": 0.00133869,
+    "for": 0.00803213,
+    "found": 0.00133869,
+    "fresh": 0.00133869,
+    "function": 0.00267738,
+    "functions": 0.00133869,
+    "gaps": 0.00133869,
+    "global": 0.00133869,
+    "good": 0.00133869,
+    "groups": 0.00133869,
+    "growing": 0.00133869,
+    "half": 0.00133869,
+    "handler": 0.00133869,
+    "handles": 0.00133869,
+    "handling": 0.00669344,
+    "has": 0.00267738,
+    "help": 0.00133869,
+    "helper": 0.00133869,
+    "helpers": 0.00133869,
+    "hidden": 0.00133869,
+    "hide": 0.00133869,
+    "hides": 0.00133869,
+    "history": 0.00133869,
+    "hurt": 0.00133869,
+    "i": 0.00267738,
+    "in": 0.00669344,
+    "including": 0.00133869,
+    "index": 0.00401606,
+    "innocent": 0.00133869,
+    "input": 0.00803213,
+    "inputs": 0.00535475,
+    "inside": 0.00267738,
+    "into": 0.00133869,
+    "is": 0.00267738,
+    "it": 0.0107095,
+    "item": 0.00267738,
+    "items": 0.00401606,
+    "its": 0.00669344,
+    "job": 0.00133869,
+    "just": 0.00267738,
+    "keep": 0.00133869,
+    "kept": 0.00133869,
+    "keys": 0.00133869,
+    "large": 0.00133869,
+    "length": 0.00133869,
+    "library": 0.00133869,
+    "licenses": 0.00133869,
+    "limit": 0.00133869,
+    "limits": 0.00133869,
+    "list": 0.00133869,
+    "listed": 0.00133869,
+    "lists": 0.00267738,
+    "locale": 0.00133869,
+    "locks": 0.00133869,
+    "logic": 0.00267738,
+    "logs": 0.00133869,
+    "long": 0.00133869,
+    "longer": 0.00133869,
+    "look": 0.00267738,
+    "looking": 0.00133869,
+    "lookups": 0.00133869,
+    "loop": 0.00267738,
+    "loops": 0.00133869,
+    "maintained": 0.00133869,
+    "make": 0.00267738,
+    "match": 0.00133869,
+    "matches": 0.00133869,
+    "matters": 0.00133869,
+    "meaningful": 0.00133869,
+    "messages": 0.00267738,
+    "method": 0.00133869,
+    "middle": 0.00133869,
+    "migrations": 0.00133869,
+    "minimal": 0.00133869,
+    "missing": 0.00267738,
+    "mixed": 0.00133869,
+    "mutable": 0.00133869,
+    "named": 0.00133869,
+    "names": 0.00401606,
+    "naming": 0.00133869,
+    "needed": 0.00133869,
+    "needs": 0.00267738,
+    "nesting": 0.00133869,
+    "network": 0.00133869,
+    "never": 0.00133869,
+    "next": 0.00401606,
+    "no": 0.00535475,
+    "occur": 0.00133869,
+    "of": 0.00267738,
+    "off": 0.00267738,
+    "on": 0.00669344,
+    "once": 0.00401606,
+    "one": 0.00669344,
+    "ones": 0.00133869,
+    "only": 0.00267738,
+    "or": 0.01204819,
+    "order": 0.00401606,
+    "ordering": 0.00267738,
+    "original": 0.00133869,
+    "outcome": 0.00133869,
+    "output": 0.00267738,
+    "page": 0.00133869,
+    "pages": 0.00133869,
+    "parameterization": 0.00133869,
+    "parser": 0.00133869,
+    "part": 0.00133869,
+    "parts": 0.00133869,
+    "password": 0.00133869,
+    "path": 0.00267738,
+    "paths": 0.00133869,
+    "pattern": 0.00133869,
+    "payload": 0.00133869,
+    "per": 0.00133869,
+    "performance": 0.00133869,
+    "permission": 0.00133869,
+    "plainly": 0.00133869,
+    "possible": 0.00133869,
+    "predictable": 0.00133869,
+    "prefer": 0.00133869,
+    "problem": 0.00267738,
+    "processes": 0.00267738,
+    "purpose": 0.00133869,
+    "races": 0.00133869,
+    "range": 0.00267738,
+    "ranges": 0.00133869,
+    "rare": 0.00133869,
+    "reacts": 0.00133869,
+    "readability": 0.00267738,
+    "reads": 0.00669344,
+    "realistic": 0.00133869,
+    "recent": 0.00133869,
+    "references": 0.00133869,
+    "refreshing": 0.00133869,
+    "related": 0.00133869,
+    "released": 0.00133869,
+    "remain": 0.00133869,
+    "rename": 0.00267738,
+    "reorders": 0.00133869,
+    "repeated": 0.00267738,
+    "repeats": 0.00133869,
+    "repetition": 0.00133869,
+    "reports": 0.00267738,
+    "required": 0.00267738,
+    "resource": 0.00133869,
+    "resources": 0.00267738,
+    "result": 0.00401606,
+    "results": 0.00267738,
+    "retries": 0.00267738,
+    "return": 0.00133869,
+    "returning": 0.00133869,
+    "returns": 0.00267738,
+    "reveal": 0.00133869,
+    "reversible": 0.00133869,
+    "reviewing": 0.00133869,
+    "run": 0.00133869,
+    "runs": 0.00133869,
+    "safe": 0.00267738,
+    "safety": 0.00133869,
+    "say": 0.00133869,
+    "schema": 0.00133869,
+    "searchable": 0.00133869,
+    "secret": 0.00133869,
+    "secrets": 0.00133869,
+    "security": 0.00133869,
+    "sequence": 0.00133869,
+    "server": 0.00133869,
+    "session": 0.00133869,
+    "set": 0.00133869,
+    "sets": 0.00133869,
+    "severity": 0.00267738,
+    "shape": 0.00133869,
+    "shared": 0.00267738,
+    "should": 0.01472557,
+    "single": 0.00133869,
+    "size": 0.00267738,
+    "slice": 0.00133869,
+    "slow": 0.00133869,
+    "smaller": 0.00267738,
+    "so": 0.00267738,
+    "solves": 0.00133869,
+    "sorted": 0.00267738,
+    "speed": 0.00133869,
+    "split": 0.00133869,
+    "stable": 0.00133869,
+    "stale": 0.00133869,
+    "standard": 0.00133869,
+    "starting": 0.00133869,
+    "starts": 0.00133869,
+    "state": 0.00803213,
+    "step": 0.00401606,
+    "stop": 0.00133869,
+    "stops": 0.00133869,
+    "storage": 0.00133869,
+    "stores": 0.00133869,
+    "structure": 0.00133869,
+    "style": 0.00267738,
+    "subtle": 0.00133869,
+    "suffices": 0.00133869,
+    "surface": 0.00133869,
+    "surprises": 0.00133869,
+    "synchronization": 0.00133869,
+    "tail": 0.00133869,
+    "takes": 0.00133869,
+    "taking": 0.00133869,
+    "target": 0.00133869,
+    "temporary": 0.00133869,
+    "test": 0.00133869,
+    "tested": 0.00267738,
+    "tests": 0.00133869,
+    "text": 0.00267738,
+    "that": 0.00669344,
+    "the": 0.04149933,
+    "them": 0.00267738,
+    "then": 0.00669344,
+    "there": 0.00133869,
+    "they": 0.00267738,
+    "this": 0.00133869,
+    "threads": 0.00133869,
+    "through": 0.00133869,
+    "timing": 0.00133869,
+    "to": 0.00535475,
+    "together": 0.00133869,
+    "token": 0.00401606,
+    "total": 0.00133869,
+    "tracks": 0.00133869,
+    "transaction": 0.00133869,
+    "transitions": 0.00133869,
+    "triggers": 0.00133869,
+    "two": 0.00133869,
+    "type": 0.00133869,
+    "types": 0.00401606,
+    "unclear": 0.00133869,
+    "unclosed": 0.00133869,
+    "unexpected": 0.00133869,
+    "unnecessary": 0.00133869,
+    "until": 0.00401606,
+    "up": 0.00401606,
+    "update": 0.00133869,
+    "updates": 0.00133869,
+    "use": 0.00267738,
+    "useful": 0.00133869,
+    "user": 0.00133869,
+    "using": 0.00133869,
+    "usually": 0.00133869,
+    "vague": 0.00133869,
+    "validate": 0.00267738,
+    "validated": 0.00267738,
+    "validates": 0.00133869,
+    "validation": 0.00133869,
+    "value": 0.00401606,
+    "values": 0.00669344,
+    "variables": 0.00133869,
+    "version": 0.00133869,
+    "very": 0.00133869,
+    "walk": 0.00133869,
+    "walks": 0.00133869,
+    "watch": 0.00133869,
+    "what": 0.00267738,
+    "when": 0.00535475,
+    "where": 0.00133869,
+    "whether": 0.00133869,
+    "whole": 0.00133869,
+    "why": 0.00133869,
+    "will": 0.00267738,
+    "with": 0.00267738,
+    "without": 0.00401606,
+    "work": 0.00401606,
+    "would": 0.00133869,
+    "wraps": 0.00133869,
+    "writes": 0.00267738
+  },
+  "vocabulary": [
+    "a",
+    "about",
+    "above",
+    "absent",
+    "acknowledges",
+    "across",
+    "add",
+    "adds",
+    "after",
+    "against",
+    "algorithm",
+    "allowed",
+    "allows",
+    "always",
+    "an",
+    "and",
+    "answer",
+    "any",
+    "anything",
+    "api",
+    "appends",
+    "applies",
+    "apply",
+    "are",
+    "argument",
+    "arguments",
+    "arithmetic",
+    "arrive",
+    "ascending",
+    "assumptions",
+    "asynchronous",
+    "at",
+    "attempts",
+    "authentication",
+    "avoid",
+    "back",
+    "base",
+    "based",
+    "be",
+    "become",
+    "before",
+    "behavior",
+    "below",
+    "between",
+    "binary",
+    "blocking",
+    "blocks",
+    "body",
+    "boundaries",
+    "boundary",
+    "bounds",
+    "branches",
+    "break",
+    "brittle",
+    "bugs",
+    "builds",
+    "by",
+    "cache",
+    "caching",
+    "call",
+    "callers",
+    "calls",
+    "can",
+    "carry",
+    "case",
+    "cases",
+    "catches",
+    "cause",
+    "changes",
+    "changing",
+    "characters",
+    "check",
+    "checks",
+    "choices",
+    "class",
+    "cleanly",
+    "cleans",
+    "cleanup",
+    "clear",
+    "cli",
+    "close",
+    "code",
+    "codes",
+    "collection",
+    "collections",
+    "compares",
+    "concurrency",
+    "configuration",
+    "connections",
+    "consistency",
+    "consistent",
+    "constructor",
+    "context",
+    "copies",
+    "core",
+    "correctness",
+    "counts",
+    "cover",
+    "coverage",
+    "current",
+    "data",
+    "database",
+    "decorator",
+    "deep",
+    "default",
+    "defaults",
+    "dependencies",
+    "dependency",
+    "describing",
+    "design",
+    "detail",
+    "direct",
+    "discards",
+    "do",
+    "does",
+    "duplicate",
+    "duplicated",
+    "each",
+    "early",
+    "edge",
+    "effects",
+    "else",
+    "empty",
+    "encoding",
+    "ends",
+    "enforce",
+    "error",
+    "errors",
+    "even",
+    "event",
+    "events",
+    "every",
+    "everywhere",
+    "exactly",
+    "exit",
+    "expected",
+    "expiry",
+    "explain",
+    "explicit",
+    "expression",
+    "fail",
+    "failed",
+    "failures",
+    "fast",
+    "fields",
+    "file",
+    "files",
+    "find",
+    "findings",
+    "finds",
+    "first",
+    "fixes",
+    "flatten",
+    "flooding",
+    "follow",
+    "for",
+    "found",
+    "fresh",
+    "function",
+    "functions",
+    "gaps",
+    "global",
+    "good",
+    "gravion",
+    "groups",
+    "growing",
+    "half",
+    "handler",
+    "handles",
+    "handling",
+    "has",
+    "help",
+    "helper",
+    "helpers",
+    "here",
+    "hidden",
+    "hide",
+    "hides",
+    "history",
+    "hurt",
+    "i",
+    "implementation",
+    "in",
+    "including",
+    "index",
+    "innocent",
+    "input",
+    "inputs",
+    "inside",
+    "into",
+    "is",
+    "issues",
+    "it",
+    "item",
+    "items",
+    "its",
+    "job",
+    "just",
+    "keep",
+    "kept",
+    "keys",
+    "large",
+    "leak",
+    "length",
+    "library",
+    "licenses",
+    "limit",
+    "limits",
+    "list",
+    "listed",
+    "lists",
+    "loading",
+    "locale",
+    "locks",
+    "logging",
+    "logic",
+    "logs",
+    "long",
+    "longer",
+    "look",
+    "looking",
+    "lookups",
+    "loop",
+    "loops",
+    "machine",
+    "maintained",
+    "make",
+    "match",
+    "matches",
+    "matters",
+    "me",
+    "meaningful",
+    "memory",
+    "merge",
+    "message",
+    "messages",
+    "method",
+    "methods",
+    "middle",
+    "migration",
+    "migrations",
+    "minimal",
+    "missing",
+    "mixed",
+    "module",
+    "mutable",
+    "named",
+    "names",
+    "naming",
+    "needed",
+    "needs",
+    "nesting",
+    "network",
+    "never",
+    "next",
+    "no",
+    "null",
+    "occur",
+    "of",
+    "off",
+    "on",
+    "once",
+    "one",
+    "ones",
+    "only",
+    "or",
+    "order",
+    "ordering",
+    "original",
+    "outcome",
+    "output",
+    "page",
+    "pages",
+    "pagination",
+    "parameterization",
+    "parser",
+    "parsing",
+    "part",
+    "parts",
+    "password",
+    "path",
+    "paths",
+    "pattern",
+    "payload",
+    "per",
+    "performance",
+    "permission",
+    "plainly",
+    "please",
+    "possible",
+    "predictable",
+    "prefer",
+    "problem",
+    "problems",
+    "processes",
+    "processing",
+    "project",
+    "purpose",
+    "quality",
+    "query",
+    "queue",
+    "races",
+    "range",
+    "ranges",
+    "rare",
+    "reacts",
+    "readability",
+    "reads",
+    "realistic",
+    "recent",
+    "recursive",
+    "references",
+    "refreshing",
+    "regular",
+    "related",
+    "released",
+    "remain",
+    "rename",
+    "reorders",
+    "repeated",
+    "repeats",
+    "repetition",
+    "reports",
+    "required",
+    "resource",
+    "resources",
+    "result",
+    "results",
+    "retries",
+    "retry",
+    "return",
+    "returning",
+    "returns",
+    "reveal",
+    "reversible",
+    "review",
+    "reviewing",
+    "risks",
+    "run",
+    "runs",
+    "safe",
+    "safety",
+    "say",
+    "schema",
+    "search",
+    "searchable",
+    "secret",
+    "secrets",
+    "security",
+    "sequence",
+    "server",
+    "session",
+    "set",
+    "sets",
+    "severity",
+    "shape",
+    "shared",
+    "should",
+    "side",
+    "single",
+    "size",
+    "slice",
+    "slow",
+    "smaller",
+    "so",
+    "solves",
+    "sorted",
+    "sorting",
+    "speed",
+    "split",
+    "stable",
+    "stale",
+    "standard",
+    "starting",
+    "starts",
+    "state",
+    "step",
+    "stop",
+    "stops",
+    "storage",
+    "stores",
+    "structure",
+    "style",
+    "subtle",
+    "suffices",
+    "summarize",
+    "surface",
+    "surprises",
+    "synchronization",
+    "tail",
+    "takes",
+    "taking",
+    "target",
+    "temporary",
+    "test",
+    "tested",
+    "tests",
+    "text",
+    "that",
+    "the",
+    "them",
+    "then",
+    "there",
+    "they",
+    "this",
+    "threads",
+    "through",
+    "timing",
+    "to",
+    "together",
+    "token",
+    "total",
+    "tracks",
+    "transaction",
+    "transitions",
+    "triggers",
+    "two",
+    "type",
+    "types",
+    "unclear",
+    "unclosed",
+    "unexpected",
+    "unnecessary",
+    "until",
+    "up",
+    "update",
+    "updates",
+    "use",
+    "useful",
+    "user",
+    "using",
+    "usually",
+    "vague",
+    "validate",
+    "validated",
+    "validates",
+    "validation",
+    "value",
+    "values",
+    "variables",
+    "version",
+    "very",
+    "walk",
+    "walks",
+    "watch",
+    "what",
+    "when",
+    "where",
+    "whether",
+    "whole",
+    "why",
+    "will",
+    "with",
+    "without",
+    "wording",
+    "work",
+    "would",
+    "wraps",
+    "writes"
+  ],
+  "weights_sha256": "f42b57751a6f5f97ca70aca59a0cb684805c675eeed9ac36941c1a069672cc1e"
+}

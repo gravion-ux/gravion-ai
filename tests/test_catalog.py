@@ -221,6 +221,54 @@ def test_cli_models_list_capability_filter(capsys):
     assert "gravion-vision" not in out
 
 
+def test_gravion_support_and_review_available_as_specialists():
+    """Catalog expansion: Gravion Support is the dedicated support
+    specialist and Gravion Review the code-review specialist, both
+    with included local trained weights."""
+    catalog = ModelCatalog.load()
+    support = catalog.get("gravion-support")
+    assert support is not None and support.status == "available"
+    assert support.capabilities == ("support",)
+    assert support.weights_included is True
+    review = catalog.get("gravion-review")
+    assert review is not None and review.status == "available"
+    assert review.capabilities == ("coder",)
+    assert review.weights_included is True
+    assert "gravion-support" in {
+        e.id for e in catalog.models_for("support", tier="tier-2-basic")
+    }
+    assert "gravion-review" in {
+        e.id for e in catalog.models_for("coder", tier="tier-2-basic")
+    }
+
+
+def test_catalog_entries_resolve_to_real_models_and_modules():
+    """Catalog integrity: every registry entry is a bundled local
+    model, and every capability it claims maps to an implemented
+    module type with at least one available model in every tier."""
+    from gravion_ai.catalog import CAPABILITIES
+    from gravion_ai.core_model import LOCAL_MODEL_IDS
+    from gravion_ai.registry import ModuleStatus, ModuleType, default_registry
+    from gravion_ai.tiers import TIERS
+
+    catalog = ModelCatalog.load()
+    assert {e.id for e in catalog.list()} == set(LOCAL_MODEL_IDS)
+    implemented = {
+        m.type.value
+        for m in default_registry().list()
+        if m.status is ModuleStatus.IMPLEMENTED
+    }
+    for entry in catalog.list():
+        assert entry.status == "available", entry.id
+        for capability in entry.capabilities:
+            assert capability in implemented, (entry.id, capability)
+    for capability in CAPABILITIES:
+        for tier in TIERS:
+            serving = catalog.models_for(capability, tier=tier)
+            assert serving, (capability, tier)
+            assert all(e.status == "available" for e in serving)
+
+
 def test_gravion_omni_available_at_tier4():
     """Piece 8: Gravion Omni is the Tier 4 (Advanced) all-capability
     registry entry, with included local trained weights."""

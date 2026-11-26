@@ -24,6 +24,8 @@ trained support model from Piece 2's Tier 2 bundle).
 
 from __future__ import annotations
 
+import re
+
 from ...registry import ModuleContext, ModuleManifest
 
 SUPPORT_ADDENDUM = """
@@ -35,8 +37,10 @@ that material, say so plainly and offer to escalate to a human —
 never invent prices, timelines, guarantees or policies. Be brief,
 concrete and kind."""
 
-# Phrases that mean "get me a person". Matched case-insensitively as
-# substrings; the list is deliberately narrow — it catches explicit
+# Phrases that mean "get me a person". Matched case-insensitively on
+# word boundaries, so a phrase embedded in a longer word ("reagent",
+# "managerial", "humane") never escalates a customer who never asked
+# for a person. The list is deliberately narrow — it catches explicit
 # requests for a human, not merely unhappy customers (the model, under
 # the grounding rules, offers escalation for those).
 ESCALATION_PHRASES = (
@@ -61,10 +65,20 @@ ESCALATION_RESPONSE = (
 )
 
 
+_ESCALATION_RE = re.compile(
+    r"\b(?:" + "|".join(re.escape(phrase) for phrase in ESCALATION_PHRASES) + r")\b"
+)
+
+# "Human resources" is a support topic, not a request for a person:
+# the phrase is removed before matching so an HR-policy question is
+# answered from the grounding material instead of escalated.
+_HUMAN_RESOURCES_RE = re.compile(r"\bhuman resources\b")
+
+
 def needs_human(prompt: str) -> bool:
     """True when the customer explicitly asks for a human."""
-    text = f" {prompt.lower()} "
-    return any(phrase in text for phrase in ESCALATION_PHRASES)
+    text = _HUMAN_RESOURCES_RE.sub(" ", prompt.lower())
+    return _ESCALATION_RE.search(text) is not None
 
 
 class SupportModule:

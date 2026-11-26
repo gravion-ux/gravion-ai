@@ -207,6 +207,46 @@
             "weights_artifact": "data/gravion-omni-weights.json",
             "weights_sha256": "d650c832016b24e9ad18abaeaf98532e84f24f5b375600444d361f8ddf609da5",
             "weights_status": "included"
+        },
+        {
+            "capabilities": [
+                "support"
+            ],
+            "context_window": 131072,
+            "id": "gravion-support",
+            "name": "Gravion Support",
+            "notes": "Includes local sparse n-gram classifier weights (32,515 parameters counted from stored quantized weights) trained only from the bundled Gravion-owned Gravion Support seed corpus (192 examples, 48 answer classes), with deterministic fallback when no confident trained match is available. It runs offline with no network and no API key.",
+            "parameter_count": 32515,
+            "status": "available",
+            "tiers": [
+                "tier-1-complete",
+                "tier-2-basic",
+                "tier-3-intermediate",
+                "tier-4-advanced"
+            ],
+            "weights_artifact": "data/gravion-support-weights.json",
+            "weights_sha256": "3f24e5094f510b20cb8f789e581e3b83212dd5d8534a96121fb1515b4157c842",
+            "weights_status": "included"
+        },
+        {
+            "capabilities": [
+                "coder"
+            ],
+            "context_window": 131072,
+            "id": "gravion-review",
+            "name": "Gravion Review",
+            "notes": "Includes local sparse n-gram classifier weights (33,191 parameters counted from stored quantized weights) trained only from the bundled Gravion-owned Gravion Review seed corpus (192 examples, 48 answer classes), with deterministic fallback when no confident trained match is available. It runs offline with no network and no API key.",
+            "parameter_count": 33191,
+            "status": "available",
+            "tiers": [
+                "tier-1-complete",
+                "tier-2-basic",
+                "tier-3-intermediate",
+                "tier-4-advanced"
+            ],
+            "weights_artifact": "data/gravion-review-weights.json",
+            "weights_sha256": "f42b57751a6f5f97ca70aca59a0cb684805c675eeed9ac36941c1a069672cc1e",
+            "weights_status": "included"
         }
     ],
     "version": 1

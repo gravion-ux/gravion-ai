@@ -96,6 +96,25 @@ def test_ordinary_questions_do_not_escalate(prompt):
     assert not needs_human(prompt)
 
 
+@pytest.mark.parametrize(
+    "prompt",
+    [
+        # Regression: escalation phrases used to match as substrings
+        # inside longer words, escalating customers who never asked
+        # for a person ("agent" in "reagent", "manager" in
+        # "managerial", "human" in "humane").
+        "do you sell reagent refills?",
+        "how do I update my managerial title in settings?",
+        "is this product humane certified?",
+        # "Human resources" is a support topic, not a request for a
+        # person.
+        "what is your human resources policy?",
+    ],
+)
+def test_escalation_phrases_inside_other_words_do_not_escalate(prompt):
+    assert not needs_human(prompt)
+
+
 def test_support_runtime_dev_end_to_end(make_config):
     runtime = GravionRuntime(make_config(mode="development"))
     out = runtime.support("how do I change my plan?")

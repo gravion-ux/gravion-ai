@@ -1,0 +1,192 @@
+{"completion": "Reviewing for bugs: check inputs, edge cases, error handling, and resource cleanup, then list findings by severity.", "prompt": "review this code for bugs"}
+{"completion": "Reviewing for bugs: check inputs, edge cases, error handling, and resource cleanup, then list findings by severity.", "prompt": "please review this code for bugs"}
+{"completion": "Reviewing for bugs: check inputs, edge cases, error handling, and resource cleanup, then list findings by severity.", "prompt": "gravion review review this code for bugs"}
+{"completion": "Reviewing for bugs: check inputs, edge cases, error handling, and resource cleanup, then list findings by severity.", "prompt": "help me review this code for bugs"}
+{"completion": "This code reads its inputs, applies its core logic step by step, and returns a result; I will walk through each part in order.", "prompt": "explain what this code does"}
+{"completion": "This code reads its inputs, applies its core logic step by step, and returns a result; I will walk through each part in order.", "prompt": "please explain what this code does"}
+{"completion": "This code reads its inputs, applies its core logic step by step, and returns a result; I will walk through each part in order.", "prompt": "gravion review explain what this code does"}
+{"completion": "This code reads its inputs, applies its core logic step by step, and returns a result; I will walk through each part in order.", "prompt": "help me explain what this code does"}
+{"completion": "Edge cases to check: empty input, boundary values, duplicate items, very large input, and unexpected types.", "prompt": "check this function for edge cases"}
+{"completion": "Edge cases to check: empty input, boundary values, duplicate items, very large input, and unexpected types.", "prompt": "please check this function for edge cases"}
+{"completion": "Edge cases to check: empty input, boundary values, duplicate items, very large input, and unexpected types.", "prompt": "gravion review check this function for edge cases"}
+{"completion": "Edge cases to check: empty input, boundary values, duplicate items, very large input, and unexpected types.", "prompt": "help me check this function for edge cases"}
+{"completion": "Good error handling catches expected failures, adds context, cleans up resources, and never hides the original cause.", "prompt": "review error handling in this code"}
+{"completion": "Good error handling catches expected failures, adds context, cleans up resources, and never hides the original cause.", "prompt": "please review error handling in this code"}
+{"completion": "Good error handling catches expected failures, adds context, cleans up resources, and never hides the original cause.", "prompt": "gravion review review error handling in this code"}
+{"completion": "Good error handling catches expected failures, adds context, cleans up resources, and never hides the original cause.", "prompt": "help me review error handling in this code"}
+{"completion": "The loop repeats its body once per item: it reads the next value, processes it, and stops when no items remain.", "prompt": "explain this loop step by step"}
+{"completion": "The loop repeats its body once per item: it reads the next value, processes it, and stops when no items remain.", "prompt": "please explain this loop step by step"}
+{"completion": "The loop repeats its body once per item: it reads the next value, processes it, and stops when no items remain.", "prompt": "gravion review explain this loop step by step"}
+{"completion": "The loop repeats its body once per item: it reads the next value, processes it, and stops when no items remain.", "prompt": "help me explain this loop step by step"}
+{"completion": "Look for repeated work inside loops, unnecessary copies, and slow lookups that a set or index would speed up.", "prompt": "find performance problems in this code"}
+{"completion": "Look for repeated work inside loops, unnecessary copies, and slow lookups that a set or index would speed up.", "prompt": "please find performance problems in this code"}
+{"completion": "Look for repeated work inside loops, unnecessary copies, and slow lookups that a set or index would speed up.", "prompt": "gravion review find performance problems in this code"}
+{"completion": "Look for repeated work inside loops, unnecessary copies, and slow lookups that a set or index would speed up.", "prompt": "help me find performance problems in this code"}
+{"completion": "Check input validation, output encoding, secret handling, and permission checks before anything else.", "prompt": "review this code for security issues"}
+{"completion": "Check input validation, output encoding, secret handling, and permission checks before anything else.", "prompt": "please review this code for security issues"}
+{"completion": "Check input validation, output encoding, secret handling, and permission checks before anything else.", "prompt": "gravion review review this code for security issues"}
+{"completion": "Check input validation, output encoding, secret handling, and permission checks before anything else.", "prompt": "help me review this code for security issues"}
+{"completion": "The class groups related data and behavior; each method has one job, and the constructor sets the starting state.", "prompt": "explain this class and its methods"}
+{"completion": "The class groups related data and behavior; each method has one job, and the constructor sets the starting state.", "prompt": "please explain this class and its methods"}
+{"completion": "The class groups related data and behavior; each method has one job, and the constructor sets the starting state.", "prompt": "gravion review explain this class and its methods"}
+{"completion": "The class groups related data and behavior; each method has one job, and the constructor sets the starting state.", "prompt": "help me explain this class and its methods"}
+{"completion": "Names should state purpose plainly; rename vague variables, and keep naming style consistent across the file.", "prompt": "check naming quality in this code"}
+{"completion": "Names should state purpose plainly; rename vague variables, and keep naming style consistent across the file.", "prompt": "please check naming quality in this code"}
+{"completion": "Names should state purpose plainly; rename vague variables, and keep naming style consistent across the file.", "prompt": "gravion review check naming quality in this code"}
+{"completion": "Names should state purpose plainly; rename vague variables, and keep naming style consistent across the file.", "prompt": "help me check naming quality in this code"}
+{"completion": "Coverage gaps usually hide in error paths, boundary values, and rare branches; add tests there first.", "prompt": "review test coverage for this module"}
+{"completion": "Coverage gaps usually hide in error paths, boundary values, and rare branches; add tests there first.", "prompt": "please review test coverage for this module"}
+{"completion": "Coverage gaps usually hide in error paths, boundary values, and rare branches; add tests there first.", "prompt": "gravion review review test coverage for this module"}
+{"completion": "Coverage gaps usually hide in error paths, boundary values, and rare branches; add tests there first.", "prompt": "help me review test coverage for this module"}
+{"completion": "The function solves a smaller version of the problem each call until the base case returns a direct answer.", "prompt": "explain this recursive function"}
+{"completion": "The function solves a smaller version of the problem each call until the base case returns a direct answer.", "prompt": "please explain this recursive function"}
+{"completion": "The function solves a smaller version of the problem each call until the base case returns a direct answer.", "prompt": "gravion review explain this recursive function"}
+{"completion": "The function solves a smaller version of the problem each call until the base case returns a direct answer.", "prompt": "help me explain this recursive function"}
+{"completion": "Repeated blocks should become one shared helper so fixes apply everywhere at once.", "prompt": "find duplicated logic in this code"}
+{"completion": "Repeated blocks should become one shared helper so fixes apply everywhere at once.", "prompt": "please find duplicated logic in this code"}
+{"completion": "Repeated blocks should become one shared helper so fixes apply everywhere at once.", "prompt": "gravion review find duplicated logic in this code"}
+{"completion": "Repeated blocks should become one shared helper so fixes apply everywhere at once.", "prompt": "help me find duplicated logic in this code"}
+{"completion": "A clear API has predictable names, validated inputs, consistent errors, and no surprises for callers.", "prompt": "review this api design"}
+{"completion": "A clear API has predictable names, validated inputs, consistent errors, and no surprises for callers.", "prompt": "please review this api design"}
+{"completion": "A clear API has predictable names, validated inputs, consistent errors, and no surprises for callers.", "prompt": "gravion review review this api design"}
+{"completion": "A clear API has predictable names, validated inputs, consistent errors, and no surprises for callers.", "prompt": "help me review this api design"}
+{"completion": "The code compares values and reorders them until the whole sequence is in ascending order.", "prompt": "explain this sorting code"}
+{"completion": "The code compares values and reorders them until the whole sequence is in ascending order.", "prompt": "please explain this sorting code"}
+{"completion": "The code compares values and reorders them until the whole sequence is in ascending order.", "prompt": "gravion review explain this sorting code"}
+{"completion": "The code compares values and reorders them until the whole sequence is in ascending order.", "prompt": "help me explain this sorting code"}
+{"completion": "Files, connections, and locks should be released on every path, including when errors occur.", "prompt": "check resource cleanup in this code"}
+{"completion": "Files, connections, and locks should be released on every path, including when errors occur.", "prompt": "please check resource cleanup in this code"}
+{"completion": "Files, connections, and locks should be released on every path, including when errors occur.", "prompt": "gravion review check resource cleanup in this code"}
+{"completion": "Files, connections, and locks should be released on every path, including when errors occur.", "prompt": "help me check resource cleanup in this code"}
+{"completion": "Shared mutable state needs synchronization; check for races between reads and writes across threads.", "prompt": "review concurrency safety here"}
+{"completion": "Shared mutable state needs synchronization; check for races between reads and writes across threads.", "prompt": "please review concurrency safety here"}
+{"completion": "Shared mutable state needs synchronization; check for races between reads and writes across threads.", "prompt": "gravion review review concurrency safety here"}
+{"completion": "Shared mutable state needs synchronization; check for races between reads and writes across threads.", "prompt": "help me review concurrency safety here"}
+{"completion": "The pattern matches text by describing allowed characters and repetition; I will break it into parts.", "prompt": "explain this regular expression"}
+{"completion": "The pattern matches text by describing allowed characters and repetition; I will break it into parts.", "prompt": "please explain this regular expression"}
+{"completion": "The pattern matches text by describing allowed characters and repetition; I will break it into parts.", "prompt": "gravion review explain this regular expression"}
+{"completion": "The pattern matches text by describing allowed characters and repetition; I will break it into parts.", "prompt": "help me explain this regular expression"}
+{"completion": "Long functions, deep nesting, and unclear names hurt readability; split, flatten, and rename.", "prompt": "find readability problems in this code"}
+{"completion": "Long functions, deep nesting, and unclear names hurt readability; split, flatten, and rename.", "prompt": "please find readability problems in this code"}
+{"completion": "Long functions, deep nesting, and unclear names hurt readability; split, flatten, and rename.", "prompt": "gravion review find readability problems in this code"}
+{"completion": "Long functions, deep nesting, and unclear names hurt readability; split, flatten, and rename.", "prompt": "help me find readability problems in this code"}
+{"completion": "Check parameterization, index use, result size limits, and transaction boundaries.", "prompt": "review this database query code"}
+{"completion": "Check parameterization, index use, result size limits, and transaction boundaries.", "prompt": "please review this database query code"}
+{"completion": "Check parameterization, index use, result size limits, and transaction boundaries.", "prompt": "gravion review review this database query code"}
+{"completion": "Check parameterization, index use, result size limits, and transaction boundaries.", "prompt": "help me review this database query code"}
+{"completion": "The code tracks a current state and only allows listed transitions when events arrive.", "prompt": "explain this state machine code"}
+{"completion": "The code tracks a current state and only allows listed transitions when events arrive.", "prompt": "please explain this state machine code"}
+{"completion": "The code tracks a current state and only allows listed transitions when events arrive.", "prompt": "gravion review explain this state machine code"}
+{"completion": "The code tracks a current state and only allows listed transitions when events arrive.", "prompt": "help me explain this state machine code"}
+{"completion": "Validate type, length, range, and allowed values on the server before using any input.", "prompt": "check input validation in this handler"}
+{"completion": "Validate type, length, range, and allowed values on the server before using any input.", "prompt": "please check input validation in this handler"}
+{"completion": "Validate type, length, range, and allowed values on the server before using any input.", "prompt": "gravion review check input validation in this handler"}
+{"completion": "Validate type, length, range, and allowed values on the server before using any input.", "prompt": "help me check input validation in this handler"}
+{"completion": "Logs should carry context, avoid secrets, and make failures searchable without flooding output.", "prompt": "review logging in this code"}
+{"completion": "Logs should carry context, avoid secrets, and make failures searchable without flooding output.", "prompt": "please review logging in this code"}
+{"completion": "Logs should carry context, avoid secrets, and make failures searchable without flooding output.", "prompt": "gravion review review logging in this code"}
+{"completion": "Logs should carry context, avoid secrets, and make failures searchable without flooding output.", "prompt": "help me review logging in this code"}
+{"completion": "The cache stores recent results with an expiry, returning fresh values fast and refreshing stale ones.", "prompt": "explain this caching code"}
+{"completion": "The cache stores recent results with an expiry, returning fresh values fast and refreshing stale ones.", "prompt": "please explain this caching code"}
+{"completion": "The cache stores recent results with an expiry, returning fresh values fast and refreshing stale ones.", "prompt": "gravion review explain this caching code"}
+{"completion": "The cache stores recent results with an expiry, returning fresh values fast and refreshing stale ones.", "prompt": "help me explain this caching code"}
+{"completion": "Check loop bounds, slice ends, and index arithmetic against empty and single-item inputs.", "prompt": "find off by one risks in this code"}
+{"completion": "Check loop bounds, slice ends, and index arithmetic against empty and single-item inputs.", "prompt": "please find off by one risks in this code"}
+{"completion": "Check loop bounds, slice ends, and index arithmetic against empty and single-item inputs.", "prompt": "gravion review find off by one risks in this code"}
+{"completion": "Check loop bounds, slice ends, and index arithmetic against empty and single-item inputs.", "prompt": "help me find off by one risks in this code"}
+{"completion": "Check path safety, missing-file handling, encoding, and that files close even on error.", "prompt": "review this file handling code"}
+{"completion": "Check path safety, missing-file handling, encoding, and that files close even on error.", "prompt": "please review this file handling code"}
+{"completion": "Check path safety, missing-file handling, encoding, and that files close even on error.", "prompt": "gravion review review this file handling code"}
+{"completion": "Check path safety, missing-file handling, encoding, and that files close even on error.", "prompt": "help me review this file handling code"}
+{"completion": "The code starts work without blocking, then handles results or errors when they arrive.", "prompt": "explain this asynchronous code path"}
+{"completion": "The code starts work without blocking, then handles results or errors when they arrive.", "prompt": "please explain this asynchronous code path"}
+{"completion": "The code starts work without blocking, then handles results or errors when they arrive.", "prompt": "gravion review explain this asynchronous code path"}
+{"completion": "The code starts work without blocking, then handles results or errors when they arrive.", "prompt": "help me explain this asynchronous code path"}
+{"completion": "Every value that can be missing needs an explicit check or a clear default before use.", "prompt": "check null handling in this code"}
+{"completion": "Every value that can be missing needs an explicit check or a clear default before use.", "prompt": "please check null handling in this code"}
+{"completion": "Every value that can be missing needs an explicit check or a clear default before use.", "prompt": "gravion review check null handling in this code"}
+{"completion": "Every value that can be missing needs an explicit check or a clear default before use.", "prompt": "help me check null handling in this code"}
+{"completion": "Prefer maintained, minimal dependencies; check licenses, update history, and whether the standard library suffices.", "prompt": "review dependency choices in this project"}
+{"completion": "Prefer maintained, minimal dependencies; check licenses, update history, and whether the standard library suffices.", "prompt": "please review dependency choices in this project"}
+{"completion": "Prefer maintained, minimal dependencies; check licenses, update history, and whether the standard library suffices.", "prompt": "gravion review review dependency choices in this project"}
+{"completion": "Prefer maintained, minimal dependencies; check licenses, update history, and whether the standard library suffices.", "prompt": "help me review dependency choices in this project"}
+{"completion": "The parser reads input token by token, validates structure, and builds a result or reports the first error.", "prompt": "explain this parser code"}
+{"completion": "The parser reads input token by token, validates structure, and builds a result or reports the first error.", "prompt": "please explain this parser code"}
+{"completion": "The parser reads input token by token, validates structure, and builds a result or reports the first error.", "prompt": "gravion review explain this parser code"}
+{"completion": "The parser reads input token by token, validates structure, and builds a result or reports the first error.", "prompt": "help me explain this parser code"}
+{"completion": "Watch for global state changes, file writes, and network calls hidden inside innocent-looking helpers.", "prompt": "find hidden side effects in this code"}
+{"completion": "Watch for global state changes, file writes, and network calls hidden inside innocent-looking helpers.", "prompt": "please find hidden side effects in this code"}
+{"completion": "Watch for global state changes, file writes, and network calls hidden inside innocent-looking helpers.", "prompt": "gravion review find hidden side effects in this code"}
+{"completion": "Watch for global state changes, file writes, and network calls hidden inside innocent-looking helpers.", "prompt": "help me find hidden side effects in this code"}
+{"completion": "Configuration should validate required keys, apply safe defaults, and fail with clear messages.", "prompt": "review this configuration loading code"}
+{"completion": "Configuration should validate required keys, apply safe defaults, and fail with clear messages.", "prompt": "please review this configuration loading code"}
+{"completion": "Configuration should validate required keys, apply safe defaults, and fail with clear messages.", "prompt": "gravion review review this configuration loading code"}
+{"completion": "Configuration should validate required keys, apply safe defaults, and fail with clear messages.", "prompt": "help me review this configuration loading code"}
+{"completion": "It checks the middle of a sorted range and discards half each step until the target is found or absent.", "prompt": "explain this binary search implementation"}
+{"completion": "It checks the middle of a sorted range and discards half each step until the target is found or absent.", "prompt": "please explain this binary search implementation"}
+{"completion": "It checks the middle of a sorted range and discards half each step until the target is found or absent.", "prompt": "gravion review explain this binary search implementation"}
+{"completion": "It checks the middle of a sorted range and discards half each step until the target is found or absent.", "prompt": "help me explain this binary search implementation"}
+{"completion": "Retries should cover temporary failures only, back off between attempts, and stop after a clear limit.", "prompt": "check retry logic in this code"}
+{"completion": "Retries should cover temporary failures only, back off between attempts, and stop after a clear limit.", "prompt": "please check retry logic in this code"}
+{"completion": "Retries should cover temporary failures only, back off between attempts, and stop after a clear limit.", "prompt": "gravion review check retry logic in this code"}
+{"completion": "Retries should cover temporary failures only, back off between attempts, and stop after a clear limit.", "prompt": "help me check retry logic in this code"}
+{"completion": "Check password storage, session expiry, token handling, and that failures reveal no useful detail.", "prompt": "review this authentication code"}
+{"completion": "Check password storage, session expiry, token handling, and that failures reveal no useful detail.", "prompt": "please review this authentication code"}
+{"completion": "Check password storage, session expiry, token handling, and that failures reveal no useful detail.", "prompt": "gravion review review this authentication code"}
+{"completion": "Check password storage, session expiry, token handling, and that failures reveal no useful detail.", "prompt": "help me review this authentication code"}
+{"completion": "The handler reacts to a named event, reads its payload, and updates state or triggers follow-up work.", "prompt": "explain this event handler code"}
+{"completion": "The handler reacts to a named event, reads its payload, and updates state or triggers follow-up work.", "prompt": "please explain this event handler code"}
+{"completion": "The handler reacts to a named event, reads its payload, and updates state or triggers follow-up work.", "prompt": "gravion review explain this event handler code"}
+{"completion": "The handler reacts to a named event, reads its payload, and updates state or triggers follow-up work.", "prompt": "help me explain this event handler code"}
+{"completion": "Look for growing collections, unclosed resources, and references kept after they are no longer needed.", "prompt": "find memory leak risks in this code"}
+{"completion": "Look for growing collections, unclosed resources, and references kept after they are no longer needed.", "prompt": "please find memory leak risks in this code"}
+{"completion": "Look for growing collections, unclosed resources, and references kept after they are no longer needed.", "prompt": "gravion review find memory leak risks in this code"}
+{"completion": "Look for growing collections, unclosed resources, and references kept after they are no longer needed.", "prompt": "help me find memory leak risks in this code"}
+{"completion": "Check page bounds, total counts, stable ordering, and that empty pages return cleanly.", "prompt": "review this pagination code"}
+{"completion": "Check page bounds, total counts, stable ordering, and that empty pages return cleanly.", "prompt": "please review this pagination code"}
+{"completion": "Check page bounds, total counts, stable ordering, and that empty pages return cleanly.", "prompt": "gravion review review this pagination code"}
+{"completion": "Check page bounds, total counts, stable ordering, and that empty pages return cleanly.", "prompt": "help me review this pagination code"}
+{"completion": "It walks two sorted lists together, always taking the smaller next value, then appends the tail.", "prompt": "explain this merge algorithm code"}
+{"completion": "It walks two sorted lists together, always taking the smaller next value, then appends the tail.", "prompt": "please explain this merge algorithm code"}
+{"completion": "It walks two sorted lists together, always taking the smaller next value, then appends the tail.", "prompt": "gravion review explain this merge algorithm code"}
+{"completion": "It walks two sorted lists together, always taking the smaller next value, then appends the tail.", "prompt": "help me explain this merge algorithm code"}
+{"completion": "Mixed types in one collection cause subtle bugs; enforce one shape at the boundary.", "prompt": "check type consistency in this code"}
+{"completion": "Mixed types in one collection cause subtle bugs; enforce one shape at the boundary.", "prompt": "please check type consistency in this code"}
+{"completion": "Mixed types in one collection cause subtle bugs; enforce one shape at the boundary.", "prompt": "gravion review check type consistency in this code"}
+{"completion": "Mixed types in one collection cause subtle bugs; enforce one shape at the boundary.", "prompt": "help me check type consistency in this code"}
+{"completion": "Arguments should be validated early, help text should match behavior, and exit codes should be meaningful.", "prompt": "review this cli argument parsing"}
+{"completion": "Arguments should be validated early, help text should match behavior, and exit codes should be meaningful.", "prompt": "please review this cli argument parsing"}
+{"completion": "Arguments should be validated early, help text should match behavior, and exit codes should be meaningful.", "prompt": "gravion review review this cli argument parsing"}
+{"completion": "Arguments should be validated early, help text should match behavior, and exit codes should be meaningful.", "prompt": "help me review this cli argument parsing"}
+{"completion": "The decorator wraps a function to add behavior before or after it runs, without changing its core logic.", "prompt": "explain this decorator code"}
+{"completion": "The decorator wraps a function to add behavior before or after it runs, without changing its core logic.", "prompt": "please explain this decorator code"}
+{"completion": "The decorator wraps a function to add behavior before or after it runs, without changing its core logic.", "prompt": "gravion review explain this decorator code"}
+{"completion": "The decorator wraps a function to add behavior before or after it runs, without changing its core logic.", "prompt": "help me explain this decorator code"}
+{"completion": "Assumptions about input size, ordering, locale, or timing break first; make them explicit and tested.", "prompt": "find brittle assumptions in this code"}
+{"completion": "Assumptions about input size, ordering, locale, or timing break first; make them explicit and tested.", "prompt": "please find brittle assumptions in this code"}
+{"completion": "Assumptions about input size, ordering, locale, or timing break first; make them explicit and tested.", "prompt": "gravion review find brittle assumptions in this code"}
+{"completion": "Assumptions about input size, ordering, locale, or timing break first; make them explicit and tested.", "prompt": "help me find brittle assumptions in this code"}
+{"completion": "Migrations should be reversible where possible, tested on realistic data, and safe to run once.", "prompt": "review this migration code"}
+{"completion": "Migrations should be reversible where possible, tested on realistic data, and safe to run once.", "prompt": "please review this migration code"}
+{"completion": "Migrations should be reversible where possible, tested on realistic data, and safe to run once.", "prompt": "gravion review review this migration code"}
+{"completion": "Migrations should be reversible where possible, tested on realistic data, and safe to run once.", "prompt": "help me review this migration code"}
+{"completion": "The code takes items in order, processes each, and acknowledges or retries based on the outcome.", "prompt": "explain this queue processing code"}
+{"completion": "The code takes items in order, processes each, and acknowledges or retries based on the outcome.", "prompt": "please explain this queue processing code"}
+{"completion": "The code takes items in order, processes each, and acknowledges or retries based on the outcome.", "prompt": "gravion review explain this queue processing code"}
+{"completion": "The code takes items in order, processes each, and acknowledges or retries based on the outcome.", "prompt": "help me explain this queue processing code"}
+{"completion": "Test just below, exactly at, and just above each boundary so off-by-one errors surface.", "prompt": "check boundary tests for this function"}
+{"completion": "Test just below, exactly at, and just above each boundary so off-by-one errors surface.", "prompt": "please check boundary tests for this function"}
+{"completion": "Test just below, exactly at, and just above each boundary so off-by-one errors surface.", "prompt": "gravion review check boundary tests for this function"}
+{"completion": "Test just below, exactly at, and just above each boundary so off-by-one errors surface.", "prompt": "help me check boundary tests for this function"}
+{"completion": "Error messages should say what failed, why it matters, and what the user can do next.", "prompt": "review this error message wording"}
+{"completion": "Error messages should say what failed, why it matters, and what the user can do next.", "prompt": "please review this error message wording"}
+{"completion": "Error messages should say what failed, why it matters, and what the user can do next.", "prompt": "gravion review review this error message wording"}
+{"completion": "Error messages should say what failed, why it matters, and what the user can do next.", "prompt": "help me review this error message wording"}
+{"completion": "The schema lists required fields, types, and ranges, and reports every problem it finds.", "prompt": "explain this data validation schema"}
+{"completion": "The schema lists required fields, types, and ranges, and reports every problem it finds.", "prompt": "please explain this data validation schema"}
+{"completion": "The schema lists required fields, types, and ranges, and reports every problem it finds.", "prompt": "gravion review explain this data validation schema"}
+{"completion": "The schema lists required fields, types, and ranges, and reports every problem it finds.", "prompt": "help me explain this data validation schema"}
+{"completion": "Findings by severity: correctness and security first, then performance, then readability and style.", "prompt": "summarize review findings by severity"}
+{"completion": "Findings by severity: correctness and security first, then performance, then readability and style.", "prompt": "please summarize review findings by severity"}
+{"completion": "Findings by severity: correctness and security first, then performance, then readability and style.", "prompt": "gravion review summarize review findings by severity"}
+{"completion": "Findings by severity: correctness and security first, then performance, then readability and style.", "prompt": "help me summarize review findings by severity"}

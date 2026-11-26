@@ -44,6 +44,8 @@ from .errors import TrainingError
 CORE_MODEL_ID = "gravion-core"
 SPECIALIST_MODEL_IDS = (
     "gravion-chat",
+    "gravion-support",
+    "gravion-review",
     "gravion-code",
     "gravion-builder",
     "gravion-vision",
@@ -58,9 +60,6 @@ CORE_MODEL_FORMAT = "gravion-core-local-v3"
 LEGACY_V2_MODEL_FORMAT = "gravion-core-local-v2"
 LEGACY_MODEL_FORMAT = "gravion-core-local-v1"
 CORE_ARCHITECTURE = "sparse n-gram embedding + direct linear softmax classifier"
-DEFAULT_WEIGHTS_FILENAME = "gravion-core-weights.json"
-DEFAULT_SEED_FILENAME = "gravion-core-seed.jsonl"
-DEFAULT_CORPUS_FILENAME = "gravion-core-corpus.jsonl"
 DEFAULT_MATCH_THRESHOLD = 0.30
 
 DEFAULT_DIM = 16
@@ -1104,16 +1103,6 @@ def seed_filename(model_id: str = CORE_MODEL_ID) -> str:
 def bundled_seed_path(model_id: str = CORE_MODEL_ID) -> Path:
     return Path(
         str(resources.files("gravion_ai").joinpath("data", seed_filename(model_id)))
-    )
-
-
-def bundled_corpus_path() -> Path:
-    return Path(str(resources.files("gravion_ai").joinpath("data", DEFAULT_CORPUS_FILENAME)))
-
-
-def bundled_weights_path(model_id: str = CORE_MODEL_ID) -> Path:
-    return Path(
-        str(resources.files("gravion_ai").joinpath("data", weights_filename(model_id)))
     )
 
 

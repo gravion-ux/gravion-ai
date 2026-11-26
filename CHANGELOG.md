@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Model catalog expansion: added **Gravion Support** (dedicated customer-support specialist, 192 Gravion-owned seed examples, 48 answer classes, 32,515 parameters counted from stored quantized weights) and **Gravion Review** (code-review specialist, 192 examples, 48 classes, 33,191 parameters), each with included local sparse n-gram weights and deterministic fallback. Catalog integrity tests now assert every registry entry resolves to a bundled local model and an implemented module type, with an available model serving every capability in every tier.
+
 - Local training validation: training now rejects prompts and completions with no word tokens (a punctuation-only prompt previously trained an exact-match entry for the empty normalized prompt, making every empty prompt a confident match) and rejects conflicting completions for the same normalized prompt instead of silently keeping the last one. Exact-prompt keys in weights artifacts must be non-empty normalized prompts, and an empty prompt is never a confident match at inference. Removed the unused `DEFAULT_BUCKETS` constant.
 - All-in-one routing: directives are now case-insensitive and the space after the colon is optional (`coder:fix this` routes to coder instead of silently falling back to chat). Requests without a directive route by a conservative intent check — a clear verb-plus-object signal for exactly one module (code fence, CVE id, `write a python function`, `build a website`) selects that module; anything ambiguous still goes to chat. Removed two unused licensing imports.
 

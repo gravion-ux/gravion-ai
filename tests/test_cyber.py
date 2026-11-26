@@ -57,6 +57,15 @@ def test_cyber_instantiates_and_answers():
         ("write a report on the incident", TASK_REPORT),
         ("analyse this firewall log excerpt", TASK_ANALYSE),
         ("what does this config do?", TASK_ANALYSE),
+        # Natural phrasings that used to fall through to analyse:
+        ("can you triage this alert?", TASK_TRIAGE),
+        ("could you triage the phishing report?", TASK_TRIAGE),
+        ("could you write up this finding?", TASK_REPORT),
+        ("can you report this incident?", TASK_REPORT),
+        ("please write a report on the incident", TASK_REPORT),
+        # Analysis openers win over later report/triage nouns:
+        ("analyse this triage report", TASK_ANALYSE),
+        ("explain the triage process", TASK_ANALYSE),
     ],
 )
 def test_detect_task(prompt, expected):
