@@ -21,9 +21,14 @@ from ...registry import ModuleContext, ModuleManifest
 # integer/decimal, or a leading-dot decimal (".5"), with an optional
 # scientific-notation exponent ("2.5e3"). A comma only joins a
 # number when it sits inside a valid digit group, so comma-space
-# separated lists ("4, 8, 15") still parse as separate values.
+# separated lists ("4, 8, 15") still parse as separate values. The
+# leading lookbehind keeps a minus glued to a preceding digit or
+# letter from becoming a sign: in a range ("5-10") or a date
+# ("2026-11-27") the hyphen is a separator, so both sides parse as
+# positive values, and digits inside a word ("version2") are not
+# numbers at all.
 _NUMBER_RE = re.compile(
-    r"-?(?:\d{1,3}(?:,\d{3})+|\d{1,2}(?:,\d{2})+,\d{3}|\d+|\.\d+)"
+    r"(?<![0-9A-Za-z])-?(?:\d{1,3}(?:,\d{3})+|\d{1,2}(?:,\d{2})+,\d{3}|\d+|\.\d+)"
     r"(?:\.\d+)?(?:[eE][+-]?\d+)?"
 )
 

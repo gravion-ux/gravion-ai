@@ -99,10 +99,18 @@ def split_sentences(text: str) -> list[str]:
 
 def summarize(text: str, max_sentences: int = 3) -> str:
     """Extractive summary: top-scored sentences in original order."""
-    sentences = split_sentences(text)
+    # Drop exact duplicate sentences first (keeping the first
+    # occurrence): a repeated sentence inflates its own term
+    # frequencies, so without this a summary could be the same
+    # sentence repeated max_sentences times.
+    sentences = list(dict.fromkeys(split_sentences(text)))
     if len(sentences) <= max_sentences:
         return " ".join(sentences)
-    words = [w for w in re.findall(r"[a-z0-9]+", text.lower()) if w not in _STOP]
+    words = [
+        w
+        for w in re.findall(r"[a-z0-9]+", " ".join(sentences).lower())
+        if w not in _STOP
+    ]
     freq = Counter(words)
     scored: list[tuple[float, int]] = []
     for index, sentence in enumerate(sentences):

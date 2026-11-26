@@ -98,10 +98,6 @@ class KeyPair:
         """Stable fingerprint of the public key (SHA-256, hex)."""
         return sha256_hex(self.public_bytes())
 
-    @property
-    def can_sign(self) -> bool:
-        return self._private is not None
-
     # -- sign / verify ---------------------------------------------------
     def sign(self, data: bytes) -> bytes:
         if self._private is None:

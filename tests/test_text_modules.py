@@ -112,6 +112,58 @@ def test_data_analysis_parses_grouped_and_scientific_numbers():
     assert analyze([]) == "No numbers to analyze."
 
 
+def test_data_analysis_range_hyphen_is_not_a_minus_sign():
+    # Regression: a hyphen glued to a digit was read as a minus
+    # sign, so a range "5-10" parsed as [5, -10] (sum -5) and a
+    # date "2026-11-27" contributed two negative values. The hyphen
+    # is a separator there; only a free-standing minus is a sign,
+    # and digits inside a word are not numbers.
+    assert parse_numbers("scores range 5-10 points") == [5.0, 10.0]
+    assert parse_numbers("on 2026-11-27 values 4 8 15") == [
+        2026.0,
+        11.0,
+        27.0,
+        4.0,
+        8.0,
+        15.0,
+    ]
+    assert parse_numbers("temps -5, -3, 2") == [-5.0, -3.0, 2.0]
+    assert parse_numbers("version2 build3 has 10 20 30") == [10.0, 20.0, 30.0]
+    assert "Sum: 15" in analyze(parse_numbers("range 5-10"))
+
+
+def test_summarization_never_repeats_a_sentence():
+    # Regression: a repeated sentence inflated its own term
+    # frequencies, so the summary could be that one sentence
+    # repeated max_sentences times.
+    text = (
+        "Cats sleep all day. Dogs bark at night. Cats sleep all day. "
+        "Birds fly south in winter. Fish swim in the pond. "
+        "Cats sleep all day."
+    )
+    out = summarize(text)
+    assert out.count("Cats sleep all day.") == 1
+    assert "Dogs bark at night." in out or "Birds fly south in winter." in out
+
+
+def test_retrieval_rare_terms_outweigh_common_words():
+    # IDF weighting: the passage carrying the query's distinctive
+    # terms beats one that only shares words common to every
+    # passage, and a stopword-only passage scores zero.
+    ranked = rank_passages(
+        "what is the capital of france",
+        [
+            "the the of of the the of the",
+            "france is a country in europe and paris is its capital",
+            "the capital city of france is paris",
+        ],
+    )
+    assert ranked[0][1].startswith("the capital city")
+    assert ranked[-1][1].startswith("the the")
+    assert ranked[-1][0] == 0.0
+    assert ranked[1][0] > ranked[-1][0]
+
+
 def test_document_qa_quotes_evidence_and_admits_gaps():
     document = "The library opens at nine in the morning. It closes at eight in the evening."
     out = answer_question(document, "when does the library open")
