@@ -33,6 +33,21 @@ _ABBREVIATIONS = frozenset(
 _CLOSERS = "\"'”’)]"
 
 
+# Irregular -sis plurals whose regular "es" rule would land on a
+# stem the singular never produces ("analyses" -> "analys" while
+# "analysis" stays whole), plus two common non-plurals the final-s
+# rule would otherwise mangle ("news" -> "new", "lens" -> "len").
+_IRREGULAR_STEMS = {
+    "analyses": "analysis",
+    "crises": "crisis",
+    "theses": "thesis",
+    "diagnoses": "diagnosis",
+    "hypotheses": "hypothesis",
+    "news": "news",
+    "lens": "lens",
+}
+
+
 def stem_word(word: str) -> str:
     """Light plural stemmer shared by the text modules.
 
@@ -42,9 +57,13 @@ def stem_word(word: str) -> str:
     becomes "y" ("cities" -> "city"), "es" drops after s/x/z/ch/sh
     ("classes" -> "class", "boxes" -> "box"), and a final "s"
     drops unless the word ends in "ss", "us" or "is" ("class",
-    "status" and "analysis" are not plurals). Anything else is
-    returned unchanged; irregular plurals are out of scope.
+    "status" and "analysis" are not plurals). A short irregular
+    map covers the -sis plurals and non-plurals the regular rules
+    would split or mangle; anything else is returned unchanged.
     """
+    irregular = _IRREGULAR_STEMS.get(word)
+    if irregular is not None:
+        return irregular
     if len(word) > 4 and word.endswith("ies"):
         return word[:-3] + "y"
     if len(word) > 4 and word.endswith("es"):
@@ -122,6 +141,8 @@ def split_sentences(text: str) -> list[str]:
 
 def summarize(text: str, max_sentences: int = 3) -> str:
     """Extractive summary: top-scored sentences in original order."""
+    if max_sentences < 1:
+        return ""
     # Drop exact duplicate sentences first (keeping the first
     # occurrence): a repeated sentence inflates its own term
     # frequencies, so without this a summary could be the same
@@ -153,6 +174,11 @@ def summarize(text: str, max_sentences: int = 3) -> str:
         elif index == len(sentences) - 1:
             score *= 1.1
         scored.append((score, index))
+    if not scored:
+        # Every sentence is stopwords alone, so nothing can be
+        # scored; keep the opening sentences instead of returning
+        # an empty summary that silently drops the source.
+        return " ".join(sentences[:max_sentences])
     keep = sorted(index for _, index in sorted(scored, reverse=True)[:max_sentences])
     return " ".join(sentences[i] for i in keep)
 

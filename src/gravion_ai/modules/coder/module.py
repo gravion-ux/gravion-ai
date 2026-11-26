@@ -11,10 +11,13 @@ depending on what was actually asked.
 Detection is deterministic and deliberately simple, in priority
 order: an explicit "review:" / "explain:" style prefix; a request
 that opens with a generation verb ("write code to explain…") is
-generation; then a review or explain verb aimed at code ("can you
-review my code", "what does this code do") anywhere in the
-request. Anything else is generation. The rules are small enough
-to state in a docstring and pin in tests — no hidden heuristics.
+generation and one that opens with an explanation verb ("explain
+code review…") is explanation, even when a later noun phrase
+mentions the other task; then a "code review" request or a review
+or explain verb aimed at code ("can you review my code", "what
+does this code do") anywhere in the request. Anything else is
+generation. The rules are small enough to state in a docstring
+and pin in tests — no hidden heuristics.
 
 The coder module is served by **Gravion Code**, whose first trained
 bundle ships at Tier 2 in this piece (see data/models.json). A
@@ -91,13 +94,25 @@ _EXPLAIN_RES = (
 def detect_task(prompt: str) -> str:
     """Classify a coder prompt as generate / review / explain."""
     text = prompt.strip().lower()
-    if text.startswith(_REVIEW_PREFIXES) or "code review" in text:
+    if text.startswith(_REVIEW_PREFIXES):
         return TASK_REVIEW
     if text.startswith(_EXPLAIN_PREFIXES):
         return TASK_EXPLAIN
+    # A request opening with the noun phrase itself ("code review:
+    # …") asks for a review; the verb "code" ("code a dashboard")
+    # is a generation opener and is handled just below.
+    if text.startswith("code review"):
+        return TASK_REVIEW
     first_word = text.split(None, 1)[0].strip(",:;") if text else ""
     if first_word in _GENERATE_OPENERS:
         return TASK_GENERATE
+    # An explanation verb opening the request ("explain code
+    # review process") asks for an explanation, not a review of
+    # the code named later.
+    if first_word in ("explain", "describe"):
+        return TASK_EXPLAIN
+    if "code review" in text:
+        return TASK_REVIEW
     if _REVIEW_RE.search(text):
         return TASK_REVIEW
     if any(pattern.search(text) for pattern in _EXPLAIN_RES):

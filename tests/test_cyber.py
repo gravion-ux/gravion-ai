@@ -92,6 +92,20 @@ def test_extract_indicators_dedupes_and_validates():
     assert extract_indicators("a plain question about passwords") == {}
 
 
+def test_extract_indicators_rejects_fragments_and_strips_punctuation():
+    # Regression: a version string yielded a phantom IPv4, an
+    # eight-digit CVE sequence was truncated to seven digits,
+    # and sentence punctuation was recorded as part of a URL.
+    assert "ipv4" not in extract_indicators("version 1.2.3.4.5 released")
+    assert extract_indicators("from 10.0.0.8.")["ipv4"] == ["10.0.0.8"]
+    assert extract_indicators("CVE-2024-12345678 found")["cve"] == [
+        "CVE-2024-12345678"
+    ]
+    assert extract_indicators("see https://example.com/path. Next")["url"] == [
+        "https://example.com/path"
+    ]
+
+
 @pytest.mark.parametrize(
     "prompt,expected",
     [

@@ -6,7 +6,7 @@ fall through to the resolved specialist model."""
 from gravion_ai.modules.data_analysis.module import analyze, parse_numbers
 from gravion_ai.modules.document_qa.module import answer_question
 from gravion_ai.modules.retrieval.module import rank_passages
-from gravion_ai.modules.summarization.module import split_sentences, summarize
+from gravion_ai.modules.summarization.module import split_sentences, stem_word, summarize
 from gravion_ai.modules.translation.module import translate_phrase
 from gravion_ai.providers import GravionCoreProvider
 from gravion_ai.registry import ModuleContext, default_registry
@@ -228,3 +228,23 @@ def test_document_qa_quotes_evidence_and_admits_gaps():
         f"document: {document}\nquestion: when does the library open",
     )
     assert "opens at nine" in out2
+
+
+def test_stem_word_matches_irregular_sis_plurals():
+    # Regression: the regular "es" rule stemmed "analyses" to
+    # "analys" while "analysis" stayed whole, so singular and
+    # plural never matched; "news" and "lens" were mangled too.
+    assert stem_word("analyses") == stem_word("analysis") == "analysis"
+    assert stem_word("crises") == stem_word("crisis") == "crisis"
+    assert stem_word("news") == "news"
+    assert stem_word("lens") == "lens"
+    assert stem_word("classes") == stem_word("class") == "class"
+
+
+def test_summarize_never_returns_empty_for_stopword_text():
+    # Regression: when every sentence was stopwords alone nothing
+    # could be scored, and the summary came back empty instead of
+    # keeping the source's opening sentences.
+    out = summarize("The and or. Is are was. Of at by. For with about.")
+    assert out == "The and or. Is are was. Of at by."
+    assert summarize("Cats sleep. Dogs bark.", max_sentences=0) == ""

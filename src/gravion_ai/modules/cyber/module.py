@@ -92,8 +92,16 @@ _REPORT_PREFIXES = (
     "please report",
 )
 
-_CVE_RE = re.compile(r"CVE-\d{4}-\d{4,7}", re.IGNORECASE)
-_IPV4_RE = re.compile(r"\b(?:\d{1,3}\.){3}\d{1,3}\b")
+# CVE sequence numbers run to four or more digits with no fixed
+# cap, so the pattern takes the whole sequence instead of
+# truncating an eight-digit id to seven. The digit guards keep a
+# candidate embedded in a longer digit run from matching in part.
+_CVE_RE = re.compile(r"(?<!\d)CVE-\d{4}-\d{4,}(?!\d)", re.IGNORECASE)
+# An IPv4 candidate must stand alone: the guards reject a
+# four-group window inside a longer dotted sequence (a version
+# string such as "1.2.3.4.5") while still allowing sentence
+# punctuation after a real address ("from 10.0.0.8.").
+_IPV4_RE = re.compile(r"(?<!\d)(?<!\d\.)\d{1,3}(?:\.\d{1,3}){3}(?!\d)(?!\.\d)")
 _SHA256_RE = re.compile(r"\b[0-9a-fA-F]{64}\b")
 _URL_RE = re.compile(r"https?://[^\s\"'<>)\]]+")
 _SEVERITY_RE = re.compile(
@@ -170,7 +178,13 @@ def extract_indicators(prompt: str) -> dict[str, list[str]]:
         [m.group(0) for m in _IPV4_RE.finditer(prompt) if _valid_ipv4(m.group(0))],
     )
     collect("sha256", [m.group(0).lower() for m in _SHA256_RE.finditer(prompt)])
-    collect("url", [m.group(0) for m in _URL_RE.finditer(prompt)])
+    # Sentence punctuation glued to a URL ("…/path. Next …") is
+    # not part of the address; strip it so the brief records the
+    # exact artefact instead of a dotted near-miss.
+    collect(
+        "url",
+        [m.group(0).rstrip(".,;:!?") for m in _URL_RE.finditer(prompt)],
+    )
     return indicators
 
 

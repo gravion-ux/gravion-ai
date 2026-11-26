@@ -70,6 +70,12 @@ def test_coder_instantiates_and_answers():
         ("write code to explain how sorting works", TASK_GENERATE),
         ("write a function that reviews log files", TASK_GENERATE),
         ("add a check to this function", TASK_GENERATE),
+        # Regression: the "code review" noun phrase used to win
+        # over the opening verb, so building or explaining a
+        # review tool was misread as asking for a review.
+        ("write a code review tool", TASK_GENERATE),
+        ("explain code review process", TASK_EXPLAIN),
+        ("code review: def f(x): return x", TASK_REVIEW),
     ],
 )
 def test_detect_task(prompt, expected):
