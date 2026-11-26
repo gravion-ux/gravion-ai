@@ -52,6 +52,18 @@ def _validate_messages(messages: Sequence[Message]) -> list[Message]:
         if not isinstance(content, str):
             raise ProviderError(f"message {index} content must be a string")
         validated.append({"role": role, "content": content})
+    # The last user message is the request being answered. An empty
+    # or whitespace-only one is a caller bug, not a question: fail
+    # fast with a clear error instead of echoing nonsense (local
+    # engine) or spending an endpoint call on nothing.
+    last_user = next(
+        (m["content"] for m in reversed(validated) if m["role"] == "user"),
+        None,
+    )
+    if last_user is None or not last_user.strip():
+        raise ProviderError(
+            "messages must include a user message with non-empty content"
+        )
     return validated
 
 

@@ -15,7 +15,7 @@ import threading
 import uuid
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any
 
 from .licensing.timeutil import to_iso, utcnow
 
@@ -192,6 +192,3 @@ class RunEventLog:
         summaries.sort(key=lambda row: row["last_at"], reverse=True)
         return summaries[: max(0, int(limit))]
 
-
-def iter_event_dicts(events: Iterable[RunEvent]) -> list[dict[str, Any]]:
-    return [event.to_dict() for event in events]

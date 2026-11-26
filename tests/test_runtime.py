@@ -155,3 +155,16 @@ def test_export_includes_license_and_public_identity(issuer, licensed_home, tmp_
     assert "state/license.json" in included
     assert "state/identity.json" in included
     assert not any("identity.key" in n for n in included)
+
+
+def test_runtime_rejects_empty_prompt_before_running(make_config):
+    # Regression: runtime.chat("") used to return the echo fallback
+    # instead of a clear error (the web layer already refused these).
+    runtime = GravionRuntime(make_config(mode="development"))
+    for prompt in ("", "   ", "\n\n"):
+        with pytest.raises(ModuleError, match="non-empty string"):
+            runtime.chat(prompt)
+    with pytest.raises(ModuleError, match="non-empty string"):
+        runtime.run_module("chat", None)  # type: ignore[arg-type]
+    # No run was recorded for the refused prompts.
+    assert runtime.events.entries() == []

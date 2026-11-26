@@ -148,6 +148,12 @@ class GravionRuntime:
     def run_module(
         self, name: str, prompt: str, *, session_id: str | None = None
     ) -> str:
+        # Fail fast on a caller bug before recording a run or touching
+        # the entitlement gate: an empty prompt is not a request.
+        # (The web layer already refuses these; the runtime now does
+        # too, so CLI and API callers get the same clear error.)
+        if not isinstance(prompt, str) or not prompt.strip():
+            raise ModuleError("prompt must be a non-empty string")
         run_id = RunEventLog.new_run_id()
         started = time.monotonic()
         self._append_event(

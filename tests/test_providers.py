@@ -224,3 +224,58 @@ def test_endpoint_provider_retries_timeout_then_raises_without_body():
         provider.complete(MESSAGES)
     assert attempts["count"] == 2
     assert delays == [0.1]
+
+
+def test_providers_reject_empty_user_content():
+    # Regression: an empty/whitespace user prompt used to echo back
+    # "[gravion-core] You said: " instead of failing fast.
+    core = GravionCoreProvider()
+    for content in ("", "   ", "\n\n"):
+        with pytest.raises(ProviderError, match="non-empty content"):
+            core.complete(
+                [
+                    {"role": "system", "content": "You are Gravion."},
+                    {"role": "user", "content": content},
+                ]
+            )
+
+
+def test_providers_reject_messages_without_user_turn():
+    core = GravionCoreProvider()
+    with pytest.raises(ProviderError, match="non-empty content"):
+        core.complete([{"role": "system", "content": "You are Gravion."}])
+
+
+def test_endpoint_provider_rejects_empty_user_content_without_calling():
+    calls = {"count": 0}
+
+    def fake_opener(request, timeout=None):
+        calls["count"] += 1
+        raise AssertionError("endpoint must not be called for an empty prompt")
+
+    config = ProviderConfig(type="endpoint", base_url="http://x.test", model="gravion-chat")
+    provider = EndpointProvider(config, opener=fake_opener)
+    with pytest.raises(ProviderError, match="non-empty content"):
+        provider.complete([{"role": "user", "content": "  "}])
+    assert calls["count"] == 0
+
+
+def test_provider_uses_last_user_message_for_empty_check():
+    # A real request followed by an empty user turn is still an
+    # empty request: the last user message is what gets answered.
+    core = GravionCoreProvider()
+    with pytest.raises(ProviderError, match="non-empty content"):
+        core.complete(
+            [
+                {"role": "user", "content": "hello"},
+                {"role": "assistant", "content": "hi"},
+                {"role": "user", "content": ""},
+            ]
+        )
+    out = core.complete(
+        [
+            {"role": "user", "content": ""},
+            {"role": "user", "content": "hello"},
+        ]
+    )
+    assert "hello" in out
