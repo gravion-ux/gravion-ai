@@ -94,6 +94,16 @@ def test_coder_instantiates_and_answers():
         ("tell me what this code does", TASK_EXPLAIN),
         ("walk me through this code", TASK_EXPLAIN),
         ("walk through this function", TASK_EXPLAIN),
+        # Regression: why/when questions about existing code
+        # fell through to generation, so a question about
+        # supplied code was answered with new code.
+        ("why does this code fail?", TASK_EXPLAIN),
+        ("why is this function slow?", TASK_EXPLAIN),
+        ("why does this code return None?", TASK_EXPLAIN),
+        ("when does this function run?", TASK_EXPLAIN),
+        ("what is this function for?", TASK_EXPLAIN),
+        ("how does this code handle errors?", TASK_EXPLAIN),
+        ("write code that explains why sorting works", TASK_GENERATE),
         # A generation opener still wins over the new
         # explanation shapes it happens to contain.
         ("write a function that returns the total", TASK_GENERATE),

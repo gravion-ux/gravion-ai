@@ -506,6 +506,42 @@ def test_stem_word_matches_irregular_past_tense_verbs():
     assert stem_word("wrote") == stem_word("write") == "write"
 
 
+def test_stem_word_matches_regular_verb_forms():
+    # Regression: regular -ing/-ed forms never met their base
+    # ("studied" vs "study", "stopped" vs "stop"), so a
+    # base-form question missed a derived-form sentence.
+    assert stem_word("studied") == stem_word("study") == "study"
+    assert stem_word("running") == stem_word("run") == "run"
+    assert stem_word("stopped") == stem_word("stop") == "stop"
+    assert stem_word("making") == stem_word("make") == "make"
+    assert stem_word("hoped") == stem_word("hope") == "hope"
+    assert stem_word("hopping") == stem_word("hop") == "hop"
+    assert stem_word("used") == stem_word("use") == "use"
+    assert stem_word("tried") == stem_word("try") == "try"
+    assert stem_word("written") == stem_word("write") == "write"
+    # Short non-verbs and -ing/-ed nouns keep their form.
+    assert stem_word("king") == "king"
+    assert stem_word("seed") == "seed"
+    assert stem_word("during") == "during"
+    assert stem_word("hundred") == "hundred"
+
+
+def test_document_qa_matches_derived_verb_evidence():
+    # Regression: "what did she study?" shares no stem with
+    # "she studied mathematics" until "studied" stems to
+    # "study", so the module wrongly reported no answer.
+    out = answer_question(
+        "She studied mathematics at college. The cat sat on the mat.",
+        "What did she study?",
+    )
+    assert "studied mathematics" in out
+    out = answer_question(
+        "He stopped the car near the gate. Birds fly south.",
+        "What did he stop?",
+    )
+    assert "stopped the car" in out
+
+
 def test_document_qa_matches_past_tense_evidence():
     # Regression: "where did the cat sit?" shares only "cat"
     # with "the cat sat on the mat" until "sat" stems to

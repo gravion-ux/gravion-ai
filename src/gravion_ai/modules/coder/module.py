@@ -133,7 +133,27 @@ _EXPLAIN_RES = (
     ),
     re.compile(r"\bwhat is (?:this|the|it)\b[^.?!]*\bdoing\b"),
     re.compile(r"\bwhat (?:this|the|it)\b[^.?!]*\b(?:does|do)\b"),
-    re.compile(r"\bhow does (?:this|the|it)\b[^.?!]*\bwork\b"),
+    re.compile(
+        r"\bhow does (?:this|the|it)\b[^.?!]*\b(?:work|handle|behave|run|process|fail)\b"
+    ),
+    # Why/when questions aimed at existing code ("why does
+    # this code fail?", "when does this function run?") ask
+    # for an explanation of that code just as plainly as
+    # "what does it do?": without them they fell through to
+    # generation, so a question about supplied code was
+    # answered with new code. The "what is this function
+    # for?" shape is the same ask.
+    re.compile(
+        r"\bwhy (?:does|is|did|would|do)\b[^.?!]*\b" + _CODE_OBJECT + r"\b"
+    ),
+    re.compile(
+        r"\bwhen (?:does|is|will|would)\b[^.?!]*\b" + _CODE_OBJECT + r"\b"
+    ),
+    re.compile(
+        r"\bwhat is (?:this|the|it)\b[^.?!]*\b"
+        + _CODE_OBJECT
+        + r"\b[^.?!]*\bfor\b"
+    ),
     re.compile(r"\bwalk\b[^.?!]*\bthrough\b[^.?!]*\b" + _CODE_OBJECT + r"\b"),
 )
 

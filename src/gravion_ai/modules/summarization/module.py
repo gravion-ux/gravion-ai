@@ -299,6 +299,44 @@ _IRREGULAR_STEMS = {
     # forms no singular produces.
     "series": "series",
     "species": "species",
+    # -en participles and short -ied verbs the verb rules
+    # below cannot derive ("written" keeps no -ing/-ed to
+    # strip, "died" would lose its vowel to the -ied rule),
+    # the -ance/-ange/-ice verbs whose stripped stem ends in
+    # a consonant cluster the e-restoration cannot tell from
+    # "hang", and non-verbs ending in -ing/-ed that the verb
+    # rules would otherwise mangle ("during" -> "dur",
+    # "hundred" -> "hundr", "something" -> "someth").
+    "written": "write",
+    "taken": "take",
+    "given": "give",
+    "spoken": "speak",
+    "broken": "break",
+    "chosen": "choose",
+    "driven": "drive",
+    "forgotten": "forget",
+    "eaten": "eat",
+    "seen": "see",
+    "died": "die",
+    "tied": "tie",
+    "dancing": "dance",
+    "danced": "dance",
+    "changing": "change",
+    "changed": "change",
+    "noticing": "notice",
+    "noticed": "notice",
+    "during": "during",
+    "morning": "morning",
+    "evening": "evening",
+    "something": "something",
+    "nothing": "nothing",
+    "everything": "everything",
+    "anything": "anything",
+    "hundred": "hundred",
+    "sacred": "sacred",
+    "naked": "naked",
+    "wicked": "wicked",
+    "hatred": "hatred",
 }
 
 
@@ -328,6 +366,49 @@ def word_tokens(text: str) -> list[str]:
     return tokens
 
 
+def _verb_stem(word: str) -> str | None:
+    """Stem of a regular -ing/-ed verb form, or None.
+
+    A question in the base form ("what did she study?", "what
+    did he stop?") must land on the same stem as a document
+    sentence in a derived form ("she studied mathematics",
+    "he stopped the car"), or document Q&A wrongly reports
+    that the document holds no answer and retrieval scores
+    the relevant passage zero. The strip is guarded so short
+    non-verbs keep their form: the remaining stem needs a
+    vowel and at least two letters ("king", "sing", "red"
+    and "bed" are not verb forms), and an -ed stem ending in
+    a vowel is left alone ("seed", "need"). A doubled final
+    consonant undoubles ("running" -> "run", "stopped" ->
+    "stop") except l/s/z, which belong to the base ("fall",
+    "pass", "buzz"); otherwise a consonant-vowel-consonant
+    stem regains its silent e ("making" -> "make", "hoped"
+    -> "hope", "using" -> "use").
+    """
+    if word.endswith("ied") and len(word) > 4:
+        return word[:-3] + "y"
+    if word.endswith("eed") and len(word) > 4:
+        return word[:-1]
+    stem: str | None = None
+    if word.endswith("ing"):
+        stem = word[:-3]
+    elif word.endswith("ed"):
+        stem = word[:-2]
+        if stem and stem[-1] in "aeiou":
+            return None
+    if not stem or len(stem) < 2 or not any(c in "aeiouy" for c in stem):
+        return None
+    if len(stem) >= 2 and stem[-1] == stem[-2] and stem[-1] not in "aeioulsz":
+        return stem[:-1]
+    if (
+        stem[-1] not in "aeiouywx"
+        and stem[-2] in "aeiou"
+        and (len(stem) == 2 or stem[-3] not in "aeiou")
+    ):
+        return stem + "e"
+    return stem
+
+
 def stem_word(word: str) -> str:
     """Light plural stemmer shared by the text modules.
 
@@ -343,13 +424,18 @@ def stem_word(word: str) -> str:
     s-singular plurals such as "buses" are in the irregular
     map), and a final "s"
     drops unless the word ends in "ss", "us" or "is" ("class",
-    "status" and "analysis" are not plurals). A short irregular
+    "status" and "analysis" are not plurals). Regular verb
+    forms stem to their base ("studied" -> "study",
+    "running" -> "run") for the same reason. A short irregular
     map covers the plurals and non-plurals the regular rules
     would split or mangle; anything else is returned unchanged.
     """
     irregular = _IRREGULAR_STEMS.get(word)
     if irregular is not None:
         return irregular
+    verb = _verb_stem(word)
+    if verb is not None:
+        return verb
     if len(word) > 4 and word.endswith("ies"):
         return word[:-3] + "y"
     if len(word) > 5 and word.endswith("oes"):
