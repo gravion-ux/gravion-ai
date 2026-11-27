@@ -303,6 +303,15 @@ _IRREGULAR_STEMS = {
     "withdrawn": "withdraw",
     "worn": "wear",
     "awoken": "awake",
+    # "Woken" and "drawn" are the -en participles of
+    # wake/draw the list above missed ("who woke early?"
+    # missed "she has woken early", "what did he draw?"
+    # missed "he has drawn a map"), and "funguses" is the
+    # s-singular plural of "fungus" the es rule landed on
+    # "funguse", a stem the singular never produces.
+    "woken": "wake",
+    "drawn": "draw",
+    "funguses": "fungus",
     "genera": "genus",
     "loci": "locus",
     "platypuses": "platypus",

@@ -92,6 +92,17 @@ ESCALATION_PHRASES = (
     # in _POSTPOSED_NEGATION_RE below.
     "insaan se baat",
     "aadmi se baat",
+    # The same request without the talk verb ("insaan
+    # chahiye" — I need a human; "kisi insaan ko bulao" —
+    # call a human): with only the "se baat" forms listed,
+    # those customers were answered by the bot instead.
+    # The declined forms state no match ("insaan nahi
+    # chahiye" breaks the phrase, and a trailing "nahi"
+    # cancels it below).
+    "insaan chahiye",
+    "aadmi chahiye",
+    "insaan ko bulao",
+    "aadmi ko bulao",
 )
 
 ESCALATION_RESPONSE = (
@@ -124,6 +135,14 @@ _TOPIC_PHRASES_RE = re.compile(
     r"user agent|ai agent|agent fee|agent fees|agent orange|"
     r"product manager|project manager|"
     r"account manager|travel agent|insurance agent|estate agent|"
+    # An identity question ("are you human?", "am i talking
+    # to a human?") asks what the bot is, not for a person:
+    # it escalated on the bare word "human" while "are you a
+    # robot?" stayed with the bot. A real request after it
+    # ("are you human? get me a human") still escalates on
+    # its own phrase.
+    r"are you a human|are you human|is this a human|"
+    r"am i talking to a human|"
     # A callback number is account data the grounding
     # material holds ("change my callback number"), not a
     # request for the call itself.
@@ -295,8 +314,22 @@ def _is_negated(text: str, match_start: int, match_end: int) -> bool:
 # request and stays with the bot.
 _TEAM_REQUEST_RE = re.compile(
     r"\b(?:talk|speak|connect|transfer|chat|put me through)\b"
-    r"[^.?!]*\b(?:customer care|customer service|customer support|support team)\b"
+    r"[^.?!]*\b(?:customer care|customer service|customer support|support team"
+    r"|technical support|tech support|sales team|billing team)\b"
+    # A named department is the same human team ("talk to
+    # sales", "connect me to billing"): with only the
+    # support names listed, those customers were answered
+    # by the bot instead of handed over. The transfer
+    # preposition keeps a topic naming ("what does the
+    # sales team do?") with the bot.
+    r"|\b(?:talk|speak|connect|transfer|chat)\b"
+    r"[^.?!]*\b(?:to|with) (?:sales|billing)\b"
     r"|\bget me an? operator\b"
+    # The operator asked for without the "get me" frame
+    # ("operator please", "i need an operator") requests
+    # the same person.
+    r"|\boperator please\b"
+    r"|\b(?:need|want) an? operator\b"
     # The team named by its bare service word with a
     # transfer preposition ("connect me to support", "talk
     # to support") asks for the same handoff; the
@@ -309,7 +342,8 @@ _TEAM_REQUEST_RE = re.compile(
     # team just as plainly; the "se baat" phrasing is the
     # request, so a topic naming of the service stays with
     # the bot, and a following "nahi" cancels it above.
-    r"|\b(?:customer care|customer service|support team|support) se baat\b"
+    r"|\b(?:customer care|customer service|support team|support"
+    r"|sales team|billing team|sales|billing) se baat\b"
     # A live-chat request with its transfer verb ("connect to
     # live chat", "start live chat") asks for the human chat
     # channel; the verb is required, so "how does live chat

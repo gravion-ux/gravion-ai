@@ -82,6 +82,20 @@ PHRASES_EN_HI = {
     "password": "password (पासवर्ड)",
     "meeting": "baithak (बैठक)",
     "report": "report (रिपोर्ट)",
+    # Everyday words and short phrases the book refused
+    # ("help", "happy", "where are you", "come here" were
+    # outside the phrasebook while their neighbours
+    # "i need help" and "where are you from" were covered).
+    "help": "madad (मदद)",
+    "happy": "khush (खुश)",
+    "excuse me": "suniye (सुनिए)",
+    "where are you": "aap kahan hain (आप कहाँ हैं)",
+    "come here": "yahan aaiye (यहाँ आइए)",
+    "wait": "intezaar kijiye (इंतज़ार कीजिए)",
+    "stop": "rukiye (रुकिए)",
+    "maybe": "shayad (शायद)",
+    "now": "abhi (अभी)",
+    "later": "baad me (बाद में)",
 }
 
 # Roman Hindi / Hinglish phrase -> English.
@@ -140,6 +154,31 @@ PHRASES_HI_EN = {
     "alvida": "goodbye",
     "kitna": "how much",
     "kahan hai": "where is",
+    # Roman spellings of entries the book already carries
+    # the other way ("shubh raatri" is the book's own
+    # "good night", yet the reverse lookup refused it;
+    # "khana" is the same word as the book's "khaana"),
+    # the short forms of its phrases ("kaise ho",
+    # "tumhara naam kya hai", "mera naam hai" — the last
+    # matched "mera naam" and left "[hai]" marked), and
+    # the reverses of the everyday entries above.
+    "shubh raatri": "good night",
+    "shubh prabhat": "good morning",
+    "khana": "food",
+    "kaise ho": "how are you",
+    "tumhara naam kya hai": "what is your name",
+    "mera naam hai": "my name is",
+    "maaf karo": "sorry",
+    "madad": "help",
+    "khush": "happy",
+    "suniye": "excuse me",
+    "aap kahan hain": "where are you",
+    "yahan aaiye": "come here",
+    "intezaar kijiye": "wait",
+    "rukiye": "stop",
+    "shayad": "maybe",
+    "abhi": "now",
+    "baad me": "later",
     # Devanagari spellings the derived entries below
     # cannot reach: the book's own "good morning" carries
     # सुप्रभात, so शुभ प्रभात needs its own entry, and

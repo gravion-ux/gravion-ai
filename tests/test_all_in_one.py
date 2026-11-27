@@ -136,6 +136,23 @@ def test_parse_route_refuses_underscore_self_routing():
         ("optimize this python function", "coder"),
         ("search for cats in this document", "retrieval"),
         ("tldr this passage about cats", "summarization"),
+        # Regression: edit verbs on an image or video, the
+        # cyber response verbs and artefact nouns, the
+        # translated text itself, searched files and a
+        # spreadsheet each scored one point and fell
+        # through to chat.
+        ("edit this photo", "image"),
+        ("upscale this image", "image"),
+        ("remove background from this image", "image"),
+        ("trim this video", "video"),
+        ("subtitle this video", "video"),
+        ("dub this clip", "video"),
+        ("scan this server", "cyber"),
+        ("block this ip address", "cyber"),
+        ("is this ip malicious?", "cyber"),
+        ("translate this document", "translation"),
+        ("search my files for budget", "retrieval"),
+        ("analyze this spreadsheet", "data-analysis"),
     ],
 )
 def test_parse_route_infers_clear_intent(prompt, expected_module):

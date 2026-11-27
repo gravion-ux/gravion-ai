@@ -111,12 +111,15 @@ _STEPS_RE = re.compile(r"\bsteps?\s*:\s*(.+)", re.IGNORECASE)
 # an agent…", "build me an agent…" and "execute the agent…" ask
 # for the same tasks as the prefix forms. The agent must be the
 # verb's object, so "plan an agent that builds reports" stays a
-# plan.
+# plan. A bot is the same object in this module's context
+# ("create a bot that posts daily" fell through to plan), and
+# starting, launching or deploying the agent runs it just as
+# "run" does ("launch the agent" fell through to plan).
 _BUILD_AGENT_RE = re.compile(
-    r"\b(?:build|create|make)\s+(?:me\s+)?(?:an?\s+)?agent\b"
+    r"\b(?:build|create|make)\s+(?:me\s+)?(?:an?\s+)?(?:agent|bot)\b"
 )
 _RUN_AGENT_RE = re.compile(
-    r"\b(?:run|execute)\s+(?:the\s+|an?\s+)?agent\b"
+    r"\b(?:run|execute|start|launch|deploy)\s+(?:the\s+|an?\s+)?(?:agent|bot)\b"
 )
 
 # A negated tool ("no email", "without a browser") is a tool the

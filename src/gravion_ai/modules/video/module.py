@@ -95,13 +95,18 @@ _EDIT_PREFIXES = (
 # video ("add subtitles to this video") is likewise an edit;
 # adding the video itself somewhere ("add this video to my
 # playlist") names no video object after "to" and is not.
+# Subtitling, captioning or dubbing a video works on the
+# existing footage the same way ("subtitle this video",
+# "dub this clip"): with only the add-to form listed, they
+# fell through to generation.
 _VIDEO_OBJECT = r"(?:video|clip|reel|footage|intro|ending|demo)"
 _EDIT_RES = (
     re.compile(
         r"\b(?:edit|modify)\b[^.?!]*\b" + _VIDEO_OBJECT + r"\b"
     ),
     re.compile(
-        r"\b(?:trim|cut|shorten|change|adjust|fix|crop|rotate)\b[^.?!]*"
+        r"\b(?:trim|cut|shorten|change|adjust|fix|crop|rotate"
+        r"|subtitle|caption|dub)\b[^.?!]*"
         r"\b(?:this|the|my|that)\s+(?:\w+\s+)?" + _VIDEO_OBJECT + r"\b"
     ),
     re.compile(
@@ -142,6 +147,9 @@ _SHAPES = (
     ("vertical", "9:16"),
     ("portrait", "9:16"),
     ("landscape", "16:9"),
+    # "Horizontal" names the landscape shape in its other
+    # word ("horizontal video" recorded the model default).
+    ("horizontal", "16:9"),
     ("banner", "21:9"),
 )
 _SHAPE_RES = tuple(

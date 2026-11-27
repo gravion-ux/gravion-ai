@@ -197,6 +197,34 @@ def test_coder_instantiates_and_answers():
         # new shapes.
         ("write code that prints the total", TASK_GENERATE),
         ("do not trace this code, review this code", TASK_REVIEW),
+        # Regression: security-hole presence questions,
+        # handling questions, runtime/memory questions and
+        # malfunction statements (too slow, memory leak,
+        # hangs, infinite loop) fell through to generation,
+        # so supplied code was answered with new code
+        # instead of the verdict on it; big-O and concept
+        # questions fell through the same way instead of
+        # the explanation they ask for.
+        ("any security holes in this code?", TASK_REVIEW),
+        ("any vulnerabilities in this function?", TASK_REVIEW),
+        ("does this function handle errors?", TASK_REVIEW),
+        ("can this code handle null input?", TASK_REVIEW),
+        ("will this handle empty input?", TASK_REVIEW),
+        ("how long does this code take?", TASK_REVIEW),
+        ("how much memory does this use?", TASK_REVIEW),
+        ("this code is too slow", TASK_REVIEW),
+        ("my code has a memory leak", TASK_REVIEW),
+        ("this function leaks memory", TASK_REVIEW),
+        ("this code loops forever", TASK_REVIEW),
+        ("the program hangs", TASK_REVIEW),
+        ("infinite loop in this code", TASK_REVIEW),
+        ("what is the big o of this algorithm?", TASK_EXPLAIN),
+        ("what is recursion?", TASK_EXPLAIN),
+        ("what is a decorator in python?", TASK_EXPLAIN),
+        ("how does sorting work?", TASK_EXPLAIN),
+        ("how do lists work in python?", TASK_EXPLAIN),
+        # A how-to-write request still asks for code.
+        ("how do i write a loop?", TASK_GENERATE),
     ],
 )
 def test_detect_task(prompt, expected):

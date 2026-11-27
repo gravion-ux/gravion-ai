@@ -81,6 +81,15 @@ def test_agentic_instantiates_and_answers():
         ("run the agent now, don't build a new one", TASK_RUN),
         ("please build: an agent that watches the inbox", TASK_BUILD),
         ("please run: the inbox agent on today's mail", TASK_RUN),
+        # Regression: a bot object and the start/launch/
+        # deploy run verbs fell through to planning.
+        ("create a bot that posts daily", TASK_BUILD),
+        ("build a bot for reminders", TASK_BUILD),
+        ("launch the agent", TASK_RUN),
+        ("deploy the agent", TASK_RUN),
+        ("start the agent now", TASK_RUN),
+        ("run the bot on this task", TASK_RUN),
+        ("do not launch the agent yet", TASK_PLAN),
     ],
 )
 def test_detect_task(prompt, expected):

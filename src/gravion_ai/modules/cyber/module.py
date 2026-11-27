@@ -247,7 +247,8 @@ _SEVERITY_RE = re.compile(
     r"|severity" + _SEV_NOUNS + r"\s+of\s+" + _LEVEL + r"\b"
     r"|severity\s+of\s+(?:the\s+)?\w+\s+(?:is|was)\s+" + _RATED + _INTENSIFIER + _LEVEL + r"\b"
     r"|severity" + _SEV_NOUNS + r"\s*\(\s*" + _LEVEL + r"\s*\)"
-    r"|(?<!not )(?<!no )(?<!n't )(?<!never )\b" + _LEVEL + r"[\s-]severity\b"
+    r"|(?<!not )(?<!no )(?<!n't )(?<!never )(?<!non-)(?<!non )\b"
+    + _LEVEL + r"[\s-]severity\b"
     # A rating verb or a level named on the finding itself
     # states the same level without the word "severity"
     # ("this finding is rated high", "an informational
@@ -255,10 +256,17 @@ _SEVERITY_RE = re.compile(
     # negation guards mirror the level-first form, so "is
     # not rated high" still states no level. A priority
     # ("low priority") is triage urgency, not severity, and
-    # stays unrecorded.
-    r"|(?<!not )(?<!n't )(?<!never )\b(?:rated|assessed)\s+(?:as\s+)?" + _LEVEL + r"\b"
-    r"|(?<!not )(?<!not a )(?<!not an )(?<!no )(?<!n't )(?<!never )\b"
-    + _LEVEL + r"\s+(?:finding|vulnerability|issue)\b",
+    # stays unrecorded. The "non-" prefix negates the level
+    # it attaches to ("a non-critical issue" recorded
+    # critical, the opposite of the level it states), so it
+    # refuses the match like "not" does. A level named on an
+    # alert or incident states the level the same way
+    # ("this is a critical alert" recorded none).
+    r"|(?<!not )(?<!n't )(?<!never )(?<!non-)(?<!non )\b"
+    r"(?:rated|assessed)\s+(?:as\s+)?" + _LEVEL + r"\b"
+    r"|(?<!not )(?<!not a )(?<!not an )(?<!no )(?<!n't )(?<!never )"
+    r"(?<!non-)(?<!non )\b"
+    + _LEVEL + r"\s+(?:finding|vulnerability|issue|alert|incident)\b",
     re.IGNORECASE,
 )
 

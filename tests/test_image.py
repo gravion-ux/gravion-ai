@@ -70,6 +70,17 @@ def test_image_instantiates_and_answers():
         # A negated edit verb asks for a new image instead.
         ("do not edit this image, draw a new one", MODE_GENERATE),
         ("never modify this photo, generate a fresh one", MODE_GENERATE),
+        # Regression: transform verbs, background removal
+        # with no image noun, and a comparative aimed at
+        # the image fell through to generation.
+        ("resize this image please", MODE_EDIT),
+        ("upscale this photo", MODE_EDIT),
+        ("rotate this picture", MODE_EDIT),
+        ("enhance this shot", MODE_EDIT),
+        ("remove background", MODE_EDIT),
+        ("make it brighter", MODE_EDIT),
+        ("can you resize it please", MODE_EDIT),
+        ("do not resize this image, draw a new one", MODE_GENERATE),
     ],
 )
 def test_detect_mode(prompt, expected):

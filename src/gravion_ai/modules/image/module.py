@@ -77,16 +77,32 @@ _EDIT_PREFIXES = (
 # "fix"/"crop"/"remove" ("fix this image", "crop this photo",
 # "remove the background from this photo"). The pronoun form
 # ("can you edit this please") counts for edit/modify/fix/crop.
+# The transform verbs name the same task ("resize this
+# image", "upscale this photo", "rotate this picture",
+# "enhance this shot"), as do removing the background with no
+# image noun named ("remove background" edits the image in
+# hand) and a comparative aimed at the image ("make it
+# brighter"): all fell through to generation.
 _IMAGE_OBJECT = (
     r"(?:image|photo|picture|portrait|logo|banner|poster|icon|shot)"
 )
 _EDIT_RES = (
     re.compile(
-        r"\b(?:edit|modify|change|retouch|adjust|fix|crop|remove)\b[^.?!]*\b"
+        r"\b(?:edit|modify|change|retouch|adjust|fix|crop|remove"
+        r"|resize|upscale|enhance|rotate|flip|restore|sharpen|blur"
+        r"|brighten|darken|colorize|colourize)\b[^.?!]*\b"
         + _IMAGE_OBJECT
         + r"\b"
     ),
-    re.compile(r"\b(?:edit|modify|fix|crop)\s+(?:this|that|it)\b"),
+    re.compile(
+        r"\b(?:edit|modify|fix|crop|resize|upscale|enhance|rotate"
+        r"|flip|restore|sharpen|blur)\s+(?:this|that|it)\b"
+    ),
+    re.compile(r"\bremove\b[^.?!]*\bbackground\b"),
+    re.compile(
+        r"\bmake (?:this|that|it) "
+        r"(?:brighter|darker|sharper|bigger|smaller|clearer|blurrier)\b"
+    ),
 )
 
 # A negated edit verb asks for a new image ("do not edit this

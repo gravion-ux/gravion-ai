@@ -26,6 +26,18 @@ def _run(module_name, model_id, prompt):
 def test_translation_phrasebook_exact_and_word_level():
     assert "dhanyavaad" in translate_phrase("thank you", to_hindi=True)
     assert translate_phrase("shukriya", to_hindi=False) == "thank you"
+    # Regression: everyday words and the Roman spellings of
+    # entries the book carries the other way were refused
+    # as outside the phrasebook.
+    assert "madad" in translate_phrase("help", to_hindi=True)
+    assert "khush" in translate_phrase("happy", to_hindi=True)
+    assert "aap kahan hain" in translate_phrase("where are you", to_hindi=True)
+    assert translate_phrase("shubh raatri", to_hindi=False) == "good night"
+    assert translate_phrase("khana", to_hindi=False) == "food"
+    assert translate_phrase("kaise ho", to_hindi=False) == "how are you"
+    assert translate_phrase("mera naam hai", to_hindi=False) == "my name is"
+    assert translate_phrase("madad", to_hindi=False) == "help"
+    assert translate_phrase("मदद", to_hindi=False) == "help"
     # Unknown words are marked, never guessed.
     out = translate_phrase("thank you zxqwv", to_hindi=True)
     assert "[zxqwv]" in out
@@ -637,6 +649,13 @@ def test_stem_word_matches_remaining_irregulars_and_e_verbs():
     # Bases the e-restoration must not mangle.
     assert stem_word("hanging") == stem_word("hang") == "hang"
     assert stem_word("syncing") == stem_word("sync") == "sync"
+    # Regression: the -en participles "woken"/"drawn" and
+    # the s-singular plural "funguses" stayed split from
+    # their bases, so base-form questions missed
+    # participle evidence.
+    assert stem_word("woken") == stem_word("wake") == "wake"
+    assert stem_word("drawn") == stem_word("draw") == "draw"
+    assert stem_word("funguses") == stem_word("fungus") == "fungus"
     out = answer_question(
         "She lied to him yesterday. He left early.",
         "Who did she lie to?",

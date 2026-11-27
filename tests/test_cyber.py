@@ -369,6 +369,14 @@ def test_extract_indicators_hash_lengths_do_not_overlap():
         ("is not rated high, just noisy", None),
         ("not a critical finding, just noisy", None),
         ("a low priority issue on the host", None),
+        # Regression: "non-critical" recorded critical, the
+        # opposite of the level it states, and a level named
+        # on an alert recorded none.
+        ("a non-critical issue on the host", None),
+        ("non-critical severity, just noisy", None),
+        ("severity is non-critical, just noisy", None),
+        ("this is a critical alert", "critical"),
+        ("a high incident on the host", "high"),
     ],
 )
 def test_parse_severity(prompt, expected):

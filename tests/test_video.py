@@ -114,6 +114,12 @@ def test_video_instantiates_and_answers():
         ("make a video to fix my posture", MODE_GENERATE),
         ("add this video to my playlist", MODE_GENERATE),
         ("do not change this video, make a new one", MODE_GENERATE),
+        # Regression: subtitling, captioning or dubbing an
+        # existing video fell through to generation.
+        ("subtitle this video", MODE_EDIT),
+        ("caption this clip please", MODE_EDIT),
+        ("dub this video in hindi", MODE_EDIT),
+        ("make a video with subtitles", MODE_GENERATE),
     ],
 )
 def test_detect_mode(prompt, expected):
@@ -157,6 +163,9 @@ def test_parse_duration(prompt, expected):
         ("a vertical video for the launch", "9:16"),
         ("a portrait video of the founder", "9:16"),
         ("a landscape video of the office", "16:9"),
+        # "Horizontal" names the landscape shape in its
+        # other word.
+        ("a horizontal video of the office", "16:9"),
         ("a wide banner video for the homepage", "21:9"),
         # An explicit size beats a named shape.
         ("a vertical video at 1200x628", "1200x628"),

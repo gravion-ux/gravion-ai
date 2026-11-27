@@ -227,6 +227,20 @@ def test_introductions_postposed_negations_and_topics_do_not_escalate(prompt):
         # me", yet never handed over.
         "phone me please",
         "ring me back when you can",
+        # Regression: a Hinglish need-a-human request
+        # without the talk verb, a named department, and
+        # the operator asked for plainly all stayed with
+        # the bot instead of handing over.
+        "insaan chahiye",
+        "aadmi chahiye",
+        "kisi insaan ko bulao",
+        "talk to sales",
+        "connect me to billing",
+        "sales team se baat karni hai",
+        "billing se baat karni hai",
+        "talk to technical support",
+        "operator please",
+        "i need an operator",
     ],
 )
 def test_phone_requests_and_person_requests_still_escalate(prompt):
@@ -247,6 +261,27 @@ def test_phone_requests_and_person_requests_still_escalate(prompt):
 )
 def test_rights_and_fee_topics_do_not_escalate(prompt):
     assert not needs_human(prompt)
+
+
+@pytest.mark.parametrize(
+    "prompt,expected",
+    [
+        # Regression: an identity question escalated on the
+        # bare word "human" while "are you a robot?" stayed
+        # with the bot; a declined Hinglish human and a
+        # topic naming of a department state no request,
+        # and a real request after an identity question
+        # still hands over.
+        ("are you human?", False),
+        ("are you a human?", False),
+        ("am i talking to a human?", False),
+        ("insaan nahi chahiye", False),
+        ("what does the sales team do?", False),
+        ("are you human? get me a human", True),
+    ],
+)
+def test_identity_questions_and_declined_humans(prompt, expected):
+    assert needs_human(prompt) is expected
 
 
 def test_support_runtime_dev_end_to_end(make_config):
