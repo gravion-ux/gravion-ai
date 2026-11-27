@@ -55,7 +55,6 @@ class GravionRuntime:
         self.config = config
         self.audit = AuditLog(config.state_dir / "audit.jsonl")
         self.events = RunEventLog(config.state_dir / "run-events.jsonl")
-        self.event_log = self.events
         self.registry = registry or default_registry()
         self.catalog = ModelCatalog.load_for_home(config.home)
         self.provider = build_provider(config.provider, home=config.home)

@@ -120,10 +120,17 @@ _IPV4_RE = re.compile(
 # indicators arrive in shared defensive reporting: extracted
 # nowhere, a triage request naming one recorded no indicator
 # at all. Candidates are refanged and octet-validated exactly
-# like plain addresses, and recorded in canonical form.
-_DEFANGED_DOT = r"(?:\[\.\]|\(\.\))"
+# like plain addresses, and recorded in canonical form. The
+# defanging is often partial — only the first dot neutralised
+# to break linkification ("10[.]0.0.8") — so each dot may be
+# plain or defanged; the guards mirror the plain pattern's, in
+# every dot spelling, so a five-group chain ("1[.]2[.]3[.]4[.]5")
+# still yields no four-group window.
+_DEFANGED_DOT = r"(?:\.|\[\.\]|\(\.\))"
 _DEFANGED_IPV4_RE = re.compile(
-    r"(?<!\d)(?<![A-Za-z])\d{1,3}(?:" + _DEFANGED_DOT + r"\d{1,3}){3}(?!\d)"
+    r"(?<!\d)(?<!\d\.)(?<!\[\.\])(?<!\(\.\))(?<![A-Za-z])"
+    r"\d{1,3}(?:" + _DEFANGED_DOT + r"\d{1,3}){3}"
+    r"(?!\d)(?!\.\d)(?!\[\.\]\d)(?!\(\.\)\d)"
 )
 # An IPv6 candidate is a colon-hex sequence (full, "::"-compressed
 # or IPv4-embedded); the guards keep a window inside a longer
@@ -148,8 +155,11 @@ _MD5_RE = re.compile(r"\b[0-9a-fA-F]{32}\b")
 # URL that legitimately contains them (an IPv6 literal, a
 # parenthesised path segment) is recorded whole; _clean_url
 # trims the unbalanced trailing ones that belong to the
-# surrounding sentence instead.
-_URL_RE = re.compile(r"https?://[^\s\"'<>]+")
+# surrounding sentence instead. The scheme match is
+# case-insensitive ("HTTPS://…"), like the defanged pattern
+# below: schemes are case-insensitive, and an uppercase one
+# recorded no URL at all.
+_URL_RE = re.compile(r"https?://[^\s\"'<>]+", re.IGNORECASE)
 # A defanged URL ("hxxp://evil[.]example.com/path") is the
 # same artefact with the scheme and dots neutralised; it is
 # refanged before recording. A plain URL carrying defanged
@@ -174,17 +184,21 @@ _DEFANGED_URL_RE = re.compile(r"hxxps?://[^\s\"'<>]+", re.IGNORECASE)
 # they state. The level-first form carries the same negation
 # guard as the copula forms: "not high severity" and "isn't
 # high severity" state no level, so a negation directly
-# before the level refuses the match.
+# before the level refuses the match — "never" negates just
+# as directly ("never high severity" recorded high). An
+# intensifier between the copula and the level ("severity is
+# quite high") still states that level plainly.
 _LEVEL = r"(critical|high|medium|moderate|low|informational|info)"
 _SEV_NOUNS = r"(?:[\s-]+(?:level|rating))*"
 _RATED = r"(?:rated\s+|assessed\s+as\s+)?"
+_INTENSIFIER = r"(?:quite\s+|very\s+|really\s+)?"
 _SEVERITY_RE = re.compile(
     r"severity" + _SEV_NOUNS + r"[\s:=\-]+" + _RATED + _LEVEL + r"\b"
-    r"|severity" + _SEV_NOUNS + r"\s+(?:is|was)\s+" + _RATED + _LEVEL + r"\b"
+    r"|severity" + _SEV_NOUNS + r"\s+(?:is|was)\s+" + _RATED + _INTENSIFIER + _LEVEL + r"\b"
     r"|severity" + _SEV_NOUNS + r"\s+of\s+" + _LEVEL + r"\b"
-    r"|severity\s+of\s+(?:the\s+)?\w+\s+(?:is|was)\s+" + _RATED + _LEVEL + r"\b"
+    r"|severity\s+of\s+(?:the\s+)?\w+\s+(?:is|was)\s+" + _RATED + _INTENSIFIER + _LEVEL + r"\b"
     r"|severity" + _SEV_NOUNS + r"\s*\(\s*" + _LEVEL + r"\s*\)"
-    r"|(?<!not )(?<!no )(?<!n't )\b" + _LEVEL + r"[\s-]severity\b",
+    r"|(?<!not )(?<!no )(?<!n't )(?<!never )\b" + _LEVEL + r"[\s-]severity\b",
     re.IGNORECASE,
 )
 
@@ -209,8 +223,8 @@ _ITEM = r"(?:this|the|that|incident|finding|alert|issue|vulnerability|event)"
 # request fell through to analysis. The text is already lowered,
 # so the hash form needs no case flag.
 _INDICATOR_HINT = (
-    r"(?:cve-\d{4}-\d{4,}|(?<![a-z])\d{1,3}(?:\.\d{1,3}){3}"
-    r"|\d{1,3}(?:\[\.\]|\(\.\))\d{1,3}(?:\[\.\]|\(\.\))\d{1,3}(?:\[\.\]|\(\.\))\d{1,3}"
+    r"(?:cve-\d{4}-\d{4,}"
+    r"|(?<![a-z])\d{1,3}(?:(?:\.|\[\.\]|\(\.\))\d{1,3}){3}"
     r"|[0-9a-f]{0,4}::[0-9a-f:]*|(?:[0-9a-f]{1,4}:){4,}[0-9a-f]{1,4}"
     r"|[0-9a-f]{64}|[0-9a-f]{40}|[0-9a-f]{32}|https?://\S+|hxxps?://\S+)"
 )
@@ -270,13 +284,32 @@ def _normalised_ipv6(candidate: str) -> str | None:
 
 def _refang(text: str) -> str:
     """Canonical form of a defanged indicator ("10[.]0[.]0[.]8"
-    -> "10.0.0.8", "hxxps://…" -> "https://…")."""
+    -> "10.0.0.8", "hxxps://…" -> "https://…").
+
+    A URL's scheme and host are case-insensitive, so they are
+    lowercased: "HTTPS://Evil.Example.COM/Path" and its plain
+    spelling are one artefact and must dedupe to one record.
+    The path and query keep their case — they are
+    case-sensitive."""
     refanged = text.replace("[.]", ".").replace("(.)", ".")
     if refanged[:5].lower() == "hxxps":
-        return "https" + refanged[5:]
-    if refanged[:4].lower() == "hxxp":
-        return "http" + refanged[4:]
-    return refanged
+        refanged = "https" + refanged[5:]
+    elif refanged[:4].lower() == "hxxp":
+        refanged = "http" + refanged[4:]
+    scheme, sep, rest = refanged.partition("://")
+    if not sep:
+        return refanged
+    authority_match = re.match(r"([^/?#]*)(.*)", rest, re.DOTALL)
+    authority, tail = authority_match.group(1), authority_match.group(2)
+    userinfo, at, hostport = authority.rpartition("@")
+    if hostport.startswith("["):
+        end = hostport.find("]")
+        host, port = hostport[: end + 1], hostport[end + 1 :]
+    else:
+        host, colon, port_number = hostport.partition(":")
+        port = colon + port_number
+    authority = (userinfo + at if at else "") + host.lower() + port
+    return scheme.lower() + sep + authority + tail
 
 
 def _clean_url(url: str) -> str:

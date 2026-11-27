@@ -198,6 +198,30 @@ def test_extract_indicators_refangs_defanged_forms():
     assert detect_task("the report mentions 10[.]0[.]0[.]8") == TASK_ANALYSE
 
 
+def test_extract_indicators_partial_defanging_and_url_case():
+    # Regression: partial defanging ("10[.]0.0.8" — only the
+    # first dot neutralised) matched neither the plain nor the
+    # fully-defanged pattern, so the indicator vanished; and
+    # an uppercase URL scheme recorded no URL at all. Scheme
+    # and host are case-insensitive, so URLs are recorded in
+    # canonical lower case and dedupe across spellings, while
+    # the case-sensitive path keeps its case.
+    indicators = extract_indicators("hosts 10[.]0.0.8 and 192.168[.]1.1 seen")
+    assert indicators["ipv4"] == ["10.0.0.8", "192.168.1.1"]
+    assert "ipv4" not in extract_indicators("chain 1[.]2[.]3[.]4[.]5 here")
+    assert "ipv4" not in extract_indicators("bad 999[.]1.1.1 here")
+    assert detect_task("triage 10[.]0.0.8") == TASK_TRIAGE
+    assert extract_indicators("see HTTPS://Evil.Example.COM/Path")["url"] == [
+        "https://evil.example.com/Path"
+    ]
+    assert extract_indicators(
+        "HTTPS://example.com/a and https://example.com/a"
+    )["url"] == ["https://example.com/a"]
+    assert extract_indicators("see Http://EXAMPLE.com/x?Q=AbC")["url"] == [
+        "http://example.com/x?Q=AbC"
+    ]
+
+
 def test_extract_indicators_hash_lengths_do_not_overlap():
     # MD5 and SHA-1 hashes are recorded under their own kinds,
     # and no shorter pattern matches inside a longer hash.
@@ -255,6 +279,13 @@ def test_extract_indicators_hash_lengths_do_not_overlap():
         ("this is not high severity, just noisy", None),
         ("Not high severity, just noisy", None),
         ("isn't high severity, just noisy", None),
+        # "never" negates just as directly as "not".
+        ("this is never high severity, just noisy", None),
+        # An intensifier between the copula and the level
+        # still states that level; a negation still refuses.
+        ("severity is quite high for this host", "high"),
+        ("severity is very critical, host isolated", "critical"),
+        ("severity is not quite high, just noisy", None),
         ("a high severity alert on the host", "high"),
         ("a routine alert", None),
     ],
