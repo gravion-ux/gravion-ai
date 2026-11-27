@@ -89,8 +89,10 @@ _TOPIC_PHRASES_RE = re.compile(
     r"\b(?:human resources|human readable|human error|human-like|"
     # "Human rights" and an "agent fee" name topics, not a
     # request for a person: both escalated a policy/price
-    # question that the grounding material should answer.
-    r"human rights|"
+    # question that the grounding material should answer. The
+    # same holds for "human anatomy" and "human body"
+    # questions, which escalated on the bare word "human".
+    r"human rights|human anatomy|human body|"
     r"password manager|task manager|file manager|download manager|"
     r"user agent|ai agent|agent fee|agent fees|"
     r"product manager|project manager|"
@@ -226,11 +228,30 @@ def _is_negated(text: str, match_start: int, match_end: int) -> bool:
     return _POSTPOSED_NEGATION_RE.match(text, match_end) is not None
 
 
+# Asking to be put through to the team by its service name
+# ("connect me with customer care", "talk to customer
+# service", "get me an operator") requests a person just as
+# plainly as "get me a human", yet none of the phrases above
+# matched, so the bot answered a customer who had asked for
+# the team. The transfer verb is required: a topic question
+# naming the service ("what are your customer service
+# hours?") states no request and stays with the bot.
+_TEAM_REQUEST_RE = re.compile(
+    r"\b(?:talk|speak|connect|transfer|chat|put me through)\b"
+    r"[^.?!]*\b(?:customer care|customer service|support team)\b"
+    r"|\bget me an? operator\b"
+)
+
+
 def needs_human(prompt: str) -> bool:
     """True when the customer explicitly asks for a human."""
     text = _strip_call_me_name(prompt)
     text = _TOPIC_PHRASES_RE.sub(" ", text.lower())
     for match in _ESCALATION_RE.finditer(text):
+        if _is_negated(text, match.start(), match.end()):
+            continue
+        return True
+    for match in _TEAM_REQUEST_RE.finditer(text):
         if _is_negated(text, match.start(), match.end()):
             continue
         return True

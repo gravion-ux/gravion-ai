@@ -135,7 +135,18 @@ _INTENT_SIGNALS: dict[str, tuple[frozenset[str], frozenset[str]]] = {
         frozenset({"website", "webpage", "landing", "homepage"}),
     ),
     "cyber": (
-        frozenset({"triage", "analyse", "analyze", "investigate"}),
+        frozenset(
+            {
+                "triage",
+                "analyse",
+                "analyze",
+                "investigate",
+                "secure",
+                "protect",
+                "harden",
+                "scan",
+            }
+        ),
         frozenset(
             {
                 "alert",
@@ -146,6 +157,10 @@ _INTENT_SIGNALS: dict[str, tuple[frozenset[str], frozenset[str]]] = {
                 "vulnerability",
                 "ioc",
                 "cve",
+                "xss",
+                "csrf",
+                "ssrf",
+                "injection",
             }
         ),
     ),
@@ -277,11 +292,28 @@ def infer_route(prompt: str) -> str:
     # "never make") — a wider window would let one clause's
     # negation cancel the next clause's verb.
     ordered = _TOKEN_RE.findall(prompt.lower().replace("n't", " not"))
-    tokens = frozenset(ordered)
+    # Intent words are listed in their base form, but requests
+    # state them in plural and derived forms ("draw logos",
+    # "triage alerts", "calculate averages of datasets"): matched
+    # raw, every one of those scored a single point and fell
+    # through to chat. Tokens therefore also count under the
+    # text modules' shared stem, so "logos" meets "logo" and
+    # "vulnerabilities" meets "vulnerability"; the raw token is
+    # kept too, so listed plurals ("steps", "lyrics") still hit.
+    from ..summarization.module import stem_word
+
+    # "means" is the verb in "explain what median means", not
+    # the statistic: its stem "mean" scored a second
+    # data-analysis noun and routed a definition question to
+    # the statistics module.
+    tokens = frozenset(ordered) | frozenset(
+        stem_word(token) for token in ordered if token != "means"
+    )
     negated: set[str] = set()
     for index, token in enumerate(ordered):
         if any(t in _NEGATORS for t in ordered[max(0, index - 2) : index]):
             negated.add(token)
+            negated.add(stem_word(token))
     # Statistic + supplied numbers (see _STAT_TERMS above). A
     # statistic counts as negated when a negator stands within
     # the four tokens before it ("do not compute the mean"),
@@ -289,7 +321,7 @@ def infer_route(prompt: str) -> str:
     # sit between the negator and the statistic it governs.
     if tokens & _STAT_TERMS and not tokens & _CODING_VERBS:
         stat_negated = any(
-            token in _STAT_TERMS
+            stem_word(token) in _STAT_TERMS
             and any(t in _NEGATORS for t in ordered[max(0, index - 4) : index])
             for index, token in enumerate(ordered)
         )

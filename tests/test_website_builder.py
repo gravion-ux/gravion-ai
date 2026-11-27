@@ -289,3 +289,31 @@ def test_runtime_build_website_end_to_end(make_config, tmp_path):
     )
     assert result.provider == "gravion-local-builder"
     assert (tmp_path / "site" / "index.html").exists()
+
+
+def test_negated_pages_styles_and_site_types_are_refused_not_requested():
+    # Regression: "no pricing page" collected the pricing page,
+    # "not dark, use a light style" recorded the dark style and
+    # "not a shop, a portfolio site" recorded an online store —
+    # each brief carried exactly what the request refused.
+    assert parse_pages("landing page for a gym, no pricing page") == ["home"]
+    assert parse_pages("website without a contact page") == ["home"]
+    assert parse_pages("build a site, not a blog page, just home") == ["home"]
+    assert parse_style("not dark, use a light style") == "light"
+    assert parse_style("no dark style, keep it light") == "light"
+    assert parse_style("dark style, not minimal") == "dark"
+    assert parse_site_type("not a shop, a portfolio site") == "portfolio"
+    # Non-negated namings still collect, including the menu,
+    # services, team and faq pages briefs name just as plainly.
+    assert parse_pages("home, about and menu pages for a bakery") == [
+        "home",
+        "about",
+        "menu",
+    ]
+    assert parse_pages("a menu page and a services page") == [
+        "home",
+        "menu",
+        "services",
+    ]
+    assert parse_pages("team page and faq page please") == ["home", "team", "faq"]
+    assert parse_site_type("landing pages for gyms") == "landing page"

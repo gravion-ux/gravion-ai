@@ -30,13 +30,13 @@ and adding deterministic logic of its own:
    brief, so the model works from the exact artefacts instead of
    paraphrase: CVE ids, IPv4 addresses (octet-validated), IPv6
    addresses (validated and recorded in compressed form),
-   SHA-256, SHA-1 and MD5 hashes and URLs, each deduplicated in
-   request order. Defanged indicators as shared in defensive
-   reporting ("10[.]0[.]0[.]8", "hxxp://…") are refanged and
-   recorded in their canonical form, like the IPv6 compression
-   above. A stated severity ("severity: high") is recorded
-   verbatim; an unstated one is recorded as not stated rather
-   than guessed.
+   SHA-256, SHA-1 and MD5 hashes, URLs and email addresses,
+   each deduplicated in request order. Defanged indicators as
+   shared in defensive reporting ("10[.]0[.]0[.]8", "hxxp://…",
+   "admin[at]evil[.]example.com") are refanged and recorded in
+   their canonical form, like the IPv6 compression above. A
+   stated severity ("severity: high") is recorded verbatim; an
+   unstated one is recorded as not stated rather than guessed.
 
 The module is **defensive only**, by design (see ARCHITECTURE.md):
 analysis, triage and reporting assistance for the deployment's own
@@ -168,6 +168,28 @@ _URL_RE = re.compile(r"https?://[^\s\"'<>]+", re.IGNORECASE)
 # dots ("https://evil[.]example.com") is refanged the same
 # way, so one artefact is never recorded in two spellings.
 _DEFANGED_URL_RE = re.compile(r"hxxps?://[^\s\"'<>]+", re.IGNORECASE)
+# An email address is the sender artefact of a phishing report:
+# extracted nowhere, "phishing email from admin@evil.example.com"
+# recorded no indicator at all, so the brief handed the model a
+# phishing analysis with the one artefact that mattered left to
+# paraphrase. The local part takes the usual dot/plus/underscore
+# forms, the domain needs a dotted alphabetic TLD ("hello@world"
+# states no address), and defanged spellings ("admin[at]evil[.]…",
+# "admin(at)evil.example.com") refang to the same record, like
+# the defanged URLs above. An address inside a URL's authority
+# ("https://user@example.com/path") is part of that URL record,
+# not a separate email, so matches overlapping a URL match are
+# skipped.
+_EMAIL_LOCAL = r"[A-Za-z0-9._%+\-]+"
+_EMAIL_DOMAIN = (
+    r"[A-Za-z0-9](?:[A-Za-z0-9\-]*[A-Za-z0-9])?"
+    r"(?:(?:\.|\[\.\]|\(\.\))[A-Za-z0-9](?:[A-Za-z0-9\-]*[A-Za-z0-9])?)*"
+    r"(?:\.|\[\.\]|\(\.\))[A-Za-z]{2,}"
+)
+_EMAIL_RE = re.compile(
+    r"(?<![A-Za-z0-9._%+\-])" + _EMAIL_LOCAL + r"(?:@|\[at\]|\(at\))" + _EMAIL_DOMAIN,
+    re.IGNORECASE,
+)
 # A stated severity arrives as "severity: high", "severity is
 # high" or "(high|high-)severity"; all three are recorded. The
 # same statement also arrives with a "level" or "rating" noun
@@ -233,7 +255,8 @@ _INDICATOR_HINT = (
     r"(?:cve-\d{4}-\d{4,}"
     r"|(?<![a-z])\d{1,3}(?:(?:\.|\[\.\]|\(\.\))\d{1,3}){3}"
     r"|[0-9a-f]{0,4}::[0-9a-f:]*|(?:[0-9a-f]{1,4}:){4,}[0-9a-f]{1,4}"
-    r"|[0-9a-f]{64}|[0-9a-f]{40}|[0-9a-f]{32}|https?://\S+|hxxps?://\S+)"
+    r"|[0-9a-f]{64}|[0-9a-f]{40}|[0-9a-f]{32}|https?://\S+|hxxps?://\S+"
+    r"|[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,})"
 )
 # "Report" and "triage" are nouns as often as verbs: "the report
 # mentions CVE-2026-12345" discusses a report, it does not ask
@@ -347,6 +370,25 @@ def _refang(text: str) -> str:
     return scheme.lower() + sep + authority + tail
 
 
+def _refang_email(candidate: str) -> str | None:
+    """Canonical email form of a (possibly defanged) candidate,
+    else None.
+
+    The domain is case-insensitive and lowercased, like a URL
+    host; the local part keeps its case. A local part that
+    starts or ends with a dot, or carries consecutive dots,
+    states no address.
+    """
+    refanged = re.sub(r"\[(?i:at)\]|\(at\)", "@", candidate)
+    refanged = refanged.replace("[.]", ".").replace("(.)", ".")
+    local, at, domain = refanged.partition("@")
+    if not at or not local or local.startswith(".") or local.endswith("."):
+        return None
+    if ".." in local or ".." in domain:
+        return None
+    return local + "@" + domain.lower()
+
+
 def _clean_url(url: str) -> str:
     """Trim sentence punctuation glued to a URL match.
 
@@ -371,9 +413,10 @@ def extract_indicators(prompt: str) -> dict[str, list[str]]:
     case), IPv4 addresses whose octets are all valid (defanged
     forms refanged), IPv6 addresses (validated, normalised to
     compressed form), SHA-256, SHA-1 and MD5 hashes (normalised
-    to lower case) and URLs (defanged forms refanged) — each
-    deduplicated in request order. Kinds with no matches are
-    omitted.
+    to lower case), URLs (defanged forms refanged) and email
+    addresses (defanged forms refanged, domain lowercased) —
+    each deduplicated in request order. Kinds with no matches
+    are omitted.
     """
     indicators: dict[str, list[str]] = {}
 
@@ -407,14 +450,23 @@ def extract_indicators(prompt: str) -> dict[str, list[str]]:
     collect("sha256", [m.group(0).lower() for m in _SHA256_RE.finditer(prompt)])
     collect("sha1", [m.group(0).lower() for m in _SHA1_RE.finditer(prompt)])
     collect("md5", [m.group(0).lower() for m in _MD5_RE.finditer(prompt)])
+    url_matches = list(_URL_RE.finditer(prompt)) + list(
+        _DEFANGED_URL_RE.finditer(prompt)
+    )
     url_found = [
-        (m.start(), _refang(_clean_url(m.group(0))))
-        for m in _URL_RE.finditer(prompt)
-    ] + [
-        (m.start(), _refang(_clean_url(m.group(0))))
-        for m in _DEFANGED_URL_RE.finditer(prompt)
+        (m.start(), _refang(_clean_url(m.group(0)))) for m in url_matches
     ]
     collect("url", [value for _pos, value in sorted(url_found)])
+    url_spans = [(m.start(), m.end()) for m in url_matches]
+    collect(
+        "email",
+        [
+            refanged
+            for m in _EMAIL_RE.finditer(prompt)
+            if not any(start <= m.start() < end for start, end in url_spans)
+            and (refanged := _refang_email(m.group(0))) is not None
+        ],
+    )
     return indicators
 
 

@@ -82,7 +82,16 @@ _GENERATE_OPENERS = (
     "refactor",
 )
 
-_CODE_OBJECT = r"(?:code|function|script|snippet|program|module|class)"
+# An algorithm, method, implementation or (in this module's
+# context) file is supplied code just as a function is: "can
+# you review this algorithm?", "check this method for bugs"
+# and "is this algorithm correct?" fell through to generation,
+# so a request to examine existing code was answered with new
+# code instead of the problems in it.
+_CODE_OBJECT = (
+    r"(?:code|function|script|snippet|program|module|class"
+    r"|algorithm|method|implementation|file)"
+)
 # "Look over" / "go over" ask for a review just as plainly as
 # "review" does ("look over this function please" fell through
 # to generation, so a review request was answered with new code).

@@ -234,3 +234,20 @@ def test_coder_production_runs_with_license_and_signed_module(
     )
     out = runtime.coder("write a retry helper")
     assert "Retry only temporary failures" in out
+
+
+def test_algorithm_and_method_objects_detect_as_supplied_code():
+    # Regression: an algorithm, method, implementation or file
+    # was not a code object, so review/explain requests aimed
+    # at one fell through to generation and were answered with
+    # new code instead of the problems in the supplied code.
+    assert detect_task("can you review this algorithm?") == TASK_REVIEW
+    assert detect_task("check this method for bugs") == TASK_REVIEW
+    assert detect_task("is this algorithm correct?") == TASK_REVIEW
+    assert detect_task("debug this method") == TASK_REVIEW
+    assert detect_task("look over this file") == TASK_REVIEW
+    assert detect_task("can you describe this algorithm?") == TASK_EXPLAIN
+    assert detect_task("can you review this implementation?") == TASK_REVIEW
+    # Generation openers still win over the objects they name.
+    assert detect_task("write a function to sort a list") == TASK_GENERATE
+    assert detect_task("explain code review process") == TASK_EXPLAIN

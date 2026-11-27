@@ -300,24 +300,28 @@ def _mode_line(numbers: list[float]) -> str:
     return f"Mode: {listed} (each appears {mode_count} times)"
 
 
-def _exact_total(numbers: list[float]) -> float:
-    """Sum without intermediate overflow.
+def _format_exact(value: Fraction) -> str:
+    """Format an exact value the way ``:g`` formats a float.
 
-    ``math.fsum`` is exact until an intermediate partial sum
-    leaves float range, where it raises even when the true
-    total is representable ("1e308 + 1e308 - 1e308"). The
-    fraction fallback keeps the exact total in that case; a
-    total past float range itself ("1e308 + 1e308") is
-    reported as signed infinity, the honest float answer.
+    A finite total or range past float range ("1e308 + 1e308",
+    the range of "-1e308, 1e308") reported as "inf" even
+    though the value is finite and known exactly — the same
+    phantom infinity the exact mean and median already avoid.
+    The Decimal form carries the value at the same six
+    significant digits ``:g`` would print.
     """
     try:
-        return math.fsum(numbers)
+        return f"{float(value):g}"
     except OverflowError:
-        exact = sum((Fraction(value) for value in numbers), Fraction(0))
-        try:
-            return float(exact)
-        except OverflowError:
-            return math.inf if exact > 0 else -math.inf
+        with localcontext() as context:
+            context.prec = 40
+            decimal = Decimal(value.numerator) / Decimal(value.denominator)
+        # Decimal's "g" keeps the trailing zeros float's "g"
+        # strips ("2.00000e+308"); trim them so the overflow
+        # form reads like every other line.
+        rendered = format(decimal, ".6g")
+        mantissa, exponent = rendered.split("e")
+        return mantissa.rstrip("0").rstrip(".") + "e" + exponent
 
 
 def _pstdev(numbers: list[float]) -> float:
@@ -356,8 +360,7 @@ def _exact_median(numbers: list[float]) -> float:
     ("1e308, 1e308") reported "Median: inf" though the
     median is plainly 1e308 — the same phantom infinity the
     exact mean already avoids. The midpoint is taken in
-    exact fractions instead; a midpoint past float range
-    itself is reported as signed infinity, like the total.
+    exact fractions instead.
     """
     ordered = sorted(numbers)
     middle = len(ordered) // 2
@@ -374,7 +377,7 @@ def analyze(numbers: list[float]) -> str:
     if not numbers:
         return "No numbers to analyze."
     count = len(numbers)
-    total = _exact_total(numbers)
+    exact_total = sum((Fraction(value) for value in numbers), Fraction(0))
     # statistics.mean works in exact fractions: total / count
     # overflowed to infinity for values like 1e308 whose mean
     # is plainly 1e308, and the trend halves inherited the
@@ -397,13 +400,13 @@ def analyze(numbers: list[float]) -> str:
         trend = "not enough values for a trend"
     lines = [
         f"Count: {count}",
-        f"Sum: {total:g}",
+        f"Sum: {_format_exact(exact_total)}",
         f"Mean: {mean:g}",
         f"Median: {median:g}",
         _mode_line(numbers),
         f"Min: {low:g}",
         f"Max: {high:g}",
-        f"Range: {high - low:g}",
+        f"Range: {_format_exact(Fraction(high) - Fraction(low))}",
         f"Standard deviation: {stdev:g}",
         f"Trend: {trend}",
     ]

@@ -845,3 +845,22 @@ def test_stem_word_matches_women_children_and_classical_plurals():
         "what is the radii of the circle",
     )
     assert "radius of the circle" in out
+
+
+def test_data_analysis_sum_and_range_past_float_range_stay_finite():
+    # Regression: a finite sum or range past float range
+    # ("1e308 + 1e308", the range of "-1e308, 1e308") reported
+    # as "inf" even though the exact value is known — the same
+    # phantom infinity the exact mean and median already avoid.
+    out = analyze([1e308, 1e308])
+    assert "Sum: 2e+308" in out
+    assert "inf" not in out
+    out = analyze([-1e308, 1e308])
+    assert "Range: 2e+308" in out
+    assert "inf" not in out
+    out = analyze([1.7e308, 1.7e308, 1.7e308])
+    assert "Sum: 5.1e+308" in out
+    # Ordinary values keep their float formatting.
+    out = analyze([2.0, 4.0, 6.0])
+    assert "Sum: 12" in out
+    assert "Range: 4" in out

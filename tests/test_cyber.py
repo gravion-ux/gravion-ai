@@ -399,3 +399,43 @@ def test_letter_glued_version_quad_is_not_an_ipv4():
     assert extract_indicators("from 10.0.0.8.") == {"ipv4": ["10.0.0.8"]}
     assert extract_indicators("see https://10.0.0.8/path")["ipv4"] == ["10.0.0.8"]
     assert detect_task("triage 10.0.0.8") == TASK_TRIAGE
+
+
+def test_extract_indicators_records_email_addresses():
+    # Regression: a phishing sender was extracted nowhere, so
+    # "phishing email from admin@evil.example.com" recorded no
+    # indicator at all and the brief left the one artefact that
+    # mattered to paraphrase.
+    assert extract_indicators(
+        "phishing email from admin@evil.example.com today"
+    ) == {"email": ["admin@evil.example.com"]}
+    assert extract_indicators(
+        "sender: support@bank-secure.example.org, check it"
+    ) == {"email": ["support@bank-secure.example.org"]}
+    assert extract_indicators("mail first.last+tag@example.co.in please") == {
+        "email": ["first.last+tag@example.co.in"]
+    }
+    # Defanged spellings refang to the same record.
+    assert extract_indicators("contact admin[at]evil[.]example.com now") == {
+        "email": ["admin@evil.example.com"]
+    }
+    assert extract_indicators("mail admin(at)evil.example.com now") == {
+        "email": ["admin@evil.example.com"]
+    }
+    # The domain lowercases; the local part keeps its case.
+    assert extract_indicators("from Admin@EVIL.Example.COM") == {
+        "email": ["Admin@evil.example.com"]
+    }
+    # No dotted TLD states no address, and a dotted local part
+    # with consecutive dots is not an address either.
+    assert extract_indicators("not an email: hello@world") == {}
+    assert extract_indicators("bad first..last@example.com here") == {}
+    # An address inside a URL's authority belongs to the URL
+    # record, not to a separate email record.
+    assert extract_indicators("see https://user@example.com/path") == {
+        "url": ["https://user@example.com/path"]
+    }
+    # A verb aimed at a named sender triages it, like any other
+    # named indicator.
+    assert detect_task("triage admin@evil.example.com") == TASK_TRIAGE
+    assert detect_task("report admin@evil.example.com") == TASK_REPORT

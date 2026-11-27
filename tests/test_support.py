@@ -334,3 +334,21 @@ def test_support_production_refuses_tampered_module(
         runtime.support("hello")
     events = [e["event"] for e in runtime.audit.entries()]
     assert "module.tamper" in events
+
+
+def test_team_requests_escalate_and_human_topics_do_not():
+    # Regression: "connect me with customer care" and "talk to
+    # customer service" asked for the team by its service name
+    # yet never escalated, while "how does the human body
+    # work?" escalated on the bare word "human".
+    assert needs_human("connect me with customer care")
+    assert needs_human("talk to customer service please")
+    assert needs_human("speak to your support team")
+    assert needs_human("get me an operator")
+    # A topic question naming the service states no request.
+    assert not needs_human("what are your customer service hours?")
+    assert not needs_human("do not connect me with customer care")
+    # Human topics are answered, not handed over.
+    assert not needs_human("how does the human body work?")
+    assert not needs_human("human anatomy question: what is a femur?")
+    assert needs_human("talk to a real human please")

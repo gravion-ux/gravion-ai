@@ -100,7 +100,45 @@ _SITE_TYPES = (
 
 # Pages the brief can name, in the order they are collected after
 # the home page. "home" itself is always first and never repeated.
-_NAMED_PAGES = ("about", "pricing", "features", "blog", "gallery", "contact")
+# The menu/services/team/faq pages are named just as plainly in
+# briefs ("a menu page and a services page" for a bakery): with
+# only the original six listed, those requests built a home page
+# alone and silently dropped the pages that were asked for.
+_NAMED_PAGES = (
+    "about",
+    "pricing",
+    "features",
+    "blog",
+    "gallery",
+    "contact",
+    "menu",
+    "services",
+    "team",
+    "faq",
+)
+
+# A negated page, style or site type is ruled out, not requested:
+# "no pricing page", "not dark, use a light style" and "not a
+# shop, a portfolio site" each recorded the negated item as the
+# brief's choice, so the site was built with exactly what the
+# request refused. A negator cancels a match only when it governs
+# it: same clause (commas break clauses, so "not dark, use a
+# light style" still takes the light style) and within the few
+# words immediately before the match, mirroring the other
+# modules' negation guards.
+_NEGATOR_RE = re.compile(r"(?:\bno\b|\bnot\b|\bnever\b|\bwithout\b|n't\b)")
+_CLAUSE_BREAKS = ".!?;,"
+_NEGATION_WINDOW_WORDS = 3
+
+
+def _is_negated(text: str, match_start: int) -> bool:
+    clause_start = (
+        max(text.rfind(break_char, 0, match_start) for break_char in _CLAUSE_BREAKS)
+        + 1
+    )
+    words = text[clause_start:match_start].split()
+    tail = " ".join(words[-_NEGATION_WINDOW_WORDS:])
+    return bool(tail) and _NEGATOR_RE.search(tail) is not None
 
 _PAGES_LIST_RE = re.compile(r"pages?\s*:\s*([a-z0-9 ,\-]+)", re.IGNORECASE)
 
@@ -118,8 +156,9 @@ def detect_mode(prompt: str) -> str:
 def _keyword_re(keyword: str) -> re.Pattern[str]:
     # Keywords match on word boundaries: "shop" inside "workshop"
     # is not a store, and "app" inside "happy" or "application"
-    # does not make the site a product site.
-    return re.compile(rf"\b{re.escape(keyword)}\b")
+    # does not make the site a product site. A trailing plural
+    # "s" still names the keyword ("landing pages", "restaurants").
+    return re.compile(rf"\b{re.escape(keyword)}s?\b")
 
 
 _SITE_TYPE_RES = tuple(
@@ -131,10 +170,18 @@ _STYLE_RES = tuple((style, _keyword_re(style)) for style in _STYLES)
 
 
 def parse_site_type(prompt: str) -> str | None:
-    """Extract the site type from explicit keywords, or None."""
+    """Extract the site type from explicit keywords, or None.
+
+    A negated keyword states what the site is not ("not a shop,
+    a portfolio site"), so only a non-negated match counts.
+    """
     text = prompt.lower()
     for patterns, site_type in _SITE_TYPE_RES:
-        if any(pattern.search(text) for pattern in patterns):
+        if any(
+            not _is_negated(text, match.start())
+            for pattern in patterns
+            for match in pattern.finditer(text)
+        ):
             return site_type
     return None
 
@@ -198,26 +245,44 @@ def parse_pages(prompt: str) -> list[str]:
             (word_match.start(), page)
             for page in _NAMED_PAGES
             for word_match in re.finditer(rf"\b{page}\b", segment)
+            if not _is_negated(segment, word_match.start())
         ]
         for _pos, page in sorted(found):
             if page not in pages:
                 pages.append(page)
     for page in _NAMED_PAGES:
         # "about us" and "contact us" name the about and contact
-        # pages just as "about page" does.
+        # pages just as "about page" does. A negated naming ("no
+        # pricing page", "without a contact page") rules the page
+        # out instead of requesting it, so only a non-negated
+        # occurrence collects the page.
         named = (f"{page} page", f"{page} us page", f"{page} us")
-        if any(form in text for form in named) and page not in pages:
+        if page in pages:
+            continue
+        if any(
+            not _is_negated(text, match.start())
+            for form in named
+            for match in re.finditer(rf"\b{re.escape(form)}s?\b", text)
+        ):
             pages.append(page)
     return pages
 
 
 def parse_style(prompt: str) -> str | None:
-    """Extract the requested style keyword, or None."""
+    """Extract the requested style keyword, or None.
+
+    A negated style ("not dark, use a light style") is the one
+    style the request refuses, so only a non-negated match
+    counts.
+    """
     text = prompt.lower()
     for style, pattern in _STYLE_RES:
         # Word boundaries: "light" inside "slight" or
         # "lightweight" is not a light style request.
-        if pattern.search(text):
+        if any(
+            not _is_negated(text, match.start())
+            for match in pattern.finditer(text)
+        ):
             return style
     return None
 

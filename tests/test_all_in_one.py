@@ -9,7 +9,7 @@ from gravion_ai.licensing.modules_sig import (
     verify_module,
     write_signed_manifest,
 )
-from gravion_ai.modules.all_in_one.module import parse_route
+from gravion_ai.modules.all_in_one.module import infer_route, parse_route
 from gravion_ai.providers import GravionCoreProvider
 from gravion_ai.registry import ModuleContext, default_registry
 from gravion_ai.runtime import GravionRuntime
@@ -257,3 +257,27 @@ def test_bundled_all_in_one_manifest_is_unsigned(issuer):
 
     with pytest.raises(ModuleTamperError):
         verify_module(Path(all_in_one_pkg.__file__).parent, issuer)
+
+
+def test_plural_and_security_intent_routes():
+    # Regression: intent words matched raw, so plural requests
+    # ("draw logos", "triage alerts") scored one point and fell
+    # through to chat, and a plain security ask ("secure my
+    # website against XSS") carried no cyber signal at all.
+    assert infer_route("draw logos for my shop") == "image"
+    assert infer_route("make songs about rain") == "music"
+    assert infer_route("edit videos of my trip") == "video"
+    assert infer_route("build websites for bakeries") == "website-builder"
+    assert infer_route("triage alerts from the server") == "cyber"
+    assert infer_route("summarize articles about cats") == "summarization"
+    assert infer_route("calculate averages of datasets") == "data-analysis"
+    assert infer_route("how do I secure my website against XSS?") == "cyber"
+    assert infer_route("protect my app from SQL injection") == "cyber"
+    assert infer_route("scan my server for vulnerabilities") == "cyber"
+    # Negated and tied requests keep their existing handling.
+    assert infer_route("do not draw logos") == "chat"
+    assert infer_route("do not compute the averages of 2 4 6") == "chat"
+    assert infer_route("build a secure website for a bakery") == "website-builder"
+    assert infer_route("make videos and songs") == "chat"
+    # The verb "means" is not the statistic "mean".
+    assert infer_route("explain what median means") == "chat"
