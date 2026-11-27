@@ -174,6 +174,29 @@ def test_coder_instantiates_and_answers():
         # Generation openers still govern the new shapes.
         ("write code that throws an error on bad input", TASK_GENERATE),
         ("do not debug this, explain this code", TASK_EXPLAIN),
+        # Regression: print/log/display questions, compile/run
+        # correctness questions, complexity and run-outcome
+        # questions, a bare trace and a code summary fell
+        # through to generation, so questions about existing
+        # code were answered with new code instead of an
+        # explanation or a verdict on the supplied code.
+        ("what does this code print?", TASK_EXPLAIN),
+        ("what does this function log?", TASK_EXPLAIN),
+        ("what does this code display?", TASK_EXPLAIN),
+        ("does this code compile?", TASK_REVIEW),
+        ("will this code work?", TASK_REVIEW),
+        ("does this function run?", TASK_REVIEW),
+        ("how fast is this algorithm?", TASK_REVIEW),
+        ("how efficient is this code?", TASK_REVIEW),
+        ("what is the time complexity of this code?", TASK_EXPLAIN),
+        ("what happens when this code runs?", TASK_EXPLAIN),
+        ("how many times does this loop run?", TASK_EXPLAIN),
+        ("trace this code", TASK_EXPLAIN),
+        ("summarize this code", TASK_EXPLAIN),
+        # Generation openers and negations still govern the
+        # new shapes.
+        ("write code that prints the total", TASK_GENERATE),
+        ("do not trace this code, review this code", TASK_REVIEW),
     ],
 )
 def test_detect_task(prompt, expected):

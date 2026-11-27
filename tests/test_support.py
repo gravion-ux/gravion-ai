@@ -386,6 +386,24 @@ def test_hinglish_and_transfer_requests_escalate():
     assert needs_human("request a callback")
     assert not needs_human("mujhe insaan se baat nahi karni")
     assert not needs_human("human nahi chahiye")
+    # Regression: a Hindi negator before the phrase ("nahi
+    # chahiye human", "mat karo escalate") and the team named
+    # in Roman Hindi ("customer care se baat karni hai")
+    # were read the wrong way: the declining customer was
+    # handed over and the requesting customer was not. A
+    # verb-gated live-chat request asks for the human chat
+    # channel the same way.
+    assert not needs_human("nahi chahiye human")
+    assert not needs_human("mat karo escalate")
+    assert not needs_human("escalate mat karo")
+    assert needs_human("nahi, human chahiye")
+    assert needs_human("customer care se baat karni hai")
+    assert needs_human("support se baat karao")
+    assert not needs_human("customer care se baat nahi karni")
+    assert needs_human("connect to live chat")
+    assert needs_human("start live chat please")
+    assert not needs_human("how does live chat work?")
+    assert not needs_human("do not connect to live chat")
     assert not needs_human("what is the call back number")
     assert not needs_human("change my callback number")
     assert not needs_human("don't transfer me to an agent")

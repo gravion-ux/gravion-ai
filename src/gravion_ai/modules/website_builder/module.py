@@ -238,7 +238,12 @@ def parse_pages(prompt: str) -> list[str]:
     # contact pages" names about and contact, in that order.
     # The list structure (a comma or an "and") is required, so
     # a stray page word in prose ("a site about cats") never
-    # collects a page.
+    # collects a page. A space-separated run of known page
+    # names directly before "pages" ("home about contact
+    # pages") is the same enumeration without the punctuation:
+    # every word of the run names a page, so prose still
+    # collects nothing, and a single trailing page word keeps
+    # the named-page handling below.
     for pages_match in re.finditer(r"\bpages\b", text):
         clause_start = (
             max(text.rfind(break_char, 0, pages_match.start()) for break_char in ".;")
@@ -246,6 +251,19 @@ def parse_pages(prompt: str) -> list[str]:
         )
         segment = text[clause_start : pages_match.start()]
         if "," not in segment and " and " not in segment:
+            run: list[tuple[int, str]] = []
+            for word_match in reversed(list(re.finditer(r"\S+", segment))):
+                word = word_match.group(0).strip(".,;:!?\"'()")
+                if word not in ("home", *_NAMED_PAGES):
+                    break
+                run.append((word_match.start(), word))
+            if len(run) < 2:
+                continue
+            for pos, page in reversed(run):
+                if page != "home" and page not in pages and not _is_negated(
+                    segment, pos
+                ):
+                    pages.append(page)
             continue
         found = [
             (word_match.start(), page)

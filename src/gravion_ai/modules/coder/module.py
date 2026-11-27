@@ -156,7 +156,22 @@ _REVIEW_RES = (
         + _CODE_OBJECT
         + r"\b[^.?!]*\b(?:correct|secure|safe|valid|working|efficient|right)\b"
     ),
-    re.compile(r"\bdoes (?:this|the|it)\b[^.?!]*\b" + _CODE_OBJECT + r"\b[^.?!]*\bwork\b"),
+    # A compile/run question asks the same correctness verdict
+    # as "does this code work?", and the future forms ("will
+    # this code work?") ask it too: with only does/work listed,
+    # "does this code compile?" fell through to generation.
+    re.compile(
+        r"\b(?:does|will|would|can) (?:this|the|it)\b[^.?!]*\b"
+        + _CODE_OBJECT
+        + r"\b[^.?!]*\b(?:work|compile|run)\b"
+    ),
+    # A speed question about supplied code asks for the
+    # performance assessment review gives ("how fast is this
+    # algorithm?", "how efficient is this code?"): without it
+    # they fell through to generation.
+    re.compile(
+        r"\bhow (?:fast|efficient|slow)\b[^.?!]*\b" + _CODE_OBJECT + r"\b"
+    ),
     re.compile(
         r"\bwhat(?:'s| is| went) wrong\b[^.?!]*\b" + _CODE_OBJECT + r"\b"
     ),
@@ -214,11 +229,17 @@ _EXPLAIN_RES = (
     # code. The same holds for the "what is this code
     # doing?", "what this code does" and "walk me through
     # this code" shapes.
+    # The print/log/display/show forms ask what the code does
+    # just as plainly as the output form ("what does this code
+    # print?"): with only do/mean/return/output/produce listed,
+    # they fell through to generation.
     re.compile(
-        r"\bwhat does (?:this|the|it)\b[^.?!]*\b(?:do|mean|return|output|produce)\b"
+        r"\bwhat does (?:this|the|it)\b[^.?!]*"
+        r"\b(?:do|mean|return|output|produce|print|log|display|show)\b"
     ),
     re.compile(
-        r"\bwhat (?:will|would) (?:this|the|it)\b[^.?!]*\b(?:output|return|produce|print)\b"
+        r"\bwhat (?:will|would) (?:this|the|it)\b[^.?!]*"
+        r"\b(?:output|return|produce|print|log|display|show)\b"
     ),
     re.compile(r"\bwhat is (?:this|the|it)\b[^.?!]*\bdoing\b"),
     re.compile(r"\bwhat (?:this|the|it)\b[^.?!]*\b(?:does|do)\b"),
@@ -300,6 +321,37 @@ _EXPLAIN_RES = (
     re.compile(
         r"\bwhy (?:does|did|would)\b[^.?!]*"
         r"\b(?:return|give|output|produce)\b"
+    ),
+    # A complexity question asks what the supplied code costs
+    # ("what is the time complexity of this code?"), a run
+    # outcome question asks what executing it does ("what
+    # happens when this code runs?", "how many times does this
+    # loop run?"), a bare trace asks for the walk-through
+    # without the word "through" ("trace this code"), and a
+    # summary of supplied code is a short explanation of it:
+    # without them they fell through to generation, so a
+    # question about existing code was answered with new code.
+    re.compile(
+        r"\bwhat(?:'s| is) the (?:time |space )?complexity\b[^.?!]*\b"
+        + _CODE_OBJECT
+        + r"\b"
+    ),
+    re.compile(
+        r"\bwhat happens\b[^.?!]*\b(?:run|runs|running|execute|executes)\b"
+    ),
+    re.compile(r"\bwhat happens\b[^.?!]*\b" + _CODE_OBJECT + r"\b"),
+    re.compile(
+        r"\bhow (?:many times|often)\b[^.?!]*\b" + _CODE_OBJECT + r"\b"
+    ),
+    re.compile(
+        r"\bhow (?:many times|often) does (?:this|it)\b[^.?!]*"
+        r"\b(?:run|execute|loop)\b"
+    ),
+    re.compile(r"\btrace\b[^.?!]*\b" + _CODE_OBJECT + r"\b"),
+    re.compile(
+        r"\b(?:summarize|summarise|summarizing|summarising)\b[^.?!]*\b"
+        + _CODE_OBJECT
+        + r"\b"
     ),
 )
 

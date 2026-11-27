@@ -135,6 +135,14 @@ def test_parse_site_type(prompt, expected):
          ["home", "cart", "checkout"]),
         ("a site with no booking page, home and menu pages",
          ["home", "menu"]),
+        # Regression: a space-separated enumeration before
+        # "pages" ("home about contact pages") dropped every
+        # page but the last, because only a comma or an "and"
+        # counted as list structure.
+        ("a website with home about contact pages",
+         ["home", "about", "contact"]),
+        ("a site with menu booking pages", ["home", "menu", "booking"]),
+        ("a site about cats and dogs", ["home"]),
     ],
 )
 def test_parse_pages(prompt, expected):
