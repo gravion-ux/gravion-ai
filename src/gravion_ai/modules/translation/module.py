@@ -211,20 +211,34 @@ _SAY_IN_ENGLISH_RE = re.compile(
 # The phrasebook keys are expanded forms ("i do not understand",
 # "let us start"), so contractions are expanded before matching:
 # without this, "i don't understand" normalised to "i don t
-# understand" and missed a phrase the book does cover.
+# understand" and missed a phrase the book does cover. The
+# apostrophe-less spellings ("dont", "lets") are how the same
+# words arrive in casual Hinglish typing, so they expand the
+# same way; forms that are also plain words ("were", "ill")
+# are left alone.
 _CONTRACTIONS = {
     "i'm": "i am",
     "don't": "do not",
+    "dont": "do not",
     "doesn't": "does not",
+    "doesnt": "does not",
     "didn't": "did not",
+    "didnt": "did not",
     "can't": "can not",
+    "cant": "can not",
     "won't": "will not",
+    "wont": "will not",
     "let's": "let us",
+    "lets": "let us",
     "it's": "it is",
     "that's": "that is",
+    "thats": "that is",
     "what's": "what is",
+    "whats": "what is",
     "isn't": "is not",
+    "isnt": "is not",
     "aren't": "are not",
+    "arent": "are not",
     "i'll": "i will",
     "we're": "we are",
     "you're": "you are",
@@ -237,6 +251,11 @@ _CONTRACTION_RE = re.compile(
 def _normalize(text: str) -> str:
     lowered = text.lower().replace("’", "'")
     expanded = _CONTRACTION_RE.sub(lambda m: _CONTRACTIONS[m.group(1)], lowered)
+    # The danda (।, ॥) is the Devanagari sentence terminator,
+    # so it separates words like a full stop: kept inside the
+    # Devanagari range below, "धन्यवाद।" stayed glued to its
+    # terminator and missed the phrasebook entry it names.
+    expanded = expanded.replace("।", " ").replace("॥", " ")
     # Keep the Devanagari block: stripping it erased Hindi
     # input the phrasebook covers ("धन्यवाद" normalised to
     # nothing and was refused as outside the book).

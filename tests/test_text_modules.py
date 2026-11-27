@@ -32,6 +32,23 @@ def test_translation_phrasebook_exact_and_word_level():
     assert "outside my Gravion phrasebook" in translate_phrase("zxqwv", to_hindi=True)
 
 
+def test_translation_danda_and_apostropheless_contractions():
+    # Regression: the danda is a sentence terminator, not part
+    # of the word — "धन्यवाद।" missed the phrasebook entry it
+    # names and was refused as outside the book.
+    assert translate_phrase("धन्यवाद।", to_hindi=False) == "thank you"
+    assert translate_phrase("नमस्ते।", to_hindi=False) == "hello"
+    # Apostrophe-less contractions expand like their
+    # apostrophised forms, so casual Hinglish typing reaches
+    # the expanded phrasebook keys.
+    assert "mujhe samajh nahi aaya" in translate_phrase(
+        "i dont understand", to_hindi=True
+    )
+    assert "chaliye shuru karte hain" in translate_phrase(
+        "lets start", to_hindi=True
+    )
+
+
 def test_translation_module_paths():
     assert "dhanyavaad" in _run("translation", "gravion-translate", "translate to hindi: thank you")
     assert _run("translation", "gravion-translate", "translate to english: shukriya") == "thank you"

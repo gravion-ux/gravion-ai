@@ -88,6 +88,18 @@ def test_cyber_instantiates_and_answers():
         ("draft the report on CVE-2026-12345", TASK_REPORT),
         # A verb aimed at an MD5 hash targets an item too.
         ("triage " + "b" * 32, TASK_TRIAGE),
+        # Regression: a negated task verb rules its task out;
+        # recording "do not triage this alert" as a triage
+        # brief handed the model the opposite task.
+        ("do not triage this alert, just analyse it", TASK_ANALYSE),
+        ("don't report this finding yet, analyse it first", TASK_ANALYSE),
+        ("no need to triage this alert", TASK_ANALYSE),
+        ("never report this incident", TASK_ANALYSE),
+        ("please do not write up this finding", TASK_ANALYSE),
+        ("do not write a report on the incident", TASK_ANALYSE),
+        # A negator in an earlier clause does not cancel a
+        # later live verb.
+        ("do not ignore this alert, triage this alert now", TASK_TRIAGE),
     ],
 )
 def test_detect_task(prompt, expected):
@@ -286,6 +298,12 @@ def test_extract_indicators_hash_lengths_do_not_overlap():
         ("severity is quite high for this host", "high"),
         ("severity is very critical, host isolated", "critical"),
         ("severity is not quite high, just noisy", None),
+        # Regression: "rated as" and the wider intensifiers
+        # state a level just as plainly; both recorded none.
+        ("severity is rated as high, host isolated", "high"),
+        ("severity is extremely high for this host", "high"),
+        ("severity is somewhat low, just noise", "low"),
+        ("severity is not extremely high, just noisy", None),
         ("a high severity alert on the host", "high"),
         ("a routine alert", None),
     ],

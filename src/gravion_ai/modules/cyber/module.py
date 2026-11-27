@@ -21,7 +21,9 @@ and adding deterministic logic of its own:
    directly before "report" or "triage" marks the noun instead
    ("the report mentions CVE-2026-12345" is discussion, not a
    request), while a creation verb ("file a report") still
-   counts as a report request. Anything else is analysis.
+   counts as a report request. A negated verb rules its task
+   out ("do not triage this alert, just analyse it" is
+   analysis). Anything else is analysis.
 
 2. **Indicator extraction.** Indicators of compromise named in the
    request are extracted deterministically and recorded in the
@@ -174,8 +176,9 @@ _DEFANGED_URL_RE = re.compile(r"hxxps?://[^\s\"'<>]+", re.IGNORECASE)
 # high") or an "=" or "-" separator ("severity=high"), and
 # "moderate" is recorded verbatim as the level it states. The
 # copula form requires the level directly after "is"/"was"/"of"
-# (allowing a rating verb, "severity is rated high" /
-# "severity is assessed as high"), so "severity is not high"
+# (allowing a rating verb, "severity is rated high",
+# "severity is rated as high" / "severity is assessed as
+# high"), so "severity is not high"
 # and "severity is not rated high" state no level and record
 # none. A parenthesised level ("severity (high)") and a copula
 # with a short noun phrase in between ("severity of the
@@ -187,11 +190,12 @@ _DEFANGED_URL_RE = re.compile(r"hxxps?://[^\s\"'<>]+", re.IGNORECASE)
 # before the level refuses the match — "never" negates just
 # as directly ("never high severity" recorded high). An
 # intensifier between the copula and the level ("severity is
-# quite high") still states that level plainly.
+# quite high", "severity is extremely high", "severity is
+# somewhat low") still states that level plainly.
 _LEVEL = r"(critical|high|medium|moderate|low|informational|info)"
 _SEV_NOUNS = r"(?:[\s-]+(?:level|rating))*"
-_RATED = r"(?:rated\s+|assessed\s+as\s+)?"
-_INTENSIFIER = r"(?:quite\s+|very\s+|really\s+)?"
+_RATED = r"(?:rated\s+(?:as\s+)?|assessed\s+as\s+)?"
+_INTENSIFIER = r"(?:quite\s+|very\s+|really\s+|extremely\s+|fairly\s+|somewhat\s+|rather\s+)?"
 _SEVERITY_RE = re.compile(
     r"severity" + _SEV_NOUNS + r"[\s:=\-]+" + _RATED + _LEVEL + r"\b"
     r"|severity" + _SEV_NOUNS + r"\s+(?:is|was)\s+" + _RATED + _INTENSIFIER + _LEVEL + r"\b"
@@ -252,6 +256,34 @@ _TRIAGE_INDICATOR_RE = re.compile(
     _NOUN_PREFIX + r"\btriage\b[^.?!]*" + _INDICATOR_HINT
 )
 
+# A negated task verb rules its task out, mirroring the agentic
+# module's negated build/run verbs: "do not triage this alert,
+# just analyse it" asks for analysis, and recording it as a
+# triage brief handed the model the opposite task. A negator
+# cancels a signal only when it governs it: same clause (commas
+# break clauses) and within the few words immediately before
+# the verb.
+_NEGATOR_RE = re.compile(r"(?:\bno\b|\bnot\b|\bnever\b|\bwithout\b|n't\b)")
+_CLAUSE_BREAKS = ".!?;,"
+
+
+def _negated_before(text: str, match_start: int) -> bool:
+    clause_start = (
+        max(text.rfind(break_char, 0, match_start) for break_char in _CLAUSE_BREAKS)
+        + 1
+    )
+    words = text[clause_start:match_start].split()
+    tail = " ".join(words[-3:])
+    return bool(tail) and _NEGATOR_RE.search(tail) is not None
+
+
+def _has_live_match(patterns, text: str) -> bool:
+    return any(
+        not _negated_before(text, match.start())
+        for pattern in patterns
+        for match in pattern.finditer(text)
+    )
+
 
 def detect_task(prompt: str) -> str:
     """Classify a cyber prompt as analyse / triage / report."""
@@ -263,9 +295,9 @@ def detect_task(prompt: str) -> str:
     first_word = text.split(None, 1)[0].strip(",:;") if text else ""
     if first_word in _ANALYSE_OPENERS:
         return TASK_ANALYSE
-    if any(pattern.search(text) for pattern in _REPORT_RES):
+    if _has_live_match(_REPORT_RES, text):
         return TASK_REPORT
-    if _TRIAGE_RE.search(text) or _TRIAGE_INDICATOR_RE.search(text):
+    if _has_live_match((_TRIAGE_RE, _TRIAGE_INDICATOR_RE), text):
         return TASK_TRIAGE
     return TASK_ANALYSE
 
