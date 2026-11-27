@@ -43,6 +43,9 @@ def test_summarization_is_extractive():
     for sentence in out.split(". "):
         assert sentence.strip().rstrip(".") in text
     assert _run("summarization", "gravion-summary", f"summarize: {text}") == summarize(text)
+    # Regression: the British leading form routed here through
+    # all-in-one but the module accepted only "summarize:".
+    assert _run("summarization", "gravion-summary", f"summarise: {text}") == summarize(text)
 
 
 def test_split_sentences_keeps_trailing_fragment_and_decimals():
@@ -400,6 +403,13 @@ def test_parse_numbers_ignores_version_and_address_labels():
     # decimals still parse.
     assert parse_numbers("release 3.14.15 values 5, 10, 15") == [5.0, 10.0, 15.0]
     assert parse_numbers("ip 10.0.0.8 count 5") == [5.0]
+    # IPv6 labels are addresses too: their trailing groups are
+    # not measurements. Validation keeps invalid colon chains
+    # available to the clock/ratio handling below.
+    assert parse_numbers("ipv6 fe80::1 values 5 6 7") == [5.0, 6.0, 7.0]
+    assert parse_numbers("host 2001:db8:85a3::8a2e:370:7334 values 5 6 7") == [5.0, 6.0, 7.0]
+    assert parse_numbers("mapped ::ffff:192.0.2.1 values 5 6 7") == [5.0, 6.0, 7.0]
+    assert parse_numbers("chain 1:2:3 values 5 6 7") == [1.0, 2.0, 3.0, 5.0, 6.0, 7.0]
     assert parse_numbers("3.14 and 2.71") == [3.14, 2.71]
     assert parse_numbers("value 3.14. Next 2.71") == [3.14, 2.71]
 

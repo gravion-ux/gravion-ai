@@ -65,7 +65,10 @@ _DIRECTIVE_RE = re.compile(
     r"^\s*([a-z][a-z0-9-]*)\s*:\s*(.+)$", re.DOTALL | re.IGNORECASE
 )
 _TOKEN_RE = re.compile(r"[a-z0-9]+")
-_CVE_RE = re.compile(r"\bcve-\d{4}-\d{4,7}\b", re.IGNORECASE)
+# Match the cyber module's CVE shape: sequence numbers run to
+# four or more digits with no fixed cap, so an eight-digit id is
+# just as decisive here as it is when cyber extracts it.
+_CVE_RE = re.compile(r"(?<!\d)CVE-\d{4}-\d{4,}(?!\d)", re.IGNORECASE)
 
 # Intent signals: (verbs, nouns) per module. A module scores one
 # point per distinct verb hit and one per distinct noun hit; it

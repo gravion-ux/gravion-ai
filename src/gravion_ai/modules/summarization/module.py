@@ -22,7 +22,10 @@ _STOP = frozenset(
     "i you he she it we they this that these those as in on to from".split()
 )
 
-_SUMMARIZE_RE = re.compile(r"summarize\s*:\s*(.+)", re.IGNORECASE | re.DOTALL)
+# Accept both spellings: the all-in-one router already treats a
+# leading "summarise:" as decisive, so refusing it here would
+# drop a correctly routed request to the model fallback.
+_SUMMARIZE_RE = re.compile(r"summar(?:ize|ise)\s*:\s*(.+)", re.IGNORECASE | re.DOTALL)
 
 # Abbreviations whose final dot does not end a sentence, plus
 # dotted forms (e.g. "e.g", "u.s"). Single uppercase initials

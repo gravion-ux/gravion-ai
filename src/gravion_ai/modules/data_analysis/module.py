@@ -10,6 +10,7 @@ Analyst), whose trained weights cover analysis guidance.
 
 from __future__ import annotations
 
+import ipaddress
 import re
 import statistics
 from collections import Counter
@@ -44,6 +45,29 @@ _NUMBER_RE = re.compile(
 # blanked out before parsing; a plain decimal ("3.14") has one
 # dot and is untouched.
 _DOTTED_SEQUENCE_RE = re.compile(r"\d+(?:\.\d+){2,}")
+
+# An IPv6 address ("fe80::1", "2001:db8::1", "::ffff:192.0.2.1")
+# is an address label like its dotted IPv4 form: left in place,
+# the number pattern read the trailing group of "fe80::1" as the
+# phantom value 1. Candidates use the cyber module's colon-hex
+# shape and are blanked only when ipaddress validates them, so
+# clock readings ("1:05:30"), ratios ("1:2") and other colon
+# chains keep their existing handling.
+_IPV6_RE = re.compile(
+    r"(?<![0-9A-Fa-f:.])"
+    r"(?:[0-9A-Fa-f]{0,4}:){2,7}"
+    r"(?:[0-9A-Fa-f]{0,4}|(?:\d{1,3}\.){3}\d{1,3})"
+    r"(?![0-9A-Fa-f:])(?!\.\d)"
+)
+
+
+def _blank_ipv6(match: re.Match[str]) -> str:
+    try:
+        ipaddress.IPv6Address(match.group(0))
+    except ValueError:
+        return match.group(0)
+    return " "
+
 
 # A calendar date ("2026-11-27", "27/11/2026", "11-27-2026")
 # is a label, never three measurements: left in place, the
@@ -182,6 +206,7 @@ def _fold_fraction(match: re.Match[str]) -> str:
 
 def parse_numbers(prompt: str) -> list[float]:
     cleaned = _MACHINE_LITERAL_RE.sub(" ", prompt)
+    cleaned = _IPV6_RE.sub(_blank_ipv6, cleaned)
     cleaned = _ISO_DATE_RE.sub(_blank_iso_date, cleaned)
     cleaned = _SLASH_DATE_RE.sub(_blank_day_month_date, cleaned)
     cleaned = _HYPHEN_DATE_RE.sub(_blank_day_month_date, cleaned)

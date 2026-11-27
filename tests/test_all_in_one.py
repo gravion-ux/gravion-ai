@@ -116,6 +116,11 @@ def test_parse_route_infers_clear_intent(prompt, expected_module):
             "retrieval",
         ),
         ("summarize: Cats sleep for long hours each day.", "summarization"),
+        ("summarise: Cats sleep for long hours each day.", "summarization"),
+        # Regression: CVE sequence numbers have no seven-digit
+        # cap in the cyber module, but the router's capped
+        # pattern sent an eight-digit id to chat instead.
+        ("CVE-2026-12345678 details", "cyber"),
         # Regression: the translation module's own leading
         # forms scored one intent point and fell through to
         # chat, so its documented input format could never
