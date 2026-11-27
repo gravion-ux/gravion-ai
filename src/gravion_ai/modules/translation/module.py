@@ -143,8 +143,36 @@ _TO_ENGLISH_RE = re.compile(
 _TRANSLATE_RE = re.compile(r"translate\s*:\s*(.+)", re.IGNORECASE | re.DOTALL)
 
 
+# The phrasebook keys are expanded forms ("i do not understand",
+# "let us start"), so contractions are expanded before matching:
+# without this, "i don't understand" normalised to "i don t
+# understand" and missed a phrase the book does cover.
+_CONTRACTIONS = {
+    "i'm": "i am",
+    "don't": "do not",
+    "doesn't": "does not",
+    "didn't": "did not",
+    "can't": "can not",
+    "won't": "will not",
+    "let's": "let us",
+    "it's": "it is",
+    "that's": "that is",
+    "what's": "what is",
+    "isn't": "is not",
+    "aren't": "are not",
+    "i'll": "i will",
+    "we're": "we are",
+    "you're": "you are",
+}
+_CONTRACTION_RE = re.compile(
+    r"\b(" + "|".join(re.escape(k) for k in _CONTRACTIONS) + r")\b"
+)
+
+
 def _normalize(text: str) -> str:
-    return re.sub(r"[^a-z0-9 ]+", " ", text.lower()).strip()
+    lowered = text.lower().replace("’", "'")
+    expanded = _CONTRACTION_RE.sub(lambda m: _CONTRACTIONS[m.group(1)], lowered)
+    return re.sub(r"[^a-z0-9 ]+", " ", expanded).strip()
 
 
 def translate_phrase(text: str, to_hindi: bool) -> str:

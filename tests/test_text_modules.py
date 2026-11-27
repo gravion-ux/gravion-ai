@@ -295,3 +295,27 @@ def test_summarize_never_returns_empty_for_stopword_text():
     out = summarize("The and or. Is are was. Of at by. For with about.")
     assert out == "The and or. Is are was. Of at by."
     assert summarize("Cats sleep. Dogs bark.", max_sentences=0) == ""
+
+
+def test_parse_numbers_ignores_version_and_address_labels():
+    # Regression: "3.14.15" was read as the pair 3.14 and 15, so
+    # a version label inflated every statistic. Dotted sequences
+    # with two or more dots are labels, not measurements; plain
+    # decimals still parse.
+    assert parse_numbers("release 3.14.15 values 5, 10, 15") == [5.0, 10.0, 15.0]
+    assert parse_numbers("ip 10.0.0.8 count 5") == [5.0]
+    assert parse_numbers("3.14 and 2.71") == [3.14, 2.71]
+    assert parse_numbers("value 3.14. Next 2.71") == [3.14, 2.71]
+
+
+def test_translation_expands_contractions_to_phrasebook_forms():
+    # Regression: phrasebook keys are expanded forms, so
+    # "i don't understand" normalised to "i don t understand" and
+    # missed a covered phrase. Contractions (straight or curly
+    # apostrophe) now expand before matching; uncovered text is
+    # still refused, never guessed.
+    assert translate_phrase("i don't understand", True).startswith("mujhe samajh")
+    assert translate_phrase("i don’t understand", True).startswith("mujhe samajh")
+    assert translate_phrase("let's start", True).startswith("chaliye shuru")
+    assert translate_phrase("i'm fine", True).startswith("main theek")
+    assert "outside my Gravion phrasebook" in translate_phrase("don't worry", True)

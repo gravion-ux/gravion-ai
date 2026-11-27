@@ -233,3 +233,17 @@ def test_bundled_cyber_manifest_is_unsigned(issuer):
 
     with pytest.raises(ModuleTamperError):
         verify_module(Path(cyber_pkg.__file__).parent, issuer)
+
+
+def test_letter_glued_version_quad_is_not_an_ipv4():
+    # Regression: "v1.2.3.4" yielded the phantom address 1.2.3.4
+    # and even classified "triage v1.2.3.4" as an indicator
+    # triage; a version label is not an indicator.
+    assert extract_indicators("analyze v1.2.3.4") == {}
+    assert extract_indicators("version v2.0.1.9 released") == {}
+    assert detect_task("triage v1.2.3.4") == TASK_ANALYSE
+    # Real addresses still extract, including sentence-final and
+    # URL-host forms.
+    assert extract_indicators("from 10.0.0.8.") == {"ipv4": ["10.0.0.8"]}
+    assert extract_indicators("see https://10.0.0.8/path")["ipv4"] == ["10.0.0.8"]
+    assert detect_task("triage 10.0.0.8") == TASK_TRIAGE

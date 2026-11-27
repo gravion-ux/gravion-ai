@@ -33,8 +33,18 @@ _NUMBER_RE = re.compile(
 )
 
 
+# A dotted sequence with two or more dots ("3.14.15", an IPv4
+# address) is a version or address label, never a measurement:
+# left in place, the number pattern read "3.14.15" as the pair
+# 3.14 and 15 and inflated every statistic. Such sequences are
+# blanked out before parsing; a plain decimal ("3.14") has one
+# dot and is untouched.
+_DOTTED_SEQUENCE_RE = re.compile(r"\d+(?:\.\d+){2,}")
+
+
 def parse_numbers(prompt: str) -> list[float]:
-    return [float(m.replace(",", "")) for m in _NUMBER_RE.findall(prompt)]
+    cleaned = _DOTTED_SEQUENCE_RE.sub(" ", prompt)
+    return [float(m.replace(",", "")) for m in _NUMBER_RE.findall(cleaned)]
 
 
 def _mode_line(numbers: list[float]) -> str:

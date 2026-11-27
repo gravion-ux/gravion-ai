@@ -105,8 +105,12 @@ _CVE_RE = re.compile(r"(?<!\d)CVE-\d{4}-\d{4,}(?!\d)", re.IGNORECASE)
 # An IPv4 candidate must stand alone: the guards reject a
 # four-group window inside a longer dotted sequence (a version
 # string such as "1.2.3.4.5") while still allowing sentence
-# punctuation after a real address ("from 10.0.0.8.").
-_IPV4_RE = re.compile(r"(?<!\d)(?<!\d\.)\d{1,3}(?:\.\d{1,3}){3}(?!\d)(?!\.\d)")
+# punctuation after a real address ("from 10.0.0.8."). A quad
+# glued to a letter ("v1.2.3.4") is a version label, not an
+# address, so a preceding letter also rejects the candidate.
+_IPV4_RE = re.compile(
+    r"(?<!\d)(?<!\d\.)(?<![A-Za-z])\d{1,3}(?:\.\d{1,3}){3}(?!\d)(?!\.\d)"
+)
 _SHA256_RE = re.compile(r"\b[0-9a-fA-F]{64}\b")
 # The word-boundary guards keep a shorter hash pattern from
 # matching inside a longer hash: a 64-hex SHA-256 yields no
@@ -146,7 +150,7 @@ _ITEM = r"(?:this|the|that|incident|finding|alert|issue|vulnerability|event)"
 # request fell through to analysis. The text is already lowered,
 # so the hash form needs no case flag.
 _INDICATOR_HINT = (
-    r"(?:cve-\d{4}-\d{4,}|\d{1,3}(?:\.\d{1,3}){3}"
+    r"(?:cve-\d{4}-\d{4,}|(?<![a-z])\d{1,3}(?:\.\d{1,3}){3}"
     r"|[0-9a-f]{64}|[0-9a-f]{40}|[0-9a-f]{32}|https?://\S+)"
 )
 # "Report" and "triage" are nouns as often as verbs: "the report
