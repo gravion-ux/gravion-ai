@@ -1,0 +1,20 @@
+# The repository is stored with LF endings and every file hash in a
+# module manifest is computed over the LF form. A Windows checkout
+# with `core.autocrlf=true` would otherwise rewrite the working tree to
+# CRLF, and the manifests would no longer match the files.
+#
+# `text=auto` lets Git detect text files itself; `eol=lf` keeps the
+# working tree in the same form as the repository. Binary files are
+# listed explicitly so their bytes are never touched.
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.zip binary
+*.gz binary
+*.whl binary
+*.pyc binary
