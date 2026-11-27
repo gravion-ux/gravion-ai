@@ -199,10 +199,34 @@ def test_introductions_postposed_negations_and_topics_do_not_escalate(prompt):
         "speak to a live person",
         "I want to speak to a representative",
         "can I talk to someone about my order",
+        # Regression: the "with" forms of the someone-request
+        # were missing, so "speak with someone" was answered
+        # by the bot instead of handed over.
+        "I want to speak with someone",
+        "can I talk with someone about this?",
+        # Guards for the topic phrases below: a bare agent
+        # request still hands over.
+        "get me an agent please",
     ],
 )
 def test_phone_requests_and_person_requests_still_escalate(prompt):
     assert needs_human(prompt)
+
+
+@pytest.mark.parametrize(
+    "prompt",
+    [
+        # Regression: "human rights" and "agent fee" name
+        # topics, not a request for a person, yet both
+        # escalated a policy/price question.
+        "this is about human rights",
+        "what is your human rights policy?",
+        "the agent fee is too high",
+        "how are agent fees calculated?",
+    ],
+)
+def test_rights_and_fee_topics_do_not_escalate(prompt):
+    assert not needs_human(prompt)
 
 
 def test_support_runtime_dev_end_to_end(make_config):

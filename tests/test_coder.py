@@ -97,6 +97,21 @@ def test_coder_instantiates_and_answers():
         # A generation opener still wins over the new
         # explanation shapes it happens to contain.
         ("write a function that returns the total", TASK_GENERATE),
+        # Regression: a negated task verb still governed, so
+        # "do not review, just explain this code" was answered
+        # as a review. A cancelled signal does not count; the
+        # first non-negated signal governs.
+        ("do not review, just explain this code", TASK_EXPLAIN),
+        ("don't explain, review this code", TASK_REVIEW),
+        ("do not do a code review, explain this code", TASK_EXPLAIN),
+        ("never explain this code, review this code for bugs", TASK_REVIEW),
+        # A negation aimed at generation does not cancel the
+        # task that follows it in the next clause.
+        ("do not write code, review this function", TASK_REVIEW),
+        # "Look over" / "go over" ask for a review and used to
+        # fall through to generation.
+        ("look over this function please", TASK_REVIEW),
+        ("go over this code for bugs", TASK_REVIEW),
     ],
 )
 def test_detect_task(prompt, expected):

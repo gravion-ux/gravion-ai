@@ -15,8 +15,10 @@ generation and one that opens with an explanation verb ("explain
 code review…") is explanation, even when a later noun phrase
 mentions the other task; then a "code review" request or a review
 or explain verb aimed at code ("can you review my code", "what
-does this code do") anywhere in the request. Anything else is
-generation. The rules are small enough to state in a docstring
+does this code do") anywhere in the request. A negated signal
+does not count ("do not review, just explain this code" is an
+explanation request). Anything else is generation. The rules
+are small enough to state in a docstring
 and pin in tests — no hidden heuristics.
 
 The coder module is served by **Gravion Code**, whose first trained
@@ -81,11 +83,35 @@ _GENERATE_OPENERS = (
 )
 
 _CODE_OBJECT = r"(?:code|function|script|snippet|program|module|class)"
+# "Look over" / "go over" ask for a review just as plainly as
+# "review" does ("look over this function please" fell through
+# to generation, so a review request was answered with new code).
 _REVIEW_RE = re.compile(
-    r"\b(?:review|reviewing|audit|auditing|check|checking)\b[^.?!]*\b"
+    r"\b(?:review|reviewing|audit|auditing|check|checking|"
+    r"look over|go over)\b[^.?!]*\b"
     + _CODE_OBJECT
     + r"\b"
 )
+
+# A negated task verb asks for the opposite task ("do not
+# review, just explain this code" is an explanation request).
+# A negator only cancels a signal when it governs that signal:
+# it must sit in the same clause (commas break clauses, so
+# "do not write code, review this function" still reviews) and
+# within the few words immediately before the signal, mirroring
+# the support module's escalation negation.
+_NEGATOR_RE = re.compile(r"(?:\bno\b|\bnot\b|\bnever\b|\bwithout\b|n't\b)")
+_CLAUSE_BREAKS = ".!?;,"
+_NEGATION_WINDOW_WORDS = 4
+
+
+def _is_negated(text: str, match_start: int) -> bool:
+    clause_start = (
+        max(text.rfind(break_char, 0, match_start) for break_char in _CLAUSE_BREAKS) + 1
+    )
+    words = text[clause_start:match_start].split()
+    tail = " ".join(words[-_NEGATION_WINDOW_WORDS:])
+    return bool(tail) and _NEGATOR_RE.search(tail) is not None
 _EXPLAIN_RES = (
     re.compile(
         r"\b(?:explain|explaining|describe|describing)\b[^.?!]*\b"
@@ -137,21 +163,34 @@ def detect_task(prompt: str) -> str:
     # the code review process" asks for an explanation of the
     # process, while "do a code review and explain the issues"
     # asks for a review. The bare "code review" noun phrase is a
-    # review signal at its own position.
+    # review signal at its own position. A negated signal does
+    # not count at all: "do not review, just explain this code"
+    # states the review only to cancel it, so the first
+    # non-negated signal of each kind governs.
     review_at: int | None = None
-    phrase_at = text.find("code review")
-    if phrase_at >= 0:
-        review_at = phrase_at
-    review_match = _REVIEW_RE.search(text)
-    if review_match and (review_at is None or review_match.start() < review_at):
-        review_at = review_match.start()
+    phrase_start = 0
+    while True:
+        phrase_at = text.find("code review", phrase_start)
+        if phrase_at < 0:
+            break
+        if not _is_negated(text, phrase_at):
+            review_at = phrase_at
+            break
+        phrase_start = phrase_at + 1
+    for review_match in _REVIEW_RE.finditer(text):
+        if _is_negated(text, review_match.start()):
+            continue
+        if review_at is None or review_match.start() < review_at:
+            review_at = review_match.start()
+        break
     explain_at: int | None = None
     for pattern in _EXPLAIN_RES:
-        explain_match = pattern.search(text)
-        if explain_match and (
-            explain_at is None or explain_match.start() < explain_at
-        ):
-            explain_at = explain_match.start()
+        for explain_match in pattern.finditer(text):
+            if _is_negated(text, explain_match.start()):
+                continue
+            if explain_at is None or explain_match.start() < explain_at:
+                explain_at = explain_match.start()
+            break
     if review_at is not None and explain_at is not None:
         return TASK_EXPLAIN if explain_at < review_at else TASK_REVIEW
     if review_at is not None:

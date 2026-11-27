@@ -65,8 +65,14 @@ DEFAULT_ROUTE = "chat"
 # "never make a video", "don't write code").
 _NEGATORS = frozenset({"not", "never", "no", "nor", "cannot"})
 
+# Directive names accept the underscore spelling too
+# ("website_builder:", "data_analysis:"): it is the spelling the
+# module packages themselves use, and refusing it left the
+# directive text inside the routed prompt. The name is
+# normalised to the hyphenated module name before lookup, so
+# "all_in_one:" is refused exactly like "all-in-one:".
 _DIRECTIVE_RE = re.compile(
-    r"^\s*([a-z][a-z0-9-]*)\s*:\s*(.+)$", re.DOTALL | re.IGNORECASE
+    r"^\s*([a-z][a-z0-9_-]*)\s*:\s*(.+)$", re.DOTALL | re.IGNORECASE
 )
 _TOKEN_RE = re.compile(r"[a-z0-9]+")
 # Match the cyber module's CVE shape: sequence numbers run to
@@ -217,6 +223,17 @@ _SAY_IN_LANGUAGE_RE = re.compile(
     r"^\s*how do you say\s+.+\s+in\s+(?:hindi|english)\b",
     re.IGNORECASE | re.DOTALL,
 )
+# A statistic named together with the numbers it applies to
+# ("what is the mean of 2, 4, 6?") is the data-analysis
+# module's own input shape: it computes locally from supplied
+# numbers. The bare intent signal scored it one point (the
+# statistic noun) and it fell through to chat, so the local
+# computation could never run. The check stays narrow: a
+# statistic term, at least two numbers the module's own parser
+# accepts, no coding verb asking for code instead, and no
+# negator governing the statistic ("do not compute the mean").
+_STAT_TERMS = frozenset({"mean", "median", "mode", "average"})
+_CODING_VERBS = frozenset({"write", "fix", "debug", "refactor", "implement"})
 
 
 def infer_route(prompt: str) -> str:
@@ -228,7 +245,8 @@ def infer_route(prompt: str) -> str:
     cyber signal on its own; the documented ``document:`` /
     ``question:`` and ``query:`` / ``passage:`` marker pairs and
     a leading ``summarize:`` or ``translate:`` are likewise
-    decisive for their text modules.
+    decisive for their text modules, as is a statistic named
+    with at least two supplied numbers.
     """
     if "```" in prompt:
         return "coder"
@@ -258,6 +276,22 @@ def infer_route(prompt: str) -> str:
     for index, token in enumerate(ordered):
         if any(t in _NEGATORS for t in ordered[max(0, index - 2) : index]):
             negated.add(token)
+    # Statistic + supplied numbers (see _STAT_TERMS above). A
+    # statistic counts as negated when a negator stands within
+    # the four tokens before it ("do not compute the mean"),
+    # wider than the verb window because the verb and article
+    # sit between the negator and the statistic it governs.
+    if tokens & _STAT_TERMS and not tokens & _CODING_VERBS:
+        stat_negated = any(
+            token in _STAT_TERMS
+            and any(t in _NEGATORS for t in ordered[max(0, index - 4) : index])
+            for index, token in enumerate(ordered)
+        )
+        if not stat_negated:
+            from ..data_analysis.module import parse_numbers
+
+            if len(parse_numbers(prompt)) >= 2:
+                return "data-analysis"
     scores: dict[str, int] = {}
     for name, (verbs, nouns) in _INTENT_SIGNALS.items():
         if verbs & negated:
@@ -287,7 +321,8 @@ def parse_route(prompt: str) -> tuple[str, str]:
     stripped = prompt.strip()
     match = _DIRECTIVE_RE.match(stripped)
     if match:
-        name, rest = match.group(1).lower(), match.group(2).strip()
+        name = match.group(1).lower().replace("_", "-")
+        rest = match.group(2).strip()
         if name == "all-in-one":
             raise ModuleError(
                 "the all-in-one module cannot route to itself; name "

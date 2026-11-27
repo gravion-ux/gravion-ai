@@ -58,6 +58,12 @@ ESCALATION_PHRASES = (
     "someone real",
     "talk to someone",
     "speak to someone",
+    # "Speak with someone" asks for a person just as plainly
+    # as "speak to someone"; with only the "to" forms listed,
+    # the "with" request was answered by the bot instead of
+    # handed over.
+    "talk with someone",
+    "speak with someone",
     "call me",
 )
 
@@ -81,8 +87,13 @@ _ESCALATION_RE = re.compile(
 # "human readable") rather than a request for a person.
 _TOPIC_PHRASES_RE = re.compile(
     r"\b(?:human resources|human readable|human error|human-like|"
+    # "Human rights" and an "agent fee" name topics, not a
+    # request for a person: both escalated a policy/price
+    # question that the grounding material should answer.
+    r"human rights|"
     r"password manager|task manager|file manager|download manager|"
-    r"user agent|ai agent|product manager|project manager|"
+    r"user agent|ai agent|agent fee|agent fees|"
+    r"product manager|project manager|"
     r"account manager|travel agent|insurance agent|estate agent|"
     r"sales representative)\b"
 )

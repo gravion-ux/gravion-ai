@@ -74,6 +74,28 @@ def test_parse_route_refuses_capitalised_self_routing():
 
 
 @pytest.mark.parametrize(
+    "prompt,expected",
+    [
+        # Regression: the underscore spelling the module
+        # packages use was not a directive, so the directive
+        # text stayed inside the routed prompt.
+        ("website_builder: a site for our cafe",
+         ("website-builder", "a site for our cafe")),
+        ("data_analysis: mean of 2 4 6", ("data-analysis", "mean of 2 4 6")),
+        ("document_qa: document: x question: y",
+         ("document-qa", "document: x question: y")),
+    ],
+)
+def test_parse_route_underscore_directives(prompt, expected):
+    assert parse_route(prompt) == expected
+
+
+def test_parse_route_refuses_underscore_self_routing():
+    with pytest.raises(ModuleError, match="cannot route to itself"):
+        parse_route("all_in_one: coder: fix this")
+
+
+@pytest.mark.parametrize(
     "prompt,expected_module",
     [
         ("write a python function to sort a list", "coder"),
@@ -147,6 +169,18 @@ def test_parse_route_infers_clear_intent(prompt, expected_module):
         # chat; the translation module coverage-gates its text.
         ("how do you say thank you in hindi", "translation"),
         ("how do you say shukriya in english", "translation"),
+        # Regression: a statistic named with its numbers scored
+        # one intent point and fell through to chat, so the
+        # data-analysis module's local computation never ran.
+        ("what is the mean of 2, 4, 6?", "data-analysis"),
+        ("find the median of 3 1 2", "data-analysis"),
+        ("average of 10 20 30", "data-analysis"),
+        # Guards: a statistic without supplied numbers stays a
+        # general question, a coding request keeps its coder
+        # signal, and a negated statistic is not computed.
+        ("explain what median means", "chat"),
+        ("write code to compute the mean of 2 4 6", "coder"),
+        ("do not compute the mean of 2 4 6, just explain averages", "chat"),
     ],
 )
 def test_parse_route_structural_markers_are_decisive(prompt, expected_module):
