@@ -109,6 +109,13 @@ def test_summarization_is_extractive():
     # being summarized.
     assert _run("summarization", "gravion-summary", f"summarize this: {text}") == summarize(text)
     assert _run("summarization", "gravion-summary", f"summarize the following: {text}") == summarize(text)
+    # Regression: the object may carry its noun ("summarize
+    # the following text:", "summarize this passage:"); the
+    # router sends the passage form here on the verb+noun
+    # signal, so refusing it dropped a routed request to chat.
+    assert _run("summarization", "gravion-summary", f"summarize the following text: {text}") == summarize(text)
+    assert _run("summarization", "gravion-summary", f"summarize this passage: {text}") == summarize(text)
+    assert _run("summarization", "gravion-summary", f"summarise the following article: {text}") == summarize(text)
 
 
 def test_split_sentences_keeps_trailing_fragment_and_decimals():
@@ -434,6 +441,27 @@ def test_document_qa_quotes_evidence_and_admits_gaps():
         f"question: when does the library open\ndocument: {document}",
     )
     assert "opens at nine" in out3
+    # Regression: a document that merely mentions "question:"
+    # mid-sentence is content, not the question marker;
+    # splitting there truncated the document and corrupted
+    # the question. Line-anchored markers win, and the
+    # single-line form still parses.
+    form_document = (
+        "The form has one field. The form asks question: what is "
+        "your name? The name field is required."
+    )
+    out4 = _run(
+        "document-qa",
+        "gravion-docqa",
+        f"document: {form_document}\nquestion: which field is required",
+    )
+    assert "name field is required" in out4
+    out5 = _run(
+        "document-qa",
+        "gravion-docqa",
+        f"document: {document} question: when does the library open",
+    )
+    assert "opens at nine" in out5
 
 
 def test_stem_word_matches_irregular_sis_plurals():

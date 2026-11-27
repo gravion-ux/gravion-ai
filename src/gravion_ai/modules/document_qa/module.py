@@ -54,10 +54,16 @@ def answer_question(document: str, question: str, max_sentences: int = 2) -> str
 
 
 def parse_document_prompt(prompt: str) -> tuple[str, str] | None:
+    # Line-anchored markers first, matching the all-in-one
+    # router's decisive pair: a document that merely mentions
+    # "question:" mid-sentence ("the form asks question: what
+    # is your name?") is content, not the question marker, and
+    # splitting there truncated the document and handed the
+    # module a corrupted question.
     doc_match = re.search(
-        r"document\s*:\s*(.+?)\s*question\s*:\s*(.+)",
+        r"^\s*document\s*:\s*(.+?)^\s*question\s*:\s*(.+)",
         prompt,
-        re.IGNORECASE | re.DOTALL,
+        re.IGNORECASE | re.DOTALL | re.MULTILINE,
     )
     if doc_match:
         return doc_match.group(1).strip(), doc_match.group(2).strip()
@@ -66,13 +72,30 @@ def parse_document_prompt(prompt: str) -> tuple[str, str] | None:
     # decisive in either order, so refusing the reversed form
     # here silently dropped a routed request to chat.
     reversed_match = re.search(
+        r"^\s*question\s*:\s*(.+?)^\s*document\s*:\s*(.+)",
+        prompt,
+        re.IGNORECASE | re.DOTALL | re.MULTILINE,
+    )
+    if reversed_match:
+        return reversed_match.group(2).strip(), reversed_match.group(1).strip()
+    # The same markers on one line ("document: ... question:
+    # ...") are the documented input in single-line form; the
+    # inline split only runs when no line-anchored pair exists.
+    inline_match = re.search(
+        r"document\s*:\s*(.+?)\s*question\s*:\s*(.+)",
+        prompt,
+        re.IGNORECASE | re.DOTALL,
+    )
+    if inline_match:
+        return inline_match.group(1).strip(), inline_match.group(2).strip()
+    inline_reversed = re.search(
         r"question\s*:\s*(.+?)\s*document\s*:\s*(.+)",
         prompt,
         re.IGNORECASE | re.DOTALL,
     )
-    if not reversed_match:
+    if not inline_reversed:
         return None
-    return reversed_match.group(2).strip(), reversed_match.group(1).strip()
+    return inline_reversed.group(2).strip(), inline_reversed.group(1).strip()
 
 
 class DocumentQAModule:

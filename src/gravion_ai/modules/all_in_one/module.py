@@ -200,9 +200,15 @@ _PASSAGE_MARKER_RE = re.compile(r"^\s*passage\s*:", re.IGNORECASE | re.MULTILINE
 # The "summarize this:" / "summarize the following:" forms are
 # the same decisive prefix with the object named: without them
 # the request scored one intent point and fell through to chat,
-# so the module's own input form could never reach it.
+# so the module's own input form could never reach it. The
+# object may carry its noun ("summarize the following text:"),
+# mirroring the summarization module's own accepted forms.
 _SUMMARIZE_PREFIX_RE = re.compile(
-    r"^\s*summar(?:ize|ise)(?:\s+(?:this|the following))?\s*:", re.IGNORECASE
+    r"^\s*summar(?:ize|ise)(?:\s+(?:this|the following)"
+    r"(?:\s+(?:text|passage|article|document|paragraph|story|report|essay))?"
+    r"|\s+the\s+(?:text|passage|article|document|paragraph|story|report|essay))?"
+    r"\s*:",
+    re.IGNORECASE,
 )
 # The translation module documents leading "translate:" and
 # "translate to/into/in hindi|english:" forms; without a

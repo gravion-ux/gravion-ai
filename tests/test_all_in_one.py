@@ -153,6 +153,11 @@ def test_parse_route_infers_clear_intent(prompt, expected_module):
         # module's own input form could never reach it.
         ("summarize this: Cats sleep for long hours each day.", "summarization"),
         ("summarize the following: Cats sleep for long hours each day.", "summarization"),
+        # Regression: the noun forms ("summarize the following
+        # text:") scored one intent point ("text" is not an
+        # intent noun) and fell through to chat.
+        ("summarize the following text: Cats sleep for long hours each day.", "summarization"),
+        ("summarize this passage: Cats sleep for long hours each day.", "summarization"),
         # Regression: CVE sequence numbers have no seven-digit
         # cap in the cyber module, but the router's capped
         # pattern sent an eight-digit id to chat instead.

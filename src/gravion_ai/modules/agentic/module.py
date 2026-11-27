@@ -127,7 +127,7 @@ _TOOL_NEGATOR_RE = re.compile(r"(?:\bno\b|\bnot\b|\bnever\b|\bwithout\b|n't\b)")
 _CLAUSE_BREAKS = ".!?;,"
 
 
-def _tool_negated(text: str, match_start: int) -> bool:
+def _negated_before(text: str, match_start: int) -> bool:
     clause_start = (
         max(text.rfind(break_char, 0, match_start) for break_char in _CLAUSE_BREAKS)
         + 1
@@ -137,12 +137,33 @@ def _tool_negated(text: str, match_start: int) -> bool:
     return bool(tail) and _TOOL_NEGATOR_RE.search(tail) is not None
 
 
+def _tool_negated(text: str, match_start: int) -> bool:
+    return _negated_before(text, match_start)
+
+
 def detect_task(prompt: str) -> str:
     """Classify an agentic prompt as plan / build / run."""
     text = prompt.strip().lower()
-    if text.startswith(_BUILD_PREFIXES) or _BUILD_AGENT_RE.search(text):
+    # A leading "please"/"kindly" does not change the task:
+    # "please build: ..." asks to build exactly like "build:".
+    prefixed = re.sub(r"^(?:please|kindly)\s+", "", text)
+    if prefixed.startswith(_BUILD_PREFIXES):
         return TASK_BUILD
-    if text.startswith(_RUN_PREFIXES) or _RUN_AGENT_RE.search(text):
+    if prefixed.startswith(_RUN_PREFIXES):
+        return TASK_RUN
+    # A negated verb rules its task out, the same way a negated
+    # tool is not a named tool: "don't build an agent yet, plan
+    # one" asks for a plan, and recording it as a build brief
+    # handed the model the opposite task.
+    if any(
+        not _negated_before(text, match.start())
+        for match in _BUILD_AGENT_RE.finditer(text)
+    ):
+        return TASK_BUILD
+    if any(
+        not _negated_before(text, match.start())
+        for match in _RUN_AGENT_RE.finditer(text)
+    ):
         return TASK_RUN
     return TASK_PLAN
 

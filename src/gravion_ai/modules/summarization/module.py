@@ -28,9 +28,16 @@ _STOP = frozenset(
 # drop a correctly routed request to the model fallback. The
 # "summarize this:" / "summarize the following:" forms name the
 # same input: refusing them left the instruction itself inside
-# the text being summarized.
+# the text being summarized. The object may carry its noun
+# ("summarize the following text:", "summarize this passage:"):
+# the router sends "summarize this passage:" here on the
+# verb+noun signal, so refusing the noun form dropped a routed
+# request to chat whenever the text ran under four sentences.
 _SUMMARIZE_RE = re.compile(
-    r"summar(?:ize|ise)(?:\s+(?:this|the following))?\s*:\s*(.+)",
+    r"summar(?:ize|ise)(?:\s+(?:this|the following)"
+    r"(?:\s+(?:text|passage|article|document|paragraph|story|report|essay))?"
+    r"|\s+the\s+(?:text|passage|article|document|paragraph|story|report|essay))?"
+    r"\s*:\s*(.+)",
     re.IGNORECASE | re.DOTALL,
 )
 

@@ -69,6 +69,18 @@ def test_agentic_instantiates_and_answers():
         ("build me an agent that checks email", TASK_BUILD),
         ("execute the agent on this task", TASK_RUN),
         ("plan an agent that builds reports", TASK_PLAN),
+        # Regression: a negated build/run verb rules its task
+        # out, like a negated tool; recording "don't build an
+        # agent yet" as a build brief handed the model the
+        # opposite task. A leading "please" before a prefix
+        # form asks for the same task as the bare prefix.
+        ("don't build an agent yet, just plan one", TASK_PLAN),
+        ("do not run the agent today", TASK_PLAN),
+        ("never build an agent for this, plan it first", TASK_PLAN),
+        ("no need to build an agent, plan only", TASK_PLAN),
+        ("run the agent now, don't build a new one", TASK_RUN),
+        ("please build: an agent that watches the inbox", TASK_BUILD),
+        ("please run: the inbox agent on today's mail", TASK_RUN),
     ],
 )
 def test_detect_task(prompt, expected):
