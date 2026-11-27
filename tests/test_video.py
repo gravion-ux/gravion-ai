@@ -98,6 +98,22 @@ def test_video_instantiates_and_answers():
         ("make a director's cut video for the launch", MODE_GENERATE),
         # A negated edit verb asks for a new video instead.
         ("do not edit this video, make a new one", MODE_GENERATE),
+        # Regression: change/adjust/fix/crop/rotate aimed at an
+        # existing video, and adding something to it, fell
+        # through to generation.
+        ("change my video's ending", MODE_EDIT),
+        ("fix this video please", MODE_EDIT),
+        ("crop this video to vertical", MODE_EDIT),
+        ("rotate this video", MODE_EDIT),
+        ("adjust the brightness of this clip", MODE_EDIT),
+        ("add subtitles to this video", MODE_EDIT),
+        ("can you fix it please", MODE_EDIT),
+        # The same verbs describing new content stay generation:
+        # no determiner-governed video noun, no edit.
+        ("make a video about changing seasons", MODE_GENERATE),
+        ("make a video to fix my posture", MODE_GENERATE),
+        ("add this video to my playlist", MODE_GENERATE),
+        ("do not change this video, make a new one", MODE_GENERATE),
     ],
 )
 def test_detect_mode(prompt, expected):
@@ -120,6 +136,9 @@ def test_detect_mode(prompt, expected):
         ("a 1:30 explainer", 90),
         ("a 30s teaser", 30),
         ("a 9:16 video, 30 seconds", 30),
+        # Word-form durations count through the shared parser.
+        ("a thirty second teaser", 30),
+        ("a two minute explainer", 120),
         ("a teaser for our app", None),
         ("a video for the launch", None),
     ],

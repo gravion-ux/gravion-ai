@@ -61,6 +61,11 @@ def test_music_instantiates_and_answers():
         ("subgmusic vibes for the set", KIND_TRACK),
         ("not a jingle, a full track for the launch", KIND_TRACK),
         ("no background music, a standalone track", KIND_TRACK),
+        # Regression: music's negator list lacked "without", so
+        # a kind named only to be ruled out won, and a "-free"
+        # suffix read as the kind it excludes.
+        ("background music without a jingle feel", KIND_SCORE),
+        ("a jingle-free track for our app", KIND_TRACK),
     ],
 )
 def test_detect_kind(prompt, expected):
@@ -91,6 +96,17 @@ def test_detect_kind(prompt, expected):
         ("a 9:16 track", None),
         ("a jingle for our ad", None),
         ("a track for the launch", None),
+        # Word-form durations state the same lengths as digit
+        # forms; the article counts for minutes/hours only, so
+        # an ordinal "second version" is not one second.
+        ("thirty seconds of calm piano", 30),
+        ("two minutes of lofi", 120),
+        ("a minute long jingle", 60),
+        ("twenty-five seconds", 25),
+        ("one hour of background music", 3600),
+        ("half a minute of music", 30),
+        ("two minutes thirty seconds", 150),
+        ("make a second version, calm", None),
     ],
 )
 def test_parse_duration(prompt, expected):
@@ -116,6 +132,12 @@ def test_parse_moods_skips_negated_moods():
     assert parse_moods("never dark, always warm") == ["warm"]
     assert parse_moods("don't make it epic, keep it calm") == ["calm"]
     assert parse_moods("no lofi please, cinematic only") == ["cinematic"]
+    # Regression: "without" was missing from the negators, so a
+    # mood named only to be ruled out was recorded as requested.
+    assert parse_moods("a track without dark tones, warm and playful") == [
+        "warm", "playful",
+    ]
+    assert parse_moods("without calm, upbeat only") == ["upbeat"]
     # A mood named again without a negator still counts, in the
     # order of that later mention.
     assert parse_moods("not dark, actually dark and epic") == ["dark", "epic"]

@@ -82,7 +82,12 @@ _SCORE_RES = tuple(
     re.compile(rf"\b{re.escape(phrase)}\b") for phrase in _SCORE_PHRASES
 )
 _JINGLE_RE = re.compile(r"\bjingle\b")
-_NEGATOR_RE = re.compile(r"(?:\bno\b|\bnot\b|\bnever\b|n't\b)")
+# "Without" rules a kind or mood out just as "not" does ("a
+# track without dark tones" asks for no dark), the same negator
+# the image, video and coder modules already carry; music was
+# the one module missing it, so a ruled-out mood was recorded
+# in the brief as a requested one.
+_NEGATOR_RE = re.compile(r"(?:\bno\b|\bnot\b|\bnever\b|\bwithout\b|n't\b)")
 _CLAUSE_BREAKS = ".!?;,"
 
 
@@ -97,8 +102,11 @@ def _negated_before(text: str, match_start: int) -> bool:
 
 
 def _kind_named(pattern: re.Pattern[str], text: str) -> bool:
+    # A "-free" suffix rules the kind out just as a negator does:
+    # "a jingle-free track" names the jingle only to exclude it.
     return any(
         not _negated_before(text, match.start())
+        and not text[match.end():].startswith("-free")
         for match in pattern.finditer(text)
     )
 
@@ -144,6 +152,63 @@ _UNIT_SECONDS = {
 _CLOCK3_RE = re.compile(r"(?<![0-9:])(\d+):([0-5]\d):([0-5]\d)(?![0-9:])")
 _CLOCK2_RE = re.compile(r"(?<![0-9:])(\d+):([0-5]\d)(?![0-9:])")
 
+# Word-form durations ("thirty seconds", "two minutes") state
+# the same lengths as the digit forms and are how a request is
+# usually spoken; the digit scan alone left them at the model
+# default. The article forms count for minutes and hours only:
+# "a minute long" is a duration, but "a second version" is an
+# ordinal, not one second. "Half a minute" is thirty seconds,
+# counted once — the article inside it is not a second minute.
+_WORD_ONES = {
+    "one": 1, "two": 2, "three": 3, "four": 4, "five": 5,
+    "six": 6, "seven": 7, "eight": 8, "nine": 9, "ten": 10,
+    "eleven": 11, "twelve": 12, "thirteen": 13, "fourteen": 14,
+    "fifteen": 15, "sixteen": 16, "seventeen": 17,
+    "eighteen": 18, "nineteen": 19,
+}
+_WORD_TENS = {
+    "twenty": 20, "thirty": 30, "forty": 40, "fifty": 50,
+    "sixty": 60, "seventy": 70, "eighty": 80, "ninety": 90,
+}
+_WORD_NUM_RE = re.compile(
+    r"\b((?:"
+    + "|".join(_WORD_TENS)
+    + r")(?:[-\s](?:one|two|three|four|five|six|seven|eight|nine))?|"
+    + "|".join(_WORD_ONES)
+    + r")\s*-?\s*(hours?|minutes?|seconds?)\b",
+    re.IGNORECASE,
+)
+_ARTICLE_DURATION_RE = re.compile(
+    r"\b(?:a|an)\s+(hours?|minutes?)\b", re.IGNORECASE
+)
+_HALF_DURATION_RE = re.compile(
+    r"\bhalf\s+(?:an?\s+)?(hours?|minutes?)\b", re.IGNORECASE
+)
+
+
+def _word_number_value(text: str) -> int:
+    parts = text.lower().replace("-", " ").split()
+    return sum(
+        _WORD_TENS.get(part, 0) + _WORD_ONES.get(part, 0) for part in parts
+    )
+
+
+def _word_duration_seconds(prompt: str) -> float:
+    total = 0.0
+    half_spans = []
+    for match in _HALF_DURATION_RE.finditer(prompt):
+        half_spans.append(match.span())
+        total += 0.5 * _UNIT_SECONDS[match.group(1).lower().rstrip("s")]
+    for match in _WORD_NUM_RE.finditer(prompt):
+        total += _word_number_value(match.group(1)) * _UNIT_SECONDS[
+            match.group(2).lower().rstrip("s")
+        ]
+    for match in _ARTICLE_DURATION_RE.finditer(prompt):
+        if any(start <= match.start() < end for start, end in half_spans):
+            continue  # the "a minute" inside "half a minute"
+        total += _UNIT_SECONDS[match.group(1).lower().rstrip("s")]
+    return total
+
 
 def _clock_seconds(prompt: str) -> int | None:
     total = 0
@@ -180,17 +245,19 @@ def parse_duration(prompt: str) -> int | None:
     the compact forms count too ("30s", "1m 30s", "1m30s").
     Clock forms ("1:30", "1:02:30") state the length precisely,
     so a clock reading wins over unit forms in the same request
-    rather than adding to them. The video module reuses this
+    rather than adding to them. Word forms ("thirty seconds",
+    "a minute long", "half a minute") count alongside the digit
+    forms and add up the same way. The video module reuses this
     parser instead of carrying a second copy that could drift
     from it.
     """
     clock = _clock_seconds(prompt)
     if clock is not None:
         return clock
+    total = _word_duration_seconds(prompt)
     matches = _DURATION_RE.findall(prompt)
-    if not matches:
+    if not matches and not total:
         return None
-    total = 0.0
     for value, unit in matches:
         key = unit.lower()
         if key not in _UNIT_SECONDS:

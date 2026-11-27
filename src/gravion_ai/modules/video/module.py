@@ -86,16 +86,29 @@ _EDIT_PREFIXES = (
 # "cut this clip shorter"); without one, "cut" is as often a
 # noun ("a director's cut video") as a verb. The pronoun form
 # ("can you edit this please") counts for edit/modify.
+# "Change"/"adjust"/"fix"/"crop"/"rotate" name the same task
+# under the same determiner rule ("change my video's ending",
+# "crop this video to vertical", "adjust the brightness of
+# this clip") — without a determiner-governed video noun they
+# describe new content ("a video about changing seasons")
+# and stay generation. Adding something *to* an existing
+# video ("add subtitles to this video") is likewise an edit;
+# adding the video itself somewhere ("add this video to my
+# playlist") names no video object after "to" and is not.
 _VIDEO_OBJECT = r"(?:video|clip|reel|footage|intro|ending|demo)"
 _EDIT_RES = (
     re.compile(
         r"\b(?:edit|modify)\b[^.?!]*\b" + _VIDEO_OBJECT + r"\b"
     ),
     re.compile(
-        r"\b(?:trim|cut|shorten)\b[^.?!]*\b(?:this|the|my|that)\s+"
+        r"\b(?:trim|cut|shorten|change|adjust|fix|crop|rotate)\b[^.?!]*"
+        r"\b(?:this|the|my|that)\s+(?:\w+\s+)?" + _VIDEO_OBJECT + r"\b"
+    ),
+    re.compile(
+        r"\badd\b[^.?!]*\bto\s+(?:this|the|my|that)\s+"
         r"(?:\w+\s+)?" + _VIDEO_OBJECT + r"\b"
     ),
-    re.compile(r"\b(?:edit|modify|trim|cut)\s+(?:this|that|it)\b"),
+    re.compile(r"\b(?:edit|modify|trim|cut|fix|crop)\s+(?:this|that|it)\b"),
 )
 
 # A negated edit verb asks for a new video ("do not edit this

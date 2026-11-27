@@ -61,6 +61,12 @@ def test_image_instantiates_and_answers():
         ("change this photo background to a beach", MODE_EDIT),
         ("retouch this portrait please", MODE_EDIT),
         ("can you edit this please", MODE_EDIT),
+        # Regression: fix/crop/remove aimed at an existing image
+        # fell through to generation.
+        ("fix this image please", MODE_EDIT),
+        ("crop this photo to square", MODE_EDIT),
+        ("remove the background from this photo", MODE_EDIT),
+        ("can you fix it please", MODE_EDIT),
         # A negated edit verb asks for a new image instead.
         ("do not edit this image, draw a new one", MODE_GENERATE),
         ("never modify this photo, generate a fresh one", MODE_GENERATE),

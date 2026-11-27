@@ -73,18 +73,20 @@ _EDIT_PREFIXES = (
 # picture" all fell through to generation, so an edit request
 # was answered with a new image. "Change"/"retouch"/"adjust"
 # aimed at an image noun ("change this photo background",
-# "retouch this portrait") name the same task. The pronoun
-# form ("can you edit this please") counts for edit/modify.
+# "retouch this portrait") name the same task, as do
+# "fix"/"crop"/"remove" ("fix this image", "crop this photo",
+# "remove the background from this photo"). The pronoun form
+# ("can you edit this please") counts for edit/modify/fix/crop.
 _IMAGE_OBJECT = (
     r"(?:image|photo|picture|portrait|logo|banner|poster|icon|shot)"
 )
 _EDIT_RES = (
     re.compile(
-        r"\b(?:edit|modify|change|retouch|adjust)\b[^.?!]*\b"
+        r"\b(?:edit|modify|change|retouch|adjust|fix|crop|remove)\b[^.?!]*\b"
         + _IMAGE_OBJECT
         + r"\b"
     ),
-    re.compile(r"\b(?:edit|modify)\s+(?:this|that|it)\b"),
+    re.compile(r"\b(?:edit|modify|fix|crop)\s+(?:this|that|it)\b"),
 )
 
 # A negated edit verb asks for a new image ("do not edit this
