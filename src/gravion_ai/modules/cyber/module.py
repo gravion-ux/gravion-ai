@@ -220,7 +220,10 @@ _ANALYSE_OPENERS = (
     "why",
 )
 
-_ITEM = r"(?:this|the|that|incident|finding|alert|issue|vulnerability|event)"
+# A pronoun object aims the verb at the item under discussion
+# just as plainly as "this alert" does ("don't write a
+# report, just triage it" fell through to analysis).
+_ITEM = r"(?:this|the|that|it|them|incident|finding|alert|issue|vulnerability|event)"
 # A triage/report verb aimed straight at a named indicator
 # ("triage CVE-2026-12345", "report 10.0.0.8") targets an item
 # just as surely as one aimed at "this alert"; without this the

@@ -167,6 +167,46 @@ _POSTPOSED_NEGATION_RE = re.compile(
 )
 
 
+# A negator can govern the match through a transfer phrase
+# ("do not connect me to a human", "don't put me through to
+# an agent"): the negator sits five or more words before the
+# person word, past the window above, yet it plainly cancels
+# the request — those customers were handed over anyway. It
+# only governs through the bridge when every word between
+# the negator and the match is part of the transfer phrase
+# itself, so "I do not know why but get me a human" (the
+# negator governs "know") still escalates.
+_TRANSFER_BRIDGE_WORDS = frozenset(
+    {
+        "a",
+        "an",
+        "connect",
+        "directly",
+        "ever",
+        "get",
+        "hand",
+        "just",
+        "me",
+        "move",
+        "need",
+        "over",
+        "pass",
+        "please",
+        "put",
+        "really",
+        "route",
+        "send",
+        "switch",
+        "the",
+        "through",
+        "to",
+        "transfer",
+        "us",
+        "with",
+    }
+)
+
+
 def _is_negated(text: str, match_start: int, match_end: int) -> bool:
     clause_start = (
         max(text.rfind(break_char, 0, match_start) for break_char in _CLAUSE_BREAKS) + 1
@@ -175,6 +215,14 @@ def _is_negated(text: str, match_start: int, match_end: int) -> bool:
     tail = " ".join(words[-_NEGATION_WINDOW_WORDS:])
     if bool(tail) and _NEGATOR_RE.search(tail) is not None:
         return True
+    cleaned = [word.strip(".,!?;:\"'()") for word in words]
+    for index in range(len(cleaned) - 1, -1, -1):
+        word = cleaned[index]
+        if word in ("no", "not", "never", "without") or word.endswith("n't"):
+            bridge = cleaned[index + 1 :]
+            if bridge and all(part in _TRANSFER_BRIDGE_WORDS for part in bridge):
+                return True
+            break
     return _POSTPOSED_NEGATION_RE.match(text, match_end) is not None
 
 

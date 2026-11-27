@@ -107,6 +107,22 @@ def test_coder_instantiates_and_answers():
         # A generation opener still wins over the new
         # explanation shapes it happens to contain.
         ("write a function that returns the total", TASK_GENERATE),
+        # Regression: debugging and correctness questions
+        # about supplied code fell through to generation, so
+        # a request to examine existing code was answered
+        # with new code instead of the problems in it.
+        ("debug this python code", TASK_REVIEW),
+        ("find the bug in this function", TASK_REVIEW),
+        ("find errors in this code", TASK_REVIEW),
+        ("is this code correct?", TASK_REVIEW),
+        ("is this function secure?", TASK_REVIEW),
+        ("does this code work?", TASK_REVIEW),
+        ("what's wrong with this code?", TASK_REVIEW),
+        ("what went wrong with this function?", TASK_REVIEW),
+        # A generation opener still wins over the review
+        # shapes it happens to contain.
+        ("write code to find bugs in log files", TASK_GENERATE),
+        ("do not debug this code, explain this code", TASK_EXPLAIN),
         # Regression: a negated task verb still governed, so
         # "do not review, just explain this code" was answered
         # as a review. A cancelled signal does not count; the

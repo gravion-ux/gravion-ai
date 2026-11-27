@@ -100,6 +100,13 @@ def test_cyber_instantiates_and_answers():
         # A negator in an earlier clause does not cancel a
         # later live verb.
         ("do not ignore this alert, triage this alert now", TASK_TRIAGE),
+        # Regression: a pronoun object aims the verb at the
+        # item under discussion, but "triage it" named no
+        # listed item and fell through to analysis.
+        ("don't write a report, just triage it", TASK_TRIAGE),
+        ("triage it now", TASK_TRIAGE),
+        ("report it to the team", TASK_REPORT),
+        ("do not triage it, analyse it first", TASK_ANALYSE),
     ],
 )
 def test_detect_task(prompt, expected):

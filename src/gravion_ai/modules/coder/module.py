@@ -86,11 +86,30 @@ _CODE_OBJECT = r"(?:code|function|script|snippet|program|module|class)"
 # "Look over" / "go over" ask for a review just as plainly as
 # "review" does ("look over this function please" fell through
 # to generation, so a review request was answered with new code).
-_REVIEW_RE = re.compile(
-    r"\b(?:review|reviewing|audit|auditing|check|checking|"
-    r"look over|go over)\b[^.?!]*\b"
-    + _CODE_OBJECT
-    + r"\b"
+# Debugging and correctness questions about supplied code ask
+# for the same review ("debug this code", "find the bug in
+# this function", "is this code correct?", "what's wrong with
+# this code?"): without them they fell through to generation,
+# so a request to examine existing code was answered with new
+# code instead of the problems in it.
+_REVIEW_RES = (
+    re.compile(
+        r"\b(?:review|reviewing|audit|auditing|check|checking|"
+        r"look over|go over)\b[^.?!]*\b"
+        + _CODE_OBJECT
+        + r"\b"
+    ),
+    re.compile(r"\bdebug(?:ging)?\b[^.?!]*\b" + _CODE_OBJECT + r"\b"),
+    re.compile(r"\bfind\b[^.?!]*\b(?:bugs?|errors?|problems?|issues?)\b"),
+    re.compile(
+        r"\bis (?:this|the|it)\b[^.?!]*\b"
+        + _CODE_OBJECT
+        + r"\b[^.?!]*\b(?:correct|secure|safe|valid|working|efficient|right)\b"
+    ),
+    re.compile(r"\bdoes (?:this|the|it)\b[^.?!]*\b" + _CODE_OBJECT + r"\b[^.?!]*\bwork\b"),
+    re.compile(
+        r"\bwhat(?:'s| is| went) wrong\b[^.?!]*\b" + _CODE_OBJECT + r"\b"
+    ),
 )
 
 # A negated task verb asks for the opposite task ("do not
@@ -197,12 +216,13 @@ def detect_task(prompt: str) -> str:
             review_at = phrase_at
             break
         phrase_start = phrase_at + 1
-    for review_match in _REVIEW_RE.finditer(text):
-        if _is_negated(text, review_match.start()):
-            continue
-        if review_at is None or review_match.start() < review_at:
-            review_at = review_match.start()
-        break
+    for pattern in _REVIEW_RES:
+        for review_match in pattern.finditer(text):
+            if _is_negated(text, review_match.start()):
+                continue
+            if review_at is None or review_match.start() < review_at:
+                review_at = review_match.start()
+            break
     explain_at: int | None = None
     for pattern in _EXPLAIN_RES:
         for explain_match in pattern.finditer(text):

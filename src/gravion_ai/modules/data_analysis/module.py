@@ -348,6 +348,28 @@ def _pstdev(numbers: list[float]) -> float:
         return float(root)
 
 
+def _exact_median(numbers: list[float]) -> float:
+    """Median without midpoint overflow.
+
+    ``statistics.median`` averages the two middle values in
+    float arithmetic, so an even-length list at float range
+    ("1e308, 1e308") reported "Median: inf" though the
+    median is plainly 1e308 — the same phantom infinity the
+    exact mean already avoids. The midpoint is taken in
+    exact fractions instead; a midpoint past float range
+    itself is reported as signed infinity, like the total.
+    """
+    ordered = sorted(numbers)
+    middle = len(ordered) // 2
+    if len(ordered) % 2:
+        return ordered[middle]
+    exact = (Fraction(ordered[middle - 1]) + Fraction(ordered[middle])) / 2
+    try:
+        return float(exact)
+    except OverflowError:
+        return math.inf if exact > 0 else -math.inf
+
+
 def analyze(numbers: list[float]) -> str:
     if not numbers:
         return "No numbers to analyze."
@@ -358,7 +380,7 @@ def analyze(numbers: list[float]) -> str:
     # is plainly 1e308, and the trend halves inherited the
     # same phantom infinity.
     mean = statistics.mean(numbers)
-    median = statistics.median(numbers)
+    median = _exact_median(numbers)
     low, high = min(numbers), max(numbers)
     stdev = _pstdev(numbers)
     half = count // 2

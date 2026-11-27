@@ -160,10 +160,25 @@ def test_distant_negators_do_not_suppress_escalation(prompt):
         "please do not get me a human, just answer here",
         "I don't want a human, the bot is fine",
         "never escalate this ticket",
+        # Regression: a negator governing a transfer phrase
+        # sits past the negation window ("do not connect me
+        # to a human"), so customers who refused a handoff
+        # were handed over anyway.
+        "do not connect me to a human",
+        "don't transfer me to an agent",
+        "please do not put me through to a human",
+        "no need to connect me to a human",
     ],
 )
 def test_governing_negators_still_suppress_escalation(prompt):
     assert not needs_human(prompt)
+
+
+def test_negator_governing_another_verb_does_not_suppress_transfer():
+    # Guard for the transfer bridge above: a negator that
+    # governs a different verb ("know") must not cancel the
+    # real request that follows it in the same clause.
+    assert needs_human("I do not know why but get me a human")
 
 
 @pytest.mark.parametrize(

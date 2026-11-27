@@ -773,6 +773,20 @@ def test_analyze_large_values_do_not_overflow_the_mean():
     assert "Standard deviation: 9.42809e+307" in out
 
 
+def test_analyze_median_does_not_overflow_at_float_range():
+    # Regression: the median averaged its two middle values
+    # in float arithmetic, so an even-length list at float
+    # range reported "Median: inf" though the median is
+    # plainly 1e308 — the same phantom infinity the exact
+    # mean already avoids.
+    out = analyze([1e308, 1e308])
+    assert "Median: 1e+308" in out
+    out = analyze([1e308, 1.5e308])
+    assert "Median: 1.25e+308" in out
+    out = analyze([-1e308, 1e308])
+    assert "Median: 0" in out
+
+
 def test_parse_numbers_reads_unicode_minus_as_a_sign():
     # Regression: text pasted from documents writes negatives
     # with the Unicode minus (U+2212), which lost its sign and
