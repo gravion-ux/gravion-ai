@@ -338,10 +338,19 @@ _TRIAGE_INDICATOR_RE = re.compile(
 # assigning an alert, and marking or asking whether an item
 # is a false positive, all ask for the priority verdict
 # triage gives: without them they fell through to analysis.
+# The same verbs aimed straight at a named indicator
+# ("prioritize CVE-2026-12345", "assign 10.0.0.8 to SOC")
+# ask for that verdict on that artefact, like the bare
+# "triage" verb above: with only item objects listed, they
+# fell through to analysis.
 _TRIAGE_VERB_RES = (
     re.compile(
         r"\b(?:prioritise|prioritize|rank|escalate|dismiss|close|assign)\b"
         r"[^.?!]*\b" + _ITEM + r"\b"
+    ),
+    re.compile(
+        r"\b(?:prioritise|prioritize|rank|escalate|dismiss|close|assign)\b"
+        r"[^.?!]*" + _INDICATOR_HINT
     ),
     re.compile(r"\bmark\b[^.?!]*\bfalse positive\b"),
     re.compile(r"\b(?:is|are) (?:this|that|it)\b[^.?!]*\bfalse positive\b"),

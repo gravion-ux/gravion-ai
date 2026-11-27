@@ -350,6 +350,15 @@ def test_team_requests_escalate_and_human_topics_do_not():
     assert needs_human("talk to customer service please")
     assert needs_human("speak to your support team")
     assert needs_human("get me an operator")
+    # Regression: "customer support" is the same service
+    # name as care/service/team, yet "talk to customer
+    # support" never escalated; a topic question naming it
+    # still states no request.
+    assert needs_human("talk to customer support")
+    assert needs_human("connect me with customer support")
+    assert needs_human("put me through to customer support")
+    assert not needs_human("what are your customer support hours?")
+    assert not needs_human("do not connect me to customer support")
     # Regression: the team named by its bare service word
     # with a transfer preposition ("connect me to support")
     # asked for the same handoff yet never escalated.

@@ -288,9 +288,14 @@ def _is_negated(text: str, match_start: int, match_end: int) -> bool:
 # the team. The transfer verb is required: a topic question
 # naming the service ("what are your customer service
 # hours?") states no request and stays with the bot.
+# "Customer support" is the same service name ("talk to
+# customer support"): with only care/service/team listed,
+# that request was answered by the bot instead of handed
+# over, while a topic question about it still states no
+# request and stays with the bot.
 _TEAM_REQUEST_RE = re.compile(
     r"\b(?:talk|speak|connect|transfer|chat|put me through)\b"
-    r"[^.?!]*\b(?:customer care|customer service|support team)\b"
+    r"[^.?!]*\b(?:customer care|customer service|customer support|support team)\b"
     r"|\bget me an? operator\b"
     # The team named by its bare service word with a
     # transfer preposition ("connect me to support", "talk
