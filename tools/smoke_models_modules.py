@@ -7,8 +7,6 @@ Exit 0 = all pass, 1 = any fail.
 """
 from __future__ import annotations
 
-import hashlib
-import json
 import sys
 from pathlib import Path
 
@@ -64,7 +62,6 @@ def main() -> int:
     failures: list[str] = []
     catalog = ModelCatalog.load()
     provider = GravionCoreProvider()
-    data_dir = ROOT / "src" / "gravion_ai" / "data"
 
     print("== Models ==")
     for entry in catalog.list():

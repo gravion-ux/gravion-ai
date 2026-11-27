@@ -56,25 +56,25 @@
       "architecture_detail": "sparse n-gram embedding + direct linear softmax classifier",
       "base_model": null,
       "base_model_relation": null,
-      "dataset_sha256": "f1e268b945824587de730a3ee68acea6fd36f5a16ab85be5403dc6b73fd64fe9",
+      "dataset_sha256": "5f7ef3cc139ea9bf586592397de7b03848ed5d2226141208fc95091e8b902e45",
       "dtype": "int8",
-      "feature_count": 757,
+      "feature_count": 795,
       "hidden_size": 16,
       "id": "gravion-code",
       "license": "MIT",
       "license_link": "https://github.com/gravion-ux/gravion-ai/blob/main/LICENSE",
       "output_classes": 60,
-      "parameter_count": 60090,
+      "parameter_count": 62978,
       "parameters_by_dtype": {
         "float32": 1598,
-        "int8": 58492
+        "int8": 61380
       },
       "quantization": "symmetric-int8",
-      "spec_digest": "9a7e793eceb5ed8172f7beba32182a2a50362b2da0d1c668082ab4b55ddf3a87",
+      "spec_digest": "50fe75b620142d728b563fbc7e364e09af0fc27d483c9ac1f705d70fb25870b5",
       "trained_from": "data/gravion-code-seed.jsonl",
       "version": "1.0.0",
-      "vocab_size": 582,
-      "weights_sha256": "30d816538b24caf1b1ee212226218b0cf9a9d606f39e0c856dc2484b632e605e"
+      "vocab_size": 585,
+      "weights_sha256": "c67eb811e5b251c28d784a88010719ec15ff5e6b041e5d10f6fee82ddb5b33b6"
     },
     {
       "architecture": "sparse-ngram-linear",
@@ -181,25 +181,25 @@
       "architecture_detail": "sparse n-gram embedding + direct linear softmax classifier",
       "base_model": null,
       "base_model_relation": null,
-      "dataset_sha256": "ef99a9117710f2a91b15113403b9ebc82afe33cb968e7e7dedf33e77ffd083ed",
+      "dataset_sha256": "6a84870307627411eaa92996e5f6934d2f5b42f11481c6b0fb923f020167f686",
       "dtype": "int8",
-      "feature_count": 691,
+      "feature_count": 723,
       "hidden_size": 16,
       "id": "gravion-shield",
       "license": "MIT",
       "license_link": "https://github.com/gravion-ux/gravion-ai/blob/main/LICENSE",
       "output_classes": 60,
-      "parameter_count": 54940,
+      "parameter_count": 57372,
       "parameters_by_dtype": {
         "float32": 1464,
-        "int8": 53476
+        "int8": 55908
       },
       "quantization": "symmetric-int8",
-      "spec_digest": "7be56d2aabf570595a62d6eb3fb380514b558c7c5aedd4e1326f5368aec94f79",
+      "spec_digest": "9ddc79a7f46be8b0b8cbe941c7c1f21dcb4079ab756363c33b0f37a477eaf0bd",
       "trained_from": "data/gravion-shield-seed.jsonl",
       "version": "1.0.0",
-      "vocab_size": 553,
-      "weights_sha256": "a7e5611fba2e164df73b2e4020e51f58ced61627b480419528480741192bab50"
+      "vocab_size": 558,
+      "weights_sha256": "28d9a3a7045d1e7458135538b2e73ac773c4290552cb2b4e35f72caa02a578b1"
     },
     {
       "architecture": "sparse-ngram-linear",
@@ -231,25 +231,25 @@
       "architecture_detail": "sparse n-gram embedding + direct linear softmax classifier",
       "base_model": null,
       "base_model_relation": null,
-      "dataset_sha256": "62eca8ea69d48746791476ef7a51d6d06dcb32f169b02dc1aa4334ec7d50a8e2",
+      "dataset_sha256": "4f99b5b766701b01da8bcb9ab62a5fe72036969e1d1db7eb6302c564aefebfd2",
       "dtype": "int8",
-      "feature_count": 7297,
+      "feature_count": 7360,
       "hidden_size": 16,
       "id": "gravion-omni",
       "license": "MIT",
       "license_link": "https://github.com/gravion-ux/gravion-ai/blob/main/LICENSE",
       "output_classes": 802,
-      "parameter_count": 5995165,
+      "parameter_count": 6046699,
       "parameters_by_dtype": {
         "float32": 13387,
-        "int8": 5981778
+        "int8": 6033312
       },
       "quantization": "symmetric-int8",
-      "spec_digest": "529aa9f842656b1fec4f82f5e9d362ded67d8e5162f79ade3ec967c34beea5e2",
+      "spec_digest": "252960530a46b20795a6c24aefaed137a2e89b32d7b54db38fc6d91356cdf228",
       "trained_from": "data/gravion-omni-seed.jsonl",
       "version": "1.0.0",
-      "vocab_size": 3068,
-      "weights_sha256": "771903b4a37668cec232c3505f24743f19e70c4cca3df78f856eb31c660d26d5"
+      "vocab_size": 3070,
+      "weights_sha256": "7376ba08e9a8e7e9effa03e72fd7c3e748f03e2ba526f5921b9bd4a9363bd273"
     },
     {
       "architecture": "sparse-ngram-linear",

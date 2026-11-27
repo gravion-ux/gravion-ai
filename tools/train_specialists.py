@@ -216,6 +216,14 @@ TOPICS: dict[str, list[tuple[str, str]]] = {
         ("check if a number is prime in python", "Check divisibility from 2 up to the square root of the number, return false on the first exact divisor, and test 2, 3, 4, and a large prime."),
         ("explain what a decorator is", "A decorator wraps a function to add behaviour before or after it runs, without changing the function body; the wrapper receives the original function and returns a new one."),
         ("what is a decorator in python", "A decorator wraps a function to add behaviour before or after it runs, without changing the function body; the wrapper receives the original function and returns a new one."),
+        # Demo-probe repair (28 Nov 2026 cycle): the fix ask
+        # carrying its code fragment echoed while the plain
+        # topic phrasing answered, so the loop-fix class gains
+        # the code-carrying shapes.
+        ("fix this infinite loop", "Check the loop condition and the update step: the variable the condition reads must move toward the exit value on every pass, and add a safety break while debugging."),
+        ("fix an infinite loop in this code", "Check the loop condition and the update step: the variable the condition reads must move toward the exit value on every pass, and add a safety break while debugging."),
+        ("fix a while true infinite loop", "Check the loop condition and the update step: the variable the condition reads must move toward the exit value on every pass, and add a safety break while debugging."),
+        ("stop an infinite loop", "Check the loop condition and the update step: the variable the condition reads must move toward the exit value on every pass, and add a safety break while debugging."),
     ],
     "gravion-review": [
         ("review this code for bugs", "Reviewing for bugs: check inputs, edge cases, error handling, and resource cleanup, then list findings by severity."),
@@ -550,6 +558,14 @@ TOPICS: dict[str, list[tuple[str, str]]] = {
         ("triage a high severity alert with failed logins", "Triage: count the failures, check whether any login succeeded, identify the source address and account, then lock or challenge the account and review related activity."),
         ("analyse login logs with repeated failures", "Analysis: order the events, mark repeated failures before a success, note the source addresses, and state what would confirm or clear the suspicion."),
         ("write a vulnerability report", "Report: title, affected asset, severity with reasoning, evidence, impact, and remediation steps, written from the recorded indicators only."),
+        # Demo-probe repair (28 Nov 2026 cycle): the natural
+        # brute-force log phrasing and the bare triage ask echoed
+        # while richer alert phrasings answered, so the analysis
+        # and triage classes gain those exact shapes.
+        ("analyse login logs showing brute force attempts", "Analysis: order the events, mark repeated failures before a success, note the source addresses, and state what would confirm or clear the suspicion."),
+        ("analyse brute force login attempts in logs", "Analysis: order the events, mark repeated failures before a success, note the source addresses, and state what would confirm or clear the suspicion."),
+        ("triage this alert", "Triage: count the failures, check whether any login succeeded, identify the source address and account, then lock or challenge the account and review related activity."),
+        ("triage an alert", "Triage: count the failures, check whether any login succeeded, identify the source address and account, then lock or challenge the account and review related activity."),
     ],
     "gravion-agent": [
         ("plan an agent that summarizes email", "Agent plan: read approved messages, group by topic, draft summaries, flag urgent items, and ask before sending anything."),
