@@ -25,8 +25,9 @@ classifiers = [
     "Programming Language :: Python :: 3",
     "Topic :: Scientific/Engineering :: Artificial Intelligence",
 ]
-# Runtime dependency: cryptography provides the Ed25519 signatures the
-# licensing subsystem is built on. Everything else is standard library.
+# Runtime dependencies: cryptography provides the Ed25519 signatures the
+# licensing subsystem is built on; Pillow powers local image rendering.
+# Everything else is standard library.
 dependencies = ["cryptography>=41", "Pillow>=10"]
 
 [project.optional-dependencies]

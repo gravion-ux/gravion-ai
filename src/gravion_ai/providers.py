@@ -102,12 +102,22 @@ class GravionCoreProvider:
             if weights_path is not None:
                 try:
                     self._model = load_weights(weights_path, model_id=CORE_MODEL_ID)
-                except Exception:
+                except Exception as exc:
+                    logger.warning(
+                        "gravion core weights load failed model=%s source=deployment error=%s",
+                        CORE_MODEL_ID,
+                        exc.__class__.__name__,
+                    )
                     self._model = None
             else:
                 try:
                     self._model = load_bundled_model()
-                except Exception:
+                except Exception as exc:
+                    logger.warning(
+                        "gravion core weights load failed model=%s source=bundled error=%s",
+                        CORE_MODEL_ID,
+                        exc.__class__.__name__,
+                    )
                     self._model = None
 
     @property
@@ -128,12 +138,22 @@ class GravionCoreProvider:
             if deployment_path.exists():
                 try:
                     loaded = load_weights(deployment_path, model_id=model_id)
-                except Exception:
+                except Exception as exc:
+                    logger.warning(
+                        "gravion specialist weights load failed model=%s source=deployment error=%s",
+                        model_id,
+                        exc.__class__.__name__,
+                    )
                     loaded = None
         if loaded is None:
             try:
                 loaded = load_bundled_model(model_id)
-            except Exception:
+            except Exception as exc:
+                logger.warning(
+                    "gravion specialist weights load failed model=%s source=bundled error=%s",
+                    model_id,
+                    exc.__class__.__name__,
+                )
                 loaded = None
         if loaded is not None:
             self._specialist_models[model_id] = loaded

@@ -217,7 +217,19 @@ class LocalVideoProvider:
             "+faststart",
             str(out_path),
         ]
-        proc = subprocess.run(command, capture_output=True, text=True)
+        timeout_seconds = min(600, max(30, job.duration_seconds * 10))
+        try:
+            proc = subprocess.run(
+                command,
+                capture_output=True,
+                text=True,
+                timeout=timeout_seconds,
+            )
+        except subprocess.TimeoutExpired as exc:
+            raise ProviderError(
+                f"ffmpeg timed out after {timeout_seconds} seconds "
+                f"while rendering {out_path}"
+            ) from exc
         if proc.returncode != 0 or not out_path.exists() or out_path.stat().st_size == 0:
             detail = proc.stderr.strip().splitlines()
             tail = detail[-1] if detail else "no output produced"

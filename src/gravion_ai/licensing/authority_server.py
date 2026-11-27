@@ -42,6 +42,7 @@ from .keys import KeyPair
 
 ENTITLEMENT_PATH = "/v1/entitlement"
 HEALTH_PATH = "/health"
+MAX_REQUEST_BYTES = 64 * 1024
 
 
 def load_license_documents(licenses_dir) -> list[dict]:
@@ -109,6 +110,8 @@ def make_handler(service: AuthorityService):
             self.send_response(status)
             self.send_header("Content-Type", "application/json")
             self.send_header("Content-Length", str(len(body)))
+            self.send_header("X-Content-Type-Options", "nosniff")
+            self.send_header("Cache-Control", "no-store")
             self.end_headers()
             self.wfile.write(body)
 
@@ -124,7 +127,12 @@ def make_handler(service: AuthorityService):
                 return
             try:
                 length = int(self.headers.get("Content-Length") or 0)
-                payload = json.loads(self.rfile.read(length).decode("utf-8"))
+                if length <= 0 or length > MAX_REQUEST_BYTES:
+                    raise ValueError("request body is missing or too large")
+                raw = self.rfile.read(length)
+                if len(raw) != length:
+                    raise ValueError("request body is incomplete")
+                payload = json.loads(raw.decode("utf-8"))
                 if not isinstance(payload, dict):
                     raise ValueError("request body must be a JSON object")
                 validate_request_payload(payload)

@@ -1,5 +1,7 @@
 import dataclasses
+import io
 import json
+import socket
 import threading
 import urllib.error
 import urllib.request
@@ -9,11 +11,13 @@ import pytest
 
 from gravion_ai.errors import LicenseError
 from gravion_ai.licensing.authority import (
+    EntitlementRequest,
     HttpAuthorityClient,
     build_entitlement_request,
     verify_entitlement_token,
 )
 from gravion_ai.licensing.authority_server import (
+    MAX_REQUEST_BYTES,
     AuthorityService,
     load_license_documents,
     make_server,
@@ -170,3 +174,64 @@ def test_service_starts_empty_and_refuses_everything(issuer, tmp_path):
                 "requested_at": "2026-01-01T00:00:00Z",
             }
         )
+
+
+def _raw_post(base_url, content_length):
+    host, port = base_url.removeprefix("http://").split(":")
+    with socket.create_connection((host, int(port)), timeout=5) as sock:
+        sock.sendall(
+            (
+                "POST /v1/entitlement HTTP/1.1\r\n"
+                f"Host: {host}\r\n"
+                "Content-Type: application/json\r\n"
+                f"Content-Length: {content_length}\r\n"
+                "Connection: close\r\n\r\n"
+            ).encode("ascii")
+        )
+        chunks = []
+        while True:
+            chunk = sock.recv(4096)
+            if not chunk:
+                break
+            chunks.append(chunk)
+    return b"".join(chunks).decode("utf-8", errors="replace")
+
+
+def test_authority_rejects_invalid_and_oversized_content_length(served):
+    base_url, _config, _document = served
+    assert "400" in _raw_post(base_url, "not-a-number").splitlines()[0]
+    assert "400" in _raw_post(base_url, MAX_REQUEST_BYTES + 1).splitlines()[0]
+
+
+class _FakeAuthorityResponse(io.BytesIO):
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *exc):
+        self.close()
+        return False
+
+
+def test_authority_client_caps_response_and_rejects_invalid_utf8():
+    request = EntitlementRequest(
+        deployment_id="deployment",
+        license_hash="0" * 64,
+        module="chat",
+        requested_at="2026-01-01T00:00:00Z",
+    )
+
+    def oversized_opener(_request, timeout=None):
+        return _FakeAuthorityResponse(
+            b"x" * (HttpAuthorityClient.MAX_RESPONSE_BYTES + 1)
+        )
+
+    client = HttpAuthorityClient("http://authority.test", opener=oversized_opener)
+    with pytest.raises(LicenseError, match="1 MiB safety limit"):
+        client.fetch_token(request)
+
+    def invalid_utf8_opener(_request, timeout=None):
+        return _FakeAuthorityResponse(b"\xff")
+
+    client = HttpAuthorityClient("http://authority.test", opener=invalid_utf8_opener)
+    with pytest.raises(LicenseError, match="unreachable"):
+        client.fetch_token(request)

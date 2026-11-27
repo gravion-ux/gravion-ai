@@ -407,3 +407,38 @@ def test_retime_mute_remove_edits_and_widescreen():
     assert detect_mode("a video about speeding trains") == MODE_GENERATE
     # Widescreen is the landscape shape's own name.
     assert parse_aspect("widescreen video") == "16:9"
+
+
+def test_local_renderer_times_out_ffmpeg(monkeypatch, tmp_path):
+    import gravion_ai.modules.video.pipeline as pipeline
+
+    monkeypatch.setattr(pipeline.shutil, "which", lambda _name: "ffmpeg")
+    captured = {}
+
+    def fake_run(command, **kwargs):
+        captured.update(kwargs)
+        raise subprocess.TimeoutExpired(command, kwargs["timeout"])
+
+    monkeypatch.setattr(pipeline.subprocess, "run", fake_run)
+    with pytest.raises(ProviderError, match="ffmpeg timed out"):
+        LocalVideoProvider().render(
+            job_from_prompt("a 2 second teaser"), tmp_path / "clip.mp4"
+        )
+    assert captured["timeout"] == 30
+
+
+def test_local_renderer_reports_ffmpeg_failure(monkeypatch, tmp_path):
+    import gravion_ai.modules.video.pipeline as pipeline
+
+    monkeypatch.setattr(pipeline.shutil, "which", lambda _name: "ffmpeg")
+
+    def fake_run(command, **_kwargs):
+        return subprocess.CompletedProcess(
+            command, 1, stdout="", stderr="encoder exploded"
+        )
+
+    monkeypatch.setattr(pipeline.subprocess, "run", fake_run)
+    with pytest.raises(ProviderError, match="encoder exploded"):
+        LocalVideoProvider().render(
+            job_from_prompt("a 2 second teaser"), tmp_path / "clip.mp4"
+        )

@@ -279,3 +279,32 @@ def test_provider_uses_last_user_message_for_empty_check():
         ]
     )
     assert "hello" in out
+
+
+def test_gravion_core_logs_weight_load_failure_and_falls_back(monkeypatch, caplog):
+    import gravion_ai.providers as providers
+
+    def fail_load(*_args, **_kwargs):
+        raise ValueError("corrupt weights")
+
+    monkeypatch.setattr(providers, "load_weights", fail_load)
+    with caplog.at_level("WARNING", logger="gravion_ai.providers"):
+        provider = GravionCoreProvider(weights_path="weights.json")
+    assert provider.parameter_count == 0
+    assert provider.complete(MESSAGES).endswith("You said: hello")
+    assert "weights load failed" in caplog.text
+    assert "corrupt weights" not in caplog.text
+
+
+def test_gravion_core_logs_specialist_weight_load_failure(monkeypatch, caplog):
+    import gravion_ai.providers as providers
+
+    def fail_load(_model_id=None):
+        raise ValueError("corrupt specialist weights")
+
+    monkeypatch.setattr(providers, "load_bundled_model", fail_load)
+    provider = GravionCoreProvider(model=object())
+    with caplog.at_level("WARNING", logger="gravion_ai.providers"):
+        assert provider.parameter_count_for("gravion-chat") == 0
+    assert "specialist weights load failed" in caplog.text
+    assert "corrupt specialist weights" not in caplog.text
