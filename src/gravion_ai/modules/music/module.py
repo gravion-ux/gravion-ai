@@ -137,6 +137,15 @@ MOODS = (
     "sad",
     "happy",
     "cheerful",
+    # The same plain feeling words in their other common
+    # forms ("energetic workout music", "romantic song",
+    # "peaceful piano", "relaxing tune", "angry metal song")
+    # recorded no mood at all.
+    "energetic",
+    "romantic",
+    "peaceful",
+    "relaxing",
+    "angry",
 )
 
 _DURATION_RE = re.compile(

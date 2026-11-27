@@ -79,7 +79,10 @@ _SENTENCE_STARTERS = frozenset(
 # when a digit follows.
 _NUMERIC_ABBREVIATIONS = frozenset(
     "no fig figs eq vol pp p ch sec approx ca jan feb mar apr "
-    "jun jul aug sep sept oct nov dec".split()
+    # "Rs." abbreviates the rupee before an amount ("It
+    # costs Rs. 500."): without it the amount split into its
+    # own sentence.
+    "jun jul aug sep sept oct nov dec rs".split()
 )
 _CLOSERS = "\"'”’)]"
 

@@ -182,6 +182,19 @@ _URL_RE = re.compile(r"https?://[^\s\"'<>]+", re.IGNORECASE)
 # dots ("https://evil[.]example.com") is refanged the same
 # way, so one artefact is never recorded in two spellings.
 _DEFANGED_URL_RE = re.compile(r"hxxps?://[^\s\"'<>]+", re.IGNORECASE)
+# A defanged bare domain ("evil[.]com", "sub[.]evil-site[dot]co[.]uk")
+# is an indicator stated on its own: the defanging itself marks
+# it as one, yet it recorded nothing. Only the defanged forms
+# count — a plain dotted word in prose ("the file config.py",
+# "version 1.2.3") states no domain artefact — and a domain
+# inside a URL or email match belongs to that record, so
+# overlapping matches are skipped like the email rule below.
+_DOMAIN_LABEL = r"[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?"
+_DEFANGED_DOMAIN_RE = re.compile(
+    r"(?<![A-Za-z0-9@.\-])" + _DOMAIN_LABEL
+    + r"(?:" + _DEFANGED_DOT + _DOMAIN_LABEL + r")+"
+    r"(?![A-Za-z0-9\-])"
+)
 # An email address is the sender artefact of a phishing report:
 # extracted nowhere, "phishing email from admin@evil.example.com"
 # recorded no indicator at all, so the brief handed the model a
@@ -247,7 +260,11 @@ _SEVERITY_RE = re.compile(
     r"|severity" + _SEV_NOUNS + r"\s+of\s+" + _LEVEL + r"\b"
     r"|severity\s+of\s+(?:the\s+)?\w+\s+(?:is|was)\s+" + _RATED + _INTENSIFIER + _LEVEL + r"\b"
     r"|severity" + _SEV_NOUNS + r"\s*\(\s*" + _LEVEL + r"\s*\)"
-    r"|(?<!not )(?<!no )(?<!n't )(?<!never )(?<!non-)(?<!non )\b"
+    # "Not a high severity issue" negates through the article
+    # ("not a …"), which the bare "not " guard cannot see: it
+    # recorded high, the opposite of the level stated.
+    r"|(?<!not )(?<!not a )(?<!not an )(?<!n't a )(?<!no )"
+    r"(?<!n't )(?<!never )(?<!non-)(?<!non )\b"
     + _LEVEL + r"[\s-]severity\b"
     # A rating verb or a level named on the finding itself
     # states the same level without the word "severity"
@@ -264,7 +281,8 @@ _SEVERITY_RE = re.compile(
     # ("this is a critical alert" recorded none).
     r"|(?<!not )(?<!n't )(?<!never )(?<!non-)(?<!non )\b"
     r"(?:rated|assessed)\s+(?:as\s+)?" + _LEVEL + r"\b"
-    r"|(?<!not )(?<!not a )(?<!not an )(?<!no )(?<!n't )(?<!never )"
+    r"|(?<!not )(?<!not a )(?<!not an )(?<!n't a )(?<!no )"
+    r"(?<!n't )(?<!never )"
     r"(?<!non-)(?<!non )\b"
     + _LEVEL + r"\s+(?:finding|vulnerability|issue|alert|incident)\b",
     re.IGNORECASE,
@@ -506,10 +524,11 @@ def extract_indicators(prompt: str) -> dict[str, list[str]]:
     case), IPv4 addresses whose octets are all valid (defanged
     forms refanged), IPv6 addresses (validated, normalised to
     compressed form), SHA-256, SHA-1 and MD5 hashes (normalised
-    to lower case), URLs (defanged forms refanged) and email
-    addresses (defanged forms refanged, domain lowercased) —
-    each deduplicated in request order. Kinds with no matches
-    are omitted.
+    to lower case), URLs (defanged forms refanged), email
+    addresses (defanged forms refanged, domain lowercased) and
+    defanged bare domains (refanged, lowercased) — each
+    deduplicated in request order. Kinds with no matches are
+    omitted.
     """
     indicators: dict[str, list[str]] = {}
 
@@ -564,16 +583,55 @@ def extract_indicators(prompt: str) -> dict[str, list[str]]:
     ]
     collect("url", [value for _pos, value in sorted(url_found)])
     url_spans = [(m.start(), m.end()) for m in url_matches]
+    email_matches = [
+        m
+        for m in _EMAIL_RE.finditer(prompt)
+        if not any(start <= m.start() < end for start, end in url_spans)
+        and _refang_email(m.group(0)) is not None
+    ]
+    collect("email", [_refang_email(m.group(0)) for m in email_matches])
+    taken_spans = url_spans + [(m.start(), m.end()) for m in email_matches]
     collect(
-        "email",
+        "domain",
         [
             refanged
-            for m in _EMAIL_RE.finditer(prompt)
-            if not any(start <= m.start() < end for start, end in url_spans)
-            and (refanged := _refang_email(m.group(0))) is not None
+            for m in _DEFANGED_DOMAIN_RE.finditer(prompt)
+            if not any(start <= m.start() < end for start, end in taken_spans)
+            # At least one dot must be defanged: a plain dotted
+            # chain is prose, not a stated domain artefact.
+            and re.search(r"\[\.\]|\(\.\)|\[dot\]|\(dot\)", m.group(0), re.IGNORECASE)
+            and (refanged := _refang(m.group(0)).lower())
+            # The last label is the TLD: alphabetic, so a
+            # defanged IPv4 chain stays an address record only.
+            and refanged.rpartition(".")[2].isalpha()
+            and len(refanged.rpartition(".")[2]) >= 2
         ],
     )
     return indicators
+
+
+# A CVSS base score states its severity band by definition
+# (9.0+ critical, 7.0+ high, 4.0+ medium, above 0 low, 0
+# none): "cvss 9.8" and "severity: 7.5" recorded no severity
+# at all. Only the labelled numeric forms count — a bare
+# number states no score.
+_CVSS_SCORE_RE = re.compile(
+    r"\bcvss(?:\s+(?:score|rating))?\s*[:=]?\s*(\d{1,2}(?:\.\d)?)\b"
+    r"|\bseverity(?:\s+(?:level|rating))?\s*[:=]\s*(\d{1,2}(?:\.\d)?)\b",
+    re.IGNORECASE,
+)
+
+
+def _cvss_band(score: float) -> str:
+    if score >= 9.0:
+        return "critical"
+    if score >= 7.0:
+        return "high"
+    if score >= 4.0:
+        return "medium"
+    if score > 0.0:
+        return "low"
+    return "none"
 
 
 def parse_severity(prompt: str) -> str | None:
@@ -583,6 +641,11 @@ def parse_severity(prompt: str) -> str | None:
     match = _SEVERITY_RE.search(prompt)
     if match:
         return next(group for group in match.groups() if group).lower()
+    score_match = _CVSS_SCORE_RE.search(prompt)
+    if score_match:
+        score = float(next(g for g in score_match.groups() if g))
+        if score <= 10.0:
+            return _cvss_band(score)
     return None
 
 

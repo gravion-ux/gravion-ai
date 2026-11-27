@@ -146,15 +146,43 @@ def _is_negated(text: str, match_start: int) -> bool:
     tail = " ".join(words[-_NEGATION_WINDOW_WORDS:])
     return bool(tail) and _NEGATOR_RE.search(tail) is not None
 
-_PAGES_LIST_RE = re.compile(r"pages?\s*:\s*([a-z0-9 ,\-]+)", re.IGNORECASE)
+# The list separators include "/" and ";" ("pages: home /
+# about / contact"): with only commas in the charset, the
+# capture stopped at the first slash and the site built a
+# home page alone.
+_PAGES_LIST_RE = re.compile(r"pages?\s*:\s*([a-z0-9 ,\-/;]+)", re.IGNORECASE)
+# A colon list after "website:"/"site:" naming only known
+# pages states the same list ("website: home, services,
+# pricing, faq"); the known-pages guard keeps a descriptive
+# colon phrase ("website: a portfolio for a bakery") from
+# slugifying prose into pages.
+_SITE_LIST_RE = re.compile(
+    r"\b(?:website|site)\s*:\s*([a-z0-9 ,\-/;]+)", re.IGNORECASE
+)
 
 _STYLES = ("dark", "light", "minimal", "bold", "modern")
+
+
+# An iterate verb aimed at an existing site anywhere in the
+# request ("redesign my website", "update my site", "fix my
+# website", "improve my website speed") changes that site
+# just as the prefixes do: with only the prefixes recognised,
+# those requests rebuilt the site from scratch. The site
+# object is required, so "change the colours" alone (no site
+# named) stays a build brief for the model to read whole.
+_ITERATE_RE = re.compile(
+    r"\b(?:redesign|update|revise|edit|change|modify|fix|improve)\b"
+    r"[^.?!]*\b(?:my|this|the|existing|current)\s+"
+    r"(?:\w+\s+)?(?:website|site|homepage|webpage)\b"
+)
 
 
 def detect_mode(prompt: str) -> str:
     """Classify a website prompt as build / iterate."""
     text = prompt.strip().lower()
     if text.startswith(_ITERATE_PREFIXES):
+        return MODE_ITERATE
+    if _ITERATE_RE.search(text):
         return MODE_ITERATE
     return MODE_BUILD
 
@@ -205,6 +233,20 @@ def parse_pages(prompt: str) -> list[str]:
     fixed order after home. No named pages means just home.
     """
     match = _PAGES_LIST_RE.search(prompt)
+    if not match:
+        site_match = _SITE_LIST_RE.search(prompt)
+        if site_match:
+            candidate = re.split(
+                r"\s+with\s+", site_match.group(1), maxsplit=1
+            )[0]
+            slugs = [
+                _slugify(part)
+                for part in re.split(r"[,/;]|\s+and\s+", candidate)
+            ]
+            if slugs and all(
+                slug in ("home", *_NAMED_PAGES) for slug in slugs
+            ):
+                match = site_match
     if match:
         # A " with …" clause after the list states style or
         # content, not another page: "pages: home, about with a
@@ -212,7 +254,7 @@ def parse_pages(prompt: str) -> list[str]:
         # "about-with-a-dark-style".
         listing = re.split(r"\s+with\s+", match.group(1), maxsplit=1)[0]
         pages: list[str] = []
-        for raw in listing.split(","):
+        for raw in re.split(r"[,/;]", listing):
             # "pages: home, about and contact" joins the last
             # two pages with "and"; split the join only when
             # both sides name known pages, so a page called
@@ -274,13 +316,61 @@ def parse_pages(prompt: str) -> list[str]:
         for _pos, page in sorted(found):
             if page not in pages:
                 pages.append(page)
+    # A run of known page names joined only by list glue
+    # ("with cart and checkout", "just home and contact",
+    # "home page and blog") names its pages just as the
+    # "pages" enumeration above does: with only the trailing
+    # "pages" form and the "X page" naming recognised, those
+    # briefs built a home page alone. A separator token must
+    # sit between page names, so prose ("a site about cats")
+    # collects nothing, and a negated name in the run rules
+    # its page out like everywhere else.
+    _RUN_SEPARATORS = {"and", "a", "an", "the", "page", "pages", "us", ""}
+    run: list[tuple[int, str]] = []
+
+    def _flush_run() -> None:
+        if len(run) >= 2:
+            for pos, page in run:
+                if page != "home" and page not in pages and not _is_negated(
+                    text, pos
+                ):
+                    pages.append(page)
+        run.clear()
+
+    separated = True
+    for word_match in re.finditer(r"\S+", text):
+        word = word_match.group(0).strip(".,;:!?\"'()")
+        if word in ("home", *_NAMED_PAGES):
+            if run and not separated:
+                _flush_run()
+            run.append((word_match.start(), word))
+            # A comma glued to the name ("cart, checkout") is
+            # the separator between this name and the next.
+            separated = word_match.group(0)[-1] in ",;/"
+        elif word in _RUN_SEPARATORS:
+            separated = True
+        else:
+            _flush_run()
+            separated = True
+    _flush_run()
     for page in _NAMED_PAGES:
         # "about us" and "contact us" name the about and contact
         # pages just as "about page" does. A negated naming ("no
         # pricing page", "without a contact page") rules the page
         # out instead of requesting it, so only a non-negated
         # occurrence collects the page.
-        named = (f"{page} page", f"{page} us page", f"{page} us")
+        # "With a blog" names the page the same way ("a site
+        # with a shop and a blog" built no blog page): the
+        # article form is a naming, not prose.
+        named = (
+            f"{page} page",
+            f"{page} us page",
+            f"{page} us",
+            f"with a {page}",
+            f"with an {page}",
+            f"and a {page}",
+            f"and an {page}",
+        )
         if page in pages:
             continue
         if any(

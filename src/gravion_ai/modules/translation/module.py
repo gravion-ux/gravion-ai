@@ -96,6 +96,14 @@ PHRASES_EN_HI = {
     "maybe": "shayad (शायद)",
     "now": "abhi (अभी)",
     "later": "baad me (बाद में)",
+    # The bare everyday verbs and phrases beside them
+    # ("go", "come", "i love you", "very good") were
+    # refused while "come here" and "well done" were
+    # covered.
+    "go": "jaaiye (जाइए)",
+    "come": "aaiye (आइए)",
+    "i love you": "mujhe aapse pyaar hai (मुझे आपसे प्यार है)",
+    "very good": "bahut accha (बहुत अच्छा)",
 }
 
 # Roman Hindi / Hinglish phrase -> English.
@@ -179,6 +187,10 @@ PHRASES_HI_EN = {
     "shayad": "maybe",
     "abhi": "now",
     "baad me": "later",
+    "jaaiye": "go",
+    "aaiye": "come",
+    "mujhe aapse pyaar hai": "i love you",
+    "bahut accha": "very good",
     # Devanagari spellings the derived entries below
     # cannot reach: the book's own "good morning" carries
     # सुप्रभात, so शुभ प्रभात needs its own entry, and

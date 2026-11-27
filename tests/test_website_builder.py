@@ -335,3 +335,49 @@ def test_negated_pages_styles_and_site_types_are_refused_not_requested():
     ]
     assert parse_pages("team page and faq page please") == ["home", "team", "faq"]
     assert parse_site_type("landing pages for gyms") == "landing page"
+
+
+def test_page_lists_runs_and_iterate_mode():
+    # Regression: slash/semicolon list separators stopped
+    # the pages capture at the first slash.
+    assert parse_pages("pages: home / about / contact") == [
+        "home",
+        "about",
+        "contact",
+    ]
+    assert parse_pages("pages: home; about; team") == ["home", "about", "team"]
+    # A colon list after "website:" naming only known
+    # pages states the same list; a descriptive colon
+    # phrase slugifies nothing.
+    assert parse_pages("website: home, services, pricing, faq") == [
+        "home",
+        "services",
+        "pricing",
+        "faq",
+    ]
+    assert parse_pages("website: a portfolio for a bakery") == ["home"]
+    # Runs of known page names joined by list glue name
+    # their pages without the trailing word "pages".
+    assert parse_pages("an online store with cart and checkout") == [
+        "home",
+        "cart",
+        "checkout",
+    ]
+    assert parse_pages("restaurant site with menu and booking") == [
+        "home",
+        "menu",
+        "booking",
+    ]
+    assert parse_pages("no blog page, just home and contact") == [
+        "home",
+        "contact",
+    ]
+    assert parse_pages("site with a shop and a blog") == ["home", "blog"]
+    assert parse_pages("a site about cats") == ["home"]
+    # An iterate verb aimed at an existing site changes
+    # that site instead of rebuilding it.
+    assert detect_mode("redesign my website") == MODE_ITERATE
+    assert detect_mode("update my site") == MODE_ITERATE
+    assert detect_mode("fix my website") == MODE_ITERATE
+    assert detect_mode("improve my website speed") == MODE_ITERATE
+    assert detect_mode("build a website") == MODE_BUILD

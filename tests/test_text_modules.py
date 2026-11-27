@@ -1059,3 +1059,46 @@ def test_data_analysis_sum_and_range_past_float_range_stay_finite():
     out = analyze([2.0, 4.0, 6.0])
     assert "Sum: 12" in out
     assert "Range: 4" in out
+
+
+def test_phone_numbers_are_labels_not_values():
+    # Regression: a phone number read as three
+    # measurements and skewed every statistic.
+    assert parse_numbers("phone 555-123-4567 total 100") == [100.0]
+    assert parse_numbers("call 555.123.4567 scores 10 20") == [10.0, 20.0]
+    # A plain range keeps its reading.
+    assert parse_numbers("range 5-10") == [5.0, 10.0]
+
+
+def test_whole_statistics_print_in_full():
+    # Regression: six-significant-digit formatting printed
+    # the median of 1000000/1000001/1000002 as "1e+06",
+    # the same text as its minimum.
+    out = analyze([1000000.0, 1000001.0, 1000002.0])
+    assert "Sum: 3000003" in out
+    assert "Mean: 1000001" in out
+    assert "Median: 1000001" in out
+    assert "Min: 1000000" in out
+    assert "Max: 1000002" in out
+    # Values past the exact-integer range keep the
+    # scientific form.
+    out = analyze([1e308, 1e308])
+    assert "Median: 1e+308" in out
+
+
+def test_rupee_abbreviation_and_everyday_phrasebook_entries():
+    # Regression: "Rs." before an amount split the amount
+    # into its own sentence.
+    assert split_sentences("It costs Rs. 500. Pay now.") == [
+        "It costs Rs. 500.",
+        "Pay now.",
+    ]
+    # The bare everyday verbs beside "come here" were
+    # refused as outside the phrasebook.
+    assert "jaaiye" in translate_phrase("go", to_hindi=True)
+    assert "aaiye" in translate_phrase("come", to_hindi=True)
+    assert "mujhe aapse pyaar hai" in translate_phrase(
+        "i love you", to_hindi=True
+    )
+    assert translate_phrase("bahut accha", to_hindi=False) == "very good"
+    assert translate_phrase("jaaiye", to_hindi=False) == "go"

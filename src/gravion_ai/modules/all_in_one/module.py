@@ -269,8 +269,12 @@ _INTENT_SIGNALS: dict[str, tuple[frozenset[str], frozenset[str]]] = {
         ),
     ),
     "support": (
-        frozenset({"refund", "cancel", "track", "resolve"}),
-        frozenset({"refund", "invoice", "billing", "subscription", "ticket", "warranty", "order"}),
+        # An order-status question names no listed verb
+        # ("where is my order", "mera order kahan hai"): the
+        # where/kahan ask plus a support noun is the signal,
+        # and a lone "where" still scores one point.
+        frozenset({"refund", "cancel", "track", "resolve", "where", "kahan"}),
+        frozenset({"refund", "invoice", "billing", "subscription", "ticket", "warranty", "order", "status"}),
     ),
     "agentic": (
         frozenset({"automate", "plan", "orchestrate"}),
@@ -439,6 +443,7 @@ def infer_route(prompt: str) -> str:
         return "translation"
     if _BARE_SAY_IN_LANGUAGE_RE.match(prompt):
         return "translation"
+
     # A negated verb cancels its module: "do not draw a logo"
     # asks for an explanation, not an image, yet the bare
     # verb+noun signal routed it to image. Contractions are
@@ -502,12 +507,25 @@ def infer_route(prompt: str) -> str:
         score = len(tokens & verbs) + len(tokens & nouns)
         if score:
             scores[name] = score
-    if not scores:
-        return DEFAULT_ROUTE
-    best = max(scores.values())
-    leaders = [name for name, score in scores.items() if score == best]
-    if best >= 2 and len(leaders) == 1:
-        return leaders[0]
+    if scores:
+        best = max(scores.values())
+        leaders = [name for name, score in scores.items() if score == best]
+        if best >= 2 and len(leaders) == 1:
+            return leaders[0]
+    # An explicit request for a human routes to support when
+    # no module holds a clear intent lead: the support
+    # module answers it with its deterministic handoff,
+    # while chat would answer generally and lose it ("i
+    # need a human agent" scored no intent point at all).
+    # The support module's own check decides, topic phrases
+    # and negations included, so the router cannot drift
+    # from the module it routes to; a clear intent lead
+    # still wins first, so "plan steps for an agent
+    # workflow" stays agentic despite naming an agent.
+    from ..support.module import needs_human
+
+    if needs_human(prompt):
+        return "support"
     return DEFAULT_ROUTE
 
 

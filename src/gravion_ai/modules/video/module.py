@@ -114,6 +114,19 @@ _EDIT_RES = (
         r"(?:\w+\s+)?" + _VIDEO_OBJECT + r"\b"
     ),
     re.compile(r"\b(?:edit|modify|trim|cut|fix|crop)\s+(?:this|that|it)\b"),
+    # Retiming and muting work on the existing footage the
+    # same way trimming does ("speed up this video", "mute
+    # this clip"), and removing something from the video
+    # edits it ("remove audio from this video"): all fell
+    # through to generation.
+    re.compile(
+        r"\b(?:speed up|slow down|mute|unmute)\b[^.?!]*"
+        r"\b(?:this|the|my|that)\s+(?:\w+\s+)?" + _VIDEO_OBJECT + r"\b"
+    ),
+    re.compile(
+        r"\bremove\b[^.?!]*\bfrom\s+(?:this|the|my|that)\s+"
+        r"(?:\w+\s+)?" + _VIDEO_OBJECT + r"\b"
+    ),
 )
 
 # A negated edit verb asks for a new video ("do not edit this
@@ -148,8 +161,10 @@ _SHAPES = (
     ("portrait", "9:16"),
     ("landscape", "16:9"),
     # "Horizontal" names the landscape shape in its other
-    # word ("horizontal video" recorded the model default).
+    # word ("horizontal video" recorded the model default),
+    # and "widescreen" is that shape's own name.
     ("horizontal", "16:9"),
+    ("widescreen", "16:9"),
     ("banner", "21:9"),
 )
 _SHAPE_RES = tuple(

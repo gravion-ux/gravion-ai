@@ -538,3 +538,39 @@ def test_triage_verbs_and_writeup_shapes_detect():
     # priority question opening with "what" stays analysis.
     assert detect_task("do not close this alert, analyse it") == TASK_ANALYSE
     assert detect_task("what is the priority of this alert?") == TASK_ANALYSE
+
+
+def test_severity_negation_through_article_and_cvss_bands():
+    # Regression: "not a high severity issue" negates
+    # through the article, which the bare "not " guard
+    # cannot see — it recorded high, the opposite of the
+    # level stated.
+    assert parse_severity("this is not a high severity issue") is None
+    assert parse_severity("this isn't a critical alert") is None
+    assert parse_severity("this is a high severity issue") == "high"
+    # A CVSS base score states its band by definition.
+    assert parse_severity("cvss 9.8") == "critical"
+    assert parse_severity("cvss score: 7.5") == "high"
+    assert parse_severity("severity: 5.0") == "medium"
+    assert parse_severity("cvss 2.1") == "low"
+    assert parse_severity("cvss 0.0") == "none"
+    assert parse_severity("cvss 11.5") is None
+    assert parse_severity("score of 7.5") is None
+
+
+def test_defanged_bare_domain_indicator():
+    # Regression: a defanged bare domain states an
+    # indicator on its own yet recorded nothing.
+    assert extract_indicators("evil[.]com contacted")["domain"] == ["evil.com"]
+    assert extract_indicators("sub[.]evil-site[dot]co[.]uk seen")["domain"] == [
+        "sub.evil-site.co.uk"
+    ]
+    # A plain dotted word in prose states no domain
+    # artefact, and a defanged IPv4 stays an address only.
+    assert "domain" not in extract_indicators("visit evil.com today")
+    assert "domain" not in extract_indicators("triage 10[.]0[.]0[.]8")
+    # A domain inside a URL or email belongs to that record.
+    indicators = extract_indicators("see hxxp://evil[.]example.com/path")
+    assert "domain" not in indicators
+    indicators = extract_indicators("from admin[at]evil[.]example.com")
+    assert "domain" not in indicators

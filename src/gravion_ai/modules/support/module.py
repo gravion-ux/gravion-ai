@@ -343,13 +343,33 @@ _TEAM_REQUEST_RE = re.compile(
     # request, so a topic naming of the service stays with
     # the bot, and a following "nahi" cancels it above.
     r"|\b(?:customer care|customer service|support team|support"
-    r"|sales team|billing team|sales|billing) se baat\b"
+    r"|sales team|billing team|sales|billing|call centre"
+    r"|call center|senior|upar wale) se baat\b"
+    # The call centre named in English with its transfer verb
+    # ("talk to the call centre") is the same human team.
+    r"|\b(?:talk|speak|connect|transfer|chat)\b"
+    r"[^.?!]*\bcall (?:centre|center)\b"
     # A live-chat request with its transfer verb ("connect to
     # live chat", "start live chat") asks for the human chat
     # channel; the verb is required, so "how does live chat
     # work?" stays with the bot.
     r"|\b(?:connect|start|open|begin|switch|transfer)\b[^.?!]*\blive chat\b"
     r"|\blive chat please\b"
+)
+
+
+# Rejecting the bot asks for a person by elimination ("i
+# don't want a bot", "no bots please", "bot nahi chahiye",
+# "bot se baat nahi karni"): none of the phrases above
+# matched, so the bot kept answering a customer who had
+# refused it. The identity question ("are you a bot?") and
+# the bot-accepting form ("bot se hi baat karni hai") state
+# no rejection and stay with the bot.
+_BOT_REJECTION_RE = re.compile(
+    r"\b(?:do not|don't|dont) want (?:a |the |any )?bots?\b"
+    r"|\bno bots?\b"
+    r"|\bbot nahi chahiye\b"
+    r"|\bbot se baat nahi\b"
 )
 
 
@@ -364,6 +384,8 @@ def needs_human(prompt: str) -> bool:
     for match in _TEAM_REQUEST_RE.finditer(text):
         if _is_negated(text, match.start(), match.end()):
             continue
+        return True
+    if _BOT_REJECTION_RE.search(text):
         return True
     return False
 

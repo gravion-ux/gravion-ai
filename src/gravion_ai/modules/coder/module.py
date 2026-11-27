@@ -120,6 +120,16 @@ _REVIEW_RES = (
         + _CODE_OBJECT
         + r"\b"
     ),
+    # A pronoun object aims the review at the supplied code
+    # just as plainly ("can you review this?"), and a bare
+    # clause-final "review" states the task with its object
+    # left elliptical ("just review, do not rewrite"): both
+    # fell through to generation, so a review request was
+    # answered with new code. The clause-final form requires
+    # the punctuation, so "explain the code review process"
+    # keeps its explanation reading.
+    re.compile(r"\b(?:review|audit|check)\s+(?:this|that|it)\b"),
+    re.compile(r"\breview\s*(?:,|;|\.|$)"),
     re.compile(r"\bdebug(?:ging)?\b[^.?!]*\b" + _CODE_OBJECT + r"\b"),
     re.compile(r"\bdebug(?:ging)?\s+(?:this|it)\b"),
     re.compile(

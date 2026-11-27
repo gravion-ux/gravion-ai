@@ -451,3 +451,22 @@ def test_hinglish_and_transfer_requests_escalate():
     assert not needs_human("what is the call back number")
     assert not needs_human("change my callback number")
     assert not needs_human("don't transfer me to an agent")
+
+
+def test_bot_rejection_and_call_centre_escalate():
+    # Regression: rejecting the bot asks for a person by
+    # elimination, yet none of the escalation phrases
+    # matched, so the bot kept answering.
+    assert needs_human("i dont want a bot")
+    assert needs_human("no bots please")
+    assert needs_human("bot nahi chahiye")
+    assert needs_human("bot se baat nahi karni")
+    # The identity question and the bot-accepting form
+    # state no rejection.
+    assert not needs_human("are you a bot?")
+    assert not needs_human("bot se hi baat karni hai")
+    # The call centre is the same human team in both
+    # languages.
+    assert needs_human("call centre se baat karni hai")
+    assert needs_human("talk to the call centre")
+    assert needs_human("senior se baat karni hai")

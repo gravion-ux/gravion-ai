@@ -99,6 +99,10 @@ _EDIT_RES = (
         r"|flip|restore|sharpen|blur)\s+(?:this|that|it)\b"
     ),
     re.compile(r"\bremove\b[^.?!]*\bbackground\b"),
+    # Changing the background works on the image in hand the
+    # same way removing it does ("change the background to a
+    # beach" fell through to generation).
+    re.compile(r"\b(?:change|replace|swap)\b[^.?!]*\bbackground\b"),
     re.compile(
         r"\bmake (?:this|that|it) "
         r"(?:brighter|darker|sharper|bigger|smaller|clearer|blurrier)\b"
@@ -134,7 +138,13 @@ def _is_negated(text: str, match_start: int) -> bool:
 _SHAPES = (
     ("square", "1:1"),
     ("portrait", "3:4"),
+    # "Vertical"/"horizontal" name the portrait/landscape
+    # orientations in their other words ("vertical image"
+    # recorded the model default while the video module
+    # already read the same words).
+    ("vertical", "3:4"),
     ("landscape", "16:9"),
+    ("horizontal", "16:9"),
     ("banner", "21:9"),
 )
 _SHAPE_RES = tuple(

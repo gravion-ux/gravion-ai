@@ -394,3 +394,16 @@ def test_runtime_render_video_goes_through_the_gate_path(make_config, tmp_path):
     _assert_real_mp4(out)
     assert result.provider == "gravion-local-renderer"
     assert (result.width, result.height) == (1280, 720)
+
+
+def test_retime_mute_remove_edits_and_widescreen():
+    # Regression: retiming, muting and removing something
+    # from the video work on the existing footage the same
+    # way trimming does.
+    assert detect_mode("speed up this video") == MODE_EDIT
+    assert detect_mode("slow down this clip") == MODE_EDIT
+    assert detect_mode("mute this video") == MODE_EDIT
+    assert detect_mode("remove audio from this video") == MODE_EDIT
+    assert detect_mode("a video about speeding trains") == MODE_GENERATE
+    # Widescreen is the landscape shape's own name.
+    assert parse_aspect("widescreen video") == "16:9"

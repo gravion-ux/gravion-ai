@@ -194,6 +194,16 @@ def _blank_clock_time(match: re.Match[str]) -> str:
 # either way.
 _ORDINAL_RE = re.compile(r"(?<![0-9A-Za-z])\d+(?:st|nd|rd|th)\b", re.IGNORECASE)
 
+# A phone number ("555-123-4567") is a contact label, not three
+# measurements: left in place, "phone 555-123-4567 total 100"
+# counted 555, 123 and 4567 as values and skewed every
+# statistic. The 3-3-4 grouping is what marks it a phone
+# number, so a plain range ("5-10") and a hyphen date (already
+# blanked above) keep their readings.
+_PHONE_RE = re.compile(
+    r"(?<!\d)(?:\+?1[-. ])?\d{3}[-. ]\d{3}[-. ]\d{4}(?!\d)"
+)
+
 # Machine literals ("0xFF", "0b101", "0o17") are code, not
 # decimal measurements: left in place, "0x10" read as the
 # phantom value 0. They are blanked out before parsing, like
@@ -269,6 +279,7 @@ def parse_numbers(prompt: str) -> list[float]:
     cleaned = _DAY_FIRST_HYPHEN_DATE_RE.sub(_blank_month_name_date, cleaned)
     cleaned = _MONTH_FIRST_HYPHEN_DATE_RE.sub(_blank_month_name_date, cleaned)
     cleaned = _CLOCK_TIME_RE.sub(_blank_clock_time, cleaned)
+    cleaned = _PHONE_RE.sub(" ", cleaned)
     cleaned = _ORDINAL_RE.sub(" ", cleaned)
     cleaned = _DOTTED_SEQUENCE_RE.sub(" ", cleaned)
     cleaned = _MIXED_FRACTION_RE.sub(_fold_mixed_fraction, cleaned)
@@ -295,9 +306,24 @@ def _mode_line(numbers: list[float]) -> str:
         return "Mode: none (every value appears once)"
     modes = sorted(value for value, seen in counts.items() if seen == mode_count)
     if len(modes) == 1:
-        return f"Mode: {modes[0]:g} (appears {mode_count} times)"
-    listed = ", ".join(f"{value:g}" for value in modes)
+        return f"Mode: {_format_value(modes[0])} (appears {mode_count} times)"
+    listed = ", ".join(_format_value(value) for value in modes)
     return f"Mode: {listed} (each appears {mode_count} times)"
+
+
+def _format_value(value: float) -> str:
+    """Format a statistic without losing whole-number digits.
+
+    ``:g`` keeps six significant digits, so the median of
+    "1000000, 1000001, 1000002" printed as "1e+06" — the same
+    text as its minimum, though the values differ. A whole
+    number a float still holds exactly (below 1e15, inside the
+    2**53 exact-integer range) prints in full; anything else
+    keeps the ``:g`` form, so 1e308 still reads "1e+308".
+    """
+    if value.is_integer() and abs(value) < 1e15:
+        return str(int(value))
+    return f"{value:g}"
 
 
 def _format_exact(value: Fraction) -> str:
@@ -310,6 +336,11 @@ def _format_exact(value: Fraction) -> str:
     The Decimal form carries the value at the same six
     significant digits ``:g`` would print.
     """
+    if value.denominator == 1 and abs(value.numerator) < 10**15:
+        # A whole total inside the exact-integer range prints
+        # in full ("3000003"), not at six significant digits
+        # ("3e+06"), for the same reason _format_value does.
+        return str(value.numerator)
     try:
         return f"{float(value):g}"
     except OverflowError:
@@ -401,13 +432,13 @@ def analyze(numbers: list[float]) -> str:
     lines = [
         f"Count: {count}",
         f"Sum: {_format_exact(exact_total)}",
-        f"Mean: {mean:g}",
-        f"Median: {median:g}",
+        f"Mean: {_format_value(mean)}",
+        f"Median: {_format_value(median)}",
         _mode_line(numbers),
-        f"Min: {low:g}",
-        f"Max: {high:g}",
+        f"Min: {_format_value(low)}",
+        f"Max: {_format_value(high)}",
         f"Range: {_format_exact(Fraction(high) - Fraction(low))}",
-        f"Standard deviation: {stdev:g}",
+        f"Standard deviation: {_format_value(stdev)}",
         f"Trend: {trend}",
     ]
     return "\n".join(lines)

@@ -194,3 +194,16 @@ def test_bundled_image_manifest_is_unsigned(issuer):
 
     with pytest.raises(ModuleTamperError):
         verify_module(Path(image_pkg.__file__).parent, issuer)
+
+
+def test_background_change_edit_and_orientation_shapes():
+    # Regression: changing the background works on the
+    # image in hand the same way removing it does.
+    assert detect_mode("change the background to a beach") == MODE_EDIT
+    assert detect_mode("replace the background with a sunset") == MODE_EDIT
+    assert detect_mode("draw a beach background") == MODE_GENERATE
+    # Vertical/horizontal name the portrait/landscape
+    # orientations in their other words.
+    assert parse_aspect("vertical image") == "3:4"
+    assert parse_aspect("horizontal image") == "16:9"
+    assert parse_aspect("not vertical, horizontal please") == "16:9"

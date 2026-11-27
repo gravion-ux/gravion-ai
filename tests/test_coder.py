@@ -356,3 +356,17 @@ def test_error_and_wrong_output_shapes_detect_as_supplied_code():
     assert detect_task("this script returns None instead of a list") == TASK_REVIEW
     # A negated explanation still does not count.
     assert detect_task("do not explain the error, fix it") == TASK_GENERATE
+
+
+def test_pronoun_and_bare_review_requests():
+    # Regression: a pronoun object ("can you review this?")
+    # and a bare clause-final review ("just review, do not
+    # rewrite") named no code object, so both fell through
+    # to generation.
+    assert detect_task("can you review this?") == TASK_REVIEW
+    assert detect_task("just review, do not rewrite") == TASK_REVIEW
+    assert detect_task("audit it please") == TASK_REVIEW
+    # The noun phrase keeps its explanation reading, and a
+    # generation opener still wins.
+    assert detect_task("explain the code review process") == TASK_EXPLAIN
+    assert detect_task("write a review of this function") == TASK_GENERATE

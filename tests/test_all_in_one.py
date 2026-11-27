@@ -353,3 +353,19 @@ def test_summary_text_and_media_signals_route():
     assert infer_route("sum up the meeting notes") == "chat"
     assert infer_route("draw a cat") == "chat"
     assert infer_route("animate a bouncing ball") == "chat"
+
+
+def test_human_requests_and_order_status_route_to_support():
+    # Regression: an explicit request for a human scored
+    # no intent point and fell through to chat, losing the
+    # support module's deterministic handoff.
+    assert infer_route("i need a human agent") == "support"
+    assert infer_route("get me your manager") == "support"
+    assert infer_route("bot nahi chahiye") == "support"
+    # An order-status question names no support verb.
+    assert infer_route("where is my order") == "support"
+    assert infer_route("mera order kahan hai") == "support"
+    assert infer_route("order status please") == "support"
+    # Topic questions and general requests stay with chat.
+    assert infer_route("what are your customer service hours?") == "chat"
+    assert infer_route("where is the capital of france?") == "chat"
