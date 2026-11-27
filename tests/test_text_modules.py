@@ -59,6 +59,17 @@ def test_split_sentences_keeps_trailing_fragment_and_decimals():
         "Dr. Smith arrived.",
         "He sat down.",
     ]
+    # An ellipsis trailing into a lowercase word is a pause in
+    # one sentence, not a boundary; before a capital it still
+    # ends the sentence.
+    assert split_sentences("Wait... what happened? She left.") == [
+        "Wait... what happened?",
+        "She left.",
+    ]
+    assert split_sentences("He paused... Then he left.") == [
+        "He paused...",
+        "Then he left.",
+    ]
     assert split_sentences("") == []
     # Document Q&A can now answer from an unpunctuated final line.
     out = answer_question(
@@ -139,6 +150,29 @@ def test_parse_numbers_ignores_dates_as_labels():
     assert "Count: 3" in analyze(parse_numbers("sales on 2026-11-27 were 10 20 30"))
     assert parse_numbers("values 13/40/2026 5 10") == [13.0, 40.0, 2026.0, 5.0, 10.0]
     assert parse_numbers("10-5-2 values 1 2 3") == [10.0, 5.0, 2.0, 1.0, 2.0, 3.0]
+
+
+def test_parse_numbers_ignores_clock_times_and_month_name_dates():
+    # Regression: month-name dates and clock times beside real
+    # values were read as measurements, so "meeting at 10:30,
+    # scores 5 6 7" reported count 5 and "on 27 Nov 2026 scores
+    # were 5 6 7" folded the day and year into every statistic.
+    # Plausible clock readings and month-name dates are labels;
+    # a ratio, an implausible chain and a modal "may" keep
+    # their values.
+    assert parse_numbers("meeting at 10:30, scores 5 6 7") == [5.0, 6.0, 7.0]
+    assert parse_numbers("call at 3:30 pm about values 5 6 7") == [5.0, 6.0, 7.0]
+    assert parse_numbers("duration 1:05:30 and values 5 6 7") == [5.0, 6.0, 7.0]
+    assert parse_numbers("on 27 Nov 2026 scores were 5 6 7") == [5.0, 6.0, 7.0]
+    assert parse_numbers("Nov 27, 2026 results: 5 6 7") == [5.0, 6.0, 7.0]
+    assert parse_numbers("27th November 2026 values 5 6 7") == [5.0, 6.0, 7.0]
+    assert parse_numbers("on 5 May 2026 values 5 6 7") == [5.0, 6.0, 7.0]
+    assert "Count: 3" in analyze(parse_numbers("meeting at 10:30, scores 5 6 7"))
+    assert parse_numbers("ratio 3:1 with values 5 6 7") == [3.0, 1.0, 5.0, 6.0, 7.0]
+    assert parse_numbers("implausible 25:99 values 5 6 7") == [25.0, 99.0, 5.0, 6.0, 7.0]
+    assert parse_numbers("chapter 5 may contain 5 6 7") == [5.0, 5.0, 6.0, 7.0]
+    assert parse_numbers("we march 5 miles with 5 6 7") == [5.0, 5.0, 6.0, 7.0]
+    assert parse_numbers("32 Nov 2026 values 5 6 7") == [32.0, 2026.0, 5.0, 6.0, 7.0]
 
 
 def test_summarization_never_repeats_a_sentence():
@@ -247,6 +281,10 @@ def test_stem_word_matches_irregular_sis_plurals():
     assert stem_word("crises") == stem_word("crisis") == "crisis"
     assert stem_word("news") == "news"
     assert stem_word("lens") == "lens"
+    # Invariant -ies nouns keep their form instead of the
+    # ies rule's "sery"/"specy".
+    assert stem_word("series") == "series"
+    assert stem_word("species") == "species"
     assert stem_word("classes") == stem_word("class") == "class"
 
 

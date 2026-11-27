@@ -76,6 +76,66 @@ def _blank_day_month_date(match: re.Match[str]) -> str:
         return " "
     return match.group(0)
 
+
+# A month-name date ("27 Nov 2026", "November 27, 2026") is a
+# label like its numeric forms: left in place, the number
+# pattern read the day and year as values and skewed every
+# statistic beside them. Day-first forms are unambiguous (a
+# number glued to a month name is a date), so the year is
+# optional there; month-first forms require a year or an
+# ordinal day, so a verb use ("we march 5 miles") keeps its
+# value. The day must be 1-31 either way.
+_MONTH_NAME = (
+    r"(?:jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|jun(?:e)?"
+    r"|jul(?:y)?|aug(?:ust)?|sep(?:t(?:ember)?)?|oct(?:ober)?"
+    r"|nov(?:ember)?|dec(?:ember)?)"
+)
+_DAY_FIRST_DATE_RE = re.compile(
+    r"(?<!\d)(\d{1,2})(?:st|nd|rd|th)?\s+" + _MONTH_NAME + r"\.?(?:\s*,?\s*\d{4})?(?!\d)",
+    re.IGNORECASE,
+)
+_MONTH_FIRST_DATE_RE = re.compile(
+    _MONTH_NAME + r"\.?\s+(\d{1,2})(?:st|nd|rd|th)?(?:\s*,\s*\d{4}|\s+\d{4})(?!\d)",
+    re.IGNORECASE,
+)
+
+
+def _blank_month_name_date(match: re.Match[str]) -> str:
+    day = int(match.group(1))
+    if not 1 <= day <= 31:
+        return match.group(0)
+    text = match.group(0)
+    # "may" is also a modal verb: "chapter 5 may contain" is
+    # not a date. A bare day-first "5 may" only reads as the
+    # month when a year or an ordinal day pins it down.
+    if re.search(r"\bmay\b", text, re.IGNORECASE) and not re.search(
+        r"\d{4}|(?:st|nd|rd|th)\b", text, re.IGNORECASE
+    ):
+        return match.group(0)
+    return " "
+
+
+# A clock time ("10:30", "3:30 pm", "1:05:30") is a label,
+# not two or three measurements: left in place, the number
+# pattern read the hour and minutes as values. Only plausible
+# clock readings go: minutes and seconds are two digits in
+# 00-59 and the hour is 0-23, so a ratio ("3:1") or an
+# implausible chain ("25:99") keeps its values.
+_CLOCK_TIME_RE = re.compile(
+    r"(?<![0-9:])(\d{1,2}):(\d{2})(?::(\d{2}))?(?:\s*[aApP]\.?[mM]\.?)?(?![0-9:])"
+)
+
+
+def _blank_clock_time(match: re.Match[str]) -> str:
+    hour, minute, second = match.groups()
+    if (
+        0 <= int(hour) <= 23
+        and int(minute) <= 59
+        and (second is None or int(second) <= 59)
+    ):
+        return " "
+    return match.group(0)
+
 # Machine literals ("0xFF", "0b101", "0o17") are code, not
 # decimal measurements: left in place, "0x10" read as the
 # phantom value 0. They are blanked out before parsing, like
@@ -116,6 +176,9 @@ def parse_numbers(prompt: str) -> list[float]:
     cleaned = _ISO_DATE_RE.sub(_blank_iso_date, cleaned)
     cleaned = _SLASH_DATE_RE.sub(_blank_day_month_date, cleaned)
     cleaned = _HYPHEN_DATE_RE.sub(_blank_day_month_date, cleaned)
+    cleaned = _DAY_FIRST_DATE_RE.sub(_blank_month_name_date, cleaned)
+    cleaned = _MONTH_FIRST_DATE_RE.sub(_blank_month_name_date, cleaned)
+    cleaned = _CLOCK_TIME_RE.sub(_blank_clock_time, cleaned)
     cleaned = _DOTTED_SEQUENCE_RE.sub(" ", cleaned)
     cleaned = _MIXED_FRACTION_RE.sub(_fold_mixed_fraction, cleaned)
     cleaned = _FRACTION_RE.sub(_fold_fraction, cleaned)

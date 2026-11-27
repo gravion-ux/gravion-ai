@@ -233,6 +233,11 @@ _IRREGULAR_STEMS = {
     "addenda": "addendum",
     "wharves": "wharf",
     "lice": "louse",
+    # Invariant -ies nouns: singular and plural are the same
+    # word, so the ies rule's "sery"/"specy" stems are wrong
+    # forms no singular produces.
+    "series": "series",
+    "species": "species",
 }
 
 
@@ -327,6 +332,17 @@ def split_sentences(text: str) -> list[str]:
                 if index + 1 < len(stripped) and stripped[index + 1] == ".":
                     index += 1
                     continue
+                # An ellipsis trailing into a lowercase word is a
+                # pause inside one sentence ("Wait... what
+                # happened?"), not a boundary: splitting there
+                # handed summarization and document Q&A a
+                # fragment as if it were a sentence. An ellipsis
+                # before a capital still ends the sentence.
+                if index > 0 and stripped[index - 1] == ".":
+                    following = stripped[index + 1 :].lstrip(" \t\r\n\"'“”‘’")
+                    if following and following[0].islower():
+                        index += 1
+                        continue
                 if _is_abbreviation_dot(stripped, index):
                     index += 1
                     continue

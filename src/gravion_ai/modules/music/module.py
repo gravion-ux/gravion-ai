@@ -109,6 +109,8 @@ def parse_duration(prompt: str) -> int | None:
     Compound durations add up ("2 minutes 30 seconds" is 150),
     fractional values count ("1.5 minutes" is 90, not the 300 a
     whole-number scan reads from the "5"), and hours are a unit.
+    The video module reuses this parser instead of carrying a
+    second copy that could drift from it.
     """
     matches = _DURATION_RE.findall(prompt)
     if not matches:
