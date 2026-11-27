@@ -614,6 +614,9 @@ def test_analyze_large_values_do_not_overflow_the_mean():
     out = analyze([1e308, 1e308, -1e308])
     assert "Sum: 1e+308" in out
     assert "Mean: 3.33333e+307" in out
+    # The variance of these values is past float range while
+    # the deviation is not; the statistic must still report.
+    assert "Standard deviation: 9.42809e+307" in out
 
 
 def test_parse_numbers_reads_unicode_minus_as_a_sign():

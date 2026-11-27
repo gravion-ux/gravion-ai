@@ -15,6 +15,7 @@ import math
 import re
 import statistics
 from collections import Counter
+from decimal import Decimal, localcontext
 from fractions import Fraction
 
 from ...registry import ModuleContext, ModuleManifest
@@ -319,6 +320,34 @@ def _exact_total(numbers: list[float]) -> float:
             return math.inf if exact > 0 else -math.inf
 
 
+def _pstdev(numbers: list[float]) -> float:
+    """Population standard deviation without variance overflow.
+
+    ``statistics.pstdev`` converts the exact variance to float
+    before the square root on older Pythons, so values like
+    1e308 (variance past float range, deviation well inside
+    it) crashed instead of reporting. The exact fallback
+    takes the root in Decimal, whose exponent range covers
+    the variance.
+    """
+    if len(numbers) <= 1:
+        return 0.0
+    try:
+        return statistics.pstdev(numbers)
+    except OverflowError:
+        exact_mean = sum(
+            (Fraction(value) for value in numbers), Fraction(0)
+        ) / len(numbers)
+        variance = sum(
+            ((Fraction(value) - exact_mean) ** 2 for value in numbers),
+            Fraction(0),
+        ) / len(numbers)
+        with localcontext() as context:
+            context.prec = 40
+            root = (Decimal(variance.numerator) / Decimal(variance.denominator)).sqrt()
+        return float(root)
+
+
 def analyze(numbers: list[float]) -> str:
     if not numbers:
         return "No numbers to analyze."
@@ -331,7 +360,7 @@ def analyze(numbers: list[float]) -> str:
     mean = statistics.mean(numbers)
     median = statistics.median(numbers)
     low, high = min(numbers), max(numbers)
-    stdev = statistics.pstdev(numbers) if count > 1 else 0.0
+    stdev = _pstdev(numbers)
     half = count // 2
     if half:
         first = statistics.mean(numbers[:half])
