@@ -137,10 +137,6 @@ def _negated_before(text: str, match_start: int) -> bool:
     return bool(tail) and _TOOL_NEGATOR_RE.search(tail) is not None
 
 
-def _tool_negated(text: str, match_start: int) -> bool:
-    return _negated_before(text, match_start)
-
-
 def detect_task(prompt: str) -> str:
     """Classify an agentic prompt as plan / build / run."""
     text = prompt.strip().lower()
@@ -174,7 +170,7 @@ def parse_tools(prompt: str) -> list[str]:
     tools: list[str] = []
     for tool in _TOOLS:
         for match in re.finditer(rf"\b{re.escape(tool)}\b", text):
-            if not _tool_negated(text, match.start()):
+            if not _negated_before(text, match.start()):
                 tools.append(tool)
                 break
     return tools

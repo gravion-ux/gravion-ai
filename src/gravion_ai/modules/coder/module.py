@@ -100,7 +100,11 @@ _CODE_OBJECT = (
 # this function", "is this code correct?", "what's wrong with
 # this code?"): without them they fell through to generation,
 # so a request to examine existing code was answered with new
-# code instead of the problems in it.
+# code instead of the problems in it. Bug-hunt verbs beyond
+# "find" ("look for bugs", "spot the error") and bug-presence
+# questions ("is there a bug in this code?", "where is the
+# bug in this function?", "does this code have any bugs?")
+# ask for the same examination and fell through the same way.
 _REVIEW_RES = (
     re.compile(
         r"\b(?:review|reviewing|audit|auditing|check|checking|"
@@ -109,7 +113,26 @@ _REVIEW_RES = (
         + r"\b"
     ),
     re.compile(r"\bdebug(?:ging)?\b[^.?!]*\b" + _CODE_OBJECT + r"\b"),
-    re.compile(r"\bfind\b[^.?!]*\b(?:bugs?|errors?|problems?|issues?)\b"),
+    re.compile(
+        r"\b(?:find|look for|search for|spot|hunt for)\b[^.?!]*"
+        r"\b(?:bugs?|errors?|problems?|issues?)\b"
+    ),
+    re.compile(
+        r"\b(?:is|are) there\b[^.?!]*\b(?:bugs?|errors?|problems?|issues?)\b"
+        r"[^.?!]*\b" + _CODE_OBJECT + r"\b"
+    ),
+    re.compile(
+        r"\bany\b[^.?!]*\b(?:bugs?|errors?|problems?|issues?)\b"
+        r"[^.?!]*\b" + _CODE_OBJECT + r"\b"
+    ),
+    re.compile(
+        r"\bwhere\b[^.?!]*\b(?:bugs?|errors?|problems?|issues?)\b"
+        r"[^.?!]*\b" + _CODE_OBJECT + r"\b"
+    ),
+    re.compile(
+        r"\bdoes (?:this|the|it)\b[^.?!]*\b" + _CODE_OBJECT
+        + r"\b[^.?!]*\bhave\b[^.?!]*\b(?:bugs?|errors?|problems?|issues?)\b"
+    ),
     re.compile(
         r"\bis (?:this|the|it)\b[^.?!]*\b"
         + _CODE_OBJECT

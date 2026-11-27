@@ -85,8 +85,30 @@ _CVE_RE = re.compile(r"(?<!\d)CVE-\d{4}-\d{4,}(?!\d)", re.IGNORECASE)
 # needs at least two points and a strict lead over every other
 # module, so a lone keyword never hijacks a general question.
 _INTENT_SIGNALS: dict[str, tuple[frozenset[str], frozenset[str]]] = {
+    # Review/explain/check verbs aimed at a code object are
+    # coder requests too ("review this function", "explain
+    # this code", "find the bug in this function"): with only
+    # generation verbs listed they scored the noun alone and
+    # fell through to chat, losing the coder module's own
+    # review/explain guidance. A lone verb still scores one
+    # point, so "review the report" and "explain recursion"
+    # stay general questions.
     "coder": (
-        frozenset({"write", "fix", "debug", "refactor", "implement", "code"}),
+        frozenset(
+            {
+                "write",
+                "fix",
+                "debug",
+                "refactor",
+                "implement",
+                "code",
+                "review",
+                "explain",
+                "describe",
+                "check",
+                "audit",
+            }
+        ),
         frozenset(
             {
                 "function",
@@ -100,6 +122,7 @@ _INTENT_SIGNALS: dict[str, tuple[frozenset[str], frozenset[str]]] = {
                 "rust",
                 "golang",
                 "regex",
+                "bug",
             }
         ),
     ),

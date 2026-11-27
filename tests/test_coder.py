@@ -138,6 +138,21 @@ def test_coder_instantiates_and_answers():
         # fall through to generation.
         ("look over this function please", TASK_REVIEW),
         ("go over this code for bugs", TASK_REVIEW),
+        # Regression: bug-hunt verbs beyond "find" and
+        # bug-presence questions fell through to generation,
+        # so a request to examine supplied code for problems
+        # was answered with new code instead of the problems.
+        ("look for bugs in this code", TASK_REVIEW),
+        ("search for issues in this script", TASK_REVIEW),
+        ("spot the error in this code", TASK_REVIEW),
+        ("is there a bug in this code?", TASK_REVIEW),
+        ("any bugs in this function?", TASK_REVIEW),
+        ("where is the bug in this function?", TASK_REVIEW),
+        ("does this code have any bugs?", TASK_REVIEW),
+        # Generation openers and negations still govern the
+        # new shapes.
+        ("write code to look for bugs in log files", TASK_GENERATE),
+        ("do not look for bugs, explain this code", TASK_EXPLAIN),
     ],
 )
 def test_detect_task(prompt, expected):

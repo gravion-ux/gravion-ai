@@ -241,6 +241,35 @@ def test_extract_indicators_partial_defanging_and_url_case():
     ]
 
 
+def test_extract_indicators_refangs_dot_word_defanging():
+    # Regression: the word spellings of defanged dots
+    # ("10[dot]0[dot]0[dot]8", "admin[at]evil[dot]example.com")
+    # recorded no indicator at all, and a URL carrying them
+    # was recorded with "[dot]" still in its host. They
+    # refang to the same canonical records as the bracket
+    # spellings, and a five-group chain still yields nothing.
+    assert extract_indicators("seen 10[dot]0[dot]0[dot]8 here")["ipv4"] == [
+        "10.0.0.8"
+    ]
+    assert extract_indicators("seen 192(dot)168(dot)1(dot)1 here")["ipv4"] == [
+        "192.168.1.1"
+    ]
+    assert "ipv4" not in extract_indicators("chain 1[dot]2[dot]3[dot]4[dot]5")
+    assert "ipv4" not in extract_indicators("bad 999[dot]1[dot]1[dot]1")
+    assert extract_indicators("see hxxp://evil[dot]example.com/x")["url"] == [
+        "http://evil.example.com/x"
+    ]
+    assert extract_indicators("contact admin[at]evil[dot]example.com") == {
+        "email": ["admin@evil.example.com"]
+    }
+    # The spaced forms shared reporting uses refang too.
+    assert extract_indicators("contact admin [at] evil [dot] example.com") == {
+        "email": ["admin@evil.example.com"]
+    }
+    assert detect_task("triage 10[dot]0[dot]0[dot]8") == TASK_TRIAGE
+    assert detect_task("triage admin[at]evil[dot]example.com") == TASK_TRIAGE
+
+
 def test_extract_indicators_hash_lengths_do_not_overlap():
     # MD5 and SHA-1 hashes are recorded under their own kinds,
     # and no shorter pattern matches inside a longer hash.

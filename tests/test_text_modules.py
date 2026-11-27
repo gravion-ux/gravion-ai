@@ -504,6 +504,18 @@ def test_stem_word_matches_irregular_past_tense_verbs():
     assert stem_word("ran") == stem_word("run") == "run"
     assert stem_word("went") == stem_word("go") == "go"
     assert stem_word("wrote") == stem_word("write") == "write"
+    # Regression: common irregular past tenses and the
+    # -ying verbs stayed split from their bases, so a
+    # base-form question missed past-tense evidence.
+    assert stem_word("had") == stem_word("have") == "have"
+    assert stem_word("has") == stem_word("have") == "have"
+    assert stem_word("built") == stem_word("build") == "build"
+    assert stem_word("woke") == stem_word("wake") == "wake"
+    assert stem_word("sold") == stem_word("sell") == "sell"
+    assert stem_word("dying") == stem_word("die") == "die"
+    assert stem_word("lying") == stem_word("lie") == "lie"
+    # The y-base verbs the -ying rule must not mangle.
+    assert stem_word("relying") == stem_word("rely") == "rely"
 
 
 def test_stem_word_matches_regular_verb_forms():
@@ -551,6 +563,24 @@ def test_document_qa_matches_past_tense_evidence():
         "Where did the cat sit?",
     )
     assert "cat sat on the mat" in out
+    # Regression: "had"/"built"/"woke" stayed split from
+    # "have"/"build"/"wake", so these questions wrongly
+    # reported that the document holds no answer.
+    out = answer_question(
+        "She had a red bicycle. He sold the car.",
+        "What did she have?",
+    )
+    assert "red bicycle" in out
+    out = answer_question(
+        "The bridge was built in 1900. It spans the river.",
+        "When was the bridge build?",
+    )
+    assert "built in 1900" in out
+    out = answer_question(
+        "He woke at dawn. She slept late.",
+        "When did he wake?",
+    )
+    assert "woke at dawn" in out
 
 
 def test_stem_word_matches_o_and_suppletive_plurals():

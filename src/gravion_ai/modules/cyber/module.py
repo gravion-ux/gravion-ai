@@ -127,12 +127,17 @@ _IPV4_RE = re.compile(
 # to break linkification ("10[.]0.0.8") — so each dot may be
 # plain or defanged; the guards mirror the plain pattern's, in
 # every dot spelling, so a five-group chain ("1[.]2[.]3[.]4[.]5")
-# still yields no four-group window.
-_DEFANGED_DOT = r"(?:\.|\[\.\]|\(\.\))"
+# still yields no four-group window. The word spellings
+# ("10[dot]0[dot]0[dot]8", "10(dot)0(dot)0(dot)8") are the
+# same neutralisation written out; without them the address
+# recorded nothing at all.
+_DEFANGED_DOT = r"(?:\.|\[\.\]|\(\.\)|\[(?i:dot)\]|\((?i:dot)\))"
 _DEFANGED_IPV4_RE = re.compile(
-    r"(?<!\d)(?<!\d\.)(?<!\[\.\])(?<!\(\.\))(?<![A-Za-z])"
+    r"(?<!\d)(?<!\d\.)(?<!\[\.\])(?<!\(\.\))"
+    r"(?<!\[(?i:dot)\])(?<!\((?i:dot)\))(?<![A-Za-z])"
     r"\d{1,3}(?:" + _DEFANGED_DOT + r"\d{1,3}){3}"
     r"(?!\d)(?!\.\d)(?!\[\.\]\d)(?!\(\.\)\d)"
+    r"(?!\[(?i:dot)\]\d)(?!\((?i:dot)\)\d)"
 )
 # An IPv6 candidate is a colon-hex sequence (full, "::"-compressed
 # or IPv4-embedded); the guards keep a window inside a longer
@@ -176,18 +181,23 @@ _DEFANGED_URL_RE = re.compile(r"hxxps?://[^\s\"'<>]+", re.IGNORECASE)
 # forms, the domain needs a dotted alphabetic TLD ("hello@world"
 # states no address), and defanged spellings ("admin[at]evil[.]…",
 # "admin(at)evil.example.com") refang to the same record, like
-# the defanged URLs above. An address inside a URL's authority
-# ("https://user@example.com/path") is part of that URL record,
-# not a separate email, so matches overlapping a URL match are
-# skipped.
+# the defanged URLs above. The word spellings and the spaced
+# forms shared reporting also uses ("admin[at]evil[dot]example.com",
+# "admin [at] evil [dot] example.com") refang the same way;
+# without them the sender recorded nothing. An address inside a
+# URL's authority ("https://user@example.com/path") is part of
+# that URL record, not a separate email, so matches overlapping
+# a URL match are skipped.
 _EMAIL_LOCAL = r"[A-Za-z0-9._%+\-]+"
+_EMAIL_DOT = r"(?:\.|\s*(?:\[\.\]|\(\.\)|\[dot\]|\(dot\))\s*)"
 _EMAIL_DOMAIN = (
     r"[A-Za-z0-9](?:[A-Za-z0-9\-]*[A-Za-z0-9])?"
-    r"(?:(?:\.|\[\.\]|\(\.\))[A-Za-z0-9](?:[A-Za-z0-9\-]*[A-Za-z0-9])?)*"
-    r"(?:\.|\[\.\]|\(\.\))[A-Za-z]{2,}"
+    r"(?:" + _EMAIL_DOT + r"[A-Za-z0-9](?:[A-Za-z0-9\-]*[A-Za-z0-9])?)*"
+    + _EMAIL_DOT + r"[A-Za-z]{2,}"
 )
 _EMAIL_RE = re.compile(
-    r"(?<![A-Za-z0-9._%+\-])" + _EMAIL_LOCAL + r"(?:@|\[at\]|\(at\))" + _EMAIL_DOMAIN,
+    r"(?<![A-Za-z0-9._%+\-])" + _EMAIL_LOCAL
+    + r"(?:@|\s*\[at\]\s*|\s*\(at\)\s*)" + _EMAIL_DOMAIN,
     re.IGNORECASE,
 )
 # A stated severity arrives as "severity: high", "severity is
@@ -253,10 +263,11 @@ _ITEM = r"(?:this|the|that|it|them|incident|finding|alert|issue|vulnerability|ev
 # so the hash form needs no case flag.
 _INDICATOR_HINT = (
     r"(?:cve-\d{4}-\d{4,}"
-    r"|(?<![a-z])\d{1,3}(?:(?:\.|\[\.\]|\(\.\))\d{1,3}){3}"
+    r"|(?<![a-z])\d{1,3}(?:(?:\.|\[\.\]|\(\.\)|\[dot\]|\(dot\))\d{1,3}){3}"
     r"|[0-9a-f]{0,4}::[0-9a-f:]*|(?:[0-9a-f]{1,4}:){4,}[0-9a-f]{1,4}"
     r"|[0-9a-f]{64}|[0-9a-f]{40}|[0-9a-f]{32}|https?://\S+|hxxps?://\S+"
-    r"|[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,})"
+    r"|[a-z0-9._%+\-]+(?:@|\s*\[at\]\s*|\s*\(at\)\s*)"
+    r"(?:[a-z0-9\-]+(?:\.|\[dot\]|\(dot\)|\[\.\]|\(\.\)))+[a-z]{2,})"
 )
 # "Report" and "triage" are nouns as often as verbs: "the report
 # mentions CVE-2026-12345" discusses a report, it does not ask
@@ -349,7 +360,9 @@ def _refang(text: str) -> str:
     spelling are one artefact and must dedupe to one record.
     The path and query keep their case — they are
     case-sensitive."""
-    refanged = text.replace("[.]", ".").replace("(.)", ".")
+    refanged = re.sub(
+        r"\[\.\]|\(\.\)|\[(?i:dot)\]|\((?i:dot)\)", ".", text
+    )
     if refanged[:5].lower() == "hxxps":
         refanged = "https" + refanged[5:]
     elif refanged[:4].lower() == "hxxp":
@@ -379,8 +392,14 @@ def _refang_email(candidate: str) -> str | None:
     starts or ends with a dot, or carries consecutive dots,
     states no address.
     """
-    refanged = re.sub(r"\[(?i:at)\]|\(at\)", "@", candidate)
-    refanged = refanged.replace("[.]", ".").replace("(.)", ".")
+    refanged = re.sub(
+        r"\s*(?:\[(?i:at)\]|\(at\))\s*", "@", candidate
+    )
+    refanged = re.sub(
+        r"\s*(?:\[\.\]|\(\.\)|\[(?i:dot)\]|\((?i:dot)\))\s*",
+        ".",
+        refanged,
+    )
     local, at, domain = refanged.partition("@")
     if not at or not local or local.startswith(".") or local.endswith("."):
         return None

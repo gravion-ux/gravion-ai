@@ -281,3 +281,20 @@ def test_plural_and_security_intent_routes():
     assert infer_route("make videos and songs") == "chat"
     # The verb "means" is not the statistic "mean".
     assert infer_route("explain what median means") == "chat"
+
+
+def test_review_and_explain_code_requests_route_to_coder():
+    # Regression: review/explain/check verbs were not coder
+    # intent signals, so "review this function" scored the
+    # noun alone and fell through to chat, losing the coder
+    # module's review/explain guidance.
+    assert infer_route("review this function please") == "coder"
+    assert infer_route("explain this function") == "coder"
+    assert infer_route("describe this algorithm") == "coder"
+    assert infer_route("check this function for errors") == "coder"
+    assert infer_route("find the bug in this function") == "coder"
+    # A lone verb or noun still cannot hijack a general
+    # question, and a negated review verb routes nowhere.
+    assert infer_route("review the report") == "chat"
+    assert infer_route("explain recursion") == "chat"
+    assert infer_route("do not review this code") == "chat"
