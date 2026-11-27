@@ -75,6 +75,19 @@ def test_cyber_instantiates_and_answers():
         ("report CVE-2026-12345", TASK_REPORT),
         ("explain triage for CVE-2026-12345", TASK_ANALYSE),
         ("analyse CVE-2026-12345", TASK_ANALYSE),
+        # Regression: "report"/"triage" as nouns (a determiner
+        # directly before them) discuss an existing artefact;
+        # they do not request one, even with an indicator later
+        # in the sentence.
+        ("the report mentions CVE-2026-12345, what does it mean?", TASK_ANALYSE),
+        ("the report for 10.0.0.8 is unclear", TASK_ANALYSE),
+        ("this triage report covers CVE-2026-12345", TASK_ANALYSE),
+        ("the triage of CVE-2026-12345 took hours", TASK_ANALYSE),
+        # A creation verb still requests a report.
+        ("file a report about the incident", TASK_REPORT),
+        ("draft the report on CVE-2026-12345", TASK_REPORT),
+        # A verb aimed at an MD5 hash targets an item too.
+        ("triage " + "b" * 32, TASK_TRIAGE),
     ],
 )
 def test_detect_task(prompt, expected):
@@ -113,6 +126,32 @@ def test_extract_indicators_rejects_fragments_and_strips_punctuation():
     assert extract_indicators("see https://example.com/path. Next")["url"] == [
         "https://example.com/path"
     ]
+    # Regression: a URL whose path carries a balanced paren pair
+    # was truncated at the closing paren, recording a near-miss
+    # artefact; a sentence's own closing paren is still trimmed.
+    assert extract_indicators(
+        "see https://example.com/wiki/Buffer_(computer_science) for details"
+    )["url"] == ["https://example.com/wiki/Buffer_(computer_science)"]
+    assert extract_indicators("(see https://example.com/path)")["url"] == [
+        "https://example.com/path"
+    ]
+    assert extract_indicators("host http://[2001:db8::1]/status up")["url"] == [
+        "http://[2001:db8::1]/status"
+    ]
+
+
+def test_extract_indicators_hash_lengths_do_not_overlap():
+    # MD5 and SHA-1 hashes are recorded under their own kinds,
+    # and no shorter pattern matches inside a longer hash.
+    indicators = extract_indicators(
+        "md5 " + "b" * 32 + " sha1 " + "c" * 40 + " sha256 " + SHA256
+    )
+    assert indicators["md5"] == ["b" * 32]
+    assert indicators["sha1"] == ["c" * 40]
+    assert indicators["sha256"] == [SHA256]
+    only_sha256 = extract_indicators("hash " + SHA256)
+    assert "md5" not in only_sha256
+    assert "sha1" not in only_sha256
 
 
 @pytest.mark.parametrize(

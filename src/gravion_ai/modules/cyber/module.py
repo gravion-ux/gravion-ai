@@ -17,16 +17,20 @@ and adding deterministic logic of its own:
    triage verb aimed at an item or at a named indicator anywhere
    in the request ("can you triage this alert", "triage
    CVE-2026-12345", "could you write up this finding") —
-   mirroring the coder module's task detection. Anything else is
-   analysis.
+   mirroring the coder module's task detection. A determiner
+   directly before "report" or "triage" marks the noun instead
+   ("the report mentions CVE-2026-12345" is discussion, not a
+   request), while a creation verb ("file a report") still
+   counts as a report request. Anything else is analysis.
 
 2. **Indicator extraction.** Indicators of compromise named in the
    request are extracted deterministically and recorded in the
    brief, so the model works from the exact artefacts instead of
-   paraphrase: CVE ids, IPv4 addresses (octet-validated), SHA-256
-   hashes and URLs, each deduplicated in request order. A stated
-   severity ("severity: high") is recorded verbatim; an unstated
-   one is recorded as not stated rather than guessed.
+   paraphrase: CVE ids, IPv4 addresses (octet-validated), SHA-256,
+   SHA-1 and MD5 hashes and URLs, each deduplicated in request
+   order. A stated severity ("severity: high") is recorded
+   verbatim; an unstated one is recorded as not stated rather
+   than guessed.
 
 The module is **defensive only**, by design (see ARCHITECTURE.md):
 analysis, triage and reporting assistance for the deployment's own
@@ -104,7 +108,17 @@ _CVE_RE = re.compile(r"(?<!\d)CVE-\d{4}-\d{4,}(?!\d)", re.IGNORECASE)
 # punctuation after a real address ("from 10.0.0.8.").
 _IPV4_RE = re.compile(r"(?<!\d)(?<!\d\.)\d{1,3}(?:\.\d{1,3}){3}(?!\d)(?!\.\d)")
 _SHA256_RE = re.compile(r"\b[0-9a-fA-F]{64}\b")
-_URL_RE = re.compile(r"https?://[^\s\"'<>)\]]+")
+# The word-boundary guards keep a shorter hash pattern from
+# matching inside a longer hash: a 64-hex SHA-256 yields no
+# 40- or 32-hex fragment, and a 40-hex SHA-1 yields no MD5.
+_SHA1_RE = re.compile(r"\b[0-9a-fA-F]{40}\b")
+_MD5_RE = re.compile(r"\b[0-9a-fA-F]{32}\b")
+# Brackets and closing parens are allowed inside the match so a
+# URL that legitimately contains them (an IPv6 literal, a
+# parenthesised path segment) is recorded whole; _clean_url
+# trims the unbalanced trailing ones that belong to the
+# surrounding sentence instead.
+_URL_RE = re.compile(r"https?://[^\s\"'<>]+")
 _SEVERITY_RE = re.compile(
     r"severity[:\s]+(critical|high|medium|low)\b"
     r"|\b(critical|high|medium|low)\s+severity\b",
@@ -133,16 +147,31 @@ _ITEM = r"(?:this|the|that|incident|finding|alert|issue|vulnerability|event)"
 # so the hash form needs no case flag.
 _INDICATOR_HINT = (
     r"(?:cve-\d{4}-\d{4,}|\d{1,3}(?:\.\d{1,3}){3}"
-    r"|[0-9a-f]{64}|https?://\S+)"
+    r"|[0-9a-f]{64}|[0-9a-f]{40}|[0-9a-f]{32}|https?://\S+)"
+)
+# "Report" and "triage" are nouns as often as verbs: "the report
+# mentions CVE-2026-12345" discusses a report, it does not ask
+# for one. A determiner or possessive directly before the word
+# marks the noun ("the report", "this triage report", "my
+# report"), so the verb patterns refuse those positions; a
+# creation verb ("write a report", "file a report") is checked
+# separately and still counts as a report request.
+_NOUN_PREFIX = (
+    r"(?<!the )(?<!this )(?<!that )(?<!a )(?<!an )(?<!its )"
+    r"(?<!their )(?<!his )(?<!her )(?<!my )(?<!your )(?<!our )"
 )
 _REPORT_RES = (
     re.compile(r"\bwrite up\b"),
-    re.compile(r"\bwrite (?:a|the|up)\b[^.?!]*\breport\b"),
-    re.compile(r"\breport\b[^.?!]*\b" + _ITEM + r"\b"),
-    re.compile(r"\breport\b[^.?!]*" + _INDICATOR_HINT),
+    re.compile(
+        r"\b(?:write|file|create|draft|prepare) (?:a|the|up)\b[^.?!]*\breport\b"
+    ),
+    re.compile(_NOUN_PREFIX + r"(?<!triage )\breport\b[^.?!]*\b" + _ITEM + r"\b"),
+    re.compile(_NOUN_PREFIX + r"(?<!triage )\breport\b[^.?!]*" + _INDICATOR_HINT),
 )
-_TRIAGE_RE = re.compile(r"\btriage\b[^.?!]*\b" + _ITEM + r"\b")
-_TRIAGE_INDICATOR_RE = re.compile(r"\btriage\b[^.?!]*" + _INDICATOR_HINT)
+_TRIAGE_RE = re.compile(_NOUN_PREFIX + r"\btriage\b[^.?!]*\b" + _ITEM + r"\b")
+_TRIAGE_INDICATOR_RE = re.compile(
+    _NOUN_PREFIX + r"\btriage\b[^.?!]*" + _INDICATOR_HINT
+)
 
 
 def detect_task(prompt: str) -> str:
@@ -166,13 +195,31 @@ def _valid_ipv4(candidate: str) -> bool:
     return all(0 <= int(octet) <= 255 for octet in candidate.split("."))
 
 
+def _clean_url(url: str) -> str:
+    """Trim sentence punctuation glued to a URL match.
+
+    Trailing sentence punctuation ("…/path. Next …") is not part
+    of the address. A closing paren or bracket is trimmed only
+    while it is unbalanced — "(see https://example.com/path)"
+    loses the sentence's paren, while a URL whose own path
+    carries a balanced pair keeps it whole.
+    """
+    url = url.rstrip(".,;:!?")
+    while url.endswith(")") and url.count(")") > url.count("("):
+        url = url[:-1].rstrip(".,;:!?")
+    while url.endswith("]") and url.count("]") > url.count("["):
+        url = url[:-1].rstrip(".,;:!?")
+    return url
+
+
 def extract_indicators(prompt: str) -> dict[str, list[str]]:
     """Extract the indicators named in the request, by kind.
 
     Deterministic and conservative: CVE ids (normalised to upper
-    case), IPv4 addresses whose octets are all valid, SHA-256
-    hashes (normalised to lower case) and URLs — each deduplicated
-    in request order. Kinds with no matches are omitted.
+    case), IPv4 addresses whose octets are all valid, SHA-256,
+    SHA-1 and MD5 hashes (normalised to lower case) and URLs —
+    each deduplicated in request order. Kinds with no matches
+    are omitted.
     """
     indicators: dict[str, list[str]] = {}
 
@@ -190,13 +237,9 @@ def extract_indicators(prompt: str) -> dict[str, list[str]]:
         [m.group(0) for m in _IPV4_RE.finditer(prompt) if _valid_ipv4(m.group(0))],
     )
     collect("sha256", [m.group(0).lower() for m in _SHA256_RE.finditer(prompt)])
-    # Sentence punctuation glued to a URL ("…/path. Next …") is
-    # not part of the address; strip it so the brief records the
-    # exact artefact instead of a dotted near-miss.
-    collect(
-        "url",
-        [m.group(0).rstrip(".,;:!?") for m in _URL_RE.finditer(prompt)],
-    )
+    collect("sha1", [m.group(0).lower() for m in _SHA1_RE.finditer(prompt)])
+    collect("md5", [m.group(0).lower() for m in _MD5_RE.finditer(prompt)])
+    collect("url", [_clean_url(m.group(0)) for m in _URL_RE.finditer(prompt)])
     return indicators
 
 

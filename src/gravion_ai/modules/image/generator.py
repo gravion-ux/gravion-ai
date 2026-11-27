@@ -360,7 +360,7 @@ def _wants_human(prompt: str) -> bool:
     return any(word in text for word in _HUMAN_KEYWORDS)
 
 
-def _draw_sunset_lighting(img: Image.Image, rng: random.Random,
+def _draw_sunset_lighting(img: Image.Image,
                           sun_pos: tuple[int, int], palette: dict) -> None:
     """Warm bloom, a lens-flare streak and horizon haze for golden light."""
     w, h = img.size
@@ -570,7 +570,7 @@ def generate_image(prompt: str, width: int = 1024, height: int = 1024,
     if not night:
         _draw_particles(img, rng, cfg["particles"] // 2, palette["accent"],
                         night=False)
-        _draw_sunset_lighting(img, rng, (sun_x, sun_y), palette)
+        _draw_sunset_lighting(img, (sun_x, sun_y), palette)
 
     human = _wants_human(prompt)
     if human:
