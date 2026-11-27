@@ -76,6 +76,13 @@ def test_coder_instantiates_and_answers():
         ("write a code review tool", TASK_GENERATE),
         ("explain code review process", TASK_EXPLAIN),
         ("code review: def f(x): return x", TASK_REVIEW),
+        # Regression: the bare "code review" phrase used to win
+        # over an earlier explanation verb, so asking what the
+        # process is routed to a review. The signal stated
+        # first governs.
+        ("can you explain the code review process to me", TASK_EXPLAIN),
+        ("please do a code review and explain the issues", TASK_REVIEW),
+        ("reviewing my code would help", TASK_REVIEW),
     ],
 )
 def test_detect_task(prompt, expected):

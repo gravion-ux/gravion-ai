@@ -77,7 +77,9 @@ _ESCALATION_RE = re.compile(
 # "human readable") rather than a request for a person.
 _TOPIC_PHRASES_RE = re.compile(
     r"\b(?:human resources|human readable|human error|password manager|"
-    r"task manager|file manager|download manager|user agent)\b"
+    r"task manager|file manager|download manager|user agent|"
+    r"product manager|project manager|travel agent|insurance agent|"
+    r"estate agent)\b"
 )
 
 # "Call me <Name>" introduces the customer; it is not a request for

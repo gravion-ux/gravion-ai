@@ -115,11 +115,26 @@ def detect_mode(prompt: str) -> str:
     return MODE_BUILD
 
 
+def _keyword_re(keyword: str) -> re.Pattern[str]:
+    # Keywords match on word boundaries: "shop" inside "workshop"
+    # is not a store, and "app" inside "happy" or "application"
+    # does not make the site a product site.
+    return re.compile(rf"\b{re.escape(keyword)}\b")
+
+
+_SITE_TYPE_RES = tuple(
+    (tuple(_keyword_re(keyword) for keyword in keywords), site_type)
+    for keywords, site_type in _SITE_TYPES
+)
+
+_STYLE_RES = tuple((style, _keyword_re(style)) for style in _STYLES)
+
+
 def parse_site_type(prompt: str) -> str | None:
     """Extract the site type from explicit keywords, or None."""
     text = prompt.lower()
-    for keywords, site_type in _SITE_TYPES:
-        if any(keyword in text for keyword in keywords):
+    for patterns, site_type in _SITE_TYPE_RES:
+        if any(pattern.search(text) for pattern in patterns):
             return site_type
     return None
 
@@ -138,8 +153,13 @@ def parse_pages(prompt: str) -> list[str]:
     """
     match = _PAGES_LIST_RE.search(prompt)
     if match:
+        # A " with …" clause after the list states style or
+        # content, not another page: "pages: home, about with a
+        # dark style" names two pages, not a page called
+        # "about-with-a-dark-style".
+        listing = re.split(r"\s+with\s+", match.group(1), maxsplit=1)[0]
         pages: list[str] = []
-        for raw in match.group(1).split(","):
+        for raw in listing.split(","):
             slug = _slugify(raw)
             if slug and slug not in pages:
                 pages.append(slug)
@@ -149,7 +169,10 @@ def parse_pages(prompt: str) -> list[str]:
     text = prompt.lower()
     pages = ["home"]
     for page in _NAMED_PAGES:
-        if f"{page} page" in text and page not in pages:
+        # "about us" and "contact us" name the about and contact
+        # pages just as "about page" does.
+        named = (f"{page} page", f"{page} us page", f"{page} us")
+        if any(form in text for form in named) and page not in pages:
             pages.append(page)
     return pages
 
@@ -157,8 +180,10 @@ def parse_pages(prompt: str) -> list[str]:
 def parse_style(prompt: str) -> str | None:
     """Extract the requested style keyword, or None."""
     text = prompt.lower()
-    for style in _STYLES:
-        if style in text:
+    for style, pattern in _STYLE_RES:
+        # Word boundaries: "light" inside "slight" or
+        # "lightweight" is not a light style request.
+        if pattern.search(text):
             return style
     return None
 

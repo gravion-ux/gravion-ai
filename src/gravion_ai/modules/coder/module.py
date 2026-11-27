@@ -82,10 +82,16 @@ _GENERATE_OPENERS = (
 
 _CODE_OBJECT = r"(?:code|function|script|snippet|program|module|class)"
 _REVIEW_RE = re.compile(
-    r"\b(?:review|audit|check)\b[^.?!]*\b" + _CODE_OBJECT + r"\b"
+    r"\b(?:review|reviewing|audit|auditing|check|checking)\b[^.?!]*\b"
+    + _CODE_OBJECT
+    + r"\b"
 )
 _EXPLAIN_RES = (
-    re.compile(r"\b(?:explain|describe)\b[^.?!]*\b" + _CODE_OBJECT + r"\b"),
+    re.compile(
+        r"\b(?:explain|explaining|describe|describing)\b[^.?!]*\b"
+        + _CODE_OBJECT
+        + r"\b"
+    ),
     re.compile(r"\bwhat does (?:this|the|it)\b[^.?!]*\b(?:do|mean)\b"),
     re.compile(r"\bhow does (?:this|the|it)\b[^.?!]*\bwork\b"),
 )
@@ -111,11 +117,31 @@ def detect_task(prompt: str) -> str:
     # the code named later.
     if first_word in ("explain", "describe"):
         return TASK_EXPLAIN
-    if "code review" in text:
+    # When both a review and an explanation signal are present,
+    # the one the request states first governs: "can you explain
+    # the code review process" asks for an explanation of the
+    # process, while "do a code review and explain the issues"
+    # asks for a review. The bare "code review" noun phrase is a
+    # review signal at its own position.
+    review_at: int | None = None
+    phrase_at = text.find("code review")
+    if phrase_at >= 0:
+        review_at = phrase_at
+    review_match = _REVIEW_RE.search(text)
+    if review_match and (review_at is None or review_match.start() < review_at):
+        review_at = review_match.start()
+    explain_at: int | None = None
+    for pattern in _EXPLAIN_RES:
+        explain_match = pattern.search(text)
+        if explain_match and (
+            explain_at is None or explain_match.start() < explain_at
+        ):
+            explain_at = explain_match.start()
+    if review_at is not None and explain_at is not None:
+        return TASK_EXPLAIN if explain_at < review_at else TASK_REVIEW
+    if review_at is not None:
         return TASK_REVIEW
-    if _REVIEW_RE.search(text):
-        return TASK_REVIEW
-    if any(pattern.search(text) for pattern in _EXPLAIN_RES):
+    if explain_at is not None:
         return TASK_EXPLAIN
     return TASK_GENERATE
 

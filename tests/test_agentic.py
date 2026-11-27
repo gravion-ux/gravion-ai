@@ -62,6 +62,13 @@ def test_agentic_instantiates_and_answers():
         ("run the agent on this week's tickets", TASK_RUN),
         ("plan an agent that files our reports", TASK_PLAN),
         ("an agent for expense approvals", TASK_PLAN),
+        # Regression: build/run requests that did not open with
+        # the verb ("please build…", "build me…", "execute the
+        # agent…") fell through to planning.
+        ("please build an agent for my inbox", TASK_BUILD),
+        ("build me an agent that checks email", TASK_BUILD),
+        ("execute the agent on this task", TASK_RUN),
+        ("plan an agent that builds reports", TASK_PLAN),
     ],
 )
 def test_detect_task(prompt, expected):
@@ -76,6 +83,9 @@ def test_detect_task(prompt, expected):
          ["web search", "browser", "api"]),
         ("an agent that reads files and runs code", ["files", "code"]),
         ("an agent for expense approvals", []),
+        # Regression: negated tools were recorded as named tools.
+        ("use files only, no email and no browser", ["files"]),
+        ("no email, use the browser instead", ["browser"]),
     ],
 )
 def test_parse_tools(prompt, expected):
@@ -89,6 +99,14 @@ def test_parse_tools(prompt, expected):
          ["check inbox", "draft replies", "send summary"]),
         ("step: review the queue", ["review the queue"]),
         ("an agent for expense approvals", []),
+        # Regression: semicolon lists stayed one step, a trailing
+        # sentence joined the last step, and "footsteps:" matched
+        # the steps marker.
+        ("steps: check inbox; draft replies; send summary",
+         ["check inbox", "draft replies", "send summary"]),
+        ("steps: check inbox, draft replies. Also be quick",
+         ["check inbox", "draft replies"]),
+        ("follow my footsteps: one, two", []),
     ],
 )
 def test_parse_steps(prompt, expected):

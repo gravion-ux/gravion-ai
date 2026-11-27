@@ -124,6 +124,10 @@ def test_escalation_phrases_inside_other_words_do_not_escalate(prompt):
         "my password manager is broken",
         "the user agent string looks wrong",
         "what is human readable format?",
+        # Regression: job-title topic phrases escalated customers
+        # asking about a role, not requesting a person.
+        "who is the product manager for this plan?",
+        "can a travel agent book this for me?",
         "do not escalate, just answer my question",
         "no human needed, what are your hours?",
         "you can call me Priyanshu",

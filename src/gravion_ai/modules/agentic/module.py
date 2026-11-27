@@ -105,15 +105,44 @@ _TOOLS = (
     "api",
 )
 
-_STEPS_RE = re.compile(r"steps?\s*:\s*(.+)", re.IGNORECASE)
+_STEPS_RE = re.compile(r"\bsteps?\s*:\s*(.+)", re.IGNORECASE)
+
+# A build/run request need not open with the verb: "please build
+# an agent…", "build me an agent…" and "execute the agent…" ask
+# for the same tasks as the prefix forms. The agent must be the
+# verb's object, so "plan an agent that builds reports" stays a
+# plan.
+_BUILD_AGENT_RE = re.compile(
+    r"\b(?:build|create|make)\s+(?:me\s+)?(?:an?\s+)?agent\b"
+)
+_RUN_AGENT_RE = re.compile(
+    r"\b(?:run|execute)\s+(?:the\s+|an?\s+)?agent\b"
+)
+
+# A negated tool ("no email", "without a browser") is a tool the
+# request rules out, not one it names. A negator cancels a tool
+# only when it governs it: same clause (commas break clauses)
+# and within the few words immediately before the tool name.
+_TOOL_NEGATOR_RE = re.compile(r"(?:\bno\b|\bnot\b|\bnever\b|\bwithout\b|n't\b)")
+_CLAUSE_BREAKS = ".!?;,"
+
+
+def _tool_negated(text: str, match_start: int) -> bool:
+    clause_start = (
+        max(text.rfind(break_char, 0, match_start) for break_char in _CLAUSE_BREAKS)
+        + 1
+    )
+    words = text[clause_start:match_start].split()
+    tail = " ".join(words[-3:])
+    return bool(tail) and _TOOL_NEGATOR_RE.search(tail) is not None
 
 
 def detect_task(prompt: str) -> str:
     """Classify an agentic prompt as plan / build / run."""
     text = prompt.strip().lower()
-    if text.startswith(_BUILD_PREFIXES):
+    if text.startswith(_BUILD_PREFIXES) or _BUILD_AGENT_RE.search(text):
         return TASK_BUILD
-    if text.startswith(_RUN_PREFIXES):
+    if text.startswith(_RUN_PREFIXES) or _RUN_AGENT_RE.search(text):
         return TASK_RUN
     return TASK_PLAN
 
@@ -121,11 +150,13 @@ def detect_task(prompt: str) -> str:
 def parse_tools(prompt: str) -> list[str]:
     """Collect the tools the request names, in vocabulary order."""
     text = prompt.lower()
-    return [
-        tool
-        for tool in _TOOLS
-        if re.search(rf"\b{re.escape(tool)}\b", text)
-    ]
+    tools: list[str] = []
+    for tool in _TOOLS:
+        for match in re.finditer(rf"\b{re.escape(tool)}\b", text):
+            if not _tool_negated(text, match.start()):
+                tools.append(tool)
+                break
+    return tools
 
 
 def parse_steps(prompt: str) -> list[str]:
@@ -138,7 +169,17 @@ def parse_steps(prompt: str) -> list[str]:
     match = _STEPS_RE.search(prompt)
     if not match:
         return []
-    steps = [part.strip() for part in match.group(1).split(",")]
+    # Steps separate on semicolons as well as commas, and a new
+    # sentence after the list ("steps: a, b. Also be quick") is
+    # not part of the last step.
+    listing = match.group(1)
+    sentence = re.search(r"\.\s+(?=[A-Z])", listing)
+    if sentence:
+        listing = listing[: sentence.start()]
+    steps = [
+        part.strip().rstrip(".")
+        for part in re.split(r"[;,]", listing)
+    ]
     return [step for step in steps if step]
 
 

@@ -80,6 +80,14 @@ def test_detect_mode(prompt, expected):
         ("an agency site for our studio", "agency"),
         ("a saas marketing site", "product"),
         ("a website for our bakery", None),
+        # Regression: keywords used to match as substrings, so a
+        # "workshop" became an online store and "happy" /
+        # "application" became a product site via "app".
+        ("build a site for my woodworking workshop", None),
+        ("build a happy birthday site", None),
+        ("build a job application tracker site", None),
+        ("a shop for our merch", "online store"),
+        ("a website for our app", "product"),
     ],
 )
 def test_parse_site_type(prompt, expected):
@@ -95,6 +103,14 @@ def test_parse_site_type(prompt, expected):
          ["home", "pricing", "contact"]),
         ("a site with an about page", ["home", "about"]),
         ("a website for our bakery", ["home"]),
+        # Regression: a trailing "with …" style clause became a
+        # page named "about-with-a-dark-style".
+        ("build a site, pages: home, about with a dark style",
+         ["home", "about"]),
+        # "about us" / "contact us" name the about and contact
+        # pages.
+        ("build a site with an about us page and contact us page",
+         ["home", "about", "contact"]),
     ],
 )
 def test_parse_pages(prompt, expected):
@@ -110,6 +126,9 @@ def test_parse_pages(prompt, expected):
         ("a bold agency site", "bold"),
         ("a modern website for our app", "modern"),
         ("a website for our bakery", None),
+        # Regression: "light" inside "slight" read as a light
+        # style request.
+        ("a slight variation of the design", None),
     ],
 )
 def test_parse_style(prompt, expected):
