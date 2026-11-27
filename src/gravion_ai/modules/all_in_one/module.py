@@ -185,6 +185,16 @@ _QUESTION_MARKER_RE = re.compile(r"^\s*question\s*:", re.IGNORECASE | re.MULTILI
 _QUERY_MARKER_RE = re.compile(r"^\s*query\s*:", re.IGNORECASE | re.MULTILINE)
 _PASSAGE_MARKER_RE = re.compile(r"^\s*passage\s*:", re.IGNORECASE | re.MULTILINE)
 _SUMMARIZE_PREFIX_RE = re.compile(r"^\s*summar(?:ize|ise)\s*:", re.IGNORECASE)
+# The translation module documents leading "translate:" and
+# "translate to/into/in hindi|english:" forms; without a
+# decisive check here they scored one intent point and fell
+# through to chat, so the module's own input format could
+# never reach it through the all-in-one package. The prompt
+# is routed unchanged, exactly as the module expects it.
+_TRANSLATE_PREFIX_RE = re.compile(
+    r"^\s*translate\s*(?::|\s+(?:to|into|in)\s+(?:hindi|english)\s*:)",
+    re.IGNORECASE,
+)
 
 
 def infer_route(prompt: str) -> str:
@@ -195,8 +205,8 @@ def infer_route(prompt: str) -> str:
     fence is a decisive coder signal and a CVE id is a decisive
     cyber signal on its own; the documented ``document:`` /
     ``question:`` and ``query:`` / ``passage:`` marker pairs and
-    a leading ``summarize:`` are likewise decisive for their
-    text modules.
+    a leading ``summarize:`` or ``translate:`` are likewise
+    decisive for their text modules.
     """
     if "```" in prompt:
         return "coder"
@@ -208,6 +218,8 @@ def infer_route(prompt: str) -> str:
         return "retrieval"
     if _SUMMARIZE_PREFIX_RE.match(prompt):
         return "summarization"
+    if _TRANSLATE_PREFIX_RE.match(prompt):
+        return "translation"
     tokens = frozenset(_TOKEN_RE.findall(prompt.lower()))
     scores: dict[str, int] = {}
     for name, (verbs, nouns) in _INTENT_SIGNALS.items():

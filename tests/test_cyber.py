@@ -140,6 +140,36 @@ def test_extract_indicators_rejects_fragments_and_strips_punctuation():
     ]
 
 
+def test_extract_indicators_ipv6_validates_and_normalises():
+    # IPv6 addresses are recorded in compressed form and
+    # deduplicated across spellings; lookalikes sharing the
+    # colon-hex shape (MAC addresses, clock readings, overlong
+    # groups) record nothing.
+    indicators = extract_indicators(
+        "hosts 2001:db8::1 and 2001:0db8:0000:0000:0000:ff00:0042:8329 "
+        "plus loopback ::1 and mapped ::ffff:192.0.2.1"
+    )
+    assert indicators["ipv6"] == [
+        "2001:db8::1",
+        "2001:db8::ff00:42:8329",
+        "::1",
+        "::ffff:c000:201",
+    ]
+    assert extract_indicators("2001:0db8::1 then 2001:db8::1")["ipv6"] == [
+        "2001:db8::1"
+    ]
+    assert extract_indicators("traffic from 2001:db8::1. Next")["ipv6"] == [
+        "2001:db8::1"
+    ]
+    assert "ipv6" not in extract_indicators("mac aa:bb:cc:dd:ee:ff seen")
+    assert "ipv6" not in extract_indicators("at 1:05:30 values")
+    assert "ipv6" not in extract_indicators("bad 12345::1 here")
+    # A triage verb aimed at an IPv6 indicator is triage; a
+    # determiner before "report" still marks the noun.
+    assert detect_task("triage 2001:db8::1") == TASK_TRIAGE
+    assert detect_task("the report mentions 2001:db8::1") == TASK_ANALYSE
+
+
 def test_extract_indicators_hash_lengths_do_not_overlap():
     # MD5 and SHA-1 hashes are recorded under their own kinds,
     # and no shorter pattern matches inside a longer hash.

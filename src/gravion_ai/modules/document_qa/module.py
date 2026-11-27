@@ -63,9 +63,20 @@ def parse_document_prompt(prompt: str) -> tuple[str, str] | None:
         prompt,
         re.IGNORECASE | re.DOTALL,
     )
-    if not doc_match:
+    if doc_match:
+        return doc_match.group(1).strip(), doc_match.group(2).strip()
+    # The question may come first ("question: ... document:
+    # ..."): the all-in-one router treats the marker pair as
+    # decisive in either order, so refusing the reversed form
+    # here silently dropped a routed request to chat.
+    reversed_match = re.search(
+        r"question\s*:\s*(.+?)\s*document\s*:\s*(.+)",
+        prompt,
+        re.IGNORECASE | re.DOTALL,
+    )
+    if not reversed_match:
         return None
-    return doc_match.group(1).strip(), doc_match.group(2).strip()
+    return reversed_match.group(2).strip(), reversed_match.group(1).strip()
 
 
 class DocumentQAModule:

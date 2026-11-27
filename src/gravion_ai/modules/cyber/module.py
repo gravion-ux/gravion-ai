@@ -26,9 +26,10 @@ and adding deterministic logic of its own:
 2. **Indicator extraction.** Indicators of compromise named in the
    request are extracted deterministically and recorded in the
    brief, so the model works from the exact artefacts instead of
-   paraphrase: CVE ids, IPv4 addresses (octet-validated), SHA-256,
-   SHA-1 and MD5 hashes and URLs, each deduplicated in request
-   order. A stated severity ("severity: high") is recorded
+   paraphrase: CVE ids, IPv4 addresses (octet-validated), IPv6
+   addresses (validated and recorded in compressed form),
+   SHA-256, SHA-1 and MD5 hashes and URLs, each deduplicated in
+   request order. A stated severity ("severity: high") is recorded
    verbatim; an unstated one is recorded as not stated rather
    than guessed.
 
@@ -44,6 +45,7 @@ of silently answering with the wrong model.
 
 from __future__ import annotations
 
+import ipaddress
 import re
 
 from ...registry import ModuleContext, ModuleManifest
@@ -111,6 +113,19 @@ _CVE_RE = re.compile(r"(?<!\d)CVE-\d{4}-\d{4,}(?!\d)", re.IGNORECASE)
 _IPV4_RE = re.compile(
     r"(?<!\d)(?<!\d\.)(?<![A-Za-z])\d{1,3}(?:\.\d{1,3}){3}(?!\d)(?!\.\d)"
 )
+# An IPv6 candidate is a colon-hex sequence (full, "::"-compressed
+# or IPv4-embedded); the guards keep a window inside a longer
+# hex/colon run from matching in part while still allowing
+# sentence punctuation after a real address. Candidates are
+# validated with ipaddress before recording, so lookalikes that
+# share the shape — clock readings ("1:05:30"), MAC addresses
+# ("aa:bb:cc:dd:ee:ff") — record nothing.
+_IPV6_RE = re.compile(
+    r"(?<![0-9A-Fa-f:.])"
+    r"(?:[0-9A-Fa-f]{0,4}:){2,7}"
+    r"(?:[0-9A-Fa-f]{0,4}|(?:\d{1,3}\.){3}\d{1,3})"
+    r"(?![0-9A-Fa-f:])(?!\.\d)"
+)
 _SHA256_RE = re.compile(r"\b[0-9a-fA-F]{64}\b")
 # The word-boundary guards keep a shorter hash pattern from
 # matching inside a longer hash: a 64-hex SHA-256 yields no
@@ -174,6 +189,7 @@ _ITEM = r"(?:this|the|that|incident|finding|alert|issue|vulnerability|event)"
 # so the hash form needs no case flag.
 _INDICATOR_HINT = (
     r"(?:cve-\d{4}-\d{4,}|(?<![a-z])\d{1,3}(?:\.\d{1,3}){3}"
+    r"|[0-9a-f]{0,4}::[0-9a-f:]*|(?:[0-9a-f]{1,4}:){4,}[0-9a-f]{1,4}"
     r"|[0-9a-f]{64}|[0-9a-f]{40}|[0-9a-f]{32}|https?://\S+)"
 )
 # "Report" and "triage" are nouns as often as verbs: "the report
@@ -222,6 +238,14 @@ def _valid_ipv4(candidate: str) -> bool:
     return all(0 <= int(octet) <= 255 for octet in candidate.split("."))
 
 
+def _normalised_ipv6(candidate: str) -> str | None:
+    """Compressed form of a valid IPv6 candidate, else None."""
+    try:
+        return ipaddress.IPv6Address(candidate).compressed
+    except ValueError:
+        return None
+
+
 def _clean_url(url: str) -> str:
     """Trim sentence punctuation glued to a URL match.
 
@@ -243,10 +267,11 @@ def extract_indicators(prompt: str) -> dict[str, list[str]]:
     """Extract the indicators named in the request, by kind.
 
     Deterministic and conservative: CVE ids (normalised to upper
-    case), IPv4 addresses whose octets are all valid, SHA-256,
-    SHA-1 and MD5 hashes (normalised to lower case) and URLs —
-    each deduplicated in request order. Kinds with no matches
-    are omitted.
+    case), IPv4 addresses whose octets are all valid, IPv6
+    addresses (validated, normalised to compressed form),
+    SHA-256, SHA-1 and MD5 hashes (normalised to lower case) and
+    URLs — each deduplicated in request order. Kinds with no
+    matches are omitted.
     """
     indicators: dict[str, list[str]] = {}
 
@@ -262,6 +287,14 @@ def extract_indicators(prompt: str) -> dict[str, list[str]]:
     collect(
         "ipv4",
         [m.group(0) for m in _IPV4_RE.finditer(prompt) if _valid_ipv4(m.group(0))],
+    )
+    collect(
+        "ipv6",
+        [
+            normalised
+            for m in _IPV6_RE.finditer(prompt)
+            if (normalised := _normalised_ipv6(m.group(0))) is not None
+        ],
     )
     collect("sha256", [m.group(0).lower() for m in _SHA256_RE.finditer(prompt)])
     collect("sha1", [m.group(0).lower() for m in _SHA1_RE.finditer(prompt)])

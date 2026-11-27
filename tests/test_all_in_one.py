@@ -116,6 +116,13 @@ def test_parse_route_infers_clear_intent(prompt, expected_module):
             "retrieval",
         ),
         ("summarize: Cats sleep for long hours each day.", "summarization"),
+        # Regression: the translation module's own leading
+        # forms scored one intent point and fell through to
+        # chat, so its documented input format could never
+        # reach it through the all-in-one package.
+        ("translate: hello", "translation"),
+        ("translate to hindi: hello", "translation"),
+        ("translate into english: namaste", "translation"),
     ],
 )
 def test_parse_route_structural_markers_are_decisive(prompt, expected_module):

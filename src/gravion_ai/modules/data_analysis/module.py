@@ -136,6 +136,15 @@ def _blank_clock_time(match: re.Match[str]) -> str:
         return " "
     return match.group(0)
 
+# An ordinal ("1st", "2nd", "21st") is a rank label, not a
+# measurement: left in place, "ranked 1st, 2nd and 3rd with
+# scores 10 20 30" counted the ranks as values and skewed every
+# statistic. Ordinals are blanked out before parsing, like the
+# date and clock labels above; the letter guard mirrors the
+# number pattern's, so digits glued inside a word are untouched
+# either way.
+_ORDINAL_RE = re.compile(r"(?<![0-9A-Za-z])\d+(?:st|nd|rd|th)\b", re.IGNORECASE)
+
 # Machine literals ("0xFF", "0b101", "0o17") are code, not
 # decimal measurements: left in place, "0x10" read as the
 # phantom value 0. They are blanked out before parsing, like
@@ -179,6 +188,7 @@ def parse_numbers(prompt: str) -> list[float]:
     cleaned = _DAY_FIRST_DATE_RE.sub(_blank_month_name_date, cleaned)
     cleaned = _MONTH_FIRST_DATE_RE.sub(_blank_month_name_date, cleaned)
     cleaned = _CLOCK_TIME_RE.sub(_blank_clock_time, cleaned)
+    cleaned = _ORDINAL_RE.sub(" ", cleaned)
     cleaned = _DOTTED_SEQUENCE_RE.sub(" ", cleaned)
     cleaned = _MIXED_FRACTION_RE.sub(_fold_mixed_fraction, cleaned)
     cleaned = _FRACTION_RE.sub(_fold_fraction, cleaned)

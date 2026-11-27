@@ -175,6 +175,20 @@ def test_parse_numbers_ignores_clock_times_and_month_name_dates():
     assert parse_numbers("32 Nov 2026 values 5 6 7") == [32.0, 2026.0, 5.0, 6.0, 7.0]
 
 
+def test_parse_numbers_ignores_ordinals_as_labels():
+    # Regression: rank labels beside real values were read as
+    # measurements, so "ranked 1st, 2nd and 3rd with scores
+    # 10 20 30" reported count 6 with the ranks skewing every
+    # statistic. Ordinals are labels like dates and clock
+    # times; an ordinal inside a month-name date stays a date,
+    # and plain values are untouched.
+    assert parse_numbers("ranked 1st, 2nd and 3rd with scores 10 20 30") == [10.0, 20.0, 30.0]
+    assert parse_numbers("finished 21st with 5 6 7") == [5.0, 6.0, 7.0]
+    assert parse_numbers("on 27th Nov 2026 values 1 2 3") == [1.0, 2.0, 3.0]
+    assert "Count: 3" in analyze(parse_numbers("ranked 1st with scores 10 20 30"))
+    assert parse_numbers("values 5 6 7") == [5.0, 6.0, 7.0]
+
+
 def test_summarization_never_repeats_a_sentence():
     # Regression: a repeated sentence inflated its own term
     # frequencies, so the summary could be that one sentence
@@ -271,6 +285,16 @@ def test_document_qa_quotes_evidence_and_admits_gaps():
         f"document: {document}\nquestion: when does the library open",
     )
     assert "opens at nine" in out2
+    # Regression: the question-first marker order routed to
+    # document-qa through the all-in-one package but the
+    # parser only accepted document-first, so the routed
+    # request silently fell through to chat.
+    out3 = _run(
+        "document-qa",
+        "gravion-docqa",
+        f"question: when does the library open\ndocument: {document}",
+    )
+    assert "opens at nine" in out3
 
 
 def test_stem_word_matches_irregular_sis_plurals():
