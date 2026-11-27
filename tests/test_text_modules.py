@@ -1225,6 +1225,40 @@ def test_stem_word_matches_degree_and_adverb_forms():
     assert "runs faster" in out
 
 
+def test_stem_word_matches_suppletive_comparatives():
+    # Regression: suppletive comparatives share no stem with
+    # their base ("better" landed on "bet", "worse" stayed
+    # apart from "bad"), so a base-form question matched no
+    # document sentence in a comparative form and document
+    # Q&A reported no answer. Positional -er words keep
+    # their form instead of landing on "form"/"in"/"up".
+    assert stem_word("better") == stem_word("good") == "good"
+    assert stem_word("best") == "good"
+    assert stem_word("worse") == stem_word("bad") == "bad"
+    assert stem_word("worst") == "bad"
+    assert stem_word("farther") == stem_word("far") == "far"
+    assert stem_word("furthest") == "far"
+    assert stem_word("elder") == stem_word("old") == "old"
+    assert stem_word("eldest") == "old"
+    assert stem_word("less") == stem_word("little") == "little"
+    assert stem_word("least") == "little"
+    assert stem_word("former") == "former"
+    assert stem_word("latter") == "latter"
+    assert stem_word("inner") == "inner"
+    assert stem_word("outer") == "outer"
+    assert stem_word("upper") == "upper"
+    out = answer_question(
+        "She is better at chess than him. He plays football daily.",
+        "who is good at chess",
+    )
+    assert "better at chess" in out
+    out = answer_question(
+        "This is the worst result so far. Other results were fine.",
+        "what is the bad result",
+    )
+    assert "worst result" in out
+
+
 def test_summarize_skips_near_duplicate_sentences():
     # Regression: top-scored sentences restated one point
     # ("Cats sleep." / "Cats sleep a lot.") while a distinct

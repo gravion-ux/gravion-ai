@@ -451,6 +451,19 @@ def test_hinglish_and_transfer_requests_escalate():
     assert not needs_human("what is the call back number")
     assert not needs_human("change my callback number")
     assert not needs_human("don't transfer me to an agent")
+    # Regression: the callback asked for by its bare noun
+    # ("callback please", "callback chahiye") and the call
+    # asked for in Roman Hindi ("mujhe call karo") never
+    # escalated, while the declined forms stay declined.
+    assert needs_human("callback please")
+    assert needs_human("callback chahiye")
+    assert needs_human("phone call please")
+    assert needs_human("mujhe call karo")
+    assert needs_human("call kar do please")
+    assert needs_human("manushya chahiye")
+    assert needs_human("manushya se baat karni hai")
+    assert not needs_human("callback nahi chahiye")
+    assert not needs_human("call mat karo")
 
 
 def test_bot_rejection_and_call_centre_escalate():

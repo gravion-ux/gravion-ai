@@ -587,6 +587,31 @@ _IRREGULAR_STEMS = {
     "focused": "focus",
     "busing": "bus",
     "bused": "bus",
+    # Suppletive comparatives and superlatives no suffix rule
+    # derives: "better"/"best" share no stem with "good" (the
+    # degree rule landed "better" on "bet", a form no base
+    # produces), "worse"/"worst" none with "bad", the
+    # far/further set none with "far", "elder"/"eldest" none
+    # with "old", and "less"/"least" none with "little":
+    # without them "who is good at chess?" missed "she is
+    # better at chess" and document Q&A wrongly reported no
+    # answer. "More"/"most" stay unmapped: they serve both
+    # "much" and "many", and no context-free map can hold
+    # both.
+    "better": "good",
+    "best": "good",
+    "bettering": "good",
+    "bettered": "good",
+    "worse": "bad",
+    "worst": "bad",
+    "farther": "far",
+    "farthest": "far",
+    "further": "far",
+    "furthest": "far",
+    "elder": "old",
+    "eldest": "old",
+    "less": "little",
+    "least": "little",
 }
 
 
@@ -714,6 +739,14 @@ _DEGREE_EXCEPTIONS = frozenset(
     "member remember order offer suffer differ cover flower "
     "tower power shower answer winter summer dinner family reply "
     "apply supply rely imply multiply july only early likely "
+    # "Former"/"latter" and the positional "inner"/"outer"/
+    # "upper" carry their -er as part of the word, not as a
+    # comparative of "form"/"late"/"in"/"out"/"up": stripping
+    # it landed "former" on "form", so a question about a
+    # form matched a document about a former president.
+    # "Another" likewise keeps its form instead of the
+    # orphan stem "anoth".
+    "former latter inner outer upper another "
     "lonely lovely friendly silly holy ugly".split()
 )
 

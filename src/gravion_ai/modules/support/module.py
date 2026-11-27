@@ -103,6 +103,26 @@ ESCALATION_PHRASES = (
     "aadmi chahiye",
     "insaan ko bulao",
     "aadmi ko bulao",
+    # The formal word for a person asks the same way
+    # ("manushya chahiye"): with only insaan/aadmi listed,
+    # that customer was answered by the bot instead.
+    "manushya se baat",
+    "manushya chahiye",
+    # The callback asked for by its bare noun with a request
+    # word ("callback please", "callback chahiye") and the
+    # call asked for in Roman Hindi ("mujhe call karo",
+    # "call kar do") request the same phone call as
+    # "request a callback": only the "a callback" form
+    # matched, so those customers were answered by the bot
+    # instead of handed over. The callback number itself
+    # stays a topic phrase above, and a Hindi negator after
+    # the phrase ("callback nahi chahiye" breaks the phrase,
+    # "call mat karo" never contains it) still declines.
+    "callback please",
+    "callback chahiye",
+    "phone call please",
+    "call karo",
+    "call kar do",
 )
 
 ESCALATION_RESPONSE = (
