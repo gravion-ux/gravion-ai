@@ -495,3 +495,29 @@ def test_extract_indicators_records_email_addresses():
     # named indicator.
     assert detect_task("triage admin@evil.example.com") == TASK_TRIAGE
     assert detect_task("report admin@evil.example.com") == TASK_REPORT
+
+
+def test_triage_verbs_and_writeup_shapes_detect():
+    # Regression: the triage decision arrived by its own
+    # verbs (prioritise, dismiss, mark as false positive)
+    # and the report ask by its write-up spellings, yet
+    # every one fell through to analysis; plural items
+    # ("triage these alerts") fell through the same way.
+    assert detect_task("prioritise this alert") == TASK_TRIAGE
+    assert detect_task("rank these alerts") == TASK_TRIAGE
+    assert detect_task("escalate this incident") == TASK_TRIAGE
+    assert detect_task("dismiss this alert") == TASK_TRIAGE
+    assert detect_task("close this alert") == TASK_TRIAGE
+    assert detect_task("assign this alert to me") == TASK_TRIAGE
+    assert detect_task("mark this as a false positive") == TASK_TRIAGE
+    assert detect_task("is this a false positive?") == TASK_TRIAGE
+    assert detect_task("triage these alerts") == TASK_TRIAGE
+    assert detect_task("prepare a writeup of this finding") == TASK_REPORT
+    assert detect_task("writeup this alert") == TASK_REPORT
+    assert detect_task("write-up this incident") == TASK_REPORT
+    assert detect_task("document this finding") == TASK_REPORT
+    assert detect_task("file a ticket for this alert") == TASK_REPORT
+    # Negated verbs still rule their task out, and a
+    # priority question opening with "what" stays analysis.
+    assert detect_task("do not close this alert, analyse it") == TASK_ANALYSE
+    assert detect_task("what is the priority of this alert?") == TASK_ANALYSE

@@ -367,3 +367,25 @@ def test_team_requests_escalate_and_human_topics_do_not():
     assert not needs_human("how does the human body work?")
     assert not needs_human("human anatomy question: what is a femur?")
     assert needs_human("talk to a real human please")
+
+
+def test_hinglish_and_transfer_requests_escalate():
+    # Regression: a Hinglish customer asking for a person
+    # ("mujhe insaan se baat karni hai"), a callback asked
+    # for without the pronoun ("please call back") and a
+    # handoff asked for by its transfer verbs ("transfer
+    # me to billing") never escalated; a Hindi negator
+    # after the phrase ("human nahi chahiye") escalated a
+    # customer declining a human.
+    assert needs_human("mujhe insaan se baat karni hai")
+    assert needs_human("aadmi se baat karwao")
+    assert needs_human("transfer me to billing")
+    assert needs_human("put me through")
+    assert needs_human("please call back")
+    assert needs_human("ring back please")
+    assert needs_human("request a callback")
+    assert not needs_human("mujhe insaan se baat nahi karni")
+    assert not needs_human("human nahi chahiye")
+    assert not needs_human("what is the call back number")
+    assert not needs_human("change my callback number")
+    assert not needs_human("don't transfer me to an agent")

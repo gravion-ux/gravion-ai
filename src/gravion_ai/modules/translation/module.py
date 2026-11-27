@@ -41,6 +41,11 @@ PHRASES_EN_HI = {
     "congratulations": "badhai ho (बधाई हो)",
     "happy birthday": "janamdin mubarak (जन्मदिन मुबारक)",
     "best of luck": "shubhkamnayein (शुभकामनाएँ)",
+    "good luck": "shubhkamnayein (शुभकामनाएँ)",
+    "see you later": "phir milenge (फिर मिलेंगे)",
+    "goodbye": "alvida (अलविदा)",
+    "how much": "kitna (कितना)",
+    "where is": "kahan hai (कहाँ है)",
     "i agree": "main sahmat hoon (मैं सहमत हूँ)",
     "i disagree": "main sahmat nahi hoon (मैं सहमत नहीं हूँ)",
     "please wait": "kripya intezaar kijiye (कृपया इंतज़ार कीजिए)",
@@ -132,6 +137,17 @@ PHRASES_HI_EN = {
     "phir milenge": "see you again",
     "dhyaan se": "carefully",
     "jaldi karo": "hurry up",
+    "alvida": "goodbye",
+    "kitna": "how much",
+    "kahan hai": "where is",
+    # Devanagari spellings the derived entries below
+    # cannot reach: the book's own "good morning" carries
+    # सुप्रभात, so शुभ प्रभात needs its own entry, and
+    # कैसे हो / मेरा नाम are the short forms of the
+    # derived आप कैसे हैं / मेरा नाम है.
+    "शुभ प्रभात": "good morning",
+    "कैसे हो": "how are you",
+    "मेरा नाम": "my name is",
 }
 
 
@@ -205,6 +221,23 @@ _SAY_IN_HINDI_RE = re.compile(
 )
 _SAY_IN_ENGLISH_RE = re.compile(
     r"how do you say\s+(.+?)\s+in\s+english\b", re.IGNORECASE | re.DOTALL
+)
+# "What is hello in hindi?" and the bare "say hello in
+# hindi" name the text the same way: without these shapes
+# the request fell through to the model even when the
+# phrasebook covers the text exactly. Coverage-gated in
+# run() like the shapes above.
+_WHAT_IS_IN_HINDI_RE = re.compile(
+    r"(?:what is|what's)\s+(.+?)\s+in\s+hindi\b", re.IGNORECASE | re.DOTALL
+)
+_WHAT_IS_IN_ENGLISH_RE = re.compile(
+    r"(?:what is|what's)\s+(.+?)\s+in\s+english\b", re.IGNORECASE | re.DOTALL
+)
+_BARE_SAY_IN_HINDI_RE = re.compile(
+    r"\bsay\s+(.+?)\s+in\s+hindi\b", re.IGNORECASE | re.DOTALL
+)
+_BARE_SAY_IN_ENGLISH_RE = re.compile(
+    r"\bsay\s+(.+?)\s+in\s+english\b", re.IGNORECASE | re.DOTALL
 )
 
 
@@ -392,6 +425,18 @@ class TranslationModule:
         if match and _phrasebook_covers(match.group(1), to_hindi=True):
             return translate_phrase(match.group(1), to_hindi=True)
         match = _SAY_IN_ENGLISH_RE.search(prompt)
+        if match and _phrasebook_covers(match.group(1), to_hindi=False):
+            return translate_phrase(match.group(1), to_hindi=False)
+        match = _WHAT_IS_IN_HINDI_RE.search(prompt)
+        if match and _phrasebook_covers(match.group(1), to_hindi=True):
+            return translate_phrase(match.group(1), to_hindi=True)
+        match = _WHAT_IS_IN_ENGLISH_RE.search(prompt)
+        if match and _phrasebook_covers(match.group(1), to_hindi=False):
+            return translate_phrase(match.group(1), to_hindi=False)
+        match = _BARE_SAY_IN_HINDI_RE.search(prompt)
+        if match and _phrasebook_covers(match.group(1), to_hindi=True):
+            return translate_phrase(match.group(1), to_hindi=True)
+        match = _BARE_SAY_IN_ENGLISH_RE.search(prompt)
         if match and _phrasebook_covers(match.group(1), to_hindi=False):
             return translate_phrase(match.group(1), to_hindi=False)
         match = _TRANSLATE_RE.search(prompt)

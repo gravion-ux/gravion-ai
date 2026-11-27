@@ -278,8 +278,13 @@ _ANALYSE_OPENERS = (
 
 # A pronoun object aims the verb at the item under discussion
 # just as plainly as "this alert" does ("don't write a
-# report, just triage it" fell through to analysis).
-_ITEM = r"(?:this|the|that|it|them|incident|finding|alert|issue|vulnerability|event)"
+# report, just triage it" fell through to analysis). The
+# plural forms aim it the same way ("triage these alerts"
+# fell through to analysis with only the singulars listed).
+_ITEM = (
+    r"(?:this|the|that|these|those|it|them|incidents?|findings?"
+    r"|alerts?|issues?|vulnerabilit(?:y|ies)|events?)"
+)
 # A triage/report verb aimed straight at a named indicator
 # ("triage CVE-2026-12345", "report 10.0.0.8") targets an item
 # just as surely as one aimed at "this alert"; without this the
@@ -306,16 +311,40 @@ _NOUN_PREFIX = (
     r"(?<!their )(?<!his )(?<!her )(?<!my )(?<!your )(?<!our )"
 )
 _REPORT_RES = (
-    re.compile(r"\bwrite up\b"),
+    # The write-up noun in its joined spellings ("writeup
+    # this alert", "prepare a writeup of this finding")
+    # asks for the same report as "write up".
+    re.compile(r"\bwrite[- ]?up\b"),
     re.compile(
         r"\b(?:write|file|create|draft|prepare) (?:a|the|up)\b[^.?!]*\breport\b"
     ),
+    # Filing a ticket on an alert writes the finding up in
+    # the tracking system, and documenting a finding is
+    # the same write-up ask without the word "report":
+    # both fell through to analysis.
+    re.compile(
+        r"\b(?:file|create|open|raise) (?:a|the)\b[^.?!]*\bticket\b"
+    ),
+    re.compile(r"\bdocument (?:this|the|that)\b"),
     re.compile(_NOUN_PREFIX + r"(?<!triage )\breport\b[^.?!]*\b" + _ITEM + r"\b"),
     re.compile(_NOUN_PREFIX + r"(?<!triage )\breport\b[^.?!]*" + _INDICATOR_HINT),
 )
 _TRIAGE_RE = re.compile(_NOUN_PREFIX + r"\btriage\b[^.?!]*\b" + _ITEM + r"\b")
 _TRIAGE_INDICATOR_RE = re.compile(
     _NOUN_PREFIX + r"\btriage\b[^.?!]*" + _INDICATOR_HINT
+)
+# The triage decision arrives by its own verbs too:
+# prioritising, ranking, escalating, dismissing, closing or
+# assigning an alert, and marking or asking whether an item
+# is a false positive, all ask for the priority verdict
+# triage gives: without them they fell through to analysis.
+_TRIAGE_VERB_RES = (
+    re.compile(
+        r"\b(?:prioritise|prioritize|rank|escalate|dismiss|close|assign)\b"
+        r"[^.?!]*\b" + _ITEM + r"\b"
+    ),
+    re.compile(r"\bmark\b[^.?!]*\bfalse positive\b"),
+    re.compile(r"\b(?:is|are) (?:this|that|it)\b[^.?!]*\bfalse positive\b"),
 )
 
 # A negated task verb rules its task out, mirroring the agentic
@@ -359,7 +388,9 @@ def detect_task(prompt: str) -> str:
         return TASK_ANALYSE
     if _has_live_match(_REPORT_RES, text):
         return TASK_REPORT
-    if _has_live_match((_TRIAGE_RE, _TRIAGE_INDICATOR_RE), text):
+    if _has_live_match(
+        (_TRIAGE_RE, _TRIAGE_INDICATOR_RE) + _TRIAGE_VERB_RES, text
+    ):
         return TASK_TRIAGE
     return TASK_ANALYSE
 

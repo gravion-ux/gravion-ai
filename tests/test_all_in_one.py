@@ -311,3 +311,28 @@ def test_review_and_explain_code_requests_route_to_coder():
     assert infer_route("review the report") == "chat"
     assert infer_route("explain recursion") == "chat"
     assert infer_route("do not review this code") == "chat"
+
+
+def test_summary_text_and_media_signals_route():
+    # Regression: "give me a summary of this text" scored
+    # one summarization point, the translation module's
+    # what-is/say shapes scored one translation point, and
+    # sketch/animate/sing/site/sum requests each missed a
+    # verb or noun, so all fell through to chat.
+    assert infer_route("give me a summary of this text") == "summarization"
+    assert infer_route("summarize this text") == "summarization"
+    assert infer_route("what is hello in hindi?") == "translation"
+    assert infer_route("say hello in hindi") == "translation"
+    assert infer_route("sketch a portrait") == "image"
+    assert infer_route("illustrate a story") == "image"
+    assert infer_route("make a gif of a cat") == "video"
+    assert infer_route("sing a song about rain") == "music"
+    assert infer_route("build a site for a cafe") == "website-builder"
+    assert infer_route("calculate the sum of 2, 4, 6") == "data-analysis"
+    assert infer_route("what is the sum of 2, 4, 6?") == "data-analysis"
+    assert infer_route("calculate the total of 2, 4") == "data-analysis"
+    # "Sum up" asks for a summary, not a total, and a lone
+    # verb still cannot hijack a general request.
+    assert infer_route("sum up the meeting notes") == "chat"
+    assert infer_route("draw a cat") == "chat"
+    assert infer_route("animate a bouncing ball") == "chat"

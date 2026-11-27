@@ -71,6 +71,27 @@ ESCALATION_PHRASES = (
     # customers were answered by the bot instead.
     "phone me",
     "ring me",
+    # The callback asked for without the pronoun ("please
+    # call back", "request a callback") and the handoff
+    # asked for by its transfer verbs ("transfer me to
+    # billing", "put me through") request the same person:
+    # none of the phrases above matched, so the bot answered
+    # customers who had asked for the team. The callback
+    # number itself is a topic phrase below, not a request.
+    "call back",
+    "ring back",
+    "a callback",
+    "transfer me",
+    "put me through",
+    # The same request in Roman Hindi ("mujhe insaan se
+    # baat karni hai" — I want to talk to a human): the
+    # translation module covers Hinglish, so a Hinglish
+    # customer asking for a person was answered by the bot
+    # instead of handed over. A Hindi negator right after
+    # the phrase ("insaan se baat nahi karni") cancels it
+    # in _POSTPOSED_NEGATION_RE below.
+    "insaan se baat",
+    "aadmi se baat",
 )
 
 ESCALATION_RESPONSE = (
@@ -103,7 +124,10 @@ _TOPIC_PHRASES_RE = re.compile(
     r"user agent|ai agent|agent fee|agent fees|agent orange|"
     r"product manager|project manager|"
     r"account manager|travel agent|insurance agent|estate agent|"
-    r"sales representative)\b"
+    # A callback number is account data the grounding
+    # material holds ("change my callback number"), not a
+    # request for the call itself.
+    r"sales representative|call ?back number)\b"
 )
 
 # "Call me <Name>" introduces the customer; it is not a request for
@@ -172,6 +196,11 @@ _POSTPOSED_NEGATION_RE = re.compile(
     r"(?:needed|required|necessary|wanted)\b"
     r"|\s*(?:isn't|aren't|wasn't|weren't)\s+"
     r"(?:needed|required|necessary|wanted)\b"
+    # Hindi negation follows the phrase it cancels
+    # ("insaan se baat nahi karni", "human nahi chahiye"):
+    # without it a Hinglish customer declining a human was
+    # handed over anyway.
+    r"|\s+(?:nahi|nhi|nahin)\b"
 )
 
 

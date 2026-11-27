@@ -53,6 +53,25 @@ _ABBREVIATIONS = frozenset(
     "dept est inc ltd corp al cf ed eds gen sen rep "
     "gov sgt capt lt col maj rev hon ph.d m.d b.a m.a".split()
 )
+# Title abbreviations precede a name ("Dr. Smith", "St.
+# Louis"), so their dot never ends a sentence. The rest can
+# close one ("...in Washington D.C. He was happy.", "met at
+# 5 p.m. They talked."): treating every abbreviation dot as
+# mid-sentence glued those sentence pairs into one, so
+# summarization scored them as a single sentence and
+# document Q&A quoted both as one answer. A non-title
+# abbreviation dot ends the sentence when the next word is a
+# capitalised sentence starter; a capitalised continuation
+# ("The U.S.A. team", "Cats vs. Dogs") keeps it whole.
+_TITLE_ABBREVIATIONS = frozenset(
+    "dr mr mrs ms prof sr jr st gen sen rep gov sgt capt lt "
+    "col maj rev hon".split()
+)
+_SENTENCE_STARTERS = frozenset(
+    "he she it they we i the this that these those there here "
+    "however meanwhile then now in on at but and so after "
+    "before when while if as for with by from to".split()
+)
 # Abbreviations that only abbreviate before a number ("No. 5",
 # "Fig. 3", "Jan. 5", "approx. 5"): the same words end real
 # sentences ("he said no. Then...", "Pi is 3.14 approx. Cats
@@ -464,6 +483,75 @@ _IRREGULAR_STEMS = {
     "naked": "naked",
     "wicked": "wicked",
     "hatred": "hatred",
+    # The last common irregular past tenses and -en/-u
+    # participles the lists above missed ("lied" completes
+    # the died/tied set the -ied rule cannot reach, "arose"
+    # pairs with the listed "rose"), the remaining -sis and
+    # -mata classical plurals, and the possessive-plural
+    # spellings ("childrens", "mens") whose final-s stem
+    # ("children", "men") is a form the singular stem
+    # ("child", "man") never produces: without them "who
+    # did she lie to?" missed "she lied to him" and "when
+    # did the sun arise?" missed "the sun arose early", so
+    # document Q&A wrongly reported no answer.
+    "lied": "lie",
+    "arose": "arise",
+    "burnt": "burn",
+    "leant": "lean",
+    "leapt": "leap",
+    "learnt": "learn",
+    "spelt": "spell",
+    "drunk": "drink",
+    "sung": "sing",
+    "rung": "ring",
+    "sunk": "sink",
+    "fallen": "fall",
+    "forbidden": "forbid",
+    "swum": "swim",
+    "emphases": "emphasis",
+    "neuroses": "neurosis",
+    "psychoses": "psychosis",
+    "syntheses": "synthesis",
+    "metamorphoses": "metamorphosis",
+    "stigmata": "stigma",
+    "schemata": "schema",
+    "dogmata": "dogma",
+    "childrens": "child",
+    "mens": "man",
+    "womens": "woman",
+    "peoples": "person",
+    # -ce/-ge verbs whose stripped stem ends in a consonant
+    # cluster ("forc", "announc", "challeng") the
+    # e-restoration cannot tell from "hang", the same split
+    # "dancing"/"changing" above are listed for: without
+    # them a question about forcing missed a document about
+    # force.
+    "forcing": "force",
+    "forced": "force",
+    "announcing": "announce",
+    "announced": "announce",
+    "pronouncing": "pronounce",
+    "pronounced": "pronounce",
+    "enhancing": "enhance",
+    "enhanced": "enhance",
+    "advancing": "advance",
+    "advanced": "advance",
+    "financing": "finance",
+    "financed": "finance",
+    "balancing": "balance",
+    "balanced": "balance",
+    "glancing": "glance",
+    "glanced": "glance",
+    "convincing": "convince",
+    "convinced": "convince",
+    "experiencing": "experience",
+    "experienced": "experience",
+    "influencing": "influence",
+    "influenced": "influence",
+    "sentencing": "sentence",
+    "sentenced": "sentence",
+    "challenging": "challenge",
+    "challenged": "challenge",
 }
 
 
@@ -522,9 +610,23 @@ def _verb_stem(word: str) -> str | None:
     elif word.endswith("ed"):
         stem = word[:-2]
         if stem and stem[-1] in "aeiou":
-            return None
+            # A -ue verb drops its e before -ed ("argued",
+            # "issued"): the u-final stem regains it, where
+            # the other vowel-final stems ("seed", "need")
+            # are not verb forms and stay whole.
+            return stem + "e" if stem.endswith("u") else None
     if not stem or len(stem) < 2 or not any(c in "aeiouy" for c in stem):
         return None
+    # A -dge verb drops its e before -ing/-ed ("judging",
+    # "bridged") and a -ue verb drops it before -ing
+    # ("arguing", "rescuing"): both stems regain the e, or
+    # a question about judging missed a document about a
+    # judge and one about arguing missed a document about
+    # an argument's verb. No base ends in "dg" or a bare
+    # "u", so the restoration cannot mangle a real stem
+    # ("syncing" keeps its "sync").
+    if stem.endswith("dg") or stem.endswith("u"):
+        return stem + "e"
     if len(stem) >= 2 and stem[-1] == stem[-2] and stem[-1] not in "aeioulsz":
         return stem[:-1]
     if (
@@ -583,7 +685,7 @@ def _is_abbreviation_dot(text: str, index: int) -> bool:
         start -= 1
     word = text[start + 1 : index]
     lowered = word.lower()
-    if lowered in _ABBREVIATIONS:
+    if lowered in _TITLE_ABBREVIATIONS:
         return True
     # A single uppercase letter before the dot is a name initial;
     # check it before the numeric rule so "P. Smith" stays whole.
@@ -593,11 +695,27 @@ def _is_abbreviation_dot(text: str, index: int) -> bool:
         # "No. 5" abbreviates; "he said no. Then" ends a sentence.
         following = text[index + 1 :].lstrip()
         return bool(following) and following[0].isdigit()
-    # A dotted acronym of single letters ("U.S.A.") never ends a
-    # sentence mid-text, matching the listed "u.s"/"u.k" forms.
-    if "." in word and all(len(part) == 1 for part in word.split(".")):
-        return True
-    return False
+    # A dotted acronym of single letters ("U.S.A.") behaves
+    # like the listed "u.s"/"u.k" forms below.
+    is_abbreviation = lowered in _ABBREVIATIONS or (
+        "." in word and all(len(part) == 1 for part in word.split("."))
+    )
+    if not is_abbreviation:
+        return False
+    # A non-title abbreviation can close a sentence: its dot
+    # is a boundary when a capitalised sentence starter
+    # follows ("D.C. He...", "5 p.m. They..."), and stays an
+    # abbreviation dot before a lowercase or capitalised
+    # continuation ("U.S.A. team", "vs. Dogs").
+    following = text[index + 1 :].lstrip(" \t\r\n\"'“”‘’")
+    next_word = re.match(r"[A-Za-z]+", following)
+    if (
+        next_word
+        and next_word.group(0)[0].isupper()
+        and next_word.group(0).lower() in _SENTENCE_STARTERS
+    ):
+        return False
+    return True
 
 
 def split_sentences(text: str) -> list[str]:

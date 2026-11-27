@@ -287,3 +287,21 @@ def test_algorithm_and_method_objects_detect_as_supplied_code():
     # Generation openers still win over the objects they name.
     assert detect_task("write a function to sort a list") == TASK_GENERATE
     assert detect_task("explain code review process") == TASK_EXPLAIN
+
+
+def test_error_and_wrong_output_shapes_detect_as_supplied_code():
+    # Regression: an error was not an explain object and a
+    # wrong-behaviour statement named no review signal, so
+    # "can you explain the error?" and "this code gives the
+    # wrong output" fell through to generation.
+    assert detect_task("can you explain the error?") == TASK_EXPLAIN
+    assert detect_task("why am I getting this error?") == TASK_EXPLAIN
+    assert detect_task("help me understand this code") == TASK_EXPLAIN
+    assert detect_task("break down this function") == TASK_EXPLAIN
+    assert detect_task("walk through the error") == TASK_EXPLAIN
+    assert detect_task("why does this return None?") == TASK_EXPLAIN
+    assert detect_task("this code gives the wrong output") == TASK_REVIEW
+    assert detect_task("what is wrong with this output?") == TASK_REVIEW
+    assert detect_task("this script returns None instead of a list") == TASK_REVIEW
+    # A negated explanation still does not count.
+    assert detect_task("do not explain the error, fix it") == TASK_GENERATE

@@ -93,6 +93,39 @@ def test_translation_module_paths():
     assert "how do you say a greeting in hindi" in say_guidance
 
 
+def test_translation_what_is_and_bare_say_shapes():
+    # Regression: "what is hello in hindi?" and "say hello
+    # in hindi" name their text like the say-in-language
+    # shape, but no pattern matched them, so covered text
+    # fell through to the model; "goodbye"/"good luck"/
+    # "see you later" and the Devanagari short forms were
+    # missing from the book entirely.
+    assert "namaste" in _run(
+        "translation", "gravion-translate", "what is hello in hindi?"
+    )
+    assert "dhanyavaad" in _run(
+        "translation", "gravion-translate", "what's thank you in hindi"
+    )
+    assert _run(
+        "translation", "gravion-translate", "what is shukriya in english?"
+    ) == "thank you"
+    assert "namaste" in _run(
+        "translation", "gravion-translate", "say hello in hindi"
+    )
+    assert "alvida" in translate_phrase("goodbye", to_hindi=True)
+    assert translate_phrase("alvida", to_hindi=False) == "goodbye"
+    assert "shubhkamnayein" in translate_phrase("good luck", to_hindi=True)
+    assert "phir milenge" in translate_phrase("see you later", to_hindi=True)
+    assert translate_phrase("शुभ प्रभात", to_hindi=False) == "good morning"
+    assert translate_phrase("कैसे हो", to_hindi=False) == "how are you"
+    assert translate_phrase("मेरा नाम", to_hindi=False) == "my name is"
+    # A description stays with the resolved model.
+    guidance = _run(
+        "translation", "gravion-translate", "what is a greeting in hindi?"
+    )
+    assert "outside my Gravion phrasebook" not in guidance
+
+
 def test_translation_accepts_devanagari_hindi_input():
     # Regression: normalisation stripped the Devanagari
     # block, so covered Hindi input ("धन्यवाद") erased to
@@ -563,6 +596,92 @@ def test_stem_word_matches_regular_verb_forms():
     assert stem_word("seed") == "seed"
     assert stem_word("during") == "during"
     assert stem_word("hundred") == "hundred"
+
+
+def test_stem_word_matches_remaining_irregulars_and_e_verbs():
+    # Regression: "lied"/"arose"/"burnt" and the -u
+    # participles stayed split from their bases, the -sis
+    # and -mata plurals landed on stems no singular
+    # produces, possessive plurals ("childrens") stemmed
+    # to the plural stem, and -dge/-ue/-ce verbs lost
+    # their e ("judging" -> "judg", "arguing" -> "argu",
+    # "forcing" -> "forc"), so base-form questions missed
+    # derived-form evidence.
+    assert stem_word("lied") == stem_word("lie") == "lie"
+    assert stem_word("arose") == stem_word("arise") == "arise"
+    assert stem_word("burnt") == stem_word("burn") == "burn"
+    assert stem_word("leapt") == stem_word("leap") == "leap"
+    assert stem_word("learnt") == stem_word("learn") == "learn"
+    assert stem_word("drunk") == stem_word("drink") == "drink"
+    assert stem_word("sung") == stem_word("sing") == "sing"
+    assert stem_word("fallen") == stem_word("fall") == "fall"
+    assert stem_word("forbidden") == stem_word("forbid") == "forbid"
+    assert stem_word("swum") == stem_word("swim") == "swim"
+    assert stem_word("emphases") == stem_word("emphasis") == "emphasis"
+    assert stem_word("syntheses") == stem_word("synthesis") == "synthesis"
+    assert stem_word("stigmata") == stem_word("stigma") == "stigma"
+    assert stem_word("schemata") == stem_word("schema") == "schema"
+    assert stem_word("childrens") == stem_word("child") == "child"
+    assert stem_word("mens") == stem_word("man") == "man"
+    assert stem_word("womens") == stem_word("woman") == "woman"
+    assert stem_word("judging") == stem_word("judge") == "judge"
+    assert stem_word("judged") == stem_word("judge") == "judge"
+    assert stem_word("bridging") == stem_word("bridge") == "bridge"
+    assert stem_word("arguing") == stem_word("argue") == "argue"
+    assert stem_word("argued") == stem_word("argue") == "argue"
+    assert stem_word("rescuing") == stem_word("rescue") == "rescue"
+    assert stem_word("issued") == stem_word("issue") == "issue"
+    assert stem_word("forcing") == stem_word("force") == "force"
+    assert stem_word("announcing") == stem_word("announce") == "announce"
+    assert stem_word("challenging") == stem_word("challenge") == "challenge"
+    # Bases the e-restoration must not mangle.
+    assert stem_word("hanging") == stem_word("hang") == "hang"
+    assert stem_word("syncing") == stem_word("sync") == "sync"
+    out = answer_question(
+        "She lied to him yesterday. He left early.",
+        "Who did she lie to?",
+    )
+    assert "lied to him" in out
+    out = answer_question(
+        "The sun arose early. Birds chirped.",
+        "When did the sun arise?",
+    )
+    assert "arose early" in out
+
+
+def test_split_sentences_splits_after_sentence_final_abbreviations():
+    # Regression: every abbreviation dot counted as
+    # mid-sentence, so "Washington D.C. He was happy." and
+    # "met at 5 p.m. They talked." read as one sentence.
+    assert split_sentences("Dr. Smith went to Washington D.C. He was happy.") == [
+        "Dr. Smith went to Washington D.C.",
+        "He was happy.",
+    ]
+    assert split_sentences("Mr. Jones met at 5 p.m. They talked.") == [
+        "Mr. Jones met at 5 p.m.",
+        "They talked.",
+    ]
+    assert split_sentences("He moved to the U.S. The weather was warm.") == [
+        "He moved to the U.S.",
+        "The weather was warm.",
+    ]
+    assert split_sentences("She earned her Ph.D. She now teaches.") == [
+        "She earned her Ph.D.",
+        "She now teaches.",
+    ]
+    # Titles and capitalised continuations stay whole.
+    assert split_sentences("The U.S.A. team won. They celebrated.") == [
+        "The U.S.A. team won.",
+        "They celebrated.",
+    ]
+    assert split_sentences("Cats vs. Dogs is a film. It is funny.") == [
+        "Cats vs. Dogs is a film.",
+        "It is funny.",
+    ]
+    assert split_sentences("St. Louis is a city. It is in Missouri.") == [
+        "St. Louis is a city.",
+        "It is in Missouri.",
+    ]
 
 
 def test_document_qa_matches_derived_verb_evidence():

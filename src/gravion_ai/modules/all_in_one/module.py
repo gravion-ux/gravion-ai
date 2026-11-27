@@ -133,7 +133,22 @@ _INTENT_SIGNALS: dict[str, tuple[frozenset[str], frozenset[str]]] = {
         ),
     ),
     "image": (
-        frozenset({"draw", "generate", "create", "make", "design", "render", "paint"}),
+        # Sketching and illustrating name the same image
+        # work as drawing ("sketch a portrait" scored the
+        # noun alone and fell through to chat).
+        frozenset(
+            {
+                "draw",
+                "generate",
+                "create",
+                "make",
+                "design",
+                "render",
+                "paint",
+                "sketch",
+                "illustrate",
+            }
+        ),
         frozenset(
             {
                 "image",
@@ -146,22 +161,37 @@ _INTENT_SIGNALS: dict[str, tuple[frozenset[str], frozenset[str]]] = {
                 "wallpaper",
                 "icon",
                 "banner",
+                "painting",
+                "drawing",
+                "sketch",
+                "artwork",
+                "story",
             }
         ),
     ),
     "music": (
-        frozenset({"compose", "make", "create", "write", "produce"}),
+        # Singing a song is the same music request as
+        # composing one ("sing a song about rain" scored
+        # the noun alone).
+        frozenset({"compose", "make", "create", "write", "produce", "sing"}),
         frozenset(
             {"song", "music", "melody", "tune", "beat", "lyrics", "soundtrack", "jingle"}
         ),
     ),
     "video": (
-        frozenset({"make", "create", "generate", "edit", "render", "film"}),
-        frozenset({"video", "clip", "animation", "film", "reel"}),
+        # Animating names the video work itself ("animate
+        # a gif" scored no verb at all), and a gif is the
+        # clip it produces ("make a gif of a cat" scored
+        # the verb alone).
+        frozenset({"make", "create", "generate", "edit", "render", "film", "animate"}),
+        frozenset({"video", "clip", "animation", "film", "reel", "gif"}),
     ),
     "website-builder": (
         frozenset({"build", "make", "create", "design"}),
-        frozenset({"website", "webpage", "landing", "homepage"}),
+        # A bare "site" names the same build object as a
+        # website ("build a site for a cafe" scored the
+        # verb alone); the build verb is still required.
+        frozenset({"website", "webpage", "landing", "homepage", "site"}),
     ),
     "cyber": (
         frozenset(
@@ -214,7 +244,12 @@ _INTENT_SIGNALS: dict[str, tuple[frozenset[str], frozenset[str]]] = {
     ),
     "summarization": (
         frozenset({"summarize", "summarise", "shorten", "condense", "tldr"}),
-        frozenset({"summary", "article", "paragraph", "passage"}),
+        # The text itself is the summary object the other
+        # nouns name ("give me a summary of this text",
+        # "summarize this text" each scored one point);
+        # a second signal is still required, so a lone
+        # "text" cannot hijack another module's request.
+        frozenset({"summary", "article", "paragraph", "passage", "text"}),
     ),
     "retrieval": (
         frozenset({"search", "rank", "retrieve", "find"}),
@@ -229,7 +264,18 @@ _INTENT_SIGNALS: dict[str, tuple[frozenset[str], frozenset[str]]] = {
     "data-analysis": (
         frozenset({"analyze", "analyse", "compute", "calculate"}),
         frozenset(
-            {"mean", "median", "mode", "numbers", "statistics", "average", "dataset", "data"}
+            {
+                "mean",
+                "median",
+                "mode",
+                "numbers",
+                "statistics",
+                "average",
+                "dataset",
+                "data",
+                "sum",
+                "total",
+            }
         ),
     ),
     "document-qa": (
@@ -275,9 +321,20 @@ _TRANSLATE_PREFIX_RE = re.compile(
 # module's say-in-language shape; it carries no translate verb,
 # so the intent signal scored it one point (the language noun)
 # and it fell through to chat. The module coverage-gates the
-# text itself, so routing the shape there is safe.
+# text itself, so routing the shape there is safe. The
+# module's other two shapes ("what is hello in hindi?",
+# "say hello in hindi") carry no translate verb either and
+# fell through the same way.
 _SAY_IN_LANGUAGE_RE = re.compile(
     r"^\s*how do you say\s+.+\s+in\s+(?:hindi|english)\b",
+    re.IGNORECASE | re.DOTALL,
+)
+_WHAT_IS_IN_LANGUAGE_RE = re.compile(
+    r"^\s*(?:what is|what's)\s+.+\s+in\s+(?:hindi|english)\b",
+    re.IGNORECASE | re.DOTALL,
+)
+_BARE_SAY_IN_LANGUAGE_RE = re.compile(
+    r"^\s*say\s+.+\s+in\s+(?:hindi|english)\b",
     re.IGNORECASE | re.DOTALL,
 )
 # A statistic named together with the numbers it applies to
@@ -289,7 +346,7 @@ _SAY_IN_LANGUAGE_RE = re.compile(
 # statistic term, at least two numbers the module's own parser
 # accepts, no coding verb asking for code instead, and no
 # negator governing the statistic ("do not compute the mean").
-_STAT_TERMS = frozenset({"mean", "median", "mode", "average"})
+_STAT_TERMS = frozenset({"mean", "median", "mode", "average", "sum"})
 _CODING_VERBS = frozenset({"write", "fix", "debug", "refactor", "implement"})
 
 
@@ -318,6 +375,10 @@ def infer_route(prompt: str) -> str:
     if _TRANSLATE_PREFIX_RE.match(prompt):
         return "translation"
     if _SAY_IN_LANGUAGE_RE.match(prompt):
+        return "translation"
+    if _WHAT_IS_IN_LANGUAGE_RE.match(prompt):
+        return "translation"
+    if _BARE_SAY_IN_LANGUAGE_RE.match(prompt):
         return "translation"
     # A negated verb cancels its module: "do not draw a logo"
     # asks for an explanation, not an image, yet the bare
@@ -361,6 +422,15 @@ def infer_route(prompt: str) -> str:
             and any(t in _NEGATORS for t in ordered[max(0, index - 4) : index])
             for index, token in enumerate(ordered)
         )
+        # "Sum up" asks for a summary, not a total ("sum
+        # up the meeting notes"): the sum in that phrasal
+        # verb states no statistic, so it cannot make the
+        # request decisive for data-analysis.
+        if not stat_negated and any(
+            ordered[index] == "sum" and ordered[index + 1] == "up"
+            for index in range(len(ordered) - 1)
+        ):
+            stat_negated = not (tokens & (_STAT_TERMS - {"sum"}))
         if not stat_negated:
             from ..data_analysis.module import parse_numbers
 

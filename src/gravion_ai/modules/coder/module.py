@@ -160,6 +160,26 @@ _REVIEW_RES = (
     re.compile(
         r"\bwhat(?:'s| is| went) wrong\b[^.?!]*\b" + _CODE_OBJECT + r"\b"
     ),
+    # A wrong-behaviour statement names the code before its
+    # problem the same way a broken-code statement does
+    # ("this code gives the wrong output", "this script
+    # returns None instead of a list", "the output is
+    # wrong"): without them they fell through to generation,
+    # so a request to examine existing code was answered
+    # with new code instead of the problem in it.
+    re.compile(
+        r"\b" + _CODE_OBJECT + r"\b[^.?!]*"
+        r"\b(?:gives?|returns?|outputs?|produces?)\b[^.?!]*"
+        r"\b(?:wrong|incorrect|instead)\b"
+    ),
+    re.compile(
+        r"\b(?:output|result)\b[^.?!]*\b(?:is|was)?\s*"
+        r"(?:wrong|incorrect)\b"
+    ),
+    re.compile(
+        r"\bwhat(?:'s| is| went) wrong\b[^.?!]*"
+        r"\b(?:output|result)\b"
+    ),
 )
 
 # A negated task verb asks for the opposite task ("do not
@@ -244,6 +264,42 @@ _EXPLAIN_RES = (
     re.compile(
         r"\bwhy (?:is|does|did|would)\b[^.?!]*"
         r"\b(?:failing|broken|crashing|not working)\b"
+    ),
+    # An error is supplied code's artefact just as a
+    # function is: "can you explain the error?", "why am I
+    # getting this error?" and "walk through the error" ask
+    # what the error means, and "help me understand this
+    # code" / "break down this function" ask for the same
+    # explanation as "explain this code": without them they
+    # fell through to generation, so a question about
+    # existing code was answered with new code.
+    re.compile(
+        r"\b(?:explain|explaining|describe|describing|understand|"
+        r"understanding)\b[^.?!]*"
+        r"\b(?:error|exception|traceback|message)\b"
+    ),
+    re.compile(
+        r"\bunderstand(?:ing)?\b[^.?!]*\b" + _CODE_OBJECT + r"\b"
+    ),
+    re.compile(
+        r"\bbreak\b[^.?!]*\bdown\b[^.?!]*\b" + _CODE_OBJECT + r"\b"
+    ),
+    re.compile(
+        r"\bbreak\b[^.?!]*\b" + _CODE_OBJECT + r"\b[^.?!]*\bdown\b"
+    ),
+    re.compile(
+        r"\bwhy\b[^.?!]*\b(?:error|exception)\b"
+    ),
+    re.compile(
+        r"\b(?:walk|trace|step)\b[^.?!]*\bthrough\b[^.?!]*"
+        r"\b(?:error|exception|traceback)\b"
+    ),
+    # "Why does this return None?" asks why the code
+    # behaves as it does, the same explanation ask as
+    # "why does this code fail?" above.
+    re.compile(
+        r"\bwhy (?:does|did|would)\b[^.?!]*"
+        r"\b(?:return|give|output|produce)\b"
     ),
 )
 
