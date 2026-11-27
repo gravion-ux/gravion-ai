@@ -1184,3 +1184,59 @@ def test_rupee_abbreviation_and_everyday_phrasebook_entries():
     )
     assert translate_phrase("bahut accha", to_hindi=False) == "very good"
     assert translate_phrase("jaaiye", to_hindi=False) == "go"
+
+
+def test_stem_word_matches_degree_and_adverb_forms():
+    # Regression: base-form questions ("who was happy?",
+    # "who worked quick?", "who is fast?") matched no document
+    # sentence in a degree form ("happier", "quickly",
+    # "faster"), so document Q&A reported no answer and
+    # retrieval scored the relevant passage zero.
+    assert stem_word("happier") == stem_word("happy") == "happy"
+    assert stem_word("happiest") == "happy"
+    assert stem_word("happily") == "happy"
+    assert stem_word("faster") == stem_word("fast") == "fast"
+    assert stem_word("fastest") == "fast"
+    assert stem_word("quickly") == stem_word("quick") == "quick"
+    assert stem_word("bigger") == stem_word("big") == "big"
+    assert stem_word("biggest") == "big"
+    assert stem_word("larger") == stem_word("large") == "large"
+    assert stem_word("nicer") == stem_word("nice") == "nice"
+    assert stem_word("easily") == stem_word("easy") == "easy"
+    assert stem_word("teacher") == stem_word("teach") == "teach"
+    assert stem_word("runner") == stem_word("run") == "run"
+    # Base words whose ending belongs to the word keep it.
+    assert stem_word("river") == "river"
+    assert stem_word("family") == "family"
+    assert stem_word("never") == "never"
+    assert stem_word("water") == "water"
+    assert stem_word("hundred") == "hundred"
+    out = answer_question(
+        "The children were happier at the park. "
+        "The team worked quickly. She runs faster than him.",
+        "who was happy at the park",
+    )
+    assert "happier at the park" in out
+    out = answer_question(
+        "The children were happier at the park. "
+        "The team worked quickly. She runs faster than him.",
+        "who is fast",
+    )
+    assert "runs faster" in out
+
+
+def test_summarize_skips_near_duplicate_sentences():
+    # Regression: top-scored sentences restated one point
+    # ("Cats sleep." / "Cats sleep a lot.") while a distinct
+    # point was dropped from the summary.
+    text = (
+        "Cats sleep. Cats sleep a lot. Dogs bark loudly. "
+        "Birds fly south. Cats sleep all day."
+    )
+    out = summarize(text, max_sentences=2)
+    assert "Cats sleep." in out
+    assert "Cats sleep a lot." not in out
+    assert "Birds fly south." in out
+    out = summarize(text, max_sentences=3)
+    assert "Dogs bark loudly." in out
+    assert "Birds fly south." in out

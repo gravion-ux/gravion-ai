@@ -6,7 +6,7 @@
     "entrypoint": "gravion_ai.modules.summarization.module:SummarizationModule",
     "files": {
       "__init__.py": "b874ec4599d8993b3fa05420ae039885914f53e0400557a98f3763cc2f7a9bda",
-      "module.py": "d4b87db6e2e9718029e4bab2a2ed5a9eeaf73a9ef47f68e20316afbb9a880bc4"
+      "module.py": "a7ddf59def2bce7ffc7190a08144ac509fe9d8bbf6a4da2f97414dba8bac3d0e"
     }
   },
   "signature": "",
