@@ -238,3 +238,28 @@ class ModelCatalog:
                 raise CatalogError(f"unknown tier {tier!r}; valid: {sorted(TIERS)}")
             result = [e for e in result if e.offered_in(tier)]
         return result
+
+    # -- sizes ------------------------------------------------------------
+    def total_parameters(self) -> int:
+        """The summed parameter count of every registry entry.
+
+        The counts come from the registry entries themselves, which
+        carry the number counted from each shipped weights artifact.
+        """
+        return sum(e.parameter_count or 0 for e in self._entries)
+
+    def models_at_least(self, minimum: int) -> list[ModelEntry]:
+        """Registry entries whose counted parameters reach `minimum`.
+
+        The comparison is on the counted parameters, not on a rounded
+        display size, so `1_000_000` means at least one million.
+        """
+        if isinstance(minimum, bool) or not isinstance(minimum, int):
+            raise CatalogError(
+                f"minimum parameter count must be an integer, got {minimum!r}"
+            )
+        if minimum < 0:
+            raise CatalogError(
+                f"minimum parameter count must not be negative, got {minimum!r}"
+            )
+        return [e for e in self._entries if (e.parameter_count or 0) >= minimum]
