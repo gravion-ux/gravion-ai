@@ -137,6 +137,41 @@ A structured, editable registry of **Gravion's own models**
   deployment overrides it with its own `models.json` — that is how
   private Gravion variants are registered without forking the platform.
 
+### 5.1 Measured model specifications
+
+The registry says *which* models exist. A second, generated file
+(`data/model_specs.json`, read by `model_spec.py`) says *what each one
+is*: its architecture, embedding width, vocabulary and class counts,
+storage dtype, quantization method, parameter count split by dtype,
+licence, and a SHA-256 digest of the whole specification.
+
+The split matters:
+
+| Field | Meaning | Example |
+|---|---|---|
+| `dtype` | how a tensor is **stored** | `int8` |
+| `quantization` | how a tensor was **quantized** | `symmetric-int8` |
+| `parameters_by_dtype` | counted parameters **per** storage dtype | `{"int8": 10575629, "float32": 10914}` |
+
+Keeping them apart stops a quantization method from being mistaken
+for a dtype, and keeps a float32 bias vector from being counted as an
+int8 weight. Gravion Core is 10,586,543 parameters: 10,575,629 stored
+as int8 and quantized symmetrically, 10,914 stored as float32 in the
+bias and transition weights. Across the seventeen bundled models the
+registry holds 16,677,780 counted parameters.
+
+Every measured field is computed from the shipped weights artifact by
+`tools/build_model_specs.py`, never entered by hand, and the test
+suite re-derives each spec and fails if the checked-in file drifts
+away from the weights. The licence, the specification version and the
+optional base-model lineage are the declared part; a base model may
+not reference itself and a lineage may not loop.
+
+`gravion models list` shows the shape beside the size, and
+`gravion models list --min-parameters N` selects by the counted
+parameters; `gravion models spec <id>` prints the whole
+specification.
+
 ## 6. Inference plumbing ✅
 
 Two ways to reach a model, behind one `ChatProvider` interface:

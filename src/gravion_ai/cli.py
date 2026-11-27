@@ -59,7 +59,7 @@ from pathlib import Path
 
 from .catalog import ModelCatalog
 from .config import GravionConfig, ProviderConfig, default_home
-from .errors import GravionError
+from .errors import CatalogError, GravionError
 from .licensing import (
     AuditLog,
     DeploymentIdentity,
@@ -71,6 +71,7 @@ from .licensing import (
 )
 from .licensing.gate import LICENSE_FILENAME
 from .licensing.modules_sig import build_manifest, sign_manifest, write_signed_manifest
+from .model_spec import format_parameters, load_specs
 from .registry import default_registry
 from .runtime import GravionRuntime
 from .tiers import TIERS
@@ -231,18 +232,52 @@ def cmd_models_list(args) -> int:
     entries = (
         catalog.models_for(args.capability) if args.capability else catalog.list()
     )
+    if args.min_parameters is not None:
+        if args.min_parameters < 0:
+            raise CatalogError(
+                "--min-parameters must not be negative, got "
+                f"{args.min_parameters}"
+            )
+        entries = [
+            e for e in entries if (e.parameter_count or 0) >= args.min_parameters
+        ]
     if not entries:
-        print(f"no Gravion models serve capability {args.capability!r}")
+        if args.min_parameters is not None:
+            print(
+                f"no Gravion model has at least {args.min_parameters} parameters"
+            )
+        else:
+            print(f"no Gravion models serve capability {args.capability!r}")
         return 0
+    specs = load_specs()
     for e in entries:
         caps = ",".join(e.capabilities)
         params = (
             f" params={e.parameter_count}" if e.parameter_count is not None else ""
         )
+        spec = specs.get(e.id)
+        shape = ""
+        if spec is not None:
+            shape = (
+                f" arch={spec.architecture}"
+                f" dtype={spec.dtype}"
+                f" quant={spec.quantization}"
+            )
         print(
             f"{e.id:<16} {e.name:<16} {e.status:<10} "
-            f"weights={e.weights_status}{params} caps={caps}"
+            f"weights={e.weights_status}{params}{shape} caps={caps}"
         )
+    return 0
+
+
+def cmd_models_spec(args) -> int:
+    specs = load_specs()
+    spec = specs.get(args.model_id)
+    if spec is None:
+        raise CatalogError(f"unknown model {args.model_id!r}")
+    payload = spec.to_dict()
+    payload["parameters_display"] = format_parameters(spec.parameter_count)
+    print(json.dumps(payload, indent=2, sort_keys=True))
     return 0
 
 
@@ -621,7 +656,16 @@ def build_parser() -> argparse.ArgumentParser:
     p_sub = p.add_subparsers(dest="models_command", required=True)
     p_list = p_sub.add_parser("list")
     p_list.add_argument("--capability", help="only models serving this capability")
+    p_list.add_argument(
+        "--min-parameters",
+        type=int,
+        default=None,
+        help="only models with at least this many counted parameters",
+    )
     p_list.set_defaults(func=cmd_models_list)
+    p_spec = p_sub.add_parser("spec", help="show a model's measured specification")
+    p_spec.add_argument("model_id", help="registry model id (e.g. gravion-core)")
+    p_spec.set_defaults(func=cmd_models_spec)
 
     p = sub.add_parser("chat", help="run the chat module")
     p.add_argument("prompt", nargs="+")

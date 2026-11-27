@@ -150,9 +150,26 @@ engine.
 Deployments can register private variants by dropping their own
 `models.json` into the deployment home — same schema, same validation.
 
+Every entry that ships weights also has a **measured specification**
+(`src/gravion_ai/data/model_specs.json`): the architecture, the
+embedding width, the vocabulary and class counts, the storage dtype,
+the quantization method, the parameter count split by storage dtype,
+the licence, and a SHA-256 digest of the whole specification. Every
+measured field is computed from the shipped weights artifact, and the
+test suite fails if the specification file drifts away from the
+weights, so the registry can never claim a size the model does not
+have. Storage dtype and quantization method are reported separately —
+`int8` is how a tensor is stored, `symmetric-int8` is how it was
+quantized — and the parameters are counted per dtype, so a float32
+bias vector is never counted as an int8 weight. The bundled models
+declare no base model: each is trained from its own bundled
+Gravion-owned seed corpus, not from another model.
+
 ```bash
-gravion models list                     # the whole registry
-gravion models list --capability video  # only models that serve video
+gravion models list                         # the whole registry
+gravion models list --capability video      # only models that serve video
+gravion models list --min-parameters 1000000 # only models at least this large
+gravion models spec gravion-core            # the measured specification
 ```
 
 ## Quickstart
@@ -192,7 +209,11 @@ own documentation and seed dataset). The saved artifact
 direct, embedding, classifier, bias, transition, and unigram weights. On a
 held-out set of 1,530 paraphrased prompts it answers 1,238 correctly
 (80.9%), versus 0 for the earlier 750-parameter seed model. Gravion
-Core is not a billions-of-parameters model. Each specialist registry
+Core is not a billions-of-parameters model. Across the seventeen
+bundled models the registry holds **16,677,780 counted parameters**,
+of which Gravion Core alone carries 10,586,543 — 10,575,629 of them
+stored as int8 and quantized symmetrically, and 10,914 stored as
+float32 in the bias and transition weights. Each specialist registry
 entry (Chat, Code, Builder, Vision, Video, Audio, Shield, Agent and
 Omni) also includes local sparse n-gram classifier weights trained
 only from its bundled Gravion-owned seed corpus; the per-model
@@ -249,11 +270,13 @@ src/gravion_ai/
   config.py       deployment config, naming, company-policy injection
   registry.py     the module system (manifest + entrypoint, catalogue)
   catalog.py      the Gravion model registry (loader + validation)
+  model_spec.py   measured model specifications (shape, dtype, digest)
   bundles.py      tier bundles: completeness checks + hashed descriptors
   upgrades.py     governed self-upgrade (§9): permission, signed
                   update packages, self-check, rollback
   training/       training jobs: spec, validation, honest run refusal
   data/models.json  the registry's starter data
+  data/model_specs.json  measured specs for every shipped model
   providers.py    Gravion Core (built-in) + generic endpoint plumbing
   runtime.py      gate → verify → resolve → run; export
   modules/chat/   the reference module, wired end-to-end
