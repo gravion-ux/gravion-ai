@@ -60,9 +60,12 @@ def _declared_for(model_id: str, previous: dict) -> dict[str, object]:
     }
     existing = previous.get(model_id)
     if existing is not None:
+        # load_specs returns ModelSpec objects; their curated
+        # fields come from declared(), not dict membership.
+        kept = existing.declared()
         for field in declared:
-            if field in existing:
-                declared[field] = existing[field]
+            if field in kept:
+                declared[field] = kept[field]
     return declared
 
 

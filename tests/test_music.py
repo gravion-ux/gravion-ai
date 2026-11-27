@@ -189,7 +189,7 @@ def test_music_runtime_dev_end_to_end_with_gravion_audio(make_config):
     runtime = GravionRuntime(make_config(mode="development", model="gravion-audio"))
     assert runtime.resolve_model("music") == "gravion-audio"
     out = runtime.music("a 30 second jingle")
-    assert "a 30 second jingle" in out
+    assert "Jingle:" in out
 
 
 def test_music_runtime_rejects_model_without_music_capability(make_config):

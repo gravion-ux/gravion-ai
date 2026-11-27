@@ -194,3 +194,11 @@
 {"completion": "Agent plan: collect reports, validate them, file by date and topic, log each location, and flag missing reports.", "prompt": "please plan an agent that files reports"}
 {"completion": "Agent plan: collect reports, validate them, file by date and topic, log each location, and flag missing reports.", "prompt": "gravion agent plan an agent that files reports"}
 {"completion": "Agent plan: collect reports, validate them, file by date and topic, log each location, and flag missing reports.", "prompt": "help me plan an agent that files reports"}
+{"completion": "Agent plan: read new mail each morning, sort by sender and urgency, draft replies for review, and send nothing without approval.", "prompt": "plan an agent that checks email and drafts replies"}
+{"completion": "Agent plan: read new mail each morning, sort by sender and urgency, draft replies for review, and send nothing without approval.", "prompt": "please plan an agent that checks email and drafts replies"}
+{"completion": "Agent plan: read new mail each morning, sort by sender and urgency, draft replies for review, and send nothing without approval.", "prompt": "gravion agent plan an agent that checks email and drafts replies"}
+{"completion": "Agent plan: read new mail each morning, sort by sender and urgency, draft replies for review, and send nothing without approval.", "prompt": "help me plan an agent that checks email and drafts replies"}
+{"completion": "Agent plan: check the site on a schedule, record response times, alert on failures with the failing check, and keep a daily uptime summary.", "prompt": "build an agent that monitors website uptime"}
+{"completion": "Agent plan: check the site on a schedule, record response times, alert on failures with the failing check, and keep a daily uptime summary.", "prompt": "please build an agent that monitors website uptime"}
+{"completion": "Agent plan: check the site on a schedule, record response times, alert on failures with the failing check, and keep a daily uptime summary.", "prompt": "gravion agent build an agent that monitors website uptime"}
+{"completion": "Agent plan: check the site on a schedule, record response times, alert on failures with the failing check, and keep a daily uptime summary.", "prompt": "help me build an agent that monitors website uptime"}

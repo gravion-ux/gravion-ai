@@ -16,7 +16,21 @@ from gravion_ai.runtime import GravionRuntime
 def test_dev_chat_end_to_end(make_config):
     runtime = GravionRuntime(make_config(mode="development"))
     out = runtime.chat("what can you do?")
-    assert "what can you do?" in out
+    # Capability openings are answered by the chat module itself
+    # (28 Nov 2026 cycle): the bundled model has no confident
+    # match for them, so they used to echo back as
+    # "[gravion-core] You said: what can you do?".
+    assert "write and review code" in out
+    assert "You said" not in out
+
+
+def test_chat_openings_are_deterministic(make_config):
+    runtime = GravionRuntime(make_config(mode="development"))
+    assert "I am Gravion" in runtime.chat("Hello, who are you?")
+    assert "Hello, I am Gravion" in runtime.chat("hello")
+    # Negated capability questions stay with the model path
+    # instead of receiving the capabilities answer.
+    assert "write and review code" not in runtime.chat("what can you not do?")
 
 
 def test_runtime_records_persistent_run_events_without_prompt(make_config):

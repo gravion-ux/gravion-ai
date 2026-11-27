@@ -420,7 +420,7 @@ def test_cyber_runtime_dev_end_to_end_with_gravion_shield(make_config):
     runtime = GravionRuntime(make_config(mode="development", model="gravion-shield"))
     assert runtime.resolve_model("cyber") == "gravion-shield"
     out = runtime.cyber("triage: alert from 10.0.0.8")
-    assert "triage: alert from 10.0.0.8" in out
+    assert "Triage: count the failures" in out
 
 
 def test_cyber_runtime_rejects_model_without_cyber_capability(make_config):

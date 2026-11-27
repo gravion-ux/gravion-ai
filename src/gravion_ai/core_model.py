@@ -610,7 +610,26 @@ class GravionCoreLocalModel:
         # only a couple of terms fire (e.g. "a website for our bakery"
         # matched a resume answer at 0.79 on 3 of 12 terms), so the
         # returned confidence is scaled by coverage below.
-        coverage = len(feature_ids) / len(terms)
+        # Terms carrying a digit are indicator tokens, not semantic
+        # evidence: addresses, counts and order numbers ("10.0.0.8",
+        # "x50", "order id 12345") are extracted deterministically by
+        # the modules, and counting them as unknown evidence crushed
+        # coverage on exactly the alert and order prompts the models
+        # answer correctly. Coverage is therefore measured over the
+        # digit-free terms only; digit-bearing terms still fire as
+        # features when the model knows them.
+        content_terms = [
+            term
+            for term in terms
+            if not any(ch.isdigit() for ch in term)
+        ]
+        if content_terms:
+            known_content = sum(
+                1 for term in content_terms if term in feature_index
+            )
+            coverage = known_content / len(content_terms)
+        else:
+            coverage = len(feature_ids) / len(terms)
 
         hidden = [0.0] * dim
         for feature_id in feature_ids:

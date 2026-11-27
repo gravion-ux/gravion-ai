@@ -26,7 +26,8 @@ def test_init_status_chat_flow(home, capsys):
 
     assert main(["chat", "hello", "there"]) == 0
     out = capsys.readouterr().out
-    assert "hello there" in out
+    # A plain greeting is answered directly, not echoed back.
+    assert "Hello, I am Gravion" in out
 
 
 def test_support_command_flow(home, capsys):
@@ -62,7 +63,9 @@ def test_music_command_flow(home, capsys):
     capsys.readouterr()
     assert main(["music", "a", "30", "second", "jingle"]) == 0
     out = capsys.readouterr().out
-    assert "a 30 second jingle" in out
+    # The duration digit no longer crushes coverage, so the
+    # audio model answers with its jingle brief.
+    assert "Jingle:" in out
 
 
 def test_video_command_flow(home, capsys):
@@ -70,7 +73,7 @@ def test_video_command_flow(home, capsys):
     capsys.readouterr()
     assert main(["video", "a", "30", "second", "teaser"]) == 0
     out = capsys.readouterr().out
-    assert "a 30 second teaser" in out
+    assert "Video plan:" in out
 
 
 def test_website_command_flow(home, capsys):
@@ -86,7 +89,9 @@ def test_cyber_command_flow(home, capsys):
     capsys.readouterr()
     assert main(["cyber", "triage:", "alert", "from", "10.0.0.8"]) == 0
     out = capsys.readouterr().out
-    assert "triage: alert from 10.0.0.8" in out
+    # Indicator tokens (the address) no longer crush coverage,
+    # so Shield answers with triage guidance.
+    assert "Triage: count the failures" in out
 
 
 def test_agent_command_flow(home, capsys):

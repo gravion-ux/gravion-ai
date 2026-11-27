@@ -73,6 +73,13 @@ TOPICS: dict[str, list[tuple[str, str]]] = {
         ("explain the idea of compound growth", "Compound growth means gains build on earlier gains, so small consistent progress can become large over time."),
         ("help name priorities for today", "Today's priorities should be few, clear, and ordered by impact and deadline."),
         ("write a closing message for a conversation", "Thanks for the conversation. I will send the agreed next steps and check in after the first milestone."),
+        # Demo-critical openings (28 Nov 2026 cycle): natural
+        # greeting, identity and capability phrasings a demo
+        # audience actually uses, plus a plain concept explain.
+        ("say hello and introduce yourself", "Hello, I am Gravion. Tell me what you would like to work on and I will help step by step."),
+        ("tell what you can do for me", "I can chat, write and review code, build websites, analyse security alerts, draft agent plans, and help with support questions."),
+        ("explain recursion simply", "Recursion is when a function calls itself on a smaller piece of the problem until it reaches a base case that stops the calls."),
+        ("describe who built gravion", "Gravion is a modular AI platform built by Priyanshu Kumar Thakur, with chat, coder, cyber, website builder and agentic modules over one system."),
     ],
     "gravion-support": [
         ("check the status of an order", "Share your order number and I will check its current status and tell you the next step."),
@@ -125,6 +132,18 @@ TOPICS: dict[str, list[tuple[str, str]]] = {
         ("explain bulk order enquiries", "For bulk orders, share the product, quantity, and delivery location, and the team will reply with availability and pricing."),
         ("help check service availability", "Share your area or postcode and I will check whether the service is available there."),
         ("explain how to give feedback", "Feedback can be sent through the feedback form or this chat; specific examples help the team act on it faster."),
+        # Demo-critical support phrasings (28 Nov 2026 cycle).
+        ("ask what the opening hours are", "Opening hours are listed on the contact page for each location. Tell me your city or store and I will point you to the right listing."),
+        ("find my order with an order number", "Share your order number and I will check its current status, the latest delivery update, and the next step."),
+        ("ask how to reset a forgotten password", "Use the forgot password link on the sign-in page and follow the reset link sent to your registered email address."),
+        # Natural first-person demo phrasings (28 Nov 2026 cycle,
+        # second pass): customers ask "where is my order", not
+        # "find my order with an order number".
+        ("where is my order", "Share your order number and I will check its current status, the latest delivery update, and the next step."),
+        ("track my order with my order id", "Share your order number and I will check its current status, the latest delivery update, and the next step."),
+        ("i forgot my password", "Use the forgot password link on the sign-in page and follow the reset link sent to your registered email address."),
+        ("how do i reset my password", "Use the forgot password link on the sign-in page and follow the reset link sent to your registered email address."),
+        ("what are your opening hours", "Opening hours are listed on the contact page for each location. Tell me your city or store and I will point you to the right listing."),
     ],
     "gravion-code": [
         ("write a function that adds two numbers", "Define a small function with two numeric inputs, return their sum, and test it with positive, negative, and zero values."),
@@ -184,6 +203,19 @@ TOPICS: dict[str, list[tuple[str, str]]] = {
         ("write a function to normalize text", "Trim whitespace, collapse repeated spaces, normalize case when appropriate, and test punctuation handling."),
         ("write a haiku function", "Define a function that returns a three-line haiku, keep the syllable pattern clear, and test the exact output."),
         ("write a sort function", "Compare neighboring values or use a known sorting method, then verify sorted, reversed, and duplicate inputs."),
+        # Demo-critical coder phrasings (28 Nov 2026 cycle).
+        ("write a prime number checker function", "Check divisibility from 2 up to the square root of the number, return false on the first exact divisor, and test 2, 3, 4, and a large prime."),
+        ("explain python decorators", "A decorator wraps a function to add behaviour before or after it runs, without changing the function body; the wrapper receives the original function and returns a new one."),
+        ("review code that returns the wrong result", "Trace the inputs through each line, compare the actual output with the expected one, and check operators, order of operations, and off-by-one bounds first."),
+        ("fix an infinite loop bug", "Check the loop condition and the update step: the variable the condition reads must move toward the exit value on every pass, and add a safety break while debugging."),
+        # Natural first-person demo phrasings (28 Nov 2026 cycle,
+        # second pass): the checklist prompts a demo audience
+        # actually types, reusing the completions above so each
+        # answer class gains phrasing breadth instead of splitting.
+        ("write a function that checks if a number is prime", "Check divisibility from 2 up to the square root of the number, return false on the first exact divisor, and test 2, 3, 4, and a large prime."),
+        ("check if a number is prime in python", "Check divisibility from 2 up to the square root of the number, return false on the first exact divisor, and test 2, 3, 4, and a large prime."),
+        ("explain what a decorator is", "A decorator wraps a function to add behaviour before or after it runs, without changing the function body; the wrapper receives the original function and returns a new one."),
+        ("what is a decorator in python", "A decorator wraps a function to add behaviour before or after it runs, without changing the function body; the wrapper receives the original function and returns a new one."),
     ],
     "gravion-review": [
         ("review this code for bugs", "Reviewing for bugs: check inputs, edge cases, error handling, and resource cleanup, then list findings by severity."),
@@ -285,6 +317,14 @@ TOPICS: dict[str, list[tuple[str, str]]] = {
         ("design a reading progress indicator", "Progress indicator: thin bar tied to scroll position, visible but not distracting, with reduced-motion respect."),
         ("make a sticky navigation plan", "Sticky navigation: keep key links visible, avoid covering content, and collapse cleanly on small screens."),
         ("plan a bakery website", "Bakery site: menu, daily specials, story, hours, location, gallery, and an order or contact action."),
+        # Demo-critical builder phrasings (28 Nov 2026 cycle).
+        ("make a portfolio website for a photographer", "Photographer portfolio: full-bleed gallery, selected series, about page, services and rates, and a booking contact action."),
+        ("build a website with a dark theme", "Dark theme site: deep background, high-contrast text, one accent colour, and image panels that keep detail visible on dark surfaces."),
+        ("build a landing page with home about and contact pages", "Landing page plan: clear hero, proof of work, services, process, testimonial space, and one contact action, with home, about and contact pages."),
+        # Natural demo phrasing (28 Nov 2026 cycle, second pass):
+        # the brief names the business and the pages together.
+        ("build a landing page for a bakery", "Landing page plan: clear hero, proof of work, services, process, testimonial space, and one contact action, with home, about and contact pages."),
+        ("build a bakery landing page with home about and contact pages", "Landing page plan: clear hero, proof of work, services, process, testimonial space, and one contact action, with home, about and contact pages."),
     ],
     "gravion-vision": [
         ("describe a sunset portrait image brief", "Image brief: warm sunset light, calm human portrait, soft background, natural expression, high detail."),
@@ -495,6 +535,21 @@ TOPICS: dict[str, list[tuple[str, str]]] = {
         ("describe secure meeting practices", "Use verified meeting links, control screen sharing, avoid sensitive details in chat, and confirm participants."),
         ("explain why encryption keys need rotation", "Rotation limits exposure if a key leaks and supports retiring old keys safely."),
         ("plan a security incident communication", "Communication: state facts, impact, actions taken, what users should do, and when the next update arrives."),
+        # Demo-critical cyber phrasings (28 Nov 2026 cycle):
+        # triage, report and log analysis in the words a demo
+        # audience uses, defensive only.
+        ("triage a failed login alert", "Triage: count the failures, check whether any login succeeded, identify the source address and account, then lock or challenge the account and review related activity."),
+        ("write a security report for a vulnerability", "Report: title, affected asset, severity with reasoning, evidence, impact, and remediation steps, written from the recorded indicators only."),
+        ("analyse suspicious login logs", "Analysis: order the events, mark repeated failures before a success, note the source addresses, and state what would confirm or clear the suspicion."),
+        ("triage a critical severity alert", "Verdict first: act now on critical alerts, contain the affected asset, preserve evidence, then investigate scope before closing."),
+        # Natural alert phrasings (28 Nov 2026 cycle, second
+        # pass): demo alerts carry indicator tokens (addresses,
+        # counts) around the triage words, so the triage and
+        # analysis classes need the plural and severity forms.
+        ("triage an alert with failed logins", "Triage: count the failures, check whether any login succeeded, identify the source address and account, then lock or challenge the account and review related activity."),
+        ("triage a high severity alert with failed logins", "Triage: count the failures, check whether any login succeeded, identify the source address and account, then lock or challenge the account and review related activity."),
+        ("analyse login logs with repeated failures", "Analysis: order the events, mark repeated failures before a success, note the source addresses, and state what would confirm or clear the suspicion."),
+        ("write a vulnerability report", "Report: title, affected asset, severity with reasoning, evidence, impact, and remediation steps, written from the recorded indicators only."),
     ],
     "gravion-agent": [
         ("plan an agent that summarizes email", "Agent plan: read approved messages, group by topic, draft summaries, flag urgent items, and ask before sending anything."),
@@ -546,6 +601,9 @@ TOPICS: dict[str, list[tuple[str, str]]] = {
         ("plan an agent for knowledge base updates", "Agent plan: find outdated pages, draft updates, route approvals, publish, and record changes."),
         ("describe agent handoff to humans", "Handoff should include goal, progress, evidence, blockers, and the exact decision needed."),
         ("plan an agent that files reports", "Agent plan: collect reports, validate them, file by date and topic, log each location, and flag missing reports."),
+        # Demo-critical agentic phrasings (28 Nov 2026 cycle).
+        ("plan an agent that checks email and drafts replies", "Agent plan: read new mail each morning, sort by sender and urgency, draft replies for review, and send nothing without approval."),
+        ("build an agent that monitors website uptime", "Agent plan: check the site on a schedule, record response times, alert on failures with the failing check, and keep a daily uptime summary."),
     ],
     "gravion-omni": [
         ("route a coding request to the right module", "Route coding requests to the coder module with the goal, constraints, and test expectations preserved."),

@@ -227,7 +227,10 @@ def test_parse_route_structural_markers_are_decisive(prompt, expected_module):
 def test_all_in_one_defaults_to_chat():
     module = default_registry().instantiate("all-in-one")
     out = module.run(_ctx(GravionCoreProvider()), "what can you do?")
-    assert "what can you do?" in out
+    # Routed to chat, whose deterministic capabilities answer
+    # replaces the old echo fallback (28 Nov 2026 cycle).
+    assert "write and review code" in out
+    assert "You said" not in out
 
 
 def test_all_in_one_routes_with_the_target_modules_own_brief():
