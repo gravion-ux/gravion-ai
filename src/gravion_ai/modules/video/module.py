@@ -88,7 +88,8 @@ _SHAPES = (
     ("banner", "21:9"),
 )
 
-_SIZE_RE = re.compile(r"(\d{3,5})\s*[x×]\s*(\d{3,5})")
+# "800 by 600" states a pixel size just as "800x600" does.
+_SIZE_RE = re.compile(r"(\d{3,5})\s*(?:[x×]|\bby\b)\s*(\d{3,5})", re.IGNORECASE)
 
 # An explicit ratio ("9:16", "4:5") is the canonical way to state
 # a video aspect, and the render pipeline already resolves ratio

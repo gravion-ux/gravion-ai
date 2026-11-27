@@ -107,6 +107,16 @@ def test_parse_tools(prompt, expected):
         ("steps: check inbox, draft replies. Also be quick",
          ["check inbox", "draft replies"]),
         ("follow my footsteps: one, two", []),
+        # Regression: a numbered list stayed one step with its
+        # markers attached; the markers now separate the steps
+        # and are stripped. A version number inside a step is
+        # not a marker.
+        ("steps: 1) check inbox 2) draft replies 3) send summary",
+         ["check inbox", "draft replies", "send summary"]),
+        ("steps: 1. check inbox, 2. draft replies",
+         ["check inbox", "draft replies"]),
+        ("steps: review version 2.0 notes, send summary",
+         ["review version 2.0 notes", "send summary"]),
     ],
 )
 def test_parse_steps(prompt, expected):

@@ -160,14 +160,48 @@ def parse_pages(prompt: str) -> list[str]:
         listing = re.split(r"\s+with\s+", match.group(1), maxsplit=1)[0]
         pages: list[str] = []
         for raw in listing.split(","):
-            slug = _slugify(raw)
-            if slug and slug not in pages:
-                pages.append(slug)
+            # "pages: home, about and contact" joins the last
+            # two pages with "and"; split the join only when
+            # both sides name known pages, so a page called
+            # "terms and conditions" stays one page.
+            parts = re.split(r"\s+and\s+", raw)
+            if len(parts) > 1 and all(
+                _slugify(part) in ("home", *_NAMED_PAGES) for part in parts
+            ):
+                items = parts
+            else:
+                items = [raw]
+            for item in items:
+                slug = _slugify(item)
+                if slug and slug not in pages:
+                    pages.append(slug)
         if "home" in pages:
             pages.remove("home")
         return ["home", *pages]
     text = prompt.lower()
     pages = ["home"]
+    # An enumeration before the word "pages" names its pages
+    # just as surely as "about page" does: "home, about and
+    # contact pages" names about and contact, in that order.
+    # The list structure (a comma or an "and") is required, so
+    # a stray page word in prose ("a site about cats") never
+    # collects a page.
+    for pages_match in re.finditer(r"\bpages\b", text):
+        clause_start = (
+            max(text.rfind(break_char, 0, pages_match.start()) for break_char in ".;")
+            + 1
+        )
+        segment = text[clause_start : pages_match.start()]
+        if "," not in segment and " and " not in segment:
+            continue
+        found = [
+            (word_match.start(), page)
+            for page in _NAMED_PAGES
+            for word_match in re.finditer(rf"\b{page}\b", segment)
+        ]
+        for _pos, page in sorted(found):
+            if page not in pages:
+                pages.append(page)
     for page in _NAMED_PAGES:
         # "about us" and "contact us" name the about and contact
         # pages just as "about page" does.

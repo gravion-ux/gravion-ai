@@ -55,6 +55,12 @@ def test_music_instantiates_and_answers():
         ("a jingle to use as background music in ads", KIND_JINGLE),
         ("an upbeat track for the launch", KIND_TRACK),
         ("a calm piano piece", KIND_TRACK),
+        # Regression: kind phrases matched as substrings, so
+        # "bgm" buried in a longer word read as a score, and a
+        # negated kind was recorded as the kind requested.
+        ("subgmusic vibes for the set", KIND_TRACK),
+        ("not a jingle, a full track for the launch", KIND_TRACK),
+        ("no background music, a standalone track", KIND_TRACK),
     ],
 )
 def test_detect_kind(prompt, expected):
@@ -74,6 +80,15 @@ def test_detect_kind(prompt, expected):
         ("a 2 minutes 30 seconds track", 150),
         ("a 1.5 minutes track", 90),
         ("a 1 hour mix", 3600),
+        # Compact units and clock forms state the same lengths;
+        # an aspect ratio is never read as a clock duration.
+        ("a 30s sting", 30),
+        ("a 1m 30s track", 90),
+        ("a 1m30s track", 90),
+        ("a 1:30 jingle", 90),
+        ("a 0:45 sting", 45),
+        ("a 1:02:30 mix", 3750),
+        ("a 9:16 track", None),
         ("a jingle for our ad", None),
         ("a track for the launch", None),
     ],

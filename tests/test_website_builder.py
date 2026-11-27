@@ -111,6 +111,20 @@ def test_parse_site_type(prompt, expected):
         # pages.
         ("build a site with an about us page and contact us page",
          ["home", "about", "contact"]),
+        # Regression: an enumeration before "pages" dropped
+        # every page but the last ("about and contact pages"
+        # named only contact), and an explicit list joined by
+        # "and" became one slug ("about-and-contact").
+        ("build a portfolio site with home, about and contact pages",
+         ["home", "about", "contact"]),
+        ("a site with pricing, blog and gallery pages",
+         ["home", "pricing", "blog", "gallery"]),
+        ("pages: home, about and contact", ["home", "about", "contact"]),
+        # A page whose own name contains "and" stays one page,
+        # and a stray page word in prose collects nothing.
+        ("pages: home, terms and conditions",
+         ["home", "terms-and-conditions"]),
+        ("a site about cats with photos", ["home"]),
     ],
 )
 def test_parse_pages(prompt, expected):

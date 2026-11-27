@@ -176,6 +176,17 @@ def parse_steps(prompt: str) -> list[str]:
     sentence = re.search(r"\.\s+(?=[A-Z])", listing)
     if sentence:
         listing = listing[: sentence.start()]
+    # A numbered list ("steps: 1) read mail 2) draft 3) send")
+    # separates on its markers, numbers stripped. A marker is
+    # a short number with a dot or paren and a following space,
+    # so a version ("2.0 notes") inside a step never splits it.
+    numbered = re.split(r"(?:^|(?<=[\s;,]))\d{1,2}[.)]\s+", listing)
+    if len(numbered) > 1:
+        steps = [
+            part.strip().strip(",;").strip().rstrip(".")
+            for part in numbered
+        ]
+        return [step for step in steps if step]
     steps = [
         part.strip().rstrip(".")
         for part in re.split(r"[;,]", listing)

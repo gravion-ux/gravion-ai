@@ -70,6 +70,35 @@ _SCORE_PHRASES = (
     "bgm",
 )
 
+# Kind phrases match on word boundaries, like the moods: "bgm"
+# buried inside a longer word is not a score request. A negated
+# kind ("not a jingle, a full track") is the kind the request
+# rules out, so a negator governing the phrase in its clause
+# cancels it — the same guard the agentic module gives tools.
+_SCORE_RES = tuple(
+    re.compile(rf"\b{re.escape(phrase)}\b") for phrase in _SCORE_PHRASES
+)
+_JINGLE_RE = re.compile(r"\bjingle\b")
+_KIND_NEGATOR_RE = re.compile(r"(?:\bno\b|\bnot\b|\bnever\b|n't\b)")
+_CLAUSE_BREAKS = ".!?;,"
+
+
+def _kind_negated(text: str, match_start: int) -> bool:
+    clause_start = (
+        max(text.rfind(break_char, 0, match_start) for break_char in _CLAUSE_BREAKS)
+        + 1
+    )
+    words = text[clause_start:match_start].split()
+    tail = " ".join(words[-3:])
+    return bool(tail) and _KIND_NEGATOR_RE.search(tail) is not None
+
+
+def _kind_named(pattern: re.Pattern[str], text: str) -> bool:
+    return any(
+        not _kind_negated(text, match.start())
+        for match in pattern.finditer(text)
+    )
+
 # The mood vocabulary the brief understands. Collected in the order
 # they appear in the request; anything outside this list is left
 # for the model to read from the request itself. Matching is on
@@ -89,18 +118,48 @@ MOODS = (
 )
 
 _DURATION_RE = re.compile(
-    r"(\d+(?:\.\d+)?)\s*-?\s*(hours?|hrs?|minutes?|mins?|seconds?|secs?)\b",
+    r"(\d+(?:\.\d+)?)\s*-?\s*"
+    r"(hours?|hrs?|h|minutes?|mins?|m|seconds?|secs?|s)(?![a-z])",
     re.IGNORECASE,
 )
-_UNIT_SECONDS = {"hour": 3600, "hr": 3600, "minute": 60, "min": 60, "second": 1, "sec": 1}
+_UNIT_SECONDS = {
+    "hour": 3600, "hr": 3600, "h": 3600,
+    "minute": 60, "min": 60, "m": 60,
+    "second": 1, "sec": 1, "s": 1,
+}
+
+# Clock-form durations ("1:30", "1:02:30") state the same length
+# as the unit forms. A two-part clock is read as a duration only
+# when it cannot be an aspect ratio: the image/video ratio
+# parsers accept parts up to 21 with a value between 1:3 and
+# 3:1, so "9:16" stays an aspect while "1:30" (30 > 21) and
+# "0:45" are durations. A three-part clock is never a ratio.
+_CLOCK3_RE = re.compile(r"(?<![0-9:])(\d+):([0-5]\d):([0-5]\d)(?![0-9:])")
+_CLOCK2_RE = re.compile(r"(?<![0-9:])(\d+):([0-5]\d)(?![0-9:])")
+
+
+def _clock_seconds(prompt: str) -> int | None:
+    total = 0
+    found = False
+    for match in _CLOCK3_RE.finditer(prompt):
+        hours, minutes, seconds = (int(part) for part in match.groups())
+        total += hours * 3600 + minutes * 60 + seconds
+        found = True
+    for match in _CLOCK2_RE.finditer(prompt):
+        minutes, seconds = int(match.group(1)), int(match.group(2))
+        if 1 <= minutes <= 21 and 1 <= seconds <= 21 and 1 / 3 <= minutes / seconds <= 3:
+            continue  # an aspect ratio, not a duration
+        total += minutes * 60 + seconds
+        found = True
+    return total if found else None
 
 
 def detect_kind(prompt: str) -> str:
     """Classify a music prompt as jingle / score / track."""
     text = prompt.lower()
-    if "jingle" in text:
+    if _kind_named(_JINGLE_RE, text):
         return KIND_JINGLE
-    if any(phrase in text for phrase in _SCORE_PHRASES):
+    if any(_kind_named(pattern, text) for pattern in _SCORE_RES):
         return KIND_SCORE
     return KIND_TRACK
 
@@ -110,16 +169,26 @@ def parse_duration(prompt: str) -> int | None:
 
     Compound durations add up ("2 minutes 30 seconds" is 150),
     fractional values count ("1.5 minutes" is 90, not the 300 a
-    whole-number scan reads from the "5"), and hours are a unit.
-    The video module reuses this parser instead of carrying a
-    second copy that could drift from it.
+    whole-number scan reads from the "5"), hours are a unit, and
+    the compact forms count too ("30s", "1m 30s", "1m30s").
+    Clock forms ("1:30", "1:02:30") state the length precisely,
+    so a clock reading wins over unit forms in the same request
+    rather than adding to them. The video module reuses this
+    parser instead of carrying a second copy that could drift
+    from it.
     """
+    clock = _clock_seconds(prompt)
+    if clock is not None:
+        return clock
     matches = _DURATION_RE.findall(prompt)
     if not matches:
         return None
     total = 0.0
     for value, unit in matches:
-        total += float(value) * _UNIT_SECONDS[unit.lower().rstrip("s")]
+        key = unit.lower()
+        if key not in _UNIT_SECONDS:
+            key = key.rstrip("s")
+        total += float(value) * _UNIT_SECONDS[key]
     return round(total)
 
 

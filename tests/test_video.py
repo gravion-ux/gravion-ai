@@ -103,6 +103,11 @@ def test_detect_mode(prompt, expected):
         # part and fractional minutes were misread.
         ("a 1 minute 30 seconds explainer", 90),
         ("a 1.5 minutes teaser", 90),
+        # Clock and compact forms count; a 9:16 aspect in the
+        # same request is not a duration.
+        ("a 1:30 explainer", 90),
+        ("a 30s teaser", 30),
+        ("a 9:16 video, 30 seconds", 30),
         ("a teaser for our app", None),
         ("a video for the launch", None),
     ],
@@ -116,6 +121,7 @@ def test_parse_duration(prompt, expected):
     [
         ("a teaser at 1920x1080 for the site", "1920x1080"),
         ("a clip, 512 x 512", "512x512"),
+        ("a clip, 800 by 600", "800x600"),
         ("a square video for the feed", "1:1"),
         ("a vertical video for the launch", "9:16"),
         ("a portrait video of the founder", "9:16"),

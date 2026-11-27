@@ -63,6 +63,8 @@ def test_detect_mode(prompt, expected):
     [
         ("a banner at 1920x1080 for the site", "1920x1080"),
         ("an icon, 512 x 512", "512x512"),
+        # "800 by 600" states a pixel size just as "800x600" does.
+        ("a poster, 800 by 600", "800x600"),
         ("a square logo", "1:1"),
         ("a portrait of the founder", "3:4"),
         ("a landscape photo of the office", "16:9"),
@@ -87,6 +89,7 @@ def test_parse_aspect(prompt, expected):
 def test_resolve_size_uses_explicit_ratio():
     assert resolve_size("a 4:5 poster") == (819, 1024)
     assert resolve_size("a 3:2 photo") == (1024, 682)
+    assert resolve_size("a poster, 800 by 600") == (800, 600)
 
 
 def test_brief_records_mode_aspect_and_request():
