@@ -61,6 +61,10 @@ ROUTEABLE = (
 
 DEFAULT_ROUTE = "chat"
 
+# Words that cancel a following intent verb ("do not draw",
+# "never make a video", "don't write code").
+_NEGATORS = frozenset({"not", "never", "no", "nor", "cannot"})
+
 _DIRECTIVE_RE = re.compile(
     r"^\s*([a-z][a-z0-9-]*)\s*:\s*(.+)$", re.DOTALL | re.IGNORECASE
 )
@@ -229,9 +233,24 @@ def infer_route(prompt: str) -> str:
         return "summarization"
     if _TRANSLATE_PREFIX_RE.match(prompt):
         return "translation"
-    tokens = frozenset(_TOKEN_RE.findall(prompt.lower()))
+    # A negated verb cancels its module: "do not draw a logo"
+    # asks for an explanation, not an image, yet the bare
+    # verb+noun signal routed it to image. Contractions are
+    # expanded first ("don't" -> "do not") so the negator is a
+    # token of its own; a verb counts as negated when a negator
+    # stands within the two tokens before it ("do not draw",
+    # "never make") — a wider window would let one clause's
+    # negation cancel the next clause's verb.
+    ordered = _TOKEN_RE.findall(prompt.lower().replace("n't", " not"))
+    tokens = frozenset(ordered)
+    negated: set[str] = set()
+    for index, token in enumerate(ordered):
+        if any(t in _NEGATORS for t in ordered[max(0, index - 2) : index]):
+            negated.add(token)
     scores: dict[str, int] = {}
     for name, (verbs, nouns) in _INTENT_SIGNALS.items():
+        if verbs & negated:
+            continue
         score = len(tokens & verbs) + len(tokens & nouns)
         if score:
             scores[name] = score

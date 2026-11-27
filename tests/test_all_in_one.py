@@ -96,6 +96,15 @@ def test_parse_route_refuses_capitalised_self_routing():
         # A lone text-module verb is not enough on its own.
         ("translate this for me", "chat"),
         ("summarize it please", "chat"),
+        # Regression: a negated verb still routed on its
+        # verb+noun signal, so "do not draw a logo" produced
+        # an image instead of the explanation asked for.
+        ("do not draw a logo, just explain what a logo is", "chat"),
+        ("don't write a python function, explain functions", "chat"),
+        ("never make a video, tell me about videos", "chat"),
+        # A negation aimed at one module does not cancel a
+        # clear signal for another.
+        ("do not draw anything, write a python function", "coder"),
     ],
 )
 def test_parse_route_infers_clear_intent(prompt, expected_module):

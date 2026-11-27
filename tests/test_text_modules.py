@@ -399,6 +399,27 @@ def test_stem_word_matches_irregular_sis_plurals():
     assert stem_word("classes") == stem_word("class") == "class"
 
 
+def test_stem_word_matches_irregular_past_tense_verbs():
+    # Regression: the plural-only stemmer left "sat" and "sit"
+    # apart, so a present-tense question never matched a
+    # past-tense document sentence.
+    assert stem_word("sat") == stem_word("sit") == "sit"
+    assert stem_word("ran") == stem_word("run") == "run"
+    assert stem_word("went") == stem_word("go") == "go"
+    assert stem_word("wrote") == stem_word("write") == "write"
+
+
+def test_document_qa_matches_past_tense_evidence():
+    # Regression: "where did the cat sit?" shares only "cat"
+    # with "the cat sat on the mat" until "sat" stems to
+    # "sit", so the module wrongly reported no answer.
+    out = answer_question(
+        "The cat sat on the mat. Dogs bark loudly.",
+        "Where did the cat sit?",
+    )
+    assert "cat sat on the mat" in out
+
+
 def test_stem_word_matches_o_and_suppletive_plurals():
     # Regression: "oes" plurals stemmed to a trailing "e" the
     # singular never produces ("heroes" -> "heroe"), and
