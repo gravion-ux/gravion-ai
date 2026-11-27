@@ -18,8 +18,9 @@ things of its own on top of the shared module path:
 
 Everything else follows the reference module's shape: manifest in,
 `run(ctx, prompt)` out, model resolved by the Gravion registry
-(Gravion Core serves support out of the box; Gravion Chat is the
-trained support model from Piece 2's Tier 2 bundle).
+(Gravion Core serves support out of the box; Gravion Support is the
+trained support specialist, and Gravion Omni serves support as part
+of its full capability set).
 """
 
 from __future__ import annotations

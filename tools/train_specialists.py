@@ -144,6 +144,14 @@ TOPICS: dict[str, list[tuple[str, str]]] = {
         ("i forgot my password", "Use the forgot password link on the sign-in page and follow the reset link sent to your registered email address."),
         ("how do i reset my password", "Use the forgot password link on the sign-in page and follow the reset link sent to your registered email address."),
         ("what are your opening hours", "Opening hours are listed on the contact page for each location. Tell me your city or store and I will point you to the right listing."),
+        # First-person order problems (28 Nov 2026 cycle, 02:16
+        # run): refund, cancellation, damaged delivery and
+        # delivery-time asks in the customer's own words echoed
+        # while the explain-form topics answered.
+        ("i want a refund for my order", "Share your order number and I will start the refund; once the returned item is received and checked, the refund goes back to the original payment method."),
+        ("cancel my order", "Share your order number and I will cancel it if it has not shipped yet; if it has shipped, I will explain the return path instead."),
+        ("my package arrived damaged", "Sorry the item arrived damaged. Share a photo of the damage and your order number, and I will arrange a replacement or refund."),
+        ("how long does delivery take", "Delivery estimates are shown at checkout and in your confirmation message; they depend on your location and the items ordered."),
     ],
     "gravion-code": [
         ("write a function that adds two numbers", "Define a small function with two numeric inputs, return their sum, and test it with positive, negative, and zero values."),
@@ -224,6 +232,15 @@ TOPICS: dict[str, list[tuple[str, str]]] = {
         ("fix an infinite loop in this code", "Check the loop condition and the update step: the variable the condition reads must move toward the exit value on every pass, and add a safety break while debugging."),
         ("fix a while true infinite loop", "Check the loop condition and the update step: the variable the condition reads must move toward the exit value on every pass, and add a safety break while debugging."),
         ("stop an infinite loop", "Check the loop condition and the update step: the variable the condition reads must move toward the exit value on every pass, and add a safety break while debugging."),
+        # Demo-probe repair (28 Nov 2026 cycle, 02:16 run): the
+        # index-error ask echoed, and the palindrome ask was
+        # answered by the prime class (shared "check if" words),
+        # so the palindrome class gains its own phrasings.
+        ("explain an index error in code", "An index error means the code asked for a position outside the list or string; check the length first and keep indexes from zero to length minus one."),
+        ("why does code throw an index error", "An index error means the code asked for a position outside the list or string; check the length first and keep indexes from zero to length minus one."),
+        ("my code throws an index error", "An index error means the code asked for a position outside the list or string; check the length first and keep indexes from zero to length minus one."),
+        ("check if a string is a palindrome", "Compare the string with its reverse: text == text[::-1]. Test an empty string, a single character, and a mixed-case word after normalising case."),
+        ("write a palindrome checker", "Compare the string with its reverse: text == text[::-1]. Test an empty string, a single character, and a mixed-case word after normalising case."),
     ],
     "gravion-review": [
         ("review this code for bugs", "Reviewing for bugs: check inputs, edge cases, error handling, and resource cleanup, then list findings by severity."),
@@ -333,6 +350,11 @@ TOPICS: dict[str, list[tuple[str, str]]] = {
         # the brief names the business and the pages together.
         ("build a landing page for a bakery", "Landing page plan: clear hero, proof of work, services, process, testimonial space, and one contact action, with home, about and contact pages."),
         ("build a bakery landing page with home about and contact pages", "Landing page plan: clear hero, proof of work, services, process, testimonial space, and one contact action, with home, about and contact pages."),
+        # Demo-probe repair (28 Nov 2026 cycle, 02:16 run): the
+        # restaurant and shoe-store briefs echoed while the
+        # bakery and portfolio briefs answered.
+        ("build a website for a restaurant with a menu page", "Restaurant site: menu with prices, daily specials, story, hours and location, gallery, and a reservation or contact action."),
+        ("create an online store for shoes", "Shoe store: product grid with sizes and prices, filters by size and style, cart and checkout pages, and clear delivery and return notes."),
     ],
     "gravion-vision": [
         ("describe a sunset portrait image brief", "Image brief: warm sunset light, calm human portrait, soft background, natural expression, high detail."),
@@ -566,6 +588,43 @@ TOPICS: dict[str, list[tuple[str, str]]] = {
         ("analyse brute force login attempts in logs", "Analysis: order the events, mark repeated failures before a success, note the source addresses, and state what would confirm or clear the suspicion."),
         ("triage this alert", "Triage: count the failures, check whether any login succeeded, identify the source address and account, then lock or challenge the account and review related activity."),
         ("triage an alert", "Triage: count the failures, check whether any login succeeded, identify the source address and account, then lock or challenge the account and review related activity."),
+        # Cyber strengthening (28 Nov 2026 cycle, 02:16 run):
+        # fresh demo probe showed phishing first response, the
+        # two classic injection classes, SSH brute-force
+        # assessment and IDOR report writing all echoed, so the
+        # shield gains those defensive classes.
+        ("respond to a phishing email reported by staff", "Phishing response: do not click or reply, preserve the message headers, report it to the security team, check whether anyone entered credentials, and reset those accounts first."),
+        ("explain sql injection", "SQL injection is an attack where untrusted input reaches a database query as code instead of data; prevent it with parameterised queries, least-privilege database accounts, and input validation."),
+        ("explain cross site scripting", "Cross-site scripting is an attack where untrusted input is rendered as script in a victim's browser; prevent it by encoding output for its context and validating input."),
+        ("assess failed ssh logins from one ip address", "Assessment: repeated failed SSH logins from one address look like password guessing; check whether any login succeeded, block or rate-limit the source, and require key-based access with multi-factor authentication."),
+        ("write a bug bounty report for an idor", "Report: name the endpoint and the object reference that lacked an ownership check, show the minimal proof with your own test accounts, state the impact, and suggest enforcing per-object authorisation on the server."),
+        # Cyber foundations (28 Nov 2026 cycle, 03:16 run):
+        # fresh demo probe showed the concept questions an
+        # investor asks first all echoed, and ransomware was
+        # answered by the injection class, so the shield gains
+        # the foundation classes in defensive words only.
+        ("explain what a cve is", "A CVE is a public identifier for a known vulnerability: the id names the flaw so defenders can track affected versions, severity, and the fix in one place."),
+        ("explain what a vulnerability is", "A vulnerability is a weakness in software or configuration that an attacker could misuse; fixing it removes the weakness, and severity rates how much damage misuse could cause."),
+        ("explain two factor authentication", "Two-factor authentication requires a second proof beyond the password, such as a code from an authenticator app, so a stolen password alone is usually not enough to sign in."),
+        ("explain ransomware", "Ransomware is malware that encrypts files and demands payment for the key; defend with tested offline backups, prompt updates, least-privilege accounts, and staff reporting habits."),
+        ("explain how to secure a website", "Secure a website by keeping software updated, enforcing strong authentication, validating input, serving over encrypted connections, backing up regularly, and monitoring logs for abuse."),
+        ("explain how to report a security bug responsibly", "Report responsibly: test only within authorised scope, keep proof minimal with your own accounts, send the finding privately to the owner with impact and steps, and allow time for a fix before any public detail."),
+        ("respond to a server break in attempt", "Response: preserve logs, check whether any login succeeded, block or rate-limit the source, force password resets for touched accounts, and review related activity before closing."),
+        # Direct question shapes (28 Nov 2026 cycle, 03:16
+        # run): the explain-form topics above left "What is a
+        # CVE?" on the vulnerability-management class and
+        # "How do I secure my website?" echoing, so both
+        # classes gain the direct question phrasing.
+        ("what is a cve", "A CVE is a public identifier for a known vulnerability: the id names the flaw so defenders can track affected versions, severity, and the fix in one place."),
+        ("secure my website", "Secure a website by keeping software updated, enforcing strong authentication, validating input, serving over encrypted connections, backing up regularly, and monitoring logs for abuse."),
+        # Margin repair (28 Nov 2026 cycle, 03:16 run): the
+        # foundation classes above diluted the injection
+        # classes back into echo on their direct question
+        # shapes, so those classes gain the same shapes.
+        ("what is sql injection", "SQL injection is an attack where untrusted input reaches a database query as code instead of data; prevent it with parameterised queries, least-privilege database accounts, and input validation."),
+        ("explain what sql injection is", "SQL injection is an attack where untrusted input reaches a database query as code instead of data; prevent it with parameterised queries, least-privilege database accounts, and input validation."),
+        ("what is cross site scripting", "Cross-site scripting is an attack where untrusted input is rendered as script in a victim's browser; prevent it by encoding output for its context and validating input."),
+        ("explain what cross site scripting is", "Cross-site scripting is an attack where untrusted input is rendered as script in a victim's browser; prevent it by encoding output for its context and validating input."),
     ],
     "gravion-agent": [
         ("plan an agent that summarizes email", "Agent plan: read approved messages, group by topic, draft summaries, flag urgent items, and ask before sending anything."),
@@ -620,6 +679,19 @@ TOPICS: dict[str, list[tuple[str, str]]] = {
         # Demo-critical agentic phrasings (28 Nov 2026 cycle).
         ("plan an agent that checks email and drafts replies", "Agent plan: read new mail each morning, sort by sender and urgency, draft replies for review, and send nothing without approval."),
         ("build an agent that monitors website uptime", "Agent plan: check the site on a schedule, record response times, alert on failures with the failing check, and keep a daily uptime summary."),
+        # Demo-probe repair (28 Nov 2026 cycle, 02:16 run):
+        # price-watch and morning-news agent asks echoed while
+        # the email and uptime plans answered.
+        ("create an agent that monitors prices and sends alerts", "Agent plan: track the listed prices on a schedule, compare them against your alert thresholds, and send one clear alert with the old and new price when a threshold is crossed."),
+        ("build a bot that summarises news every morning", "Agent plan: gather the morning headlines from your chosen sources, summarise the top stories briefly, and deliver one digest at your set time."),
+        # Sparse-evidence guard (28 Nov 2026 cycle, 02:16 run):
+        # the retrain let the expense class answer the sparse
+        # "plan an agent for reports" ask confidently. A filing
+        # phrasing overshot (the sparse ask matched it at 0.57);
+        # the triage class gaining the singular "for report"
+        # shape splits the margin three ways instead, so sparse
+        # evidence falls back honestly again (measured 0.21).
+        ("plan an agent for report triage", "Agent plan: reproduce steps, classify severity, find duplicates, assign owners, and track fixes."),
     ],
     "gravion-omni": [
         ("route a coding request to the right module", "Route coding requests to the coder module with the goal, constraints, and test expectations preserved."),

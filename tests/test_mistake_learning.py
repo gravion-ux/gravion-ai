@@ -102,7 +102,7 @@ def test_regression_test_generation_covers_each_corrected_case(tmp_path):
 def test_bundled_mistakes_are_corrected_and_regressed():
     cases = load_bundled_mistakes()
 
-    assert len(cases) == 30
+    assert len(cases) == 58
     assert all(case.corrected for case in cases)
     assert {case.kind for case in cases} == {
         "weak_response",

@@ -230,3 +230,19 @@
 {"completion": "Opening hours are listed on the contact page for each location. Tell me your city or store and I will point you to the right listing.", "prompt": "please what are your opening hours"}
 {"completion": "Opening hours are listed on the contact page for each location. Tell me your city or store and I will point you to the right listing.", "prompt": "gravion support what are your opening hours"}
 {"completion": "Opening hours are listed on the contact page for each location. Tell me your city or store and I will point you to the right listing.", "prompt": "help me what are your opening hours"}
+{"completion": "Share your order number and I will start the refund; once the returned item is received and checked, the refund goes back to the original payment method.", "prompt": "i want a refund for my order"}
+{"completion": "Share your order number and I will start the refund; once the returned item is received and checked, the refund goes back to the original payment method.", "prompt": "please i want a refund for my order"}
+{"completion": "Share your order number and I will start the refund; once the returned item is received and checked, the refund goes back to the original payment method.", "prompt": "gravion support i want a refund for my order"}
+{"completion": "Share your order number and I will start the refund; once the returned item is received and checked, the refund goes back to the original payment method.", "prompt": "help me i want a refund for my order"}
+{"completion": "Share your order number and I will cancel it if it has not shipped yet; if it has shipped, I will explain the return path instead.", "prompt": "cancel my order"}
+{"completion": "Share your order number and I will cancel it if it has not shipped yet; if it has shipped, I will explain the return path instead.", "prompt": "please cancel my order"}
+{"completion": "Share your order number and I will cancel it if it has not shipped yet; if it has shipped, I will explain the return path instead.", "prompt": "gravion support cancel my order"}
+{"completion": "Share your order number and I will cancel it if it has not shipped yet; if it has shipped, I will explain the return path instead.", "prompt": "help me cancel my order"}
+{"completion": "Sorry the item arrived damaged. Share a photo of the damage and your order number, and I will arrange a replacement or refund.", "prompt": "my package arrived damaged"}
+{"completion": "Sorry the item arrived damaged. Share a photo of the damage and your order number, and I will arrange a replacement or refund.", "prompt": "please my package arrived damaged"}
+{"completion": "Sorry the item arrived damaged. Share a photo of the damage and your order number, and I will arrange a replacement or refund.", "prompt": "gravion support my package arrived damaged"}
+{"completion": "Sorry the item arrived damaged. Share a photo of the damage and your order number, and I will arrange a replacement or refund.", "prompt": "help me my package arrived damaged"}
+{"completion": "Delivery estimates are shown at checkout and in your confirmation message; they depend on your location and the items ordered.", "prompt": "how long does delivery take"}
+{"completion": "Delivery estimates are shown at checkout and in your confirmation message; they depend on your location and the items ordered.", "prompt": "please how long does delivery take"}
+{"completion": "Delivery estimates are shown at checkout and in your confirmation message; they depend on your location and the items ordered.", "prompt": "gravion support how long does delivery take"}
+{"completion": "Delivery estimates are shown at checkout and in your confirmation message; they depend on your location and the items ordered.", "prompt": "help me how long does delivery take"}
