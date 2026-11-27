@@ -294,3 +294,59 @@
 {"completion": "Compare the string with its reverse: text == text[::-1]. Test an empty string, a single character, and a mixed-case word after normalising case.", "prompt": "please write a palindrome checker"}
 {"completion": "Compare the string with its reverse: text == text[::-1]. Test an empty string, a single character, and a mixed-case word after normalising case.", "prompt": "gravion code write a palindrome checker"}
 {"completion": "Compare the string with its reverse: text == text[::-1]. Test an empty string, a single character, and a mixed-case word after normalising case.", "prompt": "help me write a palindrome checker"}
+{"completion": "Multiply the integers from 1 up to n, return 1 for 0, reject negative inputs, and test 0, 1, and 5.", "prompt": "write a function to compute factorial"}
+{"completion": "Multiply the integers from 1 up to n, return 1 for 0, reject negative inputs, and test 0, 1, and 5.", "prompt": "please write a function to compute factorial"}
+{"completion": "Multiply the integers from 1 up to n, return 1 for 0, reject negative inputs, and test 0, 1, and 5.", "prompt": "gravion code write a function to compute factorial"}
+{"completion": "Multiply the integers from 1 up to n, return 1 for 0, reject negative inputs, and test 0, 1, and 5.", "prompt": "help me write a function to compute factorial"}
+{"completion": "Multiply the integers from 1 up to n, return 1 for 0, reject negative inputs, and test 0, 1, and 5.", "prompt": "compute the factorial of a number"}
+{"completion": "Multiply the integers from 1 up to n, return 1 for 0, reject negative inputs, and test 0, 1, and 5.", "prompt": "please compute the factorial of a number"}
+{"completion": "Multiply the integers from 1 up to n, return 1 for 0, reject negative inputs, and test 0, 1, and 5.", "prompt": "gravion code compute the factorial of a number"}
+{"completion": "Multiply the integers from 1 up to n, return 1 for 0, reject negative inputs, and test 0, 1, and 5.", "prompt": "help me compute the factorial of a number"}
+{"completion": "Recursion solves a problem by calling the same function on a smaller input until a base case stops the calls.", "prompt": "explain recursion"}
+{"completion": "Recursion solves a problem by calling the same function on a smaller input until a base case stops the calls.", "prompt": "please explain recursion"}
+{"completion": "Recursion solves a problem by calling the same function on a smaller input until a base case stops the calls.", "prompt": "gravion code explain recursion"}
+{"completion": "Recursion solves a problem by calling the same function on a smaller input until a base case stops the calls.", "prompt": "help me explain recursion"}
+{"completion": "Recursion solves a problem by calling the same function on a smaller input until a base case stops the calls.", "prompt": "what is recursion"}
+{"completion": "Recursion solves a problem by calling the same function on a smaller input until a base case stops the calls.", "prompt": "please what is recursion"}
+{"completion": "Recursion solves a problem by calling the same function on a smaller input until a base case stops the calls.", "prompt": "gravion code what is recursion"}
+{"completion": "Recursion solves a problem by calling the same function on a smaller input until a base case stops the calls.", "prompt": "help me what is recursion"}
+{"completion": "A variable is a named place that stores a value so code can read or update it later.", "prompt": "what is a variable"}
+{"completion": "A variable is a named place that stores a value so code can read or update it later.", "prompt": "please what is a variable"}
+{"completion": "A variable is a named place that stores a value so code can read or update it later.", "prompt": "gravion code what is a variable"}
+{"completion": "A variable is a named place that stores a value so code can read or update it later.", "prompt": "help me what is a variable"}
+{"completion": "A variable is a named place that stores a value so code can read or update it later.", "prompt": "explain what a variable is"}
+{"completion": "A variable is a named place that stores a value so code can read or update it later.", "prompt": "please explain what a variable is"}
+{"completion": "A variable is a named place that stores a value so code can read or update it later.", "prompt": "gravion code explain what a variable is"}
+{"completion": "A variable is a named place that stores a value so code can read or update it later.", "prompt": "help me explain what a variable is"}
+{"completion": "A list is mutable and can grow or change after creation; a tuple is fixed, so use a tuple for values that must not change.", "prompt": "difference between a list and a tuple"}
+{"completion": "A list is mutable and can grow or change after creation; a tuple is fixed, so use a tuple for values that must not change.", "prompt": "please difference between a list and a tuple"}
+{"completion": "A list is mutable and can grow or change after creation; a tuple is fixed, so use a tuple for values that must not change.", "prompt": "gravion code difference between a list and a tuple"}
+{"completion": "A list is mutable and can grow or change after creation; a tuple is fixed, so use a tuple for values that must not change.", "prompt": "help me difference between a list and a tuple"}
+{"completion": "A list is mutable and can grow or change after creation; a tuple is fixed, so use a tuple for values that must not change.", "prompt": "explain list and tuple differences"}
+{"completion": "A list is mutable and can grow or change after creation; a tuple is fixed, so use a tuple for values that must not change.", "prompt": "please explain list and tuple differences"}
+{"completion": "A list is mutable and can grow or change after creation; a tuple is fixed, so use a tuple for values that must not change.", "prompt": "gravion code explain list and tuple differences"}
+{"completion": "A list is mutable and can grow or change after creation; a tuple is fixed, so use a tuple for values that must not change.", "prompt": "help me explain list and tuple differences"}
+{"completion": "A list is mutable and can grow or change after creation; a tuple is fixed, so use a tuple for values that must not change.", "prompt": "explain the difference between a list and a tuple"}
+{"completion": "A list is mutable and can grow or change after creation; a tuple is fixed, so use a tuple for values that must not change.", "prompt": "please explain the difference between a list and a tuple"}
+{"completion": "A list is mutable and can grow or change after creation; a tuple is fixed, so use a tuple for values that must not change.", "prompt": "gravion code explain the difference between a list and a tuple"}
+{"completion": "A list is mutable and can grow or change after creation; a tuple is fixed, so use a tuple for values that must not change.", "prompt": "help me explain the difference between a list and a tuple"}
+{"completion": "A list is mutable and can grow or change after creation; a tuple is fixed, so use a tuple for values that must not change.", "prompt": "what is the difference between a list and a tuple"}
+{"completion": "A list is mutable and can grow or change after creation; a tuple is fixed, so use a tuple for values that must not change.", "prompt": "please what is the difference between a list and a tuple"}
+{"completion": "A list is mutable and can grow or change after creation; a tuple is fixed, so use a tuple for values that must not change.", "prompt": "gravion code what is the difference between a list and a tuple"}
+{"completion": "A list is mutable and can grow or change after creation; a tuple is fixed, so use a tuple for values that must not change.", "prompt": "help me what is the difference between a list and a tuple"}
+{"completion": "A list is mutable and can grow or change after creation; a tuple is fixed, so use a tuple for values that must not change.", "prompt": "list vs tuple difference"}
+{"completion": "A list is mutable and can grow or change after creation; a tuple is fixed, so use a tuple for values that must not change.", "prompt": "please list vs tuple difference"}
+{"completion": "A list is mutable and can grow or change after creation; a tuple is fixed, so use a tuple for values that must not change.", "prompt": "gravion code list vs tuple difference"}
+{"completion": "A list is mutable and can grow or change after creation; a tuple is fixed, so use a tuple for values that must not change.", "prompt": "help me list vs tuple difference"}
+{"completion": "A list is mutable and can grow or change after creation; a tuple is fixed, so use a tuple for values that must not change.", "prompt": "difference between list and tuple in python"}
+{"completion": "A list is mutable and can grow or change after creation; a tuple is fixed, so use a tuple for values that must not change.", "prompt": "please difference between list and tuple in python"}
+{"completion": "A list is mutable and can grow or change after creation; a tuple is fixed, so use a tuple for values that must not change.", "prompt": "gravion code difference between list and tuple in python"}
+{"completion": "A list is mutable and can grow or change after creation; a tuple is fixed, so use a tuple for values that must not change.", "prompt": "help me difference between list and tuple in python"}
+{"completion": "Read the error line first, check brackets, quotes, and indentation around it, fix one issue, then run again; the reported line is often just after the real mistake.", "prompt": "fix a syntax error"}
+{"completion": "Read the error line first, check brackets, quotes, and indentation around it, fix one issue, then run again; the reported line is often just after the real mistake.", "prompt": "please fix a syntax error"}
+{"completion": "Read the error line first, check brackets, quotes, and indentation around it, fix one issue, then run again; the reported line is often just after the real mistake.", "prompt": "gravion code fix a syntax error"}
+{"completion": "Read the error line first, check brackets, quotes, and indentation around it, fix one issue, then run again; the reported line is often just after the real mistake.", "prompt": "help me fix a syntax error"}
+{"completion": "Read the error line first, check brackets, quotes, and indentation around it, fix one issue, then run again; the reported line is often just after the real mistake.", "prompt": "how do i fix a syntax error"}
+{"completion": "Read the error line first, check brackets, quotes, and indentation around it, fix one issue, then run again; the reported line is often just after the real mistake.", "prompt": "please how do i fix a syntax error"}
+{"completion": "Read the error line first, check brackets, quotes, and indentation around it, fix one issue, then run again; the reported line is often just after the real mistake.", "prompt": "gravion code how do i fix a syntax error"}
+{"completion": "Read the error line first, check brackets, quotes, and indentation around it, fix one issue, then run again; the reported line is often just after the real mistake.", "prompt": "help me how do i fix a syntax error"}

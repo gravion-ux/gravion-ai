@@ -94,6 +94,32 @@ FAREWELL_RESPONSE = (
     "time — I will be ready to help."
 )
 
+MEET_RESPONSE = (
+    "Nice to meet you too. Tell me what you would like to work "
+    "on — a question, code, a website, a security review or an "
+    "agent plan — and I will help step by step."
+)
+
+OFFLINE_RESPONSE = (
+    "Yes — the built-in Gravion models run fully offline with "
+    "no network and no API key, so chat, code, cyber and the "
+    "other modules keep working on your own machine."
+)
+
+START_RESPONSE = (
+    "Install Gravion, run gravion init to create your "
+    "deployment, then gravion status and gravion doctor to "
+    "check readiness — after that, gravion chat opens the "
+    "conversation and every module is ready to use."
+)
+
+FREE_RESPONSE = (
+    "Development and evaluation are free, with no agreement "
+    "needed. Production use runs under a commercial agreement, "
+    "and the tiers set how trained each module is when it "
+    "reaches you."
+)
+
 _GREETING = re.compile(
     r"^(?:hello|hi|hey|namaste|greetings|good (?:morning|afternoon|evening))\b"
 )
@@ -155,7 +181,37 @@ _AI_IDENTITY = re.compile(
 _LANGUAGE = re.compile(
     r"\b(?:can you speak hindi|do you speak hindi|"
     r"can you speak hinglish|hindi aati hai|"
-    r"hindi bol sakte ho)\b"
+    r"hindi bol sakte ho|"
+    # The language ask in its list form ("what languages do
+    # you support?") is the same opening as the Hindi ask
+    # above; with only the Hindi forms listed, it echoed.
+    r"what languages do you support|"
+    r"which languages do you support|"
+    r"what languages can you speak)\b"
+)
+# Demo questions about Gravion itself (28 Nov 2026 cycle,
+# 04:16 run): "nice to meet you", "do you work offline?",
+# "is Gravion free?" and "how do I get started?" all echoed
+# while the neighbouring identity and capability lines
+# answered. Each pattern stays narrow: the meet reply is a
+# short whole-message line, the offline and free asks name
+# their subject, and the start ask names getting started.
+_MEET = re.compile(
+    r"^(?:nice to meet you|pleased to meet you|"
+    r"good to meet you|glad to meet you)$"
+)
+_OFFLINE = re.compile(
+    r"\b(?:do you work offline|can you work offline|"
+    r"do you need internet|do you need an internet connection|"
+    r"work without internet|offline kaam karte ho)\b"
+)
+_START = re.compile(
+    r"\b(?:how do i get started|how to get started|"
+    r"get started with gravion|how do i start using gravion|"
+    r"how do i start with gravion)\b"
+)
+_FREE = re.compile(
+    r"\b(?:is gravion free|is it free|gravion free hai kya)\b"
 )
 _THANKS = re.compile(
     r"^(?:thank you|thanks|thanks a lot|thank you so much|"
@@ -199,6 +255,14 @@ def opening_response(prompt: str) -> str | None:
         return IDENTITY_RESPONSE
     if _CAPABILITIES.search(text) or _BARE_HELP.match(text):
         return CAPABILITIES_RESPONSE
+    if _MEET.match(text):
+        return MEET_RESPONSE
+    if _OFFLINE.search(text) and words <= 8:
+        return OFFLINE_RESPONSE
+    if _START.search(text) and words <= 8:
+        return START_RESPONSE
+    if _FREE.search(text) and words <= 6:
+        return FREE_RESPONSE
     if _LANGUAGE.search(text):
         return LANGUAGE_RESPONSE
     if _WELLBEING.search(text) and words <= 8:

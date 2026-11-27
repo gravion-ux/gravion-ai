@@ -80,6 +80,12 @@ TOPICS: dict[str, list[tuple[str, str]]] = {
         ("tell what you can do for me", "I can chat, write and review code, build websites, analyse security alerts, draft agent plans, and help with support questions."),
         ("explain recursion simply", "Recursion is when a function calls itself on a smaller piece of the problem until it reaches a base case that stops the calls."),
         ("describe who built gravion", "Gravion is a modular AI platform built by Priyanshu Kumar Thakur, with chat, coder, cyber, website builder and agentic modules over one system."),
+        # Plain concept explain (28 Nov 2026 cycle, 04:16 run):
+        # "explain artificial intelligence simply" echoed while
+        # the difficult-idea topic answered, so the chat class
+        # gains the direct concept shape.
+        ("explain artificial intelligence simply", "Artificial intelligence is software that learns patterns from examples to answer, classify, or generate, instead of following only fixed rules written in advance."),
+        ("what is artificial intelligence", "Artificial intelligence is software that learns patterns from examples to answer, classify, or generate, instead of following only fixed rules written in advance."),
     ],
     "gravion-support": [
         ("check the status of an order", "Share your order number and I will check its current status and tell you the next step."),
@@ -152,6 +158,21 @@ TOPICS: dict[str, list[tuple[str, str]]] = {
         ("cancel my order", "Share your order number and I will cancel it if it has not shipped yet; if it has shipped, I will explain the return path instead."),
         ("my package arrived damaged", "Sorry the item arrived damaged. Share a photo of the damage and your order number, and I will arrange a replacement or refund."),
         ("how long does delivery take", "Delivery estimates are shown at checkout and in your confirmation message; they depend on your location and the items ordered."),
+        # Direct support questions (28 Nov 2026 cycle, 04:16
+        # run): the question shapes customers type — "how do I
+        # get a refund", "my order arrived damaged" — were
+        # answered by the password-reset and order-status
+        # classes while the statement forms above answered, so
+        # those classes gain the direct shapes, and the payment
+        # and address questions gain classes of their own.
+        ("how do i get a refund", "Share your order number and I will start the refund; once the returned item is received and checked, the refund goes back to the original payment method."),
+        ("get a refund for my order", "Share your order number and I will start the refund; once the returned item is received and checked, the refund goes back to the original payment method."),
+        ("my order arrived damaged", "Sorry the item arrived damaged. Share a photo of the damage and your order number, and I will arrange a replacement or refund."),
+        ("order arrived damaged", "Sorry the item arrived damaged. Share a photo of the damage and your order number, and I will arrange a replacement or refund."),
+        ("what payment methods do you accept", "Accepted payment methods are shown at checkout before you pay. If a payment fails, share your order number and I will check its payment status."),
+        ("which payment methods are accepted", "Accepted payment methods are shown at checkout before you pay. If a payment fails, share your order number and I will check its payment status."),
+        ("change my delivery address", "If your order has not shipped yet, I can update the delivery address. Share your order number and the new address."),
+        ("how do i change my delivery address", "If your order has not shipped yet, I can update the delivery address. Share your order number and the new address."),
     ],
     "gravion-code": [
         ("write a function that adds two numbers", "Define a small function with two numeric inputs, return their sum, and test it with positive, negative, and zero values."),
@@ -241,6 +262,31 @@ TOPICS: dict[str, list[tuple[str, str]]] = {
         ("my code throws an index error", "An index error means the code asked for a position outside the list or string; check the length first and keep indexes from zero to length minus one."),
         ("check if a string is a palindrome", "Compare the string with its reverse: text == text[::-1]. Test an empty string, a single character, and a mixed-case word after normalising case."),
         ("write a palindrome checker", "Compare the string with its reverse: text == text[::-1]. Test an empty string, a single character, and a mixed-case word after normalising case."),
+        # Coder basics (28 Nov 2026 cycle, 04:16 run): a fresh
+        # demo probe showed the plain beginner asks answered by
+        # the wrong class — factorial by text normalising,
+        # recursion by asynchronous code, a variable by
+        # decorators, list-versus-tuple by list-versus-set — and
+        # the syntax-error fix ask echoed, so those classes gain
+        # their direct shapes.
+        ("write a function to compute factorial", "Multiply the integers from 1 up to n, return 1 for 0, reject negative inputs, and test 0, 1, and 5."),
+        ("compute the factorial of a number", "Multiply the integers from 1 up to n, return 1 for 0, reject negative inputs, and test 0, 1, and 5."),
+        ("explain recursion", "Recursion solves a problem by calling the same function on a smaller input until a base case stops the calls."),
+        ("what is recursion", "Recursion solves a problem by calling the same function on a smaller input until a base case stops the calls."),
+        ("what is a variable", "A variable is a named place that stores a value so code can read or update it later."),
+        ("explain what a variable is", "A variable is a named place that stores a value so code can read or update it later."),
+        ("difference between a list and a tuple", "A list is mutable and can grow or change after creation; a tuple is fixed, so use a tuple for values that must not change."),
+        ("explain list and tuple differences", "A list is mutable and can grow or change after creation; a tuple is fixed, so use a tuple for values that must not change."),
+        # Margin repair (28 Nov 2026 cycle, 04:16 run): the two
+        # shapes above left "explain the difference between a
+        # list and a tuple" on the list-and-set class, so the
+        # tuple class gains the remaining direct shapes.
+        ("explain the difference between a list and a tuple", "A list is mutable and can grow or change after creation; a tuple is fixed, so use a tuple for values that must not change."),
+        ("what is the difference between a list and a tuple", "A list is mutable and can grow or change after creation; a tuple is fixed, so use a tuple for values that must not change."),
+        ("list vs tuple difference", "A list is mutable and can grow or change after creation; a tuple is fixed, so use a tuple for values that must not change."),
+        ("difference between list and tuple in python", "A list is mutable and can grow or change after creation; a tuple is fixed, so use a tuple for values that must not change."),
+        ("fix a syntax error", "Read the error line first, check brackets, quotes, and indentation around it, fix one issue, then run again; the reported line is often just after the real mistake."),
+        ("how do i fix a syntax error", "Read the error line first, check brackets, quotes, and indentation around it, fix one issue, then run again; the reported line is often just after the real mistake."),
     ],
     "gravion-review": [
         ("review this code for bugs", "Reviewing for bugs: check inputs, edge cases, error handling, and resource cleanup, then list findings by severity."),
@@ -625,6 +671,40 @@ TOPICS: dict[str, list[tuple[str, str]]] = {
         ("explain what sql injection is", "SQL injection is an attack where untrusted input reaches a database query as code instead of data; prevent it with parameterised queries, least-privilege database accounts, and input validation."),
         ("what is cross site scripting", "Cross-site scripting is an attack where untrusted input is rendered as script in a victim's browser; prevent it by encoding output for its context and validating input."),
         ("explain what cross site scripting is", "Cross-site scripting is an attack where untrusted input is rendered as script in a victim's browser; prevent it by encoding output for its context and validating input."),
+        # Cyber foundations round two (28 Nov 2026 cycle, 04:16
+        # run): a fresh demo probe showed the next layer of
+        # concept questions an investor asks — phishing,
+        # firewall, encryption, bug bounty and penetration
+        # testing were answered by the CVE or ransomware class,
+        # and XSS, IDOR, malware, CVSS, strong passwords,
+        # account protection and leaked-password checks echoed.
+        # The shield gains those classes in defensive words
+        # only, in both the direct-question and explain shapes.
+        ("what is phishing", "Phishing is a deceptive message that pretends to be trusted so the reader hands over credentials or payment; check the sender, inspect links before opening them, and report the message instead of replying."),
+        ("explain phishing", "Phishing is a deceptive message that pretends to be trusted so the reader hands over credentials or payment; check the sender, inspect links before opening them, and report the message instead of replying."),
+        ("what is xss", "Cross-site scripting is an attack where untrusted input is rendered as script in a victim's browser; prevent it by encoding output for its context and validating input."),
+        ("explain xss", "Cross-site scripting is an attack where untrusted input is rendered as script in a victim's browser; prevent it by encoding output for its context and validating input."),
+        ("what is idor", "IDOR is a flaw where an object reference is trusted without an ownership check, so changing the reference reaches another user's data; fix it by checking authorisation for every object on the server."),
+        ("explain idor", "IDOR is a flaw where an object reference is trusted without an ownership check, so changing the reference reaches another user's data; fix it by checking authorisation for every object on the server."),
+        ("explain what idor is", "IDOR is a flaw where an object reference is trusted without an ownership check, so changing the reference reaches another user's data; fix it by checking authorisation for every object on the server."),
+        ("what is malware", "Malware is software made to harm or misuse a system, such as stealing data or encrypting files; defend with prompt updates, least-privilege accounts, tested backups, and caution with unexpected attachments."),
+        ("explain malware", "Malware is software made to harm or misuse a system, such as stealing data or encrypting files; defend with prompt updates, least-privilege accounts, tested backups, and caution with unexpected attachments."),
+        ("what is a firewall", "A firewall filters network traffic by rules, allowing trusted connections and blocking the rest; keep its rules reviewed, deny by default, and log what it blocks."),
+        ("explain firewall", "A firewall filters network traffic by rules, allowing trusted connections and blocking the rest; keep its rules reviewed, deny by default, and log what it blocks."),
+        ("what is encryption", "Encryption scrambles readable data with a key so only authorized holders of the key can read it."),
+        ("explain encryption", "Encryption scrambles readable data with a key so only authorized holders of the key can read it."),
+        ("what is a bug bounty", "A bug bounty is a program that invites authorised testing within a stated scope and rewards valid findings; test only in scope, keep proof minimal with your own accounts, and report privately."),
+        ("explain bug bounty", "A bug bounty is a program that invites authorised testing within a stated scope and rewards valid findings; test only in scope, keep proof minimal with your own accounts, and report privately."),
+        ("what is penetration testing", "Penetration testing is authorised simulated attack work that proves which weaknesses are exploitable so they can be fixed; it runs only with written permission and a defined scope."),
+        ("explain penetration testing", "Penetration testing is authorised simulated attack work that proves which weaknesses are exploitable so they can be fixed; it runs only with written permission and a defined scope."),
+        ("what is cvss", "CVSS is a scoring system that rates vulnerability severity from exploitability and impact, helping defenders fix the most dangerous flaws first."),
+        ("explain cvss", "CVSS is a scoring system that rates vulnerability severity from exploitability and impact, helping defenders fix the most dangerous flaws first."),
+        ("make a strong password", "Use long unique passwords, store them in a password manager, and enable multi-factor authentication where available."),
+        ("create a strong password", "Use long unique passwords, store them in a password manager, and enable multi-factor authentication where available."),
+        ("protect my account", "Protect an account with a long unique password, multi-factor authentication, recovery options you control, and regular reviews of active sessions."),
+        ("how do i protect my account", "Protect an account with a long unique password, multi-factor authentication, recovery options you control, and regular reviews of active sessions."),
+        ("check if my password was leaked", "If a password may have leaked, change it everywhere it was reused, enable multi-factor authentication, and review account sessions; unique passwords stop one leak from spreading."),
+        ("was my password leaked", "If a password may have leaked, change it everywhere it was reused, enable multi-factor authentication, and review account sessions; unique passwords stop one leak from spreading."),
     ],
     "gravion-agent": [
         ("plan an agent that summarizes email", "Agent plan: read approved messages, group by topic, draft summaries, flag urgent items, and ask before sending anything."),

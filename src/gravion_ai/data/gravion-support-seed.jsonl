@@ -246,3 +246,35 @@
 {"completion": "Delivery estimates are shown at checkout and in your confirmation message; they depend on your location and the items ordered.", "prompt": "please how long does delivery take"}
 {"completion": "Delivery estimates are shown at checkout and in your confirmation message; they depend on your location and the items ordered.", "prompt": "gravion support how long does delivery take"}
 {"completion": "Delivery estimates are shown at checkout and in your confirmation message; they depend on your location and the items ordered.", "prompt": "help me how long does delivery take"}
+{"completion": "Share your order number and I will start the refund; once the returned item is received and checked, the refund goes back to the original payment method.", "prompt": "how do i get a refund"}
+{"completion": "Share your order number and I will start the refund; once the returned item is received and checked, the refund goes back to the original payment method.", "prompt": "please how do i get a refund"}
+{"completion": "Share your order number and I will start the refund; once the returned item is received and checked, the refund goes back to the original payment method.", "prompt": "gravion support how do i get a refund"}
+{"completion": "Share your order number and I will start the refund; once the returned item is received and checked, the refund goes back to the original payment method.", "prompt": "help me how do i get a refund"}
+{"completion": "Share your order number and I will start the refund; once the returned item is received and checked, the refund goes back to the original payment method.", "prompt": "get a refund for my order"}
+{"completion": "Share your order number and I will start the refund; once the returned item is received and checked, the refund goes back to the original payment method.", "prompt": "please get a refund for my order"}
+{"completion": "Share your order number and I will start the refund; once the returned item is received and checked, the refund goes back to the original payment method.", "prompt": "gravion support get a refund for my order"}
+{"completion": "Share your order number and I will start the refund; once the returned item is received and checked, the refund goes back to the original payment method.", "prompt": "help me get a refund for my order"}
+{"completion": "Sorry the item arrived damaged. Share a photo of the damage and your order number, and I will arrange a replacement or refund.", "prompt": "my order arrived damaged"}
+{"completion": "Sorry the item arrived damaged. Share a photo of the damage and your order number, and I will arrange a replacement or refund.", "prompt": "please my order arrived damaged"}
+{"completion": "Sorry the item arrived damaged. Share a photo of the damage and your order number, and I will arrange a replacement or refund.", "prompt": "gravion support my order arrived damaged"}
+{"completion": "Sorry the item arrived damaged. Share a photo of the damage and your order number, and I will arrange a replacement or refund.", "prompt": "help me my order arrived damaged"}
+{"completion": "Sorry the item arrived damaged. Share a photo of the damage and your order number, and I will arrange a replacement or refund.", "prompt": "order arrived damaged"}
+{"completion": "Sorry the item arrived damaged. Share a photo of the damage and your order number, and I will arrange a replacement or refund.", "prompt": "please order arrived damaged"}
+{"completion": "Sorry the item arrived damaged. Share a photo of the damage and your order number, and I will arrange a replacement or refund.", "prompt": "gravion support order arrived damaged"}
+{"completion": "Sorry the item arrived damaged. Share a photo of the damage and your order number, and I will arrange a replacement or refund.", "prompt": "help me order arrived damaged"}
+{"completion": "Accepted payment methods are shown at checkout before you pay. If a payment fails, share your order number and I will check its payment status.", "prompt": "what payment methods do you accept"}
+{"completion": "Accepted payment methods are shown at checkout before you pay. If a payment fails, share your order number and I will check its payment status.", "prompt": "please what payment methods do you accept"}
+{"completion": "Accepted payment methods are shown at checkout before you pay. If a payment fails, share your order number and I will check its payment status.", "prompt": "gravion support what payment methods do you accept"}
+{"completion": "Accepted payment methods are shown at checkout before you pay. If a payment fails, share your order number and I will check its payment status.", "prompt": "help me what payment methods do you accept"}
+{"completion": "Accepted payment methods are shown at checkout before you pay. If a payment fails, share your order number and I will check its payment status.", "prompt": "which payment methods are accepted"}
+{"completion": "Accepted payment methods are shown at checkout before you pay. If a payment fails, share your order number and I will check its payment status.", "prompt": "please which payment methods are accepted"}
+{"completion": "Accepted payment methods are shown at checkout before you pay. If a payment fails, share your order number and I will check its payment status.", "prompt": "gravion support which payment methods are accepted"}
+{"completion": "Accepted payment methods are shown at checkout before you pay. If a payment fails, share your order number and I will check its payment status.", "prompt": "help me which payment methods are accepted"}
+{"completion": "If your order has not shipped yet, I can update the delivery address. Share your order number and the new address.", "prompt": "change my delivery address"}
+{"completion": "If your order has not shipped yet, I can update the delivery address. Share your order number and the new address.", "prompt": "please change my delivery address"}
+{"completion": "If your order has not shipped yet, I can update the delivery address. Share your order number and the new address.", "prompt": "gravion support change my delivery address"}
+{"completion": "If your order has not shipped yet, I can update the delivery address. Share your order number and the new address.", "prompt": "help me change my delivery address"}
+{"completion": "If your order has not shipped yet, I can update the delivery address. Share your order number and the new address.", "prompt": "how do i change my delivery address"}
+{"completion": "If your order has not shipped yet, I can update the delivery address. Share your order number and the new address.", "prompt": "please how do i change my delivery address"}
+{"completion": "If your order has not shipped yet, I can update the delivery address. Share your order number and the new address.", "prompt": "gravion support how do i change my delivery address"}
+{"completion": "If your order has not shipped yet, I can update the delivery address. Share your order number and the new address.", "prompt": "help me how do i change my delivery address"}

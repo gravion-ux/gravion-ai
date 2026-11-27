@@ -45,6 +45,25 @@ def test_demo_conversational_lines_answer():
     assert "trying Gravion" in opening_response("Goodbye")
 
 
+def test_demo_questions_about_gravion_answer():
+    # 28 Nov 2026 cycle (04:16 run): the meet line and the
+    # questions a demo audience asks about Gravion itself
+    # echoed while the identity lines answered.
+    assert "Nice to meet you too" in opening_response("Nice to meet you")
+    assert "Roman Hindi" in opening_response("What languages do you support?")
+    assert "fully offline" in opening_response("Do you work offline?")
+    assert "gravion init" in opening_response("How do I get started with Gravion?")
+    assert "Development and evaluation are free" in opening_response("Is Gravion free?")
+
+
+def test_gravion_question_tasks_stay_with_the_model():
+    # Tasks that merely mention the same words are real
+    # requests, not openings about Gravion itself.
+    assert opening_response("write a nice to meet you card for my teacher") is None
+    assert opening_response("how do i get started with python programming today please") is None
+    assert opening_response("is the museum free on sundays") is None
+
+
 def test_conversational_tasks_stay_with_the_model():
     # Whole-message and translation guards: tasks that quote an
     # opening line are real requests, not openings.
