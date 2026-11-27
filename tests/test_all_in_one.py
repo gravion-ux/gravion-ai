@@ -86,9 +86,39 @@ def test_parse_route_refuses_capitalised_self_routing():
         ("plan steps for an agent workflow", "agentic"),
         ("what is a function in mathematics", "chat"),
         ("make something nice for me", "chat"),
+        # The five text modules used to be directive-only: plain
+        # requests for them fell through to chat.
+        ("translate thank you into hindi", "translation"),
+        ("summarize this article about monsoon rains", "summarization"),
+        ("rank these passages for my query", "retrieval"),
+        ("analyze these numbers and compute the mean", "data-analysis"),
+        ("answer this question from the document", "document-qa"),
+        # A lone text-module verb is not enough on its own.
+        ("translate this for me", "chat"),
+        ("summarize it please", "chat"),
     ],
 )
 def test_parse_route_infers_clear_intent(prompt, expected_module):
+    name, routed = parse_route(prompt)
+    assert name == expected_module
+    assert routed == prompt
+
+
+@pytest.mark.parametrize(
+    "prompt,expected_module",
+    [
+        (
+            "document: The library opens at nine.\nquestion: when does it open",
+            "document-qa",
+        ),
+        (
+            "query: how do cats groom\npassage: Cats groom with their tongues.",
+            "retrieval",
+        ),
+        ("summarize: Cats sleep for long hours each day.", "summarization"),
+    ],
+)
+def test_parse_route_structural_markers_are_decisive(prompt, expected_module):
     name, routed = parse_route(prompt)
     assert name == expected_module
     assert routed == prompt

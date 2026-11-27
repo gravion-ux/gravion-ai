@@ -144,7 +144,47 @@ _INTENT_SIGNALS: dict[str, tuple[frozenset[str], frozenset[str]]] = {
         frozenset({"automate", "plan", "orchestrate"}),
         frozenset({"agent", "workflow", "automation", "steps"}),
     ),
+    # The five text modules below were directive-only: without a
+    # leading "<module>:" they could never be reached by intent,
+    # so plain requests ("translate this into hindi", "summarize
+    # this article") silently fell through to chat. Their nouns
+    # stay narrow (a language, a summary object, a passage, a
+    # statistic, a document) so a lone verb still cannot hijack
+    # a general question.
+    "translation": (
+        frozenset({"translate", "convert"}),
+        frozenset({"hindi", "english", "hinglish", "urdu", "translation"}),
+    ),
+    "summarization": (
+        frozenset({"summarize", "summarise", "shorten", "condense"}),
+        frozenset({"summary", "article", "paragraph", "passage"}),
+    ),
+    "retrieval": (
+        frozenset({"search", "rank", "retrieve", "find"}),
+        frozenset({"passage", "passages", "query", "documents"}),
+    ),
+    "data-analysis": (
+        frozenset({"analyze", "analyse", "compute", "calculate"}),
+        frozenset(
+            {"mean", "median", "mode", "numbers", "statistics", "average", "dataset", "data"}
+        ),
+    ),
+    "document-qa": (
+        frozenset({"answer"}),
+        frozenset({"document", "question"}),
+    ),
 }
+
+# Structural input markers the text modules document as their
+# input format. A prompt carrying both markers of a pair is a
+# decisive signal on its own, like a code fence or a CVE id:
+# "document: ... question: ..." can only be document Q&A, and
+# "query: ... passage: ..." can only be retrieval.
+_DOCUMENT_MARKER_RE = re.compile(r"^\s*document\s*:", re.IGNORECASE | re.MULTILINE)
+_QUESTION_MARKER_RE = re.compile(r"^\s*question\s*:", re.IGNORECASE | re.MULTILINE)
+_QUERY_MARKER_RE = re.compile(r"^\s*query\s*:", re.IGNORECASE | re.MULTILINE)
+_PASSAGE_MARKER_RE = re.compile(r"^\s*passage\s*:", re.IGNORECASE | re.MULTILINE)
+_SUMMARIZE_PREFIX_RE = re.compile(r"^\s*summar(?:ize|ise)\s*:", re.IGNORECASE)
 
 
 def infer_route(prompt: str) -> str:
@@ -153,12 +193,21 @@ def infer_route(prompt: str) -> str:
     Returns the single best-scoring module, or ``chat`` when no
     module scores at least two points with a strict lead. A code
     fence is a decisive coder signal and a CVE id is a decisive
-    cyber signal on its own.
+    cyber signal on its own; the documented ``document:`` /
+    ``question:`` and ``query:`` / ``passage:`` marker pairs and
+    a leading ``summarize:`` are likewise decisive for their
+    text modules.
     """
     if "```" in prompt:
         return "coder"
     if _CVE_RE.search(prompt):
         return "cyber"
+    if _DOCUMENT_MARKER_RE.search(prompt) and _QUESTION_MARKER_RE.search(prompt):
+        return "document-qa"
+    if _QUERY_MARKER_RE.search(prompt) and _PASSAGE_MARKER_RE.search(prompt):
+        return "retrieval"
+    if _SUMMARIZE_PREFIX_RE.match(prompt):
+        return "summarization"
     tokens = frozenset(_TOKEN_RE.findall(prompt.lower()))
     scores: dict[str, int] = {}
     for name, (verbs, nouns) in _INTENT_SIGNALS.items():
