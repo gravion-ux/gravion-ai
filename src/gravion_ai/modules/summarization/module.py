@@ -54,6 +54,15 @@ _CLOSERS = "\"'”’)]"
 # "quiz" keeps one z) and suppletive plurals ("children",
 # "women"), plus two common non-plurals the final-s rule would
 # otherwise mangle ("news" -> "new", "lens" -> "len").
+# Single-s singulars ("bus", "alias", "virus") spell their
+# plurals exactly like -se singulars ("case", "response"), so
+# the s-singular plurals live here and the regular "es" rule
+# only fires after ss/x/z/ch/sh; -ie singulars ("movie",
+# "cookie") likewise spell their plurals like y-singulars
+# ("city"), so they are listed too, along with classical
+# plurals ("criteria", "phenomena", "data") no suffix rule
+# can derive. Singulars the final-s rule would mangle
+# ("alias" -> "alia", "canvas" -> "canva") map to themselves.
 _IRREGULAR_STEMS = {
     "analyses": "analysis",
     "crises": "crisis",
@@ -101,6 +110,54 @@ _IRREGULAR_STEMS = {
     "does": "does",
     "news": "news",
     "lens": "lens",
+    "alias": "alias",
+    "canvas": "canvas",
+    "atlas": "atlas",
+    "bias": "bias",
+    "buses": "bus",
+    "gases": "gas",
+    "lenses": "lens",
+    "aliases": "alias",
+    "viruses": "virus",
+    "statuses": "status",
+    "canvases": "canvas",
+    "octopuses": "octopus",
+    "geniuses": "genius",
+    "atlases": "atlas",
+    "biases": "bias",
+    "bonuses": "bonus",
+    "censuses": "census",
+    "surpluses": "surplus",
+    "cactuses": "cactus",
+    "focuses": "focus",
+    "syllabuses": "syllabus",
+    "indexes": "index",
+    "appendixes": "appendix",
+    "movies": "movie",
+    "cookies": "cookie",
+    "zombies": "zombie",
+    "calories": "calorie",
+    "hoodies": "hoodie",
+    "brownies": "brownie",
+    "genies": "genie",
+    "pixies": "pixie",
+    "prairies": "prairie",
+    "rookies": "rookie",
+    "selfies": "selfie",
+    "newbies": "newbie",
+    "criteria": "criterion",
+    "phenomena": "phenomenon",
+    "syllabi": "syllabus",
+    "foci": "focus",
+    "nuclei": "nucleus",
+    "strata": "stratum",
+    "curricula": "curriculum",
+    "memoranda": "memorandum",
+    "bacteria": "bacterium",
+    "data": "datum",
+    "media": "medium",
+    "hooves": "hoof",
+    "dice": "die",
 }
 
 
@@ -112,8 +169,12 @@ def stem_word(word: str) -> str:
     about "classes". The rules only strip a plural ending: "ies"
     becomes "y" ("cities" -> "city"), "oes" drops its "es" in
     longer words ("heroes" -> "hero", while short "shoes" keeps
-    its "e" via the final-s rule), "es" drops after s/x/z/ch/sh
-    ("classes" -> "class", "boxes" -> "box"), and a final "s"
+    its "e" via the final-s rule), "es" drops after ss/x/z/ch/sh
+    ("classes" -> "class", "boxes" -> "box"; a single-s stem
+    keeps its "e" via the final-s rule instead, so "cases" ->
+    "case" and "responses" -> "response", while true
+    s-singular plurals such as "buses" are in the irregular
+    map), and a final "s"
     drops unless the word ends in "ss", "us" or "is" ("class",
     "status" and "analysis" are not plurals). A short irregular
     map covers the plurals and non-plurals the regular rules
@@ -128,7 +189,7 @@ def stem_word(word: str) -> str:
         return word[:-2]
     if len(word) > 4 and word.endswith("es"):
         stem = word[:-2]
-        if stem.endswith(("s", "x", "z", "ch", "sh")):
+        if stem.endswith(("ss", "x", "z", "ch", "sh")):
             return stem
     if len(word) > 3 and word.endswith("s") and not word.endswith(("ss", "us", "is")):
         return word[:-1]

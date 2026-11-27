@@ -165,8 +165,16 @@ def test_extract_indicators_hash_lengths_do_not_overlap():
         ("a high-severity alert on the host", "high"),
         ("severity is critical for this host", "critical"),
         ("severity was low, now closed", "low"),
+        # The same statement with a "level" noun, an "of" or an
+        # "=" separator, and "moderate" recorded verbatim.
+        ("severity level is high for this host", "high"),
+        ("severity of high, host isolated", "high"),
+        ("severity=high — IDS alert", "high"),
+        ("severity: moderate — IDS alert", "moderate"),
+        ("a moderate severity alert on the host", "moderate"),
         # A negated level states no severity; never guess one.
         ("severity is not high, just noisy", None),
+        ("severity level is not high, just noisy", None),
         ("a routine alert", None),
     ],
 )

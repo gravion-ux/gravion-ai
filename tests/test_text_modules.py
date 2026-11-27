@@ -333,6 +333,65 @@ def test_parse_numbers_ignores_version_and_address_labels():
     assert parse_numbers("value 3.14. Next 2.71") == [3.14, 2.71]
 
 
+def test_stem_word_matches_se_ie_and_classical_plurals():
+    # Regression: the "es" rule dropped the ending after any
+    # s-stem, so -se singulars split from their plurals
+    # ("responses" -> "respons" while "response" stayed whole)
+    # and a question about responses missed a document about a
+    # response. -ie plurals ("movies" -> "movy"), s-singular
+    # plurals ("buses") and classical plurals ("criteria")
+    # split the same way.
+    assert stem_word("cases") == stem_word("case") == "case"
+    assert stem_word("responses") == stem_word("response") == "response"
+    assert stem_word("databases") == stem_word("database") == "database"
+    assert stem_word("houses") == stem_word("house") == "house"
+    assert stem_word("classes") == stem_word("class") == "class"
+    assert stem_word("buses") == stem_word("bus") == "bus"
+    assert stem_word("aliases") == stem_word("alias") == "alias"
+    assert stem_word("movies") == stem_word("movie") == "movie"
+    assert stem_word("cookies") == stem_word("cookie") == "cookie"
+    assert stem_word("criteria") == stem_word("criterion") == "criterion"
+    assert stem_word("data") == stem_word("datum") == "datum"
+    out = answer_question(
+        "The response arrived at dawn. The response helped the team.",
+        "what responses arrived",
+    )
+    assert "response arrived at dawn" in out
+
+
+def test_parse_numbers_reads_underscore_groups_and_ignores_machine_literals():
+    # Regression: "1_000" was read as the phantom pair 1 and 0,
+    # and a hex literal "0x10" as the phantom value 0, so code
+    # literals skewed every statistic. Underscore grouping now
+    # parses as one value and machine literals are not decimal
+    # measurements at all.
+    assert parse_numbers("values 1_000 2_000 3_000") == [1000.0, 2000.0, 3000.0]
+    assert parse_numbers("values 1_000.5 2_000.5") == [1000.5, 2000.5]
+    assert parse_numbers("0x10 0x20 0x30") == []
+    assert parse_numbers("count 0xFF values 5 10 15") == [5.0, 10.0, 15.0]
+
+
+def test_translation_bare_request_picks_direction_by_coverage():
+    # Regression: a bare "translate:" request picked its
+    # direction from the first word alone, so "how are you
+    # today" (whose first word is no phrasebook key) was sent
+    # to the Hindi table and refused. Direction now follows
+    # whichever table covers more of the text; uncovered text
+    # is still refused, never guessed.
+    assert "aap kaise hain" in _run(
+        "translation", "gravion-translate", "translate: how are you today"
+    )
+    assert "suprabhaat" in _run(
+        "translation", "gravion-translate", "translate: good morning friend"
+    )
+    assert _run(
+        "translation", "gravion-translate", "translate: kal milte hain"
+    ) == "see you tomorrow"
+    assert "outside my Gravion phrasebook" in _run(
+        "translation", "gravion-translate", "translate: zxqwv"
+    )
+
+
 def test_translation_expands_contractions_to_phrasebook_forms():
     # Regression: phrasebook keys are expanded forms, so
     # "i don't understand" normalised to "i don t understand" and

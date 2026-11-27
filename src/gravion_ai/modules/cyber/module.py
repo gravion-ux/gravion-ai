@@ -125,12 +125,16 @@ _MD5_RE = re.compile(r"\b[0-9a-fA-F]{32}\b")
 _URL_RE = re.compile(r"https?://[^\s\"'<>]+")
 # A stated severity arrives as "severity: high", "severity is
 # high" or "(high|high-)severity"; all three are recorded. The
-# copula form requires the level directly after "is"/"was", so
-# "severity is not high" states no level and records none.
+# same statement also arrives with a "level" noun ("severity
+# level is high"), an "of" ("severity of high") or an "=" or
+# "-" separator ("severity=high"), and "moderate" is recorded
+# verbatim as the level it states. The copula form requires
+# the level directly after "is"/"was"/"of", so "severity is
+# not high" states no level and records none.
 _SEVERITY_RE = re.compile(
-    r"severity[:\s]+(critical|high|medium|low)\b"
-    r"|severity\s+(?:is|was)\s+(critical|high|medium|low)\b"
-    r"|\b(critical|high|medium|low)[\s-]severity\b",
+    r"severity(?:\s+level)?[\s:=\-]+(critical|high|medium|moderate|low)\b"
+    r"|severity(?:\s+level)?\s+(?:is|was|of)\s+(critical|high|medium|moderate|low)\b"
+    r"|\b(critical|high|medium|moderate|low)[\s-]severity\b",
     re.IGNORECASE,
 )
 
@@ -254,7 +258,8 @@ def extract_indicators(prompt: str) -> dict[str, list[str]]:
 
 def parse_severity(prompt: str) -> str | None:
     """Extract a stated severity ("severity: high", "severity is
-    high", "high severity" or "high-severity"), or None."""
+    high", "severity level is high", "high severity" or
+    "high-severity"), or None."""
     match = _SEVERITY_RE.search(prompt)
     if match:
         return next(group for group in match.groups() if group).lower()

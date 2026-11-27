@@ -17,7 +17,8 @@ from collections import Counter
 from ...registry import ModuleContext, ModuleManifest
 
 # One numeric token: optional sign, then either a grouped integer
-# (Western "1,000,000" or Indian "1,00,000" digit grouping), a plain
+# (Western "1,000,000" or Indian "1,00,000" digit grouping, or
+# underscore grouping "1_000_000" as written in code), a plain
 # integer/decimal, or a leading-dot decimal (".5"), with an optional
 # scientific-notation exponent ("2.5e3"). A comma only joins a
 # number when it sits inside a valid digit group, so comma-space
@@ -26,9 +27,11 @@ from ...registry import ModuleContext, ModuleManifest
 # letter from becoming a sign: in a range ("5-10") or a date
 # ("2026-11-27") the hyphen is a separator, so both sides parse as
 # positive values, and digits inside a word ("version2") are not
-# numbers at all.
+# numbers at all. Without the underscore alternative "1_000" read
+# as the phantom pair 1 and 0 and skewed every statistic.
 _NUMBER_RE = re.compile(
-    r"(?<![0-9A-Za-z])-?(?:\d{1,3}(?:,\d{3})+|\d{1,2}(?:,\d{2})+,\d{3}|\d+|\.\d+)"
+    r"(?<![0-9A-Za-z])-?(?:\d{1,3}(?:,\d{3})+|\d{1,2}(?:,\d{2})+,\d{3}"
+    r"|\d+(?:_\d+)+|\d+|\.\d+)"
     r"(?:\.\d+)?(?:[eE][+-]?\d+)?"
 )
 
@@ -41,10 +44,20 @@ _NUMBER_RE = re.compile(
 # dot and is untouched.
 _DOTTED_SEQUENCE_RE = re.compile(r"\d+(?:\.\d+){2,}")
 
+# Machine literals ("0xFF", "0b101", "0o17") are code, not
+# decimal measurements: left in place, "0x10" read as the
+# phantom value 0. They are blanked out before parsing, like
+# dotted labels above.
+_MACHINE_LITERAL_RE = re.compile(r"\b0[xX][0-9a-fA-F]+\b|\b0[bB][01]+\b|\b0[oO][0-7]+\b")
+
 
 def parse_numbers(prompt: str) -> list[float]:
-    cleaned = _DOTTED_SEQUENCE_RE.sub(" ", prompt)
-    return [float(m.replace(",", "")) for m in _NUMBER_RE.findall(cleaned)]
+    cleaned = _MACHINE_LITERAL_RE.sub(" ", prompt)
+    cleaned = _DOTTED_SEQUENCE_RE.sub(" ", cleaned)
+    return [
+        float(m.replace(",", "").replace("_", ""))
+        for m in _NUMBER_RE.findall(cleaned)
+    ]
 
 
 def _mode_line(numbers: list[float]) -> str:

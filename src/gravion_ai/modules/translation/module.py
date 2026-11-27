@@ -175,19 +175,17 @@ def _normalize(text: str) -> str:
     return re.sub(r"[^a-z0-9 ]+", " ", expanded).strip()
 
 
-def translate_phrase(text: str, to_hindi: bool) -> str:
-    """Phrasebook translation; unknown words are marked, not guessed."""
-    table = PHRASES_EN_HI if to_hindi else PHRASES_HI_EN
-    key = _normalize(text)
-    if key in table:
-        return table[key]
-    words = key.split()
+def _greedy_translate(words: list[str], table: dict[str, str]) -> tuple[list[str], int]:
+    """Longest-phrase-first greedy matching over the word stream.
+
+    Returns the translated parts (unknown words marked) and how
+    many source words the table covered. The span cap comes
+    from the phrasebook itself: a fixed cap below the longest
+    entry ("how much does this cost", five words) made that
+    phrase unmatchable inside a longer sentence.
+    """
     out: list[str] = []
     known = 0
-    # Longest-phrase-first greedy matching over the word stream.
-    # The span cap comes from the phrasebook itself: a fixed cap
-    # below the longest entry ("how much does this cost", five
-    # words) made that phrase unmatchable inside a longer sentence.
     max_span = max(len(phrase.split()) for phrase in table)
     i = 0
     while i < len(words):
@@ -203,6 +201,47 @@ def translate_phrase(text: str, to_hindi: bool) -> str:
         if not matched:
             out.append(f"[{words[i]}]")
             i += 1
+    return out, known
+
+
+def _detect_to_hindi(text: str) -> bool:
+    """Pick the translation direction by phrasebook coverage.
+
+    A bare "translate: ..." request names no direction, so the
+    direction is whichever table covers more of the text. The
+    earlier first-word check sent "how are you today" to the
+    Hindi table (its first word is no English key on its own)
+    and refused a phrase the book does cover.
+    """
+    key = _normalize(text)
+    if key in PHRASES_EN_HI:
+        return True
+    if key in PHRASES_HI_EN:
+        return False
+    words = key.split()
+    _, known_en = _greedy_translate(words, PHRASES_EN_HI)
+    _, known_hi = _greedy_translate(words, PHRASES_HI_EN)
+    if known_en != known_hi:
+        return known_en > known_hi
+    if known_en:
+        # Equal coverage: follow the first word either table
+        # knows on its own, else keep the Hindi direction.
+        for word in words:
+            if word in PHRASES_EN_HI:
+                return True
+            if word in PHRASES_HI_EN:
+                return False
+        return True
+    return False
+
+
+def translate_phrase(text: str, to_hindi: bool) -> str:
+    """Phrasebook translation; unknown words are marked, not guessed."""
+    table = PHRASES_EN_HI if to_hindi else PHRASES_HI_EN
+    key = _normalize(text)
+    if key in table:
+        return table[key]
+    out, known = _greedy_translate(key.split(), table)
     if known == 0:
         return (
             "That text is outside my Gravion phrasebook, so I will not "
@@ -226,7 +265,5 @@ class TranslationModule:
         match = _TRANSLATE_RE.search(prompt)
         if match:
             text = match.group(1)
-            key = _normalize(text)
-            to_hindi = key in PHRASES_EN_HI or key.split()[:1] and key.split()[0] in PHRASES_EN_HI
-            return translate_phrase(text, to_hindi=bool(to_hindi))
+            return translate_phrase(text, to_hindi=_detect_to_hindi(text))
         return ctx.chat(prompt)
