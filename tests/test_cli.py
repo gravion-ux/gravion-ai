@@ -177,3 +177,15 @@ def test_chat_in_production_without_license_fails_cleanly(home, capsys):
     capsys.readouterr()
     assert main(["chat", "hello"]) == 1
     assert "suspended" in capsys.readouterr().err.lower()
+
+
+def test_model_list_combines_tier_and_capability(capsys):
+    assert main(["models", "list", "--tier", "tier-4-advanced", "--capability", "chat"]) == 0
+    output = capsys.readouterr().out
+    ids = {line.split()[0] for line in output.splitlines()}
+    assert ids == {"gravion-core", "gravion-chat", "gravion-omni"}
+
+
+def test_model_list_reports_unknown_tier(capsys):
+    assert main(["models", "list", "--tier", "unknown-tier"]) == 1
+    assert "unknown tier 'unknown-tier'" in capsys.readouterr().err

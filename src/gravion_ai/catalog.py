@@ -216,8 +216,13 @@ class ModelCatalog:
         return cls.load()
 
     # -- lookup ------------------------------------------------------------
-    def list(self) -> list[ModelEntry]:
-        return list(self._entries)
+    def list(self, *, tier: str | None = None) -> list[ModelEntry]:
+        """Return models in registry order, optionally restricted to one tier."""
+        if tier is None:
+            return list(self._entries)
+        if tier not in TIERS:
+            raise CatalogError(f"unknown tier {tier!r}; valid: {sorted(TIERS)}")
+        return [entry for entry in self._entries if entry.offered_in(tier)]
 
     def get(self, entry_id: str) -> ModelEntry | None:
         return self._by_id.get(entry_id)
@@ -232,9 +237,4 @@ class ModelCatalog:
             raise CatalogError(
                 f"unknown capability {value!r}; valid: {sorted(CAPABILITIES)}"
             )
-        result = [e for e in self._entries if e.serves(value)]
-        if tier is not None:
-            if tier not in TIERS:
-                raise CatalogError(f"unknown tier {tier!r}; valid: {sorted(TIERS)}")
-            result = [e for e in result if e.offered_in(tier)]
-        return result
+        return [entry for entry in self.list(tier=tier) if entry.serves(value)]
