@@ -266,7 +266,16 @@ def test_web_rejects_invalid_content_length(make_config):
                     "Connection: close\r\n\r\n"
                 ).encode("ascii")
             )
-            response = sock.recv(4096).decode("utf-8", errors="replace")
+            # Read to EOF: the server writes headers and body
+            # separately, so a single recv can return the
+            # headers alone and miss the error body.
+            chunks = []
+            while True:
+                chunk = sock.recv(4096)
+                if not chunk:
+                    break
+                chunks.append(chunk)
+            response = b"".join(chunks).decode("utf-8", errors="replace")
         assert "400" in response.splitlines()[0]
         assert "Content-Length is invalid" in response
     finally:

@@ -668,6 +668,88 @@ def test_stem_word_matches_remaining_irregulars_and_e_verbs():
     assert "arose early" in out
 
 
+def test_stem_word_matches_se_and_ve_verb_forms():
+    # Regression: -se/-ve verbs lost their e behind a
+    # consonant cluster ("licensing" -> "licens",
+    # "serving" -> "serv") or a vowel pair ("pleasing"
+    # -> "pleas", "receiving" -> "receiv"), so a
+    # base-form question missed derived-form evidence
+    # and retrieval scored the relevant passage zero;
+    # the CVC rule also invented "focuse"/"buse" for
+    # the "us" bases "focus"/"bus".
+    assert stem_word("licensing") == stem_word("license") == "license"
+    assert stem_word("licensed") == stem_word("license") == "license"
+    assert stem_word("sensing") == stem_word("sense") == "sense"
+    assert stem_word("rinsing") == stem_word("rinse") == "rinse"
+    assert stem_word("pleasing") == stem_word("please") == "please"
+    assert stem_word("increasing") == stem_word("increase") == "increase"
+    assert stem_word("releasing") == stem_word("release") == "release"
+    assert stem_word("raising") == stem_word("raise") == "raise"
+    assert stem_word("housing") == stem_word("house") == "house"
+    assert stem_word("choosing") == stem_word("choose") == "choose"
+    assert stem_word("easing") == stem_word("ease") == "ease"
+    assert stem_word("analysing") == stem_word("analyse") == "analyse"
+    assert stem_word("analyzing") == stem_word("analyze") == "analyze"
+    assert stem_word("serving") == stem_word("serve") == "serve"
+    assert stem_word("solving") == stem_word("solve") == "solve"
+    assert stem_word("receiving") == stem_word("receive") == "receive"
+    assert stem_word("believing") == stem_word("believe") == "believe"
+    assert stem_word("creating") == stem_word("create") == "create"
+    assert stem_word("created") == stem_word("create") == "create"
+    assert stem_word("arranging") == stem_word("arrange") == "arrange"
+    # Bases the restoration must not mangle.
+    assert stem_word("focusing") == stem_word("focus") == "focus"
+    assert stem_word("focused") == stem_word("focus") == "focus"
+    assert stem_word("busing") == stem_word("bus") == "bus"
+    assert stem_word("biasing") == stem_word("bias") == "bias"
+    assert stem_word("lensing") == stem_word("lens") == "lens"
+    assert stem_word("passing") == stem_word("pass") == "pass"
+    assert stem_word("using") == stem_word("use") == "use"
+    assert stem_word("eating") == stem_word("eat") == "eat"
+    assert stem_word("treating") == stem_word("treat") == "treat"
+    assert stem_word("helping") == stem_word("help") == "help"
+    # The split reached retrieval and document Q&A: a
+    # licensing passage scored zero for "license", and
+    # a licensing sentence was no answer to a license
+    # question.
+    ranked = rank_passages(
+        "license terms",
+        ["Licensing terms apply here.", "Cooking recipes for dinner."],
+    )
+    assert ranked[0][1] == "Licensing terms apply here."
+    assert ranked[0][0] > 0
+    out = answer_question(
+        "Licensing terms apply to every module. Prices vary by tier.",
+        "What license terms apply?",
+    )
+    assert "Licensing terms apply" in out
+
+
+def test_retrieval_module_admits_when_no_passage_matches(make_config):
+    # Improvement: a query no passage shares a term
+    # with was answered with every passage listed as
+    # a "top match" at 0.000, presenting non-matches
+    # as evidence; the module now says so plainly.
+    from gravion_ai.runtime import GravionRuntime
+
+    runtime = GravionRuntime(make_config(model="gravion-omni"))
+    out = runtime.run_module(
+        "retrieval",
+        "query: quantum chromodynamics\n"
+        "passage: Cats groom themselves with their tongues.\n"
+        "passage: Dogs enjoy long walks in parks.",
+    )
+    assert out.startswith("No passage matches the query: quantum chromodynamics")
+    assert "Top matches" not in out
+    matched = runtime.run_module(
+        "retrieval",
+        "query: how do cats groom\n"
+        "passage: Cats groom themselves with their tongues.\n"
+        "passage: Dogs enjoy long walks in parks.",
+    )
+    assert matched.startswith("Top matches for: how do cats groom")
+
+
 def test_split_sentences_splits_after_sentence_final_abbreviations():
     # Regression: every abbreviation dot counted as
     # mid-sentence, so "Washington D.C. He was happy." and
