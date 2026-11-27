@@ -3,7 +3,7 @@
 [![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![CI](https://github.com/gravion-ux/gravion-ai/actions/workflows/ci.yml/badge.svg)](https://github.com/gravion-ux/gravion-ai/actions/workflows/ci.yml)
-[![Tests](https://img.shields.io/badge/tests-1186%20passed-brightgreen.svg)](#testing)
+[![Tests](https://img.shields.io/badge/tests-1188%20passed-brightgreen.svg)](#testing)
 [![codecov](https://codecov.io/gh/gravion-ux/gravion-ai/branch/main/graph/badge.svg)](https://codecov.io/gh/gravion-ux/gravion-ai)
 
 > **Status: Active** — actively developed flagship platform. The detailed
@@ -314,7 +314,7 @@ pip install -e ".[dev]"
 python -m pytest -q
 ```
 
-1,186 tests cover the licensing subsystem end-to-end (identity, signed
+1,188 tests cover the licensing subsystem end-to-end (identity, signed
 licenses, tamper rejection, audit-chain verification, the entitlement
 protocol and its pinned privacy field set, gate states, suspension,
 export-while-suspended), the Piece 2 support and coder modules

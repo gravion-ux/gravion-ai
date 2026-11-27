@@ -1320,3 +1320,25 @@ def test_synonym_stems_match_document_and_retrieval():
     )
     assert ranked[0][0] > 0
     assert ranked[0][1] == "The quick fox ran"
+    # Age, wealth and everyday verb synonyms state the same
+    # matching fact: "who was old" missed "the elderly man",
+    # "who was rich" missed "the wealthy merchant", "who
+    # talked to the class" missed "she spoke to the class",
+    # "who helped the doctor" missed "Maria assisted the
+    # doctor", and "what does the plant need" missed "the
+    # plant requires water".
+    assert stem_word("elderly") == stem_word("old") == "old"
+    assert stem_word("wealthy") == stem_word("rich") == "rich"
+    assert stem_word("talked") == stem_word("spoke") == "speak"
+    assert stem_word("assisted") == stem_word("helped") == "help"
+    assert stem_word("requires") == stem_word("needed") == "need"
+    out = answer_question(
+        "The elderly man walked slowly. The boy ran fast.",
+        "who was old",
+    )
+    assert "elderly man walked slowly" in out
+    out = answer_question(
+        "Maria assisted the doctor. John watched quietly.",
+        "who helped the doctor",
+    )
+    assert "assisted the doctor" in out

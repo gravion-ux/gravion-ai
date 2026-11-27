@@ -874,6 +874,19 @@ _SYNONYM_STEMS = {
     "begin": "start",
     "display": "show",
     "finish": "complete",
+    # Age, wealth and everyday verb synonyms state the same
+    # matching fact the same way: "who was old" missed "the
+    # elderly man" (the -ly rule leaves the stem "elder"),
+    # "who was rich" missed "the wealthy merchant", "who
+    # talked to the class" missed "she spoke to the class",
+    # "who helped the doctor" missed "Maria assisted the
+    # doctor", and "what does the plant need" missed "the
+    # plant requires water".
+    "elder": "old",
+    "wealthy": "rich",
+    "talk": "speak",
+    "assist": "help",
+    "require": "need",
 }
 
 

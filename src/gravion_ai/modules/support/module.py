@@ -393,6 +393,12 @@ _TEAM_REQUEST_RE = re.compile(
     r"|\b(?:customer care|customer service|support team|support"
     r"|sales team|billing team|sales|billing|call centre"
     r"|call center|senior|executive|upar wale|help desk"
+    # The team lead and the officer are the same human by
+    # role ("team lead se baat karni hai", "officer se baat
+    # karni hai" were answered by the bot); the "se baat"
+    # phrasing is still the request, so naming either role
+    # as a topic stays with the bot.
+    r"|team lead|officer"
     r"|complaint department|complaints department) se baat\b"
     # The senior asked for by the call/send verbs ("senior ko
     # bulao", "senior ko bhej do") and the team named as its
@@ -406,6 +412,11 @@ _TEAM_REQUEST_RE = re.compile(
     # an "executive summary" topic states no request.
     r"|\b(?:senior|executive) ko (?:bulao|bhej do)\b"
     r"|\bexecutive se connect\b"
+    # The team lead and officer asked for by the same verbs
+    # ("team lead se connect karo", "officer ko bulao")
+    # request the same handoff.
+    r"|\b(?:team lead|officer) ko (?:bulao|bhej do)\b"
+    r"|\b(?:team lead|officer) se connect\b"
     r"|\b(?:customer care|customer service|customer support"
     r"|support|help desk) wala chahiye\b"
     # The call centre named in English with its transfer verb

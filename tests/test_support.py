@@ -521,6 +521,16 @@ def test_executive_requests_and_declined_callbacks():
     assert needs_human("executive se baat karni hai")
     assert needs_human("executive ko bulao")
     assert needs_human("call back karna hai")
+    # Regression: the team lead and officer asked for by
+    # role ("team lead se connect karo", "officer se baat
+    # karni hai") never escalated, while naming either role
+    # as a topic states no request.
+    assert needs_human("team lead se connect karo")
+    assert needs_human("team lead se baat karni hai")
+    assert needs_human("officer se baat karni hai")
+    assert needs_human("officer ko bulao")
+    assert not needs_human("team lead ka naam kya hai")
+    assert not needs_human("officer ki report bhej do")
     assert not needs_human("human resource policy kya hai")
     assert not needs_human("executive summary bhej do")
     assert not needs_human("call back karna mat")
