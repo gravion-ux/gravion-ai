@@ -14,11 +14,10 @@ patched module from silently running under a customer's license.
 
 from __future__ import annotations
 
-import hashlib
 import json
 from pathlib import Path
 
-from ..canonical import canonical_json
+from ..canonical import canonical_json, sha256_file
 from ..errors import ModuleTamperError
 from .keys import KeyPair, b64decode, b64encode
 
@@ -39,11 +38,14 @@ def _iter_module_files(module_dir: Path):
 
 
 def hash_file(path: Path) -> str:
-    digest = hashlib.sha256()
-    with open(path, "rb") as fh:
-        for chunk in iter(lambda: fh.read(65536), b""):
-            digest.update(chunk)
-    return digest.hexdigest()
+    """SHA-256 of a file's canonical bytes.
+
+    Text is hashed with its line endings normalised to LF, so a manifest
+    signed over the repository's bytes still verifies on a checkout that
+    rewrote them to CRLF (a Windows checkout with `core.autocrlf=true`).
+    Binary content is hashed exactly as it is.
+    """
+    return sha256_file(path)
 
 
 def build_manifest(

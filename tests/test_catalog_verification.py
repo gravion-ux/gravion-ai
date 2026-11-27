@@ -1,12 +1,42 @@
+import shutil
 from dataclasses import replace
+from pathlib import Path
 
 from gravion_ai.catalog import ModelCatalog
 from gravion_ai.catalog_verification import (
+    _verify_module_manifest,
     catalog_routing_examples,
     evaluate_catalog_routing,
     select_verified_model,
     verify_catalog,
 )
+from gravion_ai.registry import ModuleManifest, ModuleType
+
+
+def _chat_module_copy(tmp_path: Path) -> Path:
+    """A copy of the bundled chat module, rewritten with CRLF endings."""
+    import gravion_ai.modules.chat as chat_pkg
+
+    module_dir = tmp_path / "chat-module"
+    shutil.copytree(
+        Path(chat_pkg.__file__).parent,
+        module_dir,
+        ignore=shutil.ignore_patterns("__pycache__"),
+    )
+    for path in module_dir.rglob("*.py"):
+        data = path.read_bytes().replace(b"\r\n", b"\n")
+        path.write_bytes(data.replace(b"\n", b"\r\n"))
+    return module_dir
+
+
+def _chat_manifest(module_dir: Path) -> ModuleManifest:
+    return ModuleManifest(
+        name="chat",
+        type=ModuleType.CHAT,
+        version="0.1.0",
+        entrypoint="gravion_ai.modules.chat.module:ChatModule",
+        path=module_dir,
+    )
 
 
 def test_bundled_catalog_verifies_models_and_modules():
@@ -54,3 +84,23 @@ def test_stale_model_entry_is_excluded_from_verified_selection():
         for model in report.models
         for issue in model.issues
     )
+
+
+def test_module_manifest_verifies_for_a_crlf_checkout(tmp_path):
+    # Git stores LF; a Windows checkout rewrites the working tree to
+    # CRLF. The manifest records the LF hashes, so it must still verify.
+    module_dir = _chat_module_copy(tmp_path)
+
+    issues = _verify_module_manifest(_chat_manifest(module_dir))
+
+    assert issues == []
+
+
+def test_module_manifest_reports_a_changed_file_in_a_crlf_checkout(tmp_path):
+    module_dir = _chat_module_copy(tmp_path)
+    target = module_dir / "module.py"
+    target.write_bytes(target.read_bytes() + b"# tampered\r\n")
+
+    issues = _verify_module_manifest(_chat_manifest(module_dir))
+
+    assert any(issue.check == "manifest_hashes" for issue in issues)

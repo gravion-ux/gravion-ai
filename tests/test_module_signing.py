@@ -42,6 +42,39 @@ def test_added_file_rejected(issuer, chat_module_copy):
         verify_module(chat_module_copy, issuer)
 
 
+def _rewrite_line_endings(module_dir, *, to_crlf: bool):
+    """Rewrite every module file with LF or CRLF endings."""
+    for path in sorted(module_dir.rglob("*.py")):
+        data = path.read_bytes().replace(b"\r\n", b"\n")
+        if to_crlf:
+            data = data.replace(b"\n", b"\r\n")
+        path.write_bytes(data)
+
+
+def test_signed_module_verifies_after_a_crlf_rewrite(issuer, chat_module_copy):
+    # The manifest is signed over the LF form, the way it is in the
+    # repository; a Windows checkout rewrites the files to CRLF.
+    _rewrite_line_endings(chat_module_copy, to_crlf=False)
+    _sign(issuer, chat_module_copy)
+    _rewrite_line_endings(chat_module_copy, to_crlf=True)
+
+    payload = verify_module(chat_module_copy, issuer)
+
+    assert payload["name"] == "chat"
+
+
+def test_crlf_rewrite_with_changed_content_is_rejected(issuer, chat_module_copy):
+    _rewrite_line_endings(chat_module_copy, to_crlf=False)
+    _sign(issuer, chat_module_copy)
+    target = chat_module_copy / "module.py"
+    target.write_bytes(
+        target.read_bytes().replace(b"\n", b"\r\n") + b"# backdoor\r\n"
+    )
+
+    with pytest.raises(ModuleTamperError, match="modified"):
+        verify_module(chat_module_copy, issuer)
+
+
 def test_unsigned_module_rejected(issuer, chat_module_copy):
     # The bundled manifest ships unsigned (empty signature).
     with pytest.raises(ModuleTamperError):

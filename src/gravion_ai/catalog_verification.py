@@ -15,12 +15,12 @@ selection until it is fixed or removed.
 
 from __future__ import annotations
 
-import hashlib
 import json
 from dataclasses import dataclass, field
 from importlib import resources
 from pathlib import Path
 
+from .canonical import sha256_file
 from .catalog import CAPABILITIES, ModelCatalog, ModelEntry
 from .core_model import LOCAL_MODEL_IDS, bundled_seed_path, count_parameters, load_bundled_model
 from .providers import GravionCoreProvider
@@ -136,14 +136,6 @@ def _issue(subject: str, check: str, detail: str) -> CatalogIssue:
     return CatalogIssue(subject=subject, check=check, detail=detail)
 
 
-def _hash_file(path: Path) -> str:
-    digest = hashlib.sha256()
-    with path.open("rb") as handle:
-        for chunk in iter(lambda: handle.read(65536), b""):
-            digest.update(chunk)
-    return digest.hexdigest()
-
-
 def _module_file_hashes(module_dir: Path) -> dict[str, str]:
     hashes: dict[str, str] = {}
     for path in sorted(module_dir.rglob("*")):
@@ -154,7 +146,7 @@ def _module_file_hashes(module_dir: Path) -> dict[str, str]:
             continue
         if path.suffix in (".pyc", ".pyo"):
             continue
-        hashes[relative.as_posix()] = _hash_file(path)
+        hashes[relative.as_posix()] = sha256_file(path)
     return hashes
 
 
