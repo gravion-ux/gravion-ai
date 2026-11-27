@@ -20,7 +20,6 @@ import json
 from dataclasses import dataclass, field
 from importlib import resources
 from pathlib import Path
-from typing import Iterable
 
 from .catalog import CAPABILITIES, ModelCatalog, ModelEntry
 from .core_model import LOCAL_MODEL_IDS, bundled_seed_path, count_parameters, load_bundled_model

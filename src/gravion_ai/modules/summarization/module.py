@@ -699,6 +699,93 @@ def _verb_stem(word: str) -> str | None:
     return stem
 
 
+# Degree/adverb forms whose -er/-est/-ly ending belongs to the
+# base word, not to a comparative or adverb derivation: stripping
+# it would land on a stem no base form produces ("river" -> "riv",
+# "family" -> "famy") and split the match the degree rules below
+# exist to make. Agent nouns that do derive from a verb
+# ("teacher", "runner", "writer") are deliberately absent: they
+# stem to their verb, so a question about teaching matches a
+# document about a teacher.
+_DEGREE_EXCEPTIONS = frozenset(
+    "never ever river other water over under after paper letter "
+    "butter mother father brother sister weather together however "
+    "whatever whenever wherever whoever soldier barrier number "
+    "member remember order offer suffer differ cover flower "
+    "tower power shower answer winter summer dinner family reply "
+    "apply supply rely imply multiply july only early likely "
+    "lonely lovely friendly silly holy ugly".split()
+)
+
+
+def _degree_base(stem: str) -> str:
+    """Base form of a comparative/superlative stem."""
+    if len(stem) >= 2 and stem[-1] == stem[-2] and stem[-1] not in "aeioulsz":
+        return stem[:-1]
+    if stem.endswith(("dg", "u", "v")):
+        return stem + "e"
+    if (
+        len(stem) >= 3
+        and stem[-1] == "g"
+        and stem[-2] not in "aeiou"
+        and stem[-3] in "aeiou"
+    ):
+        return stem + "e"
+    if (
+        stem[-1] not in "aeiouywx"
+        and stem[-2] in "aeiou"
+        and (len(stem) == 2 or stem[-3] not in "aeiou")
+    ):
+        return stem + "e"
+    return stem
+
+
+def _degree_stem(word: str) -> str | None:
+    """Stem of a comparative/superlative/adverb form, or None.
+
+    A question in the base form ("who was happy?", "who worked
+    quick?", "who is fast?") must land on the same stem as a
+    document sentence in a degree form ("the children were
+    happier", "the team worked quickly", "she runs faster"), or
+    document Q&A wrongly reports that the document holds no
+    answer and retrieval scores the relevant passage zero.
+    The -ier/-iest forms restore the y the derivation replaced
+    ("happier" -> "happy"), -ily adverbs do the same
+    ("happily" -> "happy"), plain -ly adverbs drop the ending
+    ("quickly" -> "quick"), and -er/-est stems regain a silent
+    e or undouble exactly as verb stems do ("nicer" -> "nice",
+    "bigger" -> "big"). Words whose ending belongs to the base
+    ("river", "family") are listed in _DEGREE_EXCEPTIONS and
+    keep their form.
+    """
+    if word in _DEGREE_EXCEPTIONS:
+        return None
+    if word == "fully":
+        return "full"
+    if word.endswith("iest") and len(word) > 5:
+        return word[:-4] + "y"
+    if word.endswith("ier") and len(word) > 4:
+        return word[:-3] + "y"
+    if word.endswith("ily") and len(word) > 4:
+        return word[:-3] + "y"
+    if word.endswith("ly") and len(word) > 4:
+        stem = word[:-2]
+        if len(stem) >= 3 and any(c in "aeiouy" for c in stem):
+            return stem
+        return None
+    if word.endswith("est") and len(word) > 5:
+        stem = word[:-3]
+        if len(stem) >= 3 and any(c in "aeiouy" for c in stem):
+            return _degree_base(stem)
+        return None
+    if word.endswith("er") and len(word) > 4:
+        stem = word[:-2]
+        if len(stem) >= 3 and any(c in "aeiouy" for c in stem):
+            return _degree_base(stem)
+        return None
+    return None
+
+
 def stem_word(word: str) -> str:
     """Light plural stemmer shared by the text modules.
 
@@ -726,6 +813,9 @@ def stem_word(word: str) -> str:
     verb = _verb_stem(word)
     if verb is not None:
         return verb
+    degree = _degree_stem(word)
+    if degree is not None:
+        return degree
     if len(word) > 4 and word.endswith("ies"):
         return word[:-3] + "y"
     if len(word) > 5 and word.endswith("oes"):
@@ -880,8 +970,41 @@ def summarize(text: str, max_sentences: int = 3) -> str:
         # scored; keep the opening sentences instead of returning
         # an empty summary that silently drops the source.
         return " ".join(sentences[:max_sentences])
-    keep = sorted(index for _, index in sorted(scored, reverse=True)[:max_sentences])
-    return " ".join(sentences[i] for i in keep)
+    # Greedy diversity selection: near-duplicate sentences score
+    # alike (they share the frequent terms), so taking the top
+    # scores outright spent summary slots restating one point
+    # ("Cats sleep." / "Cats sleep a lot.") while a distinct
+    # point was dropped. A candidate whose stem set is mostly
+    # contained in an already-kept sentence (overlap coefficient
+    # at least 0.75) is skipped in the first pass; if slots
+    # remain after every distinct sentence is taken, the
+    # highest-scored skipped sentences fill them, so the summary
+    # still reaches max_sentences when the source allows it.
+    term_sets = {
+        index: {stem_word(w) for w in word_tokens(sentences[index]) if w not in _STOP}
+        for _, index in scored
+    }
+    ranked = [index for _, index in sorted(scored, reverse=True)]
+    keep: list[int] = []
+    skipped: list[int] = []
+    for index in ranked:
+        terms = term_sets[index]
+        redundant = any(
+            terms
+            and term_sets[kept]
+            and len(terms & term_sets[kept]) / min(len(terms), len(term_sets[kept]))
+            >= 0.75
+            for kept in keep
+        )
+        if redundant:
+            skipped.append(index)
+        else:
+            keep.append(index)
+        if len(keep) >= max_sentences:
+            break
+    if len(keep) < max_sentences:
+        keep.extend(skipped[: max_sentences - len(keep)])
+    return " ".join(sentences[i] for i in sorted(keep))
 
 
 class SummarizationModule:
