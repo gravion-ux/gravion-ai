@@ -29,7 +29,10 @@ and adding deterministic logic of its own:
    paraphrase: CVE ids, IPv4 addresses (octet-validated), IPv6
    addresses (validated and recorded in compressed form),
    SHA-256, SHA-1 and MD5 hashes and URLs, each deduplicated in
-   request order. A stated severity ("severity: high") is recorded
+   request order. Defanged indicators as shared in defensive
+   reporting ("10[.]0[.]0[.]8", "hxxp://…") are refanged and
+   recorded in their canonical form, like the IPv6 compression
+   above. A stated severity ("severity: high") is recorded
    verbatim; an unstated one is recorded as not stated rather
    than guessed.
 
@@ -113,6 +116,15 @@ _CVE_RE = re.compile(r"(?<!\d)CVE-\d{4}-\d{4,}(?!\d)", re.IGNORECASE)
 _IPV4_RE = re.compile(
     r"(?<!\d)(?<!\d\.)(?<![A-Za-z])\d{1,3}(?:\.\d{1,3}){3}(?!\d)(?!\.\d)"
 )
+# A defanged IPv4 ("10[.]0[.]0[.]8", "10(.)0(.)0(.)8") is how
+# indicators arrive in shared defensive reporting: extracted
+# nowhere, a triage request naming one recorded no indicator
+# at all. Candidates are refanged and octet-validated exactly
+# like plain addresses, and recorded in canonical form.
+_DEFANGED_DOT = r"(?:\[\.\]|\(\.\))"
+_DEFANGED_IPV4_RE = re.compile(
+    r"(?<!\d)(?<![A-Za-z])\d{1,3}(?:" + _DEFANGED_DOT + r"\d{1,3}){3}(?!\d)"
+)
 # An IPv6 candidate is a colon-hex sequence (full, "::"-compressed
 # or IPv4-embedded); the guards keep a window inside a longer
 # hex/colon run from matching in part while still allowing
@@ -138,6 +150,12 @@ _MD5_RE = re.compile(r"\b[0-9a-fA-F]{32}\b")
 # trims the unbalanced trailing ones that belong to the
 # surrounding sentence instead.
 _URL_RE = re.compile(r"https?://[^\s\"'<>]+")
+# A defanged URL ("hxxp://evil[.]example.com/path") is the
+# same artefact with the scheme and dots neutralised; it is
+# refanged before recording. A plain URL carrying defanged
+# dots ("https://evil[.]example.com") is refanged the same
+# way, so one artefact is never recorded in two spellings.
+_DEFANGED_URL_RE = re.compile(r"hxxps?://[^\s\"'<>]+", re.IGNORECASE)
 # A stated severity arrives as "severity: high", "severity is
 # high" or "(high|high-)severity"; all three are recorded. The
 # same statement also arrives with a "level" or "rating" noun
@@ -189,8 +207,9 @@ _ITEM = r"(?:this|the|that|incident|finding|alert|issue|vulnerability|event)"
 # so the hash form needs no case flag.
 _INDICATOR_HINT = (
     r"(?:cve-\d{4}-\d{4,}|(?<![a-z])\d{1,3}(?:\.\d{1,3}){3}"
+    r"|\d{1,3}(?:\[\.\]|\(\.\))\d{1,3}(?:\[\.\]|\(\.\))\d{1,3}(?:\[\.\]|\(\.\))\d{1,3}"
     r"|[0-9a-f]{0,4}::[0-9a-f:]*|(?:[0-9a-f]{1,4}:){4,}[0-9a-f]{1,4}"
-    r"|[0-9a-f]{64}|[0-9a-f]{40}|[0-9a-f]{32}|https?://\S+)"
+    r"|[0-9a-f]{64}|[0-9a-f]{40}|[0-9a-f]{32}|https?://\S+|hxxps?://\S+)"
 )
 # "Report" and "triage" are nouns as often as verbs: "the report
 # mentions CVE-2026-12345" discusses a report, it does not ask
@@ -246,6 +265,17 @@ def _normalised_ipv6(candidate: str) -> str | None:
         return None
 
 
+def _refang(text: str) -> str:
+    """Canonical form of a defanged indicator ("10[.]0[.]0[.]8"
+    -> "10.0.0.8", "hxxps://…" -> "https://…")."""
+    refanged = text.replace("[.]", ".").replace("(.)", ".")
+    if refanged[:5].lower() == "hxxps":
+        return "https" + refanged[5:]
+    if refanged[:4].lower() == "hxxp":
+        return "http" + refanged[4:]
+    return refanged
+
+
 def _clean_url(url: str) -> str:
     """Trim sentence punctuation glued to a URL match.
 
@@ -267,11 +297,12 @@ def extract_indicators(prompt: str) -> dict[str, list[str]]:
     """Extract the indicators named in the request, by kind.
 
     Deterministic and conservative: CVE ids (normalised to upper
-    case), IPv4 addresses whose octets are all valid, IPv6
-    addresses (validated, normalised to compressed form),
-    SHA-256, SHA-1 and MD5 hashes (normalised to lower case) and
-    URLs — each deduplicated in request order. Kinds with no
-    matches are omitted.
+    case), IPv4 addresses whose octets are all valid (defanged
+    forms refanged), IPv6 addresses (validated, normalised to
+    compressed form), SHA-256, SHA-1 and MD5 hashes (normalised
+    to lower case) and URLs (defanged forms refanged) — each
+    deduplicated in request order. Kinds with no matches are
+    omitted.
     """
     indicators: dict[str, list[str]] = {}
 
@@ -284,10 +315,16 @@ def extract_indicators(prompt: str) -> dict[str, list[str]]:
             indicators[kind] = seen
 
     collect("cve", [m.group(0).upper() for m in _CVE_RE.finditer(prompt)])
-    collect(
-        "ipv4",
-        [m.group(0) for m in _IPV4_RE.finditer(prompt) if _valid_ipv4(m.group(0))],
-    )
+    ipv4_found = [
+        (m.start(), m.group(0))
+        for m in _IPV4_RE.finditer(prompt)
+        if _valid_ipv4(m.group(0))
+    ] + [
+        (m.start(), _refang(m.group(0)))
+        for m in _DEFANGED_IPV4_RE.finditer(prompt)
+        if _valid_ipv4(_refang(m.group(0)))
+    ]
+    collect("ipv4", [value for _pos, value in sorted(ipv4_found)])
     collect(
         "ipv6",
         [
@@ -299,7 +336,14 @@ def extract_indicators(prompt: str) -> dict[str, list[str]]:
     collect("sha256", [m.group(0).lower() for m in _SHA256_RE.finditer(prompt)])
     collect("sha1", [m.group(0).lower() for m in _SHA1_RE.finditer(prompt)])
     collect("md5", [m.group(0).lower() for m in _MD5_RE.finditer(prompt)])
-    collect("url", [_clean_url(m.group(0)) for m in _URL_RE.finditer(prompt)])
+    url_found = [
+        (m.start(), _refang(_clean_url(m.group(0))))
+        for m in _URL_RE.finditer(prompt)
+    ] + [
+        (m.start(), _refang(_clean_url(m.group(0))))
+        for m in _DEFANGED_URL_RE.finditer(prompt)
+    ]
+    collect("url", [value for _pos, value in sorted(url_found)])
     return indicators
 
 

@@ -173,6 +173,31 @@ def test_extract_indicators_ipv6_validates_and_normalises():
     assert detect_task("the report mentions 2001:db8::1") == TASK_ANALYSE
 
 
+def test_extract_indicators_refangs_defanged_forms():
+    # Defanged indicators are how artefacts arrive in shared
+    # defensive reporting: extracted nowhere, a triage request
+    # naming one recorded no indicator and was misread as
+    # analysis. They are refanged, validated and recorded in
+    # canonical form, deduplicated against the plain spelling.
+    indicators = extract_indicators(
+        "triage 10[.]0[.]0[.]8 and 192(.)168(.)1(.)1 plus 10.0.0.8"
+    )
+    assert indicators["ipv4"] == ["10.0.0.8", "192.168.1.1"]
+    assert "ipv4" not in extract_indicators("bad 999[.]1[.]1[.]1 here")
+    assert extract_indicators("see hxxp://evil[.]example.com/path")["url"] == [
+        "http://evil.example.com/path"
+    ]
+    assert extract_indicators("see hxxps://example.com/a")["url"] == [
+        "https://example.com/a"
+    ]
+    assert extract_indicators("see https://evil[.]example.com/a")["url"] == [
+        "https://evil.example.com/a"
+    ]
+    assert detect_task("triage 10[.]0[.]0[.]8") == TASK_TRIAGE
+    assert detect_task("triage hxxp://evil.example.com") == TASK_TRIAGE
+    assert detect_task("the report mentions 10[.]0[.]0[.]8") == TASK_ANALYSE
+
+
 def test_extract_indicators_hash_lengths_do_not_overlap():
     # MD5 and SHA-1 hashes are recorded under their own kinds,
     # and no shorter pattern matches inside a longer hash.

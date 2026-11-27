@@ -11,6 +11,7 @@ Analyst), whose trained weights cover analysis guidance.
 from __future__ import annotations
 
 import ipaddress
+import math
 import re
 import statistics
 from collections import Counter
@@ -78,7 +79,11 @@ def _blank_ipv6(match: re.Match[str]) -> str:
 # month must be 1-12 and the day 1-31, so a subtraction chain
 # ("10-5-2") or an implausible chain ("13/40/2026") keeps its
 # values, and a single-hyphen range ("5-10") is untouched.
+# The year-first slash form ("2026/11/27") is a date too: the
+# day-first slash pattern cannot see it (its first group takes
+# at most two digits), so it was read as three values.
 _ISO_DATE_RE = re.compile(r"(?<!\d)(\d{4})-(\d{2})-(\d{2})(?!\d)")
+_ISO_SLASH_DATE_RE = re.compile(r"(?<![0-9/])(\d{4})/(\d{1,2})/(\d{1,2})(?![0-9/])")
 _SLASH_DATE_RE = re.compile(r"(?<![0-9/])(\d{1,2})/(\d{1,2})/(\d{4}|\d{2})(?![0-9/])")
 _HYPHEN_DATE_RE = re.compile(r"(?<!\d)(\d{1,2})-(\d{1,2})-(\d{4})(?!\d)")
 
@@ -120,6 +125,19 @@ _DAY_FIRST_DATE_RE = re.compile(
 )
 _MONTH_FIRST_DATE_RE = re.compile(
     _MONTH_NAME + r"\.?\s+(\d{1,2})(?:st|nd|rd|th)?(?:\s*,\s*\d{4}|\s+\d{4})(?!\d)",
+    re.IGNORECASE,
+)
+# The hyphenated month-name forms ("27-Nov-2026", "Nov-27-2026")
+# are the same labels with hyphens instead of spaces: left in
+# place, the day and year were read as values. The year is
+# required, as in the month-first space form, so a bare
+# "27-Nov" keeps its existing handling.
+_DAY_FIRST_HYPHEN_DATE_RE = re.compile(
+    r"(?<!\d)(\d{1,2})(?:st|nd|rd|th)?-" + _MONTH_NAME + r"-\d{4}(?!\d)",
+    re.IGNORECASE,
+)
+_MONTH_FIRST_HYPHEN_DATE_RE = re.compile(
+    r"(?<![A-Za-z])" + _MONTH_NAME + r"-(\d{1,2})(?:st|nd|rd|th)?-\d{4}(?!\d)",
     re.IGNORECASE,
 )
 
@@ -175,6 +193,16 @@ _ORDINAL_RE = re.compile(r"(?<![0-9A-Za-z])\d+(?:st|nd|rd|th)\b", re.IGNORECASE)
 # dotted labels above.
 _MACHINE_LITERAL_RE = re.compile(r"\b0[xX][0-9a-fA-F]+\b|\b0[bB][01]+\b|\b0[oO][0-7]+\b")
 
+# A UUID ("123e4567-e89b-12d3-a456-426614174000") is an
+# identifier label like an address: left in place, its first
+# group read as the scientific-notation value 123e4567, which
+# overflows to infinity and crashed the statistics, and its
+# trailing group read as a huge phantom measurement. UUIDs
+# are blanked out before parsing.
+_UUID_RE = re.compile(
+    r"\b[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}\b"
+)
+
 # A fraction ("1/2") is one value, not the phantom pair 1 and
 # 2 the number pattern read from it, and a mixed number
 # ("1 1/2") is one value too. Fractions are folded to their
@@ -206,21 +234,31 @@ def _fold_fraction(match: re.Match[str]) -> str:
 
 def parse_numbers(prompt: str) -> list[float]:
     cleaned = _MACHINE_LITERAL_RE.sub(" ", prompt)
+    cleaned = _UUID_RE.sub(" ", cleaned)
     cleaned = _IPV6_RE.sub(_blank_ipv6, cleaned)
     cleaned = _ISO_DATE_RE.sub(_blank_iso_date, cleaned)
+    cleaned = _ISO_SLASH_DATE_RE.sub(_blank_iso_date, cleaned)
     cleaned = _SLASH_DATE_RE.sub(_blank_day_month_date, cleaned)
     cleaned = _HYPHEN_DATE_RE.sub(_blank_day_month_date, cleaned)
     cleaned = _DAY_FIRST_DATE_RE.sub(_blank_month_name_date, cleaned)
     cleaned = _MONTH_FIRST_DATE_RE.sub(_blank_month_name_date, cleaned)
+    cleaned = _DAY_FIRST_HYPHEN_DATE_RE.sub(_blank_month_name_date, cleaned)
+    cleaned = _MONTH_FIRST_HYPHEN_DATE_RE.sub(_blank_month_name_date, cleaned)
     cleaned = _CLOCK_TIME_RE.sub(_blank_clock_time, cleaned)
     cleaned = _ORDINAL_RE.sub(" ", cleaned)
     cleaned = _DOTTED_SEQUENCE_RE.sub(" ", cleaned)
     cleaned = _MIXED_FRACTION_RE.sub(_fold_mixed_fraction, cleaned)
     cleaned = _FRACTION_RE.sub(_fold_fraction, cleaned)
-    return [
-        float(m.replace(",", "").replace("_", ""))
-        for m in _NUMBER_RE.findall(cleaned)
-    ]
+    # A token whose value overflows float ("1e999") is not a
+    # finite measurement: kept, it turned the standard
+    # deviation into a crash instead of a statistic, so
+    # non-finite results state no value and are dropped.
+    values: list[float] = []
+    for match in _NUMBER_RE.findall(cleaned):
+        value = float(match.replace(",", "").replace("_", ""))
+        if math.isfinite(value):
+            values.append(value)
+    return values
 
 
 def _mode_line(numbers: list[float]) -> str:

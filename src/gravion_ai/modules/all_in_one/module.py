@@ -187,7 +187,13 @@ _DOCUMENT_MARKER_RE = re.compile(r"^\s*document\s*:", re.IGNORECASE | re.MULTILI
 _QUESTION_MARKER_RE = re.compile(r"^\s*question\s*:", re.IGNORECASE | re.MULTILINE)
 _QUERY_MARKER_RE = re.compile(r"^\s*query\s*:", re.IGNORECASE | re.MULTILINE)
 _PASSAGE_MARKER_RE = re.compile(r"^\s*passage\s*:", re.IGNORECASE | re.MULTILINE)
-_SUMMARIZE_PREFIX_RE = re.compile(r"^\s*summar(?:ize|ise)\s*:", re.IGNORECASE)
+# The "summarize this:" / "summarize the following:" forms are
+# the same decisive prefix with the object named: without them
+# the request scored one intent point and fell through to chat,
+# so the module's own input form could never reach it.
+_SUMMARIZE_PREFIX_RE = re.compile(
+    r"^\s*summar(?:ize|ise)(?:\s+(?:this|the following))?\s*:", re.IGNORECASE
+)
 # The translation module documents leading "translate:" and
 # "translate to/into/in hindi|english:" forms; without a
 # decisive check here they scored one intent point and fell

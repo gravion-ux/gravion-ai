@@ -24,8 +24,14 @@ _STOP = frozenset(
 
 # Accept both spellings: the all-in-one router already treats a
 # leading "summarise:" as decisive, so refusing it here would
-# drop a correctly routed request to the model fallback.
-_SUMMARIZE_RE = re.compile(r"summar(?:ize|ise)\s*:\s*(.+)", re.IGNORECASE | re.DOTALL)
+# drop a correctly routed request to the model fallback. The
+# "summarize this:" / "summarize the following:" forms name the
+# same input: refusing them left the instruction itself inside
+# the text being summarized.
+_SUMMARIZE_RE = re.compile(
+    r"summar(?:ize|ise)(?:\s+(?:this|the following))?\s*:\s*(.+)",
+    re.IGNORECASE | re.DOTALL,
+)
 
 # Abbreviations whose final dot does not end a sentence, plus
 # dotted forms (e.g. "e.g", "u.s"). Single uppercase initials

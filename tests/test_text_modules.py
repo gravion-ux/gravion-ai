@@ -46,6 +46,11 @@ def test_summarization_is_extractive():
     # Regression: the British leading form routed here through
     # all-in-one but the module accepted only "summarize:".
     assert _run("summarization", "gravion-summary", f"summarise: {text}") == summarize(text)
+    # Regression: the "summarize this:" form names the same
+    # input; refusing it left the instruction inside the text
+    # being summarized.
+    assert _run("summarization", "gravion-summary", f"summarize this: {text}") == summarize(text)
+    assert _run("summarization", "gravion-summary", f"summarize the following: {text}") == summarize(text)
 
 
 def test_split_sentences_keeps_trailing_fragment_and_decimals():
@@ -153,6 +158,12 @@ def test_parse_numbers_ignores_dates_as_labels():
     assert "Count: 3" in analyze(parse_numbers("sales on 2026-11-27 were 10 20 30"))
     assert parse_numbers("values 13/40/2026 5 10") == [13.0, 40.0, 2026.0, 5.0, 10.0]
     assert parse_numbers("10-5-2 values 1 2 3") == [10.0, 5.0, 2.0, 1.0, 2.0, 3.0]
+    # The year-first slash form is the same label: the
+    # day-first pattern cannot see it, so it was read as the
+    # three values 2026, 11 and 27. An implausible year-first
+    # chain keeps its numbers.
+    assert parse_numbers("sales on 2026/11/27 were 10 20 30") == [10.0, 20.0, 30.0]
+    assert parse_numbers("values 2026/13/40 5 10") == [2026.0, 13.0, 40.0, 5.0, 10.0]
 
 
 def test_parse_numbers_ignores_clock_times_and_month_name_dates():
@@ -176,6 +187,12 @@ def test_parse_numbers_ignores_clock_times_and_month_name_dates():
     assert parse_numbers("chapter 5 may contain 5 6 7") == [5.0, 5.0, 6.0, 7.0]
     assert parse_numbers("we march 5 miles with 5 6 7") == [5.0, 5.0, 6.0, 7.0]
     assert parse_numbers("32 Nov 2026 values 5 6 7") == [32.0, 2026.0, 5.0, 6.0, 7.0]
+    # The hyphenated month-name forms are the same labels with
+    # hyphens instead of spaces; their day and year were read
+    # as values. An implausible day keeps its numbers.
+    assert parse_numbers("on 27-Nov-2026 scores were 5 6 7") == [5.0, 6.0, 7.0]
+    assert parse_numbers("on Nov-27-2026 scores were 5 6 7") == [5.0, 6.0, 7.0]
+    assert parse_numbers("32-Nov-2026 values 5 6 7") == [32.0, 2026.0, 5.0, 6.0, 7.0]
 
 
 def test_parse_numbers_ignores_ordinals_as_labels():
@@ -450,6 +467,20 @@ def test_parse_numbers_reads_underscore_groups_and_ignores_machine_literals():
     assert parse_numbers("values 1_000.5 2_000.5") == [1000.5, 2000.5]
     assert parse_numbers("0x10 0x20 0x30") == []
     assert parse_numbers("count 0xFF values 5 10 15") == [5.0, 10.0, 15.0]
+
+
+def test_parse_numbers_ignores_uuids_and_overflowing_tokens():
+    # Regression: a UUID's first group read as the
+    # scientific-notation value 123e4567, which overflows to
+    # infinity and crashed analyze() inside the standard
+    # deviation, and its trailing group read as a huge phantom
+    # measurement. UUIDs are identifier labels, and a token
+    # whose value overflows float states no finite measurement.
+    uuid = "123e4567-e89b-12d3-a456-426614174000"
+    assert parse_numbers(f"record {uuid} values 5 10 15") == [5.0, 10.0, 15.0]
+    assert "Count: 3" in analyze(parse_numbers(f"record {uuid} values 5 10 15"))
+    assert parse_numbers("values 1e999 5 10 15") == [5.0, 10.0, 15.0]
+    assert "Count: 3" in analyze(parse_numbers("values 1e999 5 10 15"))
 
 
 def test_translation_bare_request_picks_direction_by_coverage():
