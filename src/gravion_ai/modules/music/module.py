@@ -130,6 +130,13 @@ MOODS = (
     "playful",
     "dark",
     "warm",
+    # The plain feeling words a request states first ("a
+    # sad piano melody", "a cheerful jingle") recorded no
+    # mood at all, so the brief handed the model a default
+    # where the request had stated one.
+    "sad",
+    "happy",
+    "cheerful",
 )
 
 _DURATION_RE = re.compile(

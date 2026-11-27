@@ -125,6 +125,11 @@ def test_summarization_is_extractive():
     # input; refusing it left the instruction inside the text
     # being summarized.
     assert _run("summarization", "gravion-summary", f"summarize this: {text}") == summarize(text)
+    # Regression: the "tldr:" prefix asks for the same summary
+    # in shorthand; refusing it left the prefix inside the
+    # text being summarized.
+    assert _run("summarization", "gravion-summary", f"tldr: {text}") == summarize(text)
+    assert _run("summarization", "gravion-summary", f"tl;dr: {text}") == summarize(text)
     assert _run("summarization", "gravion-summary", f"summarize the following: {text}") == summarize(text)
     # Regression: the object may carry its noun ("summarize
     # the following text:", "summarize this passage:"); the
@@ -516,6 +521,28 @@ def test_stem_word_matches_irregular_past_tense_verbs():
     assert stem_word("lying") == stem_word("lie") == "lie"
     # The y-base verbs the -ying rule must not mangle.
     assert stem_word("relying") == stem_word("rely") == "rely"
+    # Regression: the remaining common irregular past tenses
+    # and -en participles stayed split from their bases, so
+    # "when did she become a doctor?" missed "she became a
+    # doctor" and "where has he go?" missed "he has gone".
+    assert stem_word("became") == stem_word("become") == "become"
+    assert stem_word("gone") == stem_word("go") == "go"
+    assert stem_word("done") == stem_word("do") == "do"
+    assert stem_word("flew") == stem_word("fly") == "fly"
+    assert stem_word("forgave") == stem_word("forgive") == "forgive"
+    assert stem_word("got") == stem_word("get") == "get"
+    assert stem_word("lit") == stem_word("light") == "light"
+    assert stem_word("wept") == stem_word("weep") == "weep"
+    assert stem_word("begun") == stem_word("begin") == "begin"
+    assert stem_word("thrown") == stem_word("throw") == "throw"
+    assert stem_word("worn") == stem_word("wear") == "wear"
+    assert stem_word("known") == stem_word("know") == "know"
+    # The s-singular animal plurals and classical plurals
+    # split from their singulars the same way.
+    assert stem_word("platypuses") == stem_word("platypus") == "platypus"
+    assert stem_word("rhinoceroses") == stem_word("rhinoceros") == "rhinoceros"
+    assert stem_word("genera") == stem_word("genus") == "genus"
+    assert stem_word("loci") == stem_word("locus") == "locus"
 
 
 def test_stem_word_matches_regular_verb_forms():

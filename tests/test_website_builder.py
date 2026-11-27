@@ -125,6 +125,16 @@ def test_parse_site_type(prompt, expected):
         ("pages: home, terms and conditions",
          ["home", "terms-and-conditions"]),
         ("a site about cats with photos", ["home"]),
+        # Regression: the booking, cart and checkout pages
+        # were dropped the same way the menu page once was,
+        # so a restaurant brief lost its booking page and a
+        # shop brief lost its cart and checkout pages.
+        ("a restaurant site with menu and booking pages",
+         ["home", "menu", "booking"]),
+        ("a shop site with a cart page and a checkout page",
+         ["home", "cart", "checkout"]),
+        ("a site with no booking page, home and menu pages",
+         ["home", "menu"]),
     ],
 )
 def test_parse_pages(prompt, expected):

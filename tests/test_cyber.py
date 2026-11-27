@@ -268,6 +268,22 @@ def test_extract_indicators_refangs_dot_word_defanging():
     }
     assert detect_task("triage 10[dot]0[dot]0[dot]8") == TASK_TRIAGE
     assert detect_task("triage admin[at]evil[dot]example.com") == TASK_TRIAGE
+    # Regression: the spaced word spelling ("10 dot 0 dot 0
+    # dot 8") recorded no indicator, and an email domain
+    # spelled with spaced dots ("admin@evil dot example dot
+    # com") recorded no sender. A five-group spaced chain
+    # still yields no four-group window, and the bare word
+    # "at" states no sender.
+    assert extract_indicators("seen 10 dot 0 dot 0 dot 8 here")["ipv4"] == [
+        "10.0.0.8"
+    ]
+    assert "ipv4" not in extract_indicators("chain 1 dot 2 dot 3 dot 4 dot 5")
+    assert "ipv4" not in extract_indicators("bad 999 dot 1 dot 1 dot 1")
+    assert extract_indicators("contact admin@evil dot example dot com") == {
+        "email": ["admin@evil.example.com"]
+    }
+    assert extract_indicators("look at evil dot com") == {}
+    assert detect_task("triage 10 dot 0 dot 0 dot 8") == TASK_TRIAGE
 
 
 def test_extract_indicators_hash_lengths_do_not_overlap():
@@ -342,6 +358,17 @@ def test_extract_indicators_hash_lengths_do_not_overlap():
         ("severity is not extremely high, just noisy", None),
         ("a high severity alert on the host", "high"),
         ("a routine alert", None),
+        # Regression: a rating verb or a level named on the
+        # finding states the level without the word
+        # "severity"; both recorded none. A priority is
+        # triage urgency, not severity, and stays unrecorded.
+        ("this finding is rated high, host isolated", "high"),
+        ("the issue is assessed as critical", "critical"),
+        ("an informational finding on the host", "informational"),
+        ("a critical vulnerability in the login page", "critical"),
+        ("is not rated high, just noisy", None),
+        ("not a critical finding, just noisy", None),
+        ("a low priority issue on the host", None),
     ],
 )
 def test_parse_severity(prompt, expected):

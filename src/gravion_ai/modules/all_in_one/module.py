@@ -107,6 +107,12 @@ _INTENT_SIGNALS: dict[str, tuple[frozenset[str], frozenset[str]]] = {
                 "describe",
                 "check",
                 "audit",
+                # Optimising supplied code is a coder request
+                # the same way refactoring it is ("optimise
+                # this algorithm" scored the noun alone and
+                # fell through to chat).
+                "optimise",
+                "optimize",
             }
         ),
         frozenset(
@@ -207,12 +213,18 @@ _INTENT_SIGNALS: dict[str, tuple[frozenset[str], frozenset[str]]] = {
         frozenset({"hindi", "english", "hinglish", "urdu", "translation"}),
     ),
     "summarization": (
-        frozenset({"summarize", "summarise", "shorten", "condense"}),
+        frozenset({"summarize", "summarise", "shorten", "condense", "tldr"}),
         frozenset({"summary", "article", "paragraph", "passage"}),
     ),
     "retrieval": (
         frozenset({"search", "rank", "retrieve", "find"}),
-        frozenset({"passage", "passages", "query", "documents"}),
+        # The singular "document" names the same input as
+        # the listed plural ("search for cats in this
+        # document" scored the verb alone and fell through
+        # to chat); the token set holds stems of the
+        # request's words, not of these nouns, so the
+        # singular must be listed itself.
+        frozenset({"passage", "passages", "query", "document", "documents"}),
     ),
     "data-analysis": (
         frozenset({"analyze", "analyse", "compute", "calculate"}),
@@ -242,9 +254,10 @@ _PASSAGE_MARKER_RE = re.compile(r"^\s*passage\s*:", re.IGNORECASE | re.MULTILINE
 # object may carry its noun ("summarize the following text:"),
 # mirroring the summarization module's own accepted forms.
 _SUMMARIZE_PREFIX_RE = re.compile(
-    r"^\s*summar(?:ize|ise)(?:\s+(?:this|the following)"
+    r"^\s*(?:summar(?:ize|ise)(?:\s+(?:this|the following)"
     r"(?:\s+(?:text|passage|article|document|paragraph|story|report|essay))?"
     r"|\s+the\s+(?:text|passage|article|document|paragraph|story|report|essay))?"
+    r"|tl;?dr)"
     r"\s*:",
     re.IGNORECASE,
 )

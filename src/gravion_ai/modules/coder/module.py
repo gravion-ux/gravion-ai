@@ -87,10 +87,12 @@ _GENERATE_OPENERS = (
 # you review this algorithm?", "check this method for bugs"
 # and "is this algorithm correct?" fell through to generation,
 # so a request to examine existing code was answered with new
-# code instead of the problems in it.
+# code instead of the problems in it. A loop or a line is
+# supplied code the same way: "explain this loop" and "trace
+# through this loop" fell through the same way.
 _CODE_OBJECT = (
     r"(?:code|function|script|snippet|program|module|class"
-    r"|algorithm|method|implementation|file)"
+    r"|algorithm|method|implementation|file|loops?|lines?)"
 )
 # "Look over" / "go over" ask for a review just as plainly as
 # "review" does ("look over this function please" fell through
@@ -105,6 +107,12 @@ _CODE_OBJECT = (
 # questions ("is there a bug in this code?", "where is the
 # bug in this function?", "does this code have any bugs?")
 # ask for the same examination and fell through the same way.
+# A pronoun object aims "debug" at the supplied code just as
+# plainly ("can you debug this?"), a vulnerability hunt is a
+# bug hunt ("find vulnerabilities in this code"), and a
+# broken-code statement ("my code is broken", "this function
+# throws an error") asks for the same examination with the
+# code named before the problem instead of after it.
 _REVIEW_RES = (
     re.compile(
         r"\b(?:review|reviewing|audit|auditing|check|checking|"
@@ -113,9 +121,19 @@ _REVIEW_RES = (
         + r"\b"
     ),
     re.compile(r"\bdebug(?:ging)?\b[^.?!]*\b" + _CODE_OBJECT + r"\b"),
+    re.compile(r"\bdebug(?:ging)?\s+(?:this|it)\b"),
     re.compile(
         r"\b(?:find|look for|search for|spot|hunt for)\b[^.?!]*"
-        r"\b(?:bugs?|errors?|problems?|issues?)\b"
+        r"\b(?:bugs?|errors?|problems?|issues?|vulnerabilit(?:y|ies)|flaws?)\b"
+    ),
+    re.compile(
+        r"\b" + _CODE_OBJECT + r"\b[^.?!]*"
+        r"\b(?:is|are|was|were|keeps?|keep)?\s*"
+        r"(?:broken|failing|fails?|not working|throws?|throwing|crashes?|crashing)\b"
+    ),
+    re.compile(
+        r"\b" + _CODE_OBJECT + r"\b[^.?!]*"
+        r"\bwhat(?:'s| is| went) wrong\b"
     ),
     re.compile(
         r"\b(?:is|are) there\b[^.?!]*\b(?:bugs?|errors?|problems?|issues?)\b"
@@ -205,7 +223,28 @@ _EXPLAIN_RES = (
         + _CODE_OBJECT
         + r"\b[^.?!]*\bfor\b"
     ),
-    re.compile(r"\bwalk\b[^.?!]*\bthrough\b[^.?!]*\b" + _CODE_OBJECT + r"\b"),
+    re.compile(
+        r"\b(?:walk|trace|step)\b[^.?!]*\bthrough\b[^.?!]*\b" + _CODE_OBJECT + r"\b"
+    ),
+    # "What is the output of this code?" asks what the code
+    # produces just as plainly as "what does this code
+    # output?", and "what does return do in python?" asks
+    # what a language concept does: both fell through to
+    # generation, so a question about existing code or a
+    # concept was answered with new code. A why-question
+    # aimed at a failing pronoun subject ("why is this
+    # failing?") is the same explanation ask as "why does
+    # this code fail?" above.
+    re.compile(
+        r"\bwhat is the (?:output|result|return value)\b[^.?!]*\b"
+        + _CODE_OBJECT
+        + r"\b"
+    ),
+    re.compile(r"\bwhat does \w+ (?:do|mean)\b"),
+    re.compile(
+        r"\bwhy (?:is|does|did|would)\b[^.?!]*"
+        r"\b(?:failing|broken|crashing|not working)\b"
+    ),
 )
 
 

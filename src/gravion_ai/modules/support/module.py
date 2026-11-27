@@ -65,6 +65,12 @@ ESCALATION_PHRASES = (
     "talk with someone",
     "speak with someone",
     "call me",
+    # A callback asked for by its other verbs ("phone me
+    # please", "ring me back") requests the same phone call
+    # as "call me"; with only "call me" listed, those
+    # customers were answered by the bot instead.
+    "phone me",
+    "ring me",
 )
 
 ESCALATION_RESPONSE = (
@@ -94,7 +100,7 @@ _TOPIC_PHRASES_RE = re.compile(
     # questions, which escalated on the bare word "human".
     r"human rights|human anatomy|human body|"
     r"password manager|task manager|file manager|download manager|"
-    r"user agent|ai agent|agent fee|agent fees|"
+    r"user agent|ai agent|agent fee|agent fees|agent orange|"
     r"product manager|project manager|"
     r"account manager|travel agent|insurance agent|estate agent|"
     r"sales representative)\b"
@@ -240,6 +246,13 @@ _TEAM_REQUEST_RE = re.compile(
     r"\b(?:talk|speak|connect|transfer|chat|put me through)\b"
     r"[^.?!]*\b(?:customer care|customer service|support team)\b"
     r"|\bget me an? operator\b"
+    # The team named by its bare service word with a
+    # transfer preposition ("connect me to support", "talk
+    # to support") asks for the same handoff; the
+    # preposition keeps the "chat support" topic phrase,
+    # which states no request, with the bot.
+    r"|\b(?:talk|speak|connect|transfer|chat)\b"
+    r"[^.?!]*\b(?:to|with) support\b"
 )
 
 

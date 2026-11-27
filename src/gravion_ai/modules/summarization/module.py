@@ -33,10 +33,14 @@ _STOP = frozenset(
 # the router sends "summarize this passage:" here on the
 # verb+noun signal, so refusing the noun form dropped a routed
 # request to chat whenever the text ran under four sentences.
+# The "tldr:" / "tl;dr:" prefix asks for the same summary in
+# shorthand; refusing it left the prefix inside the text being
+# summarized whenever the text ran to four sentences.
 _SUMMARIZE_RE = re.compile(
-    r"summar(?:ize|ise)(?:\s+(?:this|the following)"
+    r"(?:summar(?:ize|ise)(?:\s+(?:this|the following)"
     r"(?:\s+(?:text|passage|article|document|paragraph|story|report|essay))?"
     r"|\s+the\s+(?:text|passage|article|document|paragraph|story|report|essay))?"
+    r"|tl;?dr)"
     r"\s*:\s*(.+)",
     re.IGNORECASE | re.DOTALL,
 )
@@ -207,6 +211,86 @@ _IRREGULAR_STEMS = {
     "lent": "lend",
     "dealt": "deal",
     "fed": "feed",
+    # The remaining common irregular past tenses and their
+    # -en participles: without them "when did she become a
+    # doctor?" missed "she became a doctor", "where has he
+    # go?" missed "he has gone to Delhi" and "where did the
+    # bird fly?" missed "the bird flew south", so document
+    # Q&A wrongly reported no answer. "Laid" maps to "lay"
+    # (the hen sense); the past of "lie" is also spelled
+    # "lay", which no context-free map can hold both ways,
+    # so "lay" itself stays unmapped. The s-singular animal
+    # plurals ("platypuses", "rhinoceroses") split from
+    # their singulars the same way "buses" did, and
+    # "genera"/"loci" are the classical plurals of
+    # "genus"/"locus" no suffix rule derives.
+    "became": "become",
+    "bit": "bite",
+    "blew": "blow",
+    "bore": "bear",
+    "bound": "bind",
+    "bred": "breed",
+    "clung": "cling",
+    "crept": "creep",
+    "dove": "dive",
+    "dreamt": "dream",
+    "fled": "flee",
+    "flew": "fly",
+    "forbade": "forbid",
+    "forgave": "forgive",
+    "got": "get",
+    "ground": "grind",
+    "laid": "lay",
+    "lit": "light",
+    "meant": "mean",
+    "shot": "shoot",
+    "shrank": "shrink",
+    "slid": "slide",
+    "spun": "spin",
+    "sprang": "spring",
+    "stung": "sting",
+    "struck": "strike",
+    "swore": "swear",
+    "swung": "swing",
+    "wept": "weep",
+    "withdrew": "withdraw",
+    "bled": "bleed",
+    "knelt": "kneel",
+    "awoke": "awake",
+    "beaten": "beat",
+    "begun": "begin",
+    "bitten": "bite",
+    "blown": "blow",
+    "born": "bear",
+    "done": "do",
+    "forgiven": "forgive",
+    "frozen": "freeze",
+    "gone": "go",
+    "gotten": "get",
+    "grown": "grow",
+    "hidden": "hide",
+    "known": "know",
+    "mistaken": "mistake",
+    "ridden": "ride",
+    "risen": "rise",
+    "shaken": "shake",
+    "shown": "show",
+    "shrunk": "shrink",
+    "stolen": "steal",
+    "sprung": "spring",
+    "sworn": "swear",
+    "thrown": "throw",
+    "torn": "tear",
+    "withdrawn": "withdraw",
+    "worn": "wear",
+    "awoken": "awake",
+    "genera": "genus",
+    "loci": "locus",
+    "platypuses": "platypus",
+    "hippopotamuses": "hippopotamus",
+    "walruses": "walrus",
+    "rhinoceroses": "rhinoceros",
+    "rhinoceros": "rhinoceros",
     "dying": "die",
     "lying": "lie",
     "tying": "tie",

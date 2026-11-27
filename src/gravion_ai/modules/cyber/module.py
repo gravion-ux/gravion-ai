@@ -139,6 +139,15 @@ _DEFANGED_IPV4_RE = re.compile(
     r"(?!\d)(?!\.\d)(?!\[\.\]\d)(?!\(\.\)\d)"
     r"(?!\[(?i:dot)\]\d)(?!\((?i:dot)\)\d)"
 )
+# The spaced word spelling ("10 dot 0 dot 0 dot 8") is the
+# same neutralisation written without brackets; the digits
+# around each "dot" keep it unambiguous, and a fifth group
+# still yields no four-group window.
+_SPACED_DOT_IPV4_RE = re.compile(
+    r"(?<!\d)(?<!\d\.)(?<![A-Za-z])"
+    r"\d{1,3}(?:\s+(?i:dot)\s+\d{1,3}){3}"
+    r"(?!\d)(?!\s+(?i:dot)\s+\d)"
+)
 # An IPv6 candidate is a colon-hex sequence (full, "::"-compressed
 # or IPv4-embedded); the guards keep a window inside a longer
 # hex/colon run from matching in part while still allowing
@@ -189,7 +198,11 @@ _DEFANGED_URL_RE = re.compile(r"hxxps?://[^\s\"'<>]+", re.IGNORECASE)
 # that URL record, not a separate email, so matches overlapping
 # a URL match are skipped.
 _EMAIL_LOCAL = r"[A-Za-z0-9._%+\-]+"
-_EMAIL_DOT = r"(?:\.|\s*(?:\[\.\]|\(\.\)|\[dot\]|\(dot\))\s*)"
+# The spaced word dot ("admin@evil dot example dot com")
+# refangs the same way once the "@" or "[at]" anchor states
+# an address; the bare word "at" stays unrecognised, since
+# "look at evil dot com" states no sender.
+_EMAIL_DOT = r"(?:\.|\s*(?:\[\.\]|\(\.\)|\[dot\]|\(dot\))\s*|\s+dot\s+)"
 _EMAIL_DOMAIN = (
     r"[A-Za-z0-9](?:[A-Za-z0-9\-]*[A-Za-z0-9])?"
     r"(?:" + _EMAIL_DOT + r"[A-Za-z0-9](?:[A-Za-z0-9\-]*[A-Za-z0-9])?)*"
@@ -234,7 +247,18 @@ _SEVERITY_RE = re.compile(
     r"|severity" + _SEV_NOUNS + r"\s+of\s+" + _LEVEL + r"\b"
     r"|severity\s+of\s+(?:the\s+)?\w+\s+(?:is|was)\s+" + _RATED + _INTENSIFIER + _LEVEL + r"\b"
     r"|severity" + _SEV_NOUNS + r"\s*\(\s*" + _LEVEL + r"\s*\)"
-    r"|(?<!not )(?<!no )(?<!n't )(?<!never )\b" + _LEVEL + r"[\s-]severity\b",
+    r"|(?<!not )(?<!no )(?<!n't )(?<!never )\b" + _LEVEL + r"[\s-]severity\b"
+    # A rating verb or a level named on the finding itself
+    # states the same level without the word "severity"
+    # ("this finding is rated high", "an informational
+    # finding"); both recorded no severity at all. The
+    # negation guards mirror the level-first form, so "is
+    # not rated high" still states no level. A priority
+    # ("low priority") is triage urgency, not severity, and
+    # stays unrecorded.
+    r"|(?<!not )(?<!n't )(?<!never )\b(?:rated|assessed)\s+(?:as\s+)?" + _LEVEL + r"\b"
+    r"|(?<!not )(?<!not a )(?<!not an )(?<!no )(?<!n't )(?<!never )\b"
+    + _LEVEL + r"\s+(?:finding|vulnerability|issue)\b",
     re.IGNORECASE,
 )
 
@@ -264,6 +288,7 @@ _ITEM = r"(?:this|the|that|it|them|incident|finding|alert|issue|vulnerability|ev
 _INDICATOR_HINT = (
     r"(?:cve-\d{4}-\d{4,}"
     r"|(?<![a-z])\d{1,3}(?:(?:\.|\[\.\]|\(\.\)|\[dot\]|\(dot\))\d{1,3}){3}"
+    r"|\d{1,3}(?:\s+dot\s+\d{1,3}){3}"
     r"|[0-9a-f]{0,4}::[0-9a-f:]*|(?:[0-9a-f]{1,4}:){4,}[0-9a-f]{1,4}"
     r"|[0-9a-f]{64}|[0-9a-f]{40}|[0-9a-f]{32}|https?://\S+|hxxps?://\S+"
     r"|[a-z0-9._%+\-]+(?:@|\s*\[at\]\s*|\s*\(at\)\s*)"
@@ -400,6 +425,7 @@ def _refang_email(candidate: str) -> str | None:
         ".",
         refanged,
     )
+    refanged = re.sub(r"\s+(?i:dot)\s+", ".", refanged)
     local, at, domain = refanged.partition("@")
     if not at or not local or local.startswith(".") or local.endswith("."):
         return None
@@ -456,6 +482,19 @@ def extract_indicators(prompt: str) -> dict[str, list[str]]:
         (m.start(), _refang(m.group(0)))
         for m in _DEFANGED_IPV4_RE.finditer(prompt)
         if _valid_ipv4(_refang(m.group(0)))
+    ] + [
+        (
+            m.start(),
+            refanged,
+        )
+        for m in _SPACED_DOT_IPV4_RE.finditer(prompt)
+        # A four-group window inside a longer spaced chain
+        # ("1 dot 2 dot 3 dot 4 dot 5") is no address: the
+        # regex guards cannot look back over the variable
+        # spacing, so a preceding digit-and-dot is refused
+        # here, mirroring the bracket forms' guards.
+        if not re.search(r"\d\s+(?i:dot)\s+$", prompt[: m.start()])
+        and _valid_ipv4(refanged := re.sub(r"\s+(?i:dot)\s+", ".", m.group(0)))
     ]
     collect("ipv4", [value for _pos, value in sorted(ipv4_found)])
     collect(

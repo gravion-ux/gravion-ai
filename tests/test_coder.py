@@ -153,6 +153,27 @@ def test_coder_instantiates_and_answers():
         # new shapes.
         ("write code to look for bugs in log files", TASK_GENERATE),
         ("do not look for bugs, explain this code", TASK_EXPLAIN),
+        # Regression: a pronoun debug object, a vulnerability
+        # hunt and broken-code statements fell through to
+        # generation, so a request to examine supplied code
+        # was answered with new code instead of the problems.
+        ("can you debug this?", TASK_REVIEW),
+        ("find vulnerabilities in this code", TASK_REVIEW),
+        ("my code is broken, what is wrong?", TASK_REVIEW),
+        ("this function throws an error, why?", TASK_REVIEW),
+        ("this code is not working", TASK_REVIEW),
+        # Regression: the output question, a concept question
+        # and a trace request fell through to generation, so
+        # a question about existing code was answered with
+        # new code instead of an explanation.
+        ("what is the output of this code?", TASK_EXPLAIN),
+        ("what does return do in python?", TASK_EXPLAIN),
+        ("trace through this loop", TASK_EXPLAIN),
+        ("explain this loop", TASK_EXPLAIN),
+        ("why is this failing?", TASK_EXPLAIN),
+        # Generation openers still govern the new shapes.
+        ("write code that throws an error on bad input", TASK_GENERATE),
+        ("do not debug this, explain this code", TASK_EXPLAIN),
     ],
 )
 def test_detect_task(prompt, expected):

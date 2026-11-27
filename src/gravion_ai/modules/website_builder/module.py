@@ -103,7 +103,10 @@ _SITE_TYPES = (
 # The menu/services/team/faq pages are named just as plainly in
 # briefs ("a menu page and a services page" for a bakery): with
 # only the original six listed, those requests built a home page
-# alone and silently dropped the pages that were asked for.
+# alone and silently dropped the pages that were asked for. The
+# booking, cart and checkout pages are named the same way ("menu
+# and booking pages" for a restaurant, "cart and checkout" for a
+# shop) and were dropped the same way.
 _NAMED_PAGES = (
     "about",
     "pricing",
@@ -115,6 +118,9 @@ _NAMED_PAGES = (
     "services",
     "team",
     "faq",
+    "booking",
+    "cart",
+    "checkout",
 )
 
 # A negated page, style or site type is ruled out, not requested:

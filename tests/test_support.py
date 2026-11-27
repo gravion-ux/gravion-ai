@@ -222,6 +222,11 @@ def test_introductions_postposed_negations_and_topics_do_not_escalate(prompt):
         # Guards for the topic phrases below: a bare agent
         # request still hands over.
         "get me an agent please",
+        # Regression: a callback asked for as "phone me" or
+        # "ring me" requests the same phone call as "call
+        # me", yet never handed over.
+        "phone me please",
+        "ring me back when you can",
     ],
 )
 def test_phone_requests_and_person_requests_still_escalate(prompt):
@@ -345,9 +350,19 @@ def test_team_requests_escalate_and_human_topics_do_not():
     assert needs_human("talk to customer service please")
     assert needs_human("speak to your support team")
     assert needs_human("get me an operator")
+    # Regression: the team named by its bare service word
+    # with a transfer preposition ("connect me to support")
+    # asked for the same handoff yet never escalated.
+    assert needs_human("connect me to support")
+    assert needs_human("talk to support please")
+    assert not needs_human("do not connect me to support")
     # A topic question naming the service states no request.
     assert not needs_human("what are your customer service hours?")
+    assert not needs_human("how does chat support work?")
     assert not needs_human("do not connect me with customer care")
+    # Regression: "agent orange" names a topic, not a
+    # request for a person, yet escalated on "agent".
+    assert not needs_human("agent orange history question")
     # Human topics are answered, not handed over.
     assert not needs_human("how does the human body work?")
     assert not needs_human("human anatomy question: what is a femur?")

@@ -127,6 +127,15 @@ def test_parse_route_refuses_underscore_self_routing():
         # A negation aimed at one module does not cancel a
         # clear signal for another.
         ("do not draw anything, write a python function", "coder"),
+        # Regression: "optimise this algorithm" scored the
+        # coder noun alone and fell through to chat, and
+        # "search for cats in this document" scored the
+        # retrieval verb alone because only the plural
+        # "documents" was listed as its noun.
+        ("optimise this algorithm", "coder"),
+        ("optimize this python function", "coder"),
+        ("search for cats in this document", "retrieval"),
+        ("tldr this passage about cats", "summarization"),
     ],
 )
 def test_parse_route_infers_clear_intent(prompt, expected_module):
@@ -158,6 +167,10 @@ def test_parse_route_infers_clear_intent(prompt, expected_module):
         # intent noun) and fell through to chat.
         ("summarize the following text: Cats sleep for long hours each day.", "summarization"),
         ("summarize this passage: Cats sleep for long hours each day.", "summarization"),
+        # Regression: the "tldr:" prefix asks for the same
+        # summary in shorthand but scored no intent point.
+        ("tldr: Cats sleep for long hours each day.", "summarization"),
+        ("tl;dr: Cats sleep for long hours each day.", "summarization"),
         # Regression: CVE sequence numbers have no seven-digit
         # cap in the cyber module, but the router's capped
         # pattern sent an eight-digit id to chat instead.

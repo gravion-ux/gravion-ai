@@ -117,6 +117,12 @@ def test_parse_moods_in_request_order():
     assert parse_moods("a calm and upbeat track") == ["calm", "upbeat"]
     assert parse_moods("an epic cinematic score") == ["epic", "cinematic"]
     assert parse_moods("a lo-fi beat") == ["lo-fi"]
+    # Regression: the plain feeling words a request states
+    # first ("a sad piano melody", "a cheerful jingle")
+    # recorded no mood at all.
+    assert parse_moods("a sad piano melody") == ["sad"]
+    assert parse_moods("a cheerful jingle") == ["cheerful"]
+    assert parse_moods("a happy and sad song") == ["happy", "sad"]
     assert parse_moods("a track for the launch") == []
     # A mood word embedded in a longer word is not a mood.
     assert parse_moods("a swarm of bees over the epicentre") == []
