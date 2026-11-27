@@ -174,6 +174,57 @@ def test_coder_instantiates_and_answers():
         # Generation openers still govern the new shapes.
         ("write code that throws an error on bad input", TASK_GENERATE),
         ("do not debug this, explain this code", TASK_EXPLAIN),
+        # Regression: print/log/display questions, compile/run
+        # correctness questions, complexity and run-outcome
+        # questions, a bare trace and a code summary fell
+        # through to generation, so questions about existing
+        # code were answered with new code instead of an
+        # explanation or a verdict on the supplied code.
+        ("what does this code print?", TASK_EXPLAIN),
+        ("what does this function log?", TASK_EXPLAIN),
+        ("what does this code display?", TASK_EXPLAIN),
+        ("does this code compile?", TASK_REVIEW),
+        ("will this code work?", TASK_REVIEW),
+        ("does this function run?", TASK_REVIEW),
+        ("how fast is this algorithm?", TASK_REVIEW),
+        ("how efficient is this code?", TASK_REVIEW),
+        ("what is the time complexity of this code?", TASK_EXPLAIN),
+        ("what happens when this code runs?", TASK_EXPLAIN),
+        ("how many times does this loop run?", TASK_EXPLAIN),
+        ("trace this code", TASK_EXPLAIN),
+        ("summarize this code", TASK_EXPLAIN),
+        # Generation openers and negations still govern the
+        # new shapes.
+        ("write code that prints the total", TASK_GENERATE),
+        ("do not trace this code, review this code", TASK_REVIEW),
+        # Regression: security-hole presence questions,
+        # handling questions, runtime/memory questions and
+        # malfunction statements (too slow, memory leak,
+        # hangs, infinite loop) fell through to generation,
+        # so supplied code was answered with new code
+        # instead of the verdict on it; big-O and concept
+        # questions fell through the same way instead of
+        # the explanation they ask for.
+        ("any security holes in this code?", TASK_REVIEW),
+        ("any vulnerabilities in this function?", TASK_REVIEW),
+        ("does this function handle errors?", TASK_REVIEW),
+        ("can this code handle null input?", TASK_REVIEW),
+        ("will this handle empty input?", TASK_REVIEW),
+        ("how long does this code take?", TASK_REVIEW),
+        ("how much memory does this use?", TASK_REVIEW),
+        ("this code is too slow", TASK_REVIEW),
+        ("my code has a memory leak", TASK_REVIEW),
+        ("this function leaks memory", TASK_REVIEW),
+        ("this code loops forever", TASK_REVIEW),
+        ("the program hangs", TASK_REVIEW),
+        ("infinite loop in this code", TASK_REVIEW),
+        ("what is the big o of this algorithm?", TASK_EXPLAIN),
+        ("what is recursion?", TASK_EXPLAIN),
+        ("what is a decorator in python?", TASK_EXPLAIN),
+        ("how does sorting work?", TASK_EXPLAIN),
+        ("how do lists work in python?", TASK_EXPLAIN),
+        # A how-to-write request still asks for code.
+        ("how do i write a loop?", TASK_GENERATE),
     ],
 )
 def test_detect_task(prompt, expected):
@@ -305,3 +356,17 @@ def test_error_and_wrong_output_shapes_detect_as_supplied_code():
     assert detect_task("this script returns None instead of a list") == TASK_REVIEW
     # A negated explanation still does not count.
     assert detect_task("do not explain the error, fix it") == TASK_GENERATE
+
+
+def test_pronoun_and_bare_review_requests():
+    # Regression: a pronoun object ("can you review this?")
+    # and a bare clause-final review ("just review, do not
+    # rewrite") named no code object, so both fell through
+    # to generation.
+    assert detect_task("can you review this?") == TASK_REVIEW
+    assert detect_task("just review, do not rewrite") == TASK_REVIEW
+    assert detect_task("audit it please") == TASK_REVIEW
+    # The noun phrase keeps its explanation reading, and a
+    # generation opener still wins.
+    assert detect_task("explain the code review process") == TASK_EXPLAIN
+    assert detect_task("write a review of this function") == TASK_GENERATE

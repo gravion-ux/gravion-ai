@@ -70,6 +70,17 @@ def test_image_instantiates_and_answers():
         # A negated edit verb asks for a new image instead.
         ("do not edit this image, draw a new one", MODE_GENERATE),
         ("never modify this photo, generate a fresh one", MODE_GENERATE),
+        # Regression: transform verbs, background removal
+        # with no image noun, and a comparative aimed at
+        # the image fell through to generation.
+        ("resize this image please", MODE_EDIT),
+        ("upscale this photo", MODE_EDIT),
+        ("rotate this picture", MODE_EDIT),
+        ("enhance this shot", MODE_EDIT),
+        ("remove background", MODE_EDIT),
+        ("make it brighter", MODE_EDIT),
+        ("can you resize it please", MODE_EDIT),
+        ("do not resize this image, draw a new one", MODE_GENERATE),
     ],
 )
 def test_detect_mode(prompt, expected):
@@ -183,3 +194,16 @@ def test_bundled_image_manifest_is_unsigned(issuer):
 
     with pytest.raises(ModuleTamperError):
         verify_module(Path(image_pkg.__file__).parent, issuer)
+
+
+def test_background_change_edit_and_orientation_shapes():
+    # Regression: changing the background works on the
+    # image in hand the same way removing it does.
+    assert detect_mode("change the background to a beach") == MODE_EDIT
+    assert detect_mode("replace the background with a sunset") == MODE_EDIT
+    assert detect_mode("draw a beach background") == MODE_GENERATE
+    # Vertical/horizontal name the portrait/landscape
+    # orientations in their other words.
+    assert parse_aspect("vertical image") == "3:4"
+    assert parse_aspect("horizontal image") == "16:9"
+    assert parse_aspect("not vertical, horizontal please") == "16:9"

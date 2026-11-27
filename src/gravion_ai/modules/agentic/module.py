@@ -15,8 +15,9 @@ and adding deterministic logic of its own:
 
 2. **Brief parsing.** Two pieces of intent are extracted: the
    **tools** the request names (web search, browser, email,
-   calendar, files, code, shell, database, API — matched from a
-   fixed vocabulary, in vocabulary order); and the **steps**, when
+   calendar, files, code, shell, database, API, calculator —
+   matched from a fixed vocabulary, in vocabulary order); and
+   the **steps**, when
    the request states them explicitly ("steps: check inbox, draft
    replies, send summary"). Unstated steps are recorded as "model
    to plan" rather than invented here.
@@ -103,7 +104,15 @@ _TOOLS = (
     "shell",
     "database",
     "api",
+    # A calculator is named as plainly as the other tools
+    # ("use web search and calculator"): with it missing,
+    # the brief dropped a tool the request had stated.
+    "calculator",
 )
+
+# "Browse" names the browser tool by its verb ("an agent
+# that can browse and send email" recorded email alone).
+_TOOL_ALIASES = {"browse": "browser"}
 
 _STEPS_RE = re.compile(r"\bsteps?\s*:\s*(.+)", re.IGNORECASE)
 
@@ -111,12 +120,22 @@ _STEPS_RE = re.compile(r"\bsteps?\s*:\s*(.+)", re.IGNORECASE)
 # an agent…", "build me an agent…" and "execute the agent…" ask
 # for the same tasks as the prefix forms. The agent must be the
 # verb's object, so "plan an agent that builds reports" stays a
-# plan.
+# plan. A bot is the same object in this module's context
+# ("create a bot that posts daily" fell through to plan), and
+# starting, launching or deploying the agent runs it just as
+# "run" does ("launch the agent" fell through to plan).
 _BUILD_AGENT_RE = re.compile(
-    r"\b(?:build|create|make)\s+(?:me\s+)?(?:an?\s+)?agent\b"
+    r"\b(?:build|create|make)\s+(?:me\s+)?(?:an?\s+)?(?:agent|bot)\b"
 )
 _RUN_AGENT_RE = re.compile(
-    r"\b(?:run|execute)\s+(?:the\s+|an?\s+)?agent\b"
+    r"\b(?:run|execute|start|launch|deploy)\s+(?:the\s+|an?\s+)?(?:agent|bot)\b"
+    # A workflow or a plan is the same run object ("start the
+    # workflow", "execute this plan"), and a pronoun aims the
+    # verb at the agent in hand ("run this every hour"):
+    # with only agent/bot listed, those requests were recorded
+    # as plans instead of runs.
+    r"|\b(?:run|execute|start)\s+(?:the\s+|this\s+)?(?:workflow|plan)\b"
+    r"|\b(?:run|execute|start)\s+(?:this|it)\b"
 )
 
 # A negated tool ("no email", "without a browser") is a tool the
@@ -169,10 +188,16 @@ def parse_tools(prompt: str) -> list[str]:
     text = prompt.lower()
     tools: list[str] = []
     for tool in _TOOLS:
-        for match in re.finditer(rf"\b{re.escape(tool)}\b", text):
-            if not _negated_before(text, match.start()):
-                tools.append(tool)
-                break
+        spellings = [tool] + [
+            alias for alias, named in _TOOL_ALIASES.items() if named == tool
+        ]
+        named = any(
+            not _negated_before(text, match.start())
+            for spelling in spellings
+            for match in re.finditer(rf"\b{re.escape(spelling)}\b", text)
+        )
+        if named:
+            tools.append(tool)
     return tools
 
 
@@ -185,6 +210,20 @@ def parse_steps(prompt: str) -> list[str]:
     """
     match = _STEPS_RE.search(prompt)
     if not match:
+        # A bare numbered list states its steps just as
+        # explicitly ("1. fetch 2. summarize 3. send"): with
+        # only the "steps:" label accepted, the brief left
+        # stated steps to the model. Two or more markers are
+        # required, so a lone "1." in prose states no list.
+        numbered = re.split(
+            r"(?:^|(?<=[\s;,]))\d{1,2}[.)]\s+", prompt.strip()
+        )
+        if len(numbered) > 2:
+            steps = [
+                part.strip().strip(",;").strip().rstrip(".")
+                for part in numbered
+            ]
+            return [step for step in steps if step]
         return []
     # Steps separate on semicolons as well as commas, and a new
     # sentence after the list ("steps: a, b. Also be quick") is
@@ -204,9 +243,15 @@ def parse_steps(prompt: str) -> list[str]:
             for part in numbered
         ]
         return [step for step in steps if step]
+    # The last two steps join with "and" as often as with a
+    # comma ("steps: fetch, summarize and send"): split the
+    # join only inside a comma/semicolon list, so a single
+    # step naming two actions ("steps: read and summarize")
+    # stays one step.
+    separator = r"[;,]|\s+and\s+" if re.search(r"[;,]", listing) else r"[;,]"
     steps = [
         part.strip().rstrip(".")
-        for part in re.split(r"[;,]", listing)
+        for part in re.split(separator, listing)
     ]
     return [step for step in steps if step]
 

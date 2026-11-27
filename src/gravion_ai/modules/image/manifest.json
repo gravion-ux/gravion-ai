@@ -6,8 +6,8 @@
     "entrypoint": "gravion_ai.modules.image.module:ImageModule",
     "files": {
       "__init__.py": "d76c895e80ad1ac066fc3585cce04f146aba51ac9deca10cdfc59d9514e7c41f",
-      "module.py": "3af97e82127b005e11570b0d99aa126c7f17ca8e602cbcac725d7ccfde7df2dc",
-      "generator.py": "ca27dc2f0a8de4aae3fc987b55be828003cd77b2efc2e02c0c8a30cb26cc88bb"
+      "generator.py": "7ee56de052f9d194fe155b92e6e9e90cdad5afc28f36dfdf6ef93f92c58e4fc1",
+      "module.py": "cbff0e578572208f2de3ec29a00ea7c2cae96a46f643f6838321715e0fbd3711"
     }
   },
   "signature": "",

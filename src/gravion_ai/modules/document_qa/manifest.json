@@ -6,7 +6,7 @@
     "entrypoint": "gravion_ai.modules.document_qa.module:DocumentQAModule",
     "files": {
       "__init__.py": "697ecc3f7c108b015957a5c1dd180bbd176464fd5aab8fe5734be279f2d925eb",
-      "module.py": "30a3a560dfd8263536aa7b23448950a761ee23bf9a1a2457eef90f51710e5f11"
+      "module.py": "b5d03a4327b019406cfa7c8aa259066d9da129eada97cb8d45b0cc1f51a68539"
     }
   },
   "signature": "",

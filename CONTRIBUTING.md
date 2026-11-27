@@ -36,10 +36,11 @@ explains how to get set up and what a mergeable pull request looks like.
   license and runs fully offline on the built-in Gravion Core engine.
   Do not add anything that phones home or requires an account in dev
   mode.
-- **One runtime dependency.** The only runtime dependency is
+- **Small runtime dependency surface.** The runtime dependencies are
   `cryptography` (it provides the Ed25519 signatures the licensing
-  subsystem is built on). Everything else is the Python standard
-  library. Do not add new runtime dependencies without discussion.
+  subsystem is built on) and `Pillow` (local image rendering).
+  Everything else is the Python standard library. Do not add new
+  runtime dependencies without discussion.
 - **No private keys, ever.** Never commit issuer keys, deployment
   identities, or license files. The bundled module manifests ship
   unsigned on purpose — signing is the project owner's step.

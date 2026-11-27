@@ -227,6 +227,20 @@ def test_introductions_postposed_negations_and_topics_do_not_escalate(prompt):
         # me", yet never handed over.
         "phone me please",
         "ring me back when you can",
+        # Regression: a Hinglish need-a-human request
+        # without the talk verb, a named department, and
+        # the operator asked for plainly all stayed with
+        # the bot instead of handing over.
+        "insaan chahiye",
+        "aadmi chahiye",
+        "kisi insaan ko bulao",
+        "talk to sales",
+        "connect me to billing",
+        "sales team se baat karni hai",
+        "billing se baat karni hai",
+        "talk to technical support",
+        "operator please",
+        "i need an operator",
     ],
 )
 def test_phone_requests_and_person_requests_still_escalate(prompt):
@@ -247,6 +261,27 @@ def test_phone_requests_and_person_requests_still_escalate(prompt):
 )
 def test_rights_and_fee_topics_do_not_escalate(prompt):
     assert not needs_human(prompt)
+
+
+@pytest.mark.parametrize(
+    "prompt,expected",
+    [
+        # Regression: an identity question escalated on the
+        # bare word "human" while "are you a robot?" stayed
+        # with the bot; a declined Hinglish human and a
+        # topic naming of a department state no request,
+        # and a real request after an identity question
+        # still hands over.
+        ("are you human?", False),
+        ("are you a human?", False),
+        ("am i talking to a human?", False),
+        ("insaan nahi chahiye", False),
+        ("what does the sales team do?", False),
+        ("are you human? get me a human", True),
+    ],
+)
+def test_identity_questions_and_declined_humans(prompt, expected):
+    assert needs_human(prompt) is expected
 
 
 def test_support_runtime_dev_end_to_end(make_config):
@@ -350,6 +385,15 @@ def test_team_requests_escalate_and_human_topics_do_not():
     assert needs_human("talk to customer service please")
     assert needs_human("speak to your support team")
     assert needs_human("get me an operator")
+    # Regression: "customer support" is the same service
+    # name as care/service/team, yet "talk to customer
+    # support" never escalated; a topic question naming it
+    # still states no request.
+    assert needs_human("talk to customer support")
+    assert needs_human("connect me with customer support")
+    assert needs_human("put me through to customer support")
+    assert not needs_human("what are your customer support hours?")
+    assert not needs_human("do not connect me to customer support")
     # Regression: the team named by its bare service word
     # with a transfer preposition ("connect me to support")
     # asked for the same handoff yet never escalated.
@@ -386,6 +430,43 @@ def test_hinglish_and_transfer_requests_escalate():
     assert needs_human("request a callback")
     assert not needs_human("mujhe insaan se baat nahi karni")
     assert not needs_human("human nahi chahiye")
+    # Regression: a Hindi negator before the phrase ("nahi
+    # chahiye human", "mat karo escalate") and the team named
+    # in Roman Hindi ("customer care se baat karni hai")
+    # were read the wrong way: the declining customer was
+    # handed over and the requesting customer was not. A
+    # verb-gated live-chat request asks for the human chat
+    # channel the same way.
+    assert not needs_human("nahi chahiye human")
+    assert not needs_human("mat karo escalate")
+    assert not needs_human("escalate mat karo")
+    assert needs_human("nahi, human chahiye")
+    assert needs_human("customer care se baat karni hai")
+    assert needs_human("support se baat karao")
+    assert not needs_human("customer care se baat nahi karni")
+    assert needs_human("connect to live chat")
+    assert needs_human("start live chat please")
+    assert not needs_human("how does live chat work?")
+    assert not needs_human("do not connect to live chat")
     assert not needs_human("what is the call back number")
     assert not needs_human("change my callback number")
     assert not needs_human("don't transfer me to an agent")
+
+
+def test_bot_rejection_and_call_centre_escalate():
+    # Regression: rejecting the bot asks for a person by
+    # elimination, yet none of the escalation phrases
+    # matched, so the bot kept answering.
+    assert needs_human("i dont want a bot")
+    assert needs_human("no bots please")
+    assert needs_human("bot nahi chahiye")
+    assert needs_human("bot se baat nahi karni")
+    # The identity question and the bot-accepting form
+    # state no rejection.
+    assert not needs_human("are you a bot?")
+    assert not needs_human("bot se hi baat karni hai")
+    # The call centre is the same human team in both
+    # languages.
+    assert needs_human("call centre se baat karni hai")
+    assert needs_human("talk to the call centre")
+    assert needs_human("senior se baat karni hai")

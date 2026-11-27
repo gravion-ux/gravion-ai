@@ -221,3 +221,14 @@ def test_bundled_music_manifest_is_unsigned(issuer):
 
     with pytest.raises(ModuleTamperError):
         verify_module(Path(music_pkg.__file__).parent, issuer)
+
+
+def test_plain_feeling_moods():
+    # Regression: the plain feeling words beside
+    # sad/happy/cheerful recorded no mood at all.
+    assert parse_moods("energetic workout music") == ["energetic"]
+    assert parse_moods("romantic song") == ["romantic"]
+    assert parse_moods("peaceful piano") == ["peaceful"]
+    assert parse_moods("calm relaxing tune") == ["calm", "relaxing"]
+    assert parse_moods("angry metal song") == ["angry"]
+    assert parse_moods("happy but not energetic") == ["happy"]

@@ -81,6 +81,15 @@ def test_agentic_instantiates_and_answers():
         ("run the agent now, don't build a new one", TASK_RUN),
         ("please build: an agent that watches the inbox", TASK_BUILD),
         ("please run: the inbox agent on today's mail", TASK_RUN),
+        # Regression: a bot object and the start/launch/
+        # deploy run verbs fell through to planning.
+        ("create a bot that posts daily", TASK_BUILD),
+        ("build a bot for reminders", TASK_BUILD),
+        ("launch the agent", TASK_RUN),
+        ("deploy the agent", TASK_RUN),
+        ("start the agent now", TASK_RUN),
+        ("run the bot on this task", TASK_RUN),
+        ("do not launch the agent yet", TASK_PLAN),
     ],
 )
 def test_detect_task(prompt, expected):
@@ -253,3 +262,41 @@ def test_runtime_plan_agent_end_to_end(make_config, tmp_path):
     assert result.provider == "gravion-local-planner"
     assert (tmp_path / "p.json").exists()
     assert result.plan.status == PLAN_STATUS
+
+
+def test_run_workflow_plan_and_pronoun_objects():
+    # Regression: a workflow or plan is the same run
+    # object as the agent, and a pronoun aims the verb at
+    # the agent in hand.
+    assert detect_task("start the workflow") == TASK_RUN
+    assert detect_task("execute this plan") == TASK_RUN
+    assert detect_task("run this every hour") == TASK_RUN
+    assert detect_task("plan a workflow for onboarding") == TASK_PLAN
+    assert detect_task("do not run the workflow, plan it") == TASK_PLAN
+
+
+def test_numbered_steps_and_calculator_tool():
+    # Regression: a bare numbered list states its steps
+    # explicitly, and "and" joins the last two steps of a
+    # comma list.
+    assert parse_steps("1. fetch 2. summarize 3. send") == [
+        "fetch",
+        "summarize",
+        "send",
+    ]
+    assert parse_steps("steps: fetch, summarize and send") == [
+        "fetch",
+        "summarize",
+        "send",
+    ]
+    assert parse_steps("steps: read and summarize") == ["read and summarize"]
+    # The calculator is a named tool, and "browse" names
+    # the browser by its verb.
+    assert parse_tools("use web search and calculator") == [
+        "web search",
+        "calculator",
+    ]
+    assert parse_tools("agent that can browse and send email") == [
+        "browser",
+        "email",
+    ]

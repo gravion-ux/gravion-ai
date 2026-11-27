@@ -6,7 +6,7 @@
     "entrypoint": "gravion_ai.modules.coder.module:CoderModule",
     "files": {
       "__init__.py": "2e25e3e2745f5c4c090b4e9191abd7ac5f5f6ff4c4b8abee2b8f58b9ff7204b6",
-      "module.py": "e2da79135209d248425ed5439aa6dc7fed5c945ccbac6297997cb242a7f50058"
+      "module.py": "6286588a06a00f4d9da6f1cce0dd3d7202c449ab7bdb80a285908de45166296a"
     }
   },
   "signature": "",

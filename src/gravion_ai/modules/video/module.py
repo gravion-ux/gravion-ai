@@ -95,13 +95,18 @@ _EDIT_PREFIXES = (
 # video ("add subtitles to this video") is likewise an edit;
 # adding the video itself somewhere ("add this video to my
 # playlist") names no video object after "to" and is not.
+# Subtitling, captioning or dubbing a video works on the
+# existing footage the same way ("subtitle this video",
+# "dub this clip"): with only the add-to form listed, they
+# fell through to generation.
 _VIDEO_OBJECT = r"(?:video|clip|reel|footage|intro|ending|demo)"
 _EDIT_RES = (
     re.compile(
         r"\b(?:edit|modify)\b[^.?!]*\b" + _VIDEO_OBJECT + r"\b"
     ),
     re.compile(
-        r"\b(?:trim|cut|shorten|change|adjust|fix|crop|rotate)\b[^.?!]*"
+        r"\b(?:trim|cut|shorten|change|adjust|fix|crop|rotate"
+        r"|subtitle|caption|dub)\b[^.?!]*"
         r"\b(?:this|the|my|that)\s+(?:\w+\s+)?" + _VIDEO_OBJECT + r"\b"
     ),
     re.compile(
@@ -109,6 +114,19 @@ _EDIT_RES = (
         r"(?:\w+\s+)?" + _VIDEO_OBJECT + r"\b"
     ),
     re.compile(r"\b(?:edit|modify|trim|cut|fix|crop)\s+(?:this|that|it)\b"),
+    # Retiming and muting work on the existing footage the
+    # same way trimming does ("speed up this video", "mute
+    # this clip"), and removing something from the video
+    # edits it ("remove audio from this video"): all fell
+    # through to generation.
+    re.compile(
+        r"\b(?:speed up|slow down|mute|unmute)\b[^.?!]*"
+        r"\b(?:this|the|my|that)\s+(?:\w+\s+)?" + _VIDEO_OBJECT + r"\b"
+    ),
+    re.compile(
+        r"\bremove\b[^.?!]*\bfrom\s+(?:this|the|my|that)\s+"
+        r"(?:\w+\s+)?" + _VIDEO_OBJECT + r"\b"
+    ),
 )
 
 # A negated edit verb asks for a new video ("do not edit this
@@ -142,6 +160,11 @@ _SHAPES = (
     ("vertical", "9:16"),
     ("portrait", "9:16"),
     ("landscape", "16:9"),
+    # "Horizontal" names the landscape shape in its other
+    # word ("horizontal video" recorded the model default),
+    # and "widescreen" is that shape's own name.
+    ("horizontal", "16:9"),
+    ("widescreen", "16:9"),
     ("banner", "21:9"),
 )
 _SHAPE_RES = tuple(

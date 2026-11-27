@@ -6,7 +6,7 @@
     "entrypoint": "gravion_ai.modules.retrieval.module:RetrievalModule",
     "files": {
       "__init__.py": "fd8ad6d025d344e0379f87c330a173c3dad58c6796e1cf86b93f70e8fb8248bf",
-      "module.py": "f5cc337b504fac9e78086da547b6340c7cb5a391b34c70032bb9389bc97bdd80"
+      "module.py": "110b7985b122ea6fa489903f270ba95517e05732e269b2705734e7470cd8732c"
     }
   },
   "signature": "",

@@ -79,7 +79,10 @@ _SENTENCE_STARTERS = frozenset(
 # when a digit follows.
 _NUMERIC_ABBREVIATIONS = frozenset(
     "no fig figs eq vol pp p ch sec approx ca jan feb mar apr "
-    "jun jul aug sep sept oct nov dec".split()
+    # "Rs." abbreviates the rupee before an amount ("It
+    # costs Rs. 500."): without it the amount split into its
+    # own sentence.
+    "jun jul aug sep sept oct nov dec rs".split()
 )
 _CLOSERS = "\"'”’)]"
 
@@ -303,6 +306,15 @@ _IRREGULAR_STEMS = {
     "withdrawn": "withdraw",
     "worn": "wear",
     "awoken": "awake",
+    # "Woken" and "drawn" are the -en participles of
+    # wake/draw the list above missed ("who woke early?"
+    # missed "she has woken early", "what did he draw?"
+    # missed "he has drawn a map"), and "funguses" is the
+    # s-singular plural of "fungus" the es rule landed on
+    # "funguse", a stem the singular never produces.
+    "woken": "wake",
+    "drawn": "draw",
+    "funguses": "fungus",
     "genera": "genus",
     "loci": "locus",
     "platypuses": "platypus",
@@ -552,6 +564,29 @@ _IRREGULAR_STEMS = {
     "sentenced": "sentence",
     "challenging": "challenge",
     "challenged": "challenge",
+    # The e-restoration's remaining blind spots: a
+    # vowel-pair + "t" stem ("creat") cannot be told
+    # from "treat"/"heat", whose bases keep no e, and
+    # an "ng" cluster stem ("arrang") cannot be told
+    # from "hang"/"belong"; a vowel-pair + "s" stem
+    # usually regains its e ("pleas") but "bias" keeps
+    # its s, and a cluster + "s" stem usually regains
+    # its e ("licens") but "lens" keeps its s. Without
+    # these, a question about creating missed a
+    # document about creation's verb and one about
+    # bias missed evidence about biasing.
+    "creating": "create",
+    "created": "create",
+    "arranging": "arrange",
+    "arranged": "arrange",
+    "biasing": "bias",
+    "biased": "bias",
+    "lensing": "lens",
+    "lensed": "lens",
+    "focusing": "focus",
+    "focused": "focus",
+    "busing": "bus",
+    "bused": "bus",
 }
 
 
@@ -627,6 +662,32 @@ def _verb_stem(word: str) -> str | None:
     # ("syncing" keeps its "sync").
     if stem.endswith("dg") or stem.endswith("u"):
         return stem + "e"
+    # A -ve verb drops its e the same way ("serving",
+    # "receiving"): no base ends in a bare "v", so a
+    # v-final stem regains the e the CVC rule below
+    # cannot see past its consonant cluster ("serv",
+    # "solv") or its vowel pair ("receiv", "believ").
+    if stem.endswith("v"):
+        return stem + "e"
+    # A -se verb drops its e too, and its stem ends in
+    # "s" behind a consonant cluster ("licens", "sens")
+    # or a vowel pair ("pleas", "rais", "hous"), or in
+    # "ys"/"yz" ("analys", "analyz") — all shapes the
+    # CVC rule cannot see past, so a question about a
+    # license missed a passage about licensing and
+    # retrieval scored it zero. An "ss" stem is a
+    # doubled base ("pass"), so it regains no e. A
+    # "us" stem is a -use verb ("abus", "accus")
+    # far more often than a "us" base ("focus",
+    # "bus"), whose derived forms the irregular map
+    # lists instead.
+    if stem.endswith(("ys", "yz")):
+        return stem + "e"
+    if stem.endswith("s") and not stem.endswith("ss") and len(stem) >= 3:
+        if stem[-2] in "aeiou" and stem[-3] in "aeiou":
+            return stem + "e"
+        if stem[-2] not in "aeiou" and stem[-3] in "aeiou":
+            return stem + "e"
     if len(stem) >= 2 and stem[-1] == stem[-2] and stem[-1] not in "aeioulsz":
         return stem[:-1]
     if (

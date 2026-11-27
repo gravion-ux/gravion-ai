@@ -92,6 +92,17 @@ ESCALATION_PHRASES = (
     # in _POSTPOSED_NEGATION_RE below.
     "insaan se baat",
     "aadmi se baat",
+    # The same request without the talk verb ("insaan
+    # chahiye" — I need a human; "kisi insaan ko bulao" —
+    # call a human): with only the "se baat" forms listed,
+    # those customers were answered by the bot instead.
+    # The declined forms state no match ("insaan nahi
+    # chahiye" breaks the phrase, and a trailing "nahi"
+    # cancels it below).
+    "insaan chahiye",
+    "aadmi chahiye",
+    "insaan ko bulao",
+    "aadmi ko bulao",
 )
 
 ESCALATION_RESPONSE = (
@@ -124,6 +135,14 @@ _TOPIC_PHRASES_RE = re.compile(
     r"user agent|ai agent|agent fee|agent fees|agent orange|"
     r"product manager|project manager|"
     r"account manager|travel agent|insurance agent|estate agent|"
+    # An identity question ("are you human?", "am i talking
+    # to a human?") asks what the bot is, not for a person:
+    # it escalated on the bare word "human" while "are you a
+    # robot?" stayed with the bot. A real request after it
+    # ("are you human? get me a human") still escalates on
+    # its own phrase.
+    r"are you a human|are you human|is this a human|"
+    r"am i talking to a human|"
     # A callback number is account data the grounding
     # material holds ("change my callback number"), not a
     # request for the call itself.
@@ -183,7 +202,15 @@ def _strip_call_me_name(prompt: str) -> str:
 # ("please do not get me a human"). A distant negator earlier in the
 # sentence ("I said no yesterday, please get a human") negates
 # something else and must not suppress a real request.
-_NEGATOR_RE = re.compile(r"(?:\bno\b|\bnot\b|\bnever\b|\bwithout\b|n't\b)")
+# The Hindi negators govern the same way before the phrase
+# ("nahi chahiye human", "mat karo escalate"): with only the
+# English negators listed, a Hinglish customer declining a
+# human in that order was handed over anyway. A comma still
+# breaks the clause, so "nahi, human chahiye" escalates.
+_NEGATOR_RE = re.compile(
+    r"(?:\bno\b|\bnot\b|\bnever\b|\bwithout\b|\bnahi\b|\bnhi\b"
+    r"|\bnahin\b|\bmat\b|n't\b)"
+)
 _CLAUSE_BREAKS = ".!?;,"
 _NEGATION_WINDOW_WORDS = 4
 # A negator can also follow the phrase it cancels ("a human is not
@@ -197,10 +224,10 @@ _POSTPOSED_NEGATION_RE = re.compile(
     r"|\s*(?:isn't|aren't|wasn't|weren't)\s+"
     r"(?:needed|required|necessary|wanted)\b"
     # Hindi negation follows the phrase it cancels
-    # ("insaan se baat nahi karni", "human nahi chahiye"):
-    # without it a Hinglish customer declining a human was
-    # handed over anyway.
-    r"|\s+(?:nahi|nhi|nahin)\b"
+    # ("insaan se baat nahi karni", "human nahi chahiye",
+    # "escalate mat karo"): without it a Hinglish customer
+    # declining a human was handed over anyway.
+    r"|\s+(?:nahi|nhi|nahin|mat)\b"
 )
 
 
@@ -255,7 +282,16 @@ def _is_negated(text: str, match_start: int, match_end: int) -> bool:
     cleaned = [word.strip(".,!?;:\"'()") for word in words]
     for index in range(len(cleaned) - 1, -1, -1):
         word = cleaned[index]
-        if word in ("no", "not", "never", "without") or word.endswith("n't"):
+        if word in (
+            "no",
+            "not",
+            "never",
+            "without",
+            "nahi",
+            "nhi",
+            "nahin",
+            "mat",
+        ) or word.endswith("n't"):
             bridge = cleaned[index + 1 :]
             if bridge and all(part in _TRANSFER_BRIDGE_WORDS for part in bridge):
                 return True
@@ -271,10 +307,29 @@ def _is_negated(text: str, match_start: int, match_end: int) -> bool:
 # the team. The transfer verb is required: a topic question
 # naming the service ("what are your customer service
 # hours?") states no request and stays with the bot.
+# "Customer support" is the same service name ("talk to
+# customer support"): with only care/service/team listed,
+# that request was answered by the bot instead of handed
+# over, while a topic question about it still states no
+# request and stays with the bot.
 _TEAM_REQUEST_RE = re.compile(
     r"\b(?:talk|speak|connect|transfer|chat|put me through)\b"
-    r"[^.?!]*\b(?:customer care|customer service|support team)\b"
+    r"[^.?!]*\b(?:customer care|customer service|customer support|support team"
+    r"|technical support|tech support|sales team|billing team)\b"
+    # A named department is the same human team ("talk to
+    # sales", "connect me to billing"): with only the
+    # support names listed, those customers were answered
+    # by the bot instead of handed over. The transfer
+    # preposition keeps a topic naming ("what does the
+    # sales team do?") with the bot.
+    r"|\b(?:talk|speak|connect|transfer|chat)\b"
+    r"[^.?!]*\b(?:to|with) (?:sales|billing)\b"
     r"|\bget me an? operator\b"
+    # The operator asked for without the "get me" frame
+    # ("operator please", "i need an operator") requests
+    # the same person.
+    r"|\boperator please\b"
+    r"|\b(?:need|want) an? operator\b"
     # The team named by its bare service word with a
     # transfer preposition ("connect me to support", "talk
     # to support") asks for the same handoff; the
@@ -282,6 +337,39 @@ _TEAM_REQUEST_RE = re.compile(
     # which states no request, with the bot.
     r"|\b(?:talk|speak|connect|transfer|chat)\b"
     r"[^.?!]*\b(?:to|with) support\b"
+    # The same team request in Roman Hindi ("customer care se
+    # baat karni hai", "support se baat karao") asks for the
+    # team just as plainly; the "se baat" phrasing is the
+    # request, so a topic naming of the service stays with
+    # the bot, and a following "nahi" cancels it above.
+    r"|\b(?:customer care|customer service|support team|support"
+    r"|sales team|billing team|sales|billing|call centre"
+    r"|call center|senior|upar wale) se baat\b"
+    # The call centre named in English with its transfer verb
+    # ("talk to the call centre") is the same human team.
+    r"|\b(?:talk|speak|connect|transfer|chat)\b"
+    r"[^.?!]*\bcall (?:centre|center)\b"
+    # A live-chat request with its transfer verb ("connect to
+    # live chat", "start live chat") asks for the human chat
+    # channel; the verb is required, so "how does live chat
+    # work?" stays with the bot.
+    r"|\b(?:connect|start|open|begin|switch|transfer)\b[^.?!]*\blive chat\b"
+    r"|\blive chat please\b"
+)
+
+
+# Rejecting the bot asks for a person by elimination ("i
+# don't want a bot", "no bots please", "bot nahi chahiye",
+# "bot se baat nahi karni"): none of the phrases above
+# matched, so the bot kept answering a customer who had
+# refused it. The identity question ("are you a bot?") and
+# the bot-accepting form ("bot se hi baat karni hai") state
+# no rejection and stay with the bot.
+_BOT_REJECTION_RE = re.compile(
+    r"\b(?:do not|don't|dont) want (?:a |the |any )?bots?\b"
+    r"|\bno bots?\b"
+    r"|\bbot nahi chahiye\b"
+    r"|\bbot se baat nahi\b"
 )
 
 
@@ -296,6 +384,8 @@ def needs_human(prompt: str) -> bool:
     for match in _TEAM_REQUEST_RE.finditer(text):
         if _is_negated(text, match.start(), match.end()):
             continue
+        return True
+    if _BOT_REJECTION_RE.search(text):
         return True
     return False
 

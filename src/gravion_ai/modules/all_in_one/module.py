@@ -135,7 +135,11 @@ _INTENT_SIGNALS: dict[str, tuple[frozenset[str], frozenset[str]]] = {
     "image": (
         # Sketching and illustrating name the same image
         # work as drawing ("sketch a portrait" scored the
-        # noun alone and fell through to chat).
+        # noun alone and fell through to chat). The edit
+        # verbs name image work on an existing image ("edit
+        # this photo", "upscale this image", "remove
+        # background from this image" each scored the noun
+        # alone).
         frozenset(
             {
                 "draw",
@@ -147,6 +151,14 @@ _INTENT_SIGNALS: dict[str, tuple[frozenset[str], frozenset[str]]] = {
                 "paint",
                 "sketch",
                 "illustrate",
+                "edit",
+                "remove",
+                "resize",
+                "upscale",
+                "crop",
+                "retouch",
+                "colorize",
+                "colourize",
             }
         ),
         frozenset(
@@ -182,8 +194,27 @@ _INTENT_SIGNALS: dict[str, tuple[frozenset[str], frozenset[str]]] = {
         # Animating names the video work itself ("animate
         # a gif" scored no verb at all), and a gif is the
         # clip it produces ("make a gif of a cat" scored
-        # the verb alone).
-        frozenset({"make", "create", "generate", "edit", "render", "film", "animate"}),
+        # the verb alone). The edit verbs name video work on
+        # existing footage ("trim this video", "subtitle
+        # this video", "dub this clip" each scored the noun
+        # alone).
+        frozenset(
+            {
+                "make",
+                "create",
+                "generate",
+                "edit",
+                "render",
+                "film",
+                "animate",
+                "trim",
+                "crop",
+                "rotate",
+                "subtitle",
+                "caption",
+                "dub",
+            }
+        ),
         frozenset({"video", "clip", "animation", "film", "reel", "gif"}),
     ),
     "website-builder": (
@@ -194,6 +225,10 @@ _INTENT_SIGNALS: dict[str, tuple[frozenset[str], frozenset[str]]] = {
         frozenset({"website", "webpage", "landing", "homepage", "site"}),
     ),
     "cyber": (
+        # The response verbs and the artefact nouns name the
+        # same defensive work ("scan this server", "block
+        # this ip address", "is this ip malicious?" each
+        # scored one point and fell through to chat).
         frozenset(
             {
                 "triage",
@@ -204,6 +239,9 @@ _INTENT_SIGNALS: dict[str, tuple[frozenset[str], frozenset[str]]] = {
                 "protect",
                 "harden",
                 "scan",
+                "block",
+                "quarantine",
+                "isolate",
             }
         ),
         frozenset(
@@ -220,12 +258,23 @@ _INTENT_SIGNALS: dict[str, tuple[frozenset[str], frozenset[str]]] = {
                 "csrf",
                 "ssrf",
                 "injection",
+                "ip",
+                "server",
+                "host",
+                "domain",
+                "threat",
+                "log",
+                "malicious",
             }
         ),
     ),
     "support": (
-        frozenset({"refund", "cancel", "track", "resolve"}),
-        frozenset({"refund", "invoice", "billing", "subscription", "ticket", "warranty", "order"}),
+        # An order-status question names no listed verb
+        # ("where is my order", "mera order kahan hai"): the
+        # where/kahan ask plus a support noun is the signal,
+        # and a lone "where" still scores one point.
+        frozenset({"refund", "cancel", "track", "resolve", "where", "kahan"}),
+        frozenset({"refund", "invoice", "billing", "subscription", "ticket", "warranty", "order", "status"}),
     ),
     "agentic": (
         frozenset({"automate", "plan", "orchestrate"}),
@@ -240,7 +289,14 @@ _INTENT_SIGNALS: dict[str, tuple[frozenset[str], frozenset[str]]] = {
     # a general question.
     "translation": (
         frozenset({"translate", "convert"}),
-        frozenset({"hindi", "english", "hinglish", "urdu", "translation"}),
+        # The text being translated is the object the verb
+        # acts on ("translate this document", "translate
+        # this text" each scored the verb alone and tied
+        # with the document modules); a language noun is
+        # still the stronger signal when named.
+        frozenset(
+            {"hindi", "english", "hinglish", "urdu", "translation", "document", "text"}
+        ),
     ),
     "summarization": (
         frozenset({"summarize", "summarise", "shorten", "condense", "tldr"}),
@@ -259,7 +315,10 @@ _INTENT_SIGNALS: dict[str, tuple[frozenset[str], frozenset[str]]] = {
         # to chat); the token set holds stems of the
         # request's words, not of these nouns, so the
         # singular must be listed itself.
-        frozenset({"passage", "passages", "query", "document", "documents"}),
+        # The files being searched name the same retrieval
+        # input ("search my files for budget" scored the
+        # verb alone).
+        frozenset({"passage", "passages", "query", "document", "documents", "file", "files"}),
     ),
     "data-analysis": (
         frozenset({"analyze", "analyse", "compute", "calculate"}),
@@ -275,6 +334,10 @@ _INTENT_SIGNALS: dict[str, tuple[frozenset[str], frozenset[str]]] = {
                 "data",
                 "sum",
                 "total",
+                # A spreadsheet is the dataset in its common
+                # container ("analyze this spreadsheet"
+                # scored the verb alone and tied with cyber).
+                "spreadsheet",
             }
         ),
     ),
@@ -380,6 +443,7 @@ def infer_route(prompt: str) -> str:
         return "translation"
     if _BARE_SAY_IN_LANGUAGE_RE.match(prompt):
         return "translation"
+
     # A negated verb cancels its module: "do not draw a logo"
     # asks for an explanation, not an image, yet the bare
     # verb+noun signal routed it to image. Contractions are
@@ -443,12 +507,25 @@ def infer_route(prompt: str) -> str:
         score = len(tokens & verbs) + len(tokens & nouns)
         if score:
             scores[name] = score
-    if not scores:
-        return DEFAULT_ROUTE
-    best = max(scores.values())
-    leaders = [name for name, score in scores.items() if score == best]
-    if best >= 2 and len(leaders) == 1:
-        return leaders[0]
+    if scores:
+        best = max(scores.values())
+        leaders = [name for name, score in scores.items() if score == best]
+        if best >= 2 and len(leaders) == 1:
+            return leaders[0]
+    # An explicit request for a human routes to support when
+    # no module holds a clear intent lead: the support
+    # module answers it with its deterministic handoff,
+    # while chat would answer generally and lose it ("i
+    # need a human agent" scored no intent point at all).
+    # The support module's own check decides, topic phrases
+    # and negations included, so the router cannot drift
+    # from the module it routes to; a clear intent lead
+    # still wins first, so "plan steps for an agent
+    # workflow" stays agentic despite naming an agent.
+    from ..support.module import needs_human
+
+    if needs_human(prompt):
+        return "support"
     return DEFAULT_ROUTE
 
 

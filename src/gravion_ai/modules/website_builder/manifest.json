@@ -6,8 +6,8 @@
     "entrypoint": "gravion_ai.modules.website_builder.module:WebsiteBuilderModule",
     "files": {
       "__init__.py": "ecea3e214979219a975ce0b5ba5a2f1e1a9323656c6371289a09db38c29ccf3c",
-      "builder.py": "ed0a5cbb21a939967318384bc53cc57d9aa711bee5e0421e97180a48ca0f85fa",
-      "module.py": "de60a31190988435d581be026ca98c6220e18463190817138c7f0dc03e7c8132"
+      "builder.py": "160858c46dc36da881a1c35f35490ddcc59e843f6fd996d497171cfac26cf3a8",
+      "module.py": "229ed5b6b044e7239b48372d962ff3882c9c5143192c083dbd444bb3a813129f"
     }
   },
   "signature": "",

@@ -153,6 +153,17 @@ class RetrievalModule:
             return ctx.chat(prompt)
         query, passages = parsed
         ranked = rank_passages(query, passages)
+        # A zero score means the passage shares no term
+        # with the query: listing every passage as a
+        # "top match" at 0.000 presented non-matches as
+        # evidence, so a query nothing matches is
+        # answered plainly instead, the same honesty
+        # document Q&A applies to a missing answer.
+        if not ranked or ranked[0][0] <= 0.0:
+            return (
+                f"No passage matches the query: {query}. "
+                "None of the supplied passages share its terms."
+            )
         lines = [f"Top matches for: {query}"]
         for rank, (score, passage) in enumerate(ranked, start=1):
             lines.append(f"{rank}. [{score:.3f}] {passage}")

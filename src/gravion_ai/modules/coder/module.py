@@ -120,6 +120,16 @@ _REVIEW_RES = (
         + _CODE_OBJECT
         + r"\b"
     ),
+    # A pronoun object aims the review at the supplied code
+    # just as plainly ("can you review this?"), and a bare
+    # clause-final "review" states the task with its object
+    # left elliptical ("just review, do not rewrite"): both
+    # fell through to generation, so a review request was
+    # answered with new code. The clause-final form requires
+    # the punctuation, so "explain the code review process"
+    # keeps its explanation reading.
+    re.compile(r"\b(?:review|audit|check)\s+(?:this|that|it)\b"),
+    re.compile(r"\breview\s*(?:,|;|\.|$)"),
     re.compile(r"\bdebug(?:ging)?\b[^.?!]*\b" + _CODE_OBJECT + r"\b"),
     re.compile(r"\bdebug(?:ging)?\s+(?:this|it)\b"),
     re.compile(
@@ -135,28 +145,97 @@ _REVIEW_RES = (
         r"\b" + _CODE_OBJECT + r"\b[^.?!]*"
         r"\bwhat(?:'s| is| went) wrong\b"
     ),
+    # The bug-presence nouns include the security spellings
+    # ("any security holes in this code?", "any
+    # vulnerabilities in this function?"): with only
+    # bugs/errors/problems/issues listed, a security audit
+    # question fell through to generation.
     re.compile(
-        r"\b(?:is|are) there\b[^.?!]*\b(?:bugs?|errors?|problems?|issues?)\b"
+        r"\b(?:is|are) there\b[^.?!]*"
+        r"\b(?:bugs?|errors?|problems?|issues?|vulnerabilit(?:y|ies)|flaws?|holes?)\b"
         r"[^.?!]*\b" + _CODE_OBJECT + r"\b"
     ),
     re.compile(
-        r"\bany\b[^.?!]*\b(?:bugs?|errors?|problems?|issues?)\b"
+        r"\bany\b[^.?!]*"
+        r"\b(?:bugs?|errors?|problems?|issues?|vulnerabilit(?:y|ies)|flaws?|holes?)\b"
         r"[^.?!]*\b" + _CODE_OBJECT + r"\b"
     ),
     re.compile(
-        r"\bwhere\b[^.?!]*\b(?:bugs?|errors?|problems?|issues?)\b"
+        r"\bwhere\b[^.?!]*"
+        r"\b(?:bugs?|errors?|problems?|issues?|vulnerabilit(?:y|ies)|flaws?|holes?)\b"
         r"[^.?!]*\b" + _CODE_OBJECT + r"\b"
     ),
     re.compile(
         r"\bdoes (?:this|the|it)\b[^.?!]*\b" + _CODE_OBJECT
-        + r"\b[^.?!]*\bhave\b[^.?!]*\b(?:bugs?|errors?|problems?|issues?)\b"
+        + r"\b[^.?!]*\bhave\b[^.?!]*"
+        r"\b(?:bugs?|errors?|problems?|issues?|vulnerabilit(?:y|ies)|flaws?|holes?)\b"
+    ),
+    # A handling question asks whether supplied code copes
+    # with an input ("does this function handle errors?",
+    # "can this code handle null input?", "will this handle
+    # empty input?"): it asks for the correctness verdict
+    # review gives, and fell through to generation.
+    re.compile(
+        r"\b(?:does|can|will|would) (?:this|the|it)\b[^.?!]*\b"
+        + _CODE_OBJECT
+        + r"\b[^.?!]*\bhandle\b"
+    ),
+    re.compile(r"\b(?:does|can|will|would) (?:this|it) handle\b"),
+    # Runtime and memory questions ask for the same
+    # performance assessment as the speed question below
+    # ("how long does this code take?", "how much memory
+    # does this use?"): without them they fell through to
+    # generation.
+    re.compile(
+        r"\bhow long\b[^.?!]*\b" + _CODE_OBJECT + r"\b"
+    ),
+    re.compile(
+        r"\bhow much memory\b[^.?!]*\b(?:this|it|" + _CODE_OBJECT + r")\b"
+    ),
+    # A malfunction statement names the code before its
+    # problem the same way a broken-code statement does
+    # ("this code is too slow", "my code has a memory
+    # leak", "this function leaks memory", "this code loops
+    # forever", "the program hangs", "infinite loop in this
+    # code"): without them they fell through to generation,
+    # so a request to examine existing code was answered
+    # with new code instead of the problem in it.
+    re.compile(
+        r"\b" + _CODE_OBJECT + r"\b[^.?!]*"
+        r"\b(?:is|are|was|were)?\s*too slow\b"
+    ),
+    re.compile(
+        r"\b" + _CODE_OBJECT + r"\b[^.?!]*"
+        r"\b(?:has|have|leaks?|leaking)\b[^.?!]*\b(?:memory leak|leak|memory)\b"
+    ),
+    re.compile(
+        r"\b" + _CODE_OBJECT + r"\b[^.?!]*"
+        r"\b(?:hangs?|hanging|loops forever|looping forever)\b"
+    ),
+    re.compile(
+        r"\binfinite loop\b[^.?!]*\b" + _CODE_OBJECT + r"\b"
     ),
     re.compile(
         r"\bis (?:this|the|it)\b[^.?!]*\b"
         + _CODE_OBJECT
         + r"\b[^.?!]*\b(?:correct|secure|safe|valid|working|efficient|right)\b"
     ),
-    re.compile(r"\bdoes (?:this|the|it)\b[^.?!]*\b" + _CODE_OBJECT + r"\b[^.?!]*\bwork\b"),
+    # A compile/run question asks the same correctness verdict
+    # as "does this code work?", and the future forms ("will
+    # this code work?") ask it too: with only does/work listed,
+    # "does this code compile?" fell through to generation.
+    re.compile(
+        r"\b(?:does|will|would|can) (?:this|the|it)\b[^.?!]*\b"
+        + _CODE_OBJECT
+        + r"\b[^.?!]*\b(?:work|compile|run)\b"
+    ),
+    # A speed question about supplied code asks for the
+    # performance assessment review gives ("how fast is this
+    # algorithm?", "how efficient is this code?"): without it
+    # they fell through to generation.
+    re.compile(
+        r"\bhow (?:fast|efficient|slow)\b[^.?!]*\b" + _CODE_OBJECT + r"\b"
+    ),
     re.compile(
         r"\bwhat(?:'s| is| went) wrong\b[^.?!]*\b" + _CODE_OBJECT + r"\b"
     ),
@@ -214,11 +293,17 @@ _EXPLAIN_RES = (
     # code. The same holds for the "what is this code
     # doing?", "what this code does" and "walk me through
     # this code" shapes.
+    # The print/log/display/show forms ask what the code does
+    # just as plainly as the output form ("what does this code
+    # print?"): with only do/mean/return/output/produce listed,
+    # they fell through to generation.
     re.compile(
-        r"\bwhat does (?:this|the|it)\b[^.?!]*\b(?:do|mean|return|output|produce)\b"
+        r"\bwhat does (?:this|the|it)\b[^.?!]*"
+        r"\b(?:do|mean|return|output|produce|print|log|display|show)\b"
     ),
     re.compile(
-        r"\bwhat (?:will|would) (?:this|the|it)\b[^.?!]*\b(?:output|return|produce|print)\b"
+        r"\bwhat (?:will|would) (?:this|the|it)\b[^.?!]*"
+        r"\b(?:output|return|produce|print|log|display|show)\b"
     ),
     re.compile(r"\bwhat is (?:this|the|it)\b[^.?!]*\bdoing\b"),
     re.compile(r"\bwhat (?:this|the|it)\b[^.?!]*\b(?:does|do)\b"),
@@ -301,6 +386,55 @@ _EXPLAIN_RES = (
         r"\bwhy (?:does|did|would)\b[^.?!]*"
         r"\b(?:return|give|output|produce)\b"
     ),
+    # A complexity question asks what the supplied code costs
+    # ("what is the time complexity of this code?"), a run
+    # outcome question asks what executing it does ("what
+    # happens when this code runs?", "how many times does this
+    # loop run?"), a bare trace asks for the walk-through
+    # without the word "through" ("trace this code"), and a
+    # summary of supplied code is a short explanation of it:
+    # without them they fell through to generation, so a
+    # question about existing code was answered with new code.
+    re.compile(
+        r"\bwhat(?:'s| is) the (?:time |space )?complexity\b[^.?!]*\b"
+        + _CODE_OBJECT
+        + r"\b"
+    ),
+    re.compile(
+        r"\bwhat happens\b[^.?!]*\b(?:run|runs|running|execute|executes)\b"
+    ),
+    re.compile(r"\bwhat happens\b[^.?!]*\b" + _CODE_OBJECT + r"\b"),
+    re.compile(
+        r"\bhow (?:many times|often)\b[^.?!]*\b" + _CODE_OBJECT + r"\b"
+    ),
+    re.compile(
+        r"\bhow (?:many times|often) does (?:this|it)\b[^.?!]*"
+        r"\b(?:run|execute|loop)\b"
+    ),
+    re.compile(r"\btrace\b[^.?!]*\b" + _CODE_OBJECT + r"\b"),
+    re.compile(
+        r"\b(?:summarize|summarise|summarizing|summarising)\b[^.?!]*\b"
+        + _CODE_OBJECT
+        + r"\b"
+    ),
+    # A big-O question asks the complexity question above in
+    # its other spelling ("what is the big o of this
+    # algorithm?"), and a concept question ("what is
+    # recursion?", "what is a decorator in python?", "how
+    # does sorting work?", "how do lists work in python?")
+    # asks for the same teaching explanation as "what does
+    # return do?": without them they fell through to
+    # generation, so a question about a concept was answered
+    # with new code. The concept forms stay narrow — a
+    # single named concept, never "how do i …", which asks
+    # for code to copy.
+    re.compile(
+        r"\bwhat(?:'s| is) the big o\b[^.?!]*\b" + _CODE_OBJECT + r"\b"
+    ),
+    re.compile(r"\bwhat is (?:a|an) \w+\b"),
+    re.compile(r"\bwhat is [a-z]+\?"),
+    re.compile(r"\bhow does \w+ work\b"),
+    re.compile(r"\bhow do \w+ work\b"),
 )
 
 

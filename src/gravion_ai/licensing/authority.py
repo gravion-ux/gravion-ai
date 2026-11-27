@@ -194,6 +194,8 @@ class HttpAuthorityClient:
     all verification intelligence lives in verify_entitlement_token.
     """
 
+    MAX_RESPONSE_BYTES = 1024 * 1024
+
     def __init__(self, base_url: str, *, timeout: float = 10.0, opener=None):
         self._url = base_url.rstrip("/") + "/v1/entitlement"
         self._timeout = timeout
@@ -208,8 +210,20 @@ class HttpAuthorityClient:
         )
         try:
             with self._opener(req, timeout=self._timeout) as resp:
-                return json.loads(resp.read().decode("utf-8"))
-        except (urllib.error.URLError, OSError, json.JSONDecodeError) as exc:
+                raw = resp.read(self.MAX_RESPONSE_BYTES + 1)
+            if len(raw) > self.MAX_RESPONSE_BYTES:
+                raise LicenseError(
+                    "entitlement authority response exceeded the 1 MiB safety limit"
+                )
+            return json.loads(raw.decode("utf-8"))
+        except LicenseError:
+            raise
+        except (
+            urllib.error.URLError,
+            OSError,
+            UnicodeDecodeError,
+            json.JSONDecodeError,
+        ) as exc:
             raise LicenseError(
                 f"entitlement authority unreachable at {self._url}: {exc}"
             ) from exc

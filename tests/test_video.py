@@ -114,6 +114,12 @@ def test_video_instantiates_and_answers():
         ("make a video to fix my posture", MODE_GENERATE),
         ("add this video to my playlist", MODE_GENERATE),
         ("do not change this video, make a new one", MODE_GENERATE),
+        # Regression: subtitling, captioning or dubbing an
+        # existing video fell through to generation.
+        ("subtitle this video", MODE_EDIT),
+        ("caption this clip please", MODE_EDIT),
+        ("dub this video in hindi", MODE_EDIT),
+        ("make a video with subtitles", MODE_GENERATE),
     ],
 )
 def test_detect_mode(prompt, expected):
@@ -157,6 +163,9 @@ def test_parse_duration(prompt, expected):
         ("a vertical video for the launch", "9:16"),
         ("a portrait video of the founder", "9:16"),
         ("a landscape video of the office", "16:9"),
+        # "Horizontal" names the landscape shape in its
+        # other word.
+        ("a horizontal video of the office", "16:9"),
         ("a wide banner video for the homepage", "21:9"),
         # An explicit size beats a named shape.
         ("a vertical video at 1200x628", "1200x628"),
@@ -385,3 +394,51 @@ def test_runtime_render_video_goes_through_the_gate_path(make_config, tmp_path):
     _assert_real_mp4(out)
     assert result.provider == "gravion-local-renderer"
     assert (result.width, result.height) == (1280, 720)
+
+
+def test_retime_mute_remove_edits_and_widescreen():
+    # Regression: retiming, muting and removing something
+    # from the video work on the existing footage the same
+    # way trimming does.
+    assert detect_mode("speed up this video") == MODE_EDIT
+    assert detect_mode("slow down this clip") == MODE_EDIT
+    assert detect_mode("mute this video") == MODE_EDIT
+    assert detect_mode("remove audio from this video") == MODE_EDIT
+    assert detect_mode("a video about speeding trains") == MODE_GENERATE
+    # Widescreen is the landscape shape's own name.
+    assert parse_aspect("widescreen video") == "16:9"
+
+
+def test_local_renderer_times_out_ffmpeg(monkeypatch, tmp_path):
+    import gravion_ai.modules.video.pipeline as pipeline
+
+    monkeypatch.setattr(pipeline.shutil, "which", lambda _name: "ffmpeg")
+    captured = {}
+
+    def fake_run(command, **kwargs):
+        captured.update(kwargs)
+        raise subprocess.TimeoutExpired(command, kwargs["timeout"])
+
+    monkeypatch.setattr(pipeline.subprocess, "run", fake_run)
+    with pytest.raises(ProviderError, match="ffmpeg timed out"):
+        LocalVideoProvider().render(
+            job_from_prompt("a 2 second teaser"), tmp_path / "clip.mp4"
+        )
+    assert captured["timeout"] == 30
+
+
+def test_local_renderer_reports_ffmpeg_failure(monkeypatch, tmp_path):
+    import gravion_ai.modules.video.pipeline as pipeline
+
+    monkeypatch.setattr(pipeline.shutil, "which", lambda _name: "ffmpeg")
+
+    def fake_run(command, **_kwargs):
+        return subprocess.CompletedProcess(
+            command, 1, stdout="", stderr="encoder exploded"
+        )
+
+    monkeypatch.setattr(pipeline.subprocess, "run", fake_run)
+    with pytest.raises(ProviderError, match="encoder exploded"):
+        LocalVideoProvider().render(
+            job_from_prompt("a 2 second teaser"), tmp_path / "clip.mp4"
+        )

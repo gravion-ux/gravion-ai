@@ -26,6 +26,18 @@ def _run(module_name, model_id, prompt):
 def test_translation_phrasebook_exact_and_word_level():
     assert "dhanyavaad" in translate_phrase("thank you", to_hindi=True)
     assert translate_phrase("shukriya", to_hindi=False) == "thank you"
+    # Regression: everyday words and the Roman spellings of
+    # entries the book carries the other way were refused
+    # as outside the phrasebook.
+    assert "madad" in translate_phrase("help", to_hindi=True)
+    assert "khush" in translate_phrase("happy", to_hindi=True)
+    assert "aap kahan hain" in translate_phrase("where are you", to_hindi=True)
+    assert translate_phrase("shubh raatri", to_hindi=False) == "good night"
+    assert translate_phrase("khana", to_hindi=False) == "food"
+    assert translate_phrase("kaise ho", to_hindi=False) == "how are you"
+    assert translate_phrase("mera naam hai", to_hindi=False) == "my name is"
+    assert translate_phrase("madad", to_hindi=False) == "help"
+    assert translate_phrase("मदद", to_hindi=False) == "help"
     # Unknown words are marked, never guessed.
     out = translate_phrase("thank you zxqwv", to_hindi=True)
     assert "[zxqwv]" in out
@@ -637,6 +649,13 @@ def test_stem_word_matches_remaining_irregulars_and_e_verbs():
     # Bases the e-restoration must not mangle.
     assert stem_word("hanging") == stem_word("hang") == "hang"
     assert stem_word("syncing") == stem_word("sync") == "sync"
+    # Regression: the -en participles "woken"/"drawn" and
+    # the s-singular plural "funguses" stayed split from
+    # their bases, so base-form questions missed
+    # participle evidence.
+    assert stem_word("woken") == stem_word("wake") == "wake"
+    assert stem_word("drawn") == stem_word("draw") == "draw"
+    assert stem_word("funguses") == stem_word("fungus") == "fungus"
     out = answer_question(
         "She lied to him yesterday. He left early.",
         "Who did she lie to?",
@@ -647,6 +666,88 @@ def test_stem_word_matches_remaining_irregulars_and_e_verbs():
         "When did the sun arise?",
     )
     assert "arose early" in out
+
+
+def test_stem_word_matches_se_and_ve_verb_forms():
+    # Regression: -se/-ve verbs lost their e behind a
+    # consonant cluster ("licensing" -> "licens",
+    # "serving" -> "serv") or a vowel pair ("pleasing"
+    # -> "pleas", "receiving" -> "receiv"), so a
+    # base-form question missed derived-form evidence
+    # and retrieval scored the relevant passage zero;
+    # the CVC rule also invented "focuse"/"buse" for
+    # the "us" bases "focus"/"bus".
+    assert stem_word("licensing") == stem_word("license") == "license"
+    assert stem_word("licensed") == stem_word("license") == "license"
+    assert stem_word("sensing") == stem_word("sense") == "sense"
+    assert stem_word("rinsing") == stem_word("rinse") == "rinse"
+    assert stem_word("pleasing") == stem_word("please") == "please"
+    assert stem_word("increasing") == stem_word("increase") == "increase"
+    assert stem_word("releasing") == stem_word("release") == "release"
+    assert stem_word("raising") == stem_word("raise") == "raise"
+    assert stem_word("housing") == stem_word("house") == "house"
+    assert stem_word("choosing") == stem_word("choose") == "choose"
+    assert stem_word("easing") == stem_word("ease") == "ease"
+    assert stem_word("analysing") == stem_word("analyse") == "analyse"
+    assert stem_word("analyzing") == stem_word("analyze") == "analyze"
+    assert stem_word("serving") == stem_word("serve") == "serve"
+    assert stem_word("solving") == stem_word("solve") == "solve"
+    assert stem_word("receiving") == stem_word("receive") == "receive"
+    assert stem_word("believing") == stem_word("believe") == "believe"
+    assert stem_word("creating") == stem_word("create") == "create"
+    assert stem_word("created") == stem_word("create") == "create"
+    assert stem_word("arranging") == stem_word("arrange") == "arrange"
+    # Bases the restoration must not mangle.
+    assert stem_word("focusing") == stem_word("focus") == "focus"
+    assert stem_word("focused") == stem_word("focus") == "focus"
+    assert stem_word("busing") == stem_word("bus") == "bus"
+    assert stem_word("biasing") == stem_word("bias") == "bias"
+    assert stem_word("lensing") == stem_word("lens") == "lens"
+    assert stem_word("passing") == stem_word("pass") == "pass"
+    assert stem_word("using") == stem_word("use") == "use"
+    assert stem_word("eating") == stem_word("eat") == "eat"
+    assert stem_word("treating") == stem_word("treat") == "treat"
+    assert stem_word("helping") == stem_word("help") == "help"
+    # The split reached retrieval and document Q&A: a
+    # licensing passage scored zero for "license", and
+    # a licensing sentence was no answer to a license
+    # question.
+    ranked = rank_passages(
+        "license terms",
+        ["Licensing terms apply here.", "Cooking recipes for dinner."],
+    )
+    assert ranked[0][1] == "Licensing terms apply here."
+    assert ranked[0][0] > 0
+    out = answer_question(
+        "Licensing terms apply to every module. Prices vary by tier.",
+        "What license terms apply?",
+    )
+    assert "Licensing terms apply" in out
+
+
+def test_retrieval_module_admits_when_no_passage_matches(make_config):
+    # Improvement: a query no passage shares a term
+    # with was answered with every passage listed as
+    # a "top match" at 0.000, presenting non-matches
+    # as evidence; the module now says so plainly.
+    from gravion_ai.runtime import GravionRuntime
+
+    runtime = GravionRuntime(make_config(model="gravion-omni"))
+    out = runtime.run_module(
+        "retrieval",
+        "query: quantum chromodynamics\n"
+        "passage: Cats groom themselves with their tongues.\n"
+        "passage: Dogs enjoy long walks in parks.",
+    )
+    assert out.startswith("No passage matches the query: quantum chromodynamics")
+    assert "Top matches" not in out
+    matched = runtime.run_module(
+        "retrieval",
+        "query: how do cats groom\n"
+        "passage: Cats groom themselves with their tongues.\n"
+        "passage: Dogs enjoy long walks in parks.",
+    )
+    assert matched.startswith("Top matches for: how do cats groom")
 
 
 def test_split_sentences_splits_after_sentence_final_abbreviations():
@@ -1040,3 +1141,46 @@ def test_data_analysis_sum_and_range_past_float_range_stay_finite():
     out = analyze([2.0, 4.0, 6.0])
     assert "Sum: 12" in out
     assert "Range: 4" in out
+
+
+def test_phone_numbers_are_labels_not_values():
+    # Regression: a phone number read as three
+    # measurements and skewed every statistic.
+    assert parse_numbers("phone 555-123-4567 total 100") == [100.0]
+    assert parse_numbers("call 555.123.4567 scores 10 20") == [10.0, 20.0]
+    # A plain range keeps its reading.
+    assert parse_numbers("range 5-10") == [5.0, 10.0]
+
+
+def test_whole_statistics_print_in_full():
+    # Regression: six-significant-digit formatting printed
+    # the median of 1000000/1000001/1000002 as "1e+06",
+    # the same text as its minimum.
+    out = analyze([1000000.0, 1000001.0, 1000002.0])
+    assert "Sum: 3000003" in out
+    assert "Mean: 1000001" in out
+    assert "Median: 1000001" in out
+    assert "Min: 1000000" in out
+    assert "Max: 1000002" in out
+    # Values past the exact-integer range keep the
+    # scientific form.
+    out = analyze([1e308, 1e308])
+    assert "Median: 1e+308" in out
+
+
+def test_rupee_abbreviation_and_everyday_phrasebook_entries():
+    # Regression: "Rs." before an amount split the amount
+    # into its own sentence.
+    assert split_sentences("It costs Rs. 500. Pay now.") == [
+        "It costs Rs. 500.",
+        "Pay now.",
+    ]
+    # The bare everyday verbs beside "come here" were
+    # refused as outside the phrasebook.
+    assert "jaaiye" in translate_phrase("go", to_hindi=True)
+    assert "aaiye" in translate_phrase("come", to_hindi=True)
+    assert "mujhe aapse pyaar hai" in translate_phrase(
+        "i love you", to_hindi=True
+    )
+    assert translate_phrase("bahut accha", to_hindi=False) == "very good"
+    assert translate_phrase("jaaiye", to_hindi=False) == "go"

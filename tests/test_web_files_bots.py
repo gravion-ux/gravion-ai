@@ -1,5 +1,6 @@
 import io
 import json
+import socket
 import threading
 import urllib.request
 
@@ -245,6 +246,38 @@ def test_web_bot_route_reports_empty_slot(make_config):
         body = json.loads(excinfo.value.read().decode("utf-8"))
         assert "will not recreate" in body["error"]
         assert body["needed"]
+    finally:
+        server.shutdown()
+        server.server_close()
+
+
+def test_web_rejects_invalid_content_length(make_config):
+    config = _ready_config(make_config)
+    server, base = _serve(config)
+    try:
+        host, port = base.removeprefix("http://").split(":")
+        with socket.create_connection((host, int(port)), timeout=5) as sock:
+            sock.sendall(
+                (
+                    "POST /api/chat HTTP/1.1\r\n"
+                    f"Host: {host}\r\n"
+                    "Content-Type: application/json\r\n"
+                    "Content-Length: not-a-number\r\n"
+                    "Connection: close\r\n\r\n"
+                ).encode("ascii")
+            )
+            # Read to EOF: the server writes headers and body
+            # separately, so a single recv can return the
+            # headers alone and miss the error body.
+            chunks = []
+            while True:
+                chunk = sock.recv(4096)
+                if not chunk:
+                    break
+                chunks.append(chunk)
+            response = b"".join(chunks).decode("utf-8", errors="replace")
+        assert "400" in response.splitlines()[0]
+        assert "Content-Length is invalid" in response
     finally:
         server.shutdown()
         server.server_close()

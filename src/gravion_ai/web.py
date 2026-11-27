@@ -36,11 +36,11 @@ MODULES = [
 
 ROADMAP = [
     {
-        "title": "Specialist weights bundles",
+        "title": "Specialist quality gates",
         "status": "Roadmap",
         "detail": (
-            "Train and package specialist Gravion weights with held-out "
-            "eval gates before presenting them as included."
+            "Expand held-out evaluations and quality gates for the "
+            "included specialist weights before scaling capability claims."
         ),
     },
     {
@@ -265,10 +265,15 @@ def _handler_factory(config: GravionConfig):
             )
 
         def _read_json(self) -> dict:
-            length = int(self.headers.get("Content-Length") or 0)
+            try:
+                length = int(self.headers.get("Content-Length") or 0)
+            except ValueError as exc:
+                raise GravionError("request Content-Length is invalid") from exc
             if length <= 0 or length > MAX_REQUEST_BYTES:
                 raise GravionError("request body is missing or too large")
             raw = self.rfile.read(length)
+            if len(raw) != length:
+                raise GravionError("request body is incomplete")
             try:
                 data = json.loads(raw.decode("utf-8"))
             except (UnicodeDecodeError, json.JSONDecodeError) as exc:
