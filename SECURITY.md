@@ -58,3 +58,12 @@ Out of scope:
 
 Only the current `main` branch and the latest release are supported.
 Older commits are kept for history, not for backports.
+
+## Repository hygiene
+
+GitHub secret scanning and push protection are enabled for this
+repository. Dependabot checks Python and GitHub Actions dependencies
+weekly, and CodeQL runs on pushes, pull requests, and a weekly schedule.
+Never commit issuer keys, deployment identities, production licenses, or
+provider credentials; reproduce licensing issues with locally generated
+test keys only.
