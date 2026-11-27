@@ -75,27 +75,30 @@ _SCORE_PHRASES = (
 # kind ("not a jingle, a full track") is the kind the request
 # rules out, so a negator governing the phrase in its clause
 # cancels it — the same guard the agentic module gives tools.
+# The guard is shared with the moods below: a negated mood
+# ("not calm, make it upbeat") is likewise the mood the request
+# rules out, not one it asks for.
 _SCORE_RES = tuple(
     re.compile(rf"\b{re.escape(phrase)}\b") for phrase in _SCORE_PHRASES
 )
 _JINGLE_RE = re.compile(r"\bjingle\b")
-_KIND_NEGATOR_RE = re.compile(r"(?:\bno\b|\bnot\b|\bnever\b|n't\b)")
+_NEGATOR_RE = re.compile(r"(?:\bno\b|\bnot\b|\bnever\b|n't\b)")
 _CLAUSE_BREAKS = ".!?;,"
 
 
-def _kind_negated(text: str, match_start: int) -> bool:
+def _negated_before(text: str, match_start: int) -> bool:
     clause_start = (
         max(text.rfind(break_char, 0, match_start) for break_char in _CLAUSE_BREAKS)
         + 1
     )
     words = text[clause_start:match_start].split()
     tail = " ".join(words[-3:])
-    return bool(tail) and _KIND_NEGATOR_RE.search(tail) is not None
+    return bool(tail) and _NEGATOR_RE.search(tail) is not None
 
 
 def _kind_named(pattern: re.Pattern[str], text: str) -> bool:
     return any(
-        not _kind_negated(text, match.start())
+        not _negated_before(text, match.start())
         for match in pattern.finditer(text)
     )
 
@@ -103,7 +106,11 @@ def _kind_named(pattern: re.Pattern[str], text: str) -> bool:
 # they appear in the request; anything outside this list is left
 # for the model to read from the request itself. Matching is on
 # word boundaries: a mood word embedded in a longer word is not a
-# mood ("swarm" is not "warm", "epicentre" is not "epic").
+# mood ("swarm" is not "warm", "epicentre" is not "epic"). A
+# negated mood is skipped under the same clause guard as the
+# kinds, so "no dark tones, warm and playful" records warm and
+# playful only; a mood named again without a negator still counts,
+# positioned at that later mention.
 MOODS = (
     "upbeat",
     "calm",
@@ -198,13 +205,19 @@ _MOOD_RES = tuple(
 
 
 def parse_moods(prompt: str) -> list[str]:
-    """Collect the brief's mood words, in request order."""
+    """Collect the brief's mood words, in request order.
+
+    A negated mention ("not calm", "no dark tones") is the mood
+    the request rules out, so it is skipped; the mood still counts
+    when a later mention carries no negator.
+    """
     text = prompt.lower()
-    found = [
-        (match.start(), mood)
-        for mood, pattern in _MOOD_RES
-        if (match := pattern.search(text)) is not None
-    ]
+    found = []
+    for mood, pattern in _MOOD_RES:
+        for match in pattern.finditer(text):
+            if not _negated_before(text, match.start()):
+                found.append((match.start(), mood))
+                break
     return [mood for _start, mood in sorted(found)]
 
 

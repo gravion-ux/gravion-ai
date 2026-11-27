@@ -107,6 +107,22 @@ def test_parse_moods_in_request_order():
     assert parse_moods("darken the warmup track") == []
 
 
+def test_parse_moods_skips_negated_moods():
+    # Regression: moods had no negation guard, so a ruled-out
+    # mood was recorded in the brief as one the request asked for.
+    assert parse_moods("not calm, make it upbeat") == ["upbeat"]
+    assert parse_moods("no dark tones, warm and playful") == ["warm", "playful"]
+    assert parse_moods("calm but not dark") == ["calm"]
+    assert parse_moods("never dark, always warm") == ["warm"]
+    assert parse_moods("don't make it epic, keep it calm") == ["calm"]
+    assert parse_moods("no lofi please, cinematic only") == ["cinematic"]
+    # A mood named again without a negator still counts, in the
+    # order of that later mention.
+    assert parse_moods("not dark, actually dark and epic") == ["dark", "epic"]
+    # The brief records only the moods the request keeps.
+    assert "Mood: upbeat" in build_brief("not calm, an upbeat track")
+
+
 def test_brief_records_kind_duration_mood_and_request():
     brief = build_brief("a 30 second upbeat jingle")
     assert "Kind: jingle" in brief
