@@ -13,9 +13,10 @@ deterministic logic of its own:
 
 2. **Brief parsing.** Three pieces of intent are extracted:
    duration ("30 seconds", "2 minutes", as in the music module);
-   aspect — an explicit pixel size wins, otherwise a named shape,
-   where *vertical* and *portrait* mean 9:16, the shape of phone
-   video; and reference frames — image files named in the request
+   aspect — an explicit pixel size wins, then an explicit ratio
+   ("9:16"), otherwise a named shape, where *vertical* and
+   *portrait* mean 9:16, the shape of phone video; and reference
+   frames — image files named in the request
    (".png" / ".jpg" / ".jpeg" / ".webp") that the video should be
    built from. Anything not stated is recorded in the brief as the
    model default rather than invented.
@@ -77,8 +78,8 @@ _EDIT_PREFIXES = (
 )
 
 # Named shapes, in the order they are checked. An explicit pixel
-# size in the request beats every named shape. Portrait video is
-# vertical: 9:16, not the still-image 3:4.
+# size or ratio in the request beats every named shape. Portrait
+# video is vertical: 9:16, not the still-image 3:4.
 _SHAPES = (
     ("square", "1:1"),
     ("vertical", "9:16"),
@@ -88,6 +89,27 @@ _SHAPES = (
 )
 
 _SIZE_RE = re.compile(r"(\d{3,5})\s*[x×]\s*(\d{3,5})")
+
+# An explicit ratio ("9:16", "4:5") is the canonical way to state
+# a video aspect, and the render pipeline already resolves ratio
+# strings to dimensions — but the parser never produced one, so
+# "make a 9:16 video" recorded the model default and rendered
+# 16:9. Parts are capped at 21 and the value must sit between
+# 1:3 and 3:1, so clock readings ("10:30") and durations
+# ("1:30") are not read as aspects; an am/pm suffix also marks
+# a clock reading, never a ratio.
+_RATIO_RE = re.compile(
+    r"(?<![0-9:])(\d{1,2})\s*:\s*(\d{1,2})(?![0-9:])(?!\s*(?:am|pm)\b)",
+    re.IGNORECASE,
+)
+
+
+def _explicit_ratio(prompt: str) -> str | None:
+    for match in _RATIO_RE.finditer(prompt):
+        width, height = int(match.group(1)), int(match.group(2))
+        if 1 <= width <= 21 and 1 <= height <= 21 and 1 / 3 <= width / height <= 3:
+            return f"{width}:{height}"
+    return None
 
 _FRAME_RE = re.compile(r"[\w./-]*[\w]\.(?:png|jpe?g|webp)\b", re.IGNORECASE)
 
@@ -103,14 +125,17 @@ def detect_mode(prompt: str) -> str:
 def parse_aspect(prompt: str) -> str | None:
     """Extract the requested aspect/size, or None for the default.
 
-    An explicit pixel size ("1920x1080") is returned verbatim; a
-    named shape returns its aspect ratio ("9:16" for vertical or
-    portrait); anything else returns None, meaning the brief
-    records the model default.
+    An explicit pixel size ("1920x1080") is returned verbatim and
+    beats an explicit ratio ("9:16"), which beats a named shape
+    ("9:16" for vertical or portrait); anything else returns
+    None, meaning the brief records the model default.
     """
     match = _SIZE_RE.search(prompt)
     if match:
         return f"{match.group(1)}x{match.group(2)}"
+    ratio = _explicit_ratio(prompt)
+    if ratio:
+        return ratio
     text = prompt.lower()
     for shape, ratio in _SHAPES:
         if shape in text:

@@ -123,6 +123,18 @@ def test_parse_duration(prompt, expected):
         ("a wide banner video for the homepage", "21:9"),
         # An explicit size beats a named shape.
         ("a vertical video at 1200x628", "1200x628"),
+        # Explicit ratios are the canonical aspect form; they
+        # beat named shapes but not explicit pixel sizes.
+        ("a 9:16 video for the launch", "9:16"),
+        ("a 16:9 video for the site", "16:9"),
+        ("a 4:5 clip for the feed", "4:5"),
+        ("a vertical video at 16:9", "16:9"),
+        ("a 9:16 video at 1200x628", "1200x628"),
+        # Clock readings and durations are not aspects.
+        ("schedule a video at 10:30", None),
+        ("a video for 9:16 pm", None),
+        ("a 1:30 explainer", None),
+        ("a 0:16 video", None),
         ("a teaser for our app", None),
     ],
 )
@@ -250,6 +262,12 @@ def test_job_from_prompt_explicit_size_is_capped_for_the_local_renderer():
     job = job_from_prompt("a 10 second video at 1920x1080")
     assert job.aspect == "1920x1080"
     assert (job.width, job.height) == (1280, 720)
+
+
+def test_job_from_prompt_explicit_ratio_resolves_to_dimensions():
+    job = job_from_prompt("a 10 second video at 4:5")
+    assert job.aspect == "4:5"
+    assert (job.width, job.height) == (1024, 1280)
 
 
 def test_job_derivation_is_deterministic():

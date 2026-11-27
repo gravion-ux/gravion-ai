@@ -72,7 +72,9 @@ _SCORE_PHRASES = (
 
 # The mood vocabulary the brief understands. Collected in the order
 # they appear in the request; anything outside this list is left
-# for the model to read from the request itself.
+# for the model to read from the request itself. Matching is on
+# word boundaries: a mood word embedded in a longer word is not a
+# mood ("swarm" is not "warm", "epicentre" is not "epic").
 MOODS = (
     "upbeat",
     "calm",
@@ -121,11 +123,20 @@ def parse_duration(prompt: str) -> int | None:
     return round(total)
 
 
+_MOOD_RES = tuple(
+    (mood, re.compile(r"\b" + re.escape(mood) + r"\b")) for mood in MOODS
+)
+
+
 def parse_moods(prompt: str) -> list[str]:
     """Collect the brief's mood words, in request order."""
     text = prompt.lower()
-    found = [mood for mood in MOODS if mood in text]
-    return sorted(found, key=lambda mood: text.index(mood))
+    found = [
+        (match.start(), mood)
+        for mood, pattern in _MOOD_RES
+        if (match := pattern.search(text)) is not None
+    ]
+    return [mood for _start, mood in sorted(found)]
 
 
 def build_brief(prompt: str) -> str:

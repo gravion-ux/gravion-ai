@@ -13,6 +13,7 @@ from gravion_ai.modules.image.module import (
     build_brief,
     detect_mode,
     parse_aspect,
+    resolve_size,
 )
 from gravion_ai.providers import GravionCoreProvider
 from gravion_ai.registry import ModuleContext, default_registry
@@ -68,11 +69,24 @@ def test_detect_mode(prompt, expected):
         ("a wide banner for the homepage", "21:9"),
         # An explicit size beats a named shape.
         ("a square image at 1200x628", "1200x628"),
+        # Explicit ratios beat named shapes, not pixel sizes.
+        ("a 4:5 poster for the launch", "4:5"),
+        ("a 3:2 photo of the office", "3:2"),
+        ("a square image at 16:9", "16:9"),
+        ("a 4:5 image at 1200x628", "1200x628"),
+        # Clock readings and durations are not aspects.
+        ("a photo at 10:30", None),
+        ("a 1:30 exposure", None),
         ("a logo for our app", None),
     ],
 )
 def test_parse_aspect(prompt, expected):
     assert parse_aspect(prompt) == expected
+
+
+def test_resolve_size_uses_explicit_ratio():
+    assert resolve_size("a 4:5 poster") == (819, 1024)
+    assert resolve_size("a 3:2 photo") == (1024, 682)
 
 
 def test_brief_records_mode_aspect_and_request():

@@ -87,6 +87,9 @@ def test_parse_moods_in_request_order():
     assert parse_moods("an epic cinematic score") == ["epic", "cinematic"]
     assert parse_moods("a lo-fi beat") == ["lo-fi"]
     assert parse_moods("a track for the launch") == []
+    # A mood word embedded in a longer word is not a mood.
+    assert parse_moods("a swarm of bees over the epicentre") == []
+    assert parse_moods("darken the warmup track") == []
 
 
 def test_brief_records_kind_duration_mood_and_request():

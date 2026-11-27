@@ -13,9 +13,10 @@ pieces of deterministic logic of its own:
    generation.
 
 2. **Brief parsing.** Size intent is extracted from the request:
-   an explicit pixel size ("1920x1080") wins; otherwise a named
-   shape — square, portrait, landscape or banner — maps to the
-   aspect ratio the brief records. No size intent means the brief
+   an explicit pixel size ("1920x1080") wins, then an explicit
+   ratio ("4:5"); otherwise a named shape — square, portrait,
+   landscape or banner — maps to the aspect ratio the brief
+   records. No size intent means the brief
    records the model default rather than inventing one.
 
 The brief is appended to the deployment's system context together
@@ -67,7 +68,7 @@ _EDIT_PREFIXES = (
 )
 
 # Named shapes, in the order they are checked. An explicit pixel
-# size in the request beats every named shape.
+# size or ratio in the request beats every named shape.
 _SHAPES = (
     ("square", "1:1"),
     ("portrait", "3:4"),
@@ -76,6 +77,26 @@ _SHAPES = (
 )
 
 _SIZE_RE = re.compile(r"(\d{3,5})\s*[x×]\s*(\d{3,5})")
+
+# An explicit ratio ("4:5", "3:2") is the canonical way to state
+# an image aspect, and resolve_size already turns ratio strings
+# into dimensions — but the parser never produced one, so "a
+# 4:5 poster" recorded the model default. Parts are capped at
+# 21 and the value must sit between 1:3 and 3:1, so clock
+# readings ("10:30") and durations ("1:30") are not read as
+# aspects; an am/pm suffix also marks a clock reading.
+_RATIO_RE = re.compile(
+    r"(?<![0-9:])(\d{1,2})\s*:\s*(\d{1,2})(?![0-9:])(?!\s*(?:am|pm)\b)",
+    re.IGNORECASE,
+)
+
+
+def _explicit_ratio(prompt: str) -> str | None:
+    for match in _RATIO_RE.finditer(prompt):
+        width, height = int(match.group(1)), int(match.group(2))
+        if 1 <= width <= 21 and 1 <= height <= 21 and 1 / 3 <= width / height <= 3:
+            return f"{width}:{height}"
+    return None
 
 
 def detect_mode(prompt: str) -> str:
@@ -89,13 +110,17 @@ def detect_mode(prompt: str) -> str:
 def parse_aspect(prompt: str) -> str | None:
     """Extract the requested aspect/size, or None for the default.
 
-    An explicit pixel size ("1920x1080") is returned verbatim; a
-    named shape returns its aspect ratio ("16:9"); anything else
-    returns None, meaning the brief records the model default.
+    An explicit pixel size ("1920x1080") is returned verbatim and
+    beats an explicit ratio ("4:5"), which beats a named shape
+    ("16:9" for landscape); anything else returns None, meaning
+    the brief records the model default.
     """
     match = _SIZE_RE.search(prompt)
     if match:
         return f"{match.group(1)}x{match.group(2)}"
+    ratio = _explicit_ratio(prompt)
+    if ratio:
+        return ratio
     text = prompt.lower()
     for shape, ratio in _SHAPES:
         if shape in text:
@@ -119,8 +144,8 @@ def resolve_size(prompt: str, width: int | None = None,
     """Resolve output dimensions for a local generation.
 
     Explicit width/height win; otherwise an explicit pixel size in
-    the prompt is used, then a named shape's aspect at a 1024px
-    long edge, then the 1024x1024 default.
+    the prompt is used, then an explicit ratio or a named shape's
+    aspect at a 1024px long edge, then the 1024x1024 default.
     """
     if width is not None and height is not None:
         return width, height
