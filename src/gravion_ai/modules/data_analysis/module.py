@@ -24,10 +24,11 @@ from ...registry import ModuleContext, ModuleManifest
 # number when it sits inside a valid digit group, so comma-space
 # separated lists ("4, 8, 15") still parse as separate values. The
 # leading lookbehind keeps a minus glued to a preceding digit or
-# letter from becoming a sign: in a range ("5-10") or a date
-# ("2026-11-27") the hyphen is a separator, so both sides parse as
-# positive values, and digits inside a word ("version2") are not
-# numbers at all. Without the underscore alternative "1_000" read
+# letter from becoming a sign: in a range ("5-10") the hyphen is
+# a separator, so both sides parse as positive values, and digits
+# inside a word ("version2") are not numbers at all. Dates are
+# blanked before parsing (see below), so no date part reaches
+# this pattern. Without the underscore alternative "1_000" read
 # as the phantom pair 1 and 0 and skewed every statistic.
 _NUMBER_RE = re.compile(
     r"(?<![0-9A-Za-z])-?(?:\d{1,3}(?:,\d{3})+|\d{1,2}(?:,\d{2})+,\d{3}"
@@ -43,6 +44,37 @@ _NUMBER_RE = re.compile(
 # blanked out before parsing; a plain decimal ("3.14") has one
 # dot and is untouched.
 _DOTTED_SEQUENCE_RE = re.compile(r"\d+(?:\.\d+){2,}")
+
+# A calendar date ("2026-11-27", "27/11/2026", "11-27-2026")
+# is a label, never three measurements: left in place, the
+# number pattern read a date's year, month and day as values
+# and skewed every statistic computed from the real numbers
+# beside it. Plausible dates are blanked out before parsing,
+# like dotted labels above. Only plausible dates go: the
+# month must be 1-12 and the day 1-31, so a subtraction chain
+# ("10-5-2") or an implausible chain ("13/40/2026") keeps its
+# values, and a single-hyphen range ("5-10") is untouched.
+_ISO_DATE_RE = re.compile(r"(?<!\d)(\d{4})-(\d{2})-(\d{2})(?!\d)")
+_SLASH_DATE_RE = re.compile(r"(?<![0-9/])(\d{1,2})/(\d{1,2})/(\d{4}|\d{2})(?![0-9/])")
+_HYPHEN_DATE_RE = re.compile(r"(?<!\d)(\d{1,2})-(\d{1,2})-(\d{4})(?!\d)")
+
+
+def _blank_iso_date(match: re.Match[str]) -> str:
+    _year, month, day = (int(group) for group in match.groups())
+    if 1 <= month <= 12 and 1 <= day <= 31:
+        return " "
+    return match.group(0)
+
+
+def _blank_day_month_date(match: re.Match[str]) -> str:
+    first, second, _year = (int(group) for group in match.groups())
+    # Day-first and month-first orders are both in use, so
+    # either reading makes the chain a date.
+    if (1 <= first <= 31 and 1 <= second <= 12) or (
+        1 <= first <= 12 and 1 <= second <= 31
+    ):
+        return " "
+    return match.group(0)
 
 # Machine literals ("0xFF", "0b101", "0o17") are code, not
 # decimal measurements: left in place, "0x10" read as the
@@ -81,6 +113,9 @@ def _fold_fraction(match: re.Match[str]) -> str:
 
 def parse_numbers(prompt: str) -> list[float]:
     cleaned = _MACHINE_LITERAL_RE.sub(" ", prompt)
+    cleaned = _ISO_DATE_RE.sub(_blank_iso_date, cleaned)
+    cleaned = _SLASH_DATE_RE.sub(_blank_day_month_date, cleaned)
+    cleaned = _HYPHEN_DATE_RE.sub(_blank_day_month_date, cleaned)
     cleaned = _DOTTED_SEQUENCE_RE.sub(" ", cleaned)
     cleaned = _MIXED_FRACTION_RE.sub(_fold_mixed_fraction, cleaned)
     cleaned = _FRACTION_RE.sub(_fold_fraction, cleaned)

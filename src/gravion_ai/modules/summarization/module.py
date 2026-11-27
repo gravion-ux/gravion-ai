@@ -198,6 +198,41 @@ _IRREGULAR_STEMS = {
     "antennae": "antenna",
     "millennia": "millennium",
     "busses": "bus",
+    # Compound -women plurals split from their singulars the
+    # same way the -man compounds did ("businesswomen" ends
+    # in no "s"), as do the -children/-people compounds the
+    # whole-word entries above cannot reach.
+    "businesswomen": "businesswoman",
+    "chairwomen": "chairwoman",
+    "spokeswomen": "spokeswoman",
+    "policewomen": "policewoman",
+    "congresswomen": "congresswoman",
+    "saleswomen": "saleswoman",
+    "gentlewomen": "gentlewoman",
+    "sportswomen": "sportswoman",
+    "servicewomen": "servicewoman",
+    "stepchildren": "stepchild",
+    "schoolchildren": "schoolchild",
+    "salespeople": "salesperson",
+    # More classical plurals no suffix rule derives: -i/-ae
+    # ("radii", "nebulae"), -ices ("codices", "helices"),
+    # -sis ("synopses", "prognoses", "testes"), the -a
+    # plurals "errata"/"addenda", the f -> ves plural
+    # "wharves" and the suppletive "lice".
+    "radii": "radius",
+    "alumnae": "alumna",
+    "nebulae": "nebula",
+    "supernovae": "supernova",
+    "personae": "persona",
+    "codices": "codex",
+    "helices": "helix",
+    "synopses": "synopsis",
+    "prognoses": "prognosis",
+    "testes": "testis",
+    "errata": "erratum",
+    "addenda": "addendum",
+    "wharves": "wharf",
+    "lice": "louse",
 }
 
 

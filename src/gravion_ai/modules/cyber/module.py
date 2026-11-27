@@ -125,22 +125,29 @@ _MD5_RE = re.compile(r"\b[0-9a-fA-F]{32}\b")
 _URL_RE = re.compile(r"https?://[^\s\"'<>]+")
 # A stated severity arrives as "severity: high", "severity is
 # high" or "(high|high-)severity"; all three are recorded. The
-# same statement also arrives with a "level" noun ("severity
-# level is high"), an "of" ("severity of high") or an "=" or
-# "-" separator ("severity=high"), and "moderate" is recorded
-# verbatim as the level it states. The copula form requires
-# the level directly after "is"/"was"/"of", so "severity is
-# not high" states no level and records none. A parenthesised
-# level ("severity (high)") and a copula with a short noun
-# phrase in between ("severity of the finding is high") state
-# a level just as plainly, and "informational"/"info" are
-# recorded verbatim as the levels they state.
+# same statement also arrives with a "level" or "rating" noun
+# ("severity level is high", "severity rating: high", the
+# hyphenated "severity-rating: high"), an "of" ("severity of
+# high") or an "=" or "-" separator ("severity=high"), and
+# "moderate" is recorded verbatim as the level it states. The
+# copula form requires the level directly after "is"/"was"/"of"
+# (allowing a rating verb, "severity is rated high" /
+# "severity is assessed as high"), so "severity is not high"
+# and "severity is not rated high" state no level and record
+# none. A parenthesised level ("severity (high)") and a copula
+# with a short noun phrase in between ("severity of the
+# finding is high") state a level just as plainly, and
+# "informational"/"info" are recorded verbatim as the levels
+# they state.
 _LEVEL = r"(critical|high|medium|moderate|low|informational|info)"
+_SEV_NOUNS = r"(?:[\s-]+(?:level|rating))*"
+_RATED = r"(?:rated\s+|assessed\s+as\s+)?"
 _SEVERITY_RE = re.compile(
-    r"severity(?:\s+level)?[\s:=\-]+" + _LEVEL + r"\b"
-    r"|severity(?:\s+level)?\s+(?:is|was|of)\s+" + _LEVEL + r"\b"
-    r"|severity\s+of\s+(?:the\s+)?\w+\s+(?:is|was)\s+" + _LEVEL + r"\b"
-    r"|severity(?:\s+level)?\s*\(\s*" + _LEVEL + r"\s*\)"
+    r"severity" + _SEV_NOUNS + r"[\s:=\-]+" + _RATED + _LEVEL + r"\b"
+    r"|severity" + _SEV_NOUNS + r"\s+(?:is|was)\s+" + _RATED + _LEVEL + r"\b"
+    r"|severity" + _SEV_NOUNS + r"\s+of\s+" + _LEVEL + r"\b"
+    r"|severity\s+of\s+(?:the\s+)?\w+\s+(?:is|was)\s+" + _RATED + _LEVEL + r"\b"
+    r"|severity" + _SEV_NOUNS + r"\s*\(\s*" + _LEVEL + r"\s*\)"
     r"|\b" + _LEVEL + r"[\s-]severity\b",
     re.IGNORECASE,
 )

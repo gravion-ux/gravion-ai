@@ -179,9 +179,19 @@ def test_extract_indicators_hash_lengths_do_not_overlap():
         ("severity of the finding is high, host isolated", "high"),
         ("severity: informational — IDS alert", "informational"),
         ("an info severity note on the host", "info"),
+        # A "rating" noun and a rating verb state a level just
+        # as plainly as the "level" forms.
+        ("severity rating: high — IDS alert", "high"),
+        ("severity rating is critical for this host", "critical"),
+        ("severity-rating: medium — IDS alert", "medium"),
+        ("severity is rated high, host isolated", "high"),
+        ("severity is assessed as low, just noise", "low"),
+        ("severity of the finding is rated high, host isolated", "high"),
         # A negated level states no severity; never guess one.
         ("severity is not high, just noisy", None),
         ("severity level is not high, just noisy", None),
+        ("severity rating is not high, just noisy", None),
+        ("severity is not rated high, just noisy", None),
         ("a routine alert", None),
     ],
 )

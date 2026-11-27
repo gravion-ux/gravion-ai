@@ -114,22 +114,31 @@ def test_data_analysis_parses_grouped_and_scientific_numbers():
 
 def test_data_analysis_range_hyphen_is_not_a_minus_sign():
     # Regression: a hyphen glued to a digit was read as a minus
-    # sign, so a range "5-10" parsed as [5, -10] (sum -5) and a
-    # date "2026-11-27" contributed two negative values. The hyphen
-    # is a separator there; only a free-standing minus is a sign,
-    # and digits inside a word are not numbers.
+    # sign, so a range "5-10" parsed as [5, -10] (sum -5). The
+    # hyphen is a separator there; only a free-standing minus is
+    # a sign, and digits inside a word are not numbers. (A date
+    # such as "2026-11-27" is a label, not values; see the date
+    # regression below.)
     assert parse_numbers("scores range 5-10 points") == [5.0, 10.0]
-    assert parse_numbers("on 2026-11-27 values 4 8 15") == [
-        2026.0,
-        11.0,
-        27.0,
-        4.0,
-        8.0,
-        15.0,
-    ]
     assert parse_numbers("temps -5, -3, 2") == [-5.0, -3.0, 2.0]
     assert parse_numbers("version2 build3 has 10 20 30") == [10.0, 20.0, 30.0]
     assert "Sum: 15" in analyze(parse_numbers("range 5-10"))
+
+
+def test_parse_numbers_ignores_dates_as_labels():
+    # Regression: a calendar date beside real values was read
+    # as three measurements, so "sales on 2026-11-27 were
+    # 10 20 30" reported count 6 with the year, month and day
+    # skewing every statistic. Plausible dates are labels and
+    # state no values; an implausible chain or a subtraction
+    # chain keeps its numbers.
+    assert parse_numbers("sales on 2026-11-27 were 10 20 30") == [10.0, 20.0, 30.0]
+    assert parse_numbers("sales on 27/11/2026 were 10 20 30") == [10.0, 20.0, 30.0]
+    assert parse_numbers("sales on 11/27/2026 were 10 20 30") == [10.0, 20.0, 30.0]
+    assert parse_numbers("sales on 11-27-2026 were 10 20 30") == [10.0, 20.0, 30.0]
+    assert "Count: 3" in analyze(parse_numbers("sales on 2026-11-27 were 10 20 30"))
+    assert parse_numbers("values 13/40/2026 5 10") == [13.0, 40.0, 2026.0, 5.0, 10.0]
+    assert parse_numbers("10-5-2 values 1 2 3") == [10.0, 5.0, 2.0, 1.0, 2.0, 3.0]
 
 
 def test_summarization_never_repeats_a_sentence():
@@ -437,3 +446,33 @@ def test_stem_word_matches_compound_and_classical_plurals():
         "what did the firemen rescue from the roof",
     )
     assert "fireman rescued the cat" in out
+
+
+def test_stem_word_matches_women_children_and_classical_plurals():
+    # Regression: compound -women plurals split from their
+    # singulars exactly as the -man compounds had, and
+    # classical plurals such as "radii" and "errata" landed
+    # on stems their singulars never produce, so a question
+    # about businesswomen or radii missed a document about a
+    # businesswoman or a radius.
+    assert stem_word("businesswomen") == stem_word("businesswoman") == "businesswoman"
+    assert stem_word("chairwomen") == stem_word("chairwoman") == "chairwoman"
+    assert stem_word("stepchildren") == stem_word("stepchild") == "stepchild"
+    assert stem_word("salespeople") == stem_word("salesperson") == "salesperson"
+    assert stem_word("radii") == stem_word("radius") == "radius"
+    assert stem_word("errata") == stem_word("erratum") == "erratum"
+    assert stem_word("codices") == stem_word("codex") == "codex"
+    assert stem_word("nebulae") == stem_word("nebula") == "nebula"
+    assert stem_word("wharves") == stem_word("wharf") == "wharf"
+    assert stem_word("lice") == stem_word("louse") == "louse"
+    out = answer_question(
+        "The businesswoman opened the bakery at dawn. "
+        "The library opens at nine in the morning.",
+        "when did the businesswomen open the bakery",
+    )
+    assert "businesswoman opened the bakery" in out
+    out = answer_question(
+        "The radius of the circle is five units. The square has four sides.",
+        "what is the radii of the circle",
+    )
+    assert "radius of the circle" in out
