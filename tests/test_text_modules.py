@@ -260,6 +260,31 @@ def test_stem_word_matches_o_and_suppletive_plurals():
     assert "hero saved the city" in out
 
 
+def test_stem_word_matches_ves_sis_and_doubled_z_plurals():
+    # Regression: f -> ves plurals beyond the first few stemmed
+    # to a trailing "e" the singular never produces ("loaves"
+    # -> "loave", "thieves" -> "thieve"), -sis plurals lost
+    # their ending ("oases" -> "oas", "parentheses" ->
+    # "parenthes"), the "oes" rule over-stripped "canoes" to
+    # "cano", and doubled-z plurals kept both letters
+    # ("quizzes" -> "quizz"), so questions using those plurals
+    # missed documents using the singulars.
+    assert stem_word("loaves") == stem_word("loaf") == "loaf"
+    assert stem_word("thieves") == stem_word("thief") == "thief"
+    assert stem_word("calves") == stem_word("calf") == "calf"
+    assert stem_word("selves") == stem_word("self") == "self"
+    assert stem_word("oases") == stem_word("oasis") == "oasis"
+    assert stem_word("parentheses") == stem_word("parenthesis") == "parenthesis"
+    assert stem_word("apices") == stem_word("apex") == "apex"
+    assert stem_word("canoes") == stem_word("canoe") == "canoe"
+    assert stem_word("quizzes") == stem_word("quiz") == "quiz"
+    out = answer_question(
+        "The thief took the loaf at dawn. The thief hid the loaf.",
+        "what did thieves do with loaves",
+    )
+    assert "thief took the loaf" in out
+
+
 def test_split_sentences_keeps_numeric_abbreviations_whole():
     # Regression: "No. 5", "Fig. 3", month abbreviations and
     # dotted acronyms split into fragments, so document Q&A

@@ -123,9 +123,14 @@ _MD5_RE = re.compile(r"\b[0-9a-fA-F]{32}\b")
 # trims the unbalanced trailing ones that belong to the
 # surrounding sentence instead.
 _URL_RE = re.compile(r"https?://[^\s\"'<>]+")
+# A stated severity arrives as "severity: high", "severity is
+# high" or "(high|high-)severity"; all three are recorded. The
+# copula form requires the level directly after "is"/"was", so
+# "severity is not high" states no level and records none.
 _SEVERITY_RE = re.compile(
     r"severity[:\s]+(critical|high|medium|low)\b"
-    r"|\b(critical|high|medium|low)\s+severity\b",
+    r"|severity\s+(?:is|was)\s+(critical|high|medium|low)\b"
+    r"|\b(critical|high|medium|low)[\s-]severity\b",
     re.IGNORECASE,
 )
 
@@ -248,11 +253,11 @@ def extract_indicators(prompt: str) -> dict[str, list[str]]:
 
 
 def parse_severity(prompt: str) -> str | None:
-    """Extract a stated severity ("severity: high" or "high
-    severity"), or None."""
+    """Extract a stated severity ("severity: high", "severity is
+    high", "high severity" or "high-severity"), or None."""
     match = _SEVERITY_RE.search(prompt)
     if match:
-        return (match.group(1) or match.group(2)).lower()
+        return next(group for group in match.groups() if group).lower()
     return None
 
 

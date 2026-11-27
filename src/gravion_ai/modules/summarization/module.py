@@ -46,21 +46,28 @@ _CLOSERS = "\"'”’)]"
 
 # Irregular plurals whose regular rules would land on a stem the
 # singular never produces: -sis plurals ("analyses" -> "analys"
-# while "analysis" stays whole), -ices plurals ("indices" ->
-# "indice"), f -> ves plurals ("lives" -> "live" while "life"
-# stays whole) and suppletive plurals ("children", "women"),
-# plus two common non-plurals the final-s rule would otherwise
-# mangle ("news" -> "new", "lens" -> "len").
+# while "analysis" stays whole, "oases" -> "oas"), -ices plurals
+# ("indices" -> "indice", "apices" -> "apice"), f -> ves plurals
+# ("lives" -> "live" while "life" stays whole, "loaves" ->
+# "loave"), the -oe plural the "oes" rule over-strips ("canoes"
+# -> "cano"), doubled-z plurals ("quizzes" -> "quizz" while
+# "quiz" keeps one z) and suppletive plurals ("children",
+# "women"), plus two common non-plurals the final-s rule would
+# otherwise mangle ("news" -> "new", "lens" -> "len").
 _IRREGULAR_STEMS = {
     "analyses": "analysis",
     "crises": "crisis",
     "theses": "thesis",
     "diagnoses": "diagnosis",
     "hypotheses": "hypothesis",
+    "oases": "oasis",
+    "parentheses": "parenthesis",
     "indices": "index",
     "matrices": "matrix",
     "vertices": "vertex",
     "appendices": "appendix",
+    "apices": "apex",
+    "vortices": "vortex",
     "cacti": "cactus",
     "fungi": "fungus",
     "lives": "life",
@@ -70,6 +77,17 @@ _IRREGULAR_STEMS = {
     "knives": "knife",
     "halves": "half",
     "shelves": "shelf",
+    "loaves": "loaf",
+    "thieves": "thief",
+    "calves": "calf",
+    "scarves": "scarf",
+    "dwarves": "dwarf",
+    "selves": "self",
+    "elves": "elf",
+    "canoes": "canoe",
+    "quizzes": "quiz",
+    "whizzes": "whiz",
+    "fezzes": "fez",
     "children": "child",
     "men": "man",
     "women": "woman",

@@ -160,6 +160,13 @@ def test_extract_indicators_hash_lengths_do_not_overlap():
         ("severity: high — IDS alert", "high"),
         ("Severity: Critical, host isolated", "critical"),
         ("an alert of medium severity: noted", "medium"),
+        # Regression: hyphenated and copula forms state a level
+        # just as plainly, but were recorded as not stated.
+        ("a high-severity alert on the host", "high"),
+        ("severity is critical for this host", "critical"),
+        ("severity was low, now closed", "low"),
+        # A negated level states no severity; never guess one.
+        ("severity is not high, just noisy", None),
         ("a routine alert", None),
     ],
 )
