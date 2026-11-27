@@ -6,7 +6,7 @@
     "entrypoint": "gravion_ai.modules.translation.module:TranslationModule",
     "files": {
       "__init__.py": "52055d5c5b6048d3ef11d270a0f1a1d9c5aafa73e564b4e2ae681800fb19290f",
-      "module.py": "075042dab5895cfead3ffddc0f3d9a0cfe449da35c2de726ee6153c696a9740b"
+      "module.py": "e451f95515b630cda9d06b2133a3bcc7d6bf8a01717631db259d3016d6e5595c"
     }
   },
   "signature": "",

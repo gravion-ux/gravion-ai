@@ -194,7 +194,7 @@ def default_registry() -> ModuleRegistry:
         ModuleManifest(
             name="image",
             type=ModuleType.IMAGE,
-            version="0.1.0",
+            version="0.2.0",
             entrypoint="gravion_ai.modules.image.module:ImageModule",
             description="Image generation and editing: turns a request into a structured brief for Gravion Vision.",
             status=ModuleStatus.IMPLEMENTED,

@@ -6,7 +6,7 @@
     "entrypoint": "gravion_ai.modules.music.module:MusicModule",
     "files": {
       "__init__.py": "96d9e8fef55233dfeededa2677f7752f0fb03c5f242abf4451b8d18036f3bc7f",
-      "module.py": "cee4cc32bbc5abbf7e885222fa5db9f361fd3619a95118a83fc3bfaed1374adf"
+      "module.py": "1b5eff6a9a73a3582593e37545b0b47ee94fc00a573afe528427c1fd881dfb8c"
     }
   },
   "signature": "",
