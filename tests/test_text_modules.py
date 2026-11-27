@@ -60,6 +60,20 @@ def test_translation_module_paths():
     )
     assert "namaste" in guidance
     assert "outside my Gravion phrasebook" not in guidance
+    # The say-in-language shape names its text the same way:
+    # covered text translates from the phrasebook, while a
+    # description stays with the resolved model.
+    assert "dhanyavaad" in _run(
+        "translation", "gravion-translate", "how do you say thank you in hindi"
+    )
+    assert _run(
+        "translation", "gravion-translate", "how do you say shukriya in english"
+    ) == "thank you"
+    say_guidance = _run(
+        "translation", "gravion-translate", "how do you say a greeting in hindi"
+    )
+    assert "outside my Gravion phrasebook" not in say_guidance
+    assert "how do you say a greeting in hindi" in say_guidance
 
 
 def test_translation_accepts_devanagari_hindi_input():

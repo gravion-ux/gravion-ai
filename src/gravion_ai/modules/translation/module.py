@@ -194,6 +194,18 @@ _TO_ENGLISH_THIS_RE = re.compile(
     re.IGNORECASE | re.DOTALL,
 )
 _TRANSLATE_RE = re.compile(r"translate\s*:\s*(.+)", re.IGNORECASE | re.DOTALL)
+# "How do you say thank you in hindi" names the text between
+# "say" and the language; without this shape the request fell
+# through to the model even when the phrasebook covers the
+# text exactly. Coverage-gated in run() like the other
+# colon-less forms, so a description ("how do you say a
+# greeting in hindi") stays with the resolved model.
+_SAY_IN_HINDI_RE = re.compile(
+    r"how do you say\s+(.+?)\s+in\s+hindi\b", re.IGNORECASE | re.DOTALL
+)
+_SAY_IN_ENGLISH_RE = re.compile(
+    r"how do you say\s+(.+?)\s+in\s+english\b", re.IGNORECASE | re.DOTALL
+)
 
 
 # The phrasebook keys are expanded forms ("i do not understand",
@@ -356,6 +368,12 @@ class TranslationModule:
             and _normalize(match.group(1)) not in {"this", "that", "it"}
             and _phrasebook_covers(match.group(1), to_hindi=False)
         ):
+            return translate_phrase(match.group(1), to_hindi=False)
+        match = _SAY_IN_HINDI_RE.search(prompt)
+        if match and _phrasebook_covers(match.group(1), to_hindi=True):
+            return translate_phrase(match.group(1), to_hindi=True)
+        match = _SAY_IN_ENGLISH_RE.search(prompt)
+        if match and _phrasebook_covers(match.group(1), to_hindi=False):
             return translate_phrase(match.group(1), to_hindi=False)
         match = _TRANSLATE_RE.search(prompt)
         if match:

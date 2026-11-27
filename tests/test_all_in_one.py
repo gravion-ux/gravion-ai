@@ -142,6 +142,11 @@ def test_parse_route_infers_clear_intent(prompt, expected_module):
         ("translate: hello", "translation"),
         ("translate to hindi: hello", "translation"),
         ("translate into english: namaste", "translation"),
+        # The say-in-language shape carries no translate verb,
+        # so it scored one intent point and fell through to
+        # chat; the translation module coverage-gates its text.
+        ("how do you say thank you in hindi", "translation"),
+        ("how do you say shukriya in english", "translation"),
     ],
 )
 def test_parse_route_structural_markers_are_decisive(prompt, expected_module):

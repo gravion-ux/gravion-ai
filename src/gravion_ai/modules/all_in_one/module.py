@@ -208,6 +208,15 @@ _TRANSLATE_PREFIX_RE = re.compile(
     r"^\s*translate\s*(?::|\s+(?:to|into|in)\s+(?:hindi|english)\s*:)",
     re.IGNORECASE,
 )
+# "How do you say thank you in hindi" is the translation
+# module's say-in-language shape; it carries no translate verb,
+# so the intent signal scored it one point (the language noun)
+# and it fell through to chat. The module coverage-gates the
+# text itself, so routing the shape there is safe.
+_SAY_IN_LANGUAGE_RE = re.compile(
+    r"^\s*how do you say\s+.+\s+in\s+(?:hindi|english)\b",
+    re.IGNORECASE | re.DOTALL,
+)
 
 
 def infer_route(prompt: str) -> str:
@@ -232,6 +241,8 @@ def infer_route(prompt: str) -> str:
     if _SUMMARIZE_PREFIX_RE.match(prompt):
         return "summarization"
     if _TRANSLATE_PREFIX_RE.match(prompt):
+        return "translation"
+    if _SAY_IN_LANGUAGE_RE.match(prompt):
         return "translation"
     # A negated verb cancels its module: "do not draw a logo"
     # asks for an explanation, not an image, yet the bare

@@ -166,6 +166,45 @@ def test_governing_negators_still_suppress_escalation(prompt):
     assert not needs_human(prompt)
 
 
+@pytest.mark.parametrize(
+    "prompt",
+    [
+        # Regression: a lowercase name introduction escalated
+        # ("call me priyanshu"), a negator after the phrase
+        # ("a human is not needed") never cancelled it, and
+        # topic phrases ("human-like", "ai agent", "account
+        # manager") read as requests for a person.
+        "you can call me priyanshu",
+        "a human is not needed, just answer here",
+        "human not needed thanks",
+        "does the voice sound human-like?",
+        "how does the ai agent work?",
+        "my account manager sent an invoice",
+    ],
+)
+def test_introductions_postposed_negations_and_topics_do_not_escalate(prompt):
+    assert not needs_human(prompt)
+
+
+@pytest.mark.parametrize(
+    "prompt",
+    [
+        # Guards for the fixes above: phone-request words after
+        # "call me" and "not a bot" after a real request still
+        # escalate, and explicit person requests the phrase
+        # list used to miss now hand over.
+        "please call me tomorrow",
+        "call me at 5pm",
+        "I want a human, not a bot",
+        "speak to a live person",
+        "I want to speak to a representative",
+        "can I talk to someone about my order",
+    ],
+)
+def test_phone_requests_and_person_requests_still_escalate(prompt):
+    assert needs_human(prompt)
+
+
 def test_support_runtime_dev_end_to_end(make_config):
     runtime = GravionRuntime(make_config(mode="development"))
     out = runtime.support("how do I change my plan?")
