@@ -172,6 +172,13 @@ def test_extract_indicators_hash_lengths_do_not_overlap():
         ("severity=high — IDS alert", "high"),
         ("severity: moderate — IDS alert", "moderate"),
         ("a moderate severity alert on the host", "moderate"),
+        # A parenthesised level, a copula with a short noun
+        # phrase in between, and the informational level state
+        # a severity just as plainly.
+        ("severity (high) — IDS alert", "high"),
+        ("severity of the finding is high, host isolated", "high"),
+        ("severity: informational — IDS alert", "informational"),
+        ("an info severity note on the host", "info"),
         # A negated level states no severity; never guess one.
         ("severity is not high, just noisy", None),
         ("severity level is not high, just noisy", None),

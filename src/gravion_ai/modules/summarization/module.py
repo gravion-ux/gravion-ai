@@ -158,6 +158,46 @@ _IRREGULAR_STEMS = {
     "media": "medium",
     "hooves": "hoof",
     "dice": "die",
+    # Compound -man plurals and the -child compound: no suffix
+    # rule reaches them ("firemen" ends in no "s"), so a
+    # question about firemen missed a document about a
+    # fireman. Listed, not ruled: a blanket men -> man rule
+    # would mangle singulars such as "specimen" and "omen".
+    "firemen": "fireman",
+    "policemen": "policeman",
+    "businessmen": "businessman",
+    "chairmen": "chairman",
+    "spokesmen": "spokesman",
+    "congressmen": "congressman",
+    "salesmen": "salesman",
+    "workmen": "workman",
+    "fishermen": "fisherman",
+    "craftsmen": "craftsman",
+    "statesmen": "statesman",
+    "postmen": "postman",
+    "mailmen": "mailman",
+    "snowmen": "snowman",
+    "gentlemen": "gentleman",
+    "sportsmen": "sportsman",
+    "guardsmen": "guardsman",
+    "servicemen": "serviceman",
+    "tradesmen": "tradesman",
+    "watchmen": "watchman",
+    "laymen": "layman",
+    "clergymen": "clergyman",
+    "journeymen": "journeyman",
+    "grandchildren": "grandchild",
+    # Classical -i/-ae plurals and the variant "busses" the
+    # ss rule lands on "buss", a stem "bus" never produces.
+    "stimuli": "stimulus",
+    "alumni": "alumnus",
+    "octopi": "octopus",
+    "vertebrae": "vertebra",
+    "formulae": "formula",
+    "larvae": "larva",
+    "antennae": "antenna",
+    "millennia": "millennium",
+    "busses": "bus",
 }
 
 

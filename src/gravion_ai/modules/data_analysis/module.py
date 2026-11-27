@@ -50,10 +50,40 @@ _DOTTED_SEQUENCE_RE = re.compile(r"\d+(?:\.\d+){2,}")
 # dotted labels above.
 _MACHINE_LITERAL_RE = re.compile(r"\b0[xX][0-9a-fA-F]+\b|\b0[bB][01]+\b|\b0[oO][0-7]+\b")
 
+# A fraction ("1/2") is one value, not the phantom pair 1 and
+# 2 the number pattern read from it, and a mixed number
+# ("1 1/2") is one value too. Fractions are folded to their
+# decimal value before parsing. The slash guards keep a
+# slash-date chain ("27/11/2026") out: neither half of the
+# chain is a standalone fraction. A zero denominator states
+# no value at all, so it is blanked instead of read as 1 and 0.
+_MIXED_FRACTION_RE = re.compile(
+    r"(?<![0-9/])(\d+)\s+(\d+)\s*/\s*(\d+)(?![0-9/])"
+)
+_FRACTION_RE = re.compile(r"(?<![0-9/])(\d+)\s*/\s*(\d+)(?![0-9/])")
+
+
+def _fold_mixed_fraction(match: re.Match[str]) -> str:
+    whole, numerator, denominator = (int(group) for group in match.groups())
+    if denominator == 0 or numerator >= denominator:
+        # Not a mixed number: leave the text for the plain
+        # fraction fold (or blanking) below.
+        return match.group(0)
+    return repr(whole + numerator / denominator)
+
+
+def _fold_fraction(match: re.Match[str]) -> str:
+    numerator, denominator = (int(group) for group in match.groups())
+    if denominator == 0:
+        return " "
+    return repr(numerator / denominator)
+
 
 def parse_numbers(prompt: str) -> list[float]:
     cleaned = _MACHINE_LITERAL_RE.sub(" ", prompt)
     cleaned = _DOTTED_SEQUENCE_RE.sub(" ", cleaned)
+    cleaned = _MIXED_FRACTION_RE.sub(_fold_mixed_fraction, cleaned)
+    cleaned = _FRACTION_RE.sub(_fold_fraction, cleaned)
     return [
         float(m.replace(",", "").replace("_", ""))
         for m in _NUMBER_RE.findall(cleaned)

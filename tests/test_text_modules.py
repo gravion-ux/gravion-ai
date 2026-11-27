@@ -403,3 +403,37 @@ def test_translation_expands_contractions_to_phrasebook_forms():
     assert translate_phrase("let's start", True).startswith("chaliye shuru")
     assert translate_phrase("i'm fine", True).startswith("main theek")
     assert "outside my Gravion phrasebook" in translate_phrase("don't worry", True)
+
+
+def test_parse_numbers_reads_fractions_as_single_values():
+    # Regression: a fraction "1/2" was read as the phantom pair
+    # 1 and 2, so "1/2, 1/4, 3/4" reported count 6 and a mean
+    # over numerators and denominators. A fraction is one
+    # value, a mixed number is one value, and a zero
+    # denominator states no value at all.
+    assert parse_numbers("values 1/2, 1/4, 3/4") == [0.5, 0.25, 0.75]
+    assert parse_numbers("values 1 1/2, 2 1/2, 3") == [1.5, 2.5, 3.0]
+    assert parse_numbers("values 5/4, 3/2") == [1.25, 1.5]
+    assert parse_numbers("values 1/0, 5, 10") == [5.0, 10.0]
+    assert "Sum: 1.5" in analyze(parse_numbers("values 1/2, 1/4, 3/4"))
+
+
+def test_stem_word_matches_compound_and_classical_plurals():
+    # Regression: compound -man plurals end in no "s", so no
+    # suffix rule reached them and a question about firemen
+    # missed a document about a fireman. They are listed (a
+    # blanket men -> man rule would mangle "specimen"), along
+    # with classical -i/-ae plurals and the variant "busses".
+    assert stem_word("firemen") == stem_word("fireman") == "fireman"
+    assert stem_word("policemen") == stem_word("policeman") == "policeman"
+    assert stem_word("grandchildren") == stem_word("grandchild") == "grandchild"
+    assert stem_word("stimuli") == stem_word("stimulus") == "stimulus"
+    assert stem_word("vertebrae") == stem_word("vertebra") == "vertebra"
+    assert stem_word("busses") == stem_word("bus") == "bus"
+    assert stem_word("specimen") == "specimen"
+    out = answer_question(
+        "The fireman rescued the cat from the roof. "
+        "The policeman directed traffic at the corner.",
+        "what did the firemen rescue from the roof",
+    )
+    assert "fireman rescued the cat" in out

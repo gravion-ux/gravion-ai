@@ -130,11 +130,18 @@ _URL_RE = re.compile(r"https?://[^\s\"'<>]+")
 # "-" separator ("severity=high"), and "moderate" is recorded
 # verbatim as the level it states. The copula form requires
 # the level directly after "is"/"was"/"of", so "severity is
-# not high" states no level and records none.
+# not high" states no level and records none. A parenthesised
+# level ("severity (high)") and a copula with a short noun
+# phrase in between ("severity of the finding is high") state
+# a level just as plainly, and "informational"/"info" are
+# recorded verbatim as the levels they state.
+_LEVEL = r"(critical|high|medium|moderate|low|informational|info)"
 _SEVERITY_RE = re.compile(
-    r"severity(?:\s+level)?[\s:=\-]+(critical|high|medium|moderate|low)\b"
-    r"|severity(?:\s+level)?\s+(?:is|was|of)\s+(critical|high|medium|moderate|low)\b"
-    r"|\b(critical|high|medium|moderate|low)[\s-]severity\b",
+    r"severity(?:\s+level)?[\s:=\-]+" + _LEVEL + r"\b"
+    r"|severity(?:\s+level)?\s+(?:is|was|of)\s+" + _LEVEL + r"\b"
+    r"|severity\s+of\s+(?:the\s+)?\w+\s+(?:is|was)\s+" + _LEVEL + r"\b"
+    r"|severity(?:\s+level)?\s*\(\s*" + _LEVEL + r"\s*\)"
+    r"|\b" + _LEVEL + r"[\s-]severity\b",
     re.IGNORECASE,
 )
 
