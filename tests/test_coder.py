@@ -83,6 +83,20 @@ def test_coder_instantiates_and_answers():
         ("can you explain the code review process to me", TASK_EXPLAIN),
         ("please do a code review and explain the issues", TASK_REVIEW),
         ("reviewing my code would help", TASK_REVIEW),
+        # Regression: explanation questions in the return /
+        # doing / walk-through shapes fell through to
+        # generation, so a question about existing code was
+        # answered with new code instead of an explanation.
+        ("what does this function return?", TASK_EXPLAIN),
+        ("what does this code output?", TASK_EXPLAIN),
+        ("what will this function print?", TASK_EXPLAIN),
+        ("what is this code doing?", TASK_EXPLAIN),
+        ("tell me what this code does", TASK_EXPLAIN),
+        ("walk me through this code", TASK_EXPLAIN),
+        ("walk through this function", TASK_EXPLAIN),
+        # A generation opener still wins over the new
+        # explanation shapes it happens to contain.
+        ("write a function that returns the total", TASK_GENERATE),
     ],
 )
 def test_detect_task(prompt, expected):

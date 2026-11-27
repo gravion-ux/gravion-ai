@@ -24,10 +24,9 @@ import math
 import re
 
 from ...registry import ModuleContext, ModuleManifest
-from ..summarization.module import stem_word
+from ..summarization.module import stem_word, word_tokens
 
 _BUCKETS = 4096
-_TOKEN_RE = re.compile(r"[a-z0-9]+")
 _STOP = frozenset(
     "a an the and or but of at by for with is are was were be been "
     "do does did what when where who whom which why how can could "
@@ -39,9 +38,7 @@ def _tokens(text: str) -> list[str]:
     # Stem so a query for "cats" matches a passage about a "cat":
     # without it the two forms hash to different buckets and the
     # relevant passage scores zero.
-    return [
-        stem_word(t) for t in _TOKEN_RE.findall(text.lower()) if t not in _STOP
-    ]
+    return [stem_word(t) for t in word_tokens(text) if t not in _STOP]
 
 
 def embed(text: str) -> dict[int, float]:

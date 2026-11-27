@@ -92,8 +92,23 @@ _EXPLAIN_RES = (
         + _CODE_OBJECT
         + r"\b"
     ),
-    re.compile(r"\bwhat does (?:this|the|it)\b[^.?!]*\b(?:do|mean)\b"),
+    # "What does this function return?" asks what the code
+    # does just as plainly as "...do?": with only do/mean the
+    # return/output forms fell through to generation, so a
+    # question about existing code was answered with new
+    # code. The same holds for the "what is this code
+    # doing?", "what this code does" and "walk me through
+    # this code" shapes.
+    re.compile(
+        r"\bwhat does (?:this|the|it)\b[^.?!]*\b(?:do|mean|return|output|produce)\b"
+    ),
+    re.compile(
+        r"\bwhat (?:will|would) (?:this|the|it)\b[^.?!]*\b(?:output|return|produce|print)\b"
+    ),
+    re.compile(r"\bwhat is (?:this|the|it)\b[^.?!]*\bdoing\b"),
+    re.compile(r"\bwhat (?:this|the|it)\b[^.?!]*\b(?:does|do)\b"),
     re.compile(r"\bhow does (?:this|the|it)\b[^.?!]*\bwork\b"),
+    re.compile(r"\bwalk\b[^.?!]*\bthrough\b[^.?!]*\b" + _CODE_OBJECT + r"\b"),
 )
 
 

@@ -6,7 +6,12 @@ fall through to the resolved specialist model."""
 from gravion_ai.modules.data_analysis.module import analyze, parse_numbers
 from gravion_ai.modules.document_qa.module import answer_question
 from gravion_ai.modules.retrieval.module import rank_passages
-from gravion_ai.modules.summarization.module import split_sentences, stem_word, summarize
+from gravion_ai.modules.summarization.module import (
+    split_sentences,
+    stem_word,
+    summarize,
+    word_tokens,
+)
 from gravion_ai.modules.translation.module import translate_phrase
 from gravion_ai.providers import GravionCoreProvider
 from gravion_ai.registry import ModuleContext, default_registry
@@ -141,6 +146,39 @@ def test_retrieval_ranks_relevant_passage_first():
         "passage: Cats groom themselves with their tongues.",
     )
     assert out.splitlines()[1].endswith("Cats groom themselves with their tongues.")
+
+
+def test_text_modules_handle_hindi_devanagari_text():
+    # Regression: the text modules tokenized with an ASCII-only
+    # pattern and split sentences only on ".!?", so Hindi text
+    # broke end to end — "बिल्ली" split into single letters, a
+    # Hindi question matched no Hindi sentence, Hindi retrieval
+    # scored every passage zero, and the danda "।" never ended
+    # a sentence, so a Hindi summary returned the whole text.
+    assert word_tokens("बिल्ली café") == ["बिल्ली", "café"]
+    assert split_sentences("बिल्ली सोती है। कुत्ता भौंकता है।") == [
+        "बिल्ली सोती है।",
+        "कुत्ता भौंकता है।",
+    ]
+    out = answer_question(
+        "बिल्ली चटाई पर बैठी है। कुत्ता बगीचे में खेल रहा है।",
+        "बिल्ली कहाँ बैठी है?",
+    )
+    assert "बिल्ली चटाई पर बैठी है" in out
+    assert "कुत्ता" not in out
+    ranked = rank_passages(
+        "बिल्ली कहाँ है",
+        ["कुत्ता बगीचे में है", "बिल्ली चटाई पर है"],
+    )
+    assert ranked[0][1] == "बिल्ली चटाई पर है"
+    assert ranked[0][0] > ranked[1][0]
+    summary = summarize(
+        "बिल्ली चटाई पर बैठी है। बिल्ली दूध पीती है। "
+        "कुत्ता बगीचे में खेलता है। बिल्ली सोती है। पक्षी उड़ता है।",
+        max_sentences=2,
+    )
+    assert summary.count("।") == 2
+    assert "बिल्ली" in summary
 
 
 def test_data_analysis_computes_statistics():

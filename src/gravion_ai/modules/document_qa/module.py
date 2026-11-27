@@ -18,7 +18,7 @@ from __future__ import annotations
 import re
 
 from ...registry import ModuleContext, ModuleManifest
-from ..summarization.module import split_sentences, stem_word
+from ..summarization.module import split_sentences, stem_word, word_tokens
 
 _STOP = frozenset(
     "a an the and or but of at by for with is are was were be been "
@@ -28,11 +28,7 @@ _STOP = frozenset(
 
 
 def _terms(text: str) -> set[str]:
-    return {
-        stem_word(w)
-        for w in re.findall(r"[a-z0-9]+", text.lower())
-        if w not in _STOP
-    }
+    return {stem_word(w) for w in word_tokens(text) if w not in _STOP}
 
 
 def answer_question(document: str, question: str, max_sentences: int = 2) -> str:

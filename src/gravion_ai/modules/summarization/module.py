@@ -10,6 +10,7 @@ Summary), whose trained weights cover summarization guidance.
 from __future__ import annotations
 
 import re
+import unicodedata
 from collections import Counter
 
 from ...registry import ModuleContext, ModuleManifest
@@ -294,6 +295,32 @@ _IRREGULAR_STEMS = {
 }
 
 
+def word_tokens(text: str) -> list[str]:
+    """Lowercased word tokens for the text modules.
+
+    A token is a run of letters, digits and combining marks,
+    so a Devanagari word ("बिल्ली", whose vowel signs are
+    combining marks) and an accented word ("café") each stay
+    one token. The ASCII-only pattern this replaces split
+    "बिल्ली" into single letters and "café" into "caf", so a
+    Hindi question matched no Hindi sentence and Hindi
+    retrieval scored every passage zero. Punctuation such as
+    the Hindi danda "।" ends a token instead of gluing to
+    the word before it.
+    """
+    tokens: list[str] = []
+    current: list[str] = []
+    for char in text.lower():
+        if char.isalnum() or unicodedata.category(char).startswith("M"):
+            current.append(char)
+        elif current:
+            tokens.append("".join(current))
+            current = []
+    if current:
+        tokens.append("".join(current))
+    return tokens
+
+
 def stem_word(word: str) -> str:
     """Light plural stemmer shared by the text modules.
 
@@ -358,7 +385,11 @@ def split_sentences(text: str) -> list[str]:
 
     A dot between two digits is a decimal point, not a sentence
     boundary, and abbreviation dots ("Dr.", "e.g.") do not end a
-    sentence either. Text after the last terminator is kept as its
+    sentence either. The Hindi danda ("।", and its double form
+    "॥") ends a sentence like a full stop: without it a Hindi
+    text read as one sentence, so summarization returned it
+    whole and document Q&A quoted all of it as one answer.
+    Text after the last terminator is kept as its
     own sentence instead of being silently dropped, so callers that
     quote sentences (document Q&A) can still find an answer in a
     final line that has no closing punctuation.
@@ -371,7 +402,7 @@ def split_sentences(text: str) -> list[str]:
     index = 0
     while index < len(stripped):
         char = stripped[index]
-        if char in ".!?":
+        if char in ".!?।॥":
             if char == ".":
                 # Decimal point: "3.14" stays inside its sentence.
                 if (
@@ -430,18 +461,12 @@ def summarize(text: str, max_sentences: int = 3) -> str:
     # Stem before counting so singular and plural forms of a word
     # ("cat"/"cats") share one frequency instead of splitting it.
     words = [
-        stem_word(w)
-        for w in re.findall(r"[a-z0-9]+", " ".join(sentences).lower())
-        if w not in _STOP
+        stem_word(w) for w in word_tokens(" ".join(sentences)) if w not in _STOP
     ]
     freq = Counter(words)
     scored: list[tuple[float, int]] = []
     for index, sentence in enumerate(sentences):
-        terms = [
-            stem_word(w)
-            for w in re.findall(r"[a-z0-9]+", sentence.lower())
-            if w not in _STOP
-        ]
+        terms = [stem_word(w) for w in word_tokens(sentence) if w not in _STOP]
         if not terms:
             continue
         score = sum(freq[w] for w in terms) / len(terms)
