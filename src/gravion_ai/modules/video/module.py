@@ -77,15 +77,62 @@ _EDIT_PREFIXES = (
     "please modify",
 )
 
+# An edit verb aimed at a video anywhere in the request asks
+# for an edit just as plainly as the prefixes above: "can you
+# edit this video" and "edit my video please" fell through to
+# generation, so an edit request was answered with a new
+# video. "Trim"/"cut"/"shorten" name the same task when they
+# govern a video noun through a determiner ("trim the intro",
+# "cut this clip shorter"); without one, "cut" is as often a
+# noun ("a director's cut video") as a verb. The pronoun form
+# ("can you edit this please") counts for edit/modify.
+_VIDEO_OBJECT = r"(?:video|clip|reel|footage|intro|ending|demo)"
+_EDIT_RES = (
+    re.compile(
+        r"\b(?:edit|modify)\b[^.?!]*\b" + _VIDEO_OBJECT + r"\b"
+    ),
+    re.compile(
+        r"\b(?:trim|cut|shorten)\b[^.?!]*\b(?:this|the|my|that)\s+"
+        r"(?:\w+\s+)?" + _VIDEO_OBJECT + r"\b"
+    ),
+    re.compile(r"\b(?:edit|modify|trim|cut)\s+(?:this|that|it)\b"),
+)
+
+# A negated edit verb asks for a new video ("do not edit this
+# video, make a new one"), so a negator governing the verb in
+# its clause cancels it — the same guard the coder module
+# gives its task verbs. Commas break clauses, so "do not
+# generate, edit this video" still edits.
+_NEGATOR_RE = re.compile(r"(?:\bno\b|\bnot\b|\bnever\b|\bwithout\b|n't\b)")
+_CLAUSE_BREAKS = ".!?;,"
+_NEGATION_WINDOW_WORDS = 4
+
+
+def _is_negated(text: str, match_start: int) -> bool:
+    clause_start = (
+        max(text.rfind(break_char, 0, match_start) for break_char in _CLAUSE_BREAKS)
+        + 1
+    )
+    words = text[clause_start:match_start].split()
+    tail = " ".join(words[-_NEGATION_WINDOW_WORDS:])
+    return bool(tail) and _NEGATOR_RE.search(tail) is not None
+
 # Named shapes, in the order they are checked. An explicit pixel
 # size or ratio in the request beats every named shape. Portrait
-# video is vertical: 9:16, not the still-image 3:4.
+# video is vertical: 9:16, not the still-image 3:4. Shapes match
+# on word boundaries, and a negated shape ("not vertical,
+# landscape please") is the shape the request rules out, so a
+# negator governing the shape in its clause cancels it — the
+# same guard the music module gives its kinds.
 _SHAPES = (
     ("square", "1:1"),
     ("vertical", "9:16"),
     ("portrait", "9:16"),
     ("landscape", "16:9"),
     ("banner", "21:9"),
+)
+_SHAPE_RES = tuple(
+    (re.compile(rf"\b{shape}s?\b"), ratio) for shape, ratio in _SHAPES
 )
 
 # "800 by 600" states a pixel size just as "800x600" does.
@@ -120,6 +167,10 @@ def detect_mode(prompt: str) -> str:
     text = prompt.strip().lower()
     if text.startswith(_EDIT_PREFIXES):
         return MODE_EDIT
+    for pattern in _EDIT_RES:
+        for match in pattern.finditer(text):
+            if not _is_negated(text, match.start()):
+                return MODE_EDIT
     return MODE_GENERATE
 
 
@@ -138,9 +189,10 @@ def parse_aspect(prompt: str) -> str | None:
     if ratio:
         return ratio
     text = prompt.lower()
-    for shape, ratio in _SHAPES:
-        if shape in text:
-            return ratio
+    for pattern, ratio in _SHAPE_RES:
+        for match in pattern.finditer(text):
+            if not _is_negated(text, match.start()):
+                return ratio
     return None
 
 

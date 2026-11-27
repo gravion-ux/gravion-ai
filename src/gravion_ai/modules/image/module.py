@@ -67,13 +67,60 @@ _EDIT_PREFIXES = (
     "please modify",
 )
 
+# An edit verb aimed at an image anywhere in the request asks
+# for an edit just as plainly as the prefixes above: "can you
+# edit this image", "edit my image" and "could you modify this
+# picture" all fell through to generation, so an edit request
+# was answered with a new image. "Change"/"retouch"/"adjust"
+# aimed at an image noun ("change this photo background",
+# "retouch this portrait") name the same task. The pronoun
+# form ("can you edit this please") counts for edit/modify.
+_IMAGE_OBJECT = (
+    r"(?:image|photo|picture|portrait|logo|banner|poster|icon|shot)"
+)
+_EDIT_RES = (
+    re.compile(
+        r"\b(?:edit|modify|change|retouch|adjust)\b[^.?!]*\b"
+        + _IMAGE_OBJECT
+        + r"\b"
+    ),
+    re.compile(r"\b(?:edit|modify)\s+(?:this|that|it)\b"),
+)
+
+# A negated edit verb asks for a new image ("do not edit this
+# image, draw a new one"), so a negator governing the verb in
+# its clause cancels it — the same guard the coder module
+# gives its task verbs. Commas break clauses, so "do not
+# draw, edit this image" still edits.
+_NEGATOR_RE = re.compile(r"(?:\bno\b|\bnot\b|\bnever\b|\bwithout\b|n't\b)")
+_CLAUSE_BREAKS = ".!?;,"
+_NEGATION_WINDOW_WORDS = 4
+
+
+def _is_negated(text: str, match_start: int) -> bool:
+    clause_start = (
+        max(text.rfind(break_char, 0, match_start) for break_char in _CLAUSE_BREAKS)
+        + 1
+    )
+    words = text[clause_start:match_start].split()
+    tail = " ".join(words[-_NEGATION_WINDOW_WORDS:])
+    return bool(tail) and _NEGATOR_RE.search(tail) is not None
+
 # Named shapes, in the order they are checked. An explicit pixel
-# size or ratio in the request beats every named shape.
+# size or ratio in the request beats every named shape. Shapes
+# match on word boundaries (a shape buried inside a longer word
+# is not a shape request), and a negated shape ("not square,
+# make it landscape") is the shape the request rules out, so a
+# negator governing the shape in its clause cancels it — the
+# same guard the music module gives its kinds.
 _SHAPES = (
     ("square", "1:1"),
     ("portrait", "3:4"),
     ("landscape", "16:9"),
     ("banner", "21:9"),
+)
+_SHAPE_RES = tuple(
+    (re.compile(rf"\b{shape}s?\b"), ratio) for shape, ratio in _SHAPES
 )
 
 # "800 by 600" states a pixel size just as "800x600" does.
@@ -105,6 +152,10 @@ def detect_mode(prompt: str) -> str:
     text = prompt.strip().lower()
     if text.startswith(_EDIT_PREFIXES):
         return MODE_EDIT
+    for pattern in _EDIT_RES:
+        for match in pattern.finditer(text):
+            if not _is_negated(text, match.start()):
+                return MODE_EDIT
     return MODE_GENERATE
 
 
@@ -123,9 +174,10 @@ def parse_aspect(prompt: str) -> str | None:
     if ratio:
         return ratio
     text = prompt.lower()
-    for shape, ratio in _SHAPES:
-        if shape in text:
-            return ratio
+    for pattern, ratio in _SHAPE_RES:
+        for match in pattern.finditer(text):
+            if not _is_negated(text, match.start()):
+                return ratio
     return None
 
 

@@ -52,6 +52,18 @@ def test_image_instantiates_and_answers():
         ("a portrait of our founder", MODE_GENERATE),
         ("generate a banner for the launch", MODE_GENERATE),
         ("draw a square icon for settings", MODE_GENERATE),
+        # Regression: an edit verb aimed at an image anywhere in
+        # the request fell through to generation, so an edit
+        # request was answered with a new image.
+        ("can you edit this image please", MODE_EDIT),
+        ("edit my image to remove the watermark", MODE_EDIT),
+        ("could you modify this picture", MODE_EDIT),
+        ("change this photo background to a beach", MODE_EDIT),
+        ("retouch this portrait please", MODE_EDIT),
+        ("can you edit this please", MODE_EDIT),
+        # A negated edit verb asks for a new image instead.
+        ("do not edit this image, draw a new one", MODE_GENERATE),
+        ("never modify this photo, generate a fresh one", MODE_GENERATE),
     ],
 )
 def test_detect_mode(prompt, expected):
@@ -80,6 +92,12 @@ def test_detect_mode(prompt, expected):
         ("a photo at 10:30", None),
         ("a 1:30 exposure", None),
         ("a logo for our app", None),
+        # Regression: a negated shape is the shape the request
+        # rules out; the first non-negated shape governs.
+        ("not square, make it landscape", "16:9"),
+        ("landscape not portrait", "16:9"),
+        ("a banner, not a square", "21:9"),
+        ("not square at all", None),
     ],
 )
 def test_parse_aspect(prompt, expected):

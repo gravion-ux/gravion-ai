@@ -86,6 +86,18 @@ def test_video_instantiates_and_answers():
         ("a teaser for our app launch", MODE_GENERATE),
         ("make a vertical video for the launch", MODE_GENERATE),
         ("generate a product demo", MODE_GENERATE),
+        # Regression: an edit verb aimed at a video anywhere in
+        # the request fell through to generation, so an edit
+        # request was answered with a new video.
+        ("can you edit this video please", MODE_EDIT),
+        ("edit my video to remove the watermark", MODE_EDIT),
+        ("cut this clip shorter please", MODE_EDIT),
+        ("please trim the intro", MODE_EDIT),
+        ("shorten this video a little", MODE_EDIT),
+        # "Cut" without a determiner is a noun, not an edit verb.
+        ("make a director's cut video for the launch", MODE_GENERATE),
+        # A negated edit verb asks for a new video instead.
+        ("do not edit this video, make a new one", MODE_GENERATE),
     ],
 )
 def test_detect_mode(prompt, expected):
@@ -142,6 +154,11 @@ def test_parse_duration(prompt, expected):
         ("a 1:30 explainer", None),
         ("a 0:16 video", None),
         ("a teaser for our app", None),
+        # Regression: a negated shape is the shape the request
+        # rules out; the first non-negated shape governs.
+        ("not vertical, landscape please", "16:9"),
+        ("a landscape clip, not a square", "16:9"),
+        ("not vertical at all", None),
     ],
 )
 def test_parse_aspect(prompt, expected):
