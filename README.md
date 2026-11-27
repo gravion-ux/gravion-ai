@@ -3,7 +3,7 @@
 [![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![CI](https://github.com/gravion-ux/gravion-ai/actions/workflows/ci.yml/badge.svg)](https://github.com/gravion-ux/gravion-ai/actions/workflows/ci.yml)
-[![Tests](https://img.shields.io/badge/tests-1072%20passing-brightgreen.svg)](#testing)
+[![Tests](https://img.shields.io/badge/tests-1168%20passed-brightgreen.svg)](#testing)
 [![codecov](https://codecov.io/gh/gravion-ux/gravion-ai/branch/main/graph/badge.svg)](https://codecov.io/gh/gravion-ux/gravion-ai)
 
 > **Status: Active** — actively developed flagship platform. The detailed
@@ -314,7 +314,7 @@ pip install -e ".[dev]"
 python -m pytest -q
 ```
 
-1072 tests cover the licensing subsystem end-to-end (identity, signed
+1,173 tests cover the licensing subsystem end-to-end (identity, signed
 licenses, tamper rejection, audit-chain verification, the entitlement
 protocol and its pinned privacy field set, gate states, suspension,
 export-while-suspended), the Piece 2 support and coder modules
@@ -354,6 +354,14 @@ deterministic hashed splits, directory sources, refusal of
 invalid or empty datasets), plus
 config, providers, registry, catalog, the CLI, production doctor
 checks, web file attachments and the drop-in bot slot.
+
+## Sponsors
+
+Sponsorship pays for the maintenance, triage and release time behind this tool. Sponsors are
+listed here by name, and name placement starts at the $25 a month Sponsor tier or the $50
+one-time Sponsor tier.
+
+- [Sponsor on GitHub](https://github.com/sponsors/gravion-ux)
 
 ## Author
 
