@@ -214,6 +214,21 @@ def test_cli_models_list(capsys):
     assert "weights=included" in out
 
 
+def test_catalog_lists_models_for_one_tier():
+    catalog = ModelCatalog.load()
+    basic = {entry.id for entry in catalog.list(tier="tier-2-basic")}
+    assert {"gravion-core", "gravion-chat", "gravion-code"} <= basic
+    assert "gravion-omni" not in basic
+    assert "gravion-omni" in {
+        entry.id for entry in catalog.list(tier="tier-4-advanced")
+    }
+
+
+def test_catalog_rejects_unknown_listing_tier():
+    with pytest.raises(CatalogError, match="unknown tier"):
+        ModelCatalog.load().list(tier="not-a-tier")
+
+
 def test_cli_models_list_capability_filter(capsys):
     assert main(["models", "list", "--capability", "video"]) == 0
     out = capsys.readouterr().out

@@ -153,6 +153,8 @@ Deployments can register private variants by dropping their own
 ```bash
 gravion models list                     # the whole registry
 gravion models list --capability video  # only models that serve video
+gravion models list --tier tier-2-basic # only models offered in the basic tier
+gravion models list --tier tier-4-advanced --capability chat # apply both filters
 ```
 
 ## Quickstart

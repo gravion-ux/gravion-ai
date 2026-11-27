@@ -229,10 +229,18 @@ def cmd_models_list(args) -> int:
         else ModelCatalog.load()
     )
     entries = (
-        catalog.models_for(args.capability) if args.capability else catalog.list()
+        catalog.models_for(args.capability, tier=args.tier)
+        if args.capability
+        else catalog.list(tier=args.tier)
     )
     if not entries:
-        print(f"no Gravion models serve capability {args.capability!r}")
+        if args.capability:
+            tier_note = f" in tier {args.tier!r}" if args.tier else ""
+            print(f"no Gravion models serve capability {args.capability!r}{tier_note}")
+        elif args.tier:
+            print(f"no Gravion models are listed in tier {args.tier!r}")
+        else:
+            print("no Gravion models are listed")
         return 0
     for e in entries:
         caps = ",".join(e.capabilities)
@@ -621,6 +629,7 @@ def build_parser() -> argparse.ArgumentParser:
     p_sub = p.add_subparsers(dest="models_command", required=True)
     p_list = p_sub.add_parser("list")
     p_list.add_argument("--capability", help="only models serving this capability")
+    p_list.add_argument("--tier", help="only models offered in this tier")
     p_list.set_defaults(func=cmd_models_list)
 
     p = sub.add_parser("chat", help="run the chat module")
