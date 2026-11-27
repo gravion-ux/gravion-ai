@@ -568,7 +568,30 @@ class GravionCoreLocalModel:
                     "what should i know about",
                 )
             ) or "gravion" in tokens
-            if len(tokens) < 3 or not set(tokens).intersection(vocabulary) or not doc_question:
+            # Short doc questions are real questions: the bundled
+            # corpus itself carries two-token prompts ("explain
+            # modules", "gravion author"), and a two-token variant
+            # such as "explain licensing" must reach the classifier
+            # instead of being dropped for length alone. Two-token
+            # prompts still need a content token — pure question
+            # words ("what is", "how does") carry no topic, so they
+            # stay blocked; longer prompts keep the previous gate.
+            # Confidence (coverage-scaled margin, then the predict
+            # threshold) still decides whether an answer is served.
+            question_words = {
+                "what", "is", "how", "does", "the", "a", "an",
+                "me", "about", "tell", "should", "i", "know",
+            }
+            has_content = any(
+                token in vocabulary and token not in question_words
+                for token in tokens
+            )
+            if (
+                len(tokens) < 2
+                or not set(tokens).intersection(vocabulary)
+                or not doc_question
+                or (len(tokens) == 2 and not has_content)
+            ):
                 return None, 0.0
         elif len(tokens) < 2 or not set(tokens).intersection(vocabulary):
             return None, 0.0

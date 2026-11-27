@@ -67,6 +67,27 @@ def test_bundled_core_weights_match_registry():
     assert core.weights_sha256 == model.weights_sha256
 
 
+def test_bundled_core_answers_two_token_doc_questions():
+    # Regression: the core gate used to drop every prompt shorter
+    # than three tokens, so two-token doc questions ("explain
+    # tiers", "gravion licensing") never reached the classifier
+    # even though the bundled corpus itself carries two-token
+    # prompts. Short doc questions with a content token are now
+    # scored; pure question words and unknown topics still fall
+    # back instead of guessing.
+    model = load_bundled_model()
+    tiers = model.predict("explain tiers")
+    assert tiers is not None
+    assert "Tiers are readiness levels" in tiers
+    assert model.predict("gravion licensing") is not None
+    # No topic, no answer: question words alone stay blocked.
+    assert model.score("what is") == (None, 0.0)
+    assert model.score("how does") == (None, 0.0)
+    assert model.predict("gravion") is None
+    # Unknown topic: scored, but below the confidence threshold.
+    assert model.predict("explain zzzqqq") is None
+
+
 def test_core_provider_trained_inference_and_fallback(tmp_path):
     model = train_local_core(_examples(), source="provider-test")
     weights_path = tmp_path / "gravion-core-weights.json"
