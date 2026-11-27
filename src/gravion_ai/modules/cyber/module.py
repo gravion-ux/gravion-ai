@@ -634,6 +634,57 @@ def _cvss_band(score: float) -> str:
     return "none"
 
 
+# The numbered severity scale states its band by position
+# (sev1 is the top of the scale, sev4 the bottom): "sev1
+# incident" and "sev-2 alert" recorded no severity at all.
+# Only the explicit "sev" forms count — a bare number or a
+# priority ("p1", "low priority") is triage urgency, not
+# severity, and stays unrecorded like the level forms above.
+_SEV_LEVEL_RE = re.compile(r"\bsev(?:erity)?\s*[- ]?([1-4])(?!\.\d)\b", re.IGNORECASE)
+_SEV_BANDS = {"1": "critical", "2": "high", "3": "medium", "4": "low"}
+
+# Impact and risk labels state the same level under their own
+# noun ("impact: critical", "risk: high", "threat level
+# severe" recorded none). The same holds for the criticality
+# and danger-level labels ("criticality: high", "danger
+# level high" recorded none), while an urgency or priority
+# label stays triage urgency, not severity. And the everyday
+# level words name
+# the band on the finding itself ("a severe issue", "a major
+# incident", "a minor bug", "a blocker bug", "a negligible
+# risk" all recorded none). The words map to the band they
+# name; the negation guards mirror the level forms above, so
+# "not a severe issue" still states no level.
+_WORD_LEVELS = {
+    "catastrophic": "critical",
+    "blocker": "critical",
+    "severe": "high",
+    "major": "high",
+    "minor": "low",
+    "trivial": "low",
+    "cosmetic": "low",
+    "negligible": "low",
+    "insignificant": "low",
+}
+_WORD_LEVEL = "(" + "|".join(_WORD_LEVELS) + ")"
+_LABEL_LEVEL_RE = re.compile(
+    r"\b(?:impact|risk|threat\s+level|danger\s+level|criticality)(?:\s+level)?\s*(?:is|:|=)?\s*"
+    + _INTENSIFIER
+    + r"(critical|high|medium|moderate|low|"
+    + _WORD_LEVEL
+    + r")\b"
+    r"|\bseverity" + _SEV_NOUNS + r"[\s:=\-]+" + _RATED + _WORD_LEVEL + r"\b",
+    re.IGNORECASE,
+)
+_WORD_LEVEL_RE = re.compile(
+    r"(?<!not )(?<!not a )(?<!not an )(?<!n't a )(?<!no )"
+    r"(?<!n't )(?<!never )(?<!non-)(?<!non )\b"
+    + _WORD_LEVEL
+    + r"\s+(?:finding|vulnerability|issue|alert|incident|bug|failure|risk)\b",
+    re.IGNORECASE,
+)
+
+
 def parse_severity(prompt: str) -> str | None:
     """Extract a stated severity ("severity: high", "severity is
     high", "severity level is high", "high severity" or
@@ -641,6 +692,16 @@ def parse_severity(prompt: str) -> str | None:
     match = _SEVERITY_RE.search(prompt)
     if match:
         return next(group for group in match.groups() if group).lower()
+    sev_match = _SEV_LEVEL_RE.search(prompt)
+    if sev_match:
+        return _SEV_BANDS[sev_match.group(1)]
+    label_match = _LABEL_LEVEL_RE.search(prompt)
+    if label_match:
+        word = next(g for g in label_match.groups() if g).lower()
+        return _WORD_LEVELS.get(word, word)
+    word_match = _WORD_LEVEL_RE.search(prompt)
+    if word_match:
+        return _WORD_LEVELS[word_match.group(1).lower()]
     score_match = _CVSS_SCORE_RE.search(prompt)
     if score_match:
         score = float(next(g for g in score_match.groups() if g))

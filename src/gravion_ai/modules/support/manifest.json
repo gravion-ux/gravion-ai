@@ -6,7 +6,7 @@
     "entrypoint": "gravion_ai.modules.support.module:SupportModule",
     "files": {
       "__init__.py": "9e4f4a0ce82f4fe31a6f3f70b3a2318effcce276cf6ed26b94e73e17dec22cc5",
-      "module.py": "8e7e8352cda3b9e6e263a1bdbe5b347d25a5181ca4e3d406cfbf42d4d08cd35c"
+      "module.py": "eca9f0faec1ffe4fffe5e02a2491781f5dde5228118fc639fbd8392df52a1aaf"
     }
   },
   "signature": "",

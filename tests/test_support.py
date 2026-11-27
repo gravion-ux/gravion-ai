@@ -483,3 +483,45 @@ def test_bot_rejection_and_call_centre_escalate():
     assert needs_human("call centre se baat karni hai")
     assert needs_human("talk to the call centre")
     assert needs_human("senior se baat karni hai")
+
+
+def test_hinglish_send_and_wala_requests_escalate():
+    # Regression: the person asked for by the send verb
+    # ("insaan ko bhej do"), the senior by the call verb
+    # ("senior ko bulao"), the team as its person
+    # ("customer care wala chahiye"), and a phone
+    # conversation asked for directly ("phone par baat
+    # karni hai") never escalated, while declined and
+    # topic forms stay with the bot.
+    assert needs_human("insaan ko bhej do")
+    assert needs_human("aadmi ko bhej do")
+    assert needs_human("manushya ko bulao")
+    assert needs_human("senior ko bulao")
+    assert needs_human("senior ko bhej do")
+    assert needs_human("customer care wala chahiye")
+    assert needs_human("support wala chahiye")
+    assert needs_human("help desk se baat karni hai")
+    assert needs_human("complaint department se baat")
+    assert needs_human("phone par baat karni hai")
+    assert needs_human("kisi se baat karni hai")
+    assert not needs_human("kisi se baat nahi karni")
+    assert not needs_human("phone par baat nahi karni")
+    assert not needs_human("customer care wala number kya hai")
+    assert not needs_human("help desk ke hours kya hain")
+
+
+def test_executive_requests_and_declined_callbacks():
+    # Regression: the executive asked for by role
+    # ("executive se connect karo") never escalated, the
+    # singular topic "human resource policy" escalated on
+    # the bare word "human", and a callback declined one
+    # verb later ("call back karna mat") was handed over
+    # anyway.
+    assert needs_human("executive se connect karo")
+    assert needs_human("executive se baat karni hai")
+    assert needs_human("executive ko bulao")
+    assert needs_human("call back karna hai")
+    assert not needs_human("human resource policy kya hai")
+    assert not needs_human("executive summary bhej do")
+    assert not needs_human("call back karna mat")
+    assert not needs_human("insaan se baat karna mat")

@@ -578,7 +578,7 @@ def test_stem_word_matches_irregular_past_tense_verbs():
     assert stem_word("got") == stem_word("get") == "get"
     assert stem_word("lit") == stem_word("light") == "light"
     assert stem_word("wept") == stem_word("weep") == "weep"
-    assert stem_word("begun") == stem_word("begin") == "begin"
+    assert stem_word("begun") == stem_word("begin") == "start"
     assert stem_word("thrown") == stem_word("throw") == "throw"
     assert stem_word("worn") == stem_word("wear") == "wear"
     assert stem_word("known") == stem_word("know") == "know"
@@ -1197,10 +1197,13 @@ def test_stem_word_matches_degree_and_adverb_forms():
     assert stem_word("happily") == "happy"
     assert stem_word("faster") == stem_word("fast") == "fast"
     assert stem_word("fastest") == "fast"
-    assert stem_word("quickly") == stem_word("quick") == "quick"
+    assert stem_word("quickly") == stem_word("quick") == "fast"
     assert stem_word("bigger") == stem_word("big") == "big"
     assert stem_word("biggest") == "big"
-    assert stem_word("larger") == stem_word("large") == "large"
+    # "large" lands on "big" through the synonym stems, so
+    # its degree forms land there too.
+    assert stem_word("larger") == stem_word("large") == "big"
+    assert stem_word("largest") == "big"
     assert stem_word("nicer") == stem_word("nice") == "nice"
     assert stem_word("easily") == stem_word("easy") == "easy"
     assert stem_word("teacher") == stem_word("teach") == "teach"
@@ -1274,3 +1277,46 @@ def test_summarize_skips_near_duplicate_sentences():
     out = summarize(text, max_sentences=3)
     assert "Dogs bark loudly." in out
     assert "Birds fly south." in out
+
+
+def test_synonym_stems_match_document_and_retrieval():
+    # Regression: a question using one word ("buy", "car")
+    # missed a document sentence using its synonym
+    # ("purchased", "automobile"), so document Q&A
+    # reported no answer and retrieval scored the
+    # relevant passage zero.
+    assert stem_word("purchased") == stem_word("buy") == "buy"
+    assert stem_word("automobiles") == stem_word("car") == "car"
+    assert stem_word("colours") == stem_word("color") == "color"
+    assert stem_word("kids") == stem_word("child") == "child"
+    out = answer_question(
+        "She purchased a bicycle yesterday. He sold a car.",
+        "what did she buy",
+    )
+    assert "purchased a bicycle" in out
+    ranked = rank_passages(
+        "car", ["The automobile was red", "The house was blue"]
+    )
+    assert ranked[0][0] > 0
+    assert ranked[0][1] == "The automobile was red"
+    # Size, speed and everyday verb synonyms state the
+    # same matching fact: "which big house" missed "the
+    # large house" and a "fast animal" query scored "the
+    # quick fox ran" zero.
+    assert stem_word("larger") == stem_word("big") == "big"
+    assert stem_word("tiny") == stem_word("small") == "small"
+    assert stem_word("quickly") == stem_word("fast") == "fast"
+    assert stem_word("began") == stem_word("started") == "start"
+    assert stem_word("displayed") == stem_word("showed") == "show"
+    assert stem_word("finished") == stem_word("completed") == "complete"
+    out = answer_question(
+        "She began the work early. He ended late.",
+        "who started the work",
+    )
+    assert "began the work" in out
+    ranked = rank_passages(
+        "fast animal",
+        ["The quick fox ran", "The slow turtle walked"],
+    )
+    assert ranked[0][0] > 0
+    assert ranked[0][1] == "The quick fox ran"

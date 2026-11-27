@@ -123,6 +123,28 @@ ESCALATION_PHRASES = (
     "phone call please",
     "call karo",
     "call kar do",
+    # The person asked for by the send verb ("insaan ko bhej
+    # do" — send a human) and the formal word with the call
+    # verb ("manushya ko bulao") request the same handoff as
+    # the "ko bulao" forms above; with only those listed,
+    # those customers were answered by the bot instead. A
+    # following "nahi"/"mat" still cancels them below.
+    "insaan ko bhej do",
+    "aadmi ko bhej do",
+    "manushya ko bulao",
+    "manushya ko bhej do",
+    # Talking to someone named only as "kisi" ("kisi se baat
+    # karni hai" — I want to talk to someone) is the Hindi
+    # form of "talk to someone" above, and a phone
+    # conversation asked for directly ("phone par baat karni
+    # hai") requests the same call as "call me": neither
+    # matched, so the bot answered instead of handing over.
+    # The declined forms ("kisi se baat nahi karni", "phone
+    # par baat nahi karni") are cancelled by the postposed
+    # Hindi negator below.
+    "kisi se baat",
+    "phone par baat",
+    "call par baat",
 )
 
 ESCALATION_RESPONSE = (
@@ -144,7 +166,10 @@ _ESCALATION_RE = re.compile(
 # of a product or topic name ("password manager", "user agent",
 # "human readable") rather than a request for a person.
 _TOPIC_PHRASES_RE = re.compile(
-    r"\b(?:human resources|human readable|human error|human-like|"
+    # The singular "human resource" names the same topic
+    # ("human resource policy kya hai" escalated on the bare
+    # word "human" while the plural stayed with the bot).
+    r"\b(?:human resources|human resource|human readable|human error|human-like|"
     # "Human rights" and an "agent fee" name topics, not a
     # request for a person: both escalated a policy/price
     # question that the grounding material should answer. The
@@ -246,8 +271,11 @@ _POSTPOSED_NEGATION_RE = re.compile(
     # Hindi negation follows the phrase it cancels
     # ("insaan se baat nahi karni", "human nahi chahiye",
     # "escalate mat karo"): without it a Hinglish customer
-    # declining a human was handed over anyway.
-    r"|\s+(?:nahi|nhi|nahin|mat)\b"
+    # declining a human was handed over anyway. The negator
+    # can sit one verb later ("call back karna mat" — do not
+    # call back), so the "karna" form still cancels, while
+    # "call back karna hai" states the request and escalates.
+    r"|\s+(?:karna\s+)?(?:nahi|nhi|nahin|mat)\b"
 )
 
 
@@ -364,7 +392,22 @@ _TEAM_REQUEST_RE = re.compile(
     # the bot, and a following "nahi" cancels it above.
     r"|\b(?:customer care|customer service|support team|support"
     r"|sales team|billing team|sales|billing|call centre"
-    r"|call center|senior|upar wale) se baat\b"
+    r"|call center|senior|executive|upar wale|help desk"
+    r"|complaint department|complaints department) se baat\b"
+    # The senior asked for by the call/send verbs ("senior ko
+    # bulao", "senior ko bhej do") and the team named as its
+    # person with a request word ("customer care wala
+    # chahiye", "support wala chahiye") request the same
+    # handoff as the "se baat" forms above; the request word
+    # is required, so a topic naming ("customer care wala
+    # number kya hai") stays with the bot. The executive is
+    # the same person by role ("executive se connect karo",
+    # "executive ko bulao" were answered by the bot), while
+    # an "executive summary" topic states no request.
+    r"|\b(?:senior|executive) ko (?:bulao|bhej do)\b"
+    r"|\bexecutive se connect\b"
+    r"|\b(?:customer care|customer service|customer support"
+    r"|support|help desk) wala chahiye\b"
     # The call centre named in English with its transfer verb
     # ("talk to the call centre") is the same human team.
     r"|\b(?:talk|speak|connect|transfer|chat)\b"

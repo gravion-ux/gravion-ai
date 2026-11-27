@@ -558,6 +558,41 @@ def test_severity_negation_through_article_and_cvss_bands():
     assert parse_severity("score of 7.5") is None
 
 
+def test_severity_numbered_scale_labels_and_word_levels():
+    # Regression: the numbered scale ("sev1 incident"),
+    # impact/risk labels ("impact: critical") and the
+    # everyday level words ("a severe issue", "a minor
+    # bug") stated a level yet recorded none.
+    assert parse_severity("sev1 incident") == "critical"
+    assert parse_severity("sev-2 alert") == "high"
+    assert parse_severity("sev 3") == "medium"
+    assert parse_severity("sev4") == "low"
+    assert parse_severity("severity: 1") == "low"
+    assert parse_severity("impact: critical") == "critical"
+    assert parse_severity("risk: high") == "high"
+    assert parse_severity("threat level severe") == "high"
+    assert parse_severity("severity: severe") == "high"
+    assert parse_severity("a severe issue") == "high"
+    assert parse_severity("a major incident") == "high"
+    assert parse_severity("a minor bug") == "low"
+    assert parse_severity("a blocker bug") == "critical"
+    assert parse_severity("a catastrophic failure") == "critical"
+    assert parse_severity("a negligible risk") == "low"
+    assert parse_severity("not a severe issue") is None
+    # A priority is triage urgency, not severity.
+    assert parse_severity("p1 incident") is None
+    assert parse_severity("low priority") is None
+    # Regression: the criticality and danger-level labels
+    # state the same level as impact/risk yet recorded
+    # none, while urgency stays triage urgency.
+    assert parse_severity("criticality: high") == "high"
+    assert parse_severity("criticality is critical") == "critical"
+    assert parse_severity("danger level high") == "high"
+    assert parse_severity("danger level: low") == "low"
+    assert parse_severity("urgency: high") is None
+    assert parse_severity("priority is critical") is None
+
+
 def test_defanged_bare_domain_indicator():
     # Regression: a defanged bare domain states an
     # indicator on its own yet recorded nothing.

@@ -6,7 +6,7 @@
     "entrypoint": "gravion_ai.modules.cyber.module:CyberModule",
     "files": {
       "__init__.py": "7988735541ab3f125145df776514198d8330e06ad6e956e72c36323af303cf2c",
-      "module.py": "340dd175cbbf44ca98cc95795d7d552f61b2f8b5d0feba7f72a21b10f0eaaa74"
+      "module.py": "0d3efb070c4d0c92fb3192326814b98f4a617eb959ec9489a627ca2acf0a7e5f"
     }
   },
   "signature": "",

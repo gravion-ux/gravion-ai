@@ -840,6 +840,44 @@ def stem_word(word: str) -> str:
     map covers the plurals and non-plurals the regular rules
     would split or mangle; anything else is returned unchanged.
     """
+    stem = _stem_word_base(word)
+    return _SYNONYM_STEMS.get(stem, stem)
+
+
+# Synonym and spelling-variant stems: a question using one word
+# ("what did she buy?", "what colour was the car?") must land on
+# the same stem as a document sentence using its synonym
+# ("she purchased a bicycle", "the automobile was red"), or
+# document Q&A wrongly reports no answer and retrieval scores
+# the relevant passage zero. The map is deliberately narrow —
+# only pairs whose members name the same thing in the text
+# modules' matching sense — and it applies to the finished
+# stem, so derived forms follow ("purchased" -> "purchase" ->
+# "buy", "automobiles" -> "automobile" -> "car").
+_SYNONYM_STEMS = {
+    "automobile": "car",
+    "purchase": "buy",
+    "colour": "color",
+    "kid": "child",
+    # Size, speed and everyday verb synonyms state the same
+    # matching fact the same way: "which big house" missed
+    # "the large house", a "fast animal" query scored "the
+    # quick fox ran" zero, "who started the work" missed
+    # "she began the work", "who displayed the photo" missed
+    # "he showed the photo", and "who completed the task"
+    # missed "he finished the task". Derived forms follow
+    # through the finished stem ("began" -> "begin" ->
+    # "start", "finished" -> "finish" -> "complete").
+    "large": "big",
+    "tiny": "small",
+    "quick": "fast",
+    "begin": "start",
+    "display": "show",
+    "finish": "complete",
+}
+
+
+def _stem_word_base(word: str) -> str:
     irregular = _IRREGULAR_STEMS.get(word)
     if irregular is not None:
         return irregular
