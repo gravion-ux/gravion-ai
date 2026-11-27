@@ -30,6 +30,45 @@ def test_translation_phrasebook_exact_and_word_level():
 def test_translation_module_paths():
     assert "dhanyavaad" in _run("translation", "gravion-translate", "translate to hindi: thank you")
     assert _run("translation", "gravion-translate", "translate to english: shukriya") == "thank you"
+    # The colon-less shapes name the same input: the
+    # trailing-language form is what the all-in-one router
+    # sends here on its translate+language signal, and
+    # "translate this into hindi: ..." puts the text after
+    # the colon instead of translating the pronoun.
+    assert "dhanyavaad" in _run(
+        "translation", "gravion-translate", "translate thank you into hindi"
+    )
+    assert "dhanyavaad" in _run(
+        "translation", "gravion-translate", "please translate thank you to hindi"
+    )
+    assert "dhanyavaad" in _run(
+        "translation", "gravion-translate", "translate this into hindi: thank you"
+    )
+    assert _run(
+        "translation", "gravion-translate", "translate shukriya into english"
+    ) == "thank you"
+    # A guidance request names a description, not literal
+    # text: the colon-less forms stay with the resolved model
+    # instead of refusing text the phrasebook never claimed.
+    guidance = _run(
+        "translation", "gravion-translate", "translate a greeting into hindi"
+    )
+    assert "namaste" in guidance
+    assert "outside my Gravion phrasebook" not in guidance
+
+
+def test_translation_accepts_devanagari_hindi_input():
+    # Regression: normalisation stripped the Devanagari
+    # block, so covered Hindi input ("धन्यवाद") erased to
+    # nothing and was refused as outside the phrasebook. The
+    # reverse Devanagari entries derive from the same book
+    # that prints them.
+    assert translate_phrase("धन्यवाद", to_hindi=False) == "thank you"
+    assert translate_phrase("आप कैसे हैं", to_hindi=False) == "how are you"
+    assert _run(
+        "translation", "gravion-translate", "translate to english: धन्यवाद"
+    ) == "thank you"
+    assert _run("translation", "gravion-translate", "translate: धन्यवाद") == "thank you"
 
 
 def test_summarization_is_extractive():
@@ -164,6 +203,20 @@ def test_parse_numbers_ignores_dates_as_labels():
     # chain keeps its numbers.
     assert parse_numbers("sales on 2026/11/27 were 10 20 30") == [10.0, 20.0, 30.0]
     assert parse_numbers("values 2026/13/40 5 10") == [2026.0, 13.0, 40.0, 5.0, 10.0]
+    # The unpadded year-first form ("2026-1-5") is the same
+    # label, and the hyphen day-first form takes a two-digit
+    # year like its slash twin ("27-11-26"); both were read as
+    # phantom measurements beside the real values.
+    assert parse_numbers("sales on 2026-1-5 were 10 20 30") == [10.0, 20.0, 30.0]
+    assert parse_numbers("sales on 27-11-26 were 10 20 30") == [10.0, 20.0, 30.0]
+    assert parse_numbers("sales on 2026-13-40 were 10 20 30") == [
+        2026.0,
+        13.0,
+        40.0,
+        10.0,
+        20.0,
+        30.0,
+    ]
 
 
 def test_parse_numbers_ignores_clock_times_and_month_name_dates():
@@ -283,6 +336,20 @@ def test_retrieval_keeps_multiline_passages_whole():
         "passage: Dogs need daily walks.",
     )
     assert "Cats need food and fresh water daily." in out
+
+
+def test_retrieval_accepts_single_line_markers():
+    # Regression: the markers written on one line ("query: ...
+    # passage: ...") routed here through the all-in-one
+    # package but the parser only accepted line-start markers,
+    # so the routed request silently fell through to chat.
+    out = _run(
+        "retrieval",
+        "gravion-search",
+        "query: how do cats groom passage: Dogs enjoy long walks. "
+        "passage: Cats groom themselves with their tongues.",
+    )
+    assert out.splitlines()[1].endswith("Cats groom themselves with their tongues.")
 
 
 def test_translation_matches_longest_phrase_inside_a_sentence():
@@ -528,6 +595,34 @@ def test_parse_numbers_reads_fractions_as_single_values():
     assert parse_numbers("values 5/4, 3/2") == [1.25, 1.5]
     assert parse_numbers("values 1/0, 5, 10") == [5.0, 10.0]
     assert "Sum: 1.5" in analyze(parse_numbers("values 1/2, 1/4, 3/4"))
+    # A digit run past the integer-conversion limit crashed
+    # the fraction fold; it now states no value and the real
+    # measurements beside it survive.
+    assert parse_numbers("values 10 20 " + "9" * 5000 + "/2") == [10.0, 20.0]
+    assert parse_numbers("values 10 20 1 " + "9" * 5000 + "/2") == [10.0, 20.0, 1.0]
+
+
+def test_analyze_large_values_do_not_overflow_the_mean():
+    # Regression: the mean was total / count, so values at
+    # 1e308 summed to infinity and reported "Mean: inf" with a
+    # phantom rising trend, though the mean is plainly 1e308.
+    # The exact total also survives cancellation past float
+    # range ("1e308 + 1e308 - 1e308" is 1e308, not infinity).
+    out = analyze([1e308, 1e308, 1e308])
+    assert "Mean: 1e+308" in out
+    assert "Trend: flat" in out
+    out = analyze([1e308, 1e308, -1e308])
+    assert "Sum: 1e+308" in out
+    assert "Mean: 3.33333e+307" in out
+
+
+def test_parse_numbers_reads_unicode_minus_as_a_sign():
+    # Regression: text pasted from documents writes negatives
+    # with the Unicode minus (U+2212), which lost its sign and
+    # read "−5" as +5. A Unicode range dash keeps the range
+    # reading, like its ASCII twin.
+    assert parse_numbers("temps −5, −3, 2") == [-5.0, -3.0, 2.0]
+    assert parse_numbers("scores range 5−10 points") == [5.0, 10.0]
 
 
 def test_stem_word_matches_compound_and_classical_plurals():

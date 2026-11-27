@@ -171,7 +171,10 @@ _DEFANGED_URL_RE = re.compile(r"hxxps?://[^\s\"'<>]+", re.IGNORECASE)
 # with a short noun phrase in between ("severity of the
 # finding is high") state a level just as plainly, and
 # "informational"/"info" are recorded verbatim as the levels
-# they state.
+# they state. The level-first form carries the same negation
+# guard as the copula forms: "not high severity" and "isn't
+# high severity" state no level, so a negation directly
+# before the level refuses the match.
 _LEVEL = r"(critical|high|medium|moderate|low|informational|info)"
 _SEV_NOUNS = r"(?:[\s-]+(?:level|rating))*"
 _RATED = r"(?:rated\s+|assessed\s+as\s+)?"
@@ -181,7 +184,7 @@ _SEVERITY_RE = re.compile(
     r"|severity" + _SEV_NOUNS + r"\s+of\s+" + _LEVEL + r"\b"
     r"|severity\s+of\s+(?:the\s+)?\w+\s+(?:is|was)\s+" + _RATED + _LEVEL + r"\b"
     r"|severity" + _SEV_NOUNS + r"\s*\(\s*" + _LEVEL + r"\s*\)"
-    r"|\b" + _LEVEL + r"[\s-]severity\b",
+    r"|(?<!not )(?<!no )(?<!n't )\b" + _LEVEL + r"[\s-]severity\b",
     re.IGNORECASE,
 )
 

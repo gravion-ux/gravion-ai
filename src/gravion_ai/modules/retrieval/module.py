@@ -102,12 +102,7 @@ def rank_passages(query: str, passages: list[str]) -> list[tuple[float, str]]:
     return sorted(scored, key=lambda item: item[0], reverse=True)
 
 
-def parse_retrieval_prompt(prompt: str) -> tuple[str, list[str]] | None:
-    # A query or passage runs until the next "query:"/"passage:"
-    # marker or the end of the prompt, so a passage wrapped over
-    # several lines is kept whole instead of truncated to its
-    # first line. Wrapped lines are joined with single spaces.
-    parts = re.split(r"(?im)^\s*(query|passage)\s*:\s*", prompt)
+def _collect_retrieval_parts(parts: list[str]) -> tuple[str, list[str]] | None:
     # re.split with one capture group yields
     # [before, label, body, label, body, ...].
     if len(parts) < 5:
@@ -127,6 +122,28 @@ def parse_retrieval_prompt(prompt: str) -> tuple[str, list[str]] | None:
     if query is None or not passages:
         return None
     return query, passages
+
+
+def parse_retrieval_prompt(prompt: str) -> tuple[str, list[str]] | None:
+    # A query or passage runs until the next "query:"/"passage:"
+    # marker or the end of the prompt, so a passage wrapped over
+    # several lines is kept whole instead of truncated to its
+    # first line. Wrapped lines are joined with single spaces.
+    parsed = _collect_retrieval_parts(
+        re.split(r"(?im)^\s*(query|passage)\s*:\s*", prompt)
+    )
+    if parsed is not None:
+        return parsed
+    # The same markers written on one line ("query: ... passage:
+    # ...") are the documented input in single-line form: the
+    # all-in-one router already sends them here on the
+    # query+passage signal, so refusing them dropped a routed
+    # request to chat. The inline split only runs when the
+    # line-anchored form is absent, so a multi-line passage
+    # mentioning "query:" mid-line keeps its line-form reading.
+    return _collect_retrieval_parts(
+        re.split(r"(?i)\b(query|passage)\s*:\s*", prompt)
+    )
 
 
 class RetrievalModule:

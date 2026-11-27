@@ -250,6 +250,12 @@ def test_extract_indicators_hash_lengths_do_not_overlap():
         ("severity level is not high, just noisy", None),
         ("severity rating is not high, just noisy", None),
         ("severity is not rated high, just noisy", None),
+        # The level-first form carries the same guard: "not
+        # high severity" was recorded as high.
+        ("this is not high severity, just noisy", None),
+        ("Not high severity, just noisy", None),
+        ("isn't high severity, just noisy", None),
+        ("a high severity alert on the host", "high"),
         ("a routine alert", None),
     ],
 )

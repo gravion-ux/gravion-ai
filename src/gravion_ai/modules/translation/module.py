@@ -134,11 +134,64 @@ PHRASES_HI_EN = {
     "jaldi karo": "hurry up",
 }
 
+
+def _devanagari_entries() -> dict[str, str]:
+    """Devanagari Hindi -> English, derived from the EN->HI book.
+
+    Every EN->HI value carries its Devanagari form in
+    parentheses ("dhanyavaad (धन्यवाद)"), so the reverse
+    Devanagari entries come from the same single source
+    instead of a second hand-kept list. "कल" covers both
+    "tomorrow" and "yesterday"; the first entry wins, the
+    same ambiguity the Roman side avoids by having no bare
+    "kal" key.
+    """
+    entries: dict[str, str] = {}
+    for english, hindi in PHRASES_EN_HI.items():
+        match = re.search(r"\(([^)]+)\)\s*$", hindi)
+        if match:
+            entries.setdefault(match.group(1), english)
+    return entries
+
+
+PHRASES_HI_EN.update(_devanagari_entries())
+
+# The trailing-language forms ("translate thank you into
+# hindi") are the shape the all-in-one router already sends
+# here on its translate+language signal, so refusing them
+# dropped a routed request to the model fallback. The
+# colon-less forms are coverage-gated in run(): a guidance
+# request ("translate a greeting into hindi") names a
+# description, not literal text, and stays with the resolved
+# model whose weights cover translation guidance.
 _TO_HINDI_RE = re.compile(
     r"translate\s+(?:to|into|in)\s+hindi\s*:\s*(.+)", re.IGNORECASE | re.DOTALL
 )
 _TO_ENGLISH_RE = re.compile(
     r"translate\s+(?:to|into|in)\s+english\s*:\s*(.+)", re.IGNORECASE | re.DOTALL
+)
+_TO_HINDI_LEAD_RE = re.compile(
+    r"translate\s+(?:to|into|in)\s+hindi\s+(.+)", re.IGNORECASE | re.DOTALL
+)
+_TO_ENGLISH_LEAD_RE = re.compile(
+    r"translate\s+(?:to|into|in)\s+english\s+(.+)", re.IGNORECASE | re.DOTALL
+)
+_TO_HINDI_TRAILING_RE = re.compile(
+    r"translate\s+(.+?)\s+(?:to|into|in)\s+hindi\b", re.IGNORECASE | re.DOTALL
+)
+_TO_ENGLISH_TRAILING_RE = re.compile(
+    r"translate\s+(.+?)\s+(?:to|into|in)\s+english\b", re.IGNORECASE | re.DOTALL
+)
+# "translate this into hindi: thank you" puts the text after
+# the colon; the trailing form alone would capture the
+# pronoun "this" as the text to translate.
+_TO_HINDI_THIS_RE = re.compile(
+    r"translate\s+(?:this|that|it)\s+(?:to|into|in)\s+hindi\s*:\s*(.+)",
+    re.IGNORECASE | re.DOTALL,
+)
+_TO_ENGLISH_THIS_RE = re.compile(
+    r"translate\s+(?:this|that|it)\s+(?:to|into|in)\s+english\s*:\s*(.+)",
+    re.IGNORECASE | re.DOTALL,
 )
 _TRANSLATE_RE = re.compile(r"translate\s*:\s*(.+)", re.IGNORECASE | re.DOTALL)
 
@@ -172,7 +225,10 @@ _CONTRACTION_RE = re.compile(
 def _normalize(text: str) -> str:
     lowered = text.lower().replace("’", "'")
     expanded = _CONTRACTION_RE.sub(lambda m: _CONTRACTIONS[m.group(1)], lowered)
-    return re.sub(r"[^a-z0-9 ]+", " ", expanded).strip()
+    # Keep the Devanagari block: stripping it erased Hindi
+    # input the phrasebook covers ("धन्यवाद" normalised to
+    # nothing and was refused as outside the book).
+    return re.sub(r"[^a-z0-9\u0900-\u097f ]+", " ", expanded).strip()
 
 
 def _greedy_translate(words: list[str], table: dict[str, str]) -> tuple[list[str], int]:
@@ -235,6 +291,16 @@ def _detect_to_hindi(text: str) -> bool:
     return False
 
 
+def _phrasebook_covers(text: str, to_hindi: bool) -> bool:
+    """True when the phrasebook covers any of ``text``."""
+    table = PHRASES_EN_HI if to_hindi else PHRASES_HI_EN
+    key = _normalize(text)
+    if key in table:
+        return True
+    _, known = _greedy_translate(key.split(), table)
+    return known > 0
+
+
 def translate_phrase(text: str, to_hindi: bool) -> str:
     """Phrasebook translation; unknown words are marked, not guessed."""
     table = PHRASES_EN_HI if to_hindi else PHRASES_HI_EN
@@ -261,6 +327,35 @@ class TranslationModule:
             return translate_phrase(match.group(1), to_hindi=True)
         match = _TO_ENGLISH_RE.search(prompt)
         if match:
+            return translate_phrase(match.group(1), to_hindi=False)
+        match = _TO_HINDI_THIS_RE.search(prompt)
+        if match:
+            return translate_phrase(match.group(1), to_hindi=True)
+        match = _TO_ENGLISH_THIS_RE.search(prompt)
+        if match:
+            return translate_phrase(match.group(1), to_hindi=False)
+        # Colon-less forms only intercept text the phrasebook
+        # covers; a description ("a greeting") is a guidance
+        # request for the resolved model, not literal text.
+        match = _TO_HINDI_LEAD_RE.search(prompt)
+        if match and _phrasebook_covers(match.group(1), to_hindi=True):
+            return translate_phrase(match.group(1), to_hindi=True)
+        match = _TO_ENGLISH_LEAD_RE.search(prompt)
+        if match and _phrasebook_covers(match.group(1), to_hindi=False):
+            return translate_phrase(match.group(1), to_hindi=False)
+        match = _TO_HINDI_TRAILING_RE.search(prompt)
+        if (
+            match
+            and _normalize(match.group(1)) not in {"this", "that", "it"}
+            and _phrasebook_covers(match.group(1), to_hindi=True)
+        ):
+            return translate_phrase(match.group(1), to_hindi=True)
+        match = _TO_ENGLISH_TRAILING_RE.search(prompt)
+        if (
+            match
+            and _normalize(match.group(1)) not in {"this", "that", "it"}
+            and _phrasebook_covers(match.group(1), to_hindi=False)
+        ):
             return translate_phrase(match.group(1), to_hindi=False)
         match = _TRANSLATE_RE.search(prompt)
         if match:

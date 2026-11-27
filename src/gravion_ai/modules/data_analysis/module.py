@@ -15,6 +15,7 @@ import math
 import re
 import statistics
 from collections import Counter
+from fractions import Fraction
 
 from ...registry import ModuleContext, ModuleManifest
 
@@ -81,11 +82,16 @@ def _blank_ipv6(match: re.Match[str]) -> str:
 # values, and a single-hyphen range ("5-10") is untouched.
 # The year-first slash form ("2026/11/27") is a date too: the
 # day-first slash pattern cannot see it (its first group takes
-# at most two digits), so it was read as three values.
-_ISO_DATE_RE = re.compile(r"(?<!\d)(\d{4})-(\d{2})-(\d{2})(?!\d)")
+# at most two digits), so it was read as three values. The
+# unpadded year-first hyphen form ("2026-1-5") is the same
+# label: requiring two-digit month/day groups read it as the
+# phantom values 2026, 1 and 5. The hyphen day-first form
+# takes a two-digit year like its slash twin ("27-11-26");
+# a one-digit tail ("10-5-2") still keeps its values.
+_ISO_DATE_RE = re.compile(r"(?<!\d)(\d{4})-(\d{1,2})-(\d{1,2})(?!\d)")
 _ISO_SLASH_DATE_RE = re.compile(r"(?<![0-9/])(\d{4})/(\d{1,2})/(\d{1,2})(?![0-9/])")
 _SLASH_DATE_RE = re.compile(r"(?<![0-9/])(\d{1,2})/(\d{1,2})/(\d{4}|\d{2})(?![0-9/])")
-_HYPHEN_DATE_RE = re.compile(r"(?<!\d)(\d{1,2})-(\d{1,2})-(\d{4})(?!\d)")
+_HYPHEN_DATE_RE = re.compile(r"(?<!\d)(\d{1,2})-(\d{1,2})-(\d{4}|\d{2})(?!\d)")
 
 
 def _blank_iso_date(match: re.Match[str]) -> str:
@@ -217,23 +223,40 @@ _FRACTION_RE = re.compile(r"(?<![0-9/])(\d+)\s*/\s*(\d+)(?![0-9/])")
 
 
 def _fold_mixed_fraction(match: re.Match[str]) -> str:
-    whole, numerator, denominator = (int(group) for group in match.groups())
-    if denominator == 0 or numerator >= denominator:
-        # Not a mixed number: leave the text for the plain
-        # fraction fold (or blanking) below.
+    try:
+        whole, numerator, denominator = (int(group) for group in match.groups())
+        if denominator == 0 or numerator >= denominator:
+            # Not a mixed number: leave the text for the plain
+            # fraction fold (or blanking) below.
+            return match.group(0)
+        return repr(whole + numerator / denominator)
+    except (ValueError, OverflowError):
+        # A digit run past the integer-conversion limit (or a
+        # value past float range) states no finite measurement.
+        # Leave the text for the plain fraction fold below,
+        # which blanks only the fraction itself instead of
+        # crashing the parse or swallowing the whole part.
         return match.group(0)
-    return repr(whole + numerator / denominator)
 
 
 def _fold_fraction(match: re.Match[str]) -> str:
-    numerator, denominator = (int(group) for group in match.groups())
-    if denominator == 0:
+    try:
+        numerator, denominator = (int(group) for group in match.groups())
+        if denominator == 0:
+            return " "
+        return repr(numerator / denominator)
+    except (ValueError, OverflowError):
         return " "
-    return repr(numerator / denominator)
 
 
 def parse_numbers(prompt: str) -> list[float]:
-    cleaned = _MACHINE_LITERAL_RE.sub(" ", prompt)
+    # Text pasted from documents writes negatives with the
+    # Unicode minus (U+2212): left as-is, "−5" lost its sign
+    # and read as +5. Normalise it to the ASCII hyphen the
+    # number pattern understands; a Unicode range dash then
+    # behaves like its ASCII twin too.
+    cleaned = prompt.replace("−", "-")
+    cleaned = _MACHINE_LITERAL_RE.sub(" ", cleaned)
     cleaned = _UUID_RE.sub(" ", cleaned)
     cleaned = _IPV6_RE.sub(_blank_ipv6, cleaned)
     cleaned = _ISO_DATE_RE.sub(_blank_iso_date, cleaned)
@@ -276,19 +299,43 @@ def _mode_line(numbers: list[float]) -> str:
     return f"Mode: {listed} (each appears {mode_count} times)"
 
 
+def _exact_total(numbers: list[float]) -> float:
+    """Sum without intermediate overflow.
+
+    ``math.fsum`` is exact until an intermediate partial sum
+    leaves float range, where it raises even when the true
+    total is representable ("1e308 + 1e308 - 1e308"). The
+    fraction fallback keeps the exact total in that case; a
+    total past float range itself ("1e308 + 1e308") is
+    reported as signed infinity, the honest float answer.
+    """
+    try:
+        return math.fsum(numbers)
+    except OverflowError:
+        exact = sum((Fraction(value) for value in numbers), Fraction(0))
+        try:
+            return float(exact)
+        except OverflowError:
+            return math.inf if exact > 0 else -math.inf
+
+
 def analyze(numbers: list[float]) -> str:
     if not numbers:
         return "No numbers to analyze."
     count = len(numbers)
-    total = sum(numbers)
-    mean = total / count
+    total = _exact_total(numbers)
+    # statistics.mean works in exact fractions: total / count
+    # overflowed to infinity for values like 1e308 whose mean
+    # is plainly 1e308, and the trend halves inherited the
+    # same phantom infinity.
+    mean = statistics.mean(numbers)
     median = statistics.median(numbers)
     low, high = min(numbers), max(numbers)
     stdev = statistics.pstdev(numbers) if count > 1 else 0.0
     half = count // 2
     if half:
-        first = sum(numbers[:half]) / half
-        second = sum(numbers[half:]) / (count - half)
+        first = statistics.mean(numbers[:half])
+        second = statistics.mean(numbers[half:])
         if second > first:
             trend = "rising (second half averages higher than the first)"
         elif second < first:
