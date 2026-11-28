@@ -3,7 +3,7 @@
 [![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![CI](https://github.com/gravion-ux/gravion-ai/actions/workflows/ci.yml/badge.svg)](https://github.com/gravion-ux/gravion-ai/actions/workflows/ci.yml)
-[![Tests](https://img.shields.io/badge/tests-1263%20passed-brightgreen.svg)](#testing)
+[![Tests](https://img.shields.io/badge/tests-1292%20passed-brightgreen.svg)](#testing)
 [![codecov](https://codecov.io/gh/gravion-ux/gravion-ai/branch/main/graph/badge.svg)](https://codecov.io/gh/gravion-ux/gravion-ai)
 
 > **Status: Active** — actively developed flagship platform. The detailed
@@ -215,7 +215,7 @@ direct, embedding, classifier, bias, transition, and unigram weights. On a
 held-out set of 1,530 paraphrased prompts it answers 1,238 correctly
 (80.9%), versus 0 for the earlier 750-parameter seed model. Gravion
 Core is not a billions-of-parameters model. Across the seventeen
-bundled models the registry holds **18,022,784 counted parameters**,
+bundled models the registry holds **18,696,282 counted parameters**,
 of which Gravion Core alone carries 10,586,543 — 10,575,629 of them
 stored as int8 and quantized symmetrically, and 10,914 stored as
 float32 in the bias and transition weights. Each specialist registry
@@ -314,7 +314,7 @@ pip install -e ".[dev]"
 python -m pytest -q
 ```
 
-1,263 tests cover the licensing subsystem end-to-end (identity, signed
+1,292 tests cover the licensing subsystem end-to-end (identity, signed
 licenses, tamper rejection, audit-chain verification, the entitlement
 protocol and its pinned privacy field set, gate states, suspension,
 export-while-suspended), the Piece 2 support and coder modules

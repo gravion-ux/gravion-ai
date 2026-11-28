@@ -30,8 +30,8 @@
             "context_window": 131072,
             "id": "gravion-chat",
             "name": "Gravion Chat",
-            "notes": "Includes local sparse n-gram classifier weights (52,047 parameters counted from stored quantized weights) trained only from the bundled Gravion-owned Gravion Chat seed corpus (216 examples, 53 answer classes), with deterministic fallback when no confident trained match is available. It runs offline with no network and no API key.",
-            "parameter_count": 52047,
+            "notes": "Includes local sparse n-gram classifier weights (54,629 parameters counted from stored quantized weights) trained only from the bundled Gravion-owned Gravion Chat seed corpus (228 examples, 54 answer classes), with deterministic fallback when no confident trained match is available. It runs offline with no network and no API key.",
+            "parameter_count": 54629,
             "status": "available",
             "tiers": [
                 "tier-1-complete",
@@ -40,7 +40,7 @@
                 "tier-4-advanced"
             ],
             "weights_artifact": "data/gravion-chat-weights.json",
-            "weights_sha256": "0bc469dca6032bdc30eb281d2cb8325671b839067c0d0c7b4d473ca6e132af18",
+            "weights_sha256": "835bd67ea012d19ac71cf3a1546e819fec560c5a6c196f8980434fd32a11bbe0",
             "weights_status": "included"
         },
         {
@@ -50,8 +50,8 @@
             "context_window": 131072,
             "id": "gravion-code",
             "name": "Gravion Code",
-            "notes": "Includes local sparse n-gram classifier weights (115,834 parameters counted from stored quantized weights) trained only from the bundled Gravion-owned Gravion Code seed corpus (532 examples, 74 answer classes), with deterministic fallback when no confident trained match is available. It runs offline with no network and no API key.",
-            "parameter_count": 115834,
+            "notes": "Includes local sparse n-gram classifier weights (214,503 parameters counted from stored quantized weights) trained only from the bundled Gravion-owned Gravion Code seed corpus (1052 examples, 98 answer classes), with deterministic fallback when no confident trained match is available. It runs offline with no network and no API key.",
+            "parameter_count": 214503,
             "status": "available",
             "tiers": [
                 "tier-1-complete",
@@ -60,7 +60,7 @@
                 "tier-4-advanced"
             ],
             "weights_artifact": "data/gravion-code-weights.json",
-            "weights_sha256": "80b966ec10a10d3d9441000cc85dbc305de9a71cda4cb6b4341b3007b01e4915",
+            "weights_sha256": "64d9a4edb739cc5508a6e0554bc5434d2d94da882899f8f6fb5db033803e653b",
             "weights_status": "included"
         },
         {
@@ -70,8 +70,8 @@
             "context_window": 131072,
             "id": "gravion-builder",
             "name": "Gravion Builder",
-            "notes": "Includes local sparse n-gram classifier weights (56,436 parameters counted from stored quantized weights) trained only from the bundled Gravion-owned Gravion Builder seed corpus (340 examples, 60 answer classes), with deterministic fallback when no confident trained match is available. It runs offline with no network and no API key. The trained local weights guide website briefs; the local static-site builder remains the offline build path.",
-            "parameter_count": 56436,
+            "notes": "Includes local sparse n-gram classifier weights (108,292 parameters counted from stored quantized weights) trained only from the bundled Gravion-owned Gravion Builder seed corpus (776 examples, 80 answer classes), with deterministic fallback when no confident trained match is available. It runs offline with no network and no API key. The trained local weights guide website briefs; the local static-site builder remains the offline build path.",
+            "parameter_count": 108292,
             "status": "available",
             "tiers": [
                 "tier-1-complete",
@@ -80,7 +80,7 @@
                 "tier-4-advanced"
             ],
             "weights_artifact": "data/gravion-builder-weights.json",
-            "weights_sha256": "439ea57f5466cdc16b1784d981a865283f18dd1ce2dae83caeefc0e4435f0460",
+            "weights_sha256": "5b6fc73400b3240c3e0cfdf04ba2d875e0b0840689c349fa2ed9162a9b7a68c2",
             "weights_status": "included"
         },
         {
@@ -150,8 +150,8 @@
             "context_window": 131072,
             "id": "gravion-shield",
             "name": "Gravion Shield",
-            "notes": "Includes local sparse n-gram classifier weights (160,837 parameters counted from stored quantized weights) trained only from the bundled Gravion-owned Gravion Shield seed corpus (648 examples, 92 answer classes), with deterministic fallback when no confident trained match is available. It runs offline with no network and no API key.",
-            "parameter_count": 160837,
+            "notes": "Includes local sparse n-gram classifier weights (276,548 parameters counted from stored quantized weights) trained only from the bundled Gravion-owned Gravion Shield seed corpus (1104 examples, 119 answer classes), with deterministic fallback when no confident trained match is available. It runs offline with no network and no API key.",
+            "parameter_count": 276548,
             "status": "available",
             "tiers": [
                 "tier-1-complete",
@@ -160,7 +160,7 @@
                 "tier-4-advanced"
             ],
             "weights_artifact": "data/gravion-shield-weights.json",
-            "weights_sha256": "3600c0d8b97186a27a4f10f2fa32543c3ec124110210de4f4f10e92b7835a8d2",
+            "weights_sha256": "e918dd5ae59bc1d5c4cd4ae13f0763b9de37bf7008337c80dcbef69ae723e725",
             "weights_status": "included"
         },
         {
@@ -170,8 +170,8 @@
             "context_window": 131072,
             "id": "gravion-agent",
             "name": "Gravion Agent",
-            "notes": "Includes local sparse n-gram classifier weights (42,413 parameters counted from stored quantized weights) trained only from the bundled Gravion-owned Gravion Agent seed corpus (288 examples, 54 answer classes), with deterministic fallback when no confident trained match is available. It runs offline with no network and no API key. The trained local weights guide agent briefs and plans; execution remains bounded by deployment policy and approvals.",
-            "parameter_count": 42413,
+            "notes": "Includes local sparse n-gram classifier weights (97,103 parameters counted from stored quantized weights) trained only from the bundled Gravion-owned Gravion Agent seed corpus (804 examples, 68 answer classes), with deterministic fallback when no confident trained match is available. It runs offline with no network and no API key. The trained local weights guide agent briefs and plans; execution remains bounded by deployment policy and approvals.",
+            "parameter_count": 97103,
             "status": "available",
             "tiers": [
                 "tier-1-complete",
@@ -180,7 +180,7 @@
                 "tier-4-advanced"
             ],
             "weights_artifact": "data/gravion-agent-weights.json",
-            "weights_sha256": "5b0327fc1b24b2fb609b211992eede4c4d451247517e36158f39663e5a44528a",
+            "weights_sha256": "63061b54a3a7b1d6e3611c00dda1b1f6da31531113604323f12abeddfe34fc05",
             "weights_status": "included"
         },
         {
@@ -203,14 +203,14 @@
             "context_window": 262144,
             "id": "gravion-omni",
             "name": "Gravion Omni",
-            "notes": "Includes local sparse n-gram classifier weights (8,031,537 parameters counted from stored quantized weights) trained only from the bundled Gravion-owned Gravion Omni seed corpus (4348 examples, 865 answer classes), with deterministic fallback when no confident trained match is available. It runs offline with no network and no API key.",
-            "parameter_count": 8031537,
+            "notes": "Includes local sparse n-gram classifier weights (11,613,691 parameters counted from stored quantized weights) trained only from the bundled Gravion-owned Gravion Omni seed corpus (6804 examples, 976 answer classes), with deterministic fallback when no confident trained match is available. It runs offline with no network and no API key.",
+            "parameter_count": 11613691,
             "status": "available",
             "tiers": [
                 "tier-4-advanced"
             ],
             "weights_artifact": "data/gravion-omni-weights.json",
-            "weights_sha256": "702e18e7e906ef0590e23e492015445d934a669c1c7c332fcd6f24fdcb09f1b6",
+            "weights_sha256": "1ad4fb145de9d51b6d517d1f5f804d526cc9dddd926f22962ef6e5918e5518b1",
             "weights_status": "included"
         },
         {
@@ -220,8 +220,8 @@
             "context_window": 131072,
             "id": "gravion-support",
             "name": "Gravion Support",
-            "notes": "Includes local sparse n-gram classifier weights (77,901 parameters counted from stored quantized weights) trained only from the bundled Gravion-owned Gravion Support seed corpus (404 examples, 58 answer classes), with deterministic fallback when no confident trained match is available. It runs offline with no network and no API key.",
-            "parameter_count": 77901,
+            "notes": "Includes local sparse n-gram classifier weights (172,433 parameters counted from stored quantized weights) trained only from the bundled Gravion-owned Gravion Support seed corpus (920 examples, 83 answer classes), with deterministic fallback when no confident trained match is available. It runs offline with no network and no API key.",
+            "parameter_count": 172433,
             "status": "available",
             "tiers": [
                 "tier-1-complete",
@@ -230,7 +230,7 @@
                 "tier-4-advanced"
             ],
             "weights_artifact": "data/gravion-support-weights.json",
-            "weights_sha256": "5b73c9d08b320bd7222f0ae412b67a49ea3292777819e1230b9c89c167becff2",
+            "weights_sha256": "767cdc2df69382f7dac342c963913cee4b0c49f33652f01249d717be89fe5e55",
             "weights_status": "included"
         },
         {

@@ -84,6 +84,42 @@ def test_incident_and_investor_lines_answer():
     assert opening_response("how do attackers break into servers in general") is None
 
 
+def test_laptop_internet_and_module_count_lines_answer():
+    # 28 Nov 2026 cycle (08:46 run): "can Gravion run on a
+    # laptop?", "does Gravion need an internet connection?"
+    # and the Roman Hindi module-count ask echoed while
+    # their neighbouring forms answered.
+    assert "normal laptop" in opening_response("Can Gravion run on a laptop?")
+    assert "fully offline" in opening_response(
+        "Does Gravion need an internet connection?"
+    )
+    assert "route it to" in opening_response("Gravion kitne module hai?")
+
+
+def test_privacy_and_model_count_lines_answer():
+    # 28 Nov 2026 cycle (11:01 run): the startup-help,
+    # Roman Hindi offline, data-privacy, model-count and
+    # why-use asks echoed while their neighbouring forms
+    # answered. The model count in the reply must match
+    # the bundled catalog, so it cannot drift silently.
+    import json
+    from importlib import resources
+
+    assert "module system" in opening_response("Can Gravion help my startup?")
+    assert "module system" in opening_response("Gravion startup ke liye hai kya?")
+    assert "fully offline" in opening_response("Gravion offline chalta hai kya?")
+    assert "stay with you" in opening_response("Is my data private with Gravion?")
+    assert "one modular platform" in opening_response("Why should I use Gravion?")
+    catalog = json.loads(
+        resources.files("gravion_ai.data").joinpath("models.json").read_text(encoding="utf-8")
+    )
+    count = len(catalog["models"])
+    assert f"{count} models" in opening_response("How many models does Gravion have?")
+    assert f"{count} models" in opening_response("Gravion kitne model deta hai?")
+    # A task that merely mentions models stays with the model.
+    assert opening_response("how many models does the museum display on sundays") is None
+
+
 def test_conversational_tasks_stay_with_the_model():
     # Whole-message and translation guards: tasks that quote an
     # opening line are real requests, not openings.

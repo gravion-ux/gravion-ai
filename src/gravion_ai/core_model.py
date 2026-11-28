@@ -662,7 +662,126 @@ class GravionCoreLocalModel:
             default=0.0,
         )
         margin = max(0.0, top - second)
-        return str(classes[best]), (margin / (1.0 + margin)) * coverage
+        confidence = (margin / (1.0 + margin)) * coverage
+        # Discriminative-evidence gate (28 Nov 2026 cycle,
+        # 16:46 run): coverage counts generic scaffold terms
+        # ("a website for", "plan an agent for") as evidence,
+        # so sparse prompts such as "a website for our
+        # bakery" and "plan an agent for reports" crossed
+        # the serving threshold on scaffold plus one content
+        # word. A non-exact prompt now needs at least two
+        # discriminative content unigrams: known single
+        # words outside the stopword set, not scaffold words
+        # spread across many classes (a word appearing in
+        # the training prompts of more than a fifth of the
+        # classes, such as "plan" or "website", is scaffold,
+        # not evidence), whose direct weight for the winning
+        # class beats every other class by at least half
+        # the strongest such spread. Exact prompts returned
+        # earlier at 1.0 and are unaffected, and Gravion
+        # Core keeps its own doc-question gate above instead.
+        if self.model_id == CORE_MODEL_ID:
+            return str(classes[best]), confidence
+        stopwords = {
+            "a", "an", "the", "for", "of", "to", "in", "on", "at",
+            "my", "our", "your", "me", "i", "is", "are", "do",
+            "does", "did", "how", "what", "can", "could", "please",
+            "with", "and", "or", "it", "this", "that", "be", "am",
+            "was", "were", "will", "would", "should", "you", "we",
+            "they", "he", "she", "his", "her", "their", "its",
+            "from", "by", "as", "into", "about", "over", "after",
+            "before", "when",
+        }
+        token_classes = self._token_class_counts()
+        # Scaffold words are spread across many classes; the
+        # cap keeps that true for Gravion Omni, whose class
+        # count would otherwise make "website" look specific.
+        scaffold_limit = min(max(2, num_classes // 5), 25)
+        runner_up_class = max(
+            (index for index in range(num_classes) if index != best),
+            key=lambda index: logits[index],
+            default=best,
+        )
+        unigram_spreads: list[tuple[str, float]] = []
+        for term in terms:
+            if " " in term or term in stopwords or term not in feature_index:
+                continue
+            if token_classes.get(term, 0) > scaffold_limit:
+                continue
+            feature_id = feature_index[term]
+            # Per-feature logit contribution (direct weight plus
+            # the embedding-classifier path), winning class
+            # against the runner-up class: the direct weight
+            # alone misses evidence the embedding path carries.
+            def _contribution(class_index: int) -> float:
+                direct_part = direct[feature_id * num_classes + class_index]
+                embedding_part = sum(
+                    embedding[feature_id * dim + j]
+                    * classifier[class_index * dim + j]
+                    for j in range(dim)
+                )
+                return direct_part + embedding_part
+
+            unigram_spreads.append(
+                (term, _contribution(best) - _contribution(runner_up_class))
+            )
+        positive = [spread for _, spread in unigram_spreads if spread > 0]
+        discriminative = 0
+        if positive:
+            strongest = max(positive)
+            discriminative = sum(
+                1 for spread in positive if spread >= 0.5 * strongest
+            )
+        # The model's evidence also lives in its n-grams: a
+        # known bigram or trigram carrying a content word
+        # (outside the stopwords and the scaffold words) is
+        # real evidence, while the sparse prompts' content
+        # n-grams ("our bakery", "for reports") are unknown
+        # to the model. Serving needs at least one such
+        # content n-gram and two pieces of evidence in all.
+        content_ngrams = 0
+        for term in terms:
+            if " " not in term or term not in feature_index:
+                continue
+            if any(
+                token not in stopwords
+                and token_classes.get(token, 0) <= scaffold_limit
+                for token in term.split()
+            ):
+                content_ngrams += 1
+        # Digit-bearing terms are indicators, not semantic
+        # evidence (the coverage rule above): a duration or
+        # order number breaks the content n-grams around it
+        # ("a 30 second teaser"), so one discriminative
+        # content word beside a digit term is enough.
+        has_digit_term = any(
+            any(ch.isdigit() for ch in term) for term in terms
+        )
+        if has_digit_term and discriminative >= 1:
+            return str(classes[best]), confidence
+        if discriminative < 2 and (
+            content_ngrams < 1 or content_ngrams + discriminative < 2
+        ):
+            return str(classes[best]), 0.0
+        return str(classes[best]), confidence
+
+    def _token_class_counts(self) -> dict[str, int]:
+        """Count, per token, in how many classes' prompts it appears."""
+
+        cache = getattr(self, "_token_class_cache", None)
+        if cache is not None:
+            return cache
+        counts: dict[str, set[int]] = {}
+        exact = self.artifact.get("exact_prompts", {})
+        if isinstance(exact, dict):
+            for prompt, class_index in exact.items():
+                if not isinstance(class_index, int):
+                    continue
+                for token in set(str(prompt).split()):
+                    counts.setdefault(token, set()).add(class_index)
+        result = {token: len(classes) for token, classes in counts.items()}
+        object.__setattr__(self, "_token_class_cache", result)
+        return result
 
     # -- v2 inference ----------------------------------------------------
 

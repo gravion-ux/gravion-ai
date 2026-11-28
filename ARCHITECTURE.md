@@ -158,7 +158,7 @@ for a dtype, and keeps a float32 bias vector from being counted as an
 int8 weight. Gravion Core is 10,586,543 parameters: 10,575,629 stored
 as int8 and quantized symmetrically, 10,914 stored as float32 in the
 bias and transition weights. Across the seventeen bundled models the
-registry holds 18,022,784 counted parameters.
+registry holds 18,696,282 counted parameters.
 
 Every measured field is computed from the shipped weights artifact by
 `tools/build_model_specs.py`, never entered by hand, and the test

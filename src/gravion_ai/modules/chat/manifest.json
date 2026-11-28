@@ -6,7 +6,7 @@
     "entrypoint": "gravion_ai.modules.chat.module:ChatModule",
     "files": {
       "__init__.py": "b38ee9ed2d486ed9193d8bc0455f68c29c0cdbc006ccf502762be58467127e7b",
-      "module.py": "29b73ae81e954d0673840e074b80d56d906ca1d03f910dd609eeabd553847208"
+      "module.py": "620e385117e8621ebf5622467a71731fc1cd3cc7c6eaaa2df4c64876fce864e9"
     }
   },
   "signature": "",

@@ -530,3 +530,523 @@
 {"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "please print fibonacci series"}
 {"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "gravion code print fibonacci series"}
 {"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "help me print fibonacci series"}
+{"completion": "A class is a blueprint for objects: it groups related data and the methods that act on it, and each object made from it keeps its own state.", "prompt": "explain what a class is"}
+{"completion": "A class is a blueprint for objects: it groups related data and the methods that act on it, and each object made from it keeps its own state.", "prompt": "please explain what a class is"}
+{"completion": "A class is a blueprint for objects: it groups related data and the methods that act on it, and each object made from it keeps its own state.", "prompt": "gravion code explain what a class is"}
+{"completion": "A class is a blueprint for objects: it groups related data and the methods that act on it, and each object made from it keeps its own state.", "prompt": "help me explain what a class is"}
+{"completion": "A class is a blueprint for objects: it groups related data and the methods that act on it, and each object made from it keeps its own state.", "prompt": "what is a class"}
+{"completion": "A class is a blueprint for objects: it groups related data and the methods that act on it, and each object made from it keeps its own state.", "prompt": "please what is a class"}
+{"completion": "A class is a blueprint for objects: it groups related data and the methods that act on it, and each object made from it keeps its own state.", "prompt": "gravion code what is a class"}
+{"completion": "A class is a blueprint for objects: it groups related data and the methods that act on it, and each object made from it keeps its own state.", "prompt": "help me what is a class"}
+{"completion": "A class is a blueprint for objects: it groups related data and the methods that act on it, and each object made from it keeps its own state.", "prompt": "explain classes simply"}
+{"completion": "A class is a blueprint for objects: it groups related data and the methods that act on it, and each object made from it keeps its own state.", "prompt": "please explain classes simply"}
+{"completion": "A class is a blueprint for objects: it groups related data and the methods that act on it, and each object made from it keeps its own state.", "prompt": "gravion code explain classes simply"}
+{"completion": "A class is a blueprint for objects: it groups related data and the methods that act on it, and each object made from it keeps its own state.", "prompt": "help me explain classes simply"}
+{"completion": "Compare the string with its reverse: text == text[::-1]. Test an empty string, a single character, and a mixed-case word after normalising case.", "prompt": "write a function to check palindrome"}
+{"completion": "Compare the string with its reverse: text == text[::-1]. Test an empty string, a single character, and a mixed-case word after normalising case.", "prompt": "please write a function to check palindrome"}
+{"completion": "Compare the string with its reverse: text == text[::-1]. Test an empty string, a single character, and a mixed-case word after normalising case.", "prompt": "gravion code write a function to check palindrome"}
+{"completion": "Compare the string with its reverse: text == text[::-1]. Test an empty string, a single character, and a mixed-case word after normalising case.", "prompt": "help me write a function to check palindrome"}
+{"completion": "Compare the string with its reverse: text == text[::-1]. Test an empty string, a single character, and a mixed-case word after normalising case.", "prompt": "function to check if a string is a palindrome"}
+{"completion": "Compare the string with its reverse: text == text[::-1]. Test an empty string, a single character, and a mixed-case word after normalising case.", "prompt": "please function to check if a string is a palindrome"}
+{"completion": "Compare the string with its reverse: text == text[::-1]. Test an empty string, a single character, and a mixed-case word after normalising case.", "prompt": "gravion code function to check if a string is a palindrome"}
+{"completion": "Compare the string with its reverse: text == text[::-1]. Test an empty string, a single character, and a mixed-case word after normalising case.", "prompt": "help me function to check if a string is a palindrome"}
+{"completion": "Return number % 2 == 0. Test 0, 2, 3, and a negative even number.", "prompt": "write code to check if a number is even"}
+{"completion": "Return number % 2 == 0. Test 0, 2, 3, and a negative even number.", "prompt": "please write code to check if a number is even"}
+{"completion": "Return number % 2 == 0. Test 0, 2, 3, and a negative even number.", "prompt": "gravion code write code to check if a number is even"}
+{"completion": "Return number % 2 == 0. Test 0, 2, 3, and a negative even number.", "prompt": "help me write code to check if a number is even"}
+{"completion": "Return number % 2 == 0. Test 0, 2, 3, and a negative even number.", "prompt": "check if a number is even"}
+{"completion": "Return number % 2 == 0. Test 0, 2, 3, and a negative even number.", "prompt": "please check if a number is even"}
+{"completion": "Return number % 2 == 0. Test 0, 2, 3, and a negative even number.", "prompt": "gravion code check if a number is even"}
+{"completion": "Return number % 2 == 0. Test 0, 2, 3, and a negative even number.", "prompt": "help me check if a number is even"}
+{"completion": "Return number % 2 == 0. Test 0, 2, 3, and a negative even number.", "prompt": "write a function to check even or odd"}
+{"completion": "Return number % 2 == 0. Test 0, 2, 3, and a negative even number.", "prompt": "please write a function to check even or odd"}
+{"completion": "Return number % 2 == 0. Test 0, 2, 3, and a negative even number.", "prompt": "gravion code write a function to check even or odd"}
+{"completion": "Return number % 2 == 0. Test 0, 2, 3, and a negative even number.", "prompt": "help me write a function to check even or odd"}
+{"completion": "Return number % 2 == 0. Test 0, 2, 3, and a negative even number.", "prompt": "even or odd program"}
+{"completion": "Return number % 2 == 0. Test 0, 2, 3, and a negative even number.", "prompt": "please even or odd program"}
+{"completion": "Return number % 2 == 0. Test 0, 2, 3, and a negative even number.", "prompt": "gravion code even or odd program"}
+{"completion": "Return number % 2 == 0. Test 0, 2, 3, and a negative even number.", "prompt": "help me even or odd program"}
+{"completion": "Multiply the integers from 1 up to n, return 1 for 0, reject negative inputs, and test 0, 1, and 5.", "prompt": "write a function to find factorial"}
+{"completion": "Multiply the integers from 1 up to n, return 1 for 0, reject negative inputs, and test 0, 1, and 5.", "prompt": "please write a function to find factorial"}
+{"completion": "Multiply the integers from 1 up to n, return 1 for 0, reject negative inputs, and test 0, 1, and 5.", "prompt": "gravion code write a function to find factorial"}
+{"completion": "Multiply the integers from 1 up to n, return 1 for 0, reject negative inputs, and test 0, 1, and 5.", "prompt": "help me write a function to find factorial"}
+{"completion": "Multiply the integers from 1 up to n, return 1 for 0, reject negative inputs, and test 0, 1, and 5.", "prompt": "find the factorial of a number"}
+{"completion": "Multiply the integers from 1 up to n, return 1 for 0, reject negative inputs, and test 0, 1, and 5.", "prompt": "please find the factorial of a number"}
+{"completion": "Multiply the integers from 1 up to n, return 1 for 0, reject negative inputs, and test 0, 1, and 5.", "prompt": "gravion code find the factorial of a number"}
+{"completion": "Multiply the integers from 1 up to n, return 1 for 0, reject negative inputs, and test 0, 1, and 5.", "prompt": "help me find the factorial of a number"}
+{"completion": "Multiply the integers from 1 up to n, return 1 for 0, reject negative inputs, and test 0, 1, and 5.", "prompt": "factorial function in python"}
+{"completion": "Multiply the integers from 1 up to n, return 1 for 0, reject negative inputs, and test 0, 1, and 5.", "prompt": "please factorial function in python"}
+{"completion": "Multiply the integers from 1 up to n, return 1 for 0, reject negative inputs, and test 0, 1, and 5.", "prompt": "gravion code factorial function in python"}
+{"completion": "Multiply the integers from 1 up to n, return 1 for 0, reject negative inputs, and test 0, 1, and 5.", "prompt": "help me factorial function in python"}
+{"completion": "Return number % 2 != 0. Test 0, 2, 3, and a negative odd number.", "prompt": "write a function to check odd number"}
+{"completion": "Return number % 2 != 0. Test 0, 2, 3, and a negative odd number.", "prompt": "please write a function to check odd number"}
+{"completion": "Return number % 2 != 0. Test 0, 2, 3, and a negative odd number.", "prompt": "gravion code write a function to check odd number"}
+{"completion": "Return number % 2 != 0. Test 0, 2, 3, and a negative odd number.", "prompt": "help me write a function to check odd number"}
+{"completion": "Return number % 2 != 0. Test 0, 2, 3, and a negative odd number.", "prompt": "check if a number is odd"}
+{"completion": "Return number % 2 != 0. Test 0, 2, 3, and a negative odd number.", "prompt": "please check if a number is odd"}
+{"completion": "Return number % 2 != 0. Test 0, 2, 3, and a negative odd number.", "prompt": "gravion code check if a number is odd"}
+{"completion": "Return number % 2 != 0. Test 0, 2, 3, and a negative odd number.", "prompt": "help me check if a number is odd"}
+{"completion": "Return number % 2 != 0. Test 0, 2, 3, and a negative odd number.", "prompt": "write code to check if a number is odd"}
+{"completion": "Return number % 2 != 0. Test 0, 2, 3, and a negative odd number.", "prompt": "please write code to check if a number is odd"}
+{"completion": "Return number % 2 != 0. Test 0, 2, 3, and a negative odd number.", "prompt": "gravion code write code to check if a number is odd"}
+{"completion": "Return number % 2 != 0. Test 0, 2, 3, and a negative odd number.", "prompt": "help me write code to check if a number is odd"}
+{"completion": "Count characters whose lowercase form is in aeiou; test an empty string, all vowels, and mixed case.", "prompt": "write code to count vowels in a string"}
+{"completion": "Count characters whose lowercase form is in aeiou; test an empty string, all vowels, and mixed case.", "prompt": "please write code to count vowels in a string"}
+{"completion": "Count characters whose lowercase form is in aeiou; test an empty string, all vowels, and mixed case.", "prompt": "gravion code write code to count vowels in a string"}
+{"completion": "Count characters whose lowercase form is in aeiou; test an empty string, all vowels, and mixed case.", "prompt": "help me write code to count vowels in a string"}
+{"completion": "Count characters whose lowercase form is in aeiou; test an empty string, all vowels, and mixed case.", "prompt": "count vowels in a string"}
+{"completion": "Count characters whose lowercase form is in aeiou; test an empty string, all vowels, and mixed case.", "prompt": "please count vowels in a string"}
+{"completion": "Count characters whose lowercase form is in aeiou; test an empty string, all vowels, and mixed case.", "prompt": "gravion code count vowels in a string"}
+{"completion": "Count characters whose lowercase form is in aeiou; test an empty string, all vowels, and mixed case.", "prompt": "help me count vowels in a string"}
+{"completion": "Count characters whose lowercase form is in aeiou; test an empty string, all vowels, and mixed case.", "prompt": "count the vowels in a string"}
+{"completion": "Count characters whose lowercase form is in aeiou; test an empty string, all vowels, and mixed case.", "prompt": "please count the vowels in a string"}
+{"completion": "Count characters whose lowercase form is in aeiou; test an empty string, all vowels, and mixed case.", "prompt": "gravion code count the vowels in a string"}
+{"completion": "Count characters whose lowercase form is in aeiou; test an empty string, all vowels, and mixed case.", "prompt": "help me count the vowels in a string"}
+{"completion": "A variable is a named place that stores a value so code can read or update it later.", "prompt": "what is a variable in python"}
+{"completion": "A variable is a named place that stores a value so code can read or update it later.", "prompt": "please what is a variable in python"}
+{"completion": "A variable is a named place that stores a value so code can read or update it later.", "prompt": "gravion code what is a variable in python"}
+{"completion": "A variable is a named place that stores a value so code can read or update it later.", "prompt": "help me what is a variable in python"}
+{"completion": "A variable is a named place that stores a value so code can read or update it later.", "prompt": "explain variables in python"}
+{"completion": "A variable is a named place that stores a value so code can read or update it later.", "prompt": "please explain variables in python"}
+{"completion": "A variable is a named place that stores a value so code can read or update it later.", "prompt": "gravion code explain variables in python"}
+{"completion": "A variable is a named place that stores a value so code can read or update it later.", "prompt": "help me explain variables in python"}
+{"completion": "Python is a programming language known for readable syntax; it is used for scripts, web services, automation, and data work.", "prompt": "what is python"}
+{"completion": "Python is a programming language known for readable syntax; it is used for scripts, web services, automation, and data work.", "prompt": "please what is python"}
+{"completion": "Python is a programming language known for readable syntax; it is used for scripts, web services, automation, and data work.", "prompt": "gravion code what is python"}
+{"completion": "Python is a programming language known for readable syntax; it is used for scripts, web services, automation, and data work.", "prompt": "help me what is python"}
+{"completion": "Python is a programming language known for readable syntax; it is used for scripts, web services, automation, and data work.", "prompt": "explain what python is"}
+{"completion": "Python is a programming language known for readable syntax; it is used for scripts, web services, automation, and data work.", "prompt": "please explain what python is"}
+{"completion": "Python is a programming language known for readable syntax; it is used for scripts, web services, automation, and data work.", "prompt": "gravion code explain what python is"}
+{"completion": "Python is a programming language known for readable syntax; it is used for scripts, web services, automation, and data work.", "prompt": "help me explain what python is"}
+{"completion": "Python is a programming language known for readable syntax; it is used for scripts, web services, automation, and data work.", "prompt": "what is python used for"}
+{"completion": "Python is a programming language known for readable syntax; it is used for scripts, web services, automation, and data work.", "prompt": "please what is python used for"}
+{"completion": "Python is a programming language known for readable syntax; it is used for scripts, web services, automation, and data work.", "prompt": "gravion code what is python used for"}
+{"completion": "Python is a programming language known for readable syntax; it is used for scripts, web services, automation, and data work.", "prompt": "help me what is python used for"}
+{"completion": "Text in print needs quotes: print(\"Hello\"). Without quotes the word is read as a variable name, which raises a name error when it is undefined.", "prompt": "fix print missing quotes"}
+{"completion": "Text in print needs quotes: print(\"Hello\"). Without quotes the word is read as a variable name, which raises a name error when it is undefined.", "prompt": "please fix print missing quotes"}
+{"completion": "Text in print needs quotes: print(\"Hello\"). Without quotes the word is read as a variable name, which raises a name error when it is undefined.", "prompt": "gravion code fix print missing quotes"}
+{"completion": "Text in print needs quotes: print(\"Hello\"). Without quotes the word is read as a variable name, which raises a name error when it is undefined.", "prompt": "help me fix print missing quotes"}
+{"completion": "Text in print needs quotes: print(\"Hello\"). Without quotes the word is read as a variable name, which raises a name error when it is undefined.", "prompt": "print hello without quotes error"}
+{"completion": "Text in print needs quotes: print(\"Hello\"). Without quotes the word is read as a variable name, which raises a name error when it is undefined.", "prompt": "please print hello without quotes error"}
+{"completion": "Text in print needs quotes: print(\"Hello\"). Without quotes the word is read as a variable name, which raises a name error when it is undefined.", "prompt": "gravion code print hello without quotes error"}
+{"completion": "Text in print needs quotes: print(\"Hello\"). Without quotes the word is read as a variable name, which raises a name error when it is undefined.", "prompt": "help me print hello without quotes error"}
+{"completion": "Split the sentence on whitespace and count the pieces: len(text.split()). Test an empty string and extra spaces.", "prompt": "write a program to count words in a sentence"}
+{"completion": "Split the sentence on whitespace and count the pieces: len(text.split()). Test an empty string and extra spaces.", "prompt": "please write a program to count words in a sentence"}
+{"completion": "Split the sentence on whitespace and count the pieces: len(text.split()). Test an empty string and extra spaces.", "prompt": "gravion code write a program to count words in a sentence"}
+{"completion": "Split the sentence on whitespace and count the pieces: len(text.split()). Test an empty string and extra spaces.", "prompt": "help me write a program to count words in a sentence"}
+{"completion": "Split the sentence on whitespace and count the pieces: len(text.split()). Test an empty string and extra spaces.", "prompt": "count words in a sentence"}
+{"completion": "Split the sentence on whitespace and count the pieces: len(text.split()). Test an empty string and extra spaces.", "prompt": "please count words in a sentence"}
+{"completion": "Split the sentence on whitespace and count the pieces: len(text.split()). Test an empty string and extra spaces.", "prompt": "gravion code count words in a sentence"}
+{"completion": "Split the sentence on whitespace and count the pieces: len(text.split()). Test an empty string and extra spaces.", "prompt": "help me count words in a sentence"}
+{"completion": "Split the sentence on whitespace and count the pieces: len(text.split()). Test an empty string and extra spaces.", "prompt": "count the words in a string"}
+{"completion": "Split the sentence on whitespace and count the pieces: len(text.split()). Test an empty string and extra spaces.", "prompt": "please count the words in a string"}
+{"completion": "Split the sentence on whitespace and count the pieces: len(text.split()). Test an empty string and extra spaces.", "prompt": "gravion code count the words in a string"}
+{"completion": "Split the sentence on whitespace and count the pieces: len(text.split()). Test an empty string and extra spaces.", "prompt": "help me count the words in a string"}
+{"completion": "An array is an ordered collection of items stored under one name, read by position: the first item is at index 0 in most languages.", "prompt": "what is an array"}
+{"completion": "An array is an ordered collection of items stored under one name, read by position: the first item is at index 0 in most languages.", "prompt": "please what is an array"}
+{"completion": "An array is an ordered collection of items stored under one name, read by position: the first item is at index 0 in most languages.", "prompt": "gravion code what is an array"}
+{"completion": "An array is an ordered collection of items stored under one name, read by position: the first item is at index 0 in most languages.", "prompt": "help me what is an array"}
+{"completion": "An array is an ordered collection of items stored under one name, read by position: the first item is at index 0 in most languages.", "prompt": "explain arrays"}
+{"completion": "An array is an ordered collection of items stored under one name, read by position: the first item is at index 0 in most languages.", "prompt": "please explain arrays"}
+{"completion": "An array is an ordered collection of items stored under one name, read by position: the first item is at index 0 in most languages.", "prompt": "gravion code explain arrays"}
+{"completion": "An array is an ordered collection of items stored under one name, read by position: the first item is at index 0 in most languages.", "prompt": "help me explain arrays"}
+{"completion": "An array is an ordered collection of items stored under one name, read by position: the first item is at index 0 in most languages.", "prompt": "what is an array in programming"}
+{"completion": "An array is an ordered collection of items stored under one name, read by position: the first item is at index 0 in most languages.", "prompt": "please what is an array in programming"}
+{"completion": "An array is an ordered collection of items stored under one name, read by position: the first item is at index 0 in most languages.", "prompt": "gravion code what is an array in programming"}
+{"completion": "An array is an ordered collection of items stored under one name, read by position: the first item is at index 0 in most languages.", "prompt": "help me what is an array in programming"}
+{"completion": "Use a small function: def reverse(text): return text[::-1]. Test it with empty and single-character inputs.", "prompt": "write code to reverse a string"}
+{"completion": "Use a small function: def reverse(text): return text[::-1]. Test it with empty and single-character inputs.", "prompt": "please write code to reverse a string"}
+{"completion": "Use a small function: def reverse(text): return text[::-1]. Test it with empty and single-character inputs.", "prompt": "gravion code write code to reverse a string"}
+{"completion": "Use a small function: def reverse(text): return text[::-1]. Test it with empty and single-character inputs.", "prompt": "help me write code to reverse a string"}
+{"completion": "Use a small function: def reverse(text): return text[::-1]. Test it with empty and single-character inputs.", "prompt": "reverse a string"}
+{"completion": "Use a small function: def reverse(text): return text[::-1]. Test it with empty and single-character inputs.", "prompt": "please reverse a string"}
+{"completion": "Use a small function: def reverse(text): return text[::-1]. Test it with empty and single-character inputs.", "prompt": "gravion code reverse a string"}
+{"completion": "Use a small function: def reverse(text): return text[::-1]. Test it with empty and single-character inputs.", "prompt": "help me reverse a string"}
+{"completion": "Use a small function: def reverse(text): return text[::-1]. Test it with empty and single-character inputs.", "prompt": "reverse a string in python"}
+{"completion": "Use a small function: def reverse(text): return text[::-1]. Test it with empty and single-character inputs.", "prompt": "please reverse a string in python"}
+{"completion": "Use a small function: def reverse(text): return text[::-1]. Test it with empty and single-character inputs.", "prompt": "gravion code reverse a string in python"}
+{"completion": "Use a small function: def reverse(text): return text[::-1]. Test it with empty and single-character inputs.", "prompt": "help me reverse a string in python"}
+{"completion": "Object oriented programming groups data and behavior into objects with clear responsibilities and interfaces.", "prompt": "what is object oriented programming"}
+{"completion": "Object oriented programming groups data and behavior into objects with clear responsibilities and interfaces.", "prompt": "please what is object oriented programming"}
+{"completion": "Object oriented programming groups data and behavior into objects with clear responsibilities and interfaces.", "prompt": "gravion code what is object oriented programming"}
+{"completion": "Object oriented programming groups data and behavior into objects with clear responsibilities and interfaces.", "prompt": "help me what is object oriented programming"}
+{"completion": "Object oriented programming groups data and behavior into objects with clear responsibilities and interfaces.", "prompt": "what is oop"}
+{"completion": "Object oriented programming groups data and behavior into objects with clear responsibilities and interfaces.", "prompt": "please what is oop"}
+{"completion": "Object oriented programming groups data and behavior into objects with clear responsibilities and interfaces.", "prompt": "gravion code what is oop"}
+{"completion": "Object oriented programming groups data and behavior into objects with clear responsibilities and interfaces.", "prompt": "help me what is oop"}
+{"completion": "Object oriented programming groups data and behavior into objects with clear responsibilities and interfaces.", "prompt": "explain oop simply"}
+{"completion": "Object oriented programming groups data and behavior into objects with clear responsibilities and interfaces.", "prompt": "please explain oop simply"}
+{"completion": "Object oriented programming groups data and behavior into objects with clear responsibilities and interfaces.", "prompt": "gravion code explain oop simply"}
+{"completion": "Object oriented programming groups data and behavior into objects with clear responsibilities and interfaces.", "prompt": "help me explain oop simply"}
+{"completion": "Check divisibility from 2 up to the square root of the number, return false on the first exact divisor, and test 2, 3, 4, and a large prime.", "prompt": "write code to check if a number is prime"}
+{"completion": "Check divisibility from 2 up to the square root of the number, return false on the first exact divisor, and test 2, 3, 4, and a large prime.", "prompt": "please write code to check if a number is prime"}
+{"completion": "Check divisibility from 2 up to the square root of the number, return false on the first exact divisor, and test 2, 3, 4, and a large prime.", "prompt": "gravion code write code to check if a number is prime"}
+{"completion": "Check divisibility from 2 up to the square root of the number, return false on the first exact divisor, and test 2, 3, 4, and a large prime.", "prompt": "help me write code to check if a number is prime"}
+{"completion": "Check divisibility from 2 up to the square root of the number, return false on the first exact divisor, and test 2, 3, 4, and a large prime.", "prompt": "write a python function that checks if a number is prime"}
+{"completion": "Check divisibility from 2 up to the square root of the number, return false on the first exact divisor, and test 2, 3, 4, and a large prime.", "prompt": "please write a python function that checks if a number is prime"}
+{"completion": "Check divisibility from 2 up to the square root of the number, return false on the first exact divisor, and test 2, 3, 4, and a large prime.", "prompt": "gravion code write a python function that checks if a number is prime"}
+{"completion": "Check divisibility from 2 up to the square root of the number, return false on the first exact divisor, and test 2, 3, 4, and a large prime.", "prompt": "help me write a python function that checks if a number is prime"}
+{"completion": "Check divisibility from 2 up to the square root of the number, return false on the first exact divisor, and test 2, 3, 4, and a large prime.", "prompt": "prime number checker in python"}
+{"completion": "Check divisibility from 2 up to the square root of the number, return false on the first exact divisor, and test 2, 3, 4, and a large prime.", "prompt": "please prime number checker in python"}
+{"completion": "Check divisibility from 2 up to the square root of the number, return false on the first exact divisor, and test 2, 3, 4, and a large prime.", "prompt": "gravion code prime number checker in python"}
+{"completion": "Check divisibility from 2 up to the square root of the number, return false on the first exact divisor, and test 2, 3, 4, and a large prime.", "prompt": "help me prime number checker in python"}
+{"completion": "Use sum(values) for the total, or add each value in one pass; test an empty list, which sums to 0.", "prompt": "write code to add numbers in a list"}
+{"completion": "Use sum(values) for the total, or add each value in one pass; test an empty list, which sums to 0.", "prompt": "please write code to add numbers in a list"}
+{"completion": "Use sum(values) for the total, or add each value in one pass; test an empty list, which sums to 0.", "prompt": "gravion code write code to add numbers in a list"}
+{"completion": "Use sum(values) for the total, or add each value in one pass; test an empty list, which sums to 0.", "prompt": "help me write code to add numbers in a list"}
+{"completion": "Use sum(values) for the total, or add each value in one pass; test an empty list, which sums to 0.", "prompt": "add numbers in a list"}
+{"completion": "Use sum(values) for the total, or add each value in one pass; test an empty list, which sums to 0.", "prompt": "please add numbers in a list"}
+{"completion": "Use sum(values) for the total, or add each value in one pass; test an empty list, which sums to 0.", "prompt": "gravion code add numbers in a list"}
+{"completion": "Use sum(values) for the total, or add each value in one pass; test an empty list, which sums to 0.", "prompt": "help me add numbers in a list"}
+{"completion": "Use sum(values) for the total, or add each value in one pass; test an empty list, which sums to 0.", "prompt": "sum numbers in a list"}
+{"completion": "Use sum(values) for the total, or add each value in one pass; test an empty list, which sums to 0.", "prompt": "please sum numbers in a list"}
+{"completion": "Use sum(values) for the total, or add each value in one pass; test an empty list, which sums to 0.", "prompt": "gravion code sum numbers in a list"}
+{"completion": "Use sum(values) for the total, or add each value in one pass; test an empty list, which sums to 0.", "prompt": "help me sum numbers in a list"}
+{"completion": "Use sum(values) for the total, or add each value in one pass; test an empty list, which sums to 0.", "prompt": "write a function to sum a list"}
+{"completion": "Use sum(values) for the total, or add each value in one pass; test an empty list, which sums to 0.", "prompt": "please write a function to sum a list"}
+{"completion": "Use sum(values) for the total, or add each value in one pass; test an empty list, which sums to 0.", "prompt": "gravion code write a function to sum a list"}
+{"completion": "Use sum(values) for the total, or add each value in one pass; test an empty list, which sums to 0.", "prompt": "help me write a function to sum a list"}
+{"completion": "A dictionary stores key-value pairs: look a value up by its key instead of by position, and keys must be unique.", "prompt": "what is a dictionary in python"}
+{"completion": "A dictionary stores key-value pairs: look a value up by its key instead of by position, and keys must be unique.", "prompt": "please what is a dictionary in python"}
+{"completion": "A dictionary stores key-value pairs: look a value up by its key instead of by position, and keys must be unique.", "prompt": "gravion code what is a dictionary in python"}
+{"completion": "A dictionary stores key-value pairs: look a value up by its key instead of by position, and keys must be unique.", "prompt": "help me what is a dictionary in python"}
+{"completion": "A dictionary stores key-value pairs: look a value up by its key instead of by position, and keys must be unique.", "prompt": "explain dictionaries in python"}
+{"completion": "A dictionary stores key-value pairs: look a value up by its key instead of by position, and keys must be unique.", "prompt": "please explain dictionaries in python"}
+{"completion": "A dictionary stores key-value pairs: look a value up by its key instead of by position, and keys must be unique.", "prompt": "gravion code explain dictionaries in python"}
+{"completion": "A dictionary stores key-value pairs: look a value up by its key instead of by position, and keys must be unique.", "prompt": "help me explain dictionaries in python"}
+{"completion": "A dictionary stores key-value pairs: look a value up by its key instead of by position, and keys must be unique.", "prompt": "what is a dictionary in programming"}
+{"completion": "A dictionary stores key-value pairs: look a value up by its key instead of by position, and keys must be unique.", "prompt": "please what is a dictionary in programming"}
+{"completion": "A dictionary stores key-value pairs: look a value up by its key instead of by position, and keys must be unique.", "prompt": "gravion code what is a dictionary in programming"}
+{"completion": "A dictionary stores key-value pairs: look a value up by its key instead of by position, and keys must be unique.", "prompt": "help me what is a dictionary in programming"}
+{"completion": "Loop over range(1, 11) and print each value; range stops before 11, so 10 is the last number printed.", "prompt": "write a program to print numbers from 1 to 10"}
+{"completion": "Loop over range(1, 11) and print each value; range stops before 11, so 10 is the last number printed.", "prompt": "please write a program to print numbers from 1 to 10"}
+{"completion": "Loop over range(1, 11) and print each value; range stops before 11, so 10 is the last number printed.", "prompt": "gravion code write a program to print numbers from 1 to 10"}
+{"completion": "Loop over range(1, 11) and print each value; range stops before 11, so 10 is the last number printed.", "prompt": "help me write a program to print numbers from 1 to 10"}
+{"completion": "Loop over range(1, 11) and print each value; range stops before 11, so 10 is the last number printed.", "prompt": "print numbers from 1 to 10"}
+{"completion": "Loop over range(1, 11) and print each value; range stops before 11, so 10 is the last number printed.", "prompt": "please print numbers from 1 to 10"}
+{"completion": "Loop over range(1, 11) and print each value; range stops before 11, so 10 is the last number printed.", "prompt": "gravion code print numbers from 1 to 10"}
+{"completion": "Loop over range(1, 11) and print each value; range stops before 11, so 10 is the last number printed.", "prompt": "help me print numbers from 1 to 10"}
+{"completion": "Loop over range(1, 11) and print each value; range stops before 11, so 10 is the last number printed.", "prompt": "print 1 to 10 in python"}
+{"completion": "Loop over range(1, 11) and print each value; range stops before 11, so 10 is the last number printed.", "prompt": "please print 1 to 10 in python"}
+{"completion": "Loop over range(1, 11) and print each value; range stops before 11, so 10 is the last number printed.", "prompt": "gravion code print 1 to 10 in python"}
+{"completion": "Loop over range(1, 11) and print each value; range stops before 11, so 10 is the last number printed.", "prompt": "help me print 1 to 10 in python"}
+{"completion": "Recursion solves a problem by calling the same function on a smaller input until a base case stops the calls.", "prompt": "explain recursion in simple words"}
+{"completion": "Recursion solves a problem by calling the same function on a smaller input until a base case stops the calls.", "prompt": "please explain recursion in simple words"}
+{"completion": "Recursion solves a problem by calling the same function on a smaller input until a base case stops the calls.", "prompt": "gravion code explain recursion in simple words"}
+{"completion": "Recursion solves a problem by calling the same function on a smaller input until a base case stops the calls.", "prompt": "help me explain recursion in simple words"}
+{"completion": "Recursion solves a problem by calling the same function on a smaller input until a base case stops the calls.", "prompt": "recursion in simple words"}
+{"completion": "Recursion solves a problem by calling the same function on a smaller input until a base case stops the calls.", "prompt": "please recursion in simple words"}
+{"completion": "Recursion solves a problem by calling the same function on a smaller input until a base case stops the calls.", "prompt": "gravion code recursion in simple words"}
+{"completion": "Recursion solves a problem by calling the same function on a smaller input until a base case stops the calls.", "prompt": "help me recursion in simple words"}
+{"completion": "Track seen values in a set and collect values that appear again, preserving first duplicate order if needed.", "prompt": "write code to find duplicate numbers"}
+{"completion": "Track seen values in a set and collect values that appear again, preserving first duplicate order if needed.", "prompt": "please write code to find duplicate numbers"}
+{"completion": "Track seen values in a set and collect values that appear again, preserving first duplicate order if needed.", "prompt": "gravion code write code to find duplicate numbers"}
+{"completion": "Track seen values in a set and collect values that appear again, preserving first duplicate order if needed.", "prompt": "help me write code to find duplicate numbers"}
+{"completion": "Track seen values in a set and collect values that appear again, preserving first duplicate order if needed.", "prompt": "find duplicate numbers in a list"}
+{"completion": "Track seen values in a set and collect values that appear again, preserving first duplicate order if needed.", "prompt": "please find duplicate numbers in a list"}
+{"completion": "Track seen values in a set and collect values that appear again, preserving first duplicate order if needed.", "prompt": "gravion code find duplicate numbers in a list"}
+{"completion": "Track seen values in a set and collect values that appear again, preserving first duplicate order if needed.", "prompt": "help me find duplicate numbers in a list"}
+{"completion": "Track seen values in a set and collect values that appear again, preserving first duplicate order if needed.", "prompt": "find duplicates in a list"}
+{"completion": "Track seen values in a set and collect values that appear again, preserving first duplicate order if needed.", "prompt": "please find duplicates in a list"}
+{"completion": "Track seen values in a set and collect values that appear again, preserving first duplicate order if needed.", "prompt": "gravion code find duplicates in a list"}
+{"completion": "Track seen values in a set and collect values that appear again, preserving first duplicate order if needed.", "prompt": "help me find duplicates in a list"}
+{"completion": "A string is text stored as a sequence of characters, written in quotes; its length counts characters and positions start at index 0.", "prompt": "what is a string in programming"}
+{"completion": "A string is text stored as a sequence of characters, written in quotes; its length counts characters and positions start at index 0.", "prompt": "please what is a string in programming"}
+{"completion": "A string is text stored as a sequence of characters, written in quotes; its length counts characters and positions start at index 0.", "prompt": "gravion code what is a string in programming"}
+{"completion": "A string is text stored as a sequence of characters, written in quotes; its length counts characters and positions start at index 0.", "prompt": "help me what is a string in programming"}
+{"completion": "A string is text stored as a sequence of characters, written in quotes; its length counts characters and positions start at index 0.", "prompt": "explain strings in programming"}
+{"completion": "A string is text stored as a sequence of characters, written in quotes; its length counts characters and positions start at index 0.", "prompt": "please explain strings in programming"}
+{"completion": "A string is text stored as a sequence of characters, written in quotes; its length counts characters and positions start at index 0.", "prompt": "gravion code explain strings in programming"}
+{"completion": "A string is text stored as a sequence of characters, written in quotes; its length counts characters and positions start at index 0.", "prompt": "help me explain strings in programming"}
+{"completion": "A string is text stored as a sequence of characters, written in quotes; its length counts characters and positions start at index 0.", "prompt": "what is a string in python"}
+{"completion": "A string is text stored as a sequence of characters, written in quotes; its length counts characters and positions start at index 0.", "prompt": "please what is a string in python"}
+{"completion": "A string is text stored as a sequence of characters, written in quotes; its length counts characters and positions start at index 0.", "prompt": "gravion code what is a string in python"}
+{"completion": "A string is text stored as a sequence of characters, written in quotes; its length counts characters and positions start at index 0.", "prompt": "help me what is a string in python"}
+{"completion": "Return number > 0. Test 0, a positive value, and a negative value; zero is neither positive nor negative.", "prompt": "write code to check if a number is positive"}
+{"completion": "Return number > 0. Test 0, a positive value, and a negative value; zero is neither positive nor negative.", "prompt": "please write code to check if a number is positive"}
+{"completion": "Return number > 0. Test 0, a positive value, and a negative value; zero is neither positive nor negative.", "prompt": "gravion code write code to check if a number is positive"}
+{"completion": "Return number > 0. Test 0, a positive value, and a negative value; zero is neither positive nor negative.", "prompt": "help me write code to check if a number is positive"}
+{"completion": "Return number > 0. Test 0, a positive value, and a negative value; zero is neither positive nor negative.", "prompt": "check if a number is positive"}
+{"completion": "Return number > 0. Test 0, a positive value, and a negative value; zero is neither positive nor negative.", "prompt": "please check if a number is positive"}
+{"completion": "Return number > 0. Test 0, a positive value, and a negative value; zero is neither positive nor negative.", "prompt": "gravion code check if a number is positive"}
+{"completion": "Return number > 0. Test 0, a positive value, and a negative value; zero is neither positive nor negative.", "prompt": "help me check if a number is positive"}
+{"completion": "Return number > 0. Test 0, a positive value, and a negative value; zero is neither positive nor negative.", "prompt": "positive or negative program"}
+{"completion": "Return number > 0. Test 0, a positive value, and a negative value; zero is neither positive nor negative.", "prompt": "please positive or negative program"}
+{"completion": "Return number > 0. Test 0, a positive value, and a negative value; zero is neither positive nor negative.", "prompt": "gravion code positive or negative program"}
+{"completion": "Return number > 0. Test 0, a positive value, and a negative value; zero is neither positive nor negative.", "prompt": "help me positive or negative program"}
+{"completion": "Add the values and divide by how many there are: sum(values) / len(values); guard against an empty list, which has no average.", "prompt": "write code to find the average of numbers"}
+{"completion": "Add the values and divide by how many there are: sum(values) / len(values); guard against an empty list, which has no average.", "prompt": "please write code to find the average of numbers"}
+{"completion": "Add the values and divide by how many there are: sum(values) / len(values); guard against an empty list, which has no average.", "prompt": "gravion code write code to find the average of numbers"}
+{"completion": "Add the values and divide by how many there are: sum(values) / len(values); guard against an empty list, which has no average.", "prompt": "help me write code to find the average of numbers"}
+{"completion": "Add the values and divide by how many there are: sum(values) / len(values); guard against an empty list, which has no average.", "prompt": "find the average of numbers"}
+{"completion": "Add the values and divide by how many there are: sum(values) / len(values); guard against an empty list, which has no average.", "prompt": "please find the average of numbers"}
+{"completion": "Add the values and divide by how many there are: sum(values) / len(values); guard against an empty list, which has no average.", "prompt": "gravion code find the average of numbers"}
+{"completion": "Add the values and divide by how many there are: sum(values) / len(values); guard against an empty list, which has no average.", "prompt": "help me find the average of numbers"}
+{"completion": "Add the values and divide by how many there are: sum(values) / len(values); guard against an empty list, which has no average.", "prompt": "average of numbers in a list"}
+{"completion": "Add the values and divide by how many there are: sum(values) / len(values); guard against an empty list, which has no average.", "prompt": "please average of numbers in a list"}
+{"completion": "Add the values and divide by how many there are: sum(values) / len(values); guard against an empty list, which has no average.", "prompt": "gravion code average of numbers in a list"}
+{"completion": "Add the values and divide by how many there are: sum(values) / len(values); guard against an empty list, which has no average.", "prompt": "help me average of numbers in a list"}
+{"completion": "An if statement runs a block of code only when its condition is true; an else block runs when the condition is false.", "prompt": "what is an if statement"}
+{"completion": "An if statement runs a block of code only when its condition is true; an else block runs when the condition is false.", "prompt": "please what is an if statement"}
+{"completion": "An if statement runs a block of code only when its condition is true; an else block runs when the condition is false.", "prompt": "gravion code what is an if statement"}
+{"completion": "An if statement runs a block of code only when its condition is true; an else block runs when the condition is false.", "prompt": "help me what is an if statement"}
+{"completion": "An if statement runs a block of code only when its condition is true; an else block runs when the condition is false.", "prompt": "explain if statements"}
+{"completion": "An if statement runs a block of code only when its condition is true; an else block runs when the condition is false.", "prompt": "please explain if statements"}
+{"completion": "An if statement runs a block of code only when its condition is true; an else block runs when the condition is false.", "prompt": "gravion code explain if statements"}
+{"completion": "An if statement runs a block of code only when its condition is true; an else block runs when the condition is false.", "prompt": "help me explain if statements"}
+{"completion": "An if statement runs a block of code only when its condition is true; an else block runs when the condition is false.", "prompt": "what is an if else statement"}
+{"completion": "An if statement runs a block of code only when its condition is true; an else block runs when the condition is false.", "prompt": "please what is an if else statement"}
+{"completion": "An if statement runs a block of code only when its condition is true; an else block runs when the condition is false.", "prompt": "gravion code what is an if else statement"}
+{"completion": "An if statement runs a block of code only when its condition is true; an else block runs when the condition is false.", "prompt": "help me what is an if else statement"}
+{"completion": "Combine them with list_a + list_b, or extend a copy with list_b to keep the original unchanged; test empty lists.", "prompt": "write code to merge two lists"}
+{"completion": "Combine them with list_a + list_b, or extend a copy with list_b to keep the original unchanged; test empty lists.", "prompt": "please write code to merge two lists"}
+{"completion": "Combine them with list_a + list_b, or extend a copy with list_b to keep the original unchanged; test empty lists.", "prompt": "gravion code write code to merge two lists"}
+{"completion": "Combine them with list_a + list_b, or extend a copy with list_b to keep the original unchanged; test empty lists.", "prompt": "help me write code to merge two lists"}
+{"completion": "Combine them with list_a + list_b, or extend a copy with list_b to keep the original unchanged; test empty lists.", "prompt": "merge two lists"}
+{"completion": "Combine them with list_a + list_b, or extend a copy with list_b to keep the original unchanged; test empty lists.", "prompt": "please merge two lists"}
+{"completion": "Combine them with list_a + list_b, or extend a copy with list_b to keep the original unchanged; test empty lists.", "prompt": "gravion code merge two lists"}
+{"completion": "Combine them with list_a + list_b, or extend a copy with list_b to keep the original unchanged; test empty lists.", "prompt": "help me merge two lists"}
+{"completion": "Combine them with list_a + list_b, or extend a copy with list_b to keep the original unchanged; test empty lists.", "prompt": "combine two lists in python"}
+{"completion": "Combine them with list_a + list_b, or extend a copy with list_b to keep the original unchanged; test empty lists.", "prompt": "please combine two lists in python"}
+{"completion": "Combine them with list_a + list_b, or extend a copy with list_b to keep the original unchanged; test empty lists.", "prompt": "gravion code combine two lists in python"}
+{"completion": "Combine them with list_a + list_b, or extend a copy with list_b to keep the original unchanged; test empty lists.", "prompt": "help me combine two lists in python"}
+{"completion": "Loop over the range and print values where number % 2 == 0, or step by 2 from the first even number.", "prompt": "write code to print even numbers"}
+{"completion": "Loop over the range and print values where number % 2 == 0, or step by 2 from the first even number.", "prompt": "please write code to print even numbers"}
+{"completion": "Loop over the range and print values where number % 2 == 0, or step by 2 from the first even number.", "prompt": "gravion code write code to print even numbers"}
+{"completion": "Loop over the range and print values where number % 2 == 0, or step by 2 from the first even number.", "prompt": "help me write code to print even numbers"}
+{"completion": "Loop over the range and print values where number % 2 == 0, or step by 2 from the first even number.", "prompt": "print even numbers"}
+{"completion": "Loop over the range and print values where number % 2 == 0, or step by 2 from the first even number.", "prompt": "please print even numbers"}
+{"completion": "Loop over the range and print values where number % 2 == 0, or step by 2 from the first even number.", "prompt": "gravion code print even numbers"}
+{"completion": "Loop over the range and print values where number % 2 == 0, or step by 2 from the first even number.", "prompt": "help me print even numbers"}
+{"completion": "Loop over the range and print values where number % 2 == 0, or step by 2 from the first even number.", "prompt": "print even numbers in python"}
+{"completion": "Loop over the range and print values where number % 2 == 0, or step by 2 from the first even number.", "prompt": "please print even numbers in python"}
+{"completion": "Loop over the range and print values where number % 2 == 0, or step by 2 from the first even number.", "prompt": "gravion code print even numbers in python"}
+{"completion": "Loop over the range and print values where number % 2 == 0, or step by 2 from the first even number.", "prompt": "help me print even numbers in python"}
+{"completion": "A list in Python is an ordered, changeable collection written in square brackets; items are read by index starting at 0 and can be added or removed.", "prompt": "explain what a list is in python"}
+{"completion": "A list in Python is an ordered, changeable collection written in square brackets; items are read by index starting at 0 and can be added or removed.", "prompt": "please explain what a list is in python"}
+{"completion": "A list in Python is an ordered, changeable collection written in square brackets; items are read by index starting at 0 and can be added or removed.", "prompt": "gravion code explain what a list is in python"}
+{"completion": "A list in Python is an ordered, changeable collection written in square brackets; items are read by index starting at 0 and can be added or removed.", "prompt": "help me explain what a list is in python"}
+{"completion": "A list in Python is an ordered, changeable collection written in square brackets; items are read by index starting at 0 and can be added or removed.", "prompt": "what is a list in python"}
+{"completion": "A list in Python is an ordered, changeable collection written in square brackets; items are read by index starting at 0 and can be added or removed.", "prompt": "please what is a list in python"}
+{"completion": "A list in Python is an ordered, changeable collection written in square brackets; items are read by index starting at 0 and can be added or removed.", "prompt": "gravion code what is a list in python"}
+{"completion": "A list in Python is an ordered, changeable collection written in square brackets; items are read by index starting at 0 and can be added or removed.", "prompt": "help me what is a list in python"}
+{"completion": "A list in Python is an ordered, changeable collection written in square brackets; items are read by index starting at 0 and can be added or removed.", "prompt": "what is a list in programming"}
+{"completion": "A list in Python is an ordered, changeable collection written in square brackets; items are read by index starting at 0 and can be added or removed.", "prompt": "please what is a list in programming"}
+{"completion": "A list in Python is an ordered, changeable collection written in square brackets; items are read by index starting at 0 and can be added or removed.", "prompt": "gravion code what is a list in programming"}
+{"completion": "A list in Python is an ordered, changeable collection written in square brackets; items are read by index starting at 0 and can be added or removed.", "prompt": "help me what is a list in programming"}
+{"completion": "Convert with fahrenheit = celsius * 9 / 5 + 32; test 0 degrees, which gives 32, and 100 degrees, which gives 212.", "prompt": "write code to convert temperature from celsius to fahrenheit"}
+{"completion": "Convert with fahrenheit = celsius * 9 / 5 + 32; test 0 degrees, which gives 32, and 100 degrees, which gives 212.", "prompt": "please write code to convert temperature from celsius to fahrenheit"}
+{"completion": "Convert with fahrenheit = celsius * 9 / 5 + 32; test 0 degrees, which gives 32, and 100 degrees, which gives 212.", "prompt": "gravion code write code to convert temperature from celsius to fahrenheit"}
+{"completion": "Convert with fahrenheit = celsius * 9 / 5 + 32; test 0 degrees, which gives 32, and 100 degrees, which gives 212.", "prompt": "help me write code to convert temperature from celsius to fahrenheit"}
+{"completion": "Convert with fahrenheit = celsius * 9 / 5 + 32; test 0 degrees, which gives 32, and 100 degrees, which gives 212.", "prompt": "convert celsius to fahrenheit"}
+{"completion": "Convert with fahrenheit = celsius * 9 / 5 + 32; test 0 degrees, which gives 32, and 100 degrees, which gives 212.", "prompt": "please convert celsius to fahrenheit"}
+{"completion": "Convert with fahrenheit = celsius * 9 / 5 + 32; test 0 degrees, which gives 32, and 100 degrees, which gives 212.", "prompt": "gravion code convert celsius to fahrenheit"}
+{"completion": "Convert with fahrenheit = celsius * 9 / 5 + 32; test 0 degrees, which gives 32, and 100 degrees, which gives 212.", "prompt": "help me convert celsius to fahrenheit"}
+{"completion": "Convert with fahrenheit = celsius * 9 / 5 + 32; test 0 degrees, which gives 32, and 100 degrees, which gives 212.", "prompt": "celsius to fahrenheit program"}
+{"completion": "Convert with fahrenheit = celsius * 9 / 5 + 32; test 0 degrees, which gives 32, and 100 degrees, which gives 212.", "prompt": "please celsius to fahrenheit program"}
+{"completion": "Convert with fahrenheit = celsius * 9 / 5 + 32; test 0 degrees, which gives 32, and 100 degrees, which gives 212.", "prompt": "gravion code celsius to fahrenheit program"}
+{"completion": "Convert with fahrenheit = celsius * 9 / 5 + 32; test 0 degrees, which gives 32, and 100 degrees, which gives 212.", "prompt": "help me celsius to fahrenheit program"}
+{"completion": "A function is a named, reusable block of code that takes inputs, does one job, and can return a result.", "prompt": "explain what a function is in python"}
+{"completion": "A function is a named, reusable block of code that takes inputs, does one job, and can return a result.", "prompt": "please explain what a function is in python"}
+{"completion": "A function is a named, reusable block of code that takes inputs, does one job, and can return a result.", "prompt": "gravion code explain what a function is in python"}
+{"completion": "A function is a named, reusable block of code that takes inputs, does one job, and can return a result.", "prompt": "help me explain what a function is in python"}
+{"completion": "A function is a named, reusable block of code that takes inputs, does one job, and can return a result.", "prompt": "what is a function in python"}
+{"completion": "A function is a named, reusable block of code that takes inputs, does one job, and can return a result.", "prompt": "please what is a function in python"}
+{"completion": "A function is a named, reusable block of code that takes inputs, does one job, and can return a result.", "prompt": "gravion code what is a function in python"}
+{"completion": "A function is a named, reusable block of code that takes inputs, does one job, and can return a result.", "prompt": "help me what is a function in python"}
+{"completion": "A function is a named, reusable block of code that takes inputs, does one job, and can return a result.", "prompt": "explain functions in python"}
+{"completion": "A function is a named, reusable block of code that takes inputs, does one job, and can return a result.", "prompt": "please explain functions in python"}
+{"completion": "A function is a named, reusable block of code that takes inputs, does one job, and can return a result.", "prompt": "gravion code explain functions in python"}
+{"completion": "A function is a named, reusable block of code that takes inputs, does one job, and can return a result.", "prompt": "help me explain functions in python"}
+{"completion": "Use max(values) for the largest item, or track the largest value in one pass; test an empty list separately because it has no maximum.", "prompt": "write a function to find the maximum in a list"}
+{"completion": "Use max(values) for the largest item, or track the largest value in one pass; test an empty list separately because it has no maximum.", "prompt": "please write a function to find the maximum in a list"}
+{"completion": "Use max(values) for the largest item, or track the largest value in one pass; test an empty list separately because it has no maximum.", "prompt": "gravion code write a function to find the maximum in a list"}
+{"completion": "Use max(values) for the largest item, or track the largest value in one pass; test an empty list separately because it has no maximum.", "prompt": "help me write a function to find the maximum in a list"}
+{"completion": "Use max(values) for the largest item, or track the largest value in one pass; test an empty list separately because it has no maximum.", "prompt": "function to find the maximum in a list"}
+{"completion": "Use max(values) for the largest item, or track the largest value in one pass; test an empty list separately because it has no maximum.", "prompt": "please function to find the maximum in a list"}
+{"completion": "Use max(values) for the largest item, or track the largest value in one pass; test an empty list separately because it has no maximum.", "prompt": "gravion code function to find the maximum in a list"}
+{"completion": "Use max(values) for the largest item, or track the largest value in one pass; test an empty list separately because it has no maximum.", "prompt": "help me function to find the maximum in a list"}
+{"completion": "Use max(values) for the largest item, or track the largest value in one pass; test an empty list separately because it has no maximum.", "prompt": "write a function to find the largest in a list"}
+{"completion": "Use max(values) for the largest item, or track the largest value in one pass; test an empty list separately because it has no maximum.", "prompt": "please write a function to find the largest in a list"}
+{"completion": "Use max(values) for the largest item, or track the largest value in one pass; test an empty list separately because it has no maximum.", "prompt": "gravion code write a function to find the largest in a list"}
+{"completion": "Use max(values) for the largest item, or track the largest value in one pass; test an empty list separately because it has no maximum.", "prompt": "help me write a function to find the largest in a list"}
+{"completion": "A loop repeats a block of code while a condition holds or for each item in a collection; make sure the condition changes so the loop ends.", "prompt": "explain loops in python"}
+{"completion": "A loop repeats a block of code while a condition holds or for each item in a collection; make sure the condition changes so the loop ends.", "prompt": "please explain loops in python"}
+{"completion": "A loop repeats a block of code while a condition holds or for each item in a collection; make sure the condition changes so the loop ends.", "prompt": "gravion code explain loops in python"}
+{"completion": "A loop repeats a block of code while a condition holds or for each item in a collection; make sure the condition changes so the loop ends.", "prompt": "help me explain loops in python"}
+{"completion": "A loop repeats a block of code while a condition holds or for each item in a collection; make sure the condition changes so the loop ends.", "prompt": "what are loops in python"}
+{"completion": "A loop repeats a block of code while a condition holds or for each item in a collection; make sure the condition changes so the loop ends.", "prompt": "please what are loops in python"}
+{"completion": "A loop repeats a block of code while a condition holds or for each item in a collection; make sure the condition changes so the loop ends.", "prompt": "gravion code what are loops in python"}
+{"completion": "A loop repeats a block of code while a condition holds or for each item in a collection; make sure the condition changes so the loop ends.", "prompt": "help me what are loops in python"}
+{"completion": "A loop repeats a block of code while a condition holds or for each item in a collection; make sure the condition changes so the loop ends.", "prompt": "explain loops in simple words"}
+{"completion": "A loop repeats a block of code while a condition holds or for each item in a collection; make sure the condition changes so the loop ends.", "prompt": "please explain loops in simple words"}
+{"completion": "A loop repeats a block of code while a condition holds or for each item in a collection; make sure the condition changes so the loop ends.", "prompt": "gravion code explain loops in simple words"}
+{"completion": "A loop repeats a block of code while a condition holds or for each item in a collection; make sure the condition changes so the loop ends.", "prompt": "help me explain loops in simple words"}
+{"completion": "A string is text stored as a sequence of characters, written in quotes; its length counts characters and positions start at index 0.", "prompt": "explain string in simple words"}
+{"completion": "A string is text stored as a sequence of characters, written in quotes; its length counts characters and positions start at index 0.", "prompt": "please explain string in simple words"}
+{"completion": "A string is text stored as a sequence of characters, written in quotes; its length counts characters and positions start at index 0.", "prompt": "gravion code explain string in simple words"}
+{"completion": "A string is text stored as a sequence of characters, written in quotes; its length counts characters and positions start at index 0.", "prompt": "help me explain string in simple words"}
+{"completion": "A string is text stored as a sequence of characters, written in quotes; its length counts characters and positions start at index 0.", "prompt": "explain a string in simple words"}
+{"completion": "A string is text stored as a sequence of characters, written in quotes; its length counts characters and positions start at index 0.", "prompt": "please explain a string in simple words"}
+{"completion": "A string is text stored as a sequence of characters, written in quotes; its length counts characters and positions start at index 0.", "prompt": "gravion code explain a string in simple words"}
+{"completion": "A string is text stored as a sequence of characters, written in quotes; its length counts characters and positions start at index 0.", "prompt": "help me explain a string in simple words"}
+{"completion": "A string is text stored as a sequence of characters, written in quotes; its length counts characters and positions start at index 0.", "prompt": "what is a string in simple words"}
+{"completion": "A string is text stored as a sequence of characters, written in quotes; its length counts characters and positions start at index 0.", "prompt": "please what is a string in simple words"}
+{"completion": "A string is text stored as a sequence of characters, written in quotes; its length counts characters and positions start at index 0.", "prompt": "gravion code what is a string in simple words"}
+{"completion": "A string is text stored as a sequence of characters, written in quotes; its length counts characters and positions start at index 0.", "prompt": "help me what is a string in simple words"}
+{"completion": "A year is a leap year when it divides by 4, except century years, which must divide by 400: year % 4 == 0 and (year % 100 != 0 or year % 400 == 0). Test 2000, 1900, 2024, and 2023.", "prompt": "write a function to check leap year"}
+{"completion": "A year is a leap year when it divides by 4, except century years, which must divide by 400: year % 4 == 0 and (year % 100 != 0 or year % 400 == 0). Test 2000, 1900, 2024, and 2023.", "prompt": "please write a function to check leap year"}
+{"completion": "A year is a leap year when it divides by 4, except century years, which must divide by 400: year % 4 == 0 and (year % 100 != 0 or year % 400 == 0). Test 2000, 1900, 2024, and 2023.", "prompt": "gravion code write a function to check leap year"}
+{"completion": "A year is a leap year when it divides by 4, except century years, which must divide by 400: year % 4 == 0 and (year % 100 != 0 or year % 400 == 0). Test 2000, 1900, 2024, and 2023.", "prompt": "help me write a function to check leap year"}
+{"completion": "A year is a leap year when it divides by 4, except century years, which must divide by 400: year % 4 == 0 and (year % 100 != 0 or year % 400 == 0). Test 2000, 1900, 2024, and 2023.", "prompt": "check leap year"}
+{"completion": "A year is a leap year when it divides by 4, except century years, which must divide by 400: year % 4 == 0 and (year % 100 != 0 or year % 400 == 0). Test 2000, 1900, 2024, and 2023.", "prompt": "please check leap year"}
+{"completion": "A year is a leap year when it divides by 4, except century years, which must divide by 400: year % 4 == 0 and (year % 100 != 0 or year % 400 == 0). Test 2000, 1900, 2024, and 2023.", "prompt": "gravion code check leap year"}
+{"completion": "A year is a leap year when it divides by 4, except century years, which must divide by 400: year % 4 == 0 and (year % 100 != 0 or year % 400 == 0). Test 2000, 1900, 2024, and 2023.", "prompt": "help me check leap year"}
+{"completion": "A year is a leap year when it divides by 4, except century years, which must divide by 400: year % 4 == 0 and (year % 100 != 0 or year % 400 == 0). Test 2000, 1900, 2024, and 2023.", "prompt": "leap year program in python"}
+{"completion": "A year is a leap year when it divides by 4, except century years, which must divide by 400: year % 4 == 0 and (year % 100 != 0 or year % 400 == 0). Test 2000, 1900, 2024, and 2023.", "prompt": "please leap year program in python"}
+{"completion": "A year is a leap year when it divides by 4, except century years, which must divide by 400: year % 4 == 0 and (year % 100 != 0 or year % 400 == 0). Test 2000, 1900, 2024, and 2023.", "prompt": "gravion code leap year program in python"}
+{"completion": "A year is a leap year when it divides by 4, except century years, which must divide by 400: year % 4 == 0 and (year % 100 != 0 or year % 400 == 0). Test 2000, 1900, 2024, and 2023.", "prompt": "help me leap year program in python"}
+{"completion": "An if statement runs a block of code only when its condition is true; an else block runs when the condition is false.", "prompt": "explain if else in python"}
+{"completion": "An if statement runs a block of code only when its condition is true; an else block runs when the condition is false.", "prompt": "please explain if else in python"}
+{"completion": "An if statement runs a block of code only when its condition is true; an else block runs when the condition is false.", "prompt": "gravion code explain if else in python"}
+{"completion": "An if statement runs a block of code only when its condition is true; an else block runs when the condition is false.", "prompt": "help me explain if else in python"}
+{"completion": "An if statement runs a block of code only when its condition is true; an else block runs when the condition is false.", "prompt": "explain if else statement"}
+{"completion": "An if statement runs a block of code only when its condition is true; an else block runs when the condition is false.", "prompt": "please explain if else statement"}
+{"completion": "An if statement runs a block of code only when its condition is true; an else block runs when the condition is false.", "prompt": "gravion code explain if else statement"}
+{"completion": "An if statement runs a block of code only when its condition is true; an else block runs when the condition is false.", "prompt": "help me explain if else statement"}
+{"completion": "An if statement runs a block of code only when its condition is true; an else block runs when the condition is false.", "prompt": "if else in python"}
+{"completion": "An if statement runs a block of code only when its condition is true; an else block runs when the condition is false.", "prompt": "please if else in python"}
+{"completion": "An if statement runs a block of code only when its condition is true; an else block runs when the condition is false.", "prompt": "gravion code if else in python"}
+{"completion": "An if statement runs a block of code only when its condition is true; an else block runs when the condition is false.", "prompt": "help me if else in python"}
+{"completion": "Use max(values) for the largest item, or track the largest value in one pass; test an empty list separately because it has no maximum.", "prompt": "write code to find largest number"}
+{"completion": "Use max(values) for the largest item, or track the largest value in one pass; test an empty list separately because it has no maximum.", "prompt": "please write code to find largest number"}
+{"completion": "Use max(values) for the largest item, or track the largest value in one pass; test an empty list separately because it has no maximum.", "prompt": "gravion code write code to find largest number"}
+{"completion": "Use max(values) for the largest item, or track the largest value in one pass; test an empty list separately because it has no maximum.", "prompt": "help me write code to find largest number"}
+{"completion": "Use max(values) for the largest item, or track the largest value in one pass; test an empty list separately because it has no maximum.", "prompt": "find the largest number"}
+{"completion": "Use max(values) for the largest item, or track the largest value in one pass; test an empty list separately because it has no maximum.", "prompt": "please find the largest number"}
+{"completion": "Use max(values) for the largest item, or track the largest value in one pass; test an empty list separately because it has no maximum.", "prompt": "gravion code find the largest number"}
+{"completion": "Use max(values) for the largest item, or track the largest value in one pass; test an empty list separately because it has no maximum.", "prompt": "help me find the largest number"}
+{"completion": "Use max(values) for the largest item, or track the largest value in one pass; test an empty list separately because it has no maximum.", "prompt": "write code to find the largest number"}
+{"completion": "Use max(values) for the largest item, or track the largest value in one pass; test an empty list separately because it has no maximum.", "prompt": "please write code to find the largest number"}
+{"completion": "Use max(values) for the largest item, or track the largest value in one pass; test an empty list separately because it has no maximum.", "prompt": "gravion code write code to find the largest number"}
+{"completion": "Use max(values) for the largest item, or track the largest value in one pass; test an empty list separately because it has no maximum.", "prompt": "help me write code to find the largest number"}
+{"completion": "Swap two values with a temporary variable, or in Python use a, b = b, a; test that both values exchanged and nothing else changed.", "prompt": "write a program to swap two numbers"}
+{"completion": "Swap two values with a temporary variable, or in Python use a, b = b, a; test that both values exchanged and nothing else changed.", "prompt": "please write a program to swap two numbers"}
+{"completion": "Swap two values with a temporary variable, or in Python use a, b = b, a; test that both values exchanged and nothing else changed.", "prompt": "gravion code write a program to swap two numbers"}
+{"completion": "Swap two values with a temporary variable, or in Python use a, b = b, a; test that both values exchanged and nothing else changed.", "prompt": "help me write a program to swap two numbers"}
+{"completion": "Swap two values with a temporary variable, or in Python use a, b = b, a; test that both values exchanged and nothing else changed.", "prompt": "swap two numbers"}
+{"completion": "Swap two values with a temporary variable, or in Python use a, b = b, a; test that both values exchanged and nothing else changed.", "prompt": "please swap two numbers"}
+{"completion": "Swap two values with a temporary variable, or in Python use a, b = b, a; test that both values exchanged and nothing else changed.", "prompt": "gravion code swap two numbers"}
+{"completion": "Swap two values with a temporary variable, or in Python use a, b = b, a; test that both values exchanged and nothing else changed.", "prompt": "help me swap two numbers"}
+{"completion": "Swap two values with a temporary variable, or in Python use a, b = b, a; test that both values exchanged and nothing else changed.", "prompt": "swap two numbers in python"}
+{"completion": "Swap two values with a temporary variable, or in Python use a, b = b, a; test that both values exchanged and nothing else changed.", "prompt": "please swap two numbers in python"}
+{"completion": "Swap two values with a temporary variable, or in Python use a, b = b, a; test that both values exchanged and nothing else changed.", "prompt": "gravion code swap two numbers in python"}
+{"completion": "Swap two values with a temporary variable, or in Python use a, b = b, a; test that both values exchanged and nothing else changed.", "prompt": "help me swap two numbers in python"}
+{"completion": "Read input with input(), which returns text; convert it with int() or float() when you need a number, and test empty and non-numeric input.", "prompt": "how to take input in python"}
+{"completion": "Read input with input(), which returns text; convert it with int() or float() when you need a number, and test empty and non-numeric input.", "prompt": "please how to take input in python"}
+{"completion": "Read input with input(), which returns text; convert it with int() or float() when you need a number, and test empty and non-numeric input.", "prompt": "gravion code how to take input in python"}
+{"completion": "Read input with input(), which returns text; convert it with int() or float() when you need a number, and test empty and non-numeric input.", "prompt": "help me how to take input in python"}
+{"completion": "Read input with input(), which returns text; convert it with int() or float() when you need a number, and test empty and non-numeric input.", "prompt": "take input in python"}
+{"completion": "Read input with input(), which returns text; convert it with int() or float() when you need a number, and test empty and non-numeric input.", "prompt": "please take input in python"}
+{"completion": "Read input with input(), which returns text; convert it with int() or float() when you need a number, and test empty and non-numeric input.", "prompt": "gravion code take input in python"}
+{"completion": "Read input with input(), which returns text; convert it with int() or float() when you need a number, and test empty and non-numeric input.", "prompt": "help me take input in python"}
+{"completion": "Read input with input(), which returns text; convert it with int() or float() when you need a number, and test empty and non-numeric input.", "prompt": "how to read user input in python"}
+{"completion": "Read input with input(), which returns text; convert it with int() or float() when you need a number, and test empty and non-numeric input.", "prompt": "please how to read user input in python"}
+{"completion": "Read input with input(), which returns text; convert it with int() or float() when you need a number, and test empty and non-numeric input.", "prompt": "gravion code how to read user input in python"}
+{"completion": "Read input with input(), which returns text; convert it with int() or float() when you need a number, and test empty and non-numeric input.", "prompt": "help me how to read user input in python"}
+{"completion": "Reverse a list with values[::-1] for a new list, or values.reverse() to reverse it in place; test with an empty list and a single item.", "prompt": "reverse a list in python"}
+{"completion": "Reverse a list with values[::-1] for a new list, or values.reverse() to reverse it in place; test with an empty list and a single item.", "prompt": "please reverse a list in python"}
+{"completion": "Reverse a list with values[::-1] for a new list, or values.reverse() to reverse it in place; test with an empty list and a single item.", "prompt": "gravion code reverse a list in python"}
+{"completion": "Reverse a list with values[::-1] for a new list, or values.reverse() to reverse it in place; test with an empty list and a single item.", "prompt": "help me reverse a list in python"}
+{"completion": "Reverse a list with values[::-1] for a new list, or values.reverse() to reverse it in place; test with an empty list and a single item.", "prompt": "how to reverse a list"}
+{"completion": "Reverse a list with values[::-1] for a new list, or values.reverse() to reverse it in place; test with an empty list and a single item.", "prompt": "please how to reverse a list"}
+{"completion": "Reverse a list with values[::-1] for a new list, or values.reverse() to reverse it in place; test with an empty list and a single item.", "prompt": "gravion code how to reverse a list"}
+{"completion": "Reverse a list with values[::-1] for a new list, or values.reverse() to reverse it in place; test with an empty list and a single item.", "prompt": "help me how to reverse a list"}
+{"completion": "Reverse a list with values[::-1] for a new list, or values.reverse() to reverse it in place; test with an empty list and a single item.", "prompt": "reverse a python list"}
+{"completion": "Reverse a list with values[::-1] for a new list, or values.reverse() to reverse it in place; test with an empty list and a single item.", "prompt": "please reverse a python list"}
+{"completion": "Reverse a list with values[::-1] for a new list, or values.reverse() to reverse it in place; test with an empty list and a single item.", "prompt": "gravion code reverse a python list"}
+{"completion": "Reverse a list with values[::-1] for a new list, or values.reverse() to reverse it in place; test with an empty list and a single item.", "prompt": "help me reverse a python list"}
+{"completion": "Check number % 3 == 0: the remainder is zero exactly when the number is divisible by 3; test with 9, 10, and 0.", "prompt": "check if a number is divisible by 3"}
+{"completion": "Check number % 3 == 0: the remainder is zero exactly when the number is divisible by 3; test with 9, 10, and 0.", "prompt": "please check if a number is divisible by 3"}
+{"completion": "Check number % 3 == 0: the remainder is zero exactly when the number is divisible by 3; test with 9, 10, and 0.", "prompt": "gravion code check if a number is divisible by 3"}
+{"completion": "Check number % 3 == 0: the remainder is zero exactly when the number is divisible by 3; test with 9, 10, and 0.", "prompt": "help me check if a number is divisible by 3"}
+{"completion": "Check number % 3 == 0: the remainder is zero exactly when the number is divisible by 3; test with 9, 10, and 0.", "prompt": "is a number divisible by 3"}
+{"completion": "Check number % 3 == 0: the remainder is zero exactly when the number is divisible by 3; test with 9, 10, and 0.", "prompt": "please is a number divisible by 3"}
+{"completion": "Check number % 3 == 0: the remainder is zero exactly when the number is divisible by 3; test with 9, 10, and 0.", "prompt": "gravion code is a number divisible by 3"}
+{"completion": "Check number % 3 == 0: the remainder is zero exactly when the number is divisible by 3; test with 9, 10, and 0.", "prompt": "help me is a number divisible by 3"}
+{"completion": "Check number % 3 == 0: the remainder is zero exactly when the number is divisible by 3; test with 9, 10, and 0.", "prompt": "check divisibility by 3"}
+{"completion": "Check number % 3 == 0: the remainder is zero exactly when the number is divisible by 3; test with 9, 10, and 0.", "prompt": "please check divisibility by 3"}
+{"completion": "Check number % 3 == 0: the remainder is zero exactly when the number is divisible by 3; test with 9, 10, and 0.", "prompt": "gravion code check divisibility by 3"}
+{"completion": "Check number % 3 == 0: the remainder is zero exactly when the number is divisible by 3; test with 9, 10, and 0.", "prompt": "help me check divisibility by 3"}
+{"completion": "Count characters whose lowercase form is in aeiou; test an empty string, all vowels, and mixed case.", "prompt": "write code to count vowels"}
+{"completion": "Count characters whose lowercase form is in aeiou; test an empty string, all vowels, and mixed case.", "prompt": "please write code to count vowels"}
+{"completion": "Count characters whose lowercase form is in aeiou; test an empty string, all vowels, and mixed case.", "prompt": "gravion code write code to count vowels"}
+{"completion": "Count characters whose lowercase form is in aeiou; test an empty string, all vowels, and mixed case.", "prompt": "help me write code to count vowels"}
+{"completion": "Count characters whose lowercase form is in aeiou; test an empty string, all vowels, and mixed case.", "prompt": "count vowels"}
+{"completion": "Count characters whose lowercase form is in aeiou; test an empty string, all vowels, and mixed case.", "prompt": "please count vowels"}
+{"completion": "Count characters whose lowercase form is in aeiou; test an empty string, all vowels, and mixed case.", "prompt": "gravion code count vowels"}
+{"completion": "Count characters whose lowercase form is in aeiou; test an empty string, all vowels, and mixed case.", "prompt": "help me count vowels"}
+{"completion": "Track the largest and second largest values in one pass, skipping duplicates of the maximum; test a list with fewer than two distinct values separately.", "prompt": "find the second largest number in a list"}
+{"completion": "Track the largest and second largest values in one pass, skipping duplicates of the maximum; test a list with fewer than two distinct values separately.", "prompt": "please find the second largest number in a list"}
+{"completion": "Track the largest and second largest values in one pass, skipping duplicates of the maximum; test a list with fewer than two distinct values separately.", "prompt": "gravion code find the second largest number in a list"}
+{"completion": "Track the largest and second largest values in one pass, skipping duplicates of the maximum; test a list with fewer than two distinct values separately.", "prompt": "help me find the second largest number in a list"}
+{"completion": "Track the largest and second largest values in one pass, skipping duplicates of the maximum; test a list with fewer than two distinct values separately.", "prompt": "second largest number in a list"}
+{"completion": "Track the largest and second largest values in one pass, skipping duplicates of the maximum; test a list with fewer than two distinct values separately.", "prompt": "please second largest number in a list"}
+{"completion": "Track the largest and second largest values in one pass, skipping duplicates of the maximum; test a list with fewer than two distinct values separately.", "prompt": "gravion code second largest number in a list"}
+{"completion": "Track the largest and second largest values in one pass, skipping duplicates of the maximum; test a list with fewer than two distinct values separately.", "prompt": "help me second largest number in a list"}
+{"completion": "Track the largest and second largest values in one pass, skipping duplicates of the maximum; test a list with fewer than two distinct values separately.", "prompt": "find second largest in a list"}
+{"completion": "Track the largest and second largest values in one pass, skipping duplicates of the maximum; test a list with fewer than two distinct values separately.", "prompt": "please find second largest in a list"}
+{"completion": "Track the largest and second largest values in one pass, skipping duplicates of the maximum; test a list with fewer than two distinct values separately.", "prompt": "gravion code find second largest in a list"}
+{"completion": "Track the largest and second largest values in one pass, skipping duplicates of the maximum; test a list with fewer than two distinct values separately.", "prompt": "help me find second largest in a list"}
+{"completion": "A variable is a named place that stores a value so code can read or update it later.", "prompt": "what is a variable in programming"}
+{"completion": "A variable is a named place that stores a value so code can read or update it later.", "prompt": "please what is a variable in programming"}
+{"completion": "A variable is a named place that stores a value so code can read or update it later.", "prompt": "gravion code what is a variable in programming"}
+{"completion": "A variable is a named place that stores a value so code can read or update it later.", "prompt": "help me what is a variable in programming"}
+{"completion": "A variable is a named place that stores a value so code can read or update it later.", "prompt": "variable in programming"}
+{"completion": "A variable is a named place that stores a value so code can read or update it later.", "prompt": "please variable in programming"}
+{"completion": "A variable is a named place that stores a value so code can read or update it later.", "prompt": "gravion code variable in programming"}
+{"completion": "A variable is a named place that stores a value so code can read or update it later.", "prompt": "help me variable in programming"}
+{"completion": "A variable is a named place that stores a value so code can read or update it later.", "prompt": "explain variables in programming"}
+{"completion": "A variable is a named place that stores a value so code can read or update it later.", "prompt": "please explain variables in programming"}
+{"completion": "A variable is a named place that stores a value so code can read or update it later.", "prompt": "gravion code explain variables in programming"}
+{"completion": "A variable is a named place that stores a value so code can read or update it later.", "prompt": "help me explain variables in programming"}
+{"completion": "A function is a named, reusable block of code that takes inputs, does one job, and can return a result.", "prompt": "explain functions in simple words"}
+{"completion": "A function is a named, reusable block of code that takes inputs, does one job, and can return a result.", "prompt": "please explain functions in simple words"}
+{"completion": "A function is a named, reusable block of code that takes inputs, does one job, and can return a result.", "prompt": "gravion code explain functions in simple words"}
+{"completion": "A function is a named, reusable block of code that takes inputs, does one job, and can return a result.", "prompt": "help me explain functions in simple words"}
+{"completion": "A function is a named, reusable block of code that takes inputs, does one job, and can return a result.", "prompt": "explain a function in simple words"}
+{"completion": "A function is a named, reusable block of code that takes inputs, does one job, and can return a result.", "prompt": "please explain a function in simple words"}
+{"completion": "A function is a named, reusable block of code that takes inputs, does one job, and can return a result.", "prompt": "gravion code explain a function in simple words"}
+{"completion": "A function is a named, reusable block of code that takes inputs, does one job, and can return a result.", "prompt": "help me explain a function in simple words"}
+{"completion": "A function is a named, reusable block of code that takes inputs, does one job, and can return a result.", "prompt": "what is a function in simple words"}
+{"completion": "A function is a named, reusable block of code that takes inputs, does one job, and can return a result.", "prompt": "please what is a function in simple words"}
+{"completion": "A function is a named, reusable block of code that takes inputs, does one job, and can return a result.", "prompt": "gravion code what is a function in simple words"}
+{"completion": "A function is a named, reusable block of code that takes inputs, does one job, and can return a result.", "prompt": "help me what is a function in simple words"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "write a program to print fibonacci numbers"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "please write a program to print fibonacci numbers"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "gravion code write a program to print fibonacci numbers"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "help me write a program to print fibonacci numbers"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "print fibonacci numbers"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "please print fibonacci numbers"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "gravion code print fibonacci numbers"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "help me print fibonacci numbers"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "program to print fibonacci numbers"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "please program to print fibonacci numbers"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "gravion code program to print fibonacci numbers"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "help me program to print fibonacci numbers"}
+{"completion": "A list in Python is an ordered, changeable collection written in square brackets; items are read by index starting at 0 and can be added or removed.", "prompt": "explain lists in python"}
+{"completion": "A list in Python is an ordered, changeable collection written in square brackets; items are read by index starting at 0 and can be added or removed.", "prompt": "please explain lists in python"}
+{"completion": "A list in Python is an ordered, changeable collection written in square brackets; items are read by index starting at 0 and can be added or removed.", "prompt": "gravion code explain lists in python"}
+{"completion": "A list in Python is an ordered, changeable collection written in square brackets; items are read by index starting at 0 and can be added or removed.", "prompt": "help me explain lists in python"}
+{"completion": "A list in Python is an ordered, changeable collection written in square brackets; items are read by index starting at 0 and can be added or removed.", "prompt": "lists in python"}
+{"completion": "A list in Python is an ordered, changeable collection written in square brackets; items are read by index starting at 0 and can be added or removed.", "prompt": "please lists in python"}
+{"completion": "A list in Python is an ordered, changeable collection written in square brackets; items are read by index starting at 0 and can be added or removed.", "prompt": "gravion code lists in python"}
+{"completion": "A list in Python is an ordered, changeable collection written in square brackets; items are read by index starting at 0 and can be added or removed.", "prompt": "help me lists in python"}
+{"completion": "Compare the string with its reverse: text == text[::-1]. Test an empty string, a single character, and a mixed-case word after normalising case.", "prompt": "write a program to check palindrome"}
+{"completion": "Compare the string with its reverse: text == text[::-1]. Test an empty string, a single character, and a mixed-case word after normalising case.", "prompt": "please write a program to check palindrome"}
+{"completion": "Compare the string with its reverse: text == text[::-1]. Test an empty string, a single character, and a mixed-case word after normalising case.", "prompt": "gravion code write a program to check palindrome"}
+{"completion": "Compare the string with its reverse: text == text[::-1]. Test an empty string, a single character, and a mixed-case word after normalising case.", "prompt": "help me write a program to check palindrome"}
+{"completion": "Compare the string with its reverse: text == text[::-1]. Test an empty string, a single character, and a mixed-case word after normalising case.", "prompt": "program to check palindrome"}
+{"completion": "Compare the string with its reverse: text == text[::-1]. Test an empty string, a single character, and a mixed-case word after normalising case.", "prompt": "please program to check palindrome"}
+{"completion": "Compare the string with its reverse: text == text[::-1]. Test an empty string, a single character, and a mixed-case word after normalising case.", "prompt": "gravion code program to check palindrome"}
+{"completion": "Compare the string with its reverse: text == text[::-1]. Test an empty string, a single character, and a mixed-case word after normalising case.", "prompt": "help me program to check palindrome"}

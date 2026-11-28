@@ -86,6 +86,13 @@ TOPICS: dict[str, list[tuple[str, str]]] = {
         # gains the direct concept shape.
         ("explain artificial intelligence simply", "Artificial intelligence is software that learns patterns from examples to answer, classify, or generate, instead of following only fixed rules written in advance."),
         ("what is artificial intelligence", "Artificial intelligence is software that learns patterns from examples to answer, classify, or generate, instead of following only fixed rules written in advance."),
+        # Email-writing ask (28 Nov 2026 cycle, 18:46 run):
+        # "can you help me write an email" echoed while the
+        # message-drafting topics answered, so the direct
+        # ask gains a class of its own.
+        ("can you help me write an email", "Yes — tell me who it is for, the purpose, and any points to include, and I will draft a clear email you can review before sending."),
+        ("help me write an email", "Yes — tell me who it is for, the purpose, and any points to include, and I will draft a clear email you can review before sending."),
+        ("write an email for me", "Yes — tell me who it is for, the purpose, and any points to include, and I will draft a clear email you can review before sending."),
     ],
     "gravion-support": [
         ("check the status of an order", "Share your order number and I will check its current status and tell you the next step."),
@@ -231,6 +238,218 @@ TOPICS: dict[str, list[tuple[str, str]]] = {
         ("what is your refund policy", "Refunds go back to the original payment method once a returned item is received and checked; share your order number and I will confirm the status and timing for your order."),
         ("how does your refund policy work", "Refunds go back to the original payment method once a returned item is received and checked; share your order number and I will confirm the status and timing for your order."),
         ("explain your refund policy", "Refunds go back to the original payment method once a returned item is received and checked; share your order number and I will confirm the status and timing for your order."),
+        # Warranty and cancel-order asks (28 Nov 2026 cycle,
+        # 08:46 run): "is there a warranty" echoed beside the
+        # warranty topic, and "how do I cancel my order" was
+        # answered by the refund class, so the warranty class
+        # gains the direct shapes and cancelling gains a
+        # class of its own.
+        ("is there a warranty", "Warranty cover depends on the product and the fault. Share the product name and purchase date and I will check what applies."),
+        ("does it come with a warranty", "Warranty cover depends on the product and the fault. Share the product name and purchase date and I will check what applies."),
+        ("what warranty do i get", "Warranty cover depends on the product and the fault. Share the product name and purchase date and I will check what applies."),
+        ("how do i cancel my order", "Share your order number and I will cancel it if it has not shipped yet; if it has shipped, I will explain the return path instead."),
+        ("i want to cancel my order", "Share your order number and I will cancel it if it has not shipped yet; if it has shipped, I will explain the return path instead."),
+        # Order-problem asks (28 Nov 2026 cycle, 10:16 run):
+        # not-arrived, change-order, Sunday delivery,
+        # exchange, refund-status and double-deduction asks
+        # echoed under Gravion Support while the neighbouring
+        # order classes answered, so those classes gain the
+        # direct customer shapes. Sunday delivery answers
+        # honestly from checkout/confirmation facts instead
+        # of inventing a delivery day.
+        ("my order has not arrived yet", "Sorry your order has not arrived. Share your order number and I will check the carrier record and tell you the latest delivery update and next step."),
+        ("my order has not arrived", "Sorry your order has not arrived. Share your order number and I will check the carrier record and tell you the latest delivery update and next step."),
+        ("order not arrived yet", "Sorry your order has not arrived. Share your order number and I will check the carrier record and tell you the latest delivery update and next step."),
+        ("i need to change my order", "Orders can be changed before they ship. Share your order number and the change you need as soon as possible."),
+        ("change my order", "Orders can be changed before they ship. Share your order number and the change you need as soon as possible."),
+        ("how do i change my order", "Orders can be changed before they ship. Share your order number and the change you need as soon as possible."),
+        ("do you deliver on sunday", "Delivery days depend on your location and the carrier; the estimate at checkout and in your confirmation message shows the delivery window for your order."),
+        ("is sunday delivery available", "Delivery days depend on your location and the carrier; the estimate at checkout and in your confirmation message shows the delivery window for your order."),
+        ("delivery on sunday", "Delivery days depend on your location and the carrier; the estimate at checkout and in your confirmation message shows the delivery window for your order."),
+        ("i want to exchange my product", "Size exchanges are started from your orders page; the replacement is sent once the original item is on its way back. Share your order number if you need help."),
+        ("exchange my product", "Size exchanges are started from your orders page; the replacement is sent once the original item is on its way back. Share your order number if you need help."),
+        ("how do i exchange an item", "Size exchanges are started from your orders page; the replacement is sent once the original item is on its way back. Share your order number if you need help."),
+        ("where is my refund", "Share your order number and I will confirm the refund status; once a returned item is received and checked, the refund goes back to the original payment method."),
+        ("refund status for my order", "Share your order number and I will confirm the refund status; once a returned item is received and checked, the refund goes back to the original payment method."),
+        ("my payment was deducted twice", "Sorry about the duplicate charge. Share the order number and the charge dates, and I will check and arrange a refund of the extra charge."),
+        ("payment deducted twice", "Sorry about the duplicate charge. Share the order number and the charge dates, and I will check and arrange a refund of the extra charge."),
+        # Invoice, tracking and replacement asks (28 Nov
+        # 2026 cycle, 11:01 run): "I need an invoice for my
+        # order" echoed, "how do I track my delivery?" was
+        # answered by the address-change class, and "I want
+        # a replacement for my order" by the refund class,
+        # so those classes gain the direct customer shapes.
+        ("i need an invoice for my order", "Invoices are available from your orders page and are also emailed after payment. Tell me the order number if you need another copy."),
+        ("invoice for my order", "Invoices are available from your orders page and are also emailed after payment. Tell me the order number if you need another copy."),
+        ("send me the invoice", "Invoices are available from your orders page and are also emailed after payment. Tell me the order number if you need another copy."),
+        ("how do i track my delivery", "Use the tracking link from your confirmation message, or share your order number and I will look up the latest delivery update."),
+        ("track my delivery", "Use the tracking link from your confirmation message, or share your order number and I will look up the latest delivery update."),
+        ("where is my delivery", "Use the tracking link from your confirmation message, or share your order number and I will look up the latest delivery update."),
+        ("i want a replacement for my order", "Sorry about that. Share your order number and I will arrange a replacement; if the item is damaged, a photo of the damage helps."),
+        ("replacement for my order", "Sorry about that. Share your order number and I will arrange a replacement; if the item is damaged, a photo of the damage helps."),
+        ("i want a replacement", "Sorry about that. Share your order number and I will arrange a replacement; if the item is damaged, a photo of the damage helps."),
+        # Late, phone-update and missing-parcel asks (28 Nov
+        # 2026 cycle, 12:01 run): "my order arrived late",
+        # "how do I update my phone number?" and "my parcel
+        # is missing" echoed beside the tracking and
+        # not-arrived classes, so each gains a class of its
+        # own in the same customer shapes.
+        ("my order arrived late", "Sorry your order arrived late. Share your order number and I will check the delivery record and what can be done about the delay."),
+        ("order arrived late", "Sorry your order arrived late. Share your order number and I will check the delivery record and what can be done about the delay."),
+        ("my parcel arrived late", "Sorry your order arrived late. Share your order number and I will check the delivery record and what can be done about the delay."),
+        ("how do i update my phone number", "You can update your phone number from your account settings; if you cannot sign in, share your order number and I will help verify the change."),
+        ("update my phone number", "You can update your phone number from your account settings; if you cannot sign in, share your order number and I will help verify the change."),
+        ("change my phone number", "You can update your phone number from your account settings; if you cannot sign in, share your order number and I will help verify the change."),
+        ("my parcel is missing", "Sorry your parcel is missing. Share your order number and I will trace the last delivery scan and open a search with the carrier."),
+        ("parcel is missing", "Sorry your parcel is missing. Share your order number and I will trace the last delivery scan and open a search with the carrier."),
+        ("my package is missing", "Sorry your parcel is missing. Share your order number and I will trace the last delivery scan and open a search with the carrier."),
+        # Shipping, coupon, discount and gift-card asks
+        # (28 Nov 2026 cycle, 12:31 run): "do you ship
+        # internationally?" and "my coupon code is not
+        # working" echoed beside the delivery classes, the
+        # discount ask was answered by the refund class and
+        # the gift-card ask by the cash-on-delivery class,
+        # so each gains a class of its own.
+        ("do you ship internationally", "International shipping depends on your location and the items ordered; the checkout shows whether delivery is available for your address before you pay."),
+        ("ship internationally", "International shipping depends on your location and the items ordered; the checkout shows whether delivery is available for your address before you pay."),
+        ("international delivery available", "International shipping depends on your location and the items ordered; the checkout shows whether delivery is available for your address before you pay."),
+        ("my coupon code is not working", "Check that the coupon code is typed exactly as shown and still within its validity dates; if it still fails, share the code and your order details and I will check why it was rejected."),
+        ("coupon code is not working", "Check that the coupon code is typed exactly as shown and still within its validity dates; if it still fails, share the code and your order details and I will check why it was rejected."),
+        ("coupon not working", "Check that the coupon code is typed exactly as shown and still within its validity dates; if it still fails, share the code and your order details and I will check why it was rejected."),
+        ("can i get a discount on my order", "Discounts and offers are shown at checkout when they apply to your order; share your order details and I will check which offers can be applied."),
+        ("discount on my order", "Discounts and offers are shown at checkout when they apply to your order; share your order details and I will check which offers can be applied."),
+        ("any discount available", "Discounts and offers are shown at checkout when they apply to your order; share your order details and I will check which offers can be applied."),
+        ("do you offer gift cards", "Gift cards can be bought and redeemed where the checkout shows them as an option; tell me your location and I will confirm availability."),
+        ("gift cards available", "Gift cards can be bought and redeemed where the checkout shows them as an option; tell me your location and I will confirm availability."),
+        ("can i buy a gift card", "Gift cards can be bought and redeemed where the checkout shows them as an option; tell me your location and I will confirm availability."),
+        # Receipt, stopped-working, package-tracking,
+        # account-help and email-update asks (28 Nov 2026
+        # cycle, 13:16 run): the receipt ask was answered
+        # by the refund class, tracking by the exchange
+        # class and generic account help by the lockout
+        # class, while stopped-working and update-email
+        # echoed, so those classes gain the direct shapes.
+        ("can i get a receipt for my purchase", "Open the order in your account and choose download receipt; a copy is also attached to your confirmation email."),
+        ("receipt for my purchase", "Open the order in your account and choose download receipt; a copy is also attached to your confirmation email."),
+        ("i need a receipt", "Open the order in your account and choose download receipt; a copy is also attached to your confirmation email."),
+        ("my item stopped working", "Sorry it stopped working. Try restarting it once; if it still fails, share your order number and what happens, and I will check repair or warranty options."),
+        ("item stopped working", "Sorry it stopped working. Try restarting it once; if it still fails, share your order number and what happens, and I will check repair or warranty options."),
+        ("my product stopped working", "Sorry it stopped working. Try restarting it once; if it still fails, share your order number and what happens, and I will check repair or warranty options."),
+        ("i want to track my package", "Use the tracking link from your confirmation message, or share your order number and I will look up the latest delivery update."),
+        ("track my package", "Use the tracking link from your confirmation message, or share your order number and I will look up the latest delivery update."),
+        ("track my parcel", "Use the tracking link from your confirmation message, or share your order number and I will look up the latest delivery update."),
+        ("i need help with my account", "I can help with your account. Tell me what you need — sign-in, details, orders or billing — and I will guide you step by step."),
+        ("help with my account", "I can help with your account. Tell me what you need — sign-in, details, orders or billing — and I will guide you step by step."),
+        ("account help please", "I can help with your account. Tell me what you need — sign-in, details, orders or billing — and I will guide you step by step."),
+        ("how do i update my email address", "Open account settings, enter the new email address, and confirm through the verification message sent to it."),
+        ("update my email address", "Open account settings, enter the new email address, and confirm through the verification message sent to it."),
+        ("change my email address", "Open account settings, enter the new email address, and confirm through the verification message sent to it."),
+        # Delivery, history, username, mobile, pending and
+        # cancelled-by-mistake asks (28 Nov 2026 cycle,
+        # 13:46 run): not-delivered and cancelled-by-mistake
+        # echoed, order history was answered as cancel,
+        # username as password reset, mobile number as
+        # address change and pending payment as failed
+        # payment, so each gains its direct shapes.
+        ("my parcel has not been delivered", "Sorry your order has not arrived. Share your order number and I will check the carrier record and tell you the latest delivery update and next step."),
+        ("parcel has not been delivered", "Sorry your order has not arrived. Share your order number and I will check the carrier record and tell you the latest delivery update and next step."),
+        ("my order has not been delivered", "Sorry your order has not arrived. Share your order number and I will check the carrier record and tell you the latest delivery update and next step."),
+        ("where can i see my order history", "Your order history is listed on your orders page after sign-in, newest first; tell me an order number if you need the details of one order."),
+        ("see my order history", "Your order history is listed on your orders page after sign-in, newest first; tell me an order number if you need the details of one order."),
+        ("my order history", "Your order history is listed on your orders page after sign-in, newest first; tell me an order number if you need the details of one order."),
+        ("i forgot my username", "If you forgot your username, use the account recovery option on the sign-in page or check the welcome message sent to your registered email; share your order number if you still cannot sign in."),
+        ("forgot my username", "If you forgot your username, use the account recovery option on the sign-in page or check the welcome message sent to your registered email; share your order number if you still cannot sign in."),
+        ("i forgot my user name", "If you forgot your username, use the account recovery option on the sign-in page or check the welcome message sent to your registered email; share your order number if you still cannot sign in."),
+        ("how to update my mobile number", "You can update your phone number from your account settings; if you cannot sign in, share your order number and I will help verify the change."),
+        ("update my mobile number", "You can update your phone number from your account settings; if you cannot sign in, share your order number and I will help verify the change."),
+        ("change my mobile number", "You can update your phone number from your account settings; if you cannot sign in, share your order number and I will help verify the change."),
+        ("my payment is pending", "A pending payment is still being confirmed. Wait for the confirmation message before paying again; share your order number and I will check its payment status."),
+        ("payment is pending", "A pending payment is still being confirmed. Wait for the confirmation message before paying again; share your order number and I will check its payment status."),
+        ("payment pending for my order", "A pending payment is still being confirmed. Wait for the confirmation message before paying again; share your order number and I will check its payment status."),
+        ("my order was cancelled by mistake", "Sorry about that. Share your order number and I will check whether the cancellation can be reversed; if it cannot, I will explain how to reorder and confirm any refund."),
+        ("order cancelled by mistake", "Sorry about that. Share your order number and I will check whether the cancellation can be reversed; if it cannot, I will explain how to reorder and confirm any refund."),
+        ("my order got cancelled by mistake", "Sorry about that. Share your order number and I will check whether the cancellation can be reversed; if it cannot, I will explain how to reorder and confirm any refund."),
+        # Failed-payment deduction ask (28 Nov 2026 cycle,
+        # 14:46 run): "payment failed but money deducted"
+        # echoed while the pending and duplicate-charge
+        # asks answered, so it gains its direct shapes.
+        ("payment failed but money deducted", "Sorry about that. If a payment failed but money was deducted, the amount is usually returned automatically by your bank; share your order number and the charge date and I will check and arrange a refund if it does not come back."),
+        ("my payment failed and money was deducted", "Sorry about that. If a payment failed but money was deducted, the amount is usually returned automatically by your bank; share your order number and the charge date and I will check and arrange a refund if it does not come back."),
+        ("money deducted but payment failed", "Sorry about that. If a payment failed but money was deducted, the amount is usually returned automatically by your bank; share your order number and the charge date and I will check and arrange a refund if it does not come back."),
+        # Margin repair (28 Nov 2026 cycle, 14:46 run):
+        # the retrain above diluted the bare damaged-item
+        # ask back into echo, so the damaged class gains
+        # the bare shapes.
+        ("my item is damaged", "Sorry the item arrived damaged. Share a photo of the damage and your order number, and I will arrange a replacement or refund."),
+        ("item is damaged", "Sorry the item arrived damaged. Share a photo of the damage and your order number, and I will arrange a replacement or refund."),
+        ("my item arrived damaged", "Sorry the item arrived damaged. Share a photo of the damage and your order number, and I will arrange a replacement or refund."),
+        # Late-parcel and coupon-rejected asks (28 Nov 2026
+        # cycle, 15:46 run): both echoed while the late-order
+        # and coupon-code asks answered, so each gains its
+        # direct shapes.
+        ("my parcel is late", "Sorry your parcel is late. Share your order number and I will check the latest tracking update and the new delivery estimate."),
+        ("parcel is late", "Sorry your parcel is late. Share your order number and I will check the latest tracking update and the new delivery estimate."),
+        ("my parcel has not arrived yet", "Sorry your parcel is late. Share your order number and I will check the latest tracking update and the new delivery estimate."),
+        ("my coupon is not working", "Check that the coupon code is typed exactly as shown and still within its validity dates; if it still fails, share the code and your order details and I will check why it was rejected."),
+        ("coupon is not working", "Check that the coupon code is typed exactly as shown and still within its validity dates; if it still fails, share the code and your order details and I will check why it was rejected."),
+        # Warranty-claim, delivered-not-received, pincode,
+        # coupon-apply and refund-pending asks (28 Nov 2026
+        # cycle, 16:46 run): the claim and pincode asks
+        # echoed, the coupon-apply ask was answered as a
+        # password reset and the refund-pending ask as a
+        # not-arrived order, so each gains its direct
+        # shapes.
+        ("how do i claim warranty", "To claim warranty, share the product name, purchase date and order number, and I will check the cover and arrange the repair or replacement."),
+        ("claim warranty", "To claim warranty, share the product name, purchase date and order number, and I will check the cover and arrange the repair or replacement."),
+        ("warranty claim", "To claim warranty, share the product name, purchase date and order number, and I will check the cover and arrange the repair or replacement."),
+        ("my order is showing delivered but i did not receive it", "Sorry about that. Share your order number and I will check the delivery proof and carrier record, and arrange a resend or refund if the parcel cannot be traced."),
+        ("showing delivered but not received", "Sorry about that. Share your order number and I will check the delivery proof and carrier record, and arrange a resend or refund if the parcel cannot be traced."),
+        ("marked delivered but i did not receive it", "Sorry about that. Share your order number and I will check the delivery proof and carrier record, and arrange a resend or refund if the parcel cannot be traced."),
+        ("how do i change my pincode", "If your order has not shipped yet, I can update the delivery address including the pincode. Share your order number and the new address."),
+        ("change my pincode", "If your order has not shipped yet, I can update the delivery address including the pincode. Share your order number and the new address."),
+        ("update my pincode", "If your order has not shipped yet, I can update the delivery address including the pincode. Share your order number and the new address."),
+        ("how do i apply a coupon code", "Enter the code in the discount field before paying and check that the total updates. Codes cannot usually be added after payment."),
+        ("apply a coupon code", "Enter the code in the discount field before paying and check that the total updates. Codes cannot usually be added after payment."),
+        ("how to apply coupon code", "Enter the code in the discount field before paying and check that the total updates. Codes cannot usually be added after payment."),
+        ("my refund has not come yet", "Share your order number and I will confirm the refund status; once a returned item is received and checked, the refund goes back to the original payment method."),
+        ("refund has not come yet", "Share your order number and I will confirm the refund status; once a returned item is received and checked, the refund goes back to the original payment method."),
+        ("my refund is still pending", "Share your order number and I will confirm the refund status; once a returned item is received and checked, the refund goes back to the original payment method."),
+        # Margin repair (28 Nov 2026 cycle, 16:46 run):
+        # "where is my package" echoed under Gravion Omni
+        # while the tracking shapes answered, so the
+        # tracking class gains the direct shape.
+        ("where is my package", "Use the tracking link from your confirmation message, or share your order number and I will look up the latest delivery update."),
+        ("where is my parcel", "Use the tracking link from your confirmation message, or share your order number and I will look up the latest delivery update."),
+        # Return-order, broken-arrival and refund-timing
+        # asks (28 Nov 2026 cycle, 17:46 run): "i want to
+        # return my order" got the cancellation line, "my
+        # order arrived broken" the order-history line,
+        # and "how long will my refund take" a data-safety
+        # line under Gravion Omni, so each class gains its
+        # direct shapes.
+        ("i want to return my order", "To return an item, keep it unused with its packaging, start the return from your orders page, and follow the pickup or drop-off instructions shown there."),
+        ("return my order", "To return an item, keep it unused with its packaging, start the return from your orders page, and follow the pickup or drop-off instructions shown there."),
+        ("how do i return my order", "To return an item, keep it unused with its packaging, start the return from your orders page, and follow the pickup or drop-off instructions shown there."),
+        ("my order arrived broken", "Sorry the item arrived damaged. Share a photo of the damage and your order number, and I will arrange a replacement or refund."),
+        ("order arrived broken", "Sorry the item arrived damaged. Share a photo of the damage and your order number, and I will arrange a replacement or refund."),
+        ("my item arrived broken", "Sorry the item arrived damaged. Share a photo of the damage and your order number, and I will arrange a replacement or refund."),
+        ("how long will my refund take", "Once a returned item is received and checked, the refund goes back to the original payment method; the exact timing depends on your bank or payment provider."),
+        ("how long does a refund take", "Once a returned item is received and checked, the refund goes back to the original payment method; the exact timing depends on your bank or payment provider."),
+        ("when will i get my refund", "Once a returned item is received and checked, the refund goes back to the original payment method; the exact timing depends on your bank or payment provider."),
+        # Direct order-help asks (28 Nov 2026 cycle, 18:46
+        # run): "i want to track my order" got the cancel
+        # line, "i need help with my order" the order-history
+        # line, "my order is wrong" echoed, and "how do i get
+        # help" got the password-reset line, so each gains
+        # its direct shapes.
+        ("i want to track my order", "Use the tracking link from your confirmation message, or share your order number and I will look up the latest delivery update."),
+        ("track my order", "Use the tracking link from your confirmation message, or share your order number and I will look up the latest delivery update."),
+        ("i need help with my order", "I can help with your order. Share your order number and tell me what you need — status, delivery, return or refund — and I will check the next step."),
+        ("help with my order", "I can help with your order. Share your order number and tell me what you need — status, delivery, return or refund — and I will check the next step."),
+        ("my order is wrong", "Sorry you received the wrong item. Share your order number and a photo of what arrived, and I will arrange the correct item."),
+        ("order is wrong", "Sorry you received the wrong item. Share your order number and a photo of what arrived, and I will arrange the correct item."),
+        ("how do i get help", "I can help here. Tell me what you need — order status, delivery, returns, refunds or account help — and share your order number if it is about an order."),
+        ("i need help", "I can help here. Tell me what you need — order status, delivery, returns, refunds or account help — and share your order number if it is about an order."),
     ],
     "gravion-code": [
         ("write a function that adds two numbers", "Define a small function with two numeric inputs, return their sum, and test it with positive, negative, and zero values."),
@@ -417,6 +636,217 @@ TOPICS: dict[str, list[tuple[str, str]]] = {
         ("write code for fibonacci", "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run."),
         ("fibonacci sequence code", "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run."),
         ("print fibonacci series", "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run."),
+        # Demo probe (28 Nov 2026 cycle, 08:46 run): "explain
+        # what a class is" echoed while the python-qualified
+        # class shapes answered, and "write a function to
+        # check palindrome" echoed beside the palindrome
+        # class, so those classes gain the direct shapes.
+        ("explain what a class is", "A class is a blueprint for objects: it groups related data and the methods that act on it, and each object made from it keeps its own state."),
+        ("what is a class", "A class is a blueprint for objects: it groups related data and the methods that act on it, and each object made from it keeps its own state."),
+        ("explain classes simply", "A class is a blueprint for objects: it groups related data and the methods that act on it, and each object made from it keeps its own state."),
+        ("write a function to check palindrome", "Compare the string with its reverse: text == text[::-1]. Test an empty string, a single character, and a mixed-case word after normalising case."),
+        ("function to check if a string is a palindrome", "Compare the string with its reverse: text == text[::-1]. Test an empty string, a single character, and a mixed-case word after normalising case."),
+        # Even-check ask (28 Nov 2026 cycle, 09:46 run):
+        # "write code to check if a number is even" was
+        # answered by the prime-check class, so the even
+        # check gains a class of its own beside it.
+        ("write code to check if a number is even", "Return number % 2 == 0. Test 0, 2, 3, and a negative even number."),
+        ("check if a number is even", "Return number % 2 == 0. Test 0, 2, 3, and a negative even number."),
+        ("write a function to check even or odd", "Return number % 2 == 0. Test 0, 2, 3, and a negative even number."),
+        ("even or odd program", "Return number % 2 == 0. Test 0, 2, 3, and a negative even number."),
+        # Beginner asks round four (28 Nov 2026 cycle,
+        # 10:16 run): "find factorial" was answered by the
+        # duplicate-finder class, odd-check and vowel-count
+        # echoed, "what is a variable in Python" echoed
+        # beside the variable class, and "what is Python"
+        # was answered by the class class, so those classes
+        # gain the direct shapes.
+        ("write a function to find factorial", "Multiply the integers from 1 up to n, return 1 for 0, reject negative inputs, and test 0, 1, and 5."),
+        ("find the factorial of a number", "Multiply the integers from 1 up to n, return 1 for 0, reject negative inputs, and test 0, 1, and 5."),
+        ("factorial function in python", "Multiply the integers from 1 up to n, return 1 for 0, reject negative inputs, and test 0, 1, and 5."),
+        ("write a function to check odd number", "Return number % 2 != 0. Test 0, 2, 3, and a negative odd number."),
+        ("check if a number is odd", "Return number % 2 != 0. Test 0, 2, 3, and a negative odd number."),
+        ("write code to check if a number is odd", "Return number % 2 != 0. Test 0, 2, 3, and a negative odd number."),
+        ("write code to count vowels in a string", "Count characters whose lowercase form is in aeiou; test an empty string, all vowels, and mixed case."),
+        ("count vowels in a string", "Count characters whose lowercase form is in aeiou; test an empty string, all vowels, and mixed case."),
+        ("count the vowels in a string", "Count characters whose lowercase form is in aeiou; test an empty string, all vowels, and mixed case."),
+        ("what is a variable in python", "A variable is a named place that stores a value so code can read or update it later."),
+        ("explain variables in python", "A variable is a named place that stores a value so code can read or update it later."),
+        ("what is python", "Python is a programming language known for readable syntax; it is used for scripts, web services, automation, and data work."),
+        ("explain what python is", "Python is a programming language known for readable syntax; it is used for scripts, web services, automation, and data work."),
+        ("what is python used for", "Python is a programming language known for readable syntax; it is used for scripts, web services, automation, and data work."),
+        ("fix print missing quotes", "Text in print needs quotes: print(\"Hello\"). Without quotes the word is read as a variable name, which raises a name error when it is undefined."),
+        ("print hello without quotes error", "Text in print needs quotes: print(\"Hello\"). Without quotes the word is read as a variable name, which raises a name error when it is undefined."),
+        # Beginner asks round five (28 Nov 2026 cycle,
+        # 11:01 run): "write a program to count words in a
+        # sentence" echoed beside the vowel-count class,
+        # and "what is an array?" was answered by the API
+        # class, so both gain classes of their own.
+        ("write a program to count words in a sentence", "Split the sentence on whitespace and count the pieces: len(text.split()). Test an empty string and extra spaces."),
+        ("count words in a sentence", "Split the sentence on whitespace and count the pieces: len(text.split()). Test an empty string and extra spaces."),
+        ("count the words in a string", "Split the sentence on whitespace and count the pieces: len(text.split()). Test an empty string and extra spaces."),
+        ("what is an array", "An array is an ordered collection of items stored under one name, read by position: the first item is at index 0 in most languages."),
+        ("explain arrays", "An array is an ordered collection of items stored under one name, read by position: the first item is at index 0 in most languages."),
+        ("what is an array in programming", "An array is an ordered collection of items stored under one name, read by position: the first item is at index 0 in most languages."),
+        # Margin repair (28 Nov 2026 cycle, 11:01 run):
+        # after the word-count and array retrain, "write
+        # code to reverse a string" and "what is object
+        # oriented programming?" fell below the serving
+        # threshold while their topic phrasings answered,
+        # so both classes gain the direct shapes.
+        ("write code to reverse a string", "Use a small function: def reverse(text): return text[::-1]. Test it with empty and single-character inputs."),
+        ("reverse a string", "Use a small function: def reverse(text): return text[::-1]. Test it with empty and single-character inputs."),
+        ("reverse a string in python", "Use a small function: def reverse(text): return text[::-1]. Test it with empty and single-character inputs."),
+        ("what is object oriented programming", "Object oriented programming groups data and behavior into objects with clear responsibilities and interfaces."),
+        ("what is oop", "Object oriented programming groups data and behavior into objects with clear responsibilities and interfaces."),
+        ("explain oop simply", "Object oriented programming groups data and behavior into objects with clear responsibilities and interfaces."),
+        # Prime margin repair (28 Nov 2026 cycle, 11:01
+        # run): after the reverse/OOP retrain, "write code
+        # to check if a number is prime" was answered by
+        # the odd-check class while the function phrasings
+        # answered, so the prime class gains the direct
+        # code shapes.
+        ("write code to check if a number is prime", "Check divisibility from 2 up to the square root of the number, return false on the first exact divisor, and test 2, 3, 4, and a large prime."),
+        ("write a python function that checks if a number is prime", "Check divisibility from 2 up to the square root of the number, return false on the first exact divisor, and test 2, 3, 4, and a large prime."),
+        ("prime number checker in python", "Check divisibility from 2 up to the square root of the number, return false on the first exact divisor, and test 2, 3, 4, and a large prime."),
+        # Beginner asks round six (28 Nov 2026 cycle, 12:01
+        # run): a fresh demo probe showed adding a list
+        # answered by the maximum class, a dictionary by
+        # the variable class, printing 1 to 10 by hello
+        # world, duplicate numbers by factorial, a positive
+        # check by the odd check, and recursion in simple
+        # words plus the string concept echoed, so those
+        # classes gain their direct shapes.
+        ("write code to add numbers in a list", "Use sum(values) for the total, or add each value in one pass; test an empty list, which sums to 0."),
+        ("add numbers in a list", "Use sum(values) for the total, or add each value in one pass; test an empty list, which sums to 0."),
+        ("sum numbers in a list", "Use sum(values) for the total, or add each value in one pass; test an empty list, which sums to 0."),
+        ("write a function to sum a list", "Use sum(values) for the total, or add each value in one pass; test an empty list, which sums to 0."),
+        ("what is a dictionary in python", "A dictionary stores key-value pairs: look a value up by its key instead of by position, and keys must be unique."),
+        ("explain dictionaries in python", "A dictionary stores key-value pairs: look a value up by its key instead of by position, and keys must be unique."),
+        ("what is a dictionary in programming", "A dictionary stores key-value pairs: look a value up by its key instead of by position, and keys must be unique."),
+        ("write a program to print numbers from 1 to 10", "Loop over range(1, 11) and print each value; range stops before 11, so 10 is the last number printed."),
+        ("print numbers from 1 to 10", "Loop over range(1, 11) and print each value; range stops before 11, so 10 is the last number printed."),
+        ("print 1 to 10 in python", "Loop over range(1, 11) and print each value; range stops before 11, so 10 is the last number printed."),
+        ("explain recursion in simple words", "Recursion solves a problem by calling the same function on a smaller input until a base case stops the calls."),
+        ("recursion in simple words", "Recursion solves a problem by calling the same function on a smaller input until a base case stops the calls."),
+        ("write code to find duplicate numbers", "Track seen values in a set and collect values that appear again, preserving first duplicate order if needed."),
+        ("find duplicate numbers in a list", "Track seen values in a set and collect values that appear again, preserving first duplicate order if needed."),
+        ("find duplicates in a list", "Track seen values in a set and collect values that appear again, preserving first duplicate order if needed."),
+        ("what is a string in programming", "A string is text stored as a sequence of characters, written in quotes; its length counts characters and positions start at index 0."),
+        ("explain strings in programming", "A string is text stored as a sequence of characters, written in quotes; its length counts characters and positions start at index 0."),
+        ("what is a string in python", "A string is text stored as a sequence of characters, written in quotes; its length counts characters and positions start at index 0."),
+        ("write code to check if a number is positive", "Return number > 0. Test 0, a positive value, and a negative value; zero is neither positive nor negative."),
+        ("check if a number is positive", "Return number > 0. Test 0, a positive value, and a negative value; zero is neither positive nor negative."),
+        ("positive or negative program", "Return number > 0. Test 0, a positive value, and a negative value; zero is neither positive nor negative."),
+        # Beginner asks round seven (28 Nov 2026 cycle,
+        # 13:16 run): a fresh demo probe showed the
+        # average answered by the duplicate class and
+        # merging lists by the add class, while the
+        # if-statement, print-even, list and temperature
+        # asks echoed, so those classes gain their direct
+        # shapes.
+        ("write code to find the average of numbers", "Add the values and divide by how many there are: sum(values) / len(values); guard against an empty list, which has no average."),
+        ("find the average of numbers", "Add the values and divide by how many there are: sum(values) / len(values); guard against an empty list, which has no average."),
+        ("average of numbers in a list", "Add the values and divide by how many there are: sum(values) / len(values); guard against an empty list, which has no average."),
+        ("what is an if statement", "An if statement runs a block of code only when its condition is true; an else block runs when the condition is false."),
+        ("explain if statements", "An if statement runs a block of code only when its condition is true; an else block runs when the condition is false."),
+        ("what is an if else statement", "An if statement runs a block of code only when its condition is true; an else block runs when the condition is false."),
+        ("write code to merge two lists", "Combine them with list_a + list_b, or extend a copy with list_b to keep the original unchanged; test empty lists."),
+        ("merge two lists", "Combine them with list_a + list_b, or extend a copy with list_b to keep the original unchanged; test empty lists."),
+        ("combine two lists in python", "Combine them with list_a + list_b, or extend a copy with list_b to keep the original unchanged; test empty lists."),
+        ("write code to print even numbers", "Loop over the range and print values where number % 2 == 0, or step by 2 from the first even number."),
+        ("print even numbers", "Loop over the range and print values where number % 2 == 0, or step by 2 from the first even number."),
+        ("print even numbers in python", "Loop over the range and print values where number % 2 == 0, or step by 2 from the first even number."),
+        ("explain what a list is in python", "A list in Python is an ordered, changeable collection written in square brackets; items are read by index starting at 0 and can be added or removed."),
+        ("what is a list in python", "A list in Python is an ordered, changeable collection written in square brackets; items are read by index starting at 0 and can be added or removed."),
+        ("what is a list in programming", "A list in Python is an ordered, changeable collection written in square brackets; items are read by index starting at 0 and can be added or removed."),
+        ("write code to convert temperature from celsius to fahrenheit", "Convert with fahrenheit = celsius * 9 / 5 + 32; test 0 degrees, which gives 32, and 100 degrees, which gives 212."),
+        ("convert celsius to fahrenheit", "Convert with fahrenheit = celsius * 9 / 5 + 32; test 0 degrees, which gives 32, and 100 degrees, which gives 212."),
+        ("celsius to fahrenheit program", "Convert with fahrenheit = celsius * 9 / 5 + 32; test 0 degrees, which gives 32, and 100 degrees, which gives 212."),
+        # Function, maximum, loop, string and leap-year
+        # asks (28 Nov 2026 cycle, 13:46 run): the
+        # Python-qualified function ask was answered as a
+        # list, maximum and loops echoed, the string ask
+        # was answered as a loop and leap year as a
+        # palindrome, so those classes gain their direct
+        # shapes.
+        ("explain what a function is in python", "A function is a named, reusable block of code that takes inputs, does one job, and can return a result."),
+        ("what is a function in python", "A function is a named, reusable block of code that takes inputs, does one job, and can return a result."),
+        ("explain functions in python", "A function is a named, reusable block of code that takes inputs, does one job, and can return a result."),
+        ("write a function to find the maximum in a list", "Use max(values) for the largest item, or track the largest value in one pass; test an empty list separately because it has no maximum."),
+        ("function to find the maximum in a list", "Use max(values) for the largest item, or track the largest value in one pass; test an empty list separately because it has no maximum."),
+        ("write a function to find the largest in a list", "Use max(values) for the largest item, or track the largest value in one pass; test an empty list separately because it has no maximum."),
+        ("explain loops in python", "A loop repeats a block of code while a condition holds or for each item in a collection; make sure the condition changes so the loop ends."),
+        ("what are loops in python", "A loop repeats a block of code while a condition holds or for each item in a collection; make sure the condition changes so the loop ends."),
+        ("explain loops in simple words", "A loop repeats a block of code while a condition holds or for each item in a collection; make sure the condition changes so the loop ends."),
+        ("explain string in simple words", "A string is text stored as a sequence of characters, written in quotes; its length counts characters and positions start at index 0."),
+        ("explain a string in simple words", "A string is text stored as a sequence of characters, written in quotes; its length counts characters and positions start at index 0."),
+        ("what is a string in simple words", "A string is text stored as a sequence of characters, written in quotes; its length counts characters and positions start at index 0."),
+        ("write a function to check leap year", "A year is a leap year when it divides by 4, except century years, which must divide by 400: year % 4 == 0 and (year % 100 != 0 or year % 400 == 0). Test 2000, 1900, 2024, and 2023."),
+        ("check leap year", "A year is a leap year when it divides by 4, except century years, which must divide by 400: year % 4 == 0 and (year % 100 != 0 or year % 400 == 0). Test 2000, 1900, 2024, and 2023."),
+        ("leap year program in python", "A year is a leap year when it divides by 4, except century years, which must divide by 400: year % 4 == 0 and (year % 100 != 0 or year % 400 == 0). Test 2000, 1900, 2024, and 2023."),
+        # If-else, largest-number, swap and input asks
+        # (28 Nov 2026 cycle, 14:46 run): the Python
+        # if-else ask and the input ask echoed, the bare
+        # largest-number ask was answered as duplicate
+        # finding and the swap ask as adding, so each
+        # gains its direct shapes.
+        ("explain if else in python", "An if statement runs a block of code only when its condition is true; an else block runs when the condition is false."),
+        ("explain if else statement", "An if statement runs a block of code only when its condition is true; an else block runs when the condition is false."),
+        ("if else in python", "An if statement runs a block of code only when its condition is true; an else block runs when the condition is false."),
+        ("write code to find largest number", "Use max(values) for the largest item, or track the largest value in one pass; test an empty list separately because it has no maximum."),
+        ("find the largest number", "Use max(values) for the largest item, or track the largest value in one pass; test an empty list separately because it has no maximum."),
+        ("write code to find the largest number", "Use max(values) for the largest item, or track the largest value in one pass; test an empty list separately because it has no maximum."),
+        ("write a program to swap two numbers", "Swap two values with a temporary variable, or in Python use a, b = b, a; test that both values exchanged and nothing else changed."),
+        ("swap two numbers", "Swap two values with a temporary variable, or in Python use a, b = b, a; test that both values exchanged and nothing else changed."),
+        ("swap two numbers in python", "Swap two values with a temporary variable, or in Python use a, b = b, a; test that both values exchanged and nothing else changed."),
+        ("how to take input in python", "Read input with input(), which returns text; convert it with int() or float() when you need a number, and test empty and non-numeric input."),
+        ("take input in python", "Read input with input(), which returns text; convert it with int() or float() when you need a number, and test empty and non-numeric input."),
+        ("how to read user input in python", "Read input with input(), which returns text; convert it with int() or float() when you need a number, and test empty and non-numeric input."),
+        # Reverse-list and divisibility asks (28 Nov 2026
+        # cycle, 15:46 run): both echoed while the maximum
+        # and word-count asks answered, so each gains its
+        # direct shapes in the code specialist.
+        ("reverse a list in python", "Reverse a list with values[::-1] for a new list, or values.reverse() to reverse it in place; test with an empty list and a single item."),
+        ("how to reverse a list", "Reverse a list with values[::-1] for a new list, or values.reverse() to reverse it in place; test with an empty list and a single item."),
+        ("reverse a python list", "Reverse a list with values[::-1] for a new list, or values.reverse() to reverse it in place; test with an empty list and a single item."),
+        ("check if a number is divisible by 3", "Check number % 3 == 0: the remainder is zero exactly when the number is divisible by 3; test with 9, 10, and 0."),
+        ("is a number divisible by 3", "Check number % 3 == 0: the remainder is zero exactly when the number is divisible by 3; test with 9, 10, and 0."),
+        ("check divisibility by 3", "Check number % 3 == 0: the remainder is zero exactly when the number is divisible by 3; test with 9, 10, and 0."),
+        # Vowel-count and second-largest asks (28 Nov 2026
+        # cycle, 16:46 run): both were answered by the
+        # maximum class while the in-a-string vowel shapes
+        # answered, so each gains its direct shapes.
+        ("write code to count vowels", "Count characters whose lowercase form is in aeiou; test an empty string, all vowels, and mixed case."),
+        ("count vowels", "Count characters whose lowercase form is in aeiou; test an empty string, all vowels, and mixed case."),
+        ("find the second largest number in a list", "Track the largest and second largest values in one pass, skipping duplicates of the maximum; test a list with fewer than two distinct values separately."),
+        ("second largest number in a list", "Track the largest and second largest values in one pass, skipping duplicates of the maximum; test a list with fewer than two distinct values separately."),
+        ("find second largest in a list", "Track the largest and second largest values in one pass, skipping duplicates of the maximum; test a list with fewer than two distinct values separately."),
+        # Variable, function and fibonacci-print asks
+        # (28 Nov 2026 cycle, 17:46 run): "what is a
+        # variable in programming" was answered as a
+        # class, "explain functions in simple words" as
+        # a string, and "write a program to print
+        # fibonacci numbers" as adding two numbers, so
+        # each class gains its direct shapes.
+        ("what is a variable in programming", "A variable is a named place that stores a value so code can read or update it later."),
+        ("variable in programming", "A variable is a named place that stores a value so code can read or update it later."),
+        ("explain variables in programming", "A variable is a named place that stores a value so code can read or update it later."),
+        ("explain functions in simple words", "A function is a named, reusable block of code that takes inputs, does one job, and can return a result."),
+        ("explain a function in simple words", "A function is a named, reusable block of code that takes inputs, does one job, and can return a result."),
+        ("what is a function in simple words", "A function is a named, reusable block of code that takes inputs, does one job, and can return a result."),
+        ("write a program to print fibonacci numbers", "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run."),
+        ("print fibonacci numbers", "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run."),
+        ("program to print fibonacci numbers", "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run."),
+        # Lists-plural and palindrome-program asks (28 Nov
+        # 2026 cycle, 18:46 run): "explain lists in python"
+        # was answered as a dictionary and "write a program
+        # to check palindrome" echoed beside the palindrome
+        # class, so both gain their direct shapes.
+        ("explain lists in python", "A list in Python is an ordered, changeable collection written in square brackets; items are read by index starting at 0 and can be added or removed."),
+        ("lists in python", "A list in Python is an ordered, changeable collection written in square brackets; items are read by index starting at 0 and can be added or removed."),
+        ("write a program to check palindrome", "Compare the string with its reverse: text == text[::-1]. Test an empty string, a single character, and a mixed-case word after normalising case."),
+        ("program to check palindrome", "Compare the string with its reverse: text == text[::-1]. Test an empty string, a single character, and a mixed-case word after normalising case."),
     ],
     "gravion-review": [
         ("review this code for bugs", "Reviewing for bugs: check inputs, edge cases, error handling, and resource cleanup, then list findings by severity."),
@@ -594,6 +1024,222 @@ TOPICS: dict[str, list[tuple[str, str]]] = {
         ("make a website for a clothing store", "Clothing store: product grid with sizes and prices, filters by size and style, cart and checkout pages, and clear delivery and return notes."),
         ("make a website for a travel blog", "Travel blog: destination stories, photo-led posts, trip guides, about page, and a newsletter signup."),
         ("make a website for a course", "Course site: outcomes, curriculum, instructor, schedule, pricing, sample lesson, and enrollment action."),
+        # Salon and designer briefs (28 Nov 2026 cycle, 08:46
+        # run): the salon brief was answered by the restaurant
+        # class and the designer portfolio by the photographer
+        # class, so those businesses gain classes of their
+        # own, phrased like the neighbouring briefs.
+        ("salon website", "Salon site: services and prices, stylist profiles, booking action, gallery, opening hours, and location."),
+        ("build a website for a salon", "Salon site: services and prices, stylist profiles, booking action, gallery, opening hours, and location."),
+        ("make a website for a salon", "Salon site: services and prices, stylist profiles, booking action, gallery, opening hours, and location."),
+        ("designer portfolio website", "Designer portfolio: selected projects with case notes, services, about page, testimonials, and a contact action."),
+        ("make a portfolio for a designer", "Designer portfolio: selected projects with case notes, services, about page, testimonials, and a contact action."),
+        ("build a portfolio for a designer", "Designer portfolio: selected projects with case notes, services, about page, testimonials, and a contact action."),
+        # The portfolio-website word order (28 Nov 2026
+        # cycle, 17:46 run): "portfolio website for a
+        # designer" was answered by the photographer
+        # class while the designer-first shapes answered.
+        ("portfolio website for a designer", "Designer portfolio: selected projects with case notes, services, about page, testimonials, and a contact action."),
+        ("portfolio for a designer", "Designer portfolio: selected projects with case notes, services, about page, testimonials, and a contact action."),
+        ("create a portfolio website for a designer", "Designer portfolio: selected projects with case notes, services, about page, testimonials, and a contact action."),
+        # Dental-clinic margin repair (28 Nov 2026 cycle,
+        # 08:46 run): after the salon/designer retrain, the
+        # dental-clinic brief scored below the serving
+        # threshold while the doctor-clinic brief answered,
+        # and the sparse bakery ask matched the salon class.
+        # The clinic class gains the dental shapes; measured
+        # in isolation, the dental brief answers and sparse
+        # evidence falls back again.
+        ("build a website for a dental clinic", "Clinic site: doctor profiles, services and timings, appointment booking, patient guidance, location, and a contact action."),
+        ("dental clinic website", "Clinic site: doctor profiles, services and timings, appointment booking, patient guidance, location, and a contact action."),
+        ("make a website for a dental clinic", "Clinic site: doctor profiles, services and timings, appointment booking, patient guidance, location, and a contact action."),
+        # Writer portfolio brief (28 Nov 2026 cycle, 09:46
+        # run): "make a portfolio for a writer" was answered
+        # by the designer portfolio class, so the writer
+        # gains a class of its own, phrased like the
+        # neighbouring briefs.
+        ("writer portfolio website", "Writer portfolio: selected articles and books, writing services, about page, testimonials, and a contact action."),
+        ("make a portfolio for a writer", "Writer portfolio: selected articles and books, writing services, about page, testimonials, and a contact action."),
+        ("build a portfolio for a writer", "Writer portfolio: selected articles and books, writing services, about page, testimonials, and a contact action."),
+        # Gym landing and cafe briefs (28 Nov 2026 cycle,
+        # 10:16 run): "create a landing page for a gym" and
+        # "make a website for a cafe" echoed while the
+        # neighbouring briefs answered, so the gym class
+        # gains the landing shape and cafe gains a class of
+        # its own, phrased like the neighbouring briefs.
+        ("create a landing page for a gym", "Gym site: class schedule, membership pricing, trainer profiles, trial signup, location, and contact details."),
+        ("landing page for a gym", "Gym site: class schedule, membership pricing, trainer profiles, trial signup, location, and contact details."),
+        ("build a website for a gym", "Gym site: class schedule, membership pricing, trainer profiles, trial signup, location, and contact details."),
+        ("make a website for a cafe", "Cafe site: menu with prices, daily specials, story, hours and location, gallery, and a contact action."),
+        ("build a website for a cafe", "Cafe site: menu with prices, daily specials, story, hours and location, gallery, and a contact action."),
+        ("cafe website", "Cafe site: menu with prices, daily specials, story, hours and location, gallery, and a contact action."),
+        # Law firm, course, real estate and hospital
+        # briefs (28 Nov 2026 cycle, 11:01 run): the law
+        # firm, online course and real estate briefs
+        # echoed while the neighbouring briefs answered,
+        # and the hospital brief was answered by the
+        # coaching class, so each gains a class of its
+        # own, phrased like the neighbouring briefs.
+        ("build a website for a law firm", "Law firm site: practice areas, lawyer profiles, client guidance, consultation booking, location, and a contact action."),
+        ("make a website for a law firm", "Law firm site: practice areas, lawyer profiles, client guidance, consultation booking, location, and a contact action."),
+        ("law firm website", "Law firm site: practice areas, lawyer profiles, client guidance, consultation booking, location, and a contact action."),
+        ("create a landing page for an online course", "Course landing page: what students learn, curriculum outline, instructor profile, pricing, student proof, and an enrol action."),
+        ("landing page for an online course", "Course landing page: what students learn, curriculum outline, instructor profile, pricing, student proof, and an enrol action."),
+        ("make a landing page for a course", "Course landing page: what students learn, curriculum outline, instructor profile, pricing, student proof, and an enrol action."),
+        ("make a website for a real estate agency", "Real estate site: property listings with search, agent profiles, buying and selling guidance, valuation enquiry, and a contact action."),
+        ("build a website for a real estate agency", "Real estate site: property listings with search, agent profiles, buying and selling guidance, valuation enquiry, and a contact action."),
+        ("real estate website", "Real estate site: property listings with search, agent profiles, buying and selling guidance, valuation enquiry, and a contact action."),
+        ("create a website for a hospital", "Hospital site: departments and doctor profiles, appointment booking, patient guidance, emergency information, location, and a contact action."),
+        ("build a website for a hospital", "Hospital site: departments and doctor profiles, appointment booking, patient guidance, emergency information, location, and a contact action."),
+        ("hospital website", "Hospital site: departments and doctor profiles, appointment booking, patient guidance, emergency information, location, and a contact action."),
+        # Hotel brief (28 Nov 2026 cycle, 13:16 run):
+        # "create a website for a hotel" was answered by
+        # the hospital class, so hotel gains a class of
+        # its own, phrased like the neighbouring briefs.
+        ("create a website for a hotel", "Hotel site: rooms and rates, booking enquiry, amenities and photos, guest reviews, location, and a contact action."),
+        ("build a website for a hotel", "Hotel site: rooms and rates, booking enquiry, amenities and photos, guest reviews, location, and a contact action."),
+        ("hotel website", "Hotel site: rooms and rates, booking enquiry, amenities and photos, guest reviews, location, and a contact action."),
+        # Travel, jewellery and app-landing briefs (28 Nov
+        # 2026 cycle, 12:01 run): the travel agency and
+        # jewellery shop briefs echoed while the
+        # neighbouring briefs answered, and the mobile app
+        # landing brief was answered by the course class,
+        # so each gains a class of its own, phrased like
+        # the neighbouring briefs.
+        ("build a website for a travel agency", "Travel agency site: tour packages, destination guides, booking enquiry, traveller reviews, and a contact action."),
+        ("make a website for a travel agency", "Travel agency site: tour packages, destination guides, booking enquiry, traveller reviews, and a contact action."),
+        ("travel agency website", "Travel agency site: tour packages, destination guides, booking enquiry, traveller reviews, and a contact action."),
+        ("make a website for a jewellery shop", "Jewellery shop site: collections with prices, new arrivals, care guidance, store location, and a contact action."),
+        ("build a website for a jewellery shop", "Jewellery shop site: collections with prices, new arrivals, care guidance, store location, and a contact action."),
+        ("jewellery shop website", "Jewellery shop site: collections with prices, new arrivals, care guidance, store location, and a contact action."),
+        ("create a landing page for a mobile app", "App landing page: what the app does, key features, screenshots, user reviews, and a download action."),
+        ("landing page for a mobile app", "App landing page: what the app does, key features, screenshots, user reviews, and a download action."),
+        ("mobile app landing page", "App landing page: what the app does, key features, screenshots, user reviews, and a download action."),
+        # Pet store, construction, musician and book briefs
+        # (28 Nov 2026 cycle, 12:31 run): the pet store and
+        # construction company briefs echoed while the
+        # neighbouring briefs answered, the musician
+        # portfolio was answered by the writer class and
+        # the book landing page by the app class, so each
+        # gains a class of its own, phrased like the
+        # neighbouring briefs.
+        ("make a website for a pet store", "Pet store site: pets and supplies with prices, care guidance, grooming or vet services, store location, and a contact action."),
+        ("build a website for a pet store", "Pet store site: pets and supplies with prices, care guidance, grooming or vet services, store location, and a contact action."),
+        ("pet store website", "Pet store site: pets and supplies with prices, care guidance, grooming or vet services, store location, and a contact action."),
+        ("build a website for a construction company", "Construction company site: services, completed projects, licences and safety record, estimate enquiry, and a contact action."),
+        ("make a website for a construction company", "Construction company site: services, completed projects, licences and safety record, estimate enquiry, and a contact action."),
+        ("construction company website", "Construction company site: services, completed projects, licences and safety record, estimate enquiry, and a contact action."),
+        ("create a portfolio for a musician", "Musician portfolio: featured tracks and videos, biography, upcoming shows, press highlights, and a booking contact action."),
+        ("portfolio for a musician", "Musician portfolio: featured tracks and videos, biography, upcoming shows, press highlights, and a booking contact action."),
+        ("musician portfolio", "Musician portfolio: featured tracks and videos, biography, upcoming shows, press highlights, and a booking contact action."),
+        ("create a landing page for a book", "Book landing page: cover and summary, author profile, reader reviews, sample chapter, and a buy action."),
+        ("landing page for a book", "Book landing page: cover and summary, author profile, reader reviews, sample chapter, and a buy action."),
+        ("book landing page", "Book landing page: cover and summary, author profile, reader reviews, sample chapter, and a buy action."),
+        # Photographer, coaching, blog and clinic briefs
+        # (28 Nov 2026 cycle, 13:46 run): the photographer
+        # portfolio was answered by the musician class,
+        # the coaching brief by a generic hero section,
+        # and the blog and bare clinic briefs echoed, so
+        # each gains its direct shapes.
+        ("create a portfolio for a photographer", "Photographer portfolio: full-bleed gallery, selected series, about page, services and rates, and a booking contact action."),
+        ("portfolio for a photographer", "Photographer portfolio: full-bleed gallery, selected series, about page, services and rates, and a booking contact action."),
+        ("create a photographer portfolio", "Photographer portfolio: full-bleed gallery, selected series, about page, services and rates, and a booking contact action."),
+        ("make a site for a coaching institute", "Coaching site: courses and batches, faculty profiles, results, fees and enquiry form, and a contact action."),
+        ("site for a coaching institute", "Coaching site: courses and batches, faculty profiles, results, fees and enquiry form, and a contact action."),
+        ("make a coaching institute website", "Coaching site: courses and batches, faculty profiles, results, fees and enquiry form, and a contact action."),
+        ("create a blog website", "Blog site: readable article pages, categories and search, author profile, newsletter signup, and a contact action."),
+        ("blog website", "Blog site: readable article pages, categories and search, author profile, newsletter signup, and a contact action."),
+        ("make a blog website", "Blog site: readable article pages, categories and search, author profile, newsletter signup, and a contact action."),
+        ("create a website for a clinic", "Clinic site: doctor profiles, services and timings, appointment booking, patient guidance, location, and a contact action."),
+        ("website for a clinic", "Clinic site: doctor profiles, services and timings, appointment booking, patient guidance, location, and a contact action."),
+        ("clinic website", "Clinic site: doctor profiles, services and timings, appointment booking, patient guidance, location, and a contact action."),
+        # Margin repair (28 Nov 2026 cycle, 13:46 run):
+        # the retrain above diluted the school brief back
+        # into echo and the e-commerce brief with it, so
+        # the school class gains the create shapes and
+        # the generic store gains a class of its own.
+        ("create a website for a school", "School site: admissions, classes and timetable, teacher profiles, notices and results, gallery, and a contact action."),
+        ("website for a school", "School site: admissions, classes and timetable, teacher profiles, notices and results, gallery, and a contact action."),
+        ("create a school website", "School site: admissions, classes and timetable, teacher profiles, notices and results, gallery, and a contact action."),
+        ("build an e-commerce store site", "Online store site: product listings with prices, categories and search, cart and checkout pages, and clear delivery and return notes."),
+        ("e-commerce store site", "Online store site: product listings with prices, categories and search, cart and checkout pages, and clear delivery and return notes."),
+        ("build an online store site", "Online store site: product listings with prices, categories and search, cart and checkout pages, and clear delivery and return notes."),
+        # Bakery and travel-agency briefs (28 Nov 2026
+        # cycle, 14:46 run): the bare bakery website
+        # brief echoed while the bakery landing-page
+        # shapes answered, and the travel-agency site
+        # brief was answered as a travel blog, so each
+        # gains its direct shapes.
+        ("build a website for a bakery", "Bakery site: menu, daily specials, story, hours, location, gallery, and an order or contact action."),
+        ("create a bakery website", "Bakery site: menu, daily specials, story, hours, location, gallery, and an order or contact action."),
+        # Sparse-evidence guard (28 Nov 2026 cycle, 14:46
+        # run): the bakery shapes above let the sparse
+        # "a website for our bakery" ask match the bakery
+        # class at 0.41, above the serving threshold, so
+        # neighbouring classes gain the same build shapes
+        # and the sparse margin splits across many classes
+        # while the full bakery brief still answers.
+        ("build a website for a clothing store", "Clothing store: product grid with sizes and prices, filters by size and style, cart and checkout pages, and clear delivery and return notes."),
+        ("build a website for a course", "Course site: outcomes, curriculum, instructor, schedule, pricing, sample lesson, and enrollment action."),
+        ("build a website for a travel blog", "Travel blog: destination stories, photo-led posts, trip guides, about page, and a newsletter signup."),
+        # Sparse-evidence guard (28 Nov 2026 cycle, 15:46
+        # run): the fitness-coach and chef additions raised
+        # the sparse bakery ask to 0.4552, so more
+        # neighbouring businesses gain the same build shape
+        # and the sparse margin splits again while full
+        # briefs still answer.
+        ("build a website for a fitness coach", "Fitness coach landing page: coaching programs, client results, trainer story, session pricing, booking action, and contact details."),
+        ("build a website for a clinic", "Clinic site: doctor profiles, services and timings, appointment booking, patient guidance, location, and a contact action."),
+        ("build a website for a coaching institute", "Coaching site: courses and batches, faculty profiles, results, fees and enquiry form, and a contact action."),
+        ("build a website for a chef", "Chef portfolio: signature dishes, menu highlights, kitchen story, services and rates, gallery, and a booking contact action."),
+        ("make a site for a travel agency", "Travel agency site: tour packages, destination guides, booking enquiry, traveller reviews, and a contact action."),
+        ("site for a travel agency", "Travel agency site: tour packages, destination guides, booking enquiry, traveller reviews, and a contact action."),
+        ("create a site for a travel agency", "Travel agency site: tour packages, destination guides, booking enquiry, traveller reviews, and a contact action."),
+        # Fitness-coach landing and chef portfolio briefs
+        # (28 Nov 2026 cycle, 15:46 run): the fitness-coach
+        # brief echoed and the chef portfolio was answered
+        # as a photographer portfolio, so each gains its
+        # direct shapes.
+        ("landing page for a fitness coach", "Fitness coach landing page: coaching programs, client results, trainer story, session pricing, booking action, and contact details."),
+        ("build a landing page for a fitness coach", "Fitness coach landing page: coaching programs, client results, trainer story, session pricing, booking action, and contact details."),
+        ("website for a fitness coach", "Fitness coach landing page: coaching programs, client results, trainer story, session pricing, booking action, and contact details."),
+        ("portfolio for a chef", "Chef portfolio: signature dishes, menu highlights, kitchen story, services and rates, gallery, and a booking contact action."),
+        ("chef portfolio website", "Chef portfolio: signature dishes, menu highlights, kitchen story, services and rates, gallery, and a booking contact action."),
+        ("build a portfolio for a chef", "Chef portfolio: signature dishes, menu highlights, kitchen story, services and rates, gallery, and a booking contact action."),
+        # Bakery-ordering and startup-landing briefs (28
+        # Nov 2026 cycle, 16:46 run): under Gravion Omni
+        # the bakery-with-ordering brief was answered as
+        # a restaurant and the startup landing brief as a
+        # fitness coach, so each gains its direct shapes.
+        ("build a website for a bakery with online ordering", "Bakery site: menu, daily specials, story, hours, location, gallery, and an order or contact action."),
+        ("bakery website with online ordering", "Bakery site: menu, daily specials, story, hours, location, gallery, and an order or contact action."),
+        ("build a landing page for my startup", "Landing page plan: clear hero, proof of work, services, process, testimonial space, and one contact action, with home, about and contact pages."),
+        ("landing page for my startup", "Landing page plan: clear hero, proof of work, services, process, testimonial space, and one contact action, with home, about and contact pages."),
+        ("startup landing page", "Landing page plan: clear hero, proof of work, services, process, testimonial space, and one contact action, with home, about and contact pages."),
+        # Sparse-evidence guard (28 Nov 2026 cycle, 16:46
+        # run): the sparse ask "a website for our bakery"
+        # still matches the bakery class at 0.44, above
+        # the serving threshold. Removing the build shape
+        # was measured to break the full bakery brief, so
+        # neighbouring businesses gain the same
+        # "website for our" shapes and the sparse margin
+        # splits across many classes while every full
+        # brief still answers.
+        ("a website for our cafe", "Cafe site: menu with prices, daily specials, story, hours and location, gallery, and a contact action."),
+        ("a website for our gym", "Gym site: class schedule, membership pricing, trainer profiles, trial signup, location, and contact details."),
+        ("a website for our school", "School site: admissions, classes and timetable, teacher profiles, notices and results, gallery, and a contact action."),
+        ("a website for our restaurant", "Restaurant site: menu with prices, daily specials, story, hours and location, gallery, and a reservation or contact action."),
+        ("a website for our salon", "Salon site: services and prices, stylist profiles, booking action, gallery, opening hours, and location."),
+        ("a website for our hotel", "Hotel site: rooms and rates, booking enquiry, amenities and photos, guest reviews, location, and a contact action."),
+        ("a website for our clinic", "Clinic site: doctor profiles, services and timings, appointment booking, patient guidance, location, and a contact action."),
+        ("a website for our store", "Online store site: product listings with prices, categories and search, cart and checkout pages, and clear delivery and return notes."),
+        # Shop brief (28 Nov 2026 cycle, 18:46 run):
+        # "create a website for my shop" echoed while the
+        # store briefs answered, so the store class gains
+        # the my-shop shapes.
+        ("create a website for my shop", "Online store site: product listings with prices, categories and search, cart and checkout pages, and clear delivery and return notes."),
+        ("build a website for my shop", "Online store site: product listings with prices, categories and search, cart and checkout pages, and clear delivery and return notes."),
+        ("website for my shop", "Online store site: product listings with prices, categories and search, cart and checkout pages, and clear delivery and return notes."),
     ],
     "gravion-vision": [
         ("describe a sunset portrait image brief", "Image brief: warm sunset light, calm human portrait, soft background, natural expression, high detail."),
@@ -836,6 +1482,13 @@ TOPICS: dict[str, list[tuple[str, str]]] = {
         ("explain sql injection", "SQL injection is an attack where untrusted input reaches a database query as code instead of data; prevent it with parameterised queries, least-privilege database accounts, and input validation."),
         ("explain cross site scripting", "Cross-site scripting is an attack where untrusted input is rendered as script in a victim's browser; prevent it by encoding output for its context and validating input."),
         ("assess failed ssh logins from one ip address", "Assessment: repeated failed SSH logins from one address look like password guessing; check whether any login succeeded, block or rate-limit the source, and require key-based access with multi-factor authentication."),
+        # SSH margin repair (28 Nov 2026 cycle, 11:01 run):
+        # the hashing/MITM/botnet retrain pushed the server
+        # SSH assessment ask below the serving threshold,
+        # so the SSH class gains the direct server shapes.
+        ("our server shows many failed ssh logins from one ip", "Assessment: repeated failed SSH logins from one address look like password guessing; check whether any login succeeded, block or rate-limit the source, and require key-based access with multi-factor authentication."),
+        ("failed ssh logins from one ip is this an attack", "Assessment: repeated failed SSH logins from one address look like password guessing; check whether any login succeeded, block or rate-limit the source, and require key-based access with multi-factor authentication."),
+        ("many failed ssh logins on our server", "Assessment: repeated failed SSH logins from one address look like password guessing; check whether any login succeeded, block or rate-limit the source, and require key-based access with multi-factor authentication."),
         ("write a bug bounty report for an idor", "Report: name the endpoint and the object reference that lacked an ownership check, show the minimal proof with your own test accounts, state the impact, and suggest enforcing per-object authorisation on the server."),
         # Cyber foundations (28 Nov 2026 cycle, 03:16 run):
         # fresh demo probe showed the concept questions an
@@ -845,6 +1498,14 @@ TOPICS: dict[str, list[tuple[str, str]]] = {
         ("explain what a cve is", "A CVE is a public identifier for a known vulnerability: the id names the flaw so defenders can track affected versions, severity, and the fix in one place."),
         ("explain what a vulnerability is", "A vulnerability is a weakness in software or configuration that an attacker could misuse; fixing it removes the weakness, and severity rates how much damage misuse could cause."),
         ("explain two factor authentication", "Two-factor authentication requires a second proof beyond the password, such as a code from an authenticator app, so a stolen password alone is usually not enough to sign in."),
+        # 2FA margin repair (28 Nov 2026 cycle, 08:46 run):
+        # the wifi/website boundary retrain pushed "what is
+        # two factor authentication" just below the serving
+        # threshold, so the 2FA class gains the direct
+        # question shapes.
+        ("what is two factor authentication", "Two-factor authentication requires a second proof beyond the password, such as a code from an authenticator app, so a stolen password alone is usually not enough to sign in."),
+        ("what is 2fa", "Two-factor authentication requires a second proof beyond the password, such as a code from an authenticator app, so a stolen password alone is usually not enough to sign in."),
+        ("explain what two factor authentication is", "Two-factor authentication requires a second proof beyond the password, such as a code from an authenticator app, so a stolen password alone is usually not enough to sign in."),
         ("explain ransomware", "Ransomware is malware that encrypts files and demands payment for the key; defend with tested offline backups, prompt updates, least-privilege accounts, and staff reporting habits."),
         ("explain how to secure a website", "Secure a website by keeping software updated, enforcing strong authentication, validating input, serving over encrypted connections, backing up regularly, and monitoring logs for abuse."),
         ("explain how to report a security bug responsibly", "Report responsibly: test only within authorised scope, keep proof minimal with your own accounts, send the finding privately to the owner with impact and steps, and allow time for a fix before any public detail."),
@@ -856,6 +1517,13 @@ TOPICS: dict[str, list[tuple[str, str]]] = {
         # classes gain the direct question phrasing.
         ("what is a cve", "A CVE is a public identifier for a known vulnerability: the id names the flaw so defenders can track affected versions, severity, and the fix in one place."),
         ("secure my website", "Secure a website by keeping software updated, enforcing strong authentication, validating input, serving over encrypted connections, backing up regularly, and monitoring logs for abuse."),
+        # Wifi-boundary repair (28 Nov 2026 cycle, 08:46
+        # run): the new wifi class shared the "how do i
+        # secure my" shapes and stole the secure-website
+        # prompt, so the website-hardening class gains the
+        # direct question shapes.
+        ("how do i secure my website", "Secure a website by keeping software updated, enforcing strong authentication, validating input, serving over encrypted connections, backing up regularly, and monitoring logs for abuse."),
+        ("how can i secure my website", "Secure a website by keeping software updated, enforcing strong authentication, validating input, serving over encrypted connections, backing up regularly, and monitoring logs for abuse."),
         # Margin repair (28 Nov 2026 cycle, 03:16 run): the
         # foundation classes above diluted the injection
         # classes back into echo on their direct question
@@ -990,6 +1658,192 @@ TOPICS: dict[str, list[tuple[str, str]]] = {
         ("how to report a vulnerability", "Report responsibly: test only within authorised scope, keep proof minimal with your own accounts, send the finding privately to the owner with impact and steps, and allow time for a fix before any public detail."),
         ("how do i report a vulnerability", "Report responsibly: test only within authorised scope, keep proof minimal with your own accounts, send the finding privately to the owner with impact and steps, and allow time for a fix before any public detail."),
         ("how do i report a security vulnerability", "Report responsibly: test only within authorised scope, keep proof minimal with your own accounts, send the finding privately to the owner with impact and steps, and allow time for a fix before any public detail."),
+        # Wifi and VPN asks (28 Nov 2026 cycle, 08:46 run):
+        # "how do I secure my wifi" was answered by the
+        # email-account class and "explain what a VPN is" by
+        # the CVE class, so both gain classes of their own,
+        # in defensive words only.
+        ("how do i secure my wifi", "Secure wifi with a long unique password, current encryption on the router, updated router software, and a guest network for visitors."),
+        ("secure my wifi network", "Secure wifi with a long unique password, current encryption on the router, updated router software, and a guest network for visitors."),
+        ("how to protect my wifi", "Secure wifi with a long unique password, current encryption on the router, updated router software, and a guest network for visitors."),
+        # Margin repair (28 Nov 2026 cycle, 17:46 run):
+        # after the return/broken/refund retrain, "how do
+        # i protect my email account" and "how to secure
+        # my home wifi" fell below the serving threshold
+        # while the secure-my-email shapes answered, so
+        # both classes gain their direct shapes.
+        ("how do i protect my email account", "Secure the email account with a long unique password, multi-factor authentication, recovery options you control, a review of active sessions, and a check for forwarding rules you did not create."),
+        ("how to protect my email account", "Secure the email account with a long unique password, multi-factor authentication, recovery options you control, a review of active sessions, and a check for forwarding rules you did not create."),
+        ("protect my email", "Secure the email account with a long unique password, multi-factor authentication, recovery options you control, a review of active sessions, and a check for forwarding rules you did not create."),
+        ("how to secure my home wifi", "Secure wifi with a long unique password, current encryption on the router, updated router software, and a guest network for visitors."),
+        ("secure my home wifi", "Secure wifi with a long unique password, current encryption on the router, updated router software, and a guest network for visitors."),
+        ("how do i secure my home wifi", "Secure wifi with a long unique password, current encryption on the router, updated router software, and a guest network for visitors."),
+        ("explain what a vpn is", "A VPN creates an encrypted tunnel between a device and a network so traffic stays private on untrusted connections; it does not make unsafe sites safe."),
+        ("what is a vpn", "A VPN creates an encrypted tunnel between a device and a network so traffic stays private on untrusted connections; it does not make unsafe sites safe."),
+        ("how does a vpn work", "A VPN creates an encrypted tunnel between a device and a network so traffic stays private on untrusted connections; it does not make unsafe sites safe."),
+        # SSRF and zero-day asks (28 Nov 2026 cycle, 09:46
+        # run): "what is SSRF?" was answered by the IDOR
+        # class and "what is a zero day vulnerability?"
+        # echoed beside the vulnerability class, so both
+        # gain classes of their own, in defensive words only.
+        ("what is ssrf", "SSRF is a flaw where a server fetches a user-supplied address without checking it, reaching internal systems; prevent it with an allowlist of hosts, blocked private ranges, and checks after redirects."),
+        ("explain ssrf", "SSRF is a flaw where a server fetches a user-supplied address without checking it, reaching internal systems; prevent it with an allowlist of hosts, blocked private ranges, and checks after redirects."),
+        ("explain what ssrf is", "SSRF is a flaw where a server fetches a user-supplied address without checking it, reaching internal systems; prevent it with an allowlist of hosts, blocked private ranges, and checks after redirects."),
+        ("what is server side request forgery", "SSRF is a flaw where a server fetches a user-supplied address without checking it, reaching internal systems; prevent it with an allowlist of hosts, blocked private ranges, and checks after redirects."),
+        ("what is a zero day vulnerability", "A zero-day vulnerability is a flaw attackers can use before the maker knows about it or a fix exists; defend with prompt updates, least privilege, monitoring, and layered controls."),
+        ("what is zero day", "A zero-day vulnerability is a flaw attackers can use before the maker knows about it or a fix exists; defend with prompt updates, least privilege, monitoring, and layered controls."),
+        ("explain zero day vulnerability", "A zero-day vulnerability is a flaw attackers can use before the maker knows about it or a fix exists; defend with prompt updates, least privilege, monitoring, and layered controls."),
+        # Brute-force concept (28 Nov 2026 cycle, 10:16
+        # run): "what is brute force attack?" was answered
+        # by the SSRF class while the brute-force log
+        # analysis answered, so the concept gains a class
+        # of its own, in defensive words only.
+        ("what is brute force attack", "A brute-force attack tries many passwords or keys until one works; defend with long unique passwords, multi-factor authentication, rate limits, and lockouts after repeated failures."),
+        ("what is a brute force attack", "A brute-force attack tries many passwords or keys until one works; defend with long unique passwords, multi-factor authentication, rate limits, and lockouts after repeated failures."),
+        ("explain brute force attack", "A brute-force attack tries many passwords or keys until one works; defend with long unique passwords, multi-factor authentication, rate limits, and lockouts after repeated failures."),
+        ("how to prevent brute force attacks", "A brute-force attack tries many passwords or keys until one works; defend with long unique passwords, multi-factor authentication, rate limits, and lockouts after repeated failures."),
+        # Hashing, MITM, botnet and account-security asks
+        # (28 Nov 2026 cycle, 11:01 run): "explain password
+        # hashing", "explain man in the middle attack" and
+        # "how do I make my account secure?" echoed, and
+        # "what is a botnet?" was answered by the CVE
+        # class, so each gains a class of its own, in
+        # defensive words only.
+        ("explain password hashing", "Password hashing stores a one-way scrambled form of a password instead of the password itself; use a slow salted hash designed for passwords so a leaked database does not reveal usable passwords."),
+        ("what is password hashing", "Password hashing stores a one-way scrambled form of a password instead of the password itself; use a slow salted hash designed for passwords so a leaked database does not reveal usable passwords."),
+        ("how should passwords be stored", "Password hashing stores a one-way scrambled form of a password instead of the password itself; use a slow salted hash designed for passwords so a leaked database does not reveal usable passwords."),
+        ("explain man in the middle attack", "A man-in-the-middle attack places an attacker between two parties to read or alter their traffic; defend with encrypted connections, certificate checks, and avoiding sensitive logins on untrusted networks."),
+        ("what is a man in the middle attack", "A man-in-the-middle attack places an attacker between two parties to read or alter their traffic; defend with encrypted connections, certificate checks, and avoiding sensitive logins on untrusted networks."),
+        ("explain mitm attack", "A man-in-the-middle attack places an attacker between two parties to read or alter their traffic; defend with encrypted connections, certificate checks, and avoiding sensitive logins on untrusted networks."),
+        ("what is a botnet", "A botnet is a network of compromised devices controlled remotely, often used to flood services or send spam; defend with updates, strong passwords, and removing infected devices from the network."),
+        ("explain botnet", "A botnet is a network of compromised devices controlled remotely, often used to flood services or send spam; defend with updates, strong passwords, and removing infected devices from the network."),
+        ("how do i make my account secure", "Secure your account with a long unique password, multi-factor authentication, updated recovery details, and a review of active sessions and sign-in alerts."),
+        ("how to secure my account", "Secure your account with a long unique password, multi-factor authentication, updated recovery details, and a review of active sessions and sign-in alerts."),
+        ("make my account secure", "Secure your account with a long unique password, multi-factor authentication, updated recovery details, and a review of active sessions and sign-in alerts."),
+        # Access control, patch and phone-protection asks
+        # (28 Nov 2026 cycle, 12:01 run): "explain access
+        # control" and "what is a security patch?" echoed
+        # beside the neighbouring concept classes, and the
+        # phone-protection ask was answered by the account
+        # class, so each gains a class of its own, in
+        # defensive words only.
+        ("explain access control", "Access control decides who may reach a resource and what they may do: authenticate the user, check their role or permission for that exact action, and deny by default."),
+        ("what is access control", "Access control decides who may reach a resource and what they may do: authenticate the user, check their role or permission for that exact action, and deny by default."),
+        ("how does access control work", "Access control decides who may reach a resource and what they may do: authenticate the user, check their role or permission for that exact action, and deny by default."),
+        ("what is a security patch", "A security patch is an update that fixes a known vulnerability; install patches promptly, test critical systems, and restart when the update requires it."),
+        ("explain security patches", "A security patch is an update that fixes a known vulnerability; install patches promptly, test critical systems, and restart when the update requires it."),
+        ("why install security patches", "A security patch is an update that fixes a known vulnerability; install patches promptly, test critical systems, and restart when the update requires it."),
+        ("how do i protect my phone from hackers", "Protect your phone with a strong lock screen, prompt system and app updates, multi-factor authentication, careful app permissions, and device-finding turned on."),
+        ("protect my phone from hackers", "Protect your phone with a strong lock screen, prompt system and app updates, multi-factor authentication, careful app permissions, and device-finding turned on."),
+        ("how to secure my phone", "Protect your phone with a strong lock screen, prompt system and app updates, multi-factor authentication, careful app permissions, and device-finding turned on."),
+        # Social engineering, ethical hacking and website
+        # protection asks (28 Nov 2026 cycle, 12:31 run):
+        # "what is social engineering?" and "explain ethical
+        # hacking" echoed beside the neighbouring concept
+        # classes, and "how do I protect my website from
+        # hackers?" was answered by the phone class, so the
+        # concepts gain classes of their own and the
+        # secure-website class gains the protect shapes, in
+        # defensive words only.
+        ("what is social engineering", "Social engineering manipulates people into revealing access or secrets through trust, urgency or authority; verify requests through a separate channel and never share codes or passwords."),
+        ("explain social engineering", "Social engineering manipulates people into revealing access or secrets through trust, urgency or authority; verify requests through a separate channel and never share codes or passwords."),
+        ("how does social engineering work", "Social engineering manipulates people into revealing access or secrets through trust, urgency or authority; verify requests through a separate channel and never share codes or passwords."),
+        ("explain ethical hacking", "Ethical hacking is authorised security testing done with written permission and a defined scope to find weaknesses so they can be fixed; without permission it is not ethical hacking."),
+        ("what is ethical hacking", "Ethical hacking is authorised security testing done with written permission and a defined scope to find weaknesses so they can be fixed; without permission it is not ethical hacking."),
+        ("how does ethical hacking work", "Ethical hacking is authorised security testing done with written permission and a defined scope to find weaknesses so they can be fixed; without permission it is not ethical hacking."),
+        ("how do i protect my website from hackers", "Secure a website by keeping software updated, enforcing strong authentication, validating input, serving over encrypted connections, backing up regularly, and monitoring logs for abuse."),
+        ("protect my website from hackers", "Secure a website by keeping software updated, enforcing strong authentication, validating input, serving over encrypted connections, backing up regularly, and monitoring logs for abuse."),
+        ("protect my website from attacks", "Secure a website by keeping software updated, enforcing strong authentication, validating input, serving over encrypted connections, backing up regularly, and monitoring logs for abuse."),
+        # Cyber-security, firewall, data-safety, virus and
+        # phishing-email asks (28 Nov 2026 cycle, 13:16
+        # run): "what is cyber security?", "explain what
+        # a firewall does", "how can I keep my data safe?"
+        # and "what is a computer virus?" echoed beside
+        # the neighbouring concept classes, and spotting
+        # a phishing email was answered by the disclosure
+        # class, so each gains its direct shapes, in
+        # defensive words only.
+        ("what is cyber security", "Cyber security protects systems, networks and data from attacks and misuse through access control, updates, monitoring, backups and user training."),
+        ("explain cyber security", "Cyber security protects systems, networks and data from attacks and misuse through access control, updates, monitoring, backups and user training."),
+        ("what is cybersecurity", "Cyber security protects systems, networks and data from attacks and misuse through access control, updates, monitoring, backups and user training."),
+        ("explain what a firewall does", "A firewall filters network traffic by rules, allowing trusted connections and blocking the rest; keep its rules reviewed, deny by default, and log what it blocks."),
+        ("what does a firewall do", "A firewall filters network traffic by rules, allowing trusted connections and blocking the rest; keep its rules reviewed, deny by default, and log what it blocks."),
+        ("how does a firewall work", "A firewall filters network traffic by rules, allowing trusted connections and blocking the rest; keep its rules reviewed, deny by default, and log what it blocks."),
+        ("how can i keep my data safe", "Keep your data safe with strong unique passwords, multi-factor authentication, encrypted backups, prompt updates, and care with links and attachments."),
+        ("keep my data safe", "Keep your data safe with strong unique passwords, multi-factor authentication, encrypted backups, prompt updates, and care with links and attachments."),
+        ("how do i protect my data", "Keep your data safe with strong unique passwords, multi-factor authentication, encrypted backups, prompt updates, and care with links and attachments."),
+        ("what is a computer virus", "A computer virus is malware that attaches to files or programs and spreads when they run; defend with updates, anti-malware scanning, tested backups, and caution with downloads."),
+        ("explain computer virus", "A computer virus is malware that attaches to files or programs and spreads when they run; defend with updates, anti-malware scanning, tested backups, and caution with downloads."),
+        ("what is a virus in computers", "A computer virus is malware that attaches to files or programs and spreads when they run; defend with updates, anti-malware scanning, tested backups, and caution with downloads."),
+        ("how do i spot a phishing email", "Check sender address, unexpected attachments, urgent pressure, spelling patterns, and verify requests through another channel."),
+        ("spot a phishing email", "Check sender address, unexpected attachments, urgent pressure, spelling patterns, and verify requests through another channel."),
+        ("how to spot a phishing email", "Check sender address, unexpected attachments, urgent pressure, spelling patterns, and verify requests through another channel."),
+        ("identify a phishing email", "Check sender address, unexpected attachments, urgent pressure, spelling patterns, and verify requests through another channel."),
+        # Breach, malware-difference, cyber-attack and
+        # hacked-account asks (28 Nov 2026 cycle, 13:46
+        # run): the breach concept and the malware versus
+        # ransomware difference echoed, the cyber-attack
+        # concept was answered as DDoS, and the hacked
+        # account ask was answered with the organisation
+        # breach response, so each gains its direct
+        # shapes, in defensive words only.
+        ("explain what a data breach is", "A data breach is unauthorised access to data, such as stolen records or leaked files; prevent it with access control, encryption, updates, monitoring, and tested backups."),
+        ("what is a data breach", "A data breach is unauthorised access to data, such as stolen records or leaked files; prevent it with access control, encryption, updates, monitoring, and tested backups."),
+        ("explain data breach", "A data breach is unauthorised access to data, such as stolen records or leaked files; prevent it with access control, encryption, updates, monitoring, and tested backups."),
+        ("what is the difference between malware and ransomware", "Malware is the broad family of harmful software; ransomware is the malware type that encrypts files and demands payment. Defend both with updates, backups, least-privilege accounts, and caution with attachments."),
+        ("difference between malware and ransomware", "Malware is the broad family of harmful software; ransomware is the malware type that encrypts files and demands payment. Defend both with updates, backups, least-privilege accounts, and caution with attachments."),
+        ("malware and ransomware difference", "Malware is the broad family of harmful software; ransomware is the malware type that encrypts files and demands payment. Defend both with updates, backups, least-privilege accounts, and caution with attachments."),
+        ("explain what a cyber attack is", "A cyber attack is a deliberate attempt to disrupt, steal from, or gain unauthorised access to systems or data; defend with updates, strong authentication, monitoring, backups, and a practiced response plan."),
+        ("what is a cyber attack", "A cyber attack is a deliberate attempt to disrupt, steal from, or gain unauthorised access to systems or data; defend with updates, strong authentication, monitoring, backups, and a practiced response plan."),
+        ("explain cyber attack", "A cyber attack is a deliberate attempt to disrupt, steal from, or gain unauthorised access to systems or data; defend with updates, strong authentication, monitoring, backups, and a practiced response plan."),
+        ("what should i do if my account is hacked", "If your account is hacked: change the password from a clean device, enable multi-factor authentication, sign out other sessions, revoke unfamiliar app access, and check recovery details and recent activity."),
+        ("my account is hacked", "If your account is hacked: change the password from a clean device, enable multi-factor authentication, sign out other sessions, revoke unfamiliar app access, and check recovery details and recent activity."),
+        ("account hacked what to do", "If your account is hacked: change the password from a clean device, enable multi-factor authentication, sign out other sessions, revoke unfamiliar app access, and check recovery details and recent activity."),
+        # Public-wifi, hacker-role, VPN-simple, link-safety
+        # and fake-website asks (28 Nov 2026 cycle, 14:46
+        # run): public wifi was answered as penetration
+        # testing, the hacker-role ask as a firewall, the
+        # fake-website ask with email checks, and the
+        # VPN-simple and link-safety asks echoed, so each
+        # gains its direct shapes, in defensive words only.
+        ("is public wifi safe", "Public wifi is shared and untrusted: avoid banking and sensitive sign-ins, prefer mobile data or a VPN, forget the network afterwards, and keep device sharing off."),
+        ("public wifi safety", "Public wifi is shared and untrusted: avoid banking and sensitive sign-ins, prefer mobile data or a VPN, forget the network afterwards, and keep device sharing off."),
+        ("is public wi fi safe", "Public wifi is shared and untrusted: avoid banking and sensitive sign-ins, prefer mobile data or a VPN, forget the network afterwards, and keep device sharing off."),
+        ("what does a hacker do", "A hacker explores how systems work and where they break; ethical hackers test only with permission and report weaknesses so they can be fixed, while criminals misuse the same skills and face the law."),
+        ("what do hackers do", "A hacker explores how systems work and where they break; ethical hackers test only with permission and report weaknesses so they can be fixed, while criminals misuse the same skills and face the law."),
+        ("explain what a hacker does", "A hacker explores how systems work and where they break; ethical hackers test only with permission and report weaknesses so they can be fixed, while criminals misuse the same skills and face the law."),
+        ("explain vpn simply", "A VPN creates an encrypted tunnel between a device and a network so traffic stays private on untrusted connections; it does not make unsafe sites safe."),
+        ("explain a vpn simply", "A VPN creates an encrypted tunnel between a device and a network so traffic stays private on untrusted connections; it does not make unsafe sites safe."),
+        ("vpn in simple words", "A VPN creates an encrypted tunnel between a device and a network so traffic stays private on untrusted connections; it does not make unsafe sites safe."),
+        ("how to check if a link is safe", "Check a link before opening it: read the real domain, watch for misspellings and shortened addresses, hover or long-press to preview, and reach the site by typing its known address when unsure."),
+        ("check if a link is safe", "Check a link before opening it: read the real domain, watch for misspellings and shortened addresses, hover or long-press to preview, and reach the site by typing its known address when unsure."),
+        ("is this link safe", "Check a link before opening it: read the real domain, watch for misspellings and shortened addresses, hover or long-press to preview, and reach the site by typing its known address when unsure."),
+        ("how to spot a fake website", "Spot a fake website by checking the exact domain spelling, looking for pressure tactics and too-good offers, verifying contact details, and reaching the service through its known address instead of a sent link."),
+        ("spot a fake website", "Spot a fake website by checking the exact domain spelling, looking for pressure tactics and too-good offers, verifying contact details, and reaching the service through its known address instead of a sent link."),
+        ("how to identify a fake website", "Spot a fake website by checking the exact domain spelling, looking for pressure tactics and too-good offers, verifying contact details, and reaching the service through its known address instead of a sent link."),
+        # Password-manager, phishing-simple and API-security
+        # asks (28 Nov 2026 cycle, 16:46 run): the API ask
+        # was answered as wifi security, and the phishing
+        # simple-words ask was answered as a code loop
+        # under Gravion Omni, so each gains its direct
+        # shapes, in defensive words only.
+        ("how do i use a password manager", "Use a password manager to create a long unique password for every account, store them encrypted behind one strong master password, and enable multi-factor authentication where available."),
+        ("use a password manager", "Use a password manager to create a long unique password for every account, store them encrypted behind one strong master password, and enable multi-factor authentication where available."),
+        ("explain phishing in simple words", "Phishing is a deceptive message that pretends to be trusted so the reader hands over credentials or payment; check the sender, inspect links before opening them, and report the message instead of replying."),
+        ("phishing in simple words", "Phishing is a deceptive message that pretends to be trusted so the reader hands over credentials or payment; check the sender, inspect links before opening them, and report the message instead of replying."),
+        ("how do i secure my api", "Secure an API with authentication on every endpoint, ownership and role checks per object, input validation, rate limits, encrypted transport, and logs that hide secrets."),
+        ("secure my api", "Secure an API with authentication on every endpoint, ownership and role checks per object, input validation, rate limits, encrypted transport, and logs that hide secrets."),
+        ("how to secure an api", "Secure an API with authentication on every endpoint, ownership and role checks per object, input validation, rate limits, encrypted transport, and logs that hide secrets."),
+        # Ransomware and SSRF direct asks (28 Nov 2026
+        # cycle, 18:46 run): "what is ransomware" echoed
+        # beside the explain-form topic, and "explain ssrf
+        # in simple words" was answered as encryption, so
+        # both classes gain their direct shapes, in
+        # defensive words only.
+        ("what is ransomware", "Ransomware is malware that encrypts files and demands payment for the key; defend with tested offline backups, prompt updates, least-privilege accounts, and staff reporting habits."),
+        ("explain ransomware in simple words", "Ransomware is malware that encrypts files and demands payment for the key; defend with tested offline backups, prompt updates, least-privilege accounts, and staff reporting habits."),
+        ("explain ssrf in simple words", "SSRF is a flaw where a server fetches a user-supplied address without checking it, reaching internal systems; prevent it with an allowlist of hosts, blocked private ranges, and checks after redirects."),
+        ("ssrf in simple words", "SSRF is a flaw where a server fetches a user-supplied address without checking it, reaching internal systems; prevent it with an allowlist of hosts, blocked private ranges, and checks after redirects."),
     ],
     "gravion-agent": [
         ("plan an agent that summarizes email", "Agent plan: read approved messages, group by topic, draft summaries, flag urgent items, and ask before sending anything."),
@@ -1048,6 +1902,9 @@ TOPICS: dict[str, list[tuple[str, str]]] = {
         # price-watch and morning-news agent asks echoed while
         # the email and uptime plans answered.
         ("create an agent that monitors prices and sends alerts", "Agent plan: track the listed prices on a schedule, compare them against your alert thresholds, and send one clear alert with the old and new price when a threshold is crossed."),
+        ("create an agent that monitors prices and alerts me", "Agent plan: track the listed prices on a schedule, compare them against your alert thresholds, and send one clear alert with the old and new price when a threshold is crossed."),
+        ("build an agent that monitors prices and alerts me", "Agent plan: track the listed prices on a schedule, compare them against your alert thresholds, and send one clear alert with the old and new price when a threshold is crossed."),
+        ("agent that monitors prices and alerts me", "Agent plan: track the listed prices on a schedule, compare them against your alert thresholds, and send one clear alert with the old and new price when a threshold is crossed."),
         ("build a bot that summarises news every morning", "Agent plan: gather the morning headlines from your chosen sources, summarise the top stories briefly, and deliver one digest at your set time."),
         # Sparse-evidence guard (28 Nov 2026 cycle, 02:16 run):
         # the retrain let the expense class answer the sparse
@@ -1094,6 +1951,243 @@ TOPICS: dict[str, list[tuple[str, str]]] = {
         ("agent that writes social media posts", "Agent plan: draft posts from approved topics, check tone, schedule only after approval, and track results."),
         ("create an agent that screens resumes", "Agent plan: screen resumes against approved criteria, rank matches with evidence, flag missing information, and leave hiring decisions to people."),
         ("agent for screening resumes", "Agent plan: screen resumes against approved criteria, rank matches with evidence, flag missing information, and leave hiring decisions to people."),
+        # Appointment and research agent asks (28 Nov 2026
+        # cycle, 08:46 run): "create an agent that books
+        # appointments" echoed beside the books-meetings
+        # shapes, and "build a research agent" was answered
+        # by the scheduling class, so the scheduling class
+        # gains the appointment shapes and research gains a
+        # class of its own.
+        ("create an agent that books appointments", "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely."),
+        ("agent that books appointments", "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely."),
+        ("build a research agent", "Agent plan: gather sources on the topic, compare claims, summarise findings with citations, and flag anything unverified."),
+        ("create a research agent", "Agent plan: gather sources on the topic, compare claims, summarise findings with citations, and flag anything unverified."),
+        ("agent that does research", "Agent plan: gather sources on the topic, compare claims, summarise findings with citations, and flag anything unverified."),
+        # Customer-questions agent ask (28 Nov 2026 cycle,
+        # 09:46 run): "build an agent that answers customer
+        # questions" was answered by the morning-news class
+        # while the bot shapes answered, so the triage class
+        # gains the agent-verb shapes, reusing its completion
+        # to keep sparse evidence falling back honestly.
+        ("build an agent that answers customer questions", "Agent plan: classify requests, suggest answers, escalate sensitive cases, and track resolution quality."),
+        ("agent that answers customer questions", "Agent plan: classify requests, suggest answers, escalate sensitive cases, and track resolution quality."),
+        ("create a customer support agent", "Agent plan: classify requests, suggest answers, escalate sensitive cases, and track resolution quality."),
+        # News, reminder and stock-alert asks (28 Nov 2026
+        # cycle, 10:16 run): "make an agent for daily news
+        # summary", "create an agent that sends reminders"
+        # and "plan an agent for stock alerts" echoed while
+        # the neighbouring agent classes answered, so those
+        # classes gain the direct shapes, reusing their
+        # completions to keep sparse evidence honest.
+        ("make an agent for daily news summary", "Agent plan: gather the morning headlines from your chosen sources, summarise the top stories briefly, and deliver one digest at your set time."),
+        ("agent for daily news summary", "Agent plan: gather the morning headlines from your chosen sources, summarise the top stories briefly, and deliver one digest at your set time."),
+        ("daily news summary agent", "Agent plan: gather the morning headlines from your chosen sources, summarise the top stories briefly, and deliver one digest at your set time."),
+        ("create an agent that sends reminders", "Agent plan: collect tasks, sort by deadline, remind owners, detect blockers, and report progress."),
+        ("agent that sends reminders", "Agent plan: collect tasks, sort by deadline, remind owners, detect blockers, and report progress."),
+        ("reminder agent", "Agent plan: collect tasks, sort by deadline, remind owners, detect blockers, and report progress."),
+        ("plan an agent for stock alerts", "Agent plan: watch approved items, record changes, alert on thresholds, and avoid purchases without approval."),
+        ("agent for stock alerts", "Agent plan: watch approved items, record changes, alert on thresholds, and avoid purchases without approval."),
+        ("stock alert agent", "Agent plan: watch approved items, record changes, alert on thresholds, and avoid purchases without approval."),
+        # Meeting, file, price and notes asks (28 Nov
+        # 2026 cycle, 11:01 run): "create an agent that
+        # schedules meetings" echoed beside the booking
+        # class, "sorts my files" was answered by the
+        # email class, "checks prices every day" by the
+        # accessibility class, and "writes meeting notes"
+        # by the booking class, so those classes gain the
+        # direct shapes, reusing their completions where
+        # one exists.
+        ("create an agent that schedules meetings", "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely."),
+        ("agent that schedules meetings", "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely."),
+        ("meeting scheduling agent", "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely."),
+        ("create an agent that sorts my files", "Agent plan: list approved folders, group files by type and date, flag duplicates, propose moves, and apply only approved changes."),
+        ("agent that sorts my files", "Agent plan: list approved folders, group files by type and date, flag duplicates, propose moves, and apply only approved changes."),
+        ("file sorting agent", "Agent plan: list approved folders, group files by type and date, flag duplicates, propose moves, and apply only approved changes."),
+        ("plan an agent that checks prices every day", "Agent plan: watch approved items, record changes, alert on thresholds, and avoid purchases without approval."),
+        ("agent that checks prices every day", "Agent plan: watch approved items, record changes, alert on thresholds, and avoid purchases without approval."),
+        ("daily price check agent", "Agent plan: watch approved items, record changes, alert on thresholds, and avoid purchases without approval."),
+        ("build an agent that writes meeting notes", "Agent design: capture notes, extract decisions and owners, draft follow-ups, and store the approved summary."),
+        ("agent that writes meeting notes", "Agent design: capture notes, extract decisions and owners, draft follow-ups, and store the approved summary."),
+        ("meeting notes agent", "Agent design: capture notes, extract decisions and owners, draft follow-ups, and store the approved summary."),
+        # Deadline, news and uptime agent asks (28 Nov 2026
+        # cycle, 12:01 run): "make an agent that reminds me
+        # about deadlines", "create an agent that
+        # summarises news every morning" and "plan an agent
+        # that monitors website uptime" echoed beside the
+        # reminder, daily-news and uptime classes, so those
+        # classes gain the direct shapes.
+        ("make an agent that reminds me about deadlines", "Agent plan: collect tasks, sort by deadline, remind owners, detect blockers, and report progress."),
+        ("agent that reminds me about deadlines", "Agent plan: collect tasks, sort by deadline, remind owners, detect blockers, and report progress."),
+        ("deadline reminder agent", "Agent plan: collect tasks, sort by deadline, remind owners, detect blockers, and report progress."),
+        ("create an agent that summarises news every morning", "Agent plan: gather the morning headlines from your chosen sources, summarise the top stories briefly, and deliver one digest at your set time."),
+        ("agent that summarises news", "Agent plan: gather the morning headlines from your chosen sources, summarise the top stories briefly, and deliver one digest at your set time."),
+        ("morning news agent", "Agent plan: gather the morning headlines from your chosen sources, summarise the top stories briefly, and deliver one digest at your set time."),
+        ("plan an agent that monitors website uptime", "Agent plan: check the site on a schedule, record response times, alert on failures with the failing check, and keep a daily uptime summary."),
+        ("agent that monitors website uptime", "Agent plan: check the site on a schedule, record response times, alert on failures with the failing check, and keep a daily uptime summary."),
+        ("website uptime monitoring agent", "Agent plan: check the site on a schedule, record response times, alert on failures with the failing check, and keep a daily uptime summary."),
+        # Fitness agent ask (28 Nov 2026 cycle, 12:31 run):
+        # "create an agent that tracks my fitness" echoed
+        # while the neighbouring agent classes answered, so
+        # it gains a class of its own.
+        ("create an agent that tracks my fitness", "Agent plan: log workouts and daily activity, track progress against your goals, remind you about planned sessions, and summarise weekly trends."),
+        ("agent that tracks my fitness", "Agent plan: log workouts and daily activity, track progress against your goals, remind you about planned sessions, and summarise weekly trends."),
+        ("fitness tracking agent", "Agent plan: log workouts and daily activity, track progress against your goals, remind you about planned sessions, and summarise weekly trends."),
+        # Margin repair (28 Nov 2026 cycle, 12:31 run): the
+        # retrain diluted the translation class — "build an
+        # agent that translates messages" fell below the
+        # serving threshold and the "create" shape was
+        # answered by the booking class — so the class
+        # gains the direct shapes, reusing its completion.
+        ("build an agent that translates messages", "Agent plan: detect language, translate meaning, preserve tone, and flag uncertain phrases."),
+        ("create an agent that translates messages", "Agent plan: detect language, translate meaning, preserve tone, and flag uncertain phrases."),
+        ("agent that translates messages", "Agent plan: detect language, translate meaning, preserve tone, and flag uncertain phrases."),
+        ("message translation agent", "Agent plan: detect language, translate meaning, preserve tone, and flag uncertain phrases."),
+        # Study, day-planner, job, weather, calendar and
+        # email-writer agent asks (28 Nov 2026 cycle,
+        # 13:16 run): a fresh demo probe showed all six
+        # echoed while the neighbouring agent classes
+        # answered, so each gains a class of its own.
+        ("create an agent that helps me study", "Agent plan: break the subject into topics, schedule short study sessions, quiz you on each topic, and track weak areas for review."),
+        ("agent that helps me study", "Agent plan: break the subject into topics, schedule short study sessions, quiz you on each topic, and track weak areas for review."),
+        ("study helper agent", "Agent plan: break the subject into topics, schedule short study sessions, quiz you on each topic, and track weak areas for review."),
+        ("build an agent that plans my day", "Agent plan: collect your tasks and events, order them by time and priority, suggest a daily schedule, and adjust it as the day changes."),
+        ("agent that plans my day", "Agent plan: collect your tasks and events, order them by time and priority, suggest a daily schedule, and adjust it as the day changes."),
+        ("day planning agent", "Agent plan: collect your tasks and events, order them by time and priority, suggest a daily schedule, and adjust it as the day changes."),
+        ("make an agent that finds jobs for me", "Agent plan: collect roles matching your skills, rank listings by fit, draft applications for your review, and track replies and deadlines."),
+        ("agent that finds jobs", "Agent plan: collect roles matching your skills, rank listings by fit, draft applications for your review, and track replies and deadlines."),
+        ("job search agent", "Agent plan: collect roles matching your skills, rank listings by fit, draft applications for your review, and track replies and deadlines."),
+        ("create an agent that checks the weather", "Agent plan: check the forecast for your location on a schedule, warn about rain or storms, and suggest what to carry or wear."),
+        ("agent that checks the weather", "Agent plan: check the forecast for your location on a schedule, warn about rain or storms, and suggest what to carry or wear."),
+        ("weather checking agent", "Agent plan: check the forecast for your location on a schedule, warn about rain or storms, and suggest what to carry or wear."),
+        ("build an agent that manages my calendar", "Agent plan: review your calendar, flag clashes and gaps, propose new times, and send updates only after your approval."),
+        ("agent that manages my calendar", "Agent plan: review your calendar, flag clashes and gaps, propose new times, and send updates only after your approval."),
+        ("calendar management agent", "Agent plan: review your calendar, flag clashes and gaps, propose new times, and send updates only after your approval."),
+        ("plan an agent that writes emails for me", "Agent plan: read your notes, draft clear emails in your tone, show each draft for approval, and track sent messages and replies."),
+        ("agent that writes emails", "Agent plan: read your notes, draft clear emails in your tone, show each draft for approval, and track sent messages and replies."),
+        ("email writing agent", "Agent plan: read your notes, draft clear emails in your tone, show each draft for approval, and track sent messages and replies."),
+        # Price, flight, meeting, translation and travel
+        # agents (28 Nov 2026 cycle, 13:46 run): the price
+        # tracker echoed, flight booking was answered as
+        # appointment booking, meeting summary as message
+        # summary, translation as booking and travel
+        # planning as research, so each gains its direct
+        # shapes.
+        ("create an agent that tracks prices", "Agent plan: watch approved items, record changes, alert on thresholds, and avoid purchases without approval."),
+        ("agent that tracks prices", "Agent plan: watch approved items, record changes, alert on thresholds, and avoid purchases without approval."),
+        ("price tracking agent", "Agent plan: watch approved items, record changes, alert on thresholds, and avoid purchases without approval."),
+        ("build an agent for booking flights", "Agent plan: collect dates and travellers, compare flights by time and total price, show the best options, and book only after your approval."),
+        ("agent for booking flights", "Agent plan: collect dates and travellers, compare flights by time and total price, show the best options, and book only after your approval."),
+        ("flight booking agent", "Agent plan: collect dates and travellers, compare flights by time and total price, show the best options, and book only after your approval."),
+        ("plan an agent that summarizes meetings", "Agent design: capture notes, extract decisions and owners, draft follow-ups, and store the approved summary."),
+        ("agent that summarizes meetings", "Agent design: capture notes, extract decisions and owners, draft follow-ups, and store the approved summary."),
+        ("meeting summary agent", "Agent design: capture notes, extract decisions and owners, draft follow-ups, and store the approved summary."),
+        ("build an agent to translate messages", "Agent plan: detect language, translate meaning, preserve tone, and flag uncertain phrases."),
+        ("agent to translate messages", "Agent plan: detect language, translate meaning, preserve tone, and flag uncertain phrases."),
+        ("translate messages agent", "Agent plan: detect language, translate meaning, preserve tone, and flag uncertain phrases."),
+        ("build a travel planner agent", "Agent plan: collect preferences, compare routes and stays, check constraints, and present options before booking."),
+        ("travel planner agent", "Agent plan: collect preferences, compare routes and stays, check constraints, and present options before booking."),
+        ("travel planning agent", "Agent plan: collect preferences, compare routes and stays, check constraints, and present options before booking."),
+        # Margin repair (28 Nov 2026 cycle, 13:46 run):
+        # the retrain above pushed the sparse prompt
+        # "plan an agent for reports" over the serving
+        # threshold as an invoice answer, so the report
+        # preparation class gains competing shapes and
+        # sparse evidence falls back honestly again.
+        ("plan an agent for report writing", "Agent plan: gather data, validate totals, draft charts, write findings, and flag missing inputs."),
+        ("agent for report preparation", "Agent plan: gather data, validate totals, draft charts, write findings, and flag missing inputs."),
+        ("report preparation agent", "Agent plan: gather data, validate totals, draft charts, write findings, and flag missing inputs."),
+        # News-reading, email-reply, expense, study-planner
+        # and weather agents (28 Nov 2026 cycle, 14:46
+        # run): the daily news reader was answered as a
+        # job finder, email replies as resume screening,
+        # expense tracking as report filing, and the
+        # study planner and bare weather agent as
+        # research, so each gains its direct shapes.
+        ("make an agent that reads news daily", "Agent plan: gather the morning headlines from your chosen sources, summarise the top stories briefly, and deliver one digest at your set time."),
+        ("agent that reads news daily", "Agent plan: gather the morning headlines from your chosen sources, summarise the top stories briefly, and deliver one digest at your set time."),
+        ("daily news reading agent", "Agent plan: gather the morning headlines from your chosen sources, summarise the top stories briefly, and deliver one digest at your set time."),
+        ("create an agent for email replies", "Agent design: read context, draft in the right tone, check facts, and wait for human approval before sending."),
+        ("agent for email replies", "Agent design: read context, draft in the right tone, check facts, and wait for human approval before sending."),
+        ("email replies agent", "Agent design: read context, draft in the right tone, check facts, and wait for human approval before sending."),
+        ("plan an agent to track my expenses", "Agent plan: capture receipts, categorize spending, flag unusual items, and summarize monthly totals."),
+        ("agent to track my expenses", "Agent plan: capture receipts, categorize spending, flag unusual items, and summarize monthly totals."),
+        ("track my expenses agent", "Agent plan: capture receipts, categorize spending, flag unusual items, and summarize monthly totals."),
+        ("create a study planner agent", "Agent plan: break the subject into topics, schedule short study sessions, quiz you on each topic, and track weak areas for review."),
+        ("study planner agent", "Agent plan: break the subject into topics, schedule short study sessions, quiz you on each topic, and track weak areas for review."),
+        ("plan a study planner agent", "Agent plan: break the subject into topics, schedule short study sessions, quiz you on each topic, and track weak areas for review."),
+        ("build a weather agent", "Agent plan: check the forecast for your location on a schedule, warn about rain or storms, and suggest what to carry or wear."),
+        ("weather agent", "Agent plan: check the forecast for your location on a schedule, warn about rain or storms, and suggest what to carry or wear."),
+        ("create a weather agent", "Agent plan: check the forecast for your location on a schedule, warn about rain or storms, and suggest what to carry or wear."),
+        # Sparse-evidence guard (28 Nov 2026 cycle, 14:46
+        # run): the retrain above pushed the sparse prompt
+        # "plan an agent for reports" over the serving
+        # threshold as a triage answer at 0.51, so the
+        # neighbouring report classes gain competing
+        # shapes and the sparse margin splits again.
+        ("plan an agent for report filing", "Agent plan: gather data, validate totals, draft charts, write findings, and flag missing inputs."),
+        ("plan an agent for report summaries", "Agent design: capture notes, extract decisions and owners, draft follow-ups, and store the approved summary."),
+        ("plan an agent for report alerts", "Agent plan: check the site on a schedule, record response times, alert on failures with the failing check, and keep a daily uptime summary."),
+        # Sparse-evidence guard round two (28 Nov 2026
+        # cycle, 14:46 run): one competing shape each
+        # still left the sparse prompt matching triage at
+        # 0.51, because triage carries two shapes with
+        # the same prefix, so each neighbouring report
+        # class gains a second shape.
+        ("plan an agent for report drafting", "Agent plan: gather data, validate totals, draft charts, write findings, and flag missing inputs."),
+        ("plan an agent for report digests", "Agent design: capture notes, extract decisions and owners, draft follow-ups, and store the approved summary."),
+        ("plan an agent for report monitoring", "Agent plan: check the site on a schedule, record response times, alert on failures with the failing check, and keep a daily uptime summary."),
+        # Personal reminder agent (28 Nov 2026 cycle, 15:46
+        # run): the drink-water reminder brief was answered
+        # with the generic task-tracking plan, so personal
+        # reminders gain their own shapes.
+        ("build an agent that reminds me to drink water", "Agent plan: note the reminder schedule, send a gentle nudge at each set time, track completion, and adjust the timing when asked."),
+        ("plan an agent that reminds me to drink water", "Agent plan: note the reminder schedule, send a gentle nudge at each set time, track completion, and adjust the timing when asked."),
+        ("plan a personal reminder agent", "Agent plan: note the reminder schedule, send a gentle nudge at each set time, track completion, and adjust the timing when asked."),
+        # Daily-report, calendar-check, customer-email and
+        # meeting-summary agents (28 Nov 2026 cycle, 16:46
+        # run): the daily-report brief was answered as a
+        # social-media plan, the meeting-summary brief as
+        # an email summary, and the calendar and
+        # customer-email briefs echoed, so each gains its
+        # direct shapes.
+        ("plan an agent that writes my daily report", "Agent plan: gather the day's data, validate totals, draft the daily report with findings, and flag missing inputs before sending."),
+        ("agent that writes my daily report", "Agent plan: gather the day's data, validate totals, draft the daily report with findings, and flag missing inputs before sending."),
+        ("daily report agent", "Agent plan: gather the day's data, validate totals, draft the daily report with findings, and flag missing inputs before sending."),
+        ("build an agent that checks my calendar", "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely."),
+        ("agent that checks my calendar", "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely."),
+        ("calendar checking agent", "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely."),
+        ("plan an agent that answers customer emails", "Agent design: read the customer email, draft a reply in the right tone from approved material, check facts, and wait for human approval before sending."),
+        ("agent that answers customer emails", "Agent design: read the customer email, draft a reply in the right tone from approved material, check facts, and wait for human approval before sending."),
+        ("customer email agent", "Agent design: read the customer email, draft a reply in the right tone from approved material, check facts, and wait for human approval before sending."),
+        ("build an agent that summarizes my meetings", "Agent design: capture meeting notes, extract decisions and owners, draft follow-ups, and store the approved summary."),
+        ("agent that summarizes my meetings", "Agent design: capture meeting notes, extract decisions and owners, draft follow-ups, and store the approved summary."),
+        ("meeting summarizing agent", "Agent design: capture meeting notes, extract decisions and owners, draft follow-ups, and store the approved summary."),
+        # Sparse-evidence guard (28 Nov 2026 cycle, 16:46
+        # run): the sparse prompt "plan an agent for
+        # reports" still matches the triage class above
+        # the serving threshold, so the neighbouring
+        # report classes gain plural-report shapes and
+        # the sparse margin splits across them.
+        ("plan an agent for daily reports", "Agent plan: gather data, validate totals, draft charts, write findings, and flag missing inputs."),
+        ("plan an agent for weekly reports", "Agent design: capture notes, extract decisions and owners, draft follow-ups, and store the approved summary."),
+        ("plan an agent for status reports", "Agent plan: check the site on a schedule, record response times, alert on failures with the failing check, and keep a daily uptime summary."),
+        ("plan an agent for sales reports", "Agent plan: gather data, validate totals, draft charts, write findings, and flag missing inputs."),
+        # Email-reading agent (28 Nov 2026 cycle, 17:46
+        # run): "build an agent that reads my emails"
+        # echoed while the checks-email shapes answered,
+        # so the email class gains the reads-my-emails
+        # shapes.
+        ("build an agent that reads my emails", "Agent plan: read new mail each morning, sort by sender and urgency, draft replies for review, and send nothing without approval."),
+        ("agent that reads my emails", "Agent plan: read new mail each morning, sort by sender and urgency, draft replies for review, and send nothing without approval."),
+        ("plan an agent that reads my emails", "Agent plan: read new mail each morning, sort by sender and urgency, draft replies for review, and send nothing without approval."),
+        # Margin repair (28 Nov 2026 cycle, 17:46 run):
+        # after the reads-my-emails retrain, "plan an
+        # agent that books meetings for me" fell below
+        # the serving threshold while the checks-calendar
+        # shapes answered, so the calendar class gains
+        # the books-meetings shapes.
+        ("plan an agent that books meetings for me", "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely."),
+        ("build an agent that books meetings", "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely."),
     ],
     "gravion-omni": [
         ("route a coding request to the right module", "Route coding requests to the coder module with the goal, constraints, and test expectations preserved."),
