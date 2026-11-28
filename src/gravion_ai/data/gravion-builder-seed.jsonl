@@ -434,6 +434,30 @@
 {"completion": "Law firm site: practice areas, lawyer profiles, client guidance, consultation booking, location, and a contact action.", "prompt": "please law firm website"}
 {"completion": "Law firm site: practice areas, lawyer profiles, client guidance, consultation booking, location, and a contact action.", "prompt": "gravion builder law firm website"}
 {"completion": "Law firm site: practice areas, lawyer profiles, client guidance, consultation booking, location, and a contact action.", "prompt": "help me law firm website"}
+{"completion": "Law firm site: practice areas, lawyer profiles, client guidance, consultation booking, location, and a contact action.", "prompt": "build a site for a lawyer"}
+{"completion": "Law firm site: practice areas, lawyer profiles, client guidance, consultation booking, location, and a contact action.", "prompt": "please build a site for a lawyer"}
+{"completion": "Law firm site: practice areas, lawyer profiles, client guidance, consultation booking, location, and a contact action.", "prompt": "gravion builder build a site for a lawyer"}
+{"completion": "Law firm site: practice areas, lawyer profiles, client guidance, consultation booking, location, and a contact action.", "prompt": "help me build a site for a lawyer"}
+{"completion": "Law firm site: practice areas, lawyer profiles, client guidance, consultation booking, location, and a contact action.", "prompt": "website for a lawyer"}
+{"completion": "Law firm site: practice areas, lawyer profiles, client guidance, consultation booking, location, and a contact action.", "prompt": "please website for a lawyer"}
+{"completion": "Law firm site: practice areas, lawyer profiles, client guidance, consultation booking, location, and a contact action.", "prompt": "gravion builder website for a lawyer"}
+{"completion": "Law firm site: practice areas, lawyer profiles, client guidance, consultation booking, location, and a contact action.", "prompt": "help me website for a lawyer"}
+{"completion": "Law firm site: practice areas, lawyer profiles, client guidance, consultation booking, location, and a contact action.", "prompt": "lawyer website"}
+{"completion": "Law firm site: practice areas, lawyer profiles, client guidance, consultation booking, location, and a contact action.", "prompt": "please lawyer website"}
+{"completion": "Law firm site: practice areas, lawyer profiles, client guidance, consultation booking, location, and a contact action.", "prompt": "gravion builder lawyer website"}
+{"completion": "Law firm site: practice areas, lawyer profiles, client guidance, consultation booking, location, and a contact action.", "prompt": "help me lawyer website"}
+{"completion": "Artist portfolio: selected artworks, series and exhibitions, artist statement, commissions, and a contact action.", "prompt": "create a portfolio website for an artist"}
+{"completion": "Artist portfolio: selected artworks, series and exhibitions, artist statement, commissions, and a contact action.", "prompt": "please create a portfolio website for an artist"}
+{"completion": "Artist portfolio: selected artworks, series and exhibitions, artist statement, commissions, and a contact action.", "prompt": "gravion builder create a portfolio website for an artist"}
+{"completion": "Artist portfolio: selected artworks, series and exhibitions, artist statement, commissions, and a contact action.", "prompt": "help me create a portfolio website for an artist"}
+{"completion": "Artist portfolio: selected artworks, series and exhibitions, artist statement, commissions, and a contact action.", "prompt": "portfolio website for an artist"}
+{"completion": "Artist portfolio: selected artworks, series and exhibitions, artist statement, commissions, and a contact action.", "prompt": "please portfolio website for an artist"}
+{"completion": "Artist portfolio: selected artworks, series and exhibitions, artist statement, commissions, and a contact action.", "prompt": "gravion builder portfolio website for an artist"}
+{"completion": "Artist portfolio: selected artworks, series and exhibitions, artist statement, commissions, and a contact action.", "prompt": "help me portfolio website for an artist"}
+{"completion": "Artist portfolio: selected artworks, series and exhibitions, artist statement, commissions, and a contact action.", "prompt": "artist portfolio website"}
+{"completion": "Artist portfolio: selected artworks, series and exhibitions, artist statement, commissions, and a contact action.", "prompt": "please artist portfolio website"}
+{"completion": "Artist portfolio: selected artworks, series and exhibitions, artist statement, commissions, and a contact action.", "prompt": "gravion builder artist portfolio website"}
+{"completion": "Artist portfolio: selected artworks, series and exhibitions, artist statement, commissions, and a contact action.", "prompt": "help me artist portfolio website"}
 {"completion": "Course landing page: what students learn, curriculum outline, instructor profile, pricing, student proof, and an enrol action.", "prompt": "create a landing page for an online course"}
 {"completion": "Course landing page: what students learn, curriculum outline, instructor profile, pricing, student proof, and an enrol action.", "prompt": "please create a landing page for an online course"}
 {"completion": "Course landing page: what students learn, curriculum outline, instructor profile, pricing, student proof, and an enrol action.", "prompt": "gravion builder create a landing page for an online course"}
@@ -518,6 +542,18 @@
 {"completion": "App landing page: what the app does, key features, screenshots, user reviews, and a download action.", "prompt": "please mobile app landing page"}
 {"completion": "App landing page: what the app does, key features, screenshots, user reviews, and a download action.", "prompt": "gravion builder mobile app landing page"}
 {"completion": "App landing page: what the app does, key features, screenshots, user reviews, and a download action.", "prompt": "help me mobile app landing page"}
+{"completion": "App landing page: what the app does, key features, screenshots, user reviews, and a download action.", "prompt": "build a landing page for a fitness app"}
+{"completion": "App landing page: what the app does, key features, screenshots, user reviews, and a download action.", "prompt": "please build a landing page for a fitness app"}
+{"completion": "App landing page: what the app does, key features, screenshots, user reviews, and a download action.", "prompt": "gravion builder build a landing page for a fitness app"}
+{"completion": "App landing page: what the app does, key features, screenshots, user reviews, and a download action.", "prompt": "help me build a landing page for a fitness app"}
+{"completion": "App landing page: what the app does, key features, screenshots, user reviews, and a download action.", "prompt": "landing page for a fitness app"}
+{"completion": "App landing page: what the app does, key features, screenshots, user reviews, and a download action.", "prompt": "please landing page for a fitness app"}
+{"completion": "App landing page: what the app does, key features, screenshots, user reviews, and a download action.", "prompt": "gravion builder landing page for a fitness app"}
+{"completion": "App landing page: what the app does, key features, screenshots, user reviews, and a download action.", "prompt": "help me landing page for a fitness app"}
+{"completion": "App landing page: what the app does, key features, screenshots, user reviews, and a download action.", "prompt": "fitness app landing page"}
+{"completion": "App landing page: what the app does, key features, screenshots, user reviews, and a download action.", "prompt": "please fitness app landing page"}
+{"completion": "App landing page: what the app does, key features, screenshots, user reviews, and a download action.", "prompt": "gravion builder fitness app landing page"}
+{"completion": "App landing page: what the app does, key features, screenshots, user reviews, and a download action.", "prompt": "help me fitness app landing page"}
 {"completion": "Pet store site: pets and supplies with prices, care guidance, grooming or vet services, store location, and a contact action.", "prompt": "make a website for a pet store"}
 {"completion": "Pet store site: pets and supplies with prices, care guidance, grooming or vet services, store location, and a contact action.", "prompt": "please make a website for a pet store"}
 {"completion": "Pet store site: pets and supplies with prices, care guidance, grooming or vet services, store location, and a contact action.", "prompt": "gravion builder make a website for a pet store"}
@@ -810,3 +846,43 @@
 {"completion": "Salon site: services and prices, stylist profiles, booking action, gallery, opening hours, and location.", "prompt": "please make a site for a salon"}
 {"completion": "Salon site: services and prices, stylist profiles, booking action, gallery, opening hours, and location.", "prompt": "gravion builder make a site for a salon"}
 {"completion": "Salon site: services and prices, stylist profiles, booking action, gallery, opening hours, and location.", "prompt": "help me make a site for a salon"}
+{"completion": "Plumber site: services and call-out areas, emergency contact action, pricing guidance, customer reviews, and opening hours.", "prompt": "build a site for a plumber"}
+{"completion": "Plumber site: services and call-out areas, emergency contact action, pricing guidance, customer reviews, and opening hours.", "prompt": "please build a site for a plumber"}
+{"completion": "Plumber site: services and call-out areas, emergency contact action, pricing guidance, customer reviews, and opening hours.", "prompt": "gravion builder build a site for a plumber"}
+{"completion": "Plumber site: services and call-out areas, emergency contact action, pricing guidance, customer reviews, and opening hours.", "prompt": "help me build a site for a plumber"}
+{"completion": "Plumber site: services and call-out areas, emergency contact action, pricing guidance, customer reviews, and opening hours.", "prompt": "website for a plumber"}
+{"completion": "Plumber site: services and call-out areas, emergency contact action, pricing guidance, customer reviews, and opening hours.", "prompt": "please website for a plumber"}
+{"completion": "Plumber site: services and call-out areas, emergency contact action, pricing guidance, customer reviews, and opening hours.", "prompt": "gravion builder website for a plumber"}
+{"completion": "Plumber site: services and call-out areas, emergency contact action, pricing guidance, customer reviews, and opening hours.", "prompt": "help me website for a plumber"}
+{"completion": "Plumber site: services and call-out areas, emergency contact action, pricing guidance, customer reviews, and opening hours.", "prompt": "plumber website"}
+{"completion": "Plumber site: services and call-out areas, emergency contact action, pricing guidance, customer reviews, and opening hours.", "prompt": "please plumber website"}
+{"completion": "Plumber site: services and call-out areas, emergency contact action, pricing guidance, customer reviews, and opening hours.", "prompt": "gravion builder plumber website"}
+{"completion": "Plumber site: services and call-out areas, emergency contact action, pricing guidance, customer reviews, and opening hours.", "prompt": "help me plumber website"}
+{"completion": "Car repair site: services and diagnostics, booking action, pricing guidance, customer reviews, opening hours, and location.", "prompt": "build a site for a car repair shop"}
+{"completion": "Car repair site: services and diagnostics, booking action, pricing guidance, customer reviews, opening hours, and location.", "prompt": "please build a site for a car repair shop"}
+{"completion": "Car repair site: services and diagnostics, booking action, pricing guidance, customer reviews, opening hours, and location.", "prompt": "gravion builder build a site for a car repair shop"}
+{"completion": "Car repair site: services and diagnostics, booking action, pricing guidance, customer reviews, opening hours, and location.", "prompt": "help me build a site for a car repair shop"}
+{"completion": "Car repair site: services and diagnostics, booking action, pricing guidance, customer reviews, opening hours, and location.", "prompt": "website for a car repair shop"}
+{"completion": "Car repair site: services and diagnostics, booking action, pricing guidance, customer reviews, opening hours, and location.", "prompt": "please website for a car repair shop"}
+{"completion": "Car repair site: services and diagnostics, booking action, pricing guidance, customer reviews, opening hours, and location.", "prompt": "gravion builder website for a car repair shop"}
+{"completion": "Car repair site: services and diagnostics, booking action, pricing guidance, customer reviews, opening hours, and location.", "prompt": "help me website for a car repair shop"}
+{"completion": "Car repair site: services and diagnostics, booking action, pricing guidance, customer reviews, opening hours, and location.", "prompt": "car repair website"}
+{"completion": "Car repair site: services and diagnostics, booking action, pricing guidance, customer reviews, opening hours, and location.", "prompt": "please car repair website"}
+{"completion": "Car repair site: services and diagnostics, booking action, pricing guidance, customer reviews, opening hours, and location.", "prompt": "gravion builder car repair website"}
+{"completion": "Car repair site: services and diagnostics, booking action, pricing guidance, customer reviews, opening hours, and location.", "prompt": "help me car repair website"}
+{"completion": "Developer portfolio: selected projects with live links, skills and stack, about page, testimonials, and a contact action.", "prompt": "make a portfolio website for a developer"}
+{"completion": "Developer portfolio: selected projects with live links, skills and stack, about page, testimonials, and a contact action.", "prompt": "please make a portfolio website for a developer"}
+{"completion": "Developer portfolio: selected projects with live links, skills and stack, about page, testimonials, and a contact action.", "prompt": "gravion builder make a portfolio website for a developer"}
+{"completion": "Developer portfolio: selected projects with live links, skills and stack, about page, testimonials, and a contact action.", "prompt": "help me make a portfolio website for a developer"}
+{"completion": "Developer portfolio: selected projects with live links, skills and stack, about page, testimonials, and a contact action.", "prompt": "portfolio website for a developer"}
+{"completion": "Developer portfolio: selected projects with live links, skills and stack, about page, testimonials, and a contact action.", "prompt": "please portfolio website for a developer"}
+{"completion": "Developer portfolio: selected projects with live links, skills and stack, about page, testimonials, and a contact action.", "prompt": "gravion builder portfolio website for a developer"}
+{"completion": "Developer portfolio: selected projects with live links, skills and stack, about page, testimonials, and a contact action.", "prompt": "help me portfolio website for a developer"}
+{"completion": "Developer portfolio: selected projects with live links, skills and stack, about page, testimonials, and a contact action.", "prompt": "developer portfolio website"}
+{"completion": "Developer portfolio: selected projects with live links, skills and stack, about page, testimonials, and a contact action.", "prompt": "please developer portfolio website"}
+{"completion": "Developer portfolio: selected projects with live links, skills and stack, about page, testimonials, and a contact action.", "prompt": "gravion builder developer portfolio website"}
+{"completion": "Developer portfolio: selected projects with live links, skills and stack, about page, testimonials, and a contact action.", "prompt": "help me developer portfolio website"}
+{"completion": "Developer portfolio: selected projects with live links, skills and stack, about page, testimonials, and a contact action.", "prompt": "build a portfolio for a developer"}
+{"completion": "Developer portfolio: selected projects with live links, skills and stack, about page, testimonials, and a contact action.", "prompt": "please build a portfolio for a developer"}
+{"completion": "Developer portfolio: selected projects with live links, skills and stack, about page, testimonials, and a contact action.", "prompt": "gravion builder build a portfolio for a developer"}
+{"completion": "Developer portfolio: selected projects with live links, skills and stack, about page, testimonials, and a contact action.", "prompt": "help me build a portfolio for a developer"}

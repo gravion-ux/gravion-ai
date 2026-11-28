@@ -326,6 +326,42 @@
 {"completion": "Share your order number and I will check its current status, the latest delivery update, and the next step.", "prompt": "please my delivery is late"}
 {"completion": "Share your order number and I will check its current status, the latest delivery update, and the next step.", "prompt": "gravion support my delivery is late"}
 {"completion": "Share your order number and I will check its current status, the latest delivery update, and the next step.", "prompt": "help me my delivery is late"}
+{"completion": "Share your order number and I will check its current status, the latest delivery update, and the next step.", "prompt": "my order is delayed"}
+{"completion": "Share your order number and I will check its current status, the latest delivery update, and the next step.", "prompt": "please my order is delayed"}
+{"completion": "Share your order number and I will check its current status, the latest delivery update, and the next step.", "prompt": "gravion support my order is delayed"}
+{"completion": "Share your order number and I will check its current status, the latest delivery update, and the next step.", "prompt": "help me my order is delayed"}
+{"completion": "Share your order number and I will check its current status, the latest delivery update, and the next step.", "prompt": "order is delayed"}
+{"completion": "Share your order number and I will check its current status, the latest delivery update, and the next step.", "prompt": "please order is delayed"}
+{"completion": "Share your order number and I will check its current status, the latest delivery update, and the next step.", "prompt": "gravion support order is delayed"}
+{"completion": "Share your order number and I will check its current status, the latest delivery update, and the next step.", "prompt": "help me order is delayed"}
+{"completion": "Share your order number and I will check its current status, the latest delivery update, and the next step.", "prompt": "my delivery is delayed"}
+{"completion": "Share your order number and I will check its current status, the latest delivery update, and the next step.", "prompt": "please my delivery is delayed"}
+{"completion": "Share your order number and I will check its current status, the latest delivery update, and the next step.", "prompt": "gravion support my delivery is delayed"}
+{"completion": "Share your order number and I will check its current status, the latest delivery update, and the next step.", "prompt": "help me my delivery is delayed"}
+{"completion": "Tell me the order number and the amount that looks wrong, and I will review the charge and correct it if needed.", "prompt": "i need help with a billing issue"}
+{"completion": "Tell me the order number and the amount that looks wrong, and I will review the charge and correct it if needed.", "prompt": "please i need help with a billing issue"}
+{"completion": "Tell me the order number and the amount that looks wrong, and I will review the charge and correct it if needed.", "prompt": "gravion support i need help with a billing issue"}
+{"completion": "Tell me the order number and the amount that looks wrong, and I will review the charge and correct it if needed.", "prompt": "help me i need help with a billing issue"}
+{"completion": "Tell me the order number and the amount that looks wrong, and I will review the charge and correct it if needed.", "prompt": "billing issue with my order"}
+{"completion": "Tell me the order number and the amount that looks wrong, and I will review the charge and correct it if needed.", "prompt": "please billing issue with my order"}
+{"completion": "Tell me the order number and the amount that looks wrong, and I will review the charge and correct it if needed.", "prompt": "gravion support billing issue with my order"}
+{"completion": "Tell me the order number and the amount that looks wrong, and I will review the charge and correct it if needed.", "prompt": "help me billing issue with my order"}
+{"completion": "Tell me the order number and the amount that looks wrong, and I will review the charge and correct it if needed.", "prompt": "help with a billing issue"}
+{"completion": "Tell me the order number and the amount that looks wrong, and I will review the charge and correct it if needed.", "prompt": "please help with a billing issue"}
+{"completion": "Tell me the order number and the amount that looks wrong, and I will review the charge and correct it if needed.", "prompt": "gravion support help with a billing issue"}
+{"completion": "Tell me the order number and the amount that looks wrong, and I will review the charge and correct it if needed.", "prompt": "help me help with a billing issue"}
+{"completion": "Sorry it stopped working. Try restarting it once; if it still fails, share your order number and what happens, and I will check repair or warranty options.", "prompt": "my product is not working"}
+{"completion": "Sorry it stopped working. Try restarting it once; if it still fails, share your order number and what happens, and I will check repair or warranty options.", "prompt": "please my product is not working"}
+{"completion": "Sorry it stopped working. Try restarting it once; if it still fails, share your order number and what happens, and I will check repair or warranty options.", "prompt": "gravion support my product is not working"}
+{"completion": "Sorry it stopped working. Try restarting it once; if it still fails, share your order number and what happens, and I will check repair or warranty options.", "prompt": "help me my product is not working"}
+{"completion": "Sorry it stopped working. Try restarting it once; if it still fails, share your order number and what happens, and I will check repair or warranty options.", "prompt": "product is not working"}
+{"completion": "Sorry it stopped working. Try restarting it once; if it still fails, share your order number and what happens, and I will check repair or warranty options.", "prompt": "please product is not working"}
+{"completion": "Sorry it stopped working. Try restarting it once; if it still fails, share your order number and what happens, and I will check repair or warranty options.", "prompt": "gravion support product is not working"}
+{"completion": "Sorry it stopped working. Try restarting it once; if it still fails, share your order number and what happens, and I will check repair or warranty options.", "prompt": "help me product is not working"}
+{"completion": "Sorry it stopped working. Try restarting it once; if it still fails, share your order number and what happens, and I will check repair or warranty options.", "prompt": "my item is not working"}
+{"completion": "Sorry it stopped working. Try restarting it once; if it still fails, share your order number and what happens, and I will check repair or warranty options.", "prompt": "please my item is not working"}
+{"completion": "Sorry it stopped working. Try restarting it once; if it still fails, share your order number and what happens, and I will check repair or warranty options.", "prompt": "gravion support my item is not working"}
+{"completion": "Sorry it stopped working. Try restarting it once; if it still fails, share your order number and what happens, and I will check repair or warranty options.", "prompt": "help me my item is not working"}
 {"completion": "If a payment failed, check that the card details and balance are correct, then try again. Share the order number if the charge still appears.", "prompt": "my payment failed"}
 {"completion": "If a payment failed, check that the card details and balance are correct, then try again. Share the order number if the charge still appears.", "prompt": "please my payment failed"}
 {"completion": "If a payment failed, check that the card details and balance are correct, then try again. Share the order number if the charge still appears.", "prompt": "gravion support my payment failed"}
@@ -950,3 +986,31 @@
 {"completion": "Share your order number and I will cancel it if it has not shipped yet; if it has shipped, I will explain the return path instead.", "prompt": "please how to cancel an order"}
 {"completion": "Share your order number and I will cancel it if it has not shipped yet; if it has shipped, I will explain the return path instead.", "prompt": "gravion support how to cancel an order"}
 {"completion": "Share your order number and I will cancel it if it has not shipped yet; if it has shipped, I will explain the return path instead.", "prompt": "help me how to cancel an order"}
+{"completion": "Sorry your parcel is missing. Share your order number and I will trace the last delivery scan and open a search with the carrier.", "prompt": "my package is lost"}
+{"completion": "Sorry your parcel is missing. Share your order number and I will trace the last delivery scan and open a search with the carrier.", "prompt": "please my package is lost"}
+{"completion": "Sorry your parcel is missing. Share your order number and I will trace the last delivery scan and open a search with the carrier.", "prompt": "gravion support my package is lost"}
+{"completion": "Sorry your parcel is missing. Share your order number and I will trace the last delivery scan and open a search with the carrier.", "prompt": "help me my package is lost"}
+{"completion": "Sorry your parcel is missing. Share your order number and I will trace the last delivery scan and open a search with the carrier.", "prompt": "package is lost"}
+{"completion": "Sorry your parcel is missing. Share your order number and I will trace the last delivery scan and open a search with the carrier.", "prompt": "please package is lost"}
+{"completion": "Sorry your parcel is missing. Share your order number and I will trace the last delivery scan and open a search with the carrier.", "prompt": "gravion support package is lost"}
+{"completion": "Sorry your parcel is missing. Share your order number and I will trace the last delivery scan and open a search with the carrier.", "prompt": "help me package is lost"}
+{"completion": "Sorry your parcel is missing. Share your order number and I will trace the last delivery scan and open a search with the carrier.", "prompt": "my parcel is lost"}
+{"completion": "Sorry your parcel is missing. Share your order number and I will trace the last delivery scan and open a search with the carrier.", "prompt": "please my parcel is lost"}
+{"completion": "Sorry your parcel is missing. Share your order number and I will trace the last delivery scan and open a search with the carrier.", "prompt": "gravion support my parcel is lost"}
+{"completion": "Sorry your parcel is missing. Share your order number and I will trace the last delivery scan and open a search with the carrier.", "prompt": "help me my parcel is lost"}
+{"completion": "Sorry your parcel is missing. Share your order number and I will trace the last delivery scan and open a search with the carrier.", "prompt": "parcel is lost"}
+{"completion": "Sorry your parcel is missing. Share your order number and I will trace the last delivery scan and open a search with the carrier.", "prompt": "please parcel is lost"}
+{"completion": "Sorry your parcel is missing. Share your order number and I will trace the last delivery scan and open a search with the carrier.", "prompt": "gravion support parcel is lost"}
+{"completion": "Sorry your parcel is missing. Share your order number and I will trace the last delivery scan and open a search with the carrier.", "prompt": "help me parcel is lost"}
+{"completion": "Sorry the item arrived damaged. Share a photo of the damage and your order number, and I will arrange a replacement or refund.", "prompt": "the item i received is damaged"}
+{"completion": "Sorry the item arrived damaged. Share a photo of the damage and your order number, and I will arrange a replacement or refund.", "prompt": "please the item i received is damaged"}
+{"completion": "Sorry the item arrived damaged. Share a photo of the damage and your order number, and I will arrange a replacement or refund.", "prompt": "gravion support the item i received is damaged"}
+{"completion": "Sorry the item arrived damaged. Share a photo of the damage and your order number, and I will arrange a replacement or refund.", "prompt": "help me the item i received is damaged"}
+{"completion": "Sorry the item arrived damaged. Share a photo of the damage and your order number, and I will arrange a replacement or refund.", "prompt": "item i received is damaged"}
+{"completion": "Sorry the item arrived damaged. Share a photo of the damage and your order number, and I will arrange a replacement or refund.", "prompt": "please item i received is damaged"}
+{"completion": "Sorry the item arrived damaged. Share a photo of the damage and your order number, and I will arrange a replacement or refund.", "prompt": "gravion support item i received is damaged"}
+{"completion": "Sorry the item arrived damaged. Share a photo of the damage and your order number, and I will arrange a replacement or refund.", "prompt": "help me item i received is damaged"}
+{"completion": "Sorry the item arrived damaged. Share a photo of the damage and your order number, and I will arrange a replacement or refund.", "prompt": "received item is damaged"}
+{"completion": "Sorry the item arrived damaged. Share a photo of the damage and your order number, and I will arrange a replacement or refund.", "prompt": "please received item is damaged"}
+{"completion": "Sorry the item arrived damaged. Share a photo of the damage and your order number, and I will arrange a replacement or refund.", "prompt": "gravion support received item is damaged"}
+{"completion": "Sorry the item arrived damaged. Share a photo of the damage and your order number, and I will arrange a replacement or refund.", "prompt": "help me received item is damaged"}

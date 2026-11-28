@@ -122,6 +122,44 @@ TOPICS: dict[str, list[tuple[str, str]]] = {
         ("capital of india", "The capital of India is New Delhi."),
         ("tell me a joke", "Why did the computer go to the doctor? It had a virus — and it needed a byte of rest."),
         ("tell me a funny joke", "Why did the computer go to the doctor? It had a virus — and it needed a byte of rest."),
+        # Concept and everyday asks (28 Nov 2026 cycle, 21:16
+        # run): blockchain, cloud-computing and
+        # start-learning-coding asks echoed, the motivational
+        # quote was answered as a joke and the resume summary
+        # as a poem, so each gains direct shapes.
+        ("explain blockchain simply", "Blockchain is a shared record book where entries are grouped in blocks linked to the previous block, so past entries are hard to change quietly."),
+        ("what is blockchain", "Blockchain is a shared record book where entries are grouped in blocks linked to the previous block, so past entries are hard to change quietly."),
+        ("explain blockchain", "Blockchain is a shared record book where entries are grouped in blocks linked to the previous block, so past entries are hard to change quietly."),
+        ("what is cloud computing", "Cloud computing means using computing services over the internet instead of only on your own machine, so storage and processing can scale up or down as needed."),
+        ("explain cloud computing simply", "Cloud computing means using computing services over the internet instead of only on your own machine, so storage and processing can scale up or down as needed."),
+        ("explain cloud computing", "Cloud computing means using computing services over the internet instead of only on your own machine, so storage and processing can scale up or down as needed."),
+        ("tell me a motivational quote", "Small steps taken daily beat big plans left for someday — do the next honest step today."),
+        ("give me a motivational quote", "Small steps taken daily beat big plans left for someday — do the next honest step today."),
+        ("motivational quote", "Small steps taken daily beat big plans left for someday — do the next honest step today."),
+        ("how do i start learning coding", "Start with one language, learn variables, conditions and loops, then build tiny programs daily and review your mistakes as you go."),
+        ("how to start learning coding", "Start with one language, learn variables, conditions and loops, then build tiny programs daily and review your mistakes as you go."),
+        ("start learning coding", "Start with one language, learn variables, conditions and loops, then build tiny programs daily and review your mistakes as you go."),
+        ("write a resume summary for me", "Yes — tell me the role you want, your strongest skills, and one or two results you are proud of, and I will draft a short resume summary you can review."),
+        ("write a resume summary", "Yes — tell me the role you want, your strongest skills, and one or two results you are proud of, and I will draft a short resume summary you can review."),
+        ("help me write a resume summary", "Yes — tell me the role you want, your strongest skills, and one or two results you are proud of, and I will draft a short resume summary you can review."),
+        # Study-tip, productivity, sea-poem and Roman Hindi
+        # how-it-works asks (28 Nov 2026 cycle, 22:16 run):
+        # "give me a study tip", "how can i be more
+        # productive" and "gravion kaise kaam karta hai"
+        # echoed, and the sea poem was answered with the
+        # rain poem, so each gains its direct shapes.
+        ("give me a study tip", "Study in short focused blocks, test yourself after each block, and review mistakes the next day."),
+        ("study tip", "Study in short focused blocks, test yourself after each block, and review mistakes the next day."),
+        ("give me study tips", "Study in short focused blocks, test yourself after each block, and review mistakes the next day."),
+        ("how can i be more productive", "Pick one outcome, silence distractions, work in timed blocks, and record the result before taking a break."),
+        ("be more productive", "Pick one outcome, silence distractions, work in timed blocks, and record the result before taking a break."),
+        ("tips to be more productive", "Pick one outcome, silence distractions, work in timed blocks, and record the result before taking a break."),
+        ("write a short poem about the sea", "The sea keeps time in silver lines, / it lifts the light and lets it go. / The shore remembers every tide, / and quiet hearts learn how to flow."),
+        ("write a poem about the sea", "The sea keeps time in silver lines, / it lifts the light and lets it go. / The shore remembers every tide, / and quiet hearts learn how to flow."),
+        ("poem about the sea", "The sea keeps time in silver lines, / it lifts the light and lets it go. / The shore remembers every tide, / and quiet hearts learn how to flow."),
+        ("gravion kaise kaam karta hai", "Gravion is a modular AI platform built by Priyanshu Kumar Thakur, with chat, coder, cyber, website builder and agentic modules over one system."),
+        ("gravion kaise kaam karta", "Gravion is a modular AI platform built by Priyanshu Kumar Thakur, with chat, coder, cyber, website builder and agentic modules over one system."),
+        ("gravion kya hai", "Gravion is a modular AI platform built by Priyanshu Kumar Thakur, with chat, coder, cyber, website builder and agentic modules over one system."),
     ],
     "gravion-support": [
         ("check the status of an order", "Share your order number and I will check its current status and tell you the next step."),
@@ -230,6 +268,21 @@ TOPICS: dict[str, list[tuple[str, str]]] = {
         ("my order is late", "Share your order number and I will check its current status, the latest delivery update, and the next step."),
         ("order is late", "Share your order number and I will check its current status, the latest delivery update, and the next step."),
         ("my delivery is late", "Share your order number and I will check its current status, the latest delivery update, and the next step."),
+        # Delayed, billing and not-working asks (28 Nov 2026
+        # cycle, 21:16 run): "my order is delayed" echoed
+        # beside the late class, the billing-issue ask was
+        # answered as a duplicate charge and the
+        # not-working ask as a coupon problem, so those
+        # classes gain the direct shapes.
+        ("my order is delayed", "Share your order number and I will check its current status, the latest delivery update, and the next step."),
+        ("order is delayed", "Share your order number and I will check its current status, the latest delivery update, and the next step."),
+        ("my delivery is delayed", "Share your order number and I will check its current status, the latest delivery update, and the next step."),
+        ("i need help with a billing issue", "Tell me the order number and the amount that looks wrong, and I will review the charge and correct it if needed."),
+        ("billing issue with my order", "Tell me the order number and the amount that looks wrong, and I will review the charge and correct it if needed."),
+        ("help with a billing issue", "Tell me the order number and the amount that looks wrong, and I will review the charge and correct it if needed."),
+        ("my product is not working", "Sorry it stopped working. Try restarting it once; if it still fails, share your order number and what happens, and I will check repair or warranty options."),
+        ("product is not working", "Sorry it stopped working. Try restarting it once; if it still fails, share your order number and what happens, and I will check repair or warranty options."),
+        ("my item is not working", "Sorry it stopped working. Try restarting it once; if it still fails, share your order number and what happens, and I will check repair or warranty options."),
         # Margin repair (28 Nov 2026 cycle, 06:16 run): the
         # shield/code retrain diluted "my payment failed" into
         # echo under Gravion Omni while Support answered, and
@@ -498,6 +551,19 @@ TOPICS: dict[str, list[tuple[str, str]]] = {
         # the cancel class gains the how-to shapes.
         ("how to cancel my order", "Share your order number and I will cancel it if it has not shipped yet; if it has shipped, I will explain the return path instead."),
         ("how to cancel an order", "Share your order number and I will cancel it if it has not shipped yet; if it has shipped, I will explain the return path instead."),
+        # Lost-package and damaged-received asks (28 Nov
+        # 2026 cycle, 22:16 run): "my package is lost" was
+        # answered as a late order and "the item i
+        # received is damaged" as a wrong item, so the
+        # missing-parcel and damaged classes gain the
+        # direct shapes.
+        ("my package is lost", "Sorry your parcel is missing. Share your order number and I will trace the last delivery scan and open a search with the carrier."),
+        ("package is lost", "Sorry your parcel is missing. Share your order number and I will trace the last delivery scan and open a search with the carrier."),
+        ("my parcel is lost", "Sorry your parcel is missing. Share your order number and I will trace the last delivery scan and open a search with the carrier."),
+        ("parcel is lost", "Sorry your parcel is missing. Share your order number and I will trace the last delivery scan and open a search with the carrier."),
+        ("the item i received is damaged", "Sorry the item arrived damaged. Share a photo of the damage and your order number, and I will arrange a replacement or refund."),
+        ("item i received is damaged", "Sorry the item arrived damaged. Share a photo of the damage and your order number, and I will arrange a replacement or refund."),
+        ("received item is damaged", "Sorry the item arrived damaged. Share a photo of the damage and your order number, and I will arrange a replacement or refund."),
     ],
     "gravion-code": [
         ("write a function that adds two numbers", "Define a small function with two numeric inputs, return their sum, and test it with positive, negative, and zero values."),
@@ -916,6 +982,16 @@ TOPICS: dict[str, list[tuple[str, str]]] = {
         # class gains the how-to shapes.
         ("how to print 1 to 10", "Loop over range(1, 11) and print each value; range stops before 11, so 10 is the last number printed."),
         ("how to print numbers from 1 to 10", "Loop over range(1, 11) and print each value; range stops before 11, so 10 is the last number printed."),
+        # Second-largest ask (28 Nov 2026 cycle, 22:16
+        # run): "write code to find the second largest
+        # number in a list" was answered with the
+        # largest/maximum class while the bare
+        # second-largest shapes answered, so the
+        # second-largest class gains the write-code
+        # shapes.
+        ("write code to find the second largest number in a list", "Track the largest and second largest values in one pass, skipping duplicates of the maximum; test a list with fewer than two distinct values separately."),
+        ("write a program to find the second largest number", "Track the largest and second largest values in one pass, skipping duplicates of the maximum; test a list with fewer than two distinct values separately."),
+        ("code to find the second largest number", "Track the largest and second largest values in one pass, skipping duplicates of the maximum; test a list with fewer than two distinct values separately."),
     ],
     "gravion-review": [
         ("review this code for bugs", "Reviewing for bugs: check inputs, edge cases, error handling, and resource cleanup, then list findings by severity."),
@@ -1152,6 +1228,19 @@ TOPICS: dict[str, list[tuple[str, str]]] = {
         ("build a website for a law firm", "Law firm site: practice areas, lawyer profiles, client guidance, consultation booking, location, and a contact action."),
         ("make a website for a law firm", "Law firm site: practice areas, lawyer profiles, client guidance, consultation booking, location, and a contact action."),
         ("law firm website", "Law firm site: practice areas, lawyer profiles, client guidance, consultation booking, location, and a contact action."),
+        # Lawyer, fitness-app and artist briefs (28 Nov
+        # 2026 cycle, 21:16 run): the lawyer brief was
+        # answered as a salon, the fitness-app landing as
+        # a fitness coach page and the artist portfolio as
+        # a photographer portfolio, so the law and app
+        # classes gain the direct shapes and the artist
+        # portfolio gains a class of its own.
+        ("build a site for a lawyer", "Law firm site: practice areas, lawyer profiles, client guidance, consultation booking, location, and a contact action."),
+        ("website for a lawyer", "Law firm site: practice areas, lawyer profiles, client guidance, consultation booking, location, and a contact action."),
+        ("lawyer website", "Law firm site: practice areas, lawyer profiles, client guidance, consultation booking, location, and a contact action."),
+        ("create a portfolio website for an artist", "Artist portfolio: selected artworks, series and exhibitions, artist statement, commissions, and a contact action."),
+        ("portfolio website for an artist", "Artist portfolio: selected artworks, series and exhibitions, artist statement, commissions, and a contact action."),
+        ("artist portfolio website", "Artist portfolio: selected artworks, series and exhibitions, artist statement, commissions, and a contact action."),
         ("create a landing page for an online course", "Course landing page: what students learn, curriculum outline, instructor profile, pricing, student proof, and an enrol action."),
         ("landing page for an online course", "Course landing page: what students learn, curriculum outline, instructor profile, pricing, student proof, and an enrol action."),
         ("make a landing page for a course", "Course landing page: what students learn, curriculum outline, instructor profile, pricing, student proof, and an enrol action."),
@@ -1184,6 +1273,9 @@ TOPICS: dict[str, list[tuple[str, str]]] = {
         ("create a landing page for a mobile app", "App landing page: what the app does, key features, screenshots, user reviews, and a download action."),
         ("landing page for a mobile app", "App landing page: what the app does, key features, screenshots, user reviews, and a download action."),
         ("mobile app landing page", "App landing page: what the app does, key features, screenshots, user reviews, and a download action."),
+        ("build a landing page for a fitness app", "App landing page: what the app does, key features, screenshots, user reviews, and a download action."),
+        ("landing page for a fitness app", "App landing page: what the app does, key features, screenshots, user reviews, and a download action."),
+        ("fitness app landing page", "App landing page: what the app does, key features, screenshots, user reviews, and a download action."),
         # Pet store, construction, musician and book briefs
         # (28 Nov 2026 cycle, 12:31 run): the pet store and
         # construction company briefs echoed while the
@@ -1324,6 +1416,22 @@ TOPICS: dict[str, list[tuple[str, str]]] = {
         ("build a site for a salon", "Salon site: services and prices, stylist profiles, booking action, gallery, opening hours, and location."),
         ("site for a salon", "Salon site: services and prices, stylist profiles, booking action, gallery, opening hours, and location."),
         ("make a site for a salon", "Salon site: services and prices, stylist profiles, booking action, gallery, opening hours, and location."),
+        # Plumber, car-repair and developer-portfolio
+        # briefs (28 Nov 2026 cycle, 22:16 run): the
+        # plumber brief was answered as a law firm site,
+        # the car repair brief echoed, and the developer
+        # portfolio as a designer portfolio, so each
+        # gains a class of its own.
+        ("build a site for a plumber", "Plumber site: services and call-out areas, emergency contact action, pricing guidance, customer reviews, and opening hours."),
+        ("website for a plumber", "Plumber site: services and call-out areas, emergency contact action, pricing guidance, customer reviews, and opening hours."),
+        ("plumber website", "Plumber site: services and call-out areas, emergency contact action, pricing guidance, customer reviews, and opening hours."),
+        ("build a site for a car repair shop", "Car repair site: services and diagnostics, booking action, pricing guidance, customer reviews, opening hours, and location."),
+        ("website for a car repair shop", "Car repair site: services and diagnostics, booking action, pricing guidance, customer reviews, opening hours, and location."),
+        ("car repair website", "Car repair site: services and diagnostics, booking action, pricing guidance, customer reviews, opening hours, and location."),
+        ("make a portfolio website for a developer", "Developer portfolio: selected projects with live links, skills and stack, about page, testimonials, and a contact action."),
+        ("portfolio website for a developer", "Developer portfolio: selected projects with live links, skills and stack, about page, testimonials, and a contact action."),
+        ("developer portfolio website", "Developer portfolio: selected projects with live links, skills and stack, about page, testimonials, and a contact action."),
+        ("build a portfolio for a developer", "Developer portfolio: selected projects with live links, skills and stack, about page, testimonials, and a contact action."),
     ],
     "gravion-vision": [
         ("describe a sunset portrait image brief", "Image brief: warm sunset light, calm human portrait, soft background, natural expression, high detail."),
@@ -1735,6 +1843,14 @@ TOPICS: dict[str, list[tuple[str, str]]] = {
         ("how do i make a strong password", "Use long unique passwords, store them in a password manager, and enable multi-factor authentication where available."),
         ("how to make a strong password", "Use long unique passwords, store them in a password manager, and enable multi-factor authentication where available."),
         ("how can i create a strong password", "Use long unique passwords, store them in a password manager, and enable multi-factor authentication where available."),
+        # Stronger-password ask (28 Nov 2026 cycle, 21:16
+        # run): "how to make my password stronger" was
+        # answered by the leaked-password class while the
+        # strong-password shapes answered, so the class
+        # gains the stronger shapes.
+        ("how to make my password stronger", "Use long unique passwords, store them in a password manager, and enable multi-factor authentication where available."),
+        ("make my password stronger", "Use long unique passwords, store them in a password manager, and enable multi-factor authentication where available."),
+        ("how do i make my password stronger", "Use long unique passwords, store them in a password manager, and enable multi-factor authentication where available."),
         ("what should i do after a data breach", "After a data breach: contain the affected systems, preserve logs and evidence, assess what data was touched, reset exposed credentials, notify affected people and authorities where required, and fix the entry point before closing."),
         ("respond to a data breach", "After a data breach: contain the affected systems, preserve logs and evidence, assess what data was touched, reset exposed credentials, notify affected people and authorities where required, and fix the entry point before closing."),
         ("how do i respond to a data breach", "After a data breach: contain the affected systems, preserve logs and evidence, assess what data was touched, reset exposed credentials, notify affected people and authorities where required, and fix the entry point before closing."),
@@ -1953,6 +2069,18 @@ TOPICS: dict[str, list[tuple[str, str]]] = {
         ("firewall in simple words", "A firewall filters network traffic by rules, allowing trusted connections and blocking the rest; keep its rules reviewed, deny by default, and log what it blocks."),
         ("how to secure a website", "Secure a website by keeping software updated, enforcing strong authentication, validating input, serving over encrypted connections, backing up regularly, and monitoring logs for abuse."),
         ("how to secure my website", "Secure a website by keeping software updated, enforcing strong authentication, validating input, serving over encrypted connections, backing up regularly, and monitoring logs for abuse."),
+        # Leaked-check and denial-of-service asks (28 Nov
+        # 2026 cycle, 22:16 run): "how to check if my
+        # password is leaked" echoed beside the
+        # leaked-password class and "explain denial of
+        # service attack" echoed beside the DDoS class,
+        # so both classes gain the direct shapes.
+        ("how to check if my password is leaked", "If a password may have leaked, change it everywhere it was reused, enable multi-factor authentication, and review account sessions; unique passwords stop one leak from spreading."),
+        ("check if my password is leaked", "If a password may have leaked, change it everywhere it was reused, enable multi-factor authentication, and review account sessions; unique passwords stop one leak from spreading."),
+        ("how do i check if my password leaked", "If a password may have leaked, change it everywhere it was reused, enable multi-factor authentication, and review account sessions; unique passwords stop one leak from spreading."),
+        ("explain denial of service attack", "A DDoS attack floods a service with traffic from many sources so real users cannot reach it; defend with rate limits, upstream filtering, capacity headroom, and a practiced response plan."),
+        ("what is a denial of service attack", "A DDoS attack floods a service with traffic from many sources so real users cannot reach it; defend with rate limits, upstream filtering, capacity headroom, and a practiced response plan."),
+        ("denial of service attack", "A DDoS attack floods a service with traffic from many sources so real users cannot reach it; defend with rate limits, upstream filtering, capacity headroom, and a practiced response plan."),
     ],
     "gravion-agent": [
         ("plan an agent that summarizes email", "Agent plan: read approved messages, group by topic, draft summaries, flag urgent items, and ask before sending anything."),
@@ -2058,6 +2186,13 @@ TOPICS: dict[str, list[tuple[str, str]]] = {
         ("agent that books meetings", "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely."),
         ("plan an agent that writes social media posts", "Agent plan: draft posts from approved topics, check tone, schedule only after approval, and track results."),
         ("agent that writes social media posts", "Agent plan: draft posts from approved topics, check tone, schedule only after approval, and track results."),
+        # Margin repair (28 Nov 2026 cycle, 21:16 run): the
+        # book-flights retrain diluted "plan an agent to
+        # write social media posts" into echo, so the
+        # social class gains the to-write shapes.
+        ("plan an agent to write social media posts", "Agent plan: draft posts from approved topics, check tone, schedule only after approval, and track results."),
+        ("agent to write social media posts", "Agent plan: draft posts from approved topics, check tone, schedule only after approval, and track results."),
+        ("write social media posts agent", "Agent plan: draft posts from approved topics, check tone, schedule only after approval, and track results."),
         ("create an agent that screens resumes", "Agent plan: screen resumes against approved criteria, rank matches with evidence, flag missing information, and leave hiring decisions to people."),
         ("agent for screening resumes", "Agent plan: screen resumes against approved criteria, rank matches with evidence, flag missing information, and leave hiring decisions to people."),
         # Appointment and research agent asks (28 Nov 2026
@@ -2199,6 +2334,21 @@ TOPICS: dict[str, list[tuple[str, str]]] = {
         ("build an agent for booking flights", "Agent plan: collect dates and travellers, compare flights by time and total price, show the best options, and book only after your approval."),
         ("agent for booking flights", "Agent plan: collect dates and travellers, compare flights by time and total price, show the best options, and book only after your approval."),
         ("flight booking agent", "Agent plan: collect dates and travellers, compare flights by time and total price, show the best options, and book only after your approval."),
+        # Book-flights, birthday-reminder and organise-files
+        # asks (28 Nov 2026 cycle, 21:16 run): "plan an
+        # agent to book flights" was answered as meeting
+        # scheduling, and the birthday-reminders and
+        # organise-files asks echoed, so the flight and
+        # file classes gain the direct shapes and birthday
+        # reminders gain a class of their own.
+        ("plan an agent to book flights", "Agent plan: collect dates and travellers, compare flights by time and total price, show the best options, and book only after your approval."),
+        ("agent to book flights", "Agent plan: collect dates and travellers, compare flights by time and total price, show the best options, and book only after your approval."),
+        ("plan an agent to send birthday reminders", "Agent plan: keep the birthday list, remind you ahead of each date, suggest a short message, and confirm once wishes are sent."),
+        ("agent to send birthday reminders", "Agent plan: keep the birthday list, remind you ahead of each date, suggest a short message, and confirm once wishes are sent."),
+        ("birthday reminder agent", "Agent plan: keep the birthday list, remind you ahead of each date, suggest a short message, and confirm once wishes are sent."),
+        ("build an agent to organise my files", "Agent plan: inventory files, propose folders, move only after approval, and keep an undo log."),
+        ("agent to organise my files", "Agent plan: inventory files, propose folders, move only after approval, and keep an undo log."),
+        ("organise my files agent", "Agent plan: inventory files, propose folders, move only after approval, and keep an undo log."),
         ("plan an agent that summarizes meetings", "Agent design: capture notes, extract decisions and owners, draft follow-ups, and store the approved summary."),
         ("agent that summarizes meetings", "Agent design: capture notes, extract decisions and owners, draft follow-ups, and store the approved summary."),
         ("meeting summary agent", "Agent design: capture notes, extract decisions and owners, draft follow-ups, and store the approved summary."),
@@ -2330,6 +2480,31 @@ TOPICS: dict[str, list[tuple[str, str]]] = {
         # study class gains the make shapes.
         ("make a study helper agent", "Agent plan: break the subject into topics, schedule short study sessions, quiz you on each topic, and track weak areas for review."),
         ("make a study agent", "Agent plan: break the subject into topics, schedule short study sessions, quiz you on each topic, and track weak areas for review."),
+        # Meeting-summary, travel, language-learning, blog
+        # and price-drop asks (28 Nov 2026 cycle, 22:16
+        # run): "plan an agent to summarise my meetings"
+        # was answered as scheduling, "agent that writes
+        # blog posts" as email drafting, and the travel,
+        # language-learning and price-drop asks echoed, so
+        # each gains its direct shapes.
+        ("plan an agent to summarise my meetings", "Agent design: capture meeting notes, extract decisions and owners, draft follow-ups, and store the approved summary."),
+        ("agent to summarise my meetings", "Agent design: capture meeting notes, extract decisions and owners, draft follow-ups, and store the approved summary."),
+        ("agent that summarises my meetings", "Agent design: capture meeting notes, extract decisions and owners, draft follow-ups, and store the approved summary."),
+        ("meeting summarising agent", "Agent design: capture meeting notes, extract decisions and owners, draft follow-ups, and store the approved summary."),
+        ("agent to plan my travel", "Agent plan: collect preferences, compare routes and stays, check constraints, and present options before booking."),
+        ("plan an agent to plan my travel", "Agent plan: collect preferences, compare routes and stays, check constraints, and present options before booking."),
+        ("agent to plan a trip", "Agent plan: collect preferences, compare routes and stays, check constraints, and present options before booking."),
+        ("create an agent to help me learn a new language", "Agent plan: set a daily practice goal, drill new words, schedule speaking practice, and track progress each week."),
+        ("agent to learn a new language", "Agent plan: set a daily practice goal, drill new words, schedule speaking practice, and track progress each week."),
+        ("language learning agent", "Agent plan: set a daily practice goal, drill new words, schedule speaking practice, and track progress each week."),
+        ("agent to teach me a language", "Agent plan: set a daily practice goal, drill new words, schedule speaking practice, and track progress each week."),
+        ("agent that writes blog posts", "Agent plan: draft blog posts from your topics, keep your tone, show each draft for approval, and track published posts."),
+        ("plan an agent to write blog posts", "Agent plan: draft blog posts from your topics, keep your tone, show each draft for approval, and track published posts."),
+        ("blog writing agent", "Agent plan: draft blog posts from your topics, keep your tone, show each draft for approval, and track published posts."),
+        ("plan an agent to watch for price drops", "Agent plan: watch the products you name, check prices on a schedule, and alert you when a price drops below your target."),
+        ("agent to watch for price drops", "Agent plan: watch the products you name, check prices on a schedule, and alert you when a price drops below your target."),
+        ("price drop agent", "Agent plan: watch the products you name, check prices on a schedule, and alert you when a price drops below your target."),
+        ("agent that watches prices", "Agent plan: watch the products you name, check prices on a schedule, and alert you when a price drops below your target."),
     ],
     "gravion-omni": [
         ("route a coding request to the right module", "Route coding requests to the coder module with the goal, constraints, and test expectations preserved."),

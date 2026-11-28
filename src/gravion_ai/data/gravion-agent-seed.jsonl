@@ -290,6 +290,18 @@
 {"completion": "Agent plan: draft posts from approved topics, check tone, schedule only after approval, and track results.", "prompt": "please agent that writes social media posts"}
 {"completion": "Agent plan: draft posts from approved topics, check tone, schedule only after approval, and track results.", "prompt": "gravion agent agent that writes social media posts"}
 {"completion": "Agent plan: draft posts from approved topics, check tone, schedule only after approval, and track results.", "prompt": "help me agent that writes social media posts"}
+{"completion": "Agent plan: draft posts from approved topics, check tone, schedule only after approval, and track results.", "prompt": "plan an agent to write social media posts"}
+{"completion": "Agent plan: draft posts from approved topics, check tone, schedule only after approval, and track results.", "prompt": "please plan an agent to write social media posts"}
+{"completion": "Agent plan: draft posts from approved topics, check tone, schedule only after approval, and track results.", "prompt": "gravion agent plan an agent to write social media posts"}
+{"completion": "Agent plan: draft posts from approved topics, check tone, schedule only after approval, and track results.", "prompt": "help me plan an agent to write social media posts"}
+{"completion": "Agent plan: draft posts from approved topics, check tone, schedule only after approval, and track results.", "prompt": "agent to write social media posts"}
+{"completion": "Agent plan: draft posts from approved topics, check tone, schedule only after approval, and track results.", "prompt": "please agent to write social media posts"}
+{"completion": "Agent plan: draft posts from approved topics, check tone, schedule only after approval, and track results.", "prompt": "gravion agent agent to write social media posts"}
+{"completion": "Agent plan: draft posts from approved topics, check tone, schedule only after approval, and track results.", "prompt": "help me agent to write social media posts"}
+{"completion": "Agent plan: draft posts from approved topics, check tone, schedule only after approval, and track results.", "prompt": "write social media posts agent"}
+{"completion": "Agent plan: draft posts from approved topics, check tone, schedule only after approval, and track results.", "prompt": "please write social media posts agent"}
+{"completion": "Agent plan: draft posts from approved topics, check tone, schedule only after approval, and track results.", "prompt": "gravion agent write social media posts agent"}
+{"completion": "Agent plan: draft posts from approved topics, check tone, schedule only after approval, and track results.", "prompt": "help me write social media posts agent"}
 {"completion": "Agent plan: screen resumes against approved criteria, rank matches with evidence, flag missing information, and leave hiring decisions to people.", "prompt": "create an agent that screens resumes"}
 {"completion": "Agent plan: screen resumes against approved criteria, rank matches with evidence, flag missing information, and leave hiring decisions to people.", "prompt": "please create an agent that screens resumes"}
 {"completion": "Agent plan: screen resumes against approved criteria, rank matches with evidence, flag missing information, and leave hiring decisions to people.", "prompt": "gravion agent create an agent that screens resumes"}
@@ -602,6 +614,38 @@
 {"completion": "Agent plan: collect dates and travellers, compare flights by time and total price, show the best options, and book only after your approval.", "prompt": "please flight booking agent"}
 {"completion": "Agent plan: collect dates and travellers, compare flights by time and total price, show the best options, and book only after your approval.", "prompt": "gravion agent flight booking agent"}
 {"completion": "Agent plan: collect dates and travellers, compare flights by time and total price, show the best options, and book only after your approval.", "prompt": "help me flight booking agent"}
+{"completion": "Agent plan: collect dates and travellers, compare flights by time and total price, show the best options, and book only after your approval.", "prompt": "plan an agent to book flights"}
+{"completion": "Agent plan: collect dates and travellers, compare flights by time and total price, show the best options, and book only after your approval.", "prompt": "please plan an agent to book flights"}
+{"completion": "Agent plan: collect dates and travellers, compare flights by time and total price, show the best options, and book only after your approval.", "prompt": "gravion agent plan an agent to book flights"}
+{"completion": "Agent plan: collect dates and travellers, compare flights by time and total price, show the best options, and book only after your approval.", "prompt": "help me plan an agent to book flights"}
+{"completion": "Agent plan: collect dates and travellers, compare flights by time and total price, show the best options, and book only after your approval.", "prompt": "agent to book flights"}
+{"completion": "Agent plan: collect dates and travellers, compare flights by time and total price, show the best options, and book only after your approval.", "prompt": "please agent to book flights"}
+{"completion": "Agent plan: collect dates and travellers, compare flights by time and total price, show the best options, and book only after your approval.", "prompt": "gravion agent agent to book flights"}
+{"completion": "Agent plan: collect dates and travellers, compare flights by time and total price, show the best options, and book only after your approval.", "prompt": "help me agent to book flights"}
+{"completion": "Agent plan: keep the birthday list, remind you ahead of each date, suggest a short message, and confirm once wishes are sent.", "prompt": "plan an agent to send birthday reminders"}
+{"completion": "Agent plan: keep the birthday list, remind you ahead of each date, suggest a short message, and confirm once wishes are sent.", "prompt": "please plan an agent to send birthday reminders"}
+{"completion": "Agent plan: keep the birthday list, remind you ahead of each date, suggest a short message, and confirm once wishes are sent.", "prompt": "gravion agent plan an agent to send birthday reminders"}
+{"completion": "Agent plan: keep the birthday list, remind you ahead of each date, suggest a short message, and confirm once wishes are sent.", "prompt": "help me plan an agent to send birthday reminders"}
+{"completion": "Agent plan: keep the birthday list, remind you ahead of each date, suggest a short message, and confirm once wishes are sent.", "prompt": "agent to send birthday reminders"}
+{"completion": "Agent plan: keep the birthday list, remind you ahead of each date, suggest a short message, and confirm once wishes are sent.", "prompt": "please agent to send birthday reminders"}
+{"completion": "Agent plan: keep the birthday list, remind you ahead of each date, suggest a short message, and confirm once wishes are sent.", "prompt": "gravion agent agent to send birthday reminders"}
+{"completion": "Agent plan: keep the birthday list, remind you ahead of each date, suggest a short message, and confirm once wishes are sent.", "prompt": "help me agent to send birthday reminders"}
+{"completion": "Agent plan: keep the birthday list, remind you ahead of each date, suggest a short message, and confirm once wishes are sent.", "prompt": "birthday reminder agent"}
+{"completion": "Agent plan: keep the birthday list, remind you ahead of each date, suggest a short message, and confirm once wishes are sent.", "prompt": "please birthday reminder agent"}
+{"completion": "Agent plan: keep the birthday list, remind you ahead of each date, suggest a short message, and confirm once wishes are sent.", "prompt": "gravion agent birthday reminder agent"}
+{"completion": "Agent plan: keep the birthday list, remind you ahead of each date, suggest a short message, and confirm once wishes are sent.", "prompt": "help me birthday reminder agent"}
+{"completion": "Agent plan: inventory files, propose folders, move only after approval, and keep an undo log.", "prompt": "build an agent to organise my files"}
+{"completion": "Agent plan: inventory files, propose folders, move only after approval, and keep an undo log.", "prompt": "please build an agent to organise my files"}
+{"completion": "Agent plan: inventory files, propose folders, move only after approval, and keep an undo log.", "prompt": "gravion agent build an agent to organise my files"}
+{"completion": "Agent plan: inventory files, propose folders, move only after approval, and keep an undo log.", "prompt": "help me build an agent to organise my files"}
+{"completion": "Agent plan: inventory files, propose folders, move only after approval, and keep an undo log.", "prompt": "agent to organise my files"}
+{"completion": "Agent plan: inventory files, propose folders, move only after approval, and keep an undo log.", "prompt": "please agent to organise my files"}
+{"completion": "Agent plan: inventory files, propose folders, move only after approval, and keep an undo log.", "prompt": "gravion agent agent to organise my files"}
+{"completion": "Agent plan: inventory files, propose folders, move only after approval, and keep an undo log.", "prompt": "help me agent to organise my files"}
+{"completion": "Agent plan: inventory files, propose folders, move only after approval, and keep an undo log.", "prompt": "organise my files agent"}
+{"completion": "Agent plan: inventory files, propose folders, move only after approval, and keep an undo log.", "prompt": "please organise my files agent"}
+{"completion": "Agent plan: inventory files, propose folders, move only after approval, and keep an undo log.", "prompt": "gravion agent organise my files agent"}
+{"completion": "Agent plan: inventory files, propose folders, move only after approval, and keep an undo log.", "prompt": "help me organise my files agent"}
 {"completion": "Agent design: capture notes, extract decisions and owners, draft follow-ups, and store the approved summary.", "prompt": "plan an agent that summarizes meetings"}
 {"completion": "Agent design: capture notes, extract decisions and owners, draft follow-ups, and store the approved summary.", "prompt": "please plan an agent that summarizes meetings"}
 {"completion": "Agent design: capture notes, extract decisions and owners, draft follow-ups, and store the approved summary.", "prompt": "gravion agent plan an agent that summarizes meetings"}
@@ -866,3 +910,75 @@
 {"completion": "Agent plan: break the subject into topics, schedule short study sessions, quiz you on each topic, and track weak areas for review.", "prompt": "please make a study agent"}
 {"completion": "Agent plan: break the subject into topics, schedule short study sessions, quiz you on each topic, and track weak areas for review.", "prompt": "gravion agent make a study agent"}
 {"completion": "Agent plan: break the subject into topics, schedule short study sessions, quiz you on each topic, and track weak areas for review.", "prompt": "help me make a study agent"}
+{"completion": "Agent design: capture meeting notes, extract decisions and owners, draft follow-ups, and store the approved summary.", "prompt": "plan an agent to summarise my meetings"}
+{"completion": "Agent design: capture meeting notes, extract decisions and owners, draft follow-ups, and store the approved summary.", "prompt": "please plan an agent to summarise my meetings"}
+{"completion": "Agent design: capture meeting notes, extract decisions and owners, draft follow-ups, and store the approved summary.", "prompt": "gravion agent plan an agent to summarise my meetings"}
+{"completion": "Agent design: capture meeting notes, extract decisions and owners, draft follow-ups, and store the approved summary.", "prompt": "help me plan an agent to summarise my meetings"}
+{"completion": "Agent design: capture meeting notes, extract decisions and owners, draft follow-ups, and store the approved summary.", "prompt": "agent to summarise my meetings"}
+{"completion": "Agent design: capture meeting notes, extract decisions and owners, draft follow-ups, and store the approved summary.", "prompt": "please agent to summarise my meetings"}
+{"completion": "Agent design: capture meeting notes, extract decisions and owners, draft follow-ups, and store the approved summary.", "prompt": "gravion agent agent to summarise my meetings"}
+{"completion": "Agent design: capture meeting notes, extract decisions and owners, draft follow-ups, and store the approved summary.", "prompt": "help me agent to summarise my meetings"}
+{"completion": "Agent design: capture meeting notes, extract decisions and owners, draft follow-ups, and store the approved summary.", "prompt": "agent that summarises my meetings"}
+{"completion": "Agent design: capture meeting notes, extract decisions and owners, draft follow-ups, and store the approved summary.", "prompt": "please agent that summarises my meetings"}
+{"completion": "Agent design: capture meeting notes, extract decisions and owners, draft follow-ups, and store the approved summary.", "prompt": "gravion agent agent that summarises my meetings"}
+{"completion": "Agent design: capture meeting notes, extract decisions and owners, draft follow-ups, and store the approved summary.", "prompt": "help me agent that summarises my meetings"}
+{"completion": "Agent design: capture meeting notes, extract decisions and owners, draft follow-ups, and store the approved summary.", "prompt": "meeting summarising agent"}
+{"completion": "Agent design: capture meeting notes, extract decisions and owners, draft follow-ups, and store the approved summary.", "prompt": "please meeting summarising agent"}
+{"completion": "Agent design: capture meeting notes, extract decisions and owners, draft follow-ups, and store the approved summary.", "prompt": "gravion agent meeting summarising agent"}
+{"completion": "Agent design: capture meeting notes, extract decisions and owners, draft follow-ups, and store the approved summary.", "prompt": "help me meeting summarising agent"}
+{"completion": "Agent plan: collect preferences, compare routes and stays, check constraints, and present options before booking.", "prompt": "agent to plan my travel"}
+{"completion": "Agent plan: collect preferences, compare routes and stays, check constraints, and present options before booking.", "prompt": "please agent to plan my travel"}
+{"completion": "Agent plan: collect preferences, compare routes and stays, check constraints, and present options before booking.", "prompt": "gravion agent agent to plan my travel"}
+{"completion": "Agent plan: collect preferences, compare routes and stays, check constraints, and present options before booking.", "prompt": "help me agent to plan my travel"}
+{"completion": "Agent plan: collect preferences, compare routes and stays, check constraints, and present options before booking.", "prompt": "plan an agent to plan my travel"}
+{"completion": "Agent plan: collect preferences, compare routes and stays, check constraints, and present options before booking.", "prompt": "please plan an agent to plan my travel"}
+{"completion": "Agent plan: collect preferences, compare routes and stays, check constraints, and present options before booking.", "prompt": "gravion agent plan an agent to plan my travel"}
+{"completion": "Agent plan: collect preferences, compare routes and stays, check constraints, and present options before booking.", "prompt": "help me plan an agent to plan my travel"}
+{"completion": "Agent plan: collect preferences, compare routes and stays, check constraints, and present options before booking.", "prompt": "agent to plan a trip"}
+{"completion": "Agent plan: collect preferences, compare routes and stays, check constraints, and present options before booking.", "prompt": "please agent to plan a trip"}
+{"completion": "Agent plan: collect preferences, compare routes and stays, check constraints, and present options before booking.", "prompt": "gravion agent agent to plan a trip"}
+{"completion": "Agent plan: collect preferences, compare routes and stays, check constraints, and present options before booking.", "prompt": "help me agent to plan a trip"}
+{"completion": "Agent plan: set a daily practice goal, drill new words, schedule speaking practice, and track progress each week.", "prompt": "create an agent to help me learn a new language"}
+{"completion": "Agent plan: set a daily practice goal, drill new words, schedule speaking practice, and track progress each week.", "prompt": "please create an agent to help me learn a new language"}
+{"completion": "Agent plan: set a daily practice goal, drill new words, schedule speaking practice, and track progress each week.", "prompt": "gravion agent create an agent to help me learn a new language"}
+{"completion": "Agent plan: set a daily practice goal, drill new words, schedule speaking practice, and track progress each week.", "prompt": "help me create an agent to help me learn a new language"}
+{"completion": "Agent plan: set a daily practice goal, drill new words, schedule speaking practice, and track progress each week.", "prompt": "agent to learn a new language"}
+{"completion": "Agent plan: set a daily practice goal, drill new words, schedule speaking practice, and track progress each week.", "prompt": "please agent to learn a new language"}
+{"completion": "Agent plan: set a daily practice goal, drill new words, schedule speaking practice, and track progress each week.", "prompt": "gravion agent agent to learn a new language"}
+{"completion": "Agent plan: set a daily practice goal, drill new words, schedule speaking practice, and track progress each week.", "prompt": "help me agent to learn a new language"}
+{"completion": "Agent plan: set a daily practice goal, drill new words, schedule speaking practice, and track progress each week.", "prompt": "language learning agent"}
+{"completion": "Agent plan: set a daily practice goal, drill new words, schedule speaking practice, and track progress each week.", "prompt": "please language learning agent"}
+{"completion": "Agent plan: set a daily practice goal, drill new words, schedule speaking practice, and track progress each week.", "prompt": "gravion agent language learning agent"}
+{"completion": "Agent plan: set a daily practice goal, drill new words, schedule speaking practice, and track progress each week.", "prompt": "help me language learning agent"}
+{"completion": "Agent plan: set a daily practice goal, drill new words, schedule speaking practice, and track progress each week.", "prompt": "agent to teach me a language"}
+{"completion": "Agent plan: set a daily practice goal, drill new words, schedule speaking practice, and track progress each week.", "prompt": "please agent to teach me a language"}
+{"completion": "Agent plan: set a daily practice goal, drill new words, schedule speaking practice, and track progress each week.", "prompt": "gravion agent agent to teach me a language"}
+{"completion": "Agent plan: set a daily practice goal, drill new words, schedule speaking practice, and track progress each week.", "prompt": "help me agent to teach me a language"}
+{"completion": "Agent plan: draft blog posts from your topics, keep your tone, show each draft for approval, and track published posts.", "prompt": "agent that writes blog posts"}
+{"completion": "Agent plan: draft blog posts from your topics, keep your tone, show each draft for approval, and track published posts.", "prompt": "please agent that writes blog posts"}
+{"completion": "Agent plan: draft blog posts from your topics, keep your tone, show each draft for approval, and track published posts.", "prompt": "gravion agent agent that writes blog posts"}
+{"completion": "Agent plan: draft blog posts from your topics, keep your tone, show each draft for approval, and track published posts.", "prompt": "help me agent that writes blog posts"}
+{"completion": "Agent plan: draft blog posts from your topics, keep your tone, show each draft for approval, and track published posts.", "prompt": "plan an agent to write blog posts"}
+{"completion": "Agent plan: draft blog posts from your topics, keep your tone, show each draft for approval, and track published posts.", "prompt": "please plan an agent to write blog posts"}
+{"completion": "Agent plan: draft blog posts from your topics, keep your tone, show each draft for approval, and track published posts.", "prompt": "gravion agent plan an agent to write blog posts"}
+{"completion": "Agent plan: draft blog posts from your topics, keep your tone, show each draft for approval, and track published posts.", "prompt": "help me plan an agent to write blog posts"}
+{"completion": "Agent plan: draft blog posts from your topics, keep your tone, show each draft for approval, and track published posts.", "prompt": "blog writing agent"}
+{"completion": "Agent plan: draft blog posts from your topics, keep your tone, show each draft for approval, and track published posts.", "prompt": "please blog writing agent"}
+{"completion": "Agent plan: draft blog posts from your topics, keep your tone, show each draft for approval, and track published posts.", "prompt": "gravion agent blog writing agent"}
+{"completion": "Agent plan: draft blog posts from your topics, keep your tone, show each draft for approval, and track published posts.", "prompt": "help me blog writing agent"}
+{"completion": "Agent plan: watch the products you name, check prices on a schedule, and alert you when a price drops below your target.", "prompt": "plan an agent to watch for price drops"}
+{"completion": "Agent plan: watch the products you name, check prices on a schedule, and alert you when a price drops below your target.", "prompt": "please plan an agent to watch for price drops"}
+{"completion": "Agent plan: watch the products you name, check prices on a schedule, and alert you when a price drops below your target.", "prompt": "gravion agent plan an agent to watch for price drops"}
+{"completion": "Agent plan: watch the products you name, check prices on a schedule, and alert you when a price drops below your target.", "prompt": "help me plan an agent to watch for price drops"}
+{"completion": "Agent plan: watch the products you name, check prices on a schedule, and alert you when a price drops below your target.", "prompt": "agent to watch for price drops"}
+{"completion": "Agent plan: watch the products you name, check prices on a schedule, and alert you when a price drops below your target.", "prompt": "please agent to watch for price drops"}
+{"completion": "Agent plan: watch the products you name, check prices on a schedule, and alert you when a price drops below your target.", "prompt": "gravion agent agent to watch for price drops"}
+{"completion": "Agent plan: watch the products you name, check prices on a schedule, and alert you when a price drops below your target.", "prompt": "help me agent to watch for price drops"}
+{"completion": "Agent plan: watch the products you name, check prices on a schedule, and alert you when a price drops below your target.", "prompt": "price drop agent"}
+{"completion": "Agent plan: watch the products you name, check prices on a schedule, and alert you when a price drops below your target.", "prompt": "please price drop agent"}
+{"completion": "Agent plan: watch the products you name, check prices on a schedule, and alert you when a price drops below your target.", "prompt": "gravion agent price drop agent"}
+{"completion": "Agent plan: watch the products you name, check prices on a schedule, and alert you when a price drops below your target.", "prompt": "help me price drop agent"}
+{"completion": "Agent plan: watch the products you name, check prices on a schedule, and alert you when a price drops below your target.", "prompt": "agent that watches prices"}
+{"completion": "Agent plan: watch the products you name, check prices on a schedule, and alert you when a price drops below your target.", "prompt": "please agent that watches prices"}
+{"completion": "Agent plan: watch the products you name, check prices on a schedule, and alert you when a price drops below your target.", "prompt": "gravion agent agent that watches prices"}
+{"completion": "Agent plan: watch the products you name, check prices on a schedule, and alert you when a price drops below your target.", "prompt": "help me agent that watches prices"}
