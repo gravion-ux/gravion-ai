@@ -44,7 +44,7 @@ def _ctx(provider, model="gravion-code"):
 def test_coder_instantiates_and_answers():
     module = default_registry().instantiate("coder")
     out = module.run(_ctx(GravionCoreProvider()), "write a sort function")
-    assert "sorting method" in out
+    assert "sorted(values)" in out
 
 
 @pytest.mark.parametrize(

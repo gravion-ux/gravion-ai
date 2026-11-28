@@ -46,7 +46,7 @@ def test_coder_command_flow(home, capsys):
     capsys.readouterr()
     assert main(["coder", "write", "a", "sort", "function"]) == 0
     out = capsys.readouterr().out
-    assert "sorting method" in out
+    assert "sorted(values)" in out
 
 
 def test_image_command_flow(home, capsys):

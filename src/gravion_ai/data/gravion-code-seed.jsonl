@@ -102,10 +102,10 @@
 {"completion": "Decide where null is allowed, check before use, and prefer explicit defaults or errors over silent failure.", "prompt": "please handle null values safely"}
 {"completion": "Decide where null is allowed, check before use, and prefer explicit defaults or errors over silent failure.", "prompt": "gravion code handle null values safely"}
 {"completion": "Decide where null is allowed, check before use, and prefer explicit defaults or errors over silent failure.", "prompt": "help me handle null values safely"}
-{"completion": "Compare neighboring values or use a known sorting method, then verify sorted, reversed, and duplicate inputs.", "prompt": "write a sorting function outline"}
-{"completion": "Compare neighboring values or use a known sorting method, then verify sorted, reversed, and duplicate inputs.", "prompt": "please write a sorting function outline"}
-{"completion": "Compare neighboring values or use a known sorting method, then verify sorted, reversed, and duplicate inputs.", "prompt": "gravion code write a sorting function outline"}
-{"completion": "Compare neighboring values or use a known sorting method, then verify sorted, reversed, and duplicate inputs.", "prompt": "help me write a sorting function outline"}
+{"completion": "Use sorted(values) for a new sorted list, or values.sort() to sort in place; add reverse=True for descending order.", "prompt": "write a sorting function outline"}
+{"completion": "Use sorted(values) for a new sorted list, or values.sort() to sort in place; add reverse=True for descending order.", "prompt": "please write a sorting function outline"}
+{"completion": "Use sorted(values) for a new sorted list, or values.sort() to sort in place; add reverse=True for descending order.", "prompt": "gravion code write a sorting function outline"}
+{"completion": "Use sorted(values) for a new sorted list, or values.sort() to sort in place; add reverse=True for descending order.", "prompt": "help me write a sorting function outline"}
 {"completion": "Time complexity describes how running time grows as input size grows, using the dominant growth term.", "prompt": "explain time complexity simply"}
 {"completion": "Time complexity describes how running time grows as input size grows, using the dominant growth term.", "prompt": "please explain time complexity simply"}
 {"completion": "Time complexity describes how running time grows as input size grows, using the dominant growth term.", "prompt": "gravion code explain time complexity simply"}
@@ -222,10 +222,10 @@
 {"completion": "Define a function that returns a three-line haiku, keep the syllable pattern clear, and test the exact output.", "prompt": "please write a haiku function"}
 {"completion": "Define a function that returns a three-line haiku, keep the syllable pattern clear, and test the exact output.", "prompt": "gravion code write a haiku function"}
 {"completion": "Define a function that returns a three-line haiku, keep the syllable pattern clear, and test the exact output.", "prompt": "help me write a haiku function"}
-{"completion": "Compare neighboring values or use a known sorting method, then verify sorted, reversed, and duplicate inputs.", "prompt": "write a sort function"}
-{"completion": "Compare neighboring values or use a known sorting method, then verify sorted, reversed, and duplicate inputs.", "prompt": "please write a sort function"}
-{"completion": "Compare neighboring values or use a known sorting method, then verify sorted, reversed, and duplicate inputs.", "prompt": "gravion code write a sort function"}
-{"completion": "Compare neighboring values or use a known sorting method, then verify sorted, reversed, and duplicate inputs.", "prompt": "help me write a sort function"}
+{"completion": "Use sorted(values) for a new sorted list, or values.sort() to sort in place; add reverse=True for descending order.", "prompt": "write a sort function"}
+{"completion": "Use sorted(values) for a new sorted list, or values.sort() to sort in place; add reverse=True for descending order.", "prompt": "please write a sort function"}
+{"completion": "Use sorted(values) for a new sorted list, or values.sort() to sort in place; add reverse=True for descending order.", "prompt": "gravion code write a sort function"}
+{"completion": "Use sorted(values) for a new sorted list, or values.sort() to sort in place; add reverse=True for descending order.", "prompt": "help me write a sort function"}
 {"completion": "Check divisibility from 2 up to the square root of the number, return false on the first exact divisor, and test 2, 3, 4, and a large prime.", "prompt": "write a prime number checker function"}
 {"completion": "Check divisibility from 2 up to the square root of the number, return false on the first exact divisor, and test 2, 3, 4, and a large prime.", "prompt": "please write a prime number checker function"}
 {"completion": "Check divisibility from 2 up to the square root of the number, return false on the first exact divisor, and test 2, 3, 4, and a large prime.", "prompt": "gravion code write a prime number checker function"}
@@ -422,18 +422,18 @@
 {"completion": "Use print(\"Hello, world!\") to show the text; it is the smallest complete program and a first check that the setup runs.", "prompt": "please hello world program in python"}
 {"completion": "Use print(\"Hello, world!\") to show the text; it is the smallest complete program and a first check that the setup runs.", "prompt": "gravion code hello world program in python"}
 {"completion": "Use print(\"Hello, world!\") to show the text; it is the smallest complete program and a first check that the setup runs.", "prompt": "help me hello world program in python"}
-{"completion": "Compare neighboring values or use a known sorting method, then verify sorted, reversed, and duplicate inputs.", "prompt": "write code to sort a list"}
-{"completion": "Compare neighboring values or use a known sorting method, then verify sorted, reversed, and duplicate inputs.", "prompt": "please write code to sort a list"}
-{"completion": "Compare neighboring values or use a known sorting method, then verify sorted, reversed, and duplicate inputs.", "prompt": "gravion code write code to sort a list"}
-{"completion": "Compare neighboring values or use a known sorting method, then verify sorted, reversed, and duplicate inputs.", "prompt": "help me write code to sort a list"}
-{"completion": "Compare neighboring values or use a known sorting method, then verify sorted, reversed, and duplicate inputs.", "prompt": "sort a list in python"}
-{"completion": "Compare neighboring values or use a known sorting method, then verify sorted, reversed, and duplicate inputs.", "prompt": "please sort a list in python"}
-{"completion": "Compare neighboring values or use a known sorting method, then verify sorted, reversed, and duplicate inputs.", "prompt": "gravion code sort a list in python"}
-{"completion": "Compare neighboring values or use a known sorting method, then verify sorted, reversed, and duplicate inputs.", "prompt": "help me sort a list in python"}
-{"completion": "Compare neighboring values or use a known sorting method, then verify sorted, reversed, and duplicate inputs.", "prompt": "how do i sort a list"}
-{"completion": "Compare neighboring values or use a known sorting method, then verify sorted, reversed, and duplicate inputs.", "prompt": "please how do i sort a list"}
-{"completion": "Compare neighboring values or use a known sorting method, then verify sorted, reversed, and duplicate inputs.", "prompt": "gravion code how do i sort a list"}
-{"completion": "Compare neighboring values or use a known sorting method, then verify sorted, reversed, and duplicate inputs.", "prompt": "help me how do i sort a list"}
+{"completion": "Use sorted(values) for a new sorted list, or values.sort() to sort in place; add reverse=True for descending order.", "prompt": "write code to sort a list"}
+{"completion": "Use sorted(values) for a new sorted list, or values.sort() to sort in place; add reverse=True for descending order.", "prompt": "please write code to sort a list"}
+{"completion": "Use sorted(values) for a new sorted list, or values.sort() to sort in place; add reverse=True for descending order.", "prompt": "gravion code write code to sort a list"}
+{"completion": "Use sorted(values) for a new sorted list, or values.sort() to sort in place; add reverse=True for descending order.", "prompt": "help me write code to sort a list"}
+{"completion": "Use sorted(values) for a new sorted list, or values.sort() to sort in place; add reverse=True for descending order.", "prompt": "sort a list in python"}
+{"completion": "Use sorted(values) for a new sorted list, or values.sort() to sort in place; add reverse=True for descending order.", "prompt": "please sort a list in python"}
+{"completion": "Use sorted(values) for a new sorted list, or values.sort() to sort in place; add reverse=True for descending order.", "prompt": "gravion code sort a list in python"}
+{"completion": "Use sorted(values) for a new sorted list, or values.sort() to sort in place; add reverse=True for descending order.", "prompt": "help me sort a list in python"}
+{"completion": "Use sorted(values) for a new sorted list, or values.sort() to sort in place; add reverse=True for descending order.", "prompt": "how do i sort a list"}
+{"completion": "Use sorted(values) for a new sorted list, or values.sort() to sort in place; add reverse=True for descending order.", "prompt": "please how do i sort a list"}
+{"completion": "Use sorted(values) for a new sorted list, or values.sort() to sort in place; add reverse=True for descending order.", "prompt": "gravion code how do i sort a list"}
+{"completion": "Use sorted(values) for a new sorted list, or values.sort() to sort in place; add reverse=True for descending order.", "prompt": "help me how do i sort a list"}
 {"completion": "Multiply the integers from 1 up to n, return 1 for 0, reject negative inputs, and test 0, 1, and 5.", "prompt": "write a factorial program"}
 {"completion": "Multiply the integers from 1 up to n, return 1 for 0, reject negative inputs, and test 0, 1, and 5.", "prompt": "please write a factorial program"}
 {"completion": "Multiply the integers from 1 up to n, return 1 for 0, reject negative inputs, and test 0, 1, and 5.", "prompt": "gravion code write a factorial program"}
@@ -1102,3 +1102,15 @@
 {"completion": "Track the largest and second largest values in one pass, skipping duplicates of the maximum; test a list with fewer than two distinct values separately.", "prompt": "please code to find the second largest number"}
 {"completion": "Track the largest and second largest values in one pass, skipping duplicates of the maximum; test a list with fewer than two distinct values separately.", "prompt": "gravion code code to find the second largest number"}
 {"completion": "Track the largest and second largest values in one pass, skipping duplicates of the maximum; test a list with fewer than two distinct values separately.", "prompt": "help me code to find the second largest number"}
+{"completion": "Loop from 1 to 10 and print 5 * i each time: for i in range(1, 11): print(5, 'x', i, '=', 5 * i).", "prompt": "write a program to print the multiplication table of 5"}
+{"completion": "Loop from 1 to 10 and print 5 * i each time: for i in range(1, 11): print(5, 'x', i, '=', 5 * i).", "prompt": "please write a program to print the multiplication table of 5"}
+{"completion": "Loop from 1 to 10 and print 5 * i each time: for i in range(1, 11): print(5, 'x', i, '=', 5 * i).", "prompt": "gravion code write a program to print the multiplication table of 5"}
+{"completion": "Loop from 1 to 10 and print 5 * i each time: for i in range(1, 11): print(5, 'x', i, '=', 5 * i).", "prompt": "help me write a program to print the multiplication table of 5"}
+{"completion": "Loop from 1 to 10 and print 5 * i each time: for i in range(1, 11): print(5, 'x', i, '=', 5 * i).", "prompt": "print the multiplication table of 5"}
+{"completion": "Loop from 1 to 10 and print 5 * i each time: for i in range(1, 11): print(5, 'x', i, '=', 5 * i).", "prompt": "please print the multiplication table of 5"}
+{"completion": "Loop from 1 to 10 and print 5 * i each time: for i in range(1, 11): print(5, 'x', i, '=', 5 * i).", "prompt": "gravion code print the multiplication table of 5"}
+{"completion": "Loop from 1 to 10 and print 5 * i each time: for i in range(1, 11): print(5, 'x', i, '=', 5 * i).", "prompt": "help me print the multiplication table of 5"}
+{"completion": "Loop from 1 to 10 and print 5 * i each time: for i in range(1, 11): print(5, 'x', i, '=', 5 * i).", "prompt": "multiplication table program"}
+{"completion": "Loop from 1 to 10 and print 5 * i each time: for i in range(1, 11): print(5, 'x', i, '=', 5 * i).", "prompt": "please multiplication table program"}
+{"completion": "Loop from 1 to 10 and print 5 * i each time: for i in range(1, 11): print(5, 'x', i, '=', 5 * i).", "prompt": "gravion code multiplication table program"}
+{"completion": "Loop from 1 to 10 and print 5 * i each time: for i in range(1, 11): print(5, 'x', i, '=', 5 * i).", "prompt": "help me multiplication table program"}
