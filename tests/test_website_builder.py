@@ -283,7 +283,7 @@ def test_local_builder_writes_a_real_site(tmp_path):
 def test_local_builder_is_deterministic(tmp_path):
     prompt = "a portfolio for 'Jane Doe' with a gallery page"
     first = build_site(prompt, tmp_path / "a")
-    second = build_site(prompt, tmp_path / "b")
+    build_site(prompt, tmp_path / "b")
     for name in first.files:
         assert (tmp_path / "a" / name).read_bytes() == (tmp_path / "b" / name).read_bytes()
 

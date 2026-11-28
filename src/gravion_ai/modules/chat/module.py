@@ -120,6 +120,59 @@ FREE_RESPONSE = (
     "reaches you."
 )
 
+STARTUP_RESPONSE = (
+    "Gravion gives a startup one module system for chat, "
+    "support, coding, website building, image, music, video, "
+    "cyber security and agentic tools, with built-in models "
+    "that run offline — so a small team ships AI features "
+    "without building each AI type from scratch."
+)
+
+LAPTOP_RESPONSE = (
+    "Yes — Gravion runs on your own machine: the built-in "
+    "models work fully offline with no network and no API "
+    "key, so a normal laptop is enough for the local modules."
+)
+
+DIFFERENT_RESPONSE = (
+    "Gravion is one modular platform instead of separate "
+    "tools: chat, support, coding, website building, image, "
+    "music, video, cyber security and agentic modules share "
+    "one system, and the built-in models run fully offline "
+    "with no API key."
+)
+
+PRICE_RESPONSE = (
+    "Development and evaluation are free, with no agreement "
+    "needed. Production pricing runs under a commercial "
+    "agreement by tier, and there is no per-token or API-key "
+    "cost because the built-in models run offline on your "
+    "own machine."
+)
+
+COMPANY_RESPONSE = (
+    "Yes — a company can build on Gravion's module system "
+    "for chat, support, coding, website building, cyber "
+    "security and agentic tools instead of building each AI "
+    "type from scratch. Development and evaluation are free; "
+    "production use runs under a commercial agreement."
+)
+
+INCIDENT_RESPONSE = (
+    "First contain it: preserve logs and evidence, check "
+    "whether any login succeeded, block or rate-limit the "
+    "source, force password resets for touched accounts, "
+    "and review related activity before bringing services "
+    "back. The cyber module can triage the alert in detail."
+)
+
+TEAM_RESPONSE = (
+    "Gravion supports a team rather than replacing it: the "
+    "support module answers routine questions from your own "
+    "material and escalates to a person on request, so the "
+    "team spends its time on the cases that need judgement."
+)
+
 _GREETING = re.compile(
     r"^(?:hello|hi|hey|namaste|greetings|good (?:morning|afternoon|evening))\b"
 )
@@ -140,7 +193,11 @@ _CAPABILITIES = re.compile(
     # Roman Hindi capability asks, same reasoning as above:
     # "tum kya kar sakte ho" is "what can you do".
     r"tum kya kar sakte ho|aap kya kar sakte hain|"
-    r"kya kar sakte ho|tum kya kya kar sakte ho)\b"
+    r"kya kar sakte ho|tum kya kya kar sakte ho|"
+    # The same ask about Gravion in the third person (28 Nov
+    # 2026 cycle, 06:16 run): "Gravion kya kar sakta hai?"
+    # echoed while the tum/aap forms answered.
+    r"gravion kya kar sakta hai|gravion kya kar sakti hai)\b"
 )
 _NEGATION = re.compile(
     r"\b(?:not|never|no|cannot|can t|don t|nahi|nahin)\b"
@@ -167,6 +224,11 @@ _BUILDER = re.compile(
     r"\b(?:who built you|who made you|who created you|"
     r"who built gravion|who made gravion|who created gravion|"
     r"who is your creator|who is your maker|"
+    # The founder shape of the same ask (28 Nov 2026 cycle,
+    # 05:16 run): "who is the founder of Gravion?" echoed
+    # while "who built you?" answered.
+    r"who is the founder of gravion|who founded gravion|"
+    r"founder of gravion|who is your founder|"
     r"tumhe kisne banaya|gravion kisne banaya)\b"
 )
 _ABOUT = re.compile(
@@ -187,7 +249,12 @@ _LANGUAGE = re.compile(
     # above; with only the Hindi forms listed, it echoed.
     r"what languages do you support|"
     r"which languages do you support|"
-    r"what languages can you speak)\b"
+    r"what languages can you speak|"
+    # The same ask about Gravion in the third person (28 Nov
+    # 2026 cycle, 07:16 run): "does Gravion work in Hindi?"
+    # echoed while the you-forms answered.
+    r"does gravion work in hindi|does gravion speak hindi|"
+    r"gravion work in hindi|gravion speak hindi)\b"
 )
 # Demo questions about Gravion itself (28 Nov 2026 cycle,
 # 04:16 run): "nice to meet you", "do you work offline?",
@@ -203,7 +270,12 @@ _MEET = re.compile(
 _OFFLINE = re.compile(
     r"\b(?:do you work offline|can you work offline|"
     r"do you need internet|do you need an internet connection|"
-    r"work without internet|offline kaam karte ho)\b"
+    r"work without internet|offline kaam karte ho|"
+    # The same ask naming Gravion (28 Nov 2026 cycle, 06:16
+    # run): "does Gravion need internet?" echoed while "do
+    # you need internet?" answered.
+    r"does gravion need internet|gravion need internet|"
+    r"does gravion work offline|gravion work offline)\b"
 )
 _START = re.compile(
     r"\b(?:how do i get started|how to get started|"
@@ -212,6 +284,66 @@ _START = re.compile(
 )
 _FREE = re.compile(
     r"\b(?:is gravion free|is it free|gravion free hai kya)\b"
+)
+# Investor questions about Gravion itself (28 Nov 2026 cycle,
+# 05:16 run): "what can Gravion do for a startup?", "can
+# Gravion run on my laptop?" and "how is Gravion different?"
+# all echoed while the neighbouring identity and capability
+# lines answered. Each pattern stays narrow: the startup ask
+# names a startup, the laptop ask names running locally, and
+# the difference ask names Gravion.
+_STARTUP = re.compile(
+    r"\b(?:what can gravion do for (?:a |my )?startup|"
+    r"how can gravion help (?:a |my )?startup|"
+    r"gravion for startups|why should (?:a |my )?startup use gravion)\b"
+)
+_LAPTOP = re.compile(
+    r"\b(?:can gravion run on my laptop|run on my laptop|"
+    r"run on my computer|can i run gravion locally|"
+    r"run gravion locally|does gravion run locally)\b"
+)
+_DIFFERENT = re.compile(
+    r"\b(?:how is gravion different|what makes gravion different|"
+    r"why gravion|why choose gravion)\b"
+)
+# Price and company asks (28 Nov 2026 cycle, 06:16 run): an
+# investor asks "what is the price of Gravion?" and "can I
+# use Gravion for my company?" in the same breath as the
+# startup and free asks, and both echoed. Each pattern stays
+# narrow: the price ask names Gravion's price or cost, and
+# the company ask names company or business use.
+_PRICE = re.compile(
+    r"\b(?:price of gravion|how much does gravion cost|"
+    r"gravion price|gravion cost|what does gravion cost|"
+    r"pricing of gravion|gravion pricing)\b"
+)
+_COMPANY = re.compile(
+    r"\b(?:use gravion for my company|gravion for my company|"
+    r"use gravion in my company|can companies use gravion|"
+    r"gravion for companies|use gravion for business|"
+    r"gravion for business)\b"
+)
+# A live security incident asked in chat (28 Nov 2026 cycle,
+# 07:16 run): "someone is trying to break into our server"
+# and "our website got hacked" echoed in chat while the
+# cyber module answered both. The pattern stays narrow:
+# break-in, hacked and under-attack phrasings about the
+# asker's own systems, not general security questions.
+_INCIDENT = re.compile(
+    r"\b(?:trying to break into|break into our|"
+    r"got hacked|was hacked|been hacked|"
+    r"under attack|someone hacked|hacked our|"
+    r"hacked my)\b"
+)
+# The support-team ask (28 Nov 2026 cycle, 07:16 run): an
+# investor asks "can Gravion replace my support team?" in
+# the same breath as the company ask, and it echoed. The
+# pattern names replacing a support team; the reply is
+# honest that Gravion assists the team and escalates.
+_TEAM = re.compile(
+    r"\b(?:replace (?:my|our|a|the) support team|"
+    r"replace support team|"
+    r"gravion replace (?:my|our) team)\b"
 )
 _THANKS = re.compile(
     r"^(?:thank you|thanks|thanks a lot|thank you so much|"
@@ -263,6 +395,20 @@ def opening_response(prompt: str) -> str | None:
         return START_RESPONSE
     if _FREE.search(text) and words <= 6:
         return FREE_RESPONSE
+    if _STARTUP.search(text) and words <= 9:
+        return STARTUP_RESPONSE
+    if _LAPTOP.search(text) and words <= 9:
+        return LAPTOP_RESPONSE
+    if _DIFFERENT.search(text) and words <= 8:
+        return DIFFERENT_RESPONSE
+    if _PRICE.search(text) and words <= 8:
+        return PRICE_RESPONSE
+    if _COMPANY.search(text) and words <= 9:
+        return COMPANY_RESPONSE
+    if _INCIDENT.search(text) and words <= 12:
+        return INCIDENT_RESPONSE
+    if _TEAM.search(text) and words <= 9:
+        return TEAM_RESPONSE
     if _LANGUAGE.search(text):
         return LANGUAGE_RESPONSE
     if _WELLBEING.search(text) and words <= 8:

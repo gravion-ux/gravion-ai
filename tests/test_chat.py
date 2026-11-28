@@ -64,6 +64,26 @@ def test_gravion_question_tasks_stay_with_the_model():
     assert opening_response("is the museum free on sundays") is None
 
 
+def test_incident_and_investor_lines_answer():
+    # 28 Nov 2026 cycle (07:16 run): a live incident asked in
+    # chat, the support-team question and the third-person
+    # Hindi ask echoed while the cyber module and the
+    # you-forms answered.
+    assert "preserve logs" in opening_response(
+        "Someone is trying to break into our server, what do we do?"
+    )
+    assert "preserve logs" in opening_response(
+        "Our website got hacked, what should we do?"
+    )
+    assert "supports a team" in opening_response(
+        "Can Gravion replace my support team?"
+    )
+    assert "Roman Hindi" in opening_response("Does Gravion work in Hindi?")
+    # A general security question is not a live incident and
+    # stays with the model.
+    assert opening_response("how do attackers break into servers in general") is None
+
+
 def test_conversational_tasks_stay_with_the_model():
     # Whole-message and translation guards: tasks that quote an
     # opening line are real requests, not openings.

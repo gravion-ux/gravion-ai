@@ -350,3 +350,183 @@
 {"completion": "Read the error line first, check brackets, quotes, and indentation around it, fix one issue, then run again; the reported line is often just after the real mistake.", "prompt": "please how do i fix a syntax error"}
 {"completion": "Read the error line first, check brackets, quotes, and indentation around it, fix one issue, then run again; the reported line is often just after the real mistake.", "prompt": "gravion code how do i fix a syntax error"}
 {"completion": "Read the error line first, check brackets, quotes, and indentation around it, fix one issue, then run again; the reported line is often just after the real mistake.", "prompt": "help me how do i fix a syntax error"}
+{"completion": "A loop repeats a block of code while a condition holds or for each item in a collection; make sure the condition changes so the loop ends.", "prompt": "what is a loop in programming"}
+{"completion": "A loop repeats a block of code while a condition holds or for each item in a collection; make sure the condition changes so the loop ends.", "prompt": "please what is a loop in programming"}
+{"completion": "A loop repeats a block of code while a condition holds or for each item in a collection; make sure the condition changes so the loop ends.", "prompt": "gravion code what is a loop in programming"}
+{"completion": "A loop repeats a block of code while a condition holds or for each item in a collection; make sure the condition changes so the loop ends.", "prompt": "help me what is a loop in programming"}
+{"completion": "A loop repeats a block of code while a condition holds or for each item in a collection; make sure the condition changes so the loop ends.", "prompt": "explain loops in programming"}
+{"completion": "A loop repeats a block of code while a condition holds or for each item in a collection; make sure the condition changes so the loop ends.", "prompt": "please explain loops in programming"}
+{"completion": "A loop repeats a block of code while a condition holds or for each item in a collection; make sure the condition changes so the loop ends.", "prompt": "gravion code explain loops in programming"}
+{"completion": "A loop repeats a block of code while a condition holds or for each item in a collection; make sure the condition changes so the loop ends.", "prompt": "help me explain loops in programming"}
+{"completion": "A loop repeats a block of code while a condition holds or for each item in a collection; make sure the condition changes so the loop ends.", "prompt": "explain what a loop is"}
+{"completion": "A loop repeats a block of code while a condition holds or for each item in a collection; make sure the condition changes so the loop ends.", "prompt": "please explain what a loop is"}
+{"completion": "A loop repeats a block of code while a condition holds or for each item in a collection; make sure the condition changes so the loop ends.", "prompt": "gravion code explain what a loop is"}
+{"completion": "A loop repeats a block of code while a condition holds or for each item in a collection; make sure the condition changes so the loop ends.", "prompt": "help me explain what a loop is"}
+{"completion": "Use max(values) for the largest item, or track the largest value in one pass; test an empty list separately because it has no maximum.", "prompt": "find the maximum in a list"}
+{"completion": "Use max(values) for the largest item, or track the largest value in one pass; test an empty list separately because it has no maximum.", "prompt": "please find the maximum in a list"}
+{"completion": "Use max(values) for the largest item, or track the largest value in one pass; test an empty list separately because it has no maximum.", "prompt": "gravion code find the maximum in a list"}
+{"completion": "Use max(values) for the largest item, or track the largest value in one pass; test an empty list separately because it has no maximum.", "prompt": "help me find the maximum in a list"}
+{"completion": "Use max(values) for the largest item, or track the largest value in one pass; test an empty list separately because it has no maximum.", "prompt": "write code to find the maximum in a list"}
+{"completion": "Use max(values) for the largest item, or track the largest value in one pass; test an empty list separately because it has no maximum.", "prompt": "please write code to find the maximum in a list"}
+{"completion": "Use max(values) for the largest item, or track the largest value in one pass; test an empty list separately because it has no maximum.", "prompt": "gravion code write code to find the maximum in a list"}
+{"completion": "Use max(values) for the largest item, or track the largest value in one pass; test an empty list separately because it has no maximum.", "prompt": "help me write code to find the maximum in a list"}
+{"completion": "Use max(values) for the largest item, or track the largest value in one pass; test an empty list separately because it has no maximum.", "prompt": "find the largest number in a list"}
+{"completion": "Use max(values) for the largest item, or track the largest value in one pass; test an empty list separately because it has no maximum.", "prompt": "please find the largest number in a list"}
+{"completion": "Use max(values) for the largest item, or track the largest value in one pass; test an empty list separately because it has no maximum.", "prompt": "gravion code find the largest number in a list"}
+{"completion": "Use max(values) for the largest item, or track the largest value in one pass; test an empty list separately because it has no maximum.", "prompt": "help me find the largest number in a list"}
+{"completion": "Open the file with a with block so it closes automatically: with open(path) as handle: text = handle.read(). Handle a missing file with a clear error.", "prompt": "read a file in python"}
+{"completion": "Open the file with a with block so it closes automatically: with open(path) as handle: text = handle.read(). Handle a missing file with a clear error.", "prompt": "please read a file in python"}
+{"completion": "Open the file with a with block so it closes automatically: with open(path) as handle: text = handle.read(). Handle a missing file with a clear error.", "prompt": "gravion code read a file in python"}
+{"completion": "Open the file with a with block so it closes automatically: with open(path) as handle: text = handle.read(). Handle a missing file with a clear error.", "prompt": "help me read a file in python"}
+{"completion": "Open the file with a with block so it closes automatically: with open(path) as handle: text = handle.read(). Handle a missing file with a clear error.", "prompt": "how do i read a file in python"}
+{"completion": "Open the file with a with block so it closes automatically: with open(path) as handle: text = handle.read(). Handle a missing file with a clear error.", "prompt": "please how do i read a file in python"}
+{"completion": "Open the file with a with block so it closes automatically: with open(path) as handle: text = handle.read(). Handle a missing file with a clear error.", "prompt": "gravion code how do i read a file in python"}
+{"completion": "Open the file with a with block so it closes automatically: with open(path) as handle: text = handle.read(). Handle a missing file with a clear error.", "prompt": "help me how do i read a file in python"}
+{"completion": "Open the file with a with block so it closes automatically: with open(path) as handle: text = handle.read(). Handle a missing file with a clear error.", "prompt": "read text from a file"}
+{"completion": "Open the file with a with block so it closes automatically: with open(path) as handle: text = handle.read(). Handle a missing file with a clear error.", "prompt": "please read text from a file"}
+{"completion": "Open the file with a with block so it closes automatically: with open(path) as handle: text = handle.read(). Handle a missing file with a clear error.", "prompt": "gravion code read text from a file"}
+{"completion": "Open the file with a with block so it closes automatically: with open(path) as handle: text = handle.read(). Handle a missing file with a clear error.", "prompt": "help me read text from a file"}
+{"completion": "A function is a named, reusable block of code that takes inputs, does one job, and can return a result.", "prompt": "what is a function"}
+{"completion": "A function is a named, reusable block of code that takes inputs, does one job, and can return a result.", "prompt": "please what is a function"}
+{"completion": "A function is a named, reusable block of code that takes inputs, does one job, and can return a result.", "prompt": "gravion code what is a function"}
+{"completion": "A function is a named, reusable block of code that takes inputs, does one job, and can return a result.", "prompt": "help me what is a function"}
+{"completion": "A function is a named, reusable block of code that takes inputs, does one job, and can return a result.", "prompt": "explain what a function is"}
+{"completion": "A function is a named, reusable block of code that takes inputs, does one job, and can return a result.", "prompt": "please explain what a function is"}
+{"completion": "A function is a named, reusable block of code that takes inputs, does one job, and can return a result.", "prompt": "gravion code explain what a function is"}
+{"completion": "A function is a named, reusable block of code that takes inputs, does one job, and can return a result.", "prompt": "help me explain what a function is"}
+{"completion": "A function is a named, reusable block of code that takes inputs, does one job, and can return a result.", "prompt": "explain functions in programming"}
+{"completion": "A function is a named, reusable block of code that takes inputs, does one job, and can return a result.", "prompt": "please explain functions in programming"}
+{"completion": "A function is a named, reusable block of code that takes inputs, does one job, and can return a result.", "prompt": "gravion code explain functions in programming"}
+{"completion": "A function is a named, reusable block of code that takes inputs, does one job, and can return a result.", "prompt": "help me explain functions in programming"}
+{"completion": "An API is a defined way for programs to request work from each other: named operations, agreed inputs, and predictable responses.", "prompt": "explain what an api is"}
+{"completion": "An API is a defined way for programs to request work from each other: named operations, agreed inputs, and predictable responses.", "prompt": "please explain what an api is"}
+{"completion": "An API is a defined way for programs to request work from each other: named operations, agreed inputs, and predictable responses.", "prompt": "gravion code explain what an api is"}
+{"completion": "An API is a defined way for programs to request work from each other: named operations, agreed inputs, and predictable responses.", "prompt": "help me explain what an api is"}
+{"completion": "An API is a defined way for programs to request work from each other: named operations, agreed inputs, and predictable responses.", "prompt": "what is an api"}
+{"completion": "An API is a defined way for programs to request work from each other: named operations, agreed inputs, and predictable responses.", "prompt": "please what is an api"}
+{"completion": "An API is a defined way for programs to request work from each other: named operations, agreed inputs, and predictable responses.", "prompt": "gravion code what is an api"}
+{"completion": "An API is a defined way for programs to request work from each other: named operations, agreed inputs, and predictable responses.", "prompt": "help me what is an api"}
+{"completion": "An API is a defined way for programs to request work from each other: named operations, agreed inputs, and predictable responses.", "prompt": "explain apis in programming"}
+{"completion": "An API is a defined way for programs to request work from each other: named operations, agreed inputs, and predictable responses.", "prompt": "please explain apis in programming"}
+{"completion": "An API is a defined way for programs to request work from each other: named operations, agreed inputs, and predictable responses.", "prompt": "gravion code explain apis in programming"}
+{"completion": "An API is a defined way for programs to request work from each other: named operations, agreed inputs, and predictable responses.", "prompt": "help me explain apis in programming"}
+{"completion": "Use print(\"Hello, world!\") to show the text; it is the smallest complete program and a first check that the setup runs.", "prompt": "print hello world in python"}
+{"completion": "Use print(\"Hello, world!\") to show the text; it is the smallest complete program and a first check that the setup runs.", "prompt": "please print hello world in python"}
+{"completion": "Use print(\"Hello, world!\") to show the text; it is the smallest complete program and a first check that the setup runs.", "prompt": "gravion code print hello world in python"}
+{"completion": "Use print(\"Hello, world!\") to show the text; it is the smallest complete program and a first check that the setup runs.", "prompt": "help me print hello world in python"}
+{"completion": "Use print(\"Hello, world!\") to show the text; it is the smallest complete program and a first check that the setup runs.", "prompt": "write a program to print hello world"}
+{"completion": "Use print(\"Hello, world!\") to show the text; it is the smallest complete program and a first check that the setup runs.", "prompt": "please write a program to print hello world"}
+{"completion": "Use print(\"Hello, world!\") to show the text; it is the smallest complete program and a first check that the setup runs.", "prompt": "gravion code write a program to print hello world"}
+{"completion": "Use print(\"Hello, world!\") to show the text; it is the smallest complete program and a first check that the setup runs.", "prompt": "help me write a program to print hello world"}
+{"completion": "Use print(\"Hello, world!\") to show the text; it is the smallest complete program and a first check that the setup runs.", "prompt": "hello world program in python"}
+{"completion": "Use print(\"Hello, world!\") to show the text; it is the smallest complete program and a first check that the setup runs.", "prompt": "please hello world program in python"}
+{"completion": "Use print(\"Hello, world!\") to show the text; it is the smallest complete program and a first check that the setup runs.", "prompt": "gravion code hello world program in python"}
+{"completion": "Use print(\"Hello, world!\") to show the text; it is the smallest complete program and a first check that the setup runs.", "prompt": "help me hello world program in python"}
+{"completion": "Compare neighboring values or use a known sorting method, then verify sorted, reversed, and duplicate inputs.", "prompt": "write code to sort a list"}
+{"completion": "Compare neighboring values or use a known sorting method, then verify sorted, reversed, and duplicate inputs.", "prompt": "please write code to sort a list"}
+{"completion": "Compare neighboring values or use a known sorting method, then verify sorted, reversed, and duplicate inputs.", "prompt": "gravion code write code to sort a list"}
+{"completion": "Compare neighboring values or use a known sorting method, then verify sorted, reversed, and duplicate inputs.", "prompt": "help me write code to sort a list"}
+{"completion": "Compare neighboring values or use a known sorting method, then verify sorted, reversed, and duplicate inputs.", "prompt": "sort a list in python"}
+{"completion": "Compare neighboring values or use a known sorting method, then verify sorted, reversed, and duplicate inputs.", "prompt": "please sort a list in python"}
+{"completion": "Compare neighboring values or use a known sorting method, then verify sorted, reversed, and duplicate inputs.", "prompt": "gravion code sort a list in python"}
+{"completion": "Compare neighboring values or use a known sorting method, then verify sorted, reversed, and duplicate inputs.", "prompt": "help me sort a list in python"}
+{"completion": "Compare neighboring values or use a known sorting method, then verify sorted, reversed, and duplicate inputs.", "prompt": "how do i sort a list"}
+{"completion": "Compare neighboring values or use a known sorting method, then verify sorted, reversed, and duplicate inputs.", "prompt": "please how do i sort a list"}
+{"completion": "Compare neighboring values or use a known sorting method, then verify sorted, reversed, and duplicate inputs.", "prompt": "gravion code how do i sort a list"}
+{"completion": "Compare neighboring values or use a known sorting method, then verify sorted, reversed, and duplicate inputs.", "prompt": "help me how do i sort a list"}
+{"completion": "Multiply the integers from 1 up to n, return 1 for 0, reject negative inputs, and test 0, 1, and 5.", "prompt": "write a factorial program"}
+{"completion": "Multiply the integers from 1 up to n, return 1 for 0, reject negative inputs, and test 0, 1, and 5.", "prompt": "please write a factorial program"}
+{"completion": "Multiply the integers from 1 up to n, return 1 for 0, reject negative inputs, and test 0, 1, and 5.", "prompt": "gravion code write a factorial program"}
+{"completion": "Multiply the integers from 1 up to n, return 1 for 0, reject negative inputs, and test 0, 1, and 5.", "prompt": "help me write a factorial program"}
+{"completion": "Multiply the integers from 1 up to n, return 1 for 0, reject negative inputs, and test 0, 1, and 5.", "prompt": "factorial program in python"}
+{"completion": "Multiply the integers from 1 up to n, return 1 for 0, reject negative inputs, and test 0, 1, and 5.", "prompt": "please factorial program in python"}
+{"completion": "Multiply the integers from 1 up to n, return 1 for 0, reject negative inputs, and test 0, 1, and 5.", "prompt": "gravion code factorial program in python"}
+{"completion": "Multiply the integers from 1 up to n, return 1 for 0, reject negative inputs, and test 0, 1, and 5.", "prompt": "help me factorial program in python"}
+{"completion": "Multiply the integers from 1 up to n, return 1 for 0, reject negative inputs, and test 0, 1, and 5.", "prompt": "write code for factorial"}
+{"completion": "Multiply the integers from 1 up to n, return 1 for 0, reject negative inputs, and test 0, 1, and 5.", "prompt": "please write code for factorial"}
+{"completion": "Multiply the integers from 1 up to n, return 1 for 0, reject negative inputs, and test 0, 1, and 5.", "prompt": "gravion code write code for factorial"}
+{"completion": "Multiply the integers from 1 up to n, return 1 for 0, reject negative inputs, and test 0, 1, and 5.", "prompt": "help me write code for factorial"}
+{"completion": "Wrap risky code in try and except, catch the specific errors you expect, add context, and clean up resources in finally; do not hide the original cause.", "prompt": "handle errors in python"}
+{"completion": "Wrap risky code in try and except, catch the specific errors you expect, add context, and clean up resources in finally; do not hide the original cause.", "prompt": "please handle errors in python"}
+{"completion": "Wrap risky code in try and except, catch the specific errors you expect, add context, and clean up resources in finally; do not hide the original cause.", "prompt": "gravion code handle errors in python"}
+{"completion": "Wrap risky code in try and except, catch the specific errors you expect, add context, and clean up resources in finally; do not hide the original cause.", "prompt": "help me handle errors in python"}
+{"completion": "Wrap risky code in try and except, catch the specific errors you expect, add context, and clean up resources in finally; do not hide the original cause.", "prompt": "how do i handle errors in python"}
+{"completion": "Wrap risky code in try and except, catch the specific errors you expect, add context, and clean up resources in finally; do not hide the original cause.", "prompt": "please how do i handle errors in python"}
+{"completion": "Wrap risky code in try and except, catch the specific errors you expect, add context, and clean up resources in finally; do not hide the original cause.", "prompt": "gravion code how do i handle errors in python"}
+{"completion": "Wrap risky code in try and except, catch the specific errors you expect, add context, and clean up resources in finally; do not hide the original cause.", "prompt": "help me how do i handle errors in python"}
+{"completion": "Wrap risky code in try and except, catch the specific errors you expect, add context, and clean up resources in finally; do not hide the original cause.", "prompt": "explain error handling in python"}
+{"completion": "Wrap risky code in try and except, catch the specific errors you expect, add context, and clean up resources in finally; do not hide the original cause.", "prompt": "please explain error handling in python"}
+{"completion": "Wrap risky code in try and except, catch the specific errors you expect, add context, and clean up resources in finally; do not hide the original cause.", "prompt": "gravion code explain error handling in python"}
+{"completion": "Wrap risky code in try and except, catch the specific errors you expect, add context, and clean up resources in finally; do not hide the original cause.", "prompt": "help me explain error handling in python"}
+{"completion": "A class is a blueprint for objects: it groups related data and the methods that act on it, and each object made from it keeps its own state.", "prompt": "what is a class in python"}
+{"completion": "A class is a blueprint for objects: it groups related data and the methods that act on it, and each object made from it keeps its own state.", "prompt": "please what is a class in python"}
+{"completion": "A class is a blueprint for objects: it groups related data and the methods that act on it, and each object made from it keeps its own state.", "prompt": "gravion code what is a class in python"}
+{"completion": "A class is a blueprint for objects: it groups related data and the methods that act on it, and each object made from it keeps its own state.", "prompt": "help me what is a class in python"}
+{"completion": "A class is a blueprint for objects: it groups related data and the methods that act on it, and each object made from it keeps its own state.", "prompt": "explain classes in python"}
+{"completion": "A class is a blueprint for objects: it groups related data and the methods that act on it, and each object made from it keeps its own state.", "prompt": "please explain classes in python"}
+{"completion": "A class is a blueprint for objects: it groups related data and the methods that act on it, and each object made from it keeps its own state.", "prompt": "gravion code explain classes in python"}
+{"completion": "A class is a blueprint for objects: it groups related data and the methods that act on it, and each object made from it keeps its own state.", "prompt": "help me explain classes in python"}
+{"completion": "A class is a blueprint for objects: it groups related data and the methods that act on it, and each object made from it keeps its own state.", "prompt": "what is a class in programming"}
+{"completion": "A class is a blueprint for objects: it groups related data and the methods that act on it, and each object made from it keeps its own state.", "prompt": "please what is a class in programming"}
+{"completion": "A class is a blueprint for objects: it groups related data and the methods that act on it, and each object made from it keeps its own state.", "prompt": "gravion code what is a class in programming"}
+{"completion": "A class is a blueprint for objects: it groups related data and the methods that act on it, and each object made from it keeps its own state.", "prompt": "help me what is a class in programming"}
+{"completion": "Define a small function with two numeric inputs, return their sum, and test it with positive, negative, and zero values.", "prompt": "write a program to add two numbers"}
+{"completion": "Define a small function with two numeric inputs, return their sum, and test it with positive, negative, and zero values.", "prompt": "please write a program to add two numbers"}
+{"completion": "Define a small function with two numeric inputs, return their sum, and test it with positive, negative, and zero values.", "prompt": "gravion code write a program to add two numbers"}
+{"completion": "Define a small function with two numeric inputs, return their sum, and test it with positive, negative, and zero values.", "prompt": "help me write a program to add two numbers"}
+{"completion": "Define a small function with two numeric inputs, return their sum, and test it with positive, negative, and zero values.", "prompt": "add two numbers in python"}
+{"completion": "Define a small function with two numeric inputs, return their sum, and test it with positive, negative, and zero values.", "prompt": "please add two numbers in python"}
+{"completion": "Define a small function with two numeric inputs, return their sum, and test it with positive, negative, and zero values.", "prompt": "gravion code add two numbers in python"}
+{"completion": "Define a small function with two numeric inputs, return their sum, and test it with positive, negative, and zero values.", "prompt": "help me add two numbers in python"}
+{"completion": "Define a small function with two numeric inputs, return their sum, and test it with positive, negative, and zero values.", "prompt": "write code to add two numbers"}
+{"completion": "Define a small function with two numeric inputs, return their sum, and test it with positive, negative, and zero values.", "prompt": "please write code to add two numbers"}
+{"completion": "Define a small function with two numeric inputs, return their sum, and test it with positive, negative, and zero values.", "prompt": "gravion code write code to add two numbers"}
+{"completion": "Define a small function with two numeric inputs, return their sum, and test it with positive, negative, and zero values.", "prompt": "help me write code to add two numbers"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "write a fibonacci program"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "please write a fibonacci program"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "gravion code write a fibonacci program"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "help me write a fibonacci program"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "fibonacci sequence program"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "please fibonacci sequence program"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "gravion code fibonacci sequence program"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "help me fibonacci sequence program"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "fibonacci program"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "please fibonacci program"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "gravion code fibonacci program"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "help me fibonacci program"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "write fibonacci code"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "please write fibonacci code"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "gravion code write fibonacci code"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "help me write fibonacci code"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "program for fibonacci series"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "please program for fibonacci series"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "gravion code program for fibonacci series"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "help me program for fibonacci series"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "generate fibonacci numbers"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "please generate fibonacci numbers"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "gravion code generate fibonacci numbers"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "help me generate fibonacci numbers"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "fibonacci series code"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "please fibonacci series code"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "gravion code fibonacci series code"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "help me fibonacci series code"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "code for fibonacci series"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "please code for fibonacci series"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "gravion code code for fibonacci series"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "help me code for fibonacci series"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "fibonacci numbers program"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "please fibonacci numbers program"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "gravion code fibonacci numbers program"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "help me fibonacci numbers program"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "write code for fibonacci"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "please write code for fibonacci"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "gravion code write code for fibonacci"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "help me write code for fibonacci"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "fibonacci sequence code"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "please fibonacci sequence code"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "gravion code fibonacci sequence code"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "help me fibonacci sequence code"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "print fibonacci series"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "please print fibonacci series"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "gravion code print fibonacci series"}
+{"completion": "Build the sequence from the first two values, each next value the sum of the previous two; test the first value, the second, and a longer run.", "prompt": "help me print fibonacci series"}

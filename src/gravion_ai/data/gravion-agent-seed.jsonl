@@ -214,3 +214,75 @@
 {"completion": "Agent plan: reproduce steps, classify severity, find duplicates, assign owners, and track fixes.", "prompt": "please plan an agent for report triage"}
 {"completion": "Agent plan: reproduce steps, classify severity, find duplicates, assign owners, and track fixes.", "prompt": "gravion agent plan an agent for report triage"}
 {"completion": "Agent plan: reproduce steps, classify severity, find duplicates, assign owners, and track fixes.", "prompt": "help me plan an agent for report triage"}
+{"completion": "Agent plan: capture receipts, categorize spending, flag unusual items, and summarize monthly totals.", "prompt": "create an agent that tracks expenses"}
+{"completion": "Agent plan: capture receipts, categorize spending, flag unusual items, and summarize monthly totals.", "prompt": "please create an agent that tracks expenses"}
+{"completion": "Agent plan: capture receipts, categorize spending, flag unusual items, and summarize monthly totals.", "prompt": "gravion agent create an agent that tracks expenses"}
+{"completion": "Agent plan: capture receipts, categorize spending, flag unusual items, and summarize monthly totals.", "prompt": "help me create an agent that tracks expenses"}
+{"completion": "Agent plan: capture receipts, categorize spending, flag unusual items, and summarize monthly totals.", "prompt": "build an expense tracking agent"}
+{"completion": "Agent plan: capture receipts, categorize spending, flag unusual items, and summarize monthly totals.", "prompt": "please build an expense tracking agent"}
+{"completion": "Agent plan: capture receipts, categorize spending, flag unusual items, and summarize monthly totals.", "prompt": "gravion agent build an expense tracking agent"}
+{"completion": "Agent plan: capture receipts, categorize spending, flag unusual items, and summarize monthly totals.", "prompt": "help me build an expense tracking agent"}
+{"completion": "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely.", "prompt": "build an agent to schedule meetings"}
+{"completion": "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely.", "prompt": "please build an agent to schedule meetings"}
+{"completion": "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely.", "prompt": "gravion agent build an agent to schedule meetings"}
+{"completion": "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely.", "prompt": "help me build an agent to schedule meetings"}
+{"completion": "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely.", "prompt": "create a meeting scheduling agent"}
+{"completion": "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely.", "prompt": "please create a meeting scheduling agent"}
+{"completion": "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely.", "prompt": "gravion agent create a meeting scheduling agent"}
+{"completion": "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely.", "prompt": "help me create a meeting scheduling agent"}
+{"completion": "Agent plan: classify requests, suggest answers, escalate sensitive cases, and track resolution quality.", "prompt": "make a bot that answers customer questions"}
+{"completion": "Agent plan: classify requests, suggest answers, escalate sensitive cases, and track resolution quality.", "prompt": "please make a bot that answers customer questions"}
+{"completion": "Agent plan: classify requests, suggest answers, escalate sensitive cases, and track resolution quality.", "prompt": "gravion agent make a bot that answers customer questions"}
+{"completion": "Agent plan: classify requests, suggest answers, escalate sensitive cases, and track resolution quality.", "prompt": "help me make a bot that answers customer questions"}
+{"completion": "Agent plan: classify requests, suggest answers, escalate sensitive cases, and track resolution quality.", "prompt": "build a customer question answering bot"}
+{"completion": "Agent plan: classify requests, suggest answers, escalate sensitive cases, and track resolution quality.", "prompt": "please build a customer question answering bot"}
+{"completion": "Agent plan: classify requests, suggest answers, escalate sensitive cases, and track resolution quality.", "prompt": "gravion agent build a customer question answering bot"}
+{"completion": "Agent plan: classify requests, suggest answers, escalate sensitive cases, and track resolution quality.", "prompt": "help me build a customer question answering bot"}
+{"completion": "Agent plan: check the site on a schedule, record response times, alert on failures with the failing check, and keep a daily uptime summary.", "prompt": "plan an agent that watches website uptime and sends alerts"}
+{"completion": "Agent plan: check the site on a schedule, record response times, alert on failures with the failing check, and keep a daily uptime summary.", "prompt": "please plan an agent that watches website uptime and sends alerts"}
+{"completion": "Agent plan: check the site on a schedule, record response times, alert on failures with the failing check, and keep a daily uptime summary.", "prompt": "gravion agent plan an agent that watches website uptime and sends alerts"}
+{"completion": "Agent plan: check the site on a schedule, record response times, alert on failures with the failing check, and keep a daily uptime summary.", "prompt": "help me plan an agent that watches website uptime and sends alerts"}
+{"completion": "Agent plan: check the site on a schedule, record response times, alert on failures with the failing check, and keep a daily uptime summary.", "prompt": "watch website uptime and send alerts"}
+{"completion": "Agent plan: check the site on a schedule, record response times, alert on failures with the failing check, and keep a daily uptime summary.", "prompt": "please watch website uptime and send alerts"}
+{"completion": "Agent plan: check the site on a schedule, record response times, alert on failures with the failing check, and keep a daily uptime summary.", "prompt": "gravion agent watch website uptime and send alerts"}
+{"completion": "Agent plan: check the site on a schedule, record response times, alert on failures with the failing check, and keep a daily uptime summary.", "prompt": "help me watch website uptime and send alerts"}
+{"completion": "Agent plan: read approved messages, group by topic, draft summaries, flag urgent items, and ask before sending anything.", "prompt": "create an agent that summarizes my emails"}
+{"completion": "Agent plan: read approved messages, group by topic, draft summaries, flag urgent items, and ask before sending anything.", "prompt": "please create an agent that summarizes my emails"}
+{"completion": "Agent plan: read approved messages, group by topic, draft summaries, flag urgent items, and ask before sending anything.", "prompt": "gravion agent create an agent that summarizes my emails"}
+{"completion": "Agent plan: read approved messages, group by topic, draft summaries, flag urgent items, and ask before sending anything.", "prompt": "help me create an agent that summarizes my emails"}
+{"completion": "Agent plan: read approved messages, group by topic, draft summaries, flag urgent items, and ask before sending anything.", "prompt": "agent that summarizes my emails"}
+{"completion": "Agent plan: read approved messages, group by topic, draft summaries, flag urgent items, and ask before sending anything.", "prompt": "please agent that summarizes my emails"}
+{"completion": "Agent plan: read approved messages, group by topic, draft summaries, flag urgent items, and ask before sending anything.", "prompt": "gravion agent agent that summarizes my emails"}
+{"completion": "Agent plan: read approved messages, group by topic, draft summaries, flag urgent items, and ask before sending anything.", "prompt": "help me agent that summarizes my emails"}
+{"completion": "Agent plan: watch approved items, record changes, alert on thresholds, and avoid purchases without approval.", "prompt": "build an agent that monitors stock prices"}
+{"completion": "Agent plan: watch approved items, record changes, alert on thresholds, and avoid purchases without approval.", "prompt": "please build an agent that monitors stock prices"}
+{"completion": "Agent plan: watch approved items, record changes, alert on thresholds, and avoid purchases without approval.", "prompt": "gravion agent build an agent that monitors stock prices"}
+{"completion": "Agent plan: watch approved items, record changes, alert on thresholds, and avoid purchases without approval.", "prompt": "help me build an agent that monitors stock prices"}
+{"completion": "Agent plan: watch approved items, record changes, alert on thresholds, and avoid purchases without approval.", "prompt": "agent that tracks stock prices"}
+{"completion": "Agent plan: watch approved items, record changes, alert on thresholds, and avoid purchases without approval.", "prompt": "please agent that tracks stock prices"}
+{"completion": "Agent plan: watch approved items, record changes, alert on thresholds, and avoid purchases without approval.", "prompt": "gravion agent agent that tracks stock prices"}
+{"completion": "Agent plan: watch approved items, record changes, alert on thresholds, and avoid purchases without approval.", "prompt": "help me agent that tracks stock prices"}
+{"completion": "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely.", "prompt": "make an agent that books meetings"}
+{"completion": "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely.", "prompt": "please make an agent that books meetings"}
+{"completion": "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely.", "prompt": "gravion agent make an agent that books meetings"}
+{"completion": "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely.", "prompt": "help me make an agent that books meetings"}
+{"completion": "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely.", "prompt": "agent that books meetings"}
+{"completion": "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely.", "prompt": "please agent that books meetings"}
+{"completion": "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely.", "prompt": "gravion agent agent that books meetings"}
+{"completion": "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely.", "prompt": "help me agent that books meetings"}
+{"completion": "Agent plan: draft posts from approved topics, check tone, schedule only after approval, and track results.", "prompt": "plan an agent that writes social media posts"}
+{"completion": "Agent plan: draft posts from approved topics, check tone, schedule only after approval, and track results.", "prompt": "please plan an agent that writes social media posts"}
+{"completion": "Agent plan: draft posts from approved topics, check tone, schedule only after approval, and track results.", "prompt": "gravion agent plan an agent that writes social media posts"}
+{"completion": "Agent plan: draft posts from approved topics, check tone, schedule only after approval, and track results.", "prompt": "help me plan an agent that writes social media posts"}
+{"completion": "Agent plan: draft posts from approved topics, check tone, schedule only after approval, and track results.", "prompt": "agent that writes social media posts"}
+{"completion": "Agent plan: draft posts from approved topics, check tone, schedule only after approval, and track results.", "prompt": "please agent that writes social media posts"}
+{"completion": "Agent plan: draft posts from approved topics, check tone, schedule only after approval, and track results.", "prompt": "gravion agent agent that writes social media posts"}
+{"completion": "Agent plan: draft posts from approved topics, check tone, schedule only after approval, and track results.", "prompt": "help me agent that writes social media posts"}
+{"completion": "Agent plan: screen resumes against approved criteria, rank matches with evidence, flag missing information, and leave hiring decisions to people.", "prompt": "create an agent that screens resumes"}
+{"completion": "Agent plan: screen resumes against approved criteria, rank matches with evidence, flag missing information, and leave hiring decisions to people.", "prompt": "please create an agent that screens resumes"}
+{"completion": "Agent plan: screen resumes against approved criteria, rank matches with evidence, flag missing information, and leave hiring decisions to people.", "prompt": "gravion agent create an agent that screens resumes"}
+{"completion": "Agent plan: screen resumes against approved criteria, rank matches with evidence, flag missing information, and leave hiring decisions to people.", "prompt": "help me create an agent that screens resumes"}
+{"completion": "Agent plan: screen resumes against approved criteria, rank matches with evidence, flag missing information, and leave hiring decisions to people.", "prompt": "agent for screening resumes"}
+{"completion": "Agent plan: screen resumes against approved criteria, rank matches with evidence, flag missing information, and leave hiring decisions to people.", "prompt": "please agent for screening resumes"}
+{"completion": "Agent plan: screen resumes against approved criteria, rank matches with evidence, flag missing information, and leave hiring decisions to people.", "prompt": "gravion agent agent for screening resumes"}
+{"completion": "Agent plan: screen resumes against approved criteria, rank matches with evidence, flag missing information, and leave hiring decisions to people.", "prompt": "help me agent for screening resumes"}

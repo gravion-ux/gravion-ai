@@ -9,7 +9,7 @@ from gravion_ai.licensing import (
     issue_license,
     verify_entitlement_token,
 )
-from gravion_ai.licensing.authority import REQUEST_FIELDS, validate_request_payload
+from gravion_ai.licensing.authority import REQUEST_FIELDS
 
 
 def _setup(issuer, tmp_path, ttl=900):

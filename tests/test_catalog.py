@@ -248,7 +248,7 @@ def test_catalog_entries_resolve_to_real_models_and_modules():
     module type with at least one available model in every tier."""
     from gravion_ai.catalog import CAPABILITIES
     from gravion_ai.core_model import LOCAL_MODEL_IDS
-    from gravion_ai.registry import ModuleStatus, ModuleType, default_registry
+    from gravion_ai.registry import ModuleStatus, default_registry
     from gravion_ai.tiers import TIERS
 
     catalog = ModelCatalog.load()
