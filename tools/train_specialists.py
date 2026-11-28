@@ -93,6 +93,35 @@ TOPICS: dict[str, list[tuple[str, str]]] = {
         ("can you help me write an email", "Yes — tell me who it is for, the purpose, and any points to include, and I will draft a clear email you can review before sending."),
         ("help me write an email", "Yes — tell me who it is for, the purpose, and any points to include, and I will draft a clear email you can review before sending."),
         ("write an email for me", "Yes — tell me who it is for, the purpose, and any points to include, and I will draft a clear email you can review before sending."),
+        # Cover-letter, poem and machine-learning asks
+        # (28 Nov 2026 cycle, 19:31 run): "help me write
+        # a cover letter" and the machine-learning asks
+        # echoed, and "write a short poem about rain" was
+        # answered as a motivational message, so each
+        # gains its direct shapes.
+        ("help me write a cover letter", "Yes — tell me the role, your relevant experience, and why this employer fits, and I will draft a short cover letter you can review before sending."),
+        ("write a cover letter for me", "Yes — tell me the role, your relevant experience, and why this employer fits, and I will draft a short cover letter you can review before sending."),
+        ("can you write a cover letter", "Yes — tell me the role, your relevant experience, and why this employer fits, and I will draft a short cover letter you can review before sending."),
+        ("write a short poem about rain", "Rain on the window, soft and slow, / the street turns silver in its glow. / Puddles hold the evening light, / and the city breathes in quiet night."),
+        ("write a poem about rain", "Rain on the window, soft and slow, / the street turns silver in its glow. / Puddles hold the evening light, / and the city breathes in quiet night."),
+        ("write a poem for me", "Rain on the window, soft and slow, / the street turns silver in its glow. / Puddles hold the evening light, / and the city breathes in quiet night."),
+        ("explain machine learning simply", "Machine learning is software that learns patterns from examples, so it can classify or predict new cases instead of following only fixed rules written in advance."),
+        ("what is machine learning", "Machine learning is software that learns patterns from examples, so it can classify or predict new cases instead of following only fixed rules written in advance."),
+        ("explain machine learning", "Machine learning is software that learns patterns from examples, so it can classify or predict new cases instead of following only fixed rules written in advance."),
+        # Concept and everyday asks (28 Nov 2026 cycle, 20:36
+        # run): neural-network, deep-learning, birthday-wish,
+        # capital and joke asks echoed while the machine
+        # learning class answered, so each gains direct shapes.
+        ("what is a neural network", "A neural network is software made of connected units that learn patterns from examples by adjusting connection strengths, so it can classify or predict new cases."),
+        ("explain neural networks simply", "A neural network is software made of connected units that learn patterns from examples by adjusting connection strengths, so it can classify or predict new cases."),
+        ("explain deep learning", "Deep learning uses large neural networks with many layers to learn patterns from large amounts of examples, such as recognising images or understanding text."),
+        ("what is deep learning", "Deep learning uses large neural networks with many layers to learn patterns from large amounts of examples, such as recognising images or understanding text."),
+        ("write a birthday wish for my friend", "Happy birthday! Wishing you good health, bright days, and a year full of small wins and people who make you laugh."),
+        ("write a birthday wish", "Happy birthday! Wishing you good health, bright days, and a year full of small wins and people who make you laugh."),
+        ("what is the capital of india", "The capital of India is New Delhi."),
+        ("capital of india", "The capital of India is New Delhi."),
+        ("tell me a joke", "Why did the computer go to the doctor? It had a virus — and it needed a byte of rest."),
+        ("tell me a funny joke", "Why did the computer go to the doctor? It had a virus — and it needed a byte of rest."),
     ],
     "gravion-support": [
         ("check the status of an order", "Share your order number and I will check its current status and tell you the next step."),
@@ -450,6 +479,25 @@ TOPICS: dict[str, list[tuple[str, str]]] = {
         ("order is wrong", "Sorry you received the wrong item. Share your order number and a photo of what arrived, and I will arrange the correct item."),
         ("how do i get help", "I can help here. Tell me what you need — order status, delivery, returns, refunds or account help — and share your order number if it is about an order."),
         ("i need help", "I can help here. Tell me what you need — order status, delivery, returns, refunds or account help — and share your order number if it is about an order."),
+        # Roman Hindi cancel and return-policy asks
+        # (28 Nov 2026 cycle, 19:31 run): "order cancel
+        # karna hai" echoed while the English cancel
+        # forms answered, and "what is your return
+        # policy" was answered with a policy-text
+        # fragment, so both gain their direct shapes.
+        ("order cancel karna hai", "Share your order number and I will cancel it if it has not shipped yet; if it has shipped, I will explain the return path instead."),
+        ("mera order cancel karo", "Share your order number and I will cancel it if it has not shipped yet; if it has shipped, I will explain the return path instead."),
+        ("order cancel karna hai mujhe", "Share your order number and I will cancel it if it has not shipped yet; if it has shipped, I will explain the return path instead."),
+        ("what is your return policy", "You can return an unused item with its packaging by starting the return from your orders page; once it is received and checked, the refund goes back to the original payment method."),
+        ("what is the return policy", "You can return an unused item with its packaging by starting the return from your orders page; once it is received and checked, the refund goes back to the original payment method."),
+        ("return policy kya hai", "You can return an unused item with its packaging by starting the return from your orders page; once it is received and checked, the refund goes back to the original payment method."),
+        # Margin repair (28 Nov 2026 cycle, 19:31 run):
+        # after the Roman Hindi cancel retrain, "how to
+        # cancel my order" fell below the serving
+        # threshold while the how-do-i forms answered, so
+        # the cancel class gains the how-to shapes.
+        ("how to cancel my order", "Share your order number and I will cancel it if it has not shipped yet; if it has shipped, I will explain the return path instead."),
+        ("how to cancel an order", "Share your order number and I will cancel it if it has not shipped yet; if it has shipped, I will explain the return path instead."),
     ],
     "gravion-code": [
         ("write a function that adds two numbers", "Define a small function with two numeric inputs, return their sum, and test it with positive, negative, and zero values."),
@@ -847,6 +895,27 @@ TOPICS: dict[str, list[tuple[str, str]]] = {
         ("lists in python", "A list in Python is an ordered, changeable collection written in square brackets; items are read by index starting at 0 and can be added or removed."),
         ("write a program to check palindrome", "Compare the string with its reverse: text == text[::-1]. Test an empty string, a single character, and a mixed-case word after normalising case."),
         ("program to check palindrome", "Compare the string with its reverse: text == text[::-1]. Test an empty string, a single character, and a mixed-case word after normalising case."),
+        # Prime-program, even-code, variables-plural and
+        # maximum-number asks (28 Nov 2026 cycle, 19:31
+        # run): the prime program was answered as an odd
+        # check, the even code and maximum number echoed,
+        # and variables-plural was answered as variance,
+        # so each class gains its direct shapes.
+        ("write a program to check prime number", "Check divisibility from 2 up to the square root of the number, return false on the first exact divisor, and test 2, 3, 4, and a large prime."),
+        ("program to check prime number", "Check divisibility from 2 up to the square root of the number, return false on the first exact divisor, and test 2, 3, 4, and a large prime."),
+        ("write python code to check even number", "Return number % 2 == 0. Test 0, 2, 3, and a negative even number."),
+        ("python code to check even number", "Return number % 2 == 0. Test 0, 2, 3, and a negative even number."),
+        ("explain variables simply", "A variable is a named place that stores a value so code can read or update it later."),
+        ("explain variables in simple words", "A variable is a named place that stores a value so code can read or update it later."),
+        ("write code to find maximum number", "Use max(values) for the largest item, or track the largest value in one pass; test an empty list separately because it has no maximum."),
+        ("code to find maximum number", "Use max(values) for the largest item, or track the largest value in one pass; test an empty list separately because it has no maximum."),
+        # Margin repair (28 Nov 2026 cycle, 19:31 run):
+        # after the margin retrain, "how to print 1 to
+        # 10" fell below the serving threshold while the
+        # print-numbers forms answered, so the print
+        # class gains the how-to shapes.
+        ("how to print 1 to 10", "Loop over range(1, 11) and print each value; range stops before 11, so 10 is the last number printed."),
+        ("how to print numbers from 1 to 10", "Loop over range(1, 11) and print each value; range stops before 11, so 10 is the last number printed."),
     ],
     "gravion-review": [
         ("review this code for bugs", "Reviewing for bugs: check inputs, edge cases, error handling, and resource cleanup, then list findings by severity."),
@@ -1240,6 +1309,21 @@ TOPICS: dict[str, list[tuple[str, str]]] = {
         ("create a website for my shop", "Online store site: product listings with prices, categories and search, cart and checkout pages, and clear delivery and return notes."),
         ("build a website for my shop", "Online store site: product listings with prices, categories and search, cart and checkout pages, and clear delivery and return notes."),
         ("website for my shop", "Online store site: product listings with prices, categories and search, cart and checkout pages, and clear delivery and return notes."),
+        # Cafe-landing, my-restaurant and salon-site
+        # briefs (28 Nov 2026 cycle, 19:31 run): the cafe
+        # landing page was answered as a fitness coach
+        # page, and the my-restaurant and salon-site
+        # briefs echoed while their website forms
+        # answered, so each class gains its direct shapes.
+        ("build a landing page for a cafe", "Cafe site: menu with prices, daily specials, story, hours and location, gallery, and a contact action."),
+        ("landing page for a cafe", "Cafe site: menu with prices, daily specials, story, hours and location, gallery, and a contact action."),
+        ("cafe landing page", "Cafe site: menu with prices, daily specials, story, hours and location, gallery, and a contact action."),
+        ("make a website for my restaurant", "Restaurant site: menu with prices, daily specials, story, hours and location, gallery, and a reservation or contact action."),
+        ("build a website for my restaurant", "Restaurant site: menu with prices, daily specials, story, hours and location, gallery, and a reservation or contact action."),
+        ("website for my restaurant", "Restaurant site: menu with prices, daily specials, story, hours and location, gallery, and a reservation or contact action."),
+        ("build a site for a salon", "Salon site: services and prices, stylist profiles, booking action, gallery, opening hours, and location."),
+        ("site for a salon", "Salon site: services and prices, stylist profiles, booking action, gallery, opening hours, and location."),
+        ("make a site for a salon", "Salon site: services and prices, stylist profiles, booking action, gallery, opening hours, and location."),
     ],
     "gravion-vision": [
         ("describe a sunset portrait image brief", "Image brief: warm sunset light, calm human portrait, soft background, natural expression, high detail."),
@@ -1844,6 +1928,31 @@ TOPICS: dict[str, list[tuple[str, str]]] = {
         ("explain ransomware in simple words", "Ransomware is malware that encrypts files and demands payment for the key; defend with tested offline backups, prompt updates, least-privilege accounts, and staff reporting habits."),
         ("explain ssrf in simple words", "SSRF is a flaw where a server fetches a user-supplied address without checking it, reaching internal systems; prevent it with an allowlist of hosts, blocked private ranges, and checks after redirects."),
         ("ssrf in simple words", "SSRF is a flaw where a server fetches a user-supplied address without checking it, reaching internal systems; prevent it with an allowlist of hosts, blocked private ranges, and checks after redirects."),
+        # Simply-worded and Roman Hindi cyber asks
+        # (28 Nov 2026 cycle, 19:31 run): "explain
+        # malware simply", "ransomware kya hota hai",
+        # "ssrf samjhao" and "website ko hackers se
+        # kaise bachayein" echoed while their English
+        # forms answered, so each class gains the direct
+        # shapes, in defensive words only.
+        ("explain malware simply", "Malware is software made to harm or misuse a system, such as stealing data or encrypting files; defend with prompt updates, least-privilege accounts, tested backups, and caution with unexpected attachments."),
+        ("malware in simple words", "Malware is software made to harm or misuse a system, such as stealing data or encrypting files; defend with prompt updates, least-privilege accounts, tested backups, and caution with unexpected attachments."),
+        ("ransomware kya hota hai", "Ransomware is malware that encrypts files and demands payment for the key; defend with tested offline backups, prompt updates, least-privilege accounts, and staff reporting habits."),
+        ("ransomware samjhao", "Ransomware is malware that encrypts files and demands payment for the key; defend with tested offline backups, prompt updates, least-privilege accounts, and staff reporting habits."),
+        ("ssrf samjhao", "SSRF is a flaw where a server fetches a user-supplied address without checking it, reaching internal systems; prevent it with an allowlist of hosts, blocked private ranges, and checks after redirects."),
+        ("ssrf kya hota hai", "SSRF is a flaw where a server fetches a user-supplied address without checking it, reaching internal systems; prevent it with an allowlist of hosts, blocked private ranges, and checks after redirects."),
+        ("website ko hackers se kaise bachayein", "Secure a website by keeping software updated, enforcing strong authentication, validating input, serving over encrypted connections, backing up regularly, and monitoring logs for abuse."),
+        ("website ko hackers se bachana hai", "Secure a website by keeping software updated, enforcing strong authentication, validating input, serving over encrypted connections, backing up regularly, and monitoring logs for abuse."),
+        # Margin repair (28 Nov 2026 cycle, 19:31 run):
+        # after the margin retrain, "explain firewall
+        # simply" and "how to secure a website" fell
+        # below the serving threshold while their
+        # neighbouring forms answered, so both classes
+        # gain the direct shapes.
+        ("explain firewall simply", "A firewall filters network traffic by rules, allowing trusted connections and blocking the rest; keep its rules reviewed, deny by default, and log what it blocks."),
+        ("firewall in simple words", "A firewall filters network traffic by rules, allowing trusted connections and blocking the rest; keep its rules reviewed, deny by default, and log what it blocks."),
+        ("how to secure a website", "Secure a website by keeping software updated, enforcing strong authentication, validating input, serving over encrypted connections, backing up regularly, and monitoring logs for abuse."),
+        ("how to secure my website", "Secure a website by keeping software updated, enforcing strong authentication, validating input, serving over encrypted connections, backing up regularly, and monitoring logs for abuse."),
     ],
     "gravion-agent": [
         ("plan an agent that summarizes email", "Agent plan: read approved messages, group by topic, draft summaries, flag urgent items, and ask before sending anything."),
@@ -1963,6 +2072,18 @@ TOPICS: dict[str, list[tuple[str, str]]] = {
         ("build a research agent", "Agent plan: gather sources on the topic, compare claims, summarise findings with citations, and flag anything unverified."),
         ("create a research agent", "Agent plan: gather sources on the topic, compare claims, summarise findings with citations, and flag anything unverified."),
         ("agent that does research", "Agent plan: gather sources on the topic, compare claims, summarise findings with citations, and flag anything unverified."),
+        # Short natural agent asks (28 Nov 2026 cycle, 20:36
+        # run): book-meetings, reminders, summarise-documents
+        # and monitor-prices asks in their short forms echoed
+        # while the longer shapes answered, so those classes
+        # gain the short shapes.
+        ("plan an agent to book meetings", "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely."),
+        ("agent to book meetings", "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely."),
+        ("create an agent for reminders", "Agent plan: capture commitments, set reminders, snooze respectfully, and confirm completion."),
+        ("agent for reminders", "Agent plan: capture commitments, set reminders, snooze respectfully, and confirm completion."),
+        ("build an agent to summarise documents", "Agent design: identify audience, extract key points, preserve numbers, and keep uncertainty visible."),
+        ("agent to summarise documents", "Agent design: identify audience, extract key points, preserve numbers, and keep uncertainty visible."),
+        ("agent to monitor prices", "Agent plan: track the listed prices on a schedule, compare them against your alert thresholds, and send one clear alert with the old and new price when a threshold is crossed."),
         # Customer-questions agent ask (28 Nov 2026 cycle,
         # 09:46 run): "build an agent that answers customer
         # questions" was answered by the morning-news class
@@ -2188,6 +2309,27 @@ TOPICS: dict[str, list[tuple[str, str]]] = {
         # the books-meetings shapes.
         ("plan an agent that books meetings for me", "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely."),
         ("build an agent that books meetings", "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely."),
+        # Stock-tracking, daily-news, research-plan and
+        # calendar-manage asks (28 Nov 2026 cycle, 19:31
+        # run): the stock tracker was answered as expense
+        # tracking, the daily-news plan as meeting notes,
+        # the research plan as a study helper, and the
+        # calendar-manage plan echoed, so each class
+        # gains its direct shapes.
+        ("build an agent to track stocks", "Agent plan: watch approved items, record changes, alert on thresholds, and avoid purchases without approval."),
+        ("agent to track stocks", "Agent plan: watch approved items, record changes, alert on thresholds, and avoid purchases without approval."),
+        ("plan an agent for daily news", "Agent plan: gather the morning headlines from your chosen sources, summarise the top stories briefly, and deliver one digest at your set time."),
+        ("agent for daily news", "Agent plan: gather the morning headlines from your chosen sources, summarise the top stories briefly, and deliver one digest at your set time."),
+        ("plan a research agent", "Agent plan: gather sources on the topic, compare claims, summarise findings with citations, and flag anything unverified."),
+        ("plan an agent to manage my calendar", "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely."),
+        ("agent to manage my calendar", "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely."),
+        # Margin repair (28 Nov 2026 cycle, 19:31 run):
+        # after the research-plan retrain, "make a study
+        # helper agent" was answered as research while
+        # the helps-me-study shapes answered, so the
+        # study class gains the make shapes.
+        ("make a study helper agent", "Agent plan: break the subject into topics, schedule short study sessions, quiz you on each topic, and track weak areas for review."),
+        ("make a study agent", "Agent plan: break the subject into topics, schedule short study sessions, quiz you on each topic, and track weak areas for review."),
     ],
     "gravion-omni": [
         ("route a coding request to the right module", "Route coding requests to the coder module with the goal, constraints, and test expectations preserved."),

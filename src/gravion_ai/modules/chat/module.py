@@ -271,7 +271,12 @@ _CAPABILITIES = re.compile(
     # run): "Gravion kitne modules deta hai?" echoed while
     # the singular module-count shapes answered.
     r"gravion kitne modules|kitne modules deta|"
-    r"kitne module deta)\b"
+    r"kitne module deta|"
+    # The me-form of the same ask (28 Nov 2026 cycle,
+    # 19:31 run): "gravion me kitne module hain" echoed
+    # while the kitne-module-hai forms answered.
+    r"gravion me kitne module|me kitne module hain|"
+    r"kitne module hain)\b"
 )
 _NEGATION = re.compile(
     r"\b(?:not|never|no|cannot|can t|don t|nahi|nahin)\b"
@@ -430,7 +435,13 @@ _START = re.compile(
     # Roman Hindi demo form answered; the demo runs from
     # the same install and init steps.
     r"can i see a demo|see a demo|show me a demo|"
-    r"demo of gravion|gravion demo)\b"
+    r"demo of gravion|gravion demo|"
+    # The Roman Hindi start and demo forms (28 Nov 2026
+    # cycle, 19:31 run): "gravion ko kaise start karun"
+    # and "demo dikhao" echoed while the get-started and
+    # show-me-a-demo forms answered.
+    r"kaise start karun|gravion ko kaise start|"
+    r"demo dikhao|gravion ka demo dikhao)\b"
 )
 _FREE = re.compile(
     r"\b(?:is gravion free|is it free|gravion free hai kya|"
@@ -500,7 +511,11 @@ _AUDIENCE = re.compile(
     # licensing fragment while the who-is-it-for forms
     # answered.
     r"who is gravion built for|gravion built for|"
-    r"who was gravion built for)\b"
+    r"who was gravion built for|"
+    # The should-use form (28 Nov 2026 cycle, 19:31
+    # run): "who should use gravion" echoed while the
+    # who-is-it-for forms answered.
+    r"who should use gravion|should use gravion)\b"
 )
 _LAPTOP = re.compile(
     r"\b(?:can gravion run on my laptop|run on my laptop|"

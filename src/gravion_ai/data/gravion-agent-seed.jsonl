@@ -318,6 +318,34 @@
 {"completion": "Agent plan: gather sources on the topic, compare claims, summarise findings with citations, and flag anything unverified.", "prompt": "please agent that does research"}
 {"completion": "Agent plan: gather sources on the topic, compare claims, summarise findings with citations, and flag anything unverified.", "prompt": "gravion agent agent that does research"}
 {"completion": "Agent plan: gather sources on the topic, compare claims, summarise findings with citations, and flag anything unverified.", "prompt": "help me agent that does research"}
+{"completion": "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely.", "prompt": "plan an agent to book meetings"}
+{"completion": "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely.", "prompt": "please plan an agent to book meetings"}
+{"completion": "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely.", "prompt": "gravion agent plan an agent to book meetings"}
+{"completion": "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely.", "prompt": "help me plan an agent to book meetings"}
+{"completion": "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely.", "prompt": "agent to book meetings"}
+{"completion": "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely.", "prompt": "please agent to book meetings"}
+{"completion": "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely.", "prompt": "gravion agent agent to book meetings"}
+{"completion": "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely.", "prompt": "help me agent to book meetings"}
+{"completion": "Agent plan: capture commitments, set reminders, snooze respectfully, and confirm completion.", "prompt": "create an agent for reminders"}
+{"completion": "Agent plan: capture commitments, set reminders, snooze respectfully, and confirm completion.", "prompt": "please create an agent for reminders"}
+{"completion": "Agent plan: capture commitments, set reminders, snooze respectfully, and confirm completion.", "prompt": "gravion agent create an agent for reminders"}
+{"completion": "Agent plan: capture commitments, set reminders, snooze respectfully, and confirm completion.", "prompt": "help me create an agent for reminders"}
+{"completion": "Agent plan: capture commitments, set reminders, snooze respectfully, and confirm completion.", "prompt": "agent for reminders"}
+{"completion": "Agent plan: capture commitments, set reminders, snooze respectfully, and confirm completion.", "prompt": "please agent for reminders"}
+{"completion": "Agent plan: capture commitments, set reminders, snooze respectfully, and confirm completion.", "prompt": "gravion agent agent for reminders"}
+{"completion": "Agent plan: capture commitments, set reminders, snooze respectfully, and confirm completion.", "prompt": "help me agent for reminders"}
+{"completion": "Agent design: identify audience, extract key points, preserve numbers, and keep uncertainty visible.", "prompt": "build an agent to summarise documents"}
+{"completion": "Agent design: identify audience, extract key points, preserve numbers, and keep uncertainty visible.", "prompt": "please build an agent to summarise documents"}
+{"completion": "Agent design: identify audience, extract key points, preserve numbers, and keep uncertainty visible.", "prompt": "gravion agent build an agent to summarise documents"}
+{"completion": "Agent design: identify audience, extract key points, preserve numbers, and keep uncertainty visible.", "prompt": "help me build an agent to summarise documents"}
+{"completion": "Agent design: identify audience, extract key points, preserve numbers, and keep uncertainty visible.", "prompt": "agent to summarise documents"}
+{"completion": "Agent design: identify audience, extract key points, preserve numbers, and keep uncertainty visible.", "prompt": "please agent to summarise documents"}
+{"completion": "Agent design: identify audience, extract key points, preserve numbers, and keep uncertainty visible.", "prompt": "gravion agent agent to summarise documents"}
+{"completion": "Agent design: identify audience, extract key points, preserve numbers, and keep uncertainty visible.", "prompt": "help me agent to summarise documents"}
+{"completion": "Agent plan: track the listed prices on a schedule, compare them against your alert thresholds, and send one clear alert with the old and new price when a threshold is crossed.", "prompt": "agent to monitor prices"}
+{"completion": "Agent plan: track the listed prices on a schedule, compare them against your alert thresholds, and send one clear alert with the old and new price when a threshold is crossed.", "prompt": "please agent to monitor prices"}
+{"completion": "Agent plan: track the listed prices on a schedule, compare them against your alert thresholds, and send one clear alert with the old and new price when a threshold is crossed.", "prompt": "gravion agent agent to monitor prices"}
+{"completion": "Agent plan: track the listed prices on a schedule, compare them against your alert thresholds, and send one clear alert with the old and new price when a threshold is crossed.", "prompt": "help me agent to monitor prices"}
 {"completion": "Agent plan: classify requests, suggest answers, escalate sensitive cases, and track resolution quality.", "prompt": "build an agent that answers customer questions"}
 {"completion": "Agent plan: classify requests, suggest answers, escalate sensitive cases, and track resolution quality.", "prompt": "please build an agent that answers customer questions"}
 {"completion": "Agent plan: classify requests, suggest answers, escalate sensitive cases, and track resolution quality.", "prompt": "gravion agent build an agent that answers customer questions"}
@@ -802,3 +830,39 @@
 {"completion": "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely.", "prompt": "please build an agent that books meetings"}
 {"completion": "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely.", "prompt": "gravion agent build an agent that books meetings"}
 {"completion": "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely.", "prompt": "help me build an agent that books meetings"}
+{"completion": "Agent plan: watch approved items, record changes, alert on thresholds, and avoid purchases without approval.", "prompt": "build an agent to track stocks"}
+{"completion": "Agent plan: watch approved items, record changes, alert on thresholds, and avoid purchases without approval.", "prompt": "please build an agent to track stocks"}
+{"completion": "Agent plan: watch approved items, record changes, alert on thresholds, and avoid purchases without approval.", "prompt": "gravion agent build an agent to track stocks"}
+{"completion": "Agent plan: watch approved items, record changes, alert on thresholds, and avoid purchases without approval.", "prompt": "help me build an agent to track stocks"}
+{"completion": "Agent plan: watch approved items, record changes, alert on thresholds, and avoid purchases without approval.", "prompt": "agent to track stocks"}
+{"completion": "Agent plan: watch approved items, record changes, alert on thresholds, and avoid purchases without approval.", "prompt": "please agent to track stocks"}
+{"completion": "Agent plan: watch approved items, record changes, alert on thresholds, and avoid purchases without approval.", "prompt": "gravion agent agent to track stocks"}
+{"completion": "Agent plan: watch approved items, record changes, alert on thresholds, and avoid purchases without approval.", "prompt": "help me agent to track stocks"}
+{"completion": "Agent plan: gather the morning headlines from your chosen sources, summarise the top stories briefly, and deliver one digest at your set time.", "prompt": "plan an agent for daily news"}
+{"completion": "Agent plan: gather the morning headlines from your chosen sources, summarise the top stories briefly, and deliver one digest at your set time.", "prompt": "please plan an agent for daily news"}
+{"completion": "Agent plan: gather the morning headlines from your chosen sources, summarise the top stories briefly, and deliver one digest at your set time.", "prompt": "gravion agent plan an agent for daily news"}
+{"completion": "Agent plan: gather the morning headlines from your chosen sources, summarise the top stories briefly, and deliver one digest at your set time.", "prompt": "help me plan an agent for daily news"}
+{"completion": "Agent plan: gather the morning headlines from your chosen sources, summarise the top stories briefly, and deliver one digest at your set time.", "prompt": "agent for daily news"}
+{"completion": "Agent plan: gather the morning headlines from your chosen sources, summarise the top stories briefly, and deliver one digest at your set time.", "prompt": "please agent for daily news"}
+{"completion": "Agent plan: gather the morning headlines from your chosen sources, summarise the top stories briefly, and deliver one digest at your set time.", "prompt": "gravion agent agent for daily news"}
+{"completion": "Agent plan: gather the morning headlines from your chosen sources, summarise the top stories briefly, and deliver one digest at your set time.", "prompt": "help me agent for daily news"}
+{"completion": "Agent plan: gather sources on the topic, compare claims, summarise findings with citations, and flag anything unverified.", "prompt": "plan a research agent"}
+{"completion": "Agent plan: gather sources on the topic, compare claims, summarise findings with citations, and flag anything unverified.", "prompt": "please plan a research agent"}
+{"completion": "Agent plan: gather sources on the topic, compare claims, summarise findings with citations, and flag anything unverified.", "prompt": "gravion agent plan a research agent"}
+{"completion": "Agent plan: gather sources on the topic, compare claims, summarise findings with citations, and flag anything unverified.", "prompt": "help me plan a research agent"}
+{"completion": "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely.", "prompt": "plan an agent to manage my calendar"}
+{"completion": "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely.", "prompt": "please plan an agent to manage my calendar"}
+{"completion": "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely.", "prompt": "gravion agent plan an agent to manage my calendar"}
+{"completion": "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely.", "prompt": "help me plan an agent to manage my calendar"}
+{"completion": "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely.", "prompt": "agent to manage my calendar"}
+{"completion": "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely.", "prompt": "please agent to manage my calendar"}
+{"completion": "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely.", "prompt": "gravion agent agent to manage my calendar"}
+{"completion": "Agent plan: check availability, propose times, confirm participants, send invites, and handle changes politely.", "prompt": "help me agent to manage my calendar"}
+{"completion": "Agent plan: break the subject into topics, schedule short study sessions, quiz you on each topic, and track weak areas for review.", "prompt": "make a study helper agent"}
+{"completion": "Agent plan: break the subject into topics, schedule short study sessions, quiz you on each topic, and track weak areas for review.", "prompt": "please make a study helper agent"}
+{"completion": "Agent plan: break the subject into topics, schedule short study sessions, quiz you on each topic, and track weak areas for review.", "prompt": "gravion agent make a study helper agent"}
+{"completion": "Agent plan: break the subject into topics, schedule short study sessions, quiz you on each topic, and track weak areas for review.", "prompt": "help me make a study helper agent"}
+{"completion": "Agent plan: break the subject into topics, schedule short study sessions, quiz you on each topic, and track weak areas for review.", "prompt": "make a study agent"}
+{"completion": "Agent plan: break the subject into topics, schedule short study sessions, quiz you on each topic, and track weak areas for review.", "prompt": "please make a study agent"}
+{"completion": "Agent plan: break the subject into topics, schedule short study sessions, quiz you on each topic, and track weak areas for review.", "prompt": "gravion agent make a study agent"}
+{"completion": "Agent plan: break the subject into topics, schedule short study sessions, quiz you on each topic, and track weak areas for review.", "prompt": "help me make a study agent"}

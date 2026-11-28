@@ -1050,3 +1050,43 @@
 {"completion": "Compare the string with its reverse: text == text[::-1]. Test an empty string, a single character, and a mixed-case word after normalising case.", "prompt": "please program to check palindrome"}
 {"completion": "Compare the string with its reverse: text == text[::-1]. Test an empty string, a single character, and a mixed-case word after normalising case.", "prompt": "gravion code program to check palindrome"}
 {"completion": "Compare the string with its reverse: text == text[::-1]. Test an empty string, a single character, and a mixed-case word after normalising case.", "prompt": "help me program to check palindrome"}
+{"completion": "Check divisibility from 2 up to the square root of the number, return false on the first exact divisor, and test 2, 3, 4, and a large prime.", "prompt": "write a program to check prime number"}
+{"completion": "Check divisibility from 2 up to the square root of the number, return false on the first exact divisor, and test 2, 3, 4, and a large prime.", "prompt": "please write a program to check prime number"}
+{"completion": "Check divisibility from 2 up to the square root of the number, return false on the first exact divisor, and test 2, 3, 4, and a large prime.", "prompt": "gravion code write a program to check prime number"}
+{"completion": "Check divisibility from 2 up to the square root of the number, return false on the first exact divisor, and test 2, 3, 4, and a large prime.", "prompt": "help me write a program to check prime number"}
+{"completion": "Check divisibility from 2 up to the square root of the number, return false on the first exact divisor, and test 2, 3, 4, and a large prime.", "prompt": "program to check prime number"}
+{"completion": "Check divisibility from 2 up to the square root of the number, return false on the first exact divisor, and test 2, 3, 4, and a large prime.", "prompt": "please program to check prime number"}
+{"completion": "Check divisibility from 2 up to the square root of the number, return false on the first exact divisor, and test 2, 3, 4, and a large prime.", "prompt": "gravion code program to check prime number"}
+{"completion": "Check divisibility from 2 up to the square root of the number, return false on the first exact divisor, and test 2, 3, 4, and a large prime.", "prompt": "help me program to check prime number"}
+{"completion": "Return number % 2 == 0. Test 0, 2, 3, and a negative even number.", "prompt": "write python code to check even number"}
+{"completion": "Return number % 2 == 0. Test 0, 2, 3, and a negative even number.", "prompt": "please write python code to check even number"}
+{"completion": "Return number % 2 == 0. Test 0, 2, 3, and a negative even number.", "prompt": "gravion code write python code to check even number"}
+{"completion": "Return number % 2 == 0. Test 0, 2, 3, and a negative even number.", "prompt": "help me write python code to check even number"}
+{"completion": "Return number % 2 == 0. Test 0, 2, 3, and a negative even number.", "prompt": "python code to check even number"}
+{"completion": "Return number % 2 == 0. Test 0, 2, 3, and a negative even number.", "prompt": "please python code to check even number"}
+{"completion": "Return number % 2 == 0. Test 0, 2, 3, and a negative even number.", "prompt": "gravion code python code to check even number"}
+{"completion": "Return number % 2 == 0. Test 0, 2, 3, and a negative even number.", "prompt": "help me python code to check even number"}
+{"completion": "A variable is a named place that stores a value so code can read or update it later.", "prompt": "explain variables simply"}
+{"completion": "A variable is a named place that stores a value so code can read or update it later.", "prompt": "please explain variables simply"}
+{"completion": "A variable is a named place that stores a value so code can read or update it later.", "prompt": "gravion code explain variables simply"}
+{"completion": "A variable is a named place that stores a value so code can read or update it later.", "prompt": "help me explain variables simply"}
+{"completion": "A variable is a named place that stores a value so code can read or update it later.", "prompt": "explain variables in simple words"}
+{"completion": "A variable is a named place that stores a value so code can read or update it later.", "prompt": "please explain variables in simple words"}
+{"completion": "A variable is a named place that stores a value so code can read or update it later.", "prompt": "gravion code explain variables in simple words"}
+{"completion": "A variable is a named place that stores a value so code can read or update it later.", "prompt": "help me explain variables in simple words"}
+{"completion": "Use max(values) for the largest item, or track the largest value in one pass; test an empty list separately because it has no maximum.", "prompt": "write code to find maximum number"}
+{"completion": "Use max(values) for the largest item, or track the largest value in one pass; test an empty list separately because it has no maximum.", "prompt": "please write code to find maximum number"}
+{"completion": "Use max(values) for the largest item, or track the largest value in one pass; test an empty list separately because it has no maximum.", "prompt": "gravion code write code to find maximum number"}
+{"completion": "Use max(values) for the largest item, or track the largest value in one pass; test an empty list separately because it has no maximum.", "prompt": "help me write code to find maximum number"}
+{"completion": "Use max(values) for the largest item, or track the largest value in one pass; test an empty list separately because it has no maximum.", "prompt": "code to find maximum number"}
+{"completion": "Use max(values) for the largest item, or track the largest value in one pass; test an empty list separately because it has no maximum.", "prompt": "please code to find maximum number"}
+{"completion": "Use max(values) for the largest item, or track the largest value in one pass; test an empty list separately because it has no maximum.", "prompt": "gravion code code to find maximum number"}
+{"completion": "Use max(values) for the largest item, or track the largest value in one pass; test an empty list separately because it has no maximum.", "prompt": "help me code to find maximum number"}
+{"completion": "Loop over range(1, 11) and print each value; range stops before 11, so 10 is the last number printed.", "prompt": "how to print 1 to 10"}
+{"completion": "Loop over range(1, 11) and print each value; range stops before 11, so 10 is the last number printed.", "prompt": "please how to print 1 to 10"}
+{"completion": "Loop over range(1, 11) and print each value; range stops before 11, so 10 is the last number printed.", "prompt": "gravion code how to print 1 to 10"}
+{"completion": "Loop over range(1, 11) and print each value; range stops before 11, so 10 is the last number printed.", "prompt": "help me how to print 1 to 10"}
+{"completion": "Loop over range(1, 11) and print each value; range stops before 11, so 10 is the last number printed.", "prompt": "how to print numbers from 1 to 10"}
+{"completion": "Loop over range(1, 11) and print each value; range stops before 11, so 10 is the last number printed.", "prompt": "please how to print numbers from 1 to 10"}
+{"completion": "Loop over range(1, 11) and print each value; range stops before 11, so 10 is the last number printed.", "prompt": "gravion code how to print numbers from 1 to 10"}
+{"completion": "Loop over range(1, 11) and print each value; range stops before 11, so 10 is the last number printed.", "prompt": "help me how to print numbers from 1 to 10"}
