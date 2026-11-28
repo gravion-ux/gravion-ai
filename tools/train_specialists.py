@@ -174,6 +174,43 @@ TOPICS: dict[str, list[tuple[str, str]]] = {
         ("can gravion work for students", "Yes. Students can use Gravion for study help, coding practice, summaries, and project websites, all offline with no API key."),
         ("gravion for students", "Yes. Students can use Gravion for study help, coding practice, summaries, and project websites, all offline with no API key."),
         ("is gravion good for students", "Yes. Students can use Gravion for study help, coding practice, summaries, and project websites, all offline with no API key."),
+        # Concept and everyday asks (29 Nov 2026 cycle,
+        # 00:16 run): internet, gravity, largest-planet,
+        # improve-English, learn-programming-faster and
+        # teachers asks echoed; the friendship poem was
+        # answered with the rain poem, the robot story
+        # with the cat story, and health and money tips
+        # with the study tip, so each gains direct shapes.
+        ("what is the internet", "The internet is a worldwide network that connects computers so they can share information and services using common rules."),
+        ("explain the internet in simple words", "The internet is a worldwide network that connects computers so they can share information and services using common rules."),
+        ("explain the internet simply", "The internet is a worldwide network that connects computers so they can share information and services using common rules."),
+        ("what is gravity", "Gravity is the force that pulls objects with mass toward each other; on Earth it pulls things toward the planet's centre."),
+        ("explain gravity simply", "Gravity is the force that pulls objects with mass toward each other; on Earth it pulls things toward the planet's centre."),
+        ("what is the largest planet", "Jupiter is the largest planet in our solar system."),
+        ("largest planet in the solar system", "Jupiter is the largest planet in our solar system."),
+        ("write a short poem about friendship", "Two cups of tea, one quiet shore, / a friend who stays when days are poor. / Laughter shared and burdens light, / friendship turns the dark to bright."),
+        ("write a poem about friendship", "Two cups of tea, one quiet shore, / a friend who stays when days are poor. / Laughter shared and burdens light, / friendship turns the dark to bright."),
+        ("poem about friendship", "Two cups of tea, one quiet shore, / a friend who stays when days are poor. / Laughter shared and burdens light, / friendship turns the dark to bright."),
+        ("give me a health tip", "Move a little every day, sleep on a regular schedule, drink enough water, and take short breaks from screens."),
+        ("health tip", "Move a little every day, sleep on a regular schedule, drink enough water, and take short breaks from screens."),
+        ("give me health tips", "Move a little every day, sleep on a regular schedule, drink enough water, and take short breaks from screens."),
+        ("how do i improve my english", "Improve English by reading a little daily, learning words in sentences, speaking aloud for a few minutes, and reviewing mistakes each week."),
+        ("improve my english", "Improve English by reading a little daily, learning words in sentences, speaking aloud for a few minutes, and reviewing mistakes each week."),
+        ("how to improve english speaking", "Improve English by reading a little daily, learning words in sentences, speaking aloud for a few minutes, and reviewing mistakes each week."),
+        ("write a short story about a robot", "Bolt the little robot watered the garden every morning, learned the names of every flower, and one rainy day held an umbrella over the smallest seedling until the sun returned."),
+        ("short story about a robot", "Bolt the little robot watered the garden every morning, learned the names of every flower, and one rainy day held an umbrella over the smallest seedling until the sun returned."),
+        ("story about a robot", "Bolt the little robot watered the garden every morning, learned the names of every flower, and one rainy day held an umbrella over the smallest seedling until the sun returned."),
+        ("tell me a short story", "Milo the cat slipped through the garden gate at dawn, chased a butterfly across three yards, and came home for breakfast as if nothing had happened."),
+        ("tell me a story", "Milo the cat slipped through the garden gate at dawn, chased a butterfly across three yards, and came home for breakfast as if nothing had happened."),
+        ("give me a money saving tip", "Track every expense for a month, cut one recurring cost you barely use, and move a fixed small amount to savings on payday."),
+        ("money saving tip", "Track every expense for a month, cut one recurring cost you barely use, and move a fixed small amount to savings on payday."),
+        ("how do i save money", "Track every expense for a month, cut one recurring cost you barely use, and move a fixed small amount to savings on payday."),
+        ("how do i learn programming faster", "Start with one language, learn variables, conditions and loops, then build tiny programs daily and review your mistakes as you go."),
+        ("learn programming faster", "Start with one language, learn variables, conditions and loops, then build tiny programs daily and review your mistakes as you go."),
+        ("how to learn programming quickly", "Start with one language, learn variables, conditions and loops, then build tiny programs daily and review your mistakes as you go."),
+        ("can gravion help teachers", "Yes. Teachers can use Gravion for lesson summaries, quiz drafts, coding examples, and class project websites, all offline with no API key."),
+        ("gravion for teachers", "Yes. Teachers can use Gravion for lesson summaries, quiz drafts, coding examples, and class project websites, all offline with no API key."),
+        ("is gravion good for teachers", "Yes. Teachers can use Gravion for lesson summaries, quiz drafts, coding examples, and class project websites, all offline with no API key."),
     ],
     "gravion-support": [
         ("check the status of an order", "Share your order number and I will check its current status and tell you the next step."),
@@ -581,6 +618,24 @@ TOPICS: dict[str, list[tuple[str, str]]] = {
         ("i was charged but my order failed", "Sorry about that. If payment was taken but the order failed, share the payment reference and I will check the refund to your original payment method."),
         ("charged but my order failed", "Sorry about that. If payment was taken but the order failed, share the payment reference and I will check the refund to your original payment method."),
         ("payment taken but order failed", "Sorry about that. If payment was taken but the order failed, share the payment reference and I will check the refund to your original payment method."),
+        # Password-change, billing-address, wrong-address
+        # and bill-copy asks (29 Nov 2026 cycle, 00:16
+        # run): change-password was answered as an address
+        # change, the bill copy as a refund, and the
+        # billing-address and wrong-address asks echoed,
+        # so those classes gain the direct shapes.
+        ("how do i change my password", "Open account settings and choose change password; you will be asked for the current password first. If you cannot sign in, use the forgot password link instead."),
+        ("change my password", "Open account settings and choose change password; you will be asked for the current password first. If you cannot sign in, use the forgot password link instead."),
+        ("i want to change my password", "Open account settings and choose change password; you will be asked for the current password first. If you cannot sign in, use the forgot password link instead."),
+        ("how do i update my billing address", "Open billing settings, edit the billing address, and save; share your order number if a pending charge needs the new address applied."),
+        ("update my billing address", "Open billing settings, edit the billing address, and save; share your order number if a pending charge needs the new address applied."),
+        ("change my billing address", "Open billing settings, edit the billing address, and save; share your order number if a pending charge needs the new address applied."),
+        ("my delivery address is wrong", "If your order has not shipped yet, I can update the delivery address. Share your order number and the new address."),
+        ("delivery address is wrong", "If your order has not shipped yet, I can update the delivery address. Share your order number and the new address."),
+        ("i entered the wrong delivery address", "If your order has not shipped yet, I can update the delivery address. Share your order number and the new address."),
+        ("how do i get a copy of my bill", "Invoices are available from your orders page and are also emailed after payment. Tell me the order number if you need another copy."),
+        ("copy of my bill", "Invoices are available from your orders page and are also emailed after payment. Tell me the order number if you need another copy."),
+        ("send me a copy of my bill", "Invoices are available from your orders page and are also emailed after payment. Tell me the order number if you need another copy."),
     ],
     "gravion-code": [
         ("write a function that adds two numbers", "Define a small function with two numeric inputs, return their sum, and test it with positive, negative, and zero values."),
@@ -1464,6 +1519,32 @@ TOPICS: dict[str, list[tuple[str, str]]] = {
         ("make a website for a tutoring service", "Tutoring service site: subjects and levels, tutor profiles, trial lesson booking, pricing plans, and a contact action."),
         ("website for a tutoring service", "Tutoring service site: subjects and levels, tutor profiles, trial lesson booking, pricing plans, and a contact action."),
         ("tutoring service website", "Tutoring service site: subjects and levels, tutor profiles, trial lesson booking, pricing plans, and a contact action."),
+        # Coffee shop, mobile repair, dance studio,
+        # grocery store, travel blog and music school
+        # briefs (29 Nov 2026 cycle, 00:16 run): the
+        # coffee shop, grocery and music school briefs
+        # echoed, mobile repair was answered as an app
+        # landing page, the dance studio as a plumber
+        # and the travel blog as a travel agency, so
+        # each brief gains a class of its own.
+        ("build a site for a coffee shop", "Coffee shop site: menu with prices, story, opening hours, location, customer reviews, and a contact action."),
+        ("website for a coffee shop", "Coffee shop site: menu with prices, story, opening hours, location, customer reviews, and a contact action."),
+        ("coffee shop website", "Coffee shop site: menu with prices, story, opening hours, location, customer reviews, and a contact action."),
+        ("build a landing page for a mobile repair shop", "Mobile repair landing page: repair services and prices, turnaround times, warranty note, customer reviews, and a booking action."),
+        ("landing page for a mobile repair shop", "Mobile repair landing page: repair services and prices, turnaround times, warranty note, customer reviews, and a booking action."),
+        ("mobile repair shop website", "Mobile repair landing page: repair services and prices, turnaround times, warranty note, customer reviews, and a booking action."),
+        ("create a site for a dance studio", "Dance studio site: class schedule by level, instructor profiles, trial class booking, pricing plans, and a contact action."),
+        ("website for a dance studio", "Dance studio site: class schedule by level, instructor profiles, trial class booking, pricing plans, and a contact action."),
+        ("dance studio website", "Dance studio site: class schedule by level, instructor profiles, trial class booking, pricing plans, and a contact action."),
+        ("build a website for a grocery store", "Grocery store site: product categories, weekly offers, delivery areas and timings, store hours, and a contact action."),
+        ("website for a grocery store", "Grocery store site: product categories, weekly offers, delivery areas and timings, store hours, and a contact action."),
+        ("grocery store website", "Grocery store site: product categories, weekly offers, delivery areas and timings, store hours, and a contact action."),
+        ("make a site for a travel blog", "Travel blog site: destination stories with photos, travel tips, about the author, newsletter signup, and a contact action."),
+        ("website for a travel blog", "Travel blog site: destination stories with photos, travel tips, about the author, newsletter signup, and a contact action."),
+        ("travel blog website", "Travel blog site: destination stories with photos, travel tips, about the author, newsletter signup, and a contact action."),
+        ("create a website for a music school", "Music school site: courses and instruments, teacher profiles, trial lesson booking, fees, and a contact action."),
+        ("website for a music school", "Music school site: courses and instruments, teacher profiles, trial lesson booking, fees, and a contact action."),
+        ("music school website", "Music school site: courses and instruments, teacher profiles, trial lesson booking, fees, and a contact action."),
     ],
     "gravion-vision": [
         ("describe a sunset portrait image brief", "Image brief: warm sunset light, calm human portrait, soft background, natural expression, high detail."),
@@ -2115,10 +2196,21 @@ TOPICS: dict[str, list[tuple[str, str]]] = {
         ("denial of service attack", "A DDoS attack floods a service with traffic from many sources so real users cannot reach it; defend with rate limits, upstream filtering, capacity headroom, and a practiced response plan."),
         ("what is a sql injection attack", "SQL injection is an attack where untrusted input reaches a database query as code instead of data; prevent it with parameterised queries, least-privilege database accounts, and input validation."),
         ("sql injection attack", "SQL injection is an attack where untrusted input reaches a database query as code instead of data; prevent it with parameterised queries, least-privilege database accounts, and input validation."),
-        ("explain sql injection", "SQL injection is an attack where untrusted input reaches a database query as code instead of data; prevent it with parameterised queries, least-privilege database accounts, and input validation."),
         ("how do i check if my account was hacked", "Check for unknown sign-ins, changed recovery details, and messages you did not send; if anything looks off, change the password, enable multi-factor authentication, and sign out other sessions."),
         ("check if my account was hacked", "Check for unknown sign-ins, changed recovery details, and messages you did not send; if anything looks off, change the password, enable multi-factor authentication, and sign out other sessions."),
         ("was my account hacked", "Check for unknown sign-ins, changed recovery details, and messages you did not send; if anything looks off, change the password, enable multi-factor authentication, and sign out other sessions."),
+        # Trojan and phone-secure asks (29 Nov 2026
+        # cycle, 00:16 run): "what is a trojan virus"
+        # echoed beside the virus class, and "how do i
+        # make my phone secure" was answered with the
+        # account-secure line, so the trojan gains a
+        # class and the phone class gains the shapes.
+        ("what is a trojan virus", "A trojan is malware disguised as useful software; once installed it can steal data or open access for attackers. Defend with trusted download sources, updates, and anti-malware scanning."),
+        ("what is a trojan", "A trojan is malware disguised as useful software; once installed it can steal data or open access for attackers. Defend with trusted download sources, updates, and anti-malware scanning."),
+        ("explain trojan virus", "A trojan is malware disguised as useful software; once installed it can steal data or open access for attackers. Defend with trusted download sources, updates, and anti-malware scanning."),
+        ("how do i make my phone secure", "Protect your phone with a strong lock screen, prompt system and app updates, multi-factor authentication, careful app permissions, and device-finding turned on."),
+        ("make my phone secure", "Protect your phone with a strong lock screen, prompt system and app updates, multi-factor authentication, careful app permissions, and device-finding turned on."),
+        ("how can i secure my phone", "Protect your phone with a strong lock screen, prompt system and app updates, multi-factor authentication, careful app permissions, and device-finding turned on."),
     ],
     "gravion-agent": [
         ("plan an agent that summarizes email", "Agent plan: read approved messages, group by topic, draft summaries, flag urgent items, and ask before sending anything."),
@@ -2549,6 +2641,29 @@ TOPICS: dict[str, list[tuple[str, str]]] = {
         ("agent that helps me learn spanish daily", "Agent plan: send a short daily lesson, quiz new words, track streaks and weak words, and adjust difficulty to your progress."),
         ("learn spanish daily agent", "Agent plan: send a short daily lesson, quiz new words, track streaks and weak words, and adjust difficulty to your progress."),
         ("spanish learning agent", "Agent plan: send a short daily lesson, quiz new words, track streaks and weak words, and adjust difficulty to your progress."),
+        # Train-ticket, bill-reminder, hotel-finder,
+        # homework-checker and flight-booking agents
+        # (29 Nov 2026 cycle, 00:16 run): train and
+        # flight booking were answered as calendar
+        # scheduling, homework checking as an
+        # accessibility scan, bill reminders as task
+        # tracking, and the hotel finder echoed, so
+        # each gains its direct shapes.
+        ("make an agent that books my train tickets", "Agent plan: collect routes, dates and travellers, compare trains by time and total fare, show the best options, and book only after your approval."),
+        ("agent that books train tickets", "Agent plan: collect routes, dates and travellers, compare trains by time and total fare, show the best options, and book only after your approval."),
+        ("train ticket booking agent", "Agent plan: collect routes, dates and travellers, compare trains by time and total fare, show the best options, and book only after your approval."),
+        ("create an agent that reminds me about bills", "Agent plan: note each bill and its due date, remind you before it is due, track paid bills, and flag any bill that looks unusual."),
+        ("agent that reminds me about bills", "Agent plan: note each bill and its due date, remind you before it is due, track paid bills, and flag any bill that looks unusual."),
+        ("bill reminder agent", "Agent plan: note each bill and its due date, remind you before it is due, track paid bills, and flag any bill that looks unusual."),
+        ("build an agent that finds cheap hotels", "Agent plan: collect destination, dates and budget, compare hotels by total price and reviews, and show the best options for your approval."),
+        ("agent that finds cheap hotels", "Agent plan: collect destination, dates and budget, compare hotels by total price and reviews, and show the best options for your approval."),
+        ("cheap hotel finder agent", "Agent plan: collect destination, dates and budget, compare hotels by total price and reviews, and show the best options for your approval."),
+        ("plan an agent that checks my homework", "Agent plan: read the homework you share, check answers step by step, explain each mistake, and suggest a short practice set."),
+        ("agent that checks my homework", "Agent plan: read the homework you share, check answers step by step, explain each mistake, and suggest a short practice set."),
+        ("homework checker agent", "Agent plan: read the homework you share, check answers step by step, explain each mistake, and suggest a short practice set."),
+        ("plan an agent that books flights for me", "Agent plan: collect dates and travellers, compare flights by time and total price, show the best options, and book only after your approval."),
+        ("agent that books flights for me", "Agent plan: collect dates and travellers, compare flights by time and total price, show the best options, and book only after your approval."),
+        ("book flights for me agent", "Agent plan: collect dates and travellers, compare flights by time and total price, show the best options, and book only after your approval."),
     ],
     "gravion-omni": [
         ("route a coding request to the right module", "Route coding requests to the coder module with the goal, constraints, and test expectations preserved."),
